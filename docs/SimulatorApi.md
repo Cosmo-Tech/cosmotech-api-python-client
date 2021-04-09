@@ -95,9 +95,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 parameter_groups=[
                     AnalysisParameterGroup(
                         id="id_example",
-                        labels=TranslatedLabels([
-                            TranslatedLabel(),
-                        ]),
+                        labels=TranslatedLabels(),
                         order=1,
                         is_table=True,
                         options={},
@@ -105,7 +103,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                         parameters=[
                             AnalysisParameter(
                                 id="id_example",
-                                labels=TranslatedLabels(TranslatedLabels),
+                                labels=TranslatedLabels(),
                                 var_type="var_type_example",
                                 order=1,
                                 options={},
@@ -490,9 +488,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 parameter_groups=[
                     AnalysisParameterGroup(
                         id="id_example",
-                        labels=TranslatedLabels([
-                            TranslatedLabel(),
-                        ]),
+                        labels=TranslatedLabels(),
                         order=1,
                         is_table=True,
                         options={},
@@ -500,7 +496,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                         parameters=[
                             AnalysisParameter(
                                 id="id_example",
-                                labels=TranslatedLabels(TranslatedLabels),
+                                labels=TranslatedLabels(),
                                 var_type="var_type_example",
                                 order=1,
                                 options={},

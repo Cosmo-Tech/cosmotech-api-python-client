@@ -5,10 +5,10 @@ All URIs are relative to *https://api.azure.cosmo-platform.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_dataset**](DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Register a new dataset
-[**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/{dataset_id} | Delete a dataset
+[**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id} | Delete a dataset
 [**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
-[**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/{dataset_id} | Get the details of a dataset
-[**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/{dataset_id} | Update a dataset
+[**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a dataset
+[**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
 
 
 # **create_dataset**

@@ -242,7 +242,7 @@ class DatasetApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/{dataset_id}',
+                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}',
                 'operation_id': 'delete_dataset',
                 'http_method': 'DELETE',
                 'servers': None,
@@ -490,7 +490,7 @@ class DatasetApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/{dataset_id}',
+                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}',
                 'operation_id': 'find_dataset_by_id',
                 'http_method': 'GET',
                 'servers': None,
@@ -623,7 +623,7 @@ class DatasetApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/{dataset_id}',
+                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}',
                 'operation_id': 'update_dataset',
                 'http_method': 'PATCH',
                 'servers': None,

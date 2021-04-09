@@ -22,7 +22,6 @@ from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_user import OrganizationUser
 from cosmotech_api.model.simulator import Simulator
 from cosmotech_api.model.simulator_analysis import SimulatorAnalysis
-from cosmotech_api.model.translated_label import TranslatedLabel
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.user import User
 from cosmotech_api.model.user_details import UserDetails

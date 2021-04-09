@@ -113,7 +113,7 @@ class ValidatorApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/validators',
+                'endpoint_path': '/organizations/{organization_id}/datasets/validators',
                 'operation_id': 'create_validator',
                 'http_method': 'POST',
                 'servers': None,
@@ -247,7 +247,7 @@ class ValidatorApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/validators/{validator_id}/history',
+                'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/history',
                 'operation_id': 'create_validator_run',
                 'http_method': 'POST',
                 'servers': None,
@@ -651,7 +651,7 @@ class ValidatorApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/validators/{validator_id}/history',
+                'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/history',
                 'operation_id': 'find_all_validator_runs',
                 'http_method': 'GET',
                 'servers': None,
@@ -776,7 +776,7 @@ class ValidatorApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/validators',
+                'endpoint_path': '/organizations/{organization_id}/datasets/validators',
                 'operation_id': 'find_all_validators',
                 'http_method': 'GET',
                 'servers': None,
@@ -1171,7 +1171,7 @@ class ValidatorApi(object):
                     'AADOAuth2AuthCode',
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/validators/{validator_id}/run',
+                'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/run',
                 'operation_id': 'run_validator',
                 'http_method': 'POST',
                 'servers': None,
