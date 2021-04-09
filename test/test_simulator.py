@@ -12,13 +12,13 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.organization_user import OrganizationUser
-globals()['OrganizationUser'] = OrganizationUser
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.model.simulator_analysis import SimulatorAnalysis
+globals()['SimulatorAnalysis'] = SimulatorAnalysis
+from cosmotech_api.model.simulator import Simulator
 
 
-class TestOrganization(unittest.TestCase):
-    """Organization unit test stubs"""
+class TestSimulator(unittest.TestCase):
+    """Simulator unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,10 +26,10 @@ class TestOrganization(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testOrganization(self):
-        """Test Organization"""
+    def testSimulator(self):
+        """Test Simulator"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Organization()  # noqa: E501
+        # model = Simulator()  # noqa: E501
         pass
 
 

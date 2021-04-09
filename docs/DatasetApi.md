@@ -1,20 +1,20 @@
-# cosmotech_api.OrganizationApi
+# cosmotech_api.DatasetApi
 
 All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**find_all_organizations**](OrganizationApi.md#find_all_organizations) | **GET** /organizations | List all Organizations
-[**find_organization_by_id**](OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an organization
-[**register_organization**](OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
-[**unregister_organization**](OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
-[**update_organization**](OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an organization
+[**create_dataset**](DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Register a new dataset
+[**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/{dataset_id} | Delete a dataset
+[**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
+[**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/{dataset_id} | Get the details of a dataset
+[**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/{dataset_id} | Update a dataset
 
 
-# **find_all_organizations**
-> [Organization] find_all_organizations()
+# **create_dataset**
+> Dataset create_dataset(organization_id, dataset)
 
-List all Organizations
+Register a new dataset
 
 ### Example
 
@@ -23,8 +23,8 @@ List all Organizations
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -52,93 +52,40 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-
-    # example, this endpoint has no required or optional parameters
-    try:
-        # List all Organizations
-        api_response = api_instance.find_all_organizations()
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->find_all_organizations: %s\n" % e)
-```
-
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**[Organization]**](Organization.md)
-
-### Authorization
-
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the organization details |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **find_organization_by_id**
-> Organization find_organization_by_id(organization_id)
-
-Get the details of an organization
-
-### Example
-
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
+    api_instance = dataset_api.DatasetApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
+    dataset = Dataset(
+        id="id_example",
+        name="name_example",
+        description="description_example",
+        owner_id="owner_id_example",
+        tags=[
+            "tags_example",
+        ],
+        connector=DatasetConnector(
+            id="id_example",
+            parameters_values={},
+        ),
+        fragments_ids=[
+            "fragments_ids_example",
+        ],
+        validator_id="validator_id_example",
+        compatibility=[
+            DatasetCompatibility(
+                simulator_key="simulator_key_example",
+                minimum_version="minimum_version_example",
+                maximum_version="maximum_version_example",
+            ),
+        ],
+    ) # Dataset | the Dataset to create
 
     # example passing only required values which don't have defaults set
     try:
-        # Get the details of an organization
-        api_response = api_instance.find_organization_by_id(organization_id)
+        # Register a new dataset
+        api_response = api_instance.create_dataset(organization_id, dataset)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->find_organization_by_id: %s\n" % e)
+        print("Exception when calling DatasetApi->create_dataset: %s\n" % e)
 ```
 
 
@@ -147,101 +94,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
+ **dataset** | [**Dataset**](Dataset.md)| the Dataset to create |
 
 ### Return type
 
-[**Organization**](Organization.md)
-
-### Authorization
-
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the Organization details |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **register_organization**
-> Organization register_organization(organization)
-
-Register a new organization
-
-### Example
-
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization = Organization(
-        id="id_example",
-        name="name_example",
-        users=[
-            OrganizationUser(
-                id="id_example",
-                name="name_example",
-            ),
-        ],
-    ) # Organization | the Organization to register
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Register a new organization
-        api_response = api_instance.register_organization(organization)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->register_organization: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | [**Organization**](Organization.md)| the Organization to register |
-
-### Return type
-
-[**Organization**](Organization.md)
+[**Dataset**](Dataset.md)
 
 ### Authorization
 
@@ -256,15 +113,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the organization details |  -  |
+**201** | the dataset details |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **unregister_organization**
-> Organization unregister_organization(organization_id)
+# **delete_dataset**
+> Dataset delete_dataset(organization_id, dataset_id)
 
-Unregister an organization
+Delete a dataset
 
 ### Example
 
@@ -273,8 +130,8 @@ Unregister an organization
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -302,16 +159,17 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
+    api_instance = dataset_api.DatasetApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
     # example passing only required values which don't have defaults set
     try:
-        # Unregister an organization
-        api_response = api_instance.unregister_organization(organization_id)
+        # Delete a dataset
+        api_response = api_instance.delete_dataset(organization_id, dataset_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->unregister_organization: %s\n" % e)
+        print("Exception when calling DatasetApi->delete_dataset: %s\n" % e)
 ```
 
 
@@ -320,10 +178,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**Dataset**](Dataset.md)
 
 ### Authorization
 
@@ -338,16 +197,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the organization details |  -  |
+**200** | the dataset details |  -  |
 **400** | Bad request |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_organization**
-> Organization update_organization(organization_id, organization)
+# **find_all_datasets**
+> [Dataset] find_all_datasets(organization_id)
 
-Update an organization
+List all Datasets
 
 ### Example
 
@@ -356,8 +215,8 @@ Update an organization
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -385,26 +244,16 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
+    api_instance = dataset_api.DatasetApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
-    organization = Organization(
-        id="id_example",
-        name="name_example",
-        users=[
-            OrganizationUser(
-                id="id_example",
-                name="name_example",
-            ),
-        ],
-    ) # Organization | the new Organization details
 
     # example passing only required values which don't have defaults set
     try:
-        # Update an organization
-        api_response = api_instance.update_organization(organization_id, organization)
+        # List all Datasets
+        api_response = api_instance.find_all_datasets(organization_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->update_organization: %s\n" % e)
+        print("Exception when calling DatasetApi->find_all_datasets: %s\n" % e)
 ```
 
 
@@ -413,11 +262,202 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
- **organization** | [**Organization**](Organization.md)| the new Organization details |
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**[Dataset]**](Dataset.md)
+
+### Authorization
+
+[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the dataset details |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **find_dataset_by_id**
+> Dataset find_dataset_by_id(organization_id, dataset_id)
+
+Get the details of a dataset
+
+### Example
+
+* OAuth Authentication (AADOAuth2AuthCode):
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get the details of a dataset
+        api_response = api_instance.find_dataset_by_id(organization_id, dataset_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->find_dataset_by_id: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+
+### Return type
+
+[**Dataset**](Dataset.md)
+
+### Authorization
+
+[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Dataset details |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_dataset**
+> Dataset update_dataset(organization_id, dataset_id, dataset)
+
+Update a dataset
+
+### Example
+
+* OAuth Authentication (AADOAuth2AuthCode):
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset = Dataset(
+        id="id_example",
+        name="name_example",
+        description="description_example",
+        owner_id="owner_id_example",
+        tags=[
+            "tags_example",
+        ],
+        connector=DatasetConnector(
+            id="id_example",
+            parameters_values={},
+        ),
+        fragments_ids=[
+            "fragments_ids_example",
+        ],
+        validator_id="validator_id_example",
+        compatibility=[
+            DatasetCompatibility(
+                simulator_key="simulator_key_example",
+                minimum_version="minimum_version_example",
+                maximum_version="maximum_version_example",
+            ),
+        ],
+    ) # Dataset | the new Dataset details.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Update a dataset
+        api_response = api_instance.update_dataset(organization_id, dataset_id, dataset)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->update_dataset: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset** | [**Dataset**](Dataset.md)| the new Dataset details. |
+
+### Return type
+
+[**Dataset**](Dataset.md)
 
 ### Authorization
 
@@ -432,9 +472,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the organization details |  -  |
+**200** | the dataset details |  -  |
 **400** | Bad request |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

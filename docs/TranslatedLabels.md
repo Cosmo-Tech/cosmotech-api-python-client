@@ -1,12 +1,11 @@
-# User
+# TranslatedLabels
 
-a User
+a list of translated labels
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | the User name | 
-**id** | **str** | the User unique identifier | [optional] [readonly] 
+**value** | [**[TranslatedLabel]**](TranslatedLabel.md) | a list of translated labels | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

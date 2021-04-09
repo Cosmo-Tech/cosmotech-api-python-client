@@ -1,6 +1,6 @@
 # cosmotech_api.UserApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **find_all_users**
-> [User] find_all_users()
+> [UserDetails] find_all_users()
 
 List all Users
 
@@ -24,12 +24,12 @@ List all Users
 import time
 import cosmotech_api
 from cosmotech_api.api import user_api
-from cosmotech_api.model.user import User
+from cosmotech_api.model.user_details import UserDetails
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -39,7 +39,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: AADOAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[User]**](User.md)
+[**[UserDetails]**](UserDetails.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_user_by_id**
-> User find_user_by_id(user_id)
+> UserDetails find_user_by_id(user_id)
 
 Get the details of an user
 
@@ -101,12 +101,12 @@ Get the details of an user
 import time
 import cosmotech_api
 from cosmotech_api.api import user_api
-from cosmotech_api.model.user import User
+from cosmotech_api.model.user_details import UserDetails
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -116,7 +116,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: AADOAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserDetails**](UserDetails.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **register_user**
-> User register_user(user)
+> UserDetails register_user(user)
 
 Register a new user
 
@@ -184,11 +184,12 @@ import time
 import cosmotech_api
 from cosmotech_api.api import user_api
 from cosmotech_api.model.user import User
+from cosmotech_api.model.user_details import UserDetails
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -198,7 +199,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: AADOAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -235,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserDetails**](UserDetails.md)
 
 ### Authorization
 
@@ -256,7 +257,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unregister_user**
-> User unregister_user(user_id)
+> UserDetails unregister_user(user_id)
 
 Unregister an user
 
@@ -268,12 +269,12 @@ Unregister an user
 import time
 import cosmotech_api
 from cosmotech_api.api import user_api
-from cosmotech_api.model.user import User
+from cosmotech_api.model.user_details import UserDetails
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -283,7 +284,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: AADOAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -317,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserDetails**](UserDetails.md)
 
 ### Authorization
 
@@ -339,7 +340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> User update_user(user_id, user)
+> UserDetails update_user(user_id, user)
 
 Update an user
 
@@ -352,11 +353,12 @@ import time
 import cosmotech_api
 from cosmotech_api.api import user_api
 from cosmotech_api.model.user import User
+from cosmotech_api.model.user_details import UserDetails
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -366,7 +368,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: AADOAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -384,7 +386,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     user = User(
         id="id_example",
         name="name_example",
-    ) # User | the new User details
+    ) # User | the new User details. Organization membership is handled in Organzation service.
 
     # example passing only required values which don't have defaults set
     try:
@@ -401,11 +403,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| the User identifier |
- **user** | [**User**](User.md)| the new User details |
+ **user** | [**User**](User.md)| the new User details. Organization membership is handled in Organzation service. |
 
 ### Return type
 
-[**User**](User.md)
+[**UserDetails**](UserDetails.md)
 
 ### Authorization
 

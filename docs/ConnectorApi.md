@@ -1,20 +1,20 @@
-# cosmotech_api.OrganizationApi
+# cosmotech_api.ConnectorApi
 
 All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**find_all_organizations**](OrganizationApi.md#find_all_organizations) | **GET** /organizations | List all Organizations
-[**find_organization_by_id**](OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an organization
-[**register_organization**](OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
-[**unregister_organization**](OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
-[**update_organization**](OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an organization
+[**find_all_connectors**](ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
+[**find_connector_by_id**](ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of an connector
+[**register_connector**](ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
+[**unregister_connector**](ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister an connector
+[**upload_connector**](ConnectorApi.md#upload_connector) | **POST** /connectors/upload | Upload and register a new connector
 
 
-# **find_all_organizations**
-> [Organization] find_all_organizations()
+# **find_all_connectors**
+> [Connector] find_all_connectors()
 
-List all Organizations
+List all Connectors
 
 ### Example
 
@@ -23,8 +23,8 @@ List all Organizations
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -52,15 +52,15 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
+    api_instance = connector_api.ConnectorApi(api_client)
 
     # example, this endpoint has no required or optional parameters
     try:
-        # List all Organizations
-        api_response = api_instance.find_all_organizations()
+        # List all Connectors
+        api_response = api_instance.find_all_connectors()
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->find_all_organizations: %s\n" % e)
+        print("Exception when calling ConnectorApi->find_all_connectors: %s\n" % e)
 ```
 
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Organization]**](Organization.md)
+[**[Connector]**](Connector.md)
 
 ### Authorization
 
@@ -84,14 +84,14 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the organization details |  -  |
+**200** | the connector details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **find_organization_by_id**
-> Organization find_organization_by_id(organization_id)
+# **find_connector_by_id**
+> Connector find_connector_by_id(connector_id)
 
-Get the details of an organization
+Get the details of an connector
 
 ### Example
 
@@ -100,8 +100,8 @@ Get the details of an organization
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -129,16 +129,16 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
+    api_instance = connector_api.ConnectorApi(api_client)
+    connector_id = "connector_id_example" # str | the Connector identifier
 
     # example passing only required values which don't have defaults set
     try:
-        # Get the details of an organization
-        api_response = api_instance.find_organization_by_id(organization_id)
+        # Get the details of an connector
+        api_response = api_instance.find_connector_by_id(connector_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->find_organization_by_id: %s\n" % e)
+        print("Exception when calling ConnectorApi->find_connector_by_id: %s\n" % e)
 ```
 
 
@@ -146,11 +146,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
+ **connector_id** | **str**| the Connector identifier |
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**Connector**](Connector.md)
 
 ### Authorization
 
@@ -165,15 +165,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the Organization details |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**200** | the Connector details |  -  |
+**404** | the Connector specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **register_organization**
-> Organization register_organization(organization)
+# **register_connector**
+> Connector register_connector(connector)
 
-Register a new organization
+Register a new connector
 
 ### Example
 
@@ -182,8 +182,8 @@ Register a new organization
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -211,25 +211,49 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization = Organization(
+    api_instance = connector_api.ConnectorApi(api_client)
+    connector = Connector(
         id="id_example",
+        connector_key="connector_key_example",
         name="name_example",
-        users=[
-            OrganizationUser(
+        description="description_example",
+        repository="repository_example",
+        version="version_example",
+        tags=[
+            "tags_example",
+        ],
+        owner_id="owner_id_example",
+        url="url_example",
+        io_types=[
+            "read",
+        ],
+        parameter_groups=[
+            ConnectorParameterGroup(
                 id="id_example",
-                name="name_example",
+                label="label_example",
+                parameters=[
+                    ConnectorParameter(
+                        id="id_example",
+                        label="label_example",
+                        value_type="value_type_example",
+                        options=[
+                            "options_example",
+                        ],
+                        default="default_example",
+                        env_var="env_var_example",
+                    ),
+                ],
             ),
         ],
-    ) # Organization | the Organization to register
+    ) # Connector | the Connector to register
 
     # example passing only required values which don't have defaults set
     try:
-        # Register a new organization
-        api_response = api_instance.register_organization(organization)
+        # Register a new connector
+        api_response = api_instance.register_connector(connector)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->register_organization: %s\n" % e)
+        print("Exception when calling ConnectorApi->register_connector: %s\n" % e)
 ```
 
 
@@ -237,11 +261,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization** | [**Organization**](Organization.md)| the Organization to register |
+ **connector** | [**Connector**](Connector.md)| the Connector to register |
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**Connector**](Connector.md)
 
 ### Authorization
 
@@ -256,15 +280,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the organization details |  -  |
+**201** | the connector details |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **unregister_organization**
-> Organization unregister_organization(organization_id)
+# **unregister_connector**
+> Connector unregister_connector(connector_id)
 
-Unregister an organization
+Unregister an connector
 
 ### Example
 
@@ -273,8 +297,8 @@ Unregister an organization
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -302,16 +326,16 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
+    api_instance = connector_api.ConnectorApi(api_client)
+    connector_id = "connector_id_example" # str | the Connector identifier
 
     # example passing only required values which don't have defaults set
     try:
-        # Unregister an organization
-        api_response = api_instance.unregister_organization(organization_id)
+        # Unregister an connector
+        api_response = api_instance.unregister_connector(connector_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->unregister_organization: %s\n" % e)
+        print("Exception when calling ConnectorApi->unregister_connector: %s\n" % e)
 ```
 
 
@@ -319,11 +343,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
+ **connector_id** | **str**| the Connector identifier |
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**Connector**](Connector.md)
 
 ### Authorization
 
@@ -338,16 +362,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the organization details |  -  |
+**200** | the connector details |  -  |
 **400** | Bad request |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | the Connector specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_organization**
-> Organization update_organization(organization_id, organization)
+# **upload_connector**
+> Connector upload_connector(body)
 
-Update an organization
+Upload and register a new connector
 
 ### Example
 
@@ -356,8 +380,8 @@ Update an organization
 ```python
 import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -385,26 +409,16 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    organization = Organization(
-        id="id_example",
-        name="name_example",
-        users=[
-            OrganizationUser(
-                id="id_example",
-                name="name_example",
-            ),
-        ],
-    ) # Organization | the new Organization details
+    api_instance = connector_api.ConnectorApi(api_client)
+    body = open('/path/to/file', 'rb') # file_type | the Connector to upload and register
 
     # example passing only required values which don't have defaults set
     try:
-        # Update an organization
-        api_response = api_instance.update_organization(organization_id, organization)
+        # Upload and register a new connector
+        api_response = api_instance.upload_connector(body)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->update_organization: %s\n" % e)
+        print("Exception when calling ConnectorApi->upload_connector: %s\n" % e)
 ```
 
 
@@ -412,12 +426,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **organization** | [**Organization**](Organization.md)| the new Organization details |
+ **body** | **file_type**| the Connector to upload and register |
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**Connector**](Connector.md)
 
 ### Authorization
 
@@ -425,16 +438,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/yaml
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the organization details |  -  |
+**201** | the connector details |  -  |
 **400** | Bad request |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

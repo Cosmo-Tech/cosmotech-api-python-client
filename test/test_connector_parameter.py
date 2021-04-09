@@ -12,13 +12,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.organization_user import OrganizationUser
-globals()['OrganizationUser'] = OrganizationUser
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.model.connector_parameter import ConnectorParameter
 
 
-class TestOrganization(unittest.TestCase):
-    """Organization unit test stubs"""
+class TestConnectorParameter(unittest.TestCase):
+    """ConnectorParameter unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,10 +24,10 @@ class TestOrganization(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testOrganization(self):
-        """Test Organization"""
+    def testConnectorParameter(self):
+        """Test ConnectorParameter"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Organization()  # noqa: E501
+        # model = ConnectorParameter()  # noqa: E501
         pass
 
 

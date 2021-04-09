@@ -49,12 +49,12 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import time
 import cosmotech_api
 from pprint import pprint
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
-# Defining the host is optional and defaults to http://localhost:8080
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -64,7 +64,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: AADOAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -78,38 +78,81 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
+    api_instance = connector_api.ConnectorApi(api_client)
     
     try:
-        # List all Organizations
-        api_response = api_instance.find_all_organizations()
+        # List all Connectors
+        api_response = api_instance.find_all_connectors()
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->find_all_organizations: %s\n" % e)
+        print("Exception when calling ConnectorApi->find_all_connectors: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ConnectorApi* | [**find_all_connectors**](docs/ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
+*ConnectorApi* | [**find_connector_by_id**](docs/ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of an connector
+*ConnectorApi* | [**register_connector**](docs/ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
+*ConnectorApi* | [**unregister_connector**](docs/ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister an connector
+*ConnectorApi* | [**upload_connector**](docs/ConnectorApi.md#upload_connector) | **POST** /connectors/upload | Upload and register a new connector
+*DatasetApi* | [**create_dataset**](docs/DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Register a new dataset
+*DatasetApi* | [**delete_dataset**](docs/DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/{dataset_id} | Delete a dataset
+*DatasetApi* | [**find_all_datasets**](docs/DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
+*DatasetApi* | [**find_dataset_by_id**](docs/DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/{dataset_id} | Get the details of a dataset
+*DatasetApi* | [**update_dataset**](docs/DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/{dataset_id} | Update a dataset
 *OrganizationApi* | [**find_all_organizations**](docs/OrganizationApi.md#find_all_organizations) | **GET** /organizations | List all Organizations
 *OrganizationApi* | [**find_organization_by_id**](docs/OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an organization
 *OrganizationApi* | [**register_organization**](docs/OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
 *OrganizationApi* | [**unregister_organization**](docs/OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
 *OrganizationApi* | [**update_organization**](docs/OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an organization
+*SimulatorApi* | [**create_simulator**](docs/SimulatorApi.md#create_simulator) | **POST** /organizations/{organization_id}/simulators | Register a new simulator
+*SimulatorApi* | [**delete_simulator**](docs/SimulatorApi.md#delete_simulator) | **DELETE** /organizations/{organization_id}/simulators/{simulator_id} | Delete a simulator
+*SimulatorApi* | [**find_all_simulators**](docs/SimulatorApi.md#find_all_simulators) | **GET** /organizations/{organization_id}/simulators | List all Simulators
+*SimulatorApi* | [**find_simulator_by_id**](docs/SimulatorApi.md#find_simulator_by_id) | **GET** /organizations/{organization_id}/simulators/{simulator_id} | Get the details of a simulator
+*SimulatorApi* | [**update_simulator**](docs/SimulatorApi.md#update_simulator) | **PATCH** /organizations/{organization_id}/simulators/{simulator_id} | Update a simulator
 *UserApi* | [**find_all_users**](docs/UserApi.md#find_all_users) | **GET** /users | List all Users
 *UserApi* | [**find_user_by_id**](docs/UserApi.md#find_user_by_id) | **GET** /users/{user_id} | Get the details of an user
 *UserApi* | [**register_user**](docs/UserApi.md#register_user) | **POST** /users | Register a new user
 *UserApi* | [**unregister_user**](docs/UserApi.md#unregister_user) | **DELETE** /users/{user_id} | Unregister an user
 *UserApi* | [**update_user**](docs/UserApi.md#update_user) | **PATCH** /users/{user_id} | Update an user
+*ValidatorApi* | [**create_validator**](docs/ValidatorApi.md#create_validator) | **POST** /organizations/{organization_id}/validators | Register a new validator
+*ValidatorApi* | [**create_validator_run**](docs/ValidatorApi.md#create_validator_run) | **POST** /organizations/{organization_id}/validators/{validator_id}/history | Register a new validator run
+*ValidatorApi* | [**delete_validator**](docs/ValidatorApi.md#delete_validator) | **DELETE** /organizations/{organization_id}/datasets/validators/{validator_id} | Delete a validator
+*ValidatorApi* | [**delete_validator_run**](docs/ValidatorApi.md#delete_validator_run) | **DELETE** /organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id} | Delete a validator run
+*ValidatorApi* | [**find_all_validator_runs**](docs/ValidatorApi.md#find_all_validator_runs) | **GET** /organizations/{organization_id}/validators/{validator_id}/history | List all Validator Runs
+*ValidatorApi* | [**find_all_validators**](docs/ValidatorApi.md#find_all_validators) | **GET** /organizations/{organization_id}/validators | List all Validators
+*ValidatorApi* | [**find_validator_by_id**](docs/ValidatorApi.md#find_validator_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id} | Get the details of a validator
+*ValidatorApi* | [**find_validator_run_by_id**](docs/ValidatorApi.md#find_validator_run_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id} | Get the details of a validator run
+*ValidatorApi* | [**run_validator**](docs/ValidatorApi.md#run_validator) | **POST** /organizations/{organization_id}/validators/{validator_id}/run | Run a Validator
 
 
 ## Documentation For Models
 
+ - [AnalysisParameter](docs/AnalysisParameter.md)
+ - [AnalysisParameterGroup](docs/AnalysisParameterGroup.md)
+ - [AnalysisResourceStorage](docs/AnalysisResourceStorage.md)
+ - [Connector](docs/Connector.md)
+ - [ConnectorParameter](docs/ConnectorParameter.md)
+ - [ConnectorParameterGroup](docs/ConnectorParameterGroup.md)
+ - [Dataset](docs/Dataset.md)
+ - [DatasetCompatibility](docs/DatasetCompatibility.md)
+ - [DatasetConnector](docs/DatasetConnector.md)
  - [Organization](docs/Organization.md)
+ - [OrganizationUser](docs/OrganizationUser.md)
+ - [Simulator](docs/Simulator.md)
+ - [SimulatorAnalysis](docs/SimulatorAnalysis.md)
+ - [TranslatedLabel](docs/TranslatedLabel.md)
+ - [TranslatedLabels](docs/TranslatedLabels.md)
  - [User](docs/User.md)
+ - [UserDetails](docs/UserDetails.md)
+ - [UserDetailsAllOf](docs/UserDetailsAllOf.md)
+ - [UserOrganization](docs/UserOrganization.md)
+ - [Validator](docs/Validator.md)
+ - [ValidatorRun](docs/ValidatorRun.md)
 
 
 ## Documentation For Authorization

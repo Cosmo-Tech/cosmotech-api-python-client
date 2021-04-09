@@ -761,11 +761,11 @@ class Endpoint(object):
         """ This method is invoked when endpoints are called
         Example:
 
-        api_instance = OrganizationApi()
-        api_instance.find_all_organizations  # this is an instance of the class Endpoint
-        api_instance.find_all_organizations()  # this invokes api_instance.find_all_organizations.__call__()
+        api_instance = ConnectorApi()
+        api_instance.find_all_connectors  # this is an instance of the class Endpoint
+        api_instance.find_all_connectors()  # this invokes api_instance.find_all_connectors.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.find_all_organizations.callable or self.callable in this class
+        api_instance.find_all_connectors.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

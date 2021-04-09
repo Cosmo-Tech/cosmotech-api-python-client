@@ -112,7 +112,7 @@ conf = cosmotech_api.Configuration(
                  ):
         """Constructor
         """
-        self._base_path = "http://localhost:8080" if host is None else host
+        self._base_path = "https://api.azure.cosmo-platform.com" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -422,6 +422,14 @@ conf = cosmotech_api.Configuration(
         :return: An array of host settings
         """
         return [
+            {
+                'url': "https://api.azure.cosmo-platform.com",
+                'description': "No description provided",
+            },
+            {
+                'url': "https://gateway.api.cosmo-platform.com",
+                'description': "No description provided",
+            },
             {
                 'url': "http://localhost:8080",
                 'description': "No description provided",

@@ -5,8 +5,9 @@ an Organization
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Organization unique identifier, in response | [optional] 
-**name** | **str** | the Organization name | [optional] 
+**name** | **str** | the Organization name | 
+**id** | **str** | the Organization unique identifier | [optional] [readonly] 
+**users** | [**[OrganizationUser]**](OrganizationUser.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

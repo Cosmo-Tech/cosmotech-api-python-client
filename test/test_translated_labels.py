@@ -12,13 +12,13 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.organization_user import OrganizationUser
-globals()['OrganizationUser'] = OrganizationUser
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.model.translated_label import TranslatedLabel
+globals()['TranslatedLabel'] = TranslatedLabel
+from cosmotech_api.model.translated_labels import TranslatedLabels
 
 
-class TestOrganization(unittest.TestCase):
-    """Organization unit test stubs"""
+class TestTranslatedLabels(unittest.TestCase):
+    """TranslatedLabels unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,10 +26,10 @@ class TestOrganization(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testOrganization(self):
-        """Test Organization"""
+    def testTranslatedLabels(self):
+        """Test TranslatedLabels"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Organization()  # noqa: E501
+        # model = TranslatedLabels()  # noqa: E501
         pass
 
 
