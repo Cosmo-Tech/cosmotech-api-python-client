@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
 *SimulatorApi* | [**find_all_simulators**](docs/SimulatorApi.md#find_all_simulators) | **GET** /organizations/{organization_id}/simulators | List all Simulators
 *SimulatorApi* | [**find_simulator_by_id**](docs/SimulatorApi.md#find_simulator_by_id) | **GET** /organizations/{organization_id}/simulators/{simulator_id} | Get the details of a simulator
 *SimulatorApi* | [**update_simulator**](docs/SimulatorApi.md#update_simulator) | **PATCH** /organizations/{organization_id}/simulators/{simulator_id} | Update a simulator
+*SimulatorApi* | [**upload**](docs/SimulatorApi.md#upload) | **POST** /organizations/{organization_id}/simulators/upload | Upload and register a new simulator
 *UserApi* | [**find_all_users**](docs/UserApi.md#find_all_users) | **GET** /users | List all Users
 *UserApi* | [**find_user_by_id**](docs/UserApi.md#find_user_by_id) | **GET** /users/{user_id} | Get the details of an user
 *UserApi* | [**register_user**](docs/UserApi.md#register_user) | **POST** /users | Register a new user
@@ -128,6 +129,11 @@ Class | Method | HTTP request | Description
 *ValidatorApi* | [**find_validator_by_id**](docs/ValidatorApi.md#find_validator_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id} | Get the details of a validator
 *ValidatorApi* | [**find_validator_run_by_id**](docs/ValidatorApi.md#find_validator_run_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id} | Get the details of a validator run
 *ValidatorApi* | [**run_validator**](docs/ValidatorApi.md#run_validator) | **POST** /organizations/{organization_id}/validators/{validator_id}/run | Run a Validator
+*WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
+*WorkspaceApi* | [**delete_workspace**](docs/WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
+*WorkspaceApi* | [**find_all_workspaces**](docs/WorkspaceApi.md#find_all_workspaces) | **GET** /organizations/{organization_id}/workspaces | List all Workspaces
+*WorkspaceApi* | [**find_workspace_by_id**](docs/WorkspaceApi.md#find_workspace_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
+*WorkspaceApi* | [**update_workspace**](docs/WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
 
 
 ## Documentation For Models
@@ -153,6 +159,10 @@ Class | Method | HTTP request | Description
  - [UserOrganization](docs/UserOrganization.md)
  - [Validator](docs/Validator.md)
  - [ValidatorRun](docs/ValidatorRun.md)
+ - [Workspace](docs/Workspace.md)
+ - [WorkspaceSimulator](docs/WorkspaceSimulator.md)
+ - [WorkspaceUser](docs/WorkspaceUser.md)
+ - [WorkspaceWebApp](docs/WorkspaceWebApp.md)
 
 
 ## Documentation For Authorization

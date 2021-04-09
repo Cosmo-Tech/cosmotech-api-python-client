@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **simulation** | **str** | the simulation name | 
 **description** | **str** | the Simulator Analysis description | [optional] 
 **tags** | **[str]** | the list of Simulator Analysis tags | [optional] 
-**compute_size** | **str** | the compute size needed for this Analysis | [optional] 
+**compute_size** | **str** | the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic | [optional] 
 **parameters_handler_resource** | [**AnalysisResourceStorage**](AnalysisResourceStorage.md) |  | [optional] 
 **dataset_validator_resource** | [**AnalysisResourceStorage**](AnalysisResourceStorage.md) |  | [optional] 
 **custom_driver_resource** | [**AnalysisResourceStorage**](AnalysisResourceStorage.md) |  | [optional] 

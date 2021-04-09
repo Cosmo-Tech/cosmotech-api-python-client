@@ -123,7 +123,7 @@ class Simulator(ModelNormal):
         """Simulator - a model defined in OpenAPI
 
         Args:
-            simulator_key (str): the Simulator key which group Connector versions
+            simulator_key (str): the Simulator key which group Simulator versions
             name (str): the Simulator name
             repository (str): the registry repository containing the image
             version (str): the Simulator version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag
@@ -162,7 +162,7 @@ class Simulator(ModelNormal):
             id (str): the Simulator version unique identifier. [optional]  # noqa: E501
             description (str): the Simulator description. [optional]  # noqa: E501
             owner_id (str): the User id which own this Simulator. [optional]  # noqa: E501
-            url (str): an optional URL link to connector page. [optional]  # noqa: E501
+            url (str): an optional URL link to simulator page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             analysis ([SimulatorAnalysis]): list of Simulator Analysis. [optional]  # noqa: E501
         """

@@ -30,3 +30,7 @@ from cosmotech_api.model.user_details_all_of import UserDetailsAllOf
 from cosmotech_api.model.user_organization import UserOrganization
 from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun
+from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
+from cosmotech_api.model.workspace_user import WorkspaceUser
+from cosmotech_api.model.workspace_web_app import WorkspaceWebApp

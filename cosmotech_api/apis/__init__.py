@@ -20,3 +20,4 @@ from cosmotech_api.api.organization_api import OrganizationApi
 from cosmotech_api.api.simulator_api import SimulatorApi
 from cosmotech_api.api.user_api import UserApi
 from cosmotech_api.api.validator_api import ValidatorApi
+from cosmotech_api.api.workspace_api import WorkspaceApi
