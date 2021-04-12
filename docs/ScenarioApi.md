@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_scenarios_tree**
-> [ScenariosTree] get_scenarios_tree(organization_id, workspace_id)
+> [ScenarioBase] get_scenarios_tree(organization_id, workspace_id)
 
 Get the Scenarios Tree
 
@@ -456,7 +456,7 @@ Get the Scenarios Tree
 import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenarios_tree import ScenariosTree
+from cosmotech_api.model.scenario_base import ScenarioBase
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ScenariosTree]**](ScenariosTree.md)
+[**[ScenarioBase]**](ScenarioBase.md)
 
 ### Authorization
 

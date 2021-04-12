@@ -28,7 +28,6 @@ from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 from cosmotech_api.model.scenario_user import ScenarioUser
-from cosmotech_api.model.scenarios_tree import ScenariosTree
 from cosmotech_api.model.simulator import Simulator
 from cosmotech_api.model.simulator_analysis import SimulatorAnalysis
 from cosmotech_api.model.translated_labels import TranslatedLabels

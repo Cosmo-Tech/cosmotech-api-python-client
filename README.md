@@ -164,7 +164,6 @@ Class | Method | HTTP request | Description
  - [ScenarioChangedParameterValue](docs/ScenarioChangedParameterValue.md)
  - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
  - [ScenarioUser](docs/ScenarioUser.md)
- - [ScenariosTree](docs/ScenariosTree.md)
  - [Simulator](docs/Simulator.md)
  - [SimulatorAnalysis](docs/SimulatorAnalysis.md)
  - [TranslatedLabels](docs/TranslatedLabels.md)
