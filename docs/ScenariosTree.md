@@ -1,13 +1,11 @@
-# WorkspaceUser
+# ScenariosTree
 
-a Workspace user with roles
+the Scenarios Tree
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the User id | 
-**roles** | **str** | the User role | 
-**name** | **str** | the User name | [optional] [readonly] 
+**value** | [**[ScenarioBase]**](ScenarioBase.md) | the Scenarios Tree | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,6 +20,15 @@ from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_connector import DatasetConnector
 from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_user import OrganizationUser
+from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.model.scenario_all_of import ScenarioAllOf
+from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
+from cosmotech_api.model.scenario_analysis_parameter_value import ScenarioAnalysisParameterValue
+from cosmotech_api.model.scenario_base import ScenarioBase
+from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
+from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.model.scenario_user import ScenarioUser
+from cosmotech_api.model.scenarios_tree import ScenariosTree
 from cosmotech_api.model.simulator import Simulator
 from cosmotech_api.model.simulator_analysis import SimulatorAnalysis
 from cosmotech_api.model.translated_labels import TranslatedLabels

@@ -1,6 +1,6 @@
-# WorkspaceUser
+# ScenarioUser
 
-a Workspace user with roles
+a Scenario user with roles
 
 ## Properties
 Name | Type | Description | Notes

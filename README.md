@@ -109,6 +109,13 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**register_organization**](docs/OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
 *OrganizationApi* | [**unregister_organization**](docs/OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
 *OrganizationApi* | [**update_organization**](docs/OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an organization
+*ScenarioApi* | [**compare_scenarios**](docs/ScenarioApi.md#compare_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} | Compare the Scenario with another one and returns the difference for parameters values
+*ScenarioApi* | [**create_scenario**](docs/ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new scenario
+*ScenarioApi* | [**delete_scenario**](docs/ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
+*ScenarioApi* | [**find_all_scenarios**](docs/ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
+*ScenarioApi* | [**find_scenario_by_id**](docs/ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
+*ScenarioApi* | [**get_scenarios_tree**](docs/ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
+*ScenarioApi* | [**update_scenario**](docs/ScenarioApi.md#update_scenario) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Update a scenario
 *SimulatorApi* | [**create_simulator**](docs/SimulatorApi.md#create_simulator) | **POST** /organizations/{organization_id}/simulators | Register a new simulator
 *SimulatorApi* | [**delete_simulator**](docs/SimulatorApi.md#delete_simulator) | **DELETE** /organizations/{organization_id}/simulators/{simulator_id} | Delete a simulator
 *SimulatorApi* | [**find_all_simulators**](docs/SimulatorApi.md#find_all_simulators) | **GET** /organizations/{organization_id}/simulators | List all Simulators
@@ -149,6 +156,15 @@ Class | Method | HTTP request | Description
  - [DatasetConnector](docs/DatasetConnector.md)
  - [Organization](docs/Organization.md)
  - [OrganizationUser](docs/OrganizationUser.md)
+ - [Scenario](docs/Scenario.md)
+ - [ScenarioAllOf](docs/ScenarioAllOf.md)
+ - [ScenarioAnalysis](docs/ScenarioAnalysis.md)
+ - [ScenarioAnalysisParameterValue](docs/ScenarioAnalysisParameterValue.md)
+ - [ScenarioBase](docs/ScenarioBase.md)
+ - [ScenarioChangedParameterValue](docs/ScenarioChangedParameterValue.md)
+ - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
+ - [ScenarioUser](docs/ScenarioUser.md)
+ - [ScenariosTree](docs/ScenariosTree.md)
  - [Simulator](docs/Simulator.md)
  - [SimulatorAnalysis](docs/SimulatorAnalysis.md)
  - [TranslatedLabels](docs/TranslatedLabels.md)

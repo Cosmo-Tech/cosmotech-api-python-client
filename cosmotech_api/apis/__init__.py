@@ -17,6 +17,7 @@
 from cosmotech_api.api.connector_api import ConnectorApi
 from cosmotech_api.api.dataset_api import DatasetApi
 from cosmotech_api.api.organization_api import OrganizationApi
+from cosmotech_api.api.scenario_api import ScenarioApi
 from cosmotech_api.api.simulator_api import SimulatorApi
 from cosmotech_api.api.user_api import UserApi
 from cosmotech_api.api.validator_api import ValidatorApi

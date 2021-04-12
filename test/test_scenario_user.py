@@ -12,11 +12,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.translated_labels import TranslatedLabels
+from cosmotech_api.model.scenario_user import ScenarioUser
 
 
-class TestTranslatedLabels(unittest.TestCase):
-    """TranslatedLabels unit test stubs"""
+class TestScenarioUser(unittest.TestCase):
+    """ScenarioUser unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,10 +24,10 @@ class TestTranslatedLabels(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTranslatedLabels(self):
-        """Test TranslatedLabels"""
+    def testScenarioUser(self):
+        """Test ScenarioUser"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = TranslatedLabels()  # noqa: E501
+        # model = ScenarioUser()  # noqa: E501
         pass
 
 
