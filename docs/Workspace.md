@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **owner_id** | **str** | the user id which own this workspace | [optional] [readonly] 
 **user_list** | [**[WorkspaceUser]**](WorkspaceUser.md) | the list of users Id with their role | [optional] 
 **web_app** | [**WorkspaceWebApp**](WorkspaceWebApp.md) |  | [optional] 
-**resources** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | a list of resources for the Workspace with resourceName/resourceUrl | [optional] [readonly] 
+**services** | [**WorkspaceServices**](WorkspaceServices.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

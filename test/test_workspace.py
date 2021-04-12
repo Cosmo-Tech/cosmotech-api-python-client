@@ -12,9 +12,11 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.workspace_services import WorkspaceServices
 from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
 from cosmotech_api.model.workspace_user import WorkspaceUser
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
+globals()['WorkspaceServices'] = WorkspaceServices
 globals()['WorkspaceSimulator'] = WorkspaceSimulator
 globals()['WorkspaceUser'] = WorkspaceUser
 globals()['WorkspaceWebApp'] = WorkspaceWebApp

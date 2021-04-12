@@ -15,10 +15,12 @@ import cosmotech_api
 from cosmotech_api.model.scenario_all_of import ScenarioAllOf
 from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
 from cosmotech_api.model.scenario_base import ScenarioBase
+from cosmotech_api.model.scenario_successful_analysis import ScenarioSuccessfulAnalysis
 from cosmotech_api.model.scenario_user import ScenarioUser
 globals()['ScenarioAllOf'] = ScenarioAllOf
 globals()['ScenarioAnalysis'] = ScenarioAnalysis
 globals()['ScenarioBase'] = ScenarioBase
+globals()['ScenarioSuccessfulAnalysis'] = ScenarioSuccessfulAnalysis
 globals()['ScenarioUser'] = ScenarioUser
 from cosmotech_api.model.scenario import Scenario
 

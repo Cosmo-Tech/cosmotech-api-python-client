@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | the Connector name | 
 **repository** | **str** | the registry repository containing the image | 
 **version** | **str** | the Connector version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 
-**io_types** | **[str]** | The read and write capabilities of connector | 
+**io_types** | **[str]** |  | 
 **id** | **str** | the Connector version unique identifier | [optional] [readonly] 
 **description** | **str** | the Connector description | [optional] 
 **tags** | **[str]** | the list of tags | [optional] 

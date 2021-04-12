@@ -18,6 +18,7 @@ from cosmotech_api.model.connector_parameter_group import ConnectorParameterGrou
 from cosmotech_api.model.dataset import Dataset
 from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_connector import DatasetConnector
+from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
 from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_user import OrganizationUser
 from cosmotech_api.model.scenario import Scenario
@@ -27,6 +28,14 @@ from cosmotech_api.model.scenario_analysis_parameter_value import ScenarioAnalys
 from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.model.scenario_data_warehouse_query import ScenarioDataWarehouseQuery
+from cosmotech_api.model.scenario_data_warehouse_query_result import ScenarioDataWarehouseQueryResult
+from cosmotech_api.model.scenario_failed_analysis import ScenarioFailedAnalysis
+from cosmotech_api.model.scenario_failed_analysis_all_of import ScenarioFailedAnalysisAllOf
+from cosmotech_api.model.scenario_running_analysis import ScenarioRunningAnalysis
+from cosmotech_api.model.scenario_running_analysis_all_of import ScenarioRunningAnalysisAllOf
+from cosmotech_api.model.scenario_successful_analysis import ScenarioSuccessfulAnalysis
+from cosmotech_api.model.scenario_successful_analysis_all_of import ScenarioSuccessfulAnalysisAllOf
 from cosmotech_api.model.scenario_user import ScenarioUser
 from cosmotech_api.model.simulator import Simulator
 from cosmotech_api.model.simulator_analysis import SimulatorAnalysis
@@ -38,6 +47,7 @@ from cosmotech_api.model.user_organization import UserOrganization
 from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun
 from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.model.workspace_services import WorkspaceServices
 from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
 from cosmotech_api.model.workspace_user import WorkspaceUser
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp

@@ -115,7 +115,7 @@ class AnalysisParameter(ModelNormal):
         Args:
             id (str): the Parameter id
             labels (TranslatedLabels):
-            var_type (str): the variable type for the parameter
+            var_type (str): the variable type for the parameter. Basic types or special type $DATASETID, $DATAPATH
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

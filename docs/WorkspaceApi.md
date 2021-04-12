@@ -82,7 +82,12 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             iframes={},
             options={},
         ),
-        resources={},
+        services=WorkspaceServices(
+            results_event_bus="results_event_bus_example",
+            simulation_event_bus="simulation_event_bus_example",
+            data_warehouse="data_warehouse_example",
+            storage="storage_example",
+        ),
     ) # Workspace | the Workspace to create
 
     # example passing only required values which don't have defaults set
@@ -446,7 +451,12 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             iframes={},
             options={},
         ),
-        resources={},
+        services=WorkspaceServices(
+            results_event_bus="results_event_bus_example",
+            simulation_event_bus="simulation_event_bus_example",
+            data_warehouse="data_warehouse_example",
+            storage="storage_example",
+        ),
     ) # Workspace | the new Workspace details.
 
     # example passing only required values which don't have defaults set

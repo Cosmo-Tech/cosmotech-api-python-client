@@ -23,6 +23,13 @@ class TestDatasetApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_copy_dataset(self):
+        """Test case for copy_dataset
+
+        Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.  # noqa: E501
+        """
+        pass
+
     def test_create_dataset(self):
         """Test case for create_dataset
 

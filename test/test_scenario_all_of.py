@@ -13,7 +13,9 @@ import unittest
 
 import cosmotech_api
 from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
+from cosmotech_api.model.scenario_successful_analysis import ScenarioSuccessfulAnalysis
 globals()['ScenarioAnalysis'] = ScenarioAnalysis
+globals()['ScenarioSuccessfulAnalysis'] = ScenarioSuccessfulAnalysis
 from cosmotech_api.model.scenario_all_of import ScenarioAllOf
 
 

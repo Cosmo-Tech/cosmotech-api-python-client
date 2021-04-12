@@ -133,7 +133,7 @@ class Connector(ModelNormal):
             name (str): the Connector name
             repository (str): the registry repository containing the image
             version (str): the Connector version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag
-            io_types ([str]): The read and write capabilities of connector
+            io_types ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

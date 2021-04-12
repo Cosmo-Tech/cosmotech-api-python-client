@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Parameter id | 
 **labels** | [**TranslatedLabels**](TranslatedLabels.md) |  | 
-**var_type** | **str** | the variable type for the parameter | 
+**var_type** | **str** | the variable type for the parameter. Basic types or special type $DATASETID, $DATAPATH | 
 **order** | **int** | the Parameter Group order | [optional] 
 **options** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | freeform options | [optional] 
 

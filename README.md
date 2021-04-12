@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *ConnectorApi* | [**register_connector**](docs/ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
 *ConnectorApi* | [**unregister_connector**](docs/ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister an connector
 *ConnectorApi* | [**upload_connector**](docs/ConnectorApi.md#upload_connector) | **POST** /connectors/upload | Upload and register a new connector
+*DatasetApi* | [**copy_dataset**](docs/DatasetApi.md#copy_dataset) | **POST** /organizations/{organization_id}/datasets/copy | Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.
 *DatasetApi* | [**create_dataset**](docs/DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Register a new dataset
 *DatasetApi* | [**delete_dataset**](docs/DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id} | Delete a dataset
 *DatasetApi* | [**find_all_datasets**](docs/DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
@@ -115,6 +116,7 @@ Class | Method | HTTP request | Description
 *ScenarioApi* | [**find_all_scenarios**](docs/ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 *ScenarioApi* | [**find_scenario_by_id**](docs/ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
 *ScenarioApi* | [**get_scenarios_tree**](docs/ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
+*ScenarioApi* | [**query_data_warehouse**](docs/ScenarioApi.md#query_data_warehouse) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/queryDataWarehouse | Get the result of a query on the DatawareHouse
 *ScenarioApi* | [**update_scenario**](docs/ScenarioApi.md#update_scenario) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Update a scenario
 *SimulatorApi* | [**create_simulator**](docs/SimulatorApi.md#create_simulator) | **POST** /organizations/{organization_id}/simulators | Register a new simulator
 *SimulatorApi* | [**delete_simulator**](docs/SimulatorApi.md#delete_simulator) | **DELETE** /organizations/{organization_id}/simulators/{simulator_id} | Delete a simulator
@@ -154,6 +156,7 @@ Class | Method | HTTP request | Description
  - [Dataset](docs/Dataset.md)
  - [DatasetCompatibility](docs/DatasetCompatibility.md)
  - [DatasetConnector](docs/DatasetConnector.md)
+ - [DatasetCopyParameters](docs/DatasetCopyParameters.md)
  - [Organization](docs/Organization.md)
  - [OrganizationUser](docs/OrganizationUser.md)
  - [Scenario](docs/Scenario.md)
@@ -163,6 +166,14 @@ Class | Method | HTTP request | Description
  - [ScenarioBase](docs/ScenarioBase.md)
  - [ScenarioChangedParameterValue](docs/ScenarioChangedParameterValue.md)
  - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
+ - [ScenarioDataWarehouseQuery](docs/ScenarioDataWarehouseQuery.md)
+ - [ScenarioDataWarehouseQueryResult](docs/ScenarioDataWarehouseQueryResult.md)
+ - [ScenarioFailedAnalysis](docs/ScenarioFailedAnalysis.md)
+ - [ScenarioFailedAnalysisAllOf](docs/ScenarioFailedAnalysisAllOf.md)
+ - [ScenarioRunningAnalysis](docs/ScenarioRunningAnalysis.md)
+ - [ScenarioRunningAnalysisAllOf](docs/ScenarioRunningAnalysisAllOf.md)
+ - [ScenarioSuccessfulAnalysis](docs/ScenarioSuccessfulAnalysis.md)
+ - [ScenarioSuccessfulAnalysisAllOf](docs/ScenarioSuccessfulAnalysisAllOf.md)
  - [ScenarioUser](docs/ScenarioUser.md)
  - [Simulator](docs/Simulator.md)
  - [SimulatorAnalysis](docs/SimulatorAnalysis.md)
@@ -174,6 +185,7 @@ Class | Method | HTTP request | Description
  - [Validator](docs/Validator.md)
  - [ValidatorRun](docs/ValidatorRun.md)
  - [Workspace](docs/Workspace.md)
+ - [WorkspaceServices](docs/WorkspaceServices.md)
  - [WorkspaceSimulator](docs/WorkspaceSimulator.md)
  - [WorkspaceUser](docs/WorkspaceUser.md)
  - [WorkspaceWebApp](docs/WorkspaceWebApp.md)

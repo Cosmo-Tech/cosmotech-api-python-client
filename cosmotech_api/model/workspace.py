@@ -27,9 +27,11 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from cosmotech_api.model.workspace_services import WorkspaceServices
     from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
     from cosmotech_api.model.workspace_user import WorkspaceUser
     from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
+    globals()['WorkspaceServices'] = WorkspaceServices
     globals()['WorkspaceSimulator'] = WorkspaceSimulator
     globals()['WorkspaceUser'] = WorkspaceUser
     globals()['WorkspaceWebApp'] = WorkspaceWebApp
@@ -90,7 +92,7 @@ class Workspace(ModelNormal):
             'owner_id': (str,),  # noqa: E501
             'user_list': ([WorkspaceUser],),  # noqa: E501
             'web_app': (WorkspaceWebApp,),  # noqa: E501
-            'resources': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'services': (WorkspaceServices,),  # noqa: E501
         }
 
     @cached_property
@@ -108,7 +110,7 @@ class Workspace(ModelNormal):
         'owner_id': 'ownerId',  # noqa: E501
         'user_list': 'userList',  # noqa: E501
         'web_app': 'webApp',  # noqa: E501
-        'resources': 'resources',  # noqa: E501
+        'services': 'services',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -168,7 +170,7 @@ class Workspace(ModelNormal):
             owner_id (str): the user id which own this workspace. [optional]  # noqa: E501
             user_list ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
             web_app (WorkspaceWebApp): [optional]  # noqa: E501
-            resources ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a list of resources for the Workspace with resourceName/resourceUrl. [optional]  # noqa: E501
+            services (WorkspaceServices): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
