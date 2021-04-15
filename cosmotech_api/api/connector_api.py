@@ -100,8 +100,7 @@ class ConnectorApi(object):
             settings={
                 'response_type': ([Connector],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/connectors',
                 'operation_id': 'find_all_connectors',
@@ -212,8 +211,7 @@ class ConnectorApi(object):
             settings={
                 'response_type': (Connector,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/connectors/{connector_id}',
                 'operation_id': 'find_connector_by_id',
@@ -331,8 +329,7 @@ class ConnectorApi(object):
             settings={
                 'response_type': (Connector,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/connectors',
                 'operation_id': 'register_connector',
@@ -451,8 +448,7 @@ class ConnectorApi(object):
             settings={
                 'response_type': (Connector,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/connectors/{connector_id}',
                 'operation_id': 'unregister_connector',
@@ -570,8 +566,7 @@ class ConnectorApi(object):
             settings={
                 'response_type': (Connector,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/connectors/upload',
                 'operation_id': 'upload_connector',

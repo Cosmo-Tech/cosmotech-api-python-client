@@ -5,7 +5,7 @@ All URIs are relative to *https://api.azure.cosmo-platform.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**copy_dataset**](DatasetApi.md#copy_dataset) | **POST** /organizations/{organization_id}/datasets/copy | Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.
-[**create_dataset**](DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Register a new dataset
+[**create_dataset**](DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Create a new dataset
 [**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id} | Delete a dataset
 [**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
 [**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a dataset
@@ -19,8 +19,7 @@ Copy a Dataset to another Dataset. Source must have a read capable connector and
 
 ### Example
 
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
+* OAuth Authentication (oAuth2AuthCode):
 ```python
 import time
 import cosmotech_api
@@ -38,17 +37,11 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
     host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -84,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -104,12 +97,11 @@ Name | Type | Description  | Notes
 # **create_dataset**
 > Dataset create_dataset(organization_id, dataset)
 
-Register a new dataset
+Create a new dataset
 
 ### Example
 
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
+* OAuth Authentication (oAuth2AuthCode):
 ```python
 import time
 import cosmotech_api
@@ -127,17 +119,11 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
     host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -171,7 +157,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Register a new dataset
+        # Create a new dataset
         api_response = api_instance.create_dataset(organization_id, dataset)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -192,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -215,8 +201,7 @@ Delete a dataset
 
 ### Example
 
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
+* OAuth Authentication (oAuth2AuthCode):
 ```python
 import time
 import cosmotech_api
@@ -234,17 +219,11 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
     host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -276,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -300,8 +279,7 @@ List all Datasets
 
 ### Example
 
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
+* OAuth Authentication (oAuth2AuthCode):
 ```python
 import time
 import cosmotech_api
@@ -319,17 +297,11 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
     host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -359,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -381,8 +353,7 @@ Get the details of a dataset
 
 ### Example
 
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
+* OAuth Authentication (oAuth2AuthCode):
 ```python
 import time
 import cosmotech_api
@@ -400,17 +371,11 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
     host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -442,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -465,8 +430,7 @@ Update a dataset
 
 ### Example
 
-* OAuth Authentication (AADOAuth2AuthCode):
-* Api Key Authentication (ApiKeyAuth):
+* OAuth Authentication (oAuth2AuthCode):
 ```python
 import time
 import cosmotech_api
@@ -484,17 +448,11 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: AADOAuth2AuthCode
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
     host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -551,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AADOAuth2AuthCode](../README.md#AADOAuth2AuthCode), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 

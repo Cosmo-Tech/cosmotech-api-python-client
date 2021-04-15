@@ -28,13 +28,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
 
 def lazy_import():
     from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
-    from cosmotech_api.model.scenario_failed_analysis import ScenarioFailedAnalysis
-    from cosmotech_api.model.scenario_running_analysis import ScenarioRunningAnalysis
-    from cosmotech_api.model.scenario_successful_analysis import ScenarioSuccessfulAnalysis
     globals()['ScenarioAnalysis'] = ScenarioAnalysis
-    globals()['ScenarioFailedAnalysis'] = ScenarioFailedAnalysis
-    globals()['ScenarioRunningAnalysis'] = ScenarioRunningAnalysis
-    globals()['ScenarioSuccessfulAnalysis'] = ScenarioSuccessfulAnalysis
 
 
 class ScenarioAllOf(ModelNormal):
@@ -83,11 +77,10 @@ class ScenarioAllOf(ModelNormal):
         """
         lazy_import()
         return {
-            'simulator_id': (str,),  # noqa: E501
-            'analyses': ([ScenarioAnalysis],),  # noqa: E501
-            'successful_analyses': ([ScenarioSuccessfulAnalysis],),  # noqa: E501
-            'failed_analyses': ([ScenarioFailedAnalysis],),  # noqa: E501
-            'running_analyses': ([ScenarioRunningAnalysis],),  # noqa: E501
+            'simulator_name': (str,),  # noqa: E501
+            'simulator_analysis_name': (str,),  # noqa: E501
+            'analysis': (ScenarioAnalysis,),  # noqa: E501
+            'send_input_to_data_warehouse': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -96,11 +89,10 @@ class ScenarioAllOf(ModelNormal):
 
 
     attribute_map = {
-        'simulator_id': 'simulatorId',  # noqa: E501
-        'analyses': 'analyses',  # noqa: E501
-        'successful_analyses': 'successfulAnalyses',  # noqa: E501
-        'failed_analyses': 'failedAnalyses',  # noqa: E501
-        'running_analyses': 'runningAnalyses',  # noqa: E501
+        'simulator_name': 'simulatorName',  # noqa: E501
+        'simulator_analysis_name': 'simulatorAnalysisName',  # noqa: E501
+        'analysis': 'analysis',  # noqa: E501
+        'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -149,11 +141,10 @@ class ScenarioAllOf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            simulator_id (str): the Simulator Id associated with this Scenario. [optional]  # noqa: E501
-            analyses ([ScenarioAnalysis]): the configuration for next Analysis. [optional]  # noqa: E501
-            successful_analyses ([ScenarioSuccessfulAnalysis]): the configuration and information for last successful Analyses Runs. [optional]  # noqa: E501
-            failed_analyses ([ScenarioFailedAnalysis]): the configuration and information for last failed Analyses Runs. [optional]  # noqa: E501
-            running_analyses ([ScenarioRunningAnalysis]): the configuration and information for currently running Analyses Runs. [optional]  # noqa: E501
+            simulator_name (str): [optional]  # noqa: E501
+            simulator_analysis_name (str): [optional]  # noqa: E501
+            analysis (ScenarioAnalysis): [optional]  # noqa: E501
+            send_input_to_data_warehouse (bool): default setting for all Analysis to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

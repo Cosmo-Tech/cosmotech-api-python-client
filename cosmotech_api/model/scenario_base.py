@@ -83,7 +83,8 @@ class ScenarioBase(ModelNormal):
             'tags': ([str],),  # noqa: E501
             'parent_id': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
-            'user_list': ([ScenarioUser],),  # noqa: E501
+            'simulator_id': (str,),  # noqa: E501
+            'users': ([ScenarioUser],),  # noqa: E501
         }
 
     @cached_property
@@ -98,7 +99,8 @@ class ScenarioBase(ModelNormal):
         'tags': 'tags',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
-        'user_list': 'userList',  # noqa: E501
+        'simulator_id': 'simulatorId',  # noqa: E501
+        'users': 'users',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -155,7 +157,8 @@ class ScenarioBase(ModelNormal):
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parent_id (str): the Scenario parent id. [optional]  # noqa: E501
             owner_id (str): the user id which own this Scenario. [optional]  # noqa: E501
-            user_list ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
+            simulator_id (str): the Simulator Id associated with this Scenario. [optional]  # noqa: E501
+            users ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

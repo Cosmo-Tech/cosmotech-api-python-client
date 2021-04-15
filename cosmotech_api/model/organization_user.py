@@ -52,6 +52,12 @@ class OrganizationUser(ModelNormal):
     """
 
     allowed_values = {
+        ('roles',): {
+            'ADMIN': "Admin",
+            'USER': "User",
+            'VIEWER': "Viewer",
+            'DEVELOPER': "Developer",
+        },
     }
 
     validations = {
@@ -72,8 +78,10 @@ class OrganizationUser(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
+            'roles': ([str],),  # noqa: E501
+            'id': (str,),  # noqa: E501
+            'organization_id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -82,8 +90,10 @@ class OrganizationUser(ModelNormal):
 
 
     attribute_map = {
-        'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
+        'roles': 'roles',  # noqa: E501
+        'id': 'id',  # noqa: E501
+        'organization_id': 'organizationId',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -98,8 +108,12 @@ class OrganizationUser(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, name, roles, *args, **kwargs):  # noqa: E501
         """OrganizationUser - a model defined in OpenAPI
+
+        Args:
+            name (str): the User name
+            roles ([str]): the User's roles for the Organization
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -133,7 +147,7 @@ class OrganizationUser(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the User unique identifier, in response. [optional]  # noqa: E501
-            name (str): the User name. [optional]  # noqa: E501
+            organization_id (str): the Organization Id context. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -159,6 +173,8 @@ class OrganizationUser(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.name = name
+        self.roles = roles
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

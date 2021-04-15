@@ -80,6 +80,7 @@ class ScenarioAnalysis(ModelNormal):
             'analysis_id': (str,),  # noqa: E501
             'dataset_list': ([str],),  # noqa: E501
             'parameters_values': ([ScenarioAnalysisParameterValue],),  # noqa: E501
+            'send_input_to_data_warehouse': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -91,6 +92,7 @@ class ScenarioAnalysis(ModelNormal):
         'analysis_id': 'analysisId',  # noqa: E501
         'dataset_list': 'datasetList',  # noqa: E501
         'parameters_values': 'parametersValues',  # noqa: E501
+        'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -105,11 +107,8 @@ class ScenarioAnalysis(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, analysis_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """ScenarioAnalysis - a model defined in OpenAPI
-
-        Args:
-            analysis_id (str): the Simulator Analysis Id
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -142,8 +141,10 @@ class ScenarioAnalysis(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            analysis_id (str): the Simulator Analysis Id associated with this Scenario. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Scenario Analysis. [optional]  # noqa: E501
             parameters_values ([ScenarioAnalysisParameterValue]): the list of Simulator Analysis parameters values. [optional]  # noqa: E501
+            send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -169,7 +170,6 @@ class ScenarioAnalysis(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.analysis_id = analysis_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

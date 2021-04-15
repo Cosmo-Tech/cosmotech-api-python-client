@@ -109,8 +109,7 @@ class SimulatorApi(object):
             settings={
                 'response_type': (Simulator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/simulators',
                 'operation_id': 'create_simulator',
@@ -239,8 +238,7 @@ class SimulatorApi(object):
             settings={
                 'response_type': (Simulator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/simulators/{simulator_id}',
                 'operation_id': 'delete_simulator',
@@ -364,8 +362,7 @@ class SimulatorApi(object):
             settings={
                 'response_type': ([Simulator],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/simulators',
                 'operation_id': 'find_all_simulators',
@@ -487,8 +484,7 @@ class SimulatorApi(object):
             settings={
                 'response_type': (Simulator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/simulators/{simulator_id}',
                 'operation_id': 'find_simulator_by_id',
@@ -620,8 +616,7 @@ class SimulatorApi(object):
             settings={
                 'response_type': (Simulator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/simulators/{simulator_id}',
                 'operation_id': 'update_simulator',
@@ -756,8 +751,7 @@ class SimulatorApi(object):
             settings={
                 'response_type': (Simulator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/simulators/upload',
                 'operation_id': 'upload',

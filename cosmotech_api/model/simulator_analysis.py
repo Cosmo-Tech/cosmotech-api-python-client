@@ -81,13 +81,14 @@ class SimulatorAnalysis(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'simulation': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
+            'simulation': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
             'parameters_handler_resource': (AnalysisResourceStorage,),  # noqa: E501
             'dataset_validator_resource': (AnalysisResourceStorage,),  # noqa: E501
             'custom_driver_resource': (AnalysisResourceStorage,),  # noqa: E501
+            'dataset_schema_resource': (AnalysisResourceStorage,),  # noqa: E501
             'parameter_groups': ([AnalysisParameterGroup],),  # noqa: E501
         }
 
@@ -99,13 +100,14 @@ class SimulatorAnalysis(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'simulation': 'simulation',  # noqa: E501
         'description': 'description',  # noqa: E501
+        'simulation': 'simulation',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
         'parameters_handler_resource': 'parametersHandlerResource',  # noqa: E501
         'dataset_validator_resource': 'datasetValidatorResource',  # noqa: E501
         'custom_driver_resource': 'customDriverResource',  # noqa: E501
+        'dataset_schema_resource': 'datasetSchemaResource',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
     }
 
@@ -121,13 +123,12 @@ class SimulatorAnalysis(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, simulation, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, *args, **kwargs):  # noqa: E501
         """SimulatorAnalysis - a model defined in OpenAPI
 
         Args:
             id (str): the Simulator Analysis id
             name (str): the Simulator Analysis name
-            simulation (str): the simulation name
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,11 +162,13 @@ class SimulatorAnalysis(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             description (str): the Simulator Analysis description. [optional]  # noqa: E501
+            simulation (str): the simulation name. [optional]  # noqa: E501
             tags ([str]): the list of Simulator Analysis tags. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
             parameters_handler_resource (AnalysisResourceStorage): [optional]  # noqa: E501
             dataset_validator_resource (AnalysisResourceStorage): [optional]  # noqa: E501
             custom_driver_resource (AnalysisResourceStorage): [optional]  # noqa: E501
+            dataset_schema_resource (AnalysisResourceStorage): [optional]  # noqa: E501
             parameter_groups ([AnalysisParameterGroup]): the list of parameters groups for the Analysis. [optional]  # noqa: E501
         """
 
@@ -194,7 +197,6 @@ class SimulatorAnalysis(ModelNormal):
 
         self.id = id
         self.name = name
-        self.simulation = simulation
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

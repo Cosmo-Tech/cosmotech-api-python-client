@@ -110,8 +110,7 @@ class DatasetApi(object):
             settings={
                 'response_type': (DatasetCopyParameters,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/copy',
                 'operation_id': 'copy_dataset',
@@ -173,7 +172,7 @@ class DatasetApi(object):
             dataset,
             **kwargs
         ):
-            """Register a new dataset  # noqa: E501
+            """Create a new dataset  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -240,8 +239,7 @@ class DatasetApi(object):
             settings={
                 'response_type': (Dataset,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets',
                 'operation_id': 'create_dataset',
@@ -370,8 +368,7 @@ class DatasetApi(object):
             settings={
                 'response_type': (Dataset,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}',
                 'operation_id': 'delete_dataset',
@@ -495,8 +492,7 @@ class DatasetApi(object):
             settings={
                 'response_type': ([Dataset],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets',
                 'operation_id': 'find_all_datasets',
@@ -618,8 +614,7 @@ class DatasetApi(object):
             settings={
                 'response_type': (Dataset,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}',
                 'operation_id': 'find_dataset_by_id',
@@ -751,8 +746,7 @@ class DatasetApi(object):
             settings={
                 'response_type': (Dataset,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}',
                 'operation_id': 'update_dataset',

@@ -77,25 +77,6 @@ class Configuration(object):
       in PEM format
 
     :Example:
-
-    API Key Authentication Example.
-    Given the following security scheme in the OpenAPI specification:
-      components:
-        securitySchemes:
-          cookieAuth:         # name for the security scheme
-            type: apiKey
-            in: cookie
-            name: JSESSIONID  # cookie name
-
-    You can programmatically set the cookie:
-
-conf = cosmotech_api.Configuration(
-    api_key={'cookieAuth': 'abc123'}
-    api_key_prefix={'cookieAuth': 'JSESSIONID'}
-)
-
-    The following cookie will be added to the HTTP request:
-       Cookie: JSESSIONID abc123
     """
 
     _default = None
@@ -387,20 +368,11 @@ conf = cosmotech_api.Configuration(
         """
         auth = {}
         if self.access_token is not None:
-            auth['AADOAuth2AuthCode'] = {
+            auth['oAuth2AuthCode'] = {
                 'type': 'oauth2',
                 'in': 'header',
                 'key': 'Authorization',
                 'value': 'Bearer ' + self.access_token
-            }
-        if 'ApiKeyAuth' in self.api_key:
-            auth['ApiKeyAuth'] = {
-                'type': 'api_key',
-                'in': 'query',
-                'key': 'key',
-                'value': self.get_api_key_with_prefix(
-                    'ApiKeyAuth',
-                ),
             }
         return auth
 

@@ -90,9 +90,11 @@ class Workspace(ModelNormal):
             'version': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
-            'user_list': ([WorkspaceUser],),  # noqa: E501
+            'simulator_analysis_filter': ([str],),  # noqa: E501
+            'users': ([WorkspaceUser],),  # noqa: E501
             'web_app': (WorkspaceWebApp,),  # noqa: E501
             'services': (WorkspaceServices,),  # noqa: E501
+            'send_input_to_data_warehouse': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -108,9 +110,11 @@ class Workspace(ModelNormal):
         'version': 'version',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
-        'user_list': 'userList',  # noqa: E501
+        'simulator_analysis_filter': 'simulatorAnalysisFilter',  # noqa: E501
+        'users': 'users',  # noqa: E501
         'web_app': 'webApp',  # noqa: E501
         'services': 'services',  # noqa: E501
+        'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -168,9 +172,11 @@ class Workspace(ModelNormal):
             version (str): the Workspace version MAJOR.MINOR.PATCH.. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             owner_id (str): the user id which own this workspace. [optional]  # noqa: E501
-            user_list ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
+            simulator_analysis_filter ([str]): a filter list of available Simulator Analysis. [optional]  # noqa: E501
+            users ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
             web_app (WorkspaceWebApp): [optional]  # noqa: E501
             services (WorkspaceServices): [optional]  # noqa: E501
+            send_input_to_data_warehouse (bool): default setting for all Scenarios and Analysis to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -5,11 +5,10 @@ a Scenario with detailed information
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**simulator_id** | **str** | the Simulator Id associated with this Scenario | [optional] [readonly] 
-**analyses** | [**[ScenarioAnalysis]**](ScenarioAnalysis.md) | the configuration for next Analysis | [optional] 
-**successful_analyses** | [**[ScenarioSuccessfulAnalysis]**](ScenarioSuccessfulAnalysis.md) | the configuration and information for last successful Analyses Runs | [optional] [readonly] 
-**failed_analyses** | [**[ScenarioFailedAnalysis]**](ScenarioFailedAnalysis.md) | the configuration and information for last failed Analyses Runs | [optional] [readonly] 
-**running_analyses** | [**[ScenarioRunningAnalysis]**](ScenarioRunningAnalysis.md) | the configuration and information for currently running Analyses Runs | [optional] [readonly] 
+**simulator_name** | **str** |  | [optional] 
+**simulator_analysis_name** | **str** |  | [optional] 
+**analysis** | [**ScenarioAnalysis**](ScenarioAnalysis.md) |  | [optional] 
+**send_input_to_data_warehouse** | **bool** | default setting for all Analysis to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

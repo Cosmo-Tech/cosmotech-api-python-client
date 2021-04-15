@@ -12,6 +12,8 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.workspace_service import WorkspaceService
+globals()['WorkspaceService'] = WorkspaceService
 from cosmotech_api.model.workspace_services import WorkspaceServices
 
 

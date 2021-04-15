@@ -22,6 +22,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.model.workspace_user_details import WorkspaceUserDetails
 
 
 class WorkspaceApi(object):
@@ -109,8 +110,7 @@ class WorkspaceApi(object):
             settings={
                 'response_type': (Workspace,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces',
                 'operation_id': 'create_workspace',
@@ -239,8 +239,7 @@ class WorkspaceApi(object):
             settings={
                 'response_type': (Workspace,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}',
                 'operation_id': 'delete_workspace',
@@ -364,8 +363,7 @@ class WorkspaceApi(object):
             settings={
                 'response_type': ([Workspace],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces',
                 'operation_id': 'find_all_workspaces',
@@ -487,8 +485,7 @@ class WorkspaceApi(object):
             settings={
                 'response_type': (Workspace,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}',
                 'operation_id': 'find_workspace_by_id',
@@ -541,6 +538,134 @@ class WorkspaceApi(object):
             },
             api_client=api_client,
             callable=__find_workspace_by_id
+        )
+
+        def __get_current_workspace_user(
+            self,
+            organization_id,
+            workspace_id,
+            **kwargs
+        ):
+            """Get the current User information for the Workspace  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_current_workspace_user(organization_id, workspace_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                WorkspaceUserDetails
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            return self.call_with_http_info(**kwargs)
+
+        self.get_current_workspace_user = _Endpoint(
+            settings={
+                'response_type': (WorkspaceUserDetails,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/me',
+                'operation_id': 'get_current_workspace_user',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_current_workspace_user
         )
 
         def __update_workspace(
@@ -620,8 +745,7 @@ class WorkspaceApi(object):
             settings={
                 'response_type': (Workspace,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}',
                 'operation_id': 'update_workspace',

@@ -110,8 +110,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (Validator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators',
                 'operation_id': 'create_validator',
@@ -244,8 +243,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (ValidatorRun,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/history',
                 'operation_id': 'create_validator_run',
@@ -380,8 +378,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (Validator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}',
                 'operation_id': 'delete_validator',
@@ -513,8 +510,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (ValidatorRun,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id}',
                 'operation_id': 'delete_validator_run',
@@ -648,8 +644,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': ([ValidatorRun],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/history',
                 'operation_id': 'find_all_validator_runs',
@@ -773,8 +768,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': ([Validator],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators',
                 'operation_id': 'find_all_validators',
@@ -896,8 +890,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (Validator,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}',
                 'operation_id': 'find_validator_by_id',
@@ -1029,8 +1022,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (ValidatorRun,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id}',
                 'operation_id': 'find_validator_run_by_id',
@@ -1168,8 +1160,7 @@ class ValidatorApi(object):
             settings={
                 'response_type': (ValidatorRun,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/datasets/validators/{validator_id}/run',
                 'operation_id': 'run_validator',

@@ -5,10 +5,11 @@ the cloud service resources of the Workspace
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results_event_bus** | **str** | the event bus which receive Workspace Simulation results messages | [optional] 
-**simulation_event_bus** | **str** | the event bus which receive Workspace Simulation events messages | [optional] 
-**data_warehouse** | **str** | the Workspace DataWarehouse specific informations | [optional] 
-**storage** | **str** | ths Workspace file storage specific informations | [optional] 
+**tenant_credentials** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | a freeform credentials object for the tenant. Structure depends on cloud provider | [optional] 
+**results_event_bus** | [**WorkspaceService**](WorkspaceService.md) |  | [optional] 
+**simulation_event_bus** | [**WorkspaceService**](WorkspaceService.md) |  | [optional] 
+**data_warehouse** | [**WorkspaceService**](WorkspaceService.md) |  | [optional] 
+**storage** | [**WorkspaceService**](WorkspaceService.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

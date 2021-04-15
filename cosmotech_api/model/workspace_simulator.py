@@ -73,7 +73,7 @@ class WorkspaceSimulator(ModelNormal):
         """
         return {
             'simulator_id': (str,),  # noqa: E501
-            'simulator_analysis_filter': ([str],),  # noqa: E501
+            'analysis_filter': ([str],),  # noqa: E501
             'default_analysis_dataset': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
@@ -84,7 +84,7 @@ class WorkspaceSimulator(ModelNormal):
 
     attribute_map = {
         'simulator_id': 'simulatorId',  # noqa: E501
-        'simulator_analysis_filter': 'simulatorAnalysisFilter',  # noqa: E501
+        'analysis_filter': 'analysisFilter',  # noqa: E501
         'default_analysis_dataset': 'defaultAnalysisDataset',  # noqa: E501
     }
 
@@ -137,7 +137,7 @@ class WorkspaceSimulator(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            simulator_analysis_filter ([str]): the list of Simulator Analysis Id to filter. [optional]  # noqa: E501
+            analysis_filter ([str]): the list of Simulator Analysis Id to filter. [optional]  # noqa: E501
             default_analysis_dataset ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a map of AnalysisId/DatasetId to set a default dataset for an analysis. [optional]  # noqa: E501
         """
 

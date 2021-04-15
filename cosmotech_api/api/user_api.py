@@ -101,8 +101,7 @@ class UserApi(object):
             settings={
                 'response_type': ([UserDetails],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/users',
                 'operation_id': 'find_all_users',
@@ -213,8 +212,7 @@ class UserApi(object):
             settings={
                 'response_type': (UserDetails,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/users/{user_id}',
                 'operation_id': 'find_user_by_id',
@@ -332,8 +330,7 @@ class UserApi(object):
             settings={
                 'response_type': (UserDetails,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/users',
                 'operation_id': 'register_user',
@@ -452,8 +449,7 @@ class UserApi(object):
             settings={
                 'response_type': (UserDetails,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/users/{user_id}',
                 'operation_id': 'unregister_user',
@@ -575,8 +571,7 @@ class UserApi(object):
             settings={
                 'response_type': (UserDetails,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/users/{user_id}',
                 'operation_id': 'update_user',

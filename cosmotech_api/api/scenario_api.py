@@ -24,8 +24,6 @@ from cosmotech_api.model_utils import (  # noqa: F401
 from cosmotech_api.model.scenario import Scenario
 from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
-from cosmotech_api.model.scenario_data_warehouse_query import ScenarioDataWarehouseQuery
-from cosmotech_api.model.scenario_data_warehouse_query_result import ScenarioDataWarehouseQueryResult
 
 
 class ScenarioApi(object):
@@ -121,8 +119,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': (ScenarioComparisonResult,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id}',
                 'operation_id': 'compare_scenarios',
@@ -266,8 +263,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': (Scenario,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios',
                 'operation_id': 'create_scenario',
@@ -406,8 +402,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': (Scenario,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}',
                 'operation_id': 'delete_scenario',
@@ -541,8 +536,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': ([Scenario],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios',
                 'operation_id': 'find_all_scenarios',
@@ -674,8 +668,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': (Scenario,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}',
                 'operation_id': 'find_scenario_by_id',
@@ -809,8 +802,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': ([ScenarioBase],),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree',
                 'operation_id': 'get_scenarios_tree',
@@ -863,156 +855,6 @@ class ScenarioApi(object):
             },
             api_client=api_client,
             callable=__get_scenarios_tree
-        )
-
-        def __query_data_warehouse(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            scenario_data_warehouse_query,
-            **kwargs
-        ):
-            """Get the result of a query on the DatawareHouse  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.query_data_warehouse(organization_id, workspace_id, scenario_id, scenario_data_warehouse_query, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                scenario_data_warehouse_query (ScenarioDataWarehouseQuery): the DatawareHouse query
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioDataWarehouseQueryResult
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['scenario_data_warehouse_query'] = \
-                scenario_data_warehouse_query
-            return self.call_with_http_info(**kwargs)
-
-        self.query_data_warehouse = _Endpoint(
-            settings={
-                'response_type': (ScenarioDataWarehouseQueryResult,),
-                'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
-                ],
-                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/queryDataWarehouse',
-                'operation_id': 'query_data_warehouse',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'organization_id',
-                    'workspace_id',
-                    'scenario_id',
-                    'scenario_data_warehouse_query',
-                ],
-                'required': [
-                    'organization_id',
-                    'workspace_id',
-                    'scenario_id',
-                    'scenario_data_warehouse_query',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'organization_id':
-                        (str,),
-                    'workspace_id':
-                        (str,),
-                    'scenario_id':
-                        (str,),
-                    'scenario_data_warehouse_query':
-                        (ScenarioDataWarehouseQuery,),
-                },
-                'attribute_map': {
-                    'organization_id': 'organization_id',
-                    'workspace_id': 'workspace_id',
-                    'scenario_id': 'scenario_id',
-                },
-                'location_map': {
-                    'organization_id': 'path',
-                    'workspace_id': 'path',
-                    'scenario_id': 'path',
-                    'scenario_data_warehouse_query': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client,
-            callable=__query_data_warehouse
         )
 
         def __update_scenario(
@@ -1096,8 +938,7 @@ class ScenarioApi(object):
             settings={
                 'response_type': (Scenario,),
                 'auth': [
-                    'AADOAuth2AuthCode',
-                    'ApiKeyAuth'
+                    'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}',
                 'operation_id': 'update_scenario',

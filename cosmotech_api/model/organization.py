@@ -79,6 +79,7 @@ class Organization(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'owner_id': (str,),  # noqa: E501
             'users': ([OrganizationUser],),  # noqa: E501
         }
 
@@ -90,6 +91,7 @@ class Organization(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'owner_id': 'ownerId',  # noqa: E501
         'users': 'users',  # noqa: E501
     }
 
@@ -143,6 +145,7 @@ class Organization(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the Organization unique identifier. [optional]  # noqa: E501
+            owner_id (str): the Owner User Id. [optional]  # noqa: E501
             users ([OrganizationUser]): [optional]  # noqa: E501
         """
 
