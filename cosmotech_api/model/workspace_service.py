@@ -74,6 +74,7 @@ class WorkspaceService(ModelNormal):
         return {
             'cloud_service': (str,),  # noqa: E501
             'base_uri': (str,),  # noqa: E501
+            'platform_service': (str,),  # noqa: E501
             'resource_uri': (str,),  # noqa: E501
             'credentials': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
@@ -86,6 +87,7 @@ class WorkspaceService(ModelNormal):
     attribute_map = {
         'cloud_service': 'cloudService',  # noqa: E501
         'base_uri': 'baseUri',  # noqa: E501
+        'platform_service': 'platformService',  # noqa: E501
         'resource_uri': 'resourceUri',  # noqa: E501
         'credentials': 'credentials',  # noqa: E501
     }
@@ -102,11 +104,8 @@ class WorkspaceService(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, cloud_service, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """WorkspaceService - a model defined in OpenAPI
-
-        Args:
-            cloud_service (str): the cloud service name
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,7 +138,9 @@ class WorkspaceService(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            cloud_service (str): the cloud service name. [optional]  # noqa: E501
             base_uri (str): the platform base uri for this service. [optional]  # noqa: E501
+            platform_service (str): the Platform service associated to the resource. [optional]  # noqa: E501
             resource_uri (str): the workspace specific uri for this service resource. [optional]  # noqa: E501
             credentials ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform credentials object. Structure depends on service. [optional]  # noqa: E501
         """
@@ -167,7 +168,6 @@ class WorkspaceService(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.cloud_service = cloud_service
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

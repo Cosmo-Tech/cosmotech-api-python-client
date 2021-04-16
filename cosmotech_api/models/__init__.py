@@ -20,7 +20,12 @@ from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_connector import DatasetConnector
 from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
 from cosmotech_api.model.organization import Organization
+from cosmotech_api.model.organization_service import OrganizationService
+from cosmotech_api.model.organization_services import OrganizationServices
 from cosmotech_api.model.organization_user import OrganizationUser
+from cosmotech_api.model.platform import Platform
+from cosmotech_api.model.platform_service import PlatformService
+from cosmotech_api.model.platform_services import PlatformServices
 from cosmotech_api.model.scenario import Scenario
 from cosmotech_api.model.scenario_all_of import ScenarioAllOf
 from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
@@ -57,6 +62,4 @@ from cosmotech_api.model.workspace_service import WorkspaceService
 from cosmotech_api.model.workspace_services import WorkspaceServices
 from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
 from cosmotech_api.model.workspace_user import WorkspaceUser
-from cosmotech_api.model.workspace_user_details import WorkspaceUserDetails
-from cosmotech_api.model.workspace_user_details_all_of import WorkspaceUserDetailsAllOf
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp

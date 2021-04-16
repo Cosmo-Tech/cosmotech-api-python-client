@@ -143,7 +143,7 @@ class WorkspaceServices(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tenant_credentials ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform credentials object for the tenant. Structure depends on cloud provider. [optional]  # noqa: E501
+            tenant_credentials ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform credentials object for the Organization tenant. Structure depends on cloud provider. [optional]  # noqa: E501
             results_event_bus (WorkspaceService): [optional]  # noqa: E501
             simulation_event_bus (WorkspaceService): [optional]  # noqa: E501
             data_warehouse (WorkspaceService): [optional]  # noqa: E501

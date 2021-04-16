@@ -205,6 +205,23 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 ],
             ),
         ],
+        services=OrganizationServices(
+            tenant_credentials={},
+            storage=OrganizationService(
+                cloud_service="cloud_service_example",
+                base_uri="base_uri_example",
+                platform_service="platform_service_example",
+                resource_uri="resource_uri_example",
+                credentials={},
+            ),
+            simulators_container_registry=OrganizationService(
+                cloud_service="cloud_service_example",
+                base_uri="base_uri_example",
+                platform_service="platform_service_example",
+                resource_uri="resource_uri_example",
+                credentials={},
+            ),
+        ),
     ) # Organization | the Organization to register
 
     # example passing only required values which don't have defaults set
@@ -371,6 +388,23 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 ],
             ),
         ],
+        services=OrganizationServices(
+            tenant_credentials={},
+            storage=OrganizationService(
+                cloud_service="cloud_service_example",
+                base_uri="base_uri_example",
+                platform_service="platform_service_example",
+                resource_uri="resource_uri_example",
+                credentials={},
+            ),
+            simulators_container_registry=OrganizationService(
+                cloud_service="cloud_service_example",
+                base_uri="base_uri_example",
+                platform_service="platform_service_example",
+                resource_uri="resource_uri_example",
+                credentials={},
+            ),
+        ),
     ) # Organization | the new Organization details
 
     # example passing only required values which don't have defaults set

@@ -23,6 +23,13 @@ class TestUserApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_authorize_user(self):
+        """Test case for authorize_user
+
+        Authorize an User with OAuth2. Delegated to configured OAuth2 service  # noqa: E501
+        """
+        pass
+
     def test_find_all_users(self):
         """Test case for find_all_users
 
