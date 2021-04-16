@@ -33,7 +33,7 @@ class TestDatasetApi(unittest.TestCase):
     def test_create_dataset(self):
         """Test case for create_dataset
 
-        Register a new dataset  # noqa: E501
+        Create a new dataset  # noqa: E501
         """
         pass
 

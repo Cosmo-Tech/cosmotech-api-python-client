@@ -72,7 +72,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [UserDetails]
+                [User]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -99,7 +99,7 @@ class UserApi(object):
 
         self.find_all_users = _Endpoint(
             settings={
-                'response_type': ([UserDetails],),
+                'response_type': ([User],),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -261,21 +261,18 @@ class UserApi(object):
             callable=__find_user_by_id
         )
 
-        def __register_user(
+        def __get_current_user(
             self,
-            user,
             **kwargs
         ):
-            """Register a new user  # noqa: E501
+            """Get the details of an user  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.register_user(user, async_req=True)
+            >>> thread = api.get_current_user(async_req=True)
             >>> result = thread.get()
 
-            Args:
-                user (User): the User to register
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -322,13 +319,368 @@ class UserApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
+
+        self.get_current_user = _Endpoint(
+            settings={
+                'response_type': (UserDetails,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/users/me',
+                'operation_id': 'get_current_user',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_current_user
+        )
+
+        def __get_organization_current_user(
+            self,
+            organization_id,
+            **kwargs
+        ):
+            """Get the details of an user with roles for an Organization  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_organization_current_user(organization_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                UserDetails
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            return self.call_with_http_info(**kwargs)
+
+        self.get_organization_current_user = _Endpoint(
+            settings={
+                'response_type': (UserDetails,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/me',
+                'operation_id': 'get_organization_current_user',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                ],
+                'required': [
+                    'organization_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_organization_current_user
+        )
+
+        def __get_workspace_current_user(
+            self,
+            organization_id,
+            workspace_id,
+            **kwargs
+        ):
+            """Get the details of an user with roles for a Workspace  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_workspace_current_user(organization_id, workspace_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                UserDetails
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            return self.call_with_http_info(**kwargs)
+
+        self.get_workspace_current_user = _Endpoint(
+            settings={
+                'response_type': (UserDetails,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/me',
+                'operation_id': 'get_workspace_current_user',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_workspace_current_user
+        )
+
+        def __register_user(
+            self,
+            user,
+            **kwargs
+        ):
+            """Register a new user  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.register_user(user, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                user (User): the User to register
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                User
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['user'] = \
                 user
             return self.call_with_http_info(**kwargs)
 
         self.register_user = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -418,7 +770,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UserDetails
+                User
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -447,7 +799,7 @@ class UserApi(object):
 
         self.unregister_user = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -538,7 +890,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UserDetails
+                User
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -569,7 +921,7 @@ class UserApi(object):
 
         self.update_user = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],

@@ -65,13 +65,6 @@ class TestScenarioApi(unittest.TestCase):
         """
         pass
 
-    def test_query_data_warehouse(self):
-        """Test case for query_data_warehouse
-
-        Get the result of a query on the DatawareHouse  # noqa: E501
-        """
-        pass
-
     def test_update_scenario(self):
         """Test case for update_scenario
 

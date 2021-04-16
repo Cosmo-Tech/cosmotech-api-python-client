@@ -58,7 +58,7 @@ class WorkspaceUserDetails(ModelComposed):
     """
 
     allowed_values = {
-        ('role',): {
+        ('roles',): {
             'ADMIN': "Admin",
             'USER': "User",
             'VIEWER': "Viewer",
@@ -92,7 +92,7 @@ class WorkspaceUserDetails(ModelComposed):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'role': (str,),  # noqa: E501
+            'roles': ([str],),  # noqa: E501
             'name': (str,),  # noqa: E501
             'organization_id': (str,),  # noqa: E501
             'organization_roles': ([str],),  # noqa: E501
@@ -106,7 +106,7 @@ class WorkspaceUserDetails(ModelComposed):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'role': 'role',  # noqa: E501
+        'roles': 'roles',  # noqa: E501
         'name': 'name',  # noqa: E501
         'organization_id': 'organizationId',  # noqa: E501
         'organization_roles': 'organizationRoles',  # noqa: E501
@@ -126,12 +126,12 @@ class WorkspaceUserDetails(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, role, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, roles, *args, **kwargs):  # noqa: E501
         """WorkspaceUserDetails - a model defined in OpenAPI
 
         Args:
             id (str): the User id
-            role (str): the User role
+            roles ([str]): the User roles
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -202,7 +202,7 @@ class WorkspaceUserDetails(ModelComposed):
         }
         required_args = {
             'id': id,
-            'role': role,
+            'roles': roles,
         }
         model_args = {}
         model_args.update(required_args)

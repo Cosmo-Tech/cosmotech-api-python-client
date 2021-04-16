@@ -52,7 +52,7 @@ class WorkspaceUser(ModelNormal):
     """
 
     allowed_values = {
-        ('role',): {
+        ('roles',): {
             'ADMIN': "Admin",
             'USER': "User",
             'VIEWER': "Viewer",
@@ -78,7 +78,7 @@ class WorkspaceUser(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'role': (str,),  # noqa: E501
+            'roles': ([str],),  # noqa: E501
             'name': (str,),  # noqa: E501
         }
 
@@ -89,7 +89,7 @@ class WorkspaceUser(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'role': 'role',  # noqa: E501
+        'roles': 'roles',  # noqa: E501
         'name': 'name',  # noqa: E501
     }
 
@@ -105,12 +105,12 @@ class WorkspaceUser(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, role, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, roles, *args, **kwargs):  # noqa: E501
         """WorkspaceUser - a model defined in OpenAPI
 
         Args:
             id (str): the User id
-            role (str): the User role
+            roles ([str]): the User roles
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -170,7 +170,7 @@ class WorkspaceUser(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.role = role
+        self.roles = roles
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -60,6 +60,11 @@ class UserDetails(ModelComposed):
     """
 
     allowed_values = {
+        ('platform_roles',): {
+            'ADMIN': "Admin",
+            'USER': "User",
+            'CONNECTORDEVELOPER': "ConnectorDeveloper",
+        },
     }
 
     validations = {
@@ -89,6 +94,7 @@ class UserDetails(ModelComposed):
         lazy_import()
         return {
             'name': (str,),  # noqa: E501
+            'platform_roles': ([str],),  # noqa: E501
             'id': (str,),  # noqa: E501
             'organizations': ([UserOrganization],),  # noqa: E501
         }
@@ -100,6 +106,7 @@ class UserDetails(ModelComposed):
 
     attribute_map = {
         'name': 'name',  # noqa: E501
+        'platform_roles': 'platformRoles',  # noqa: E501
         'id': 'id',  # noqa: E501
         'organizations': 'organizations',  # noqa: E501
     }
@@ -117,11 +124,12 @@ class UserDetails(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, *args, **kwargs):  # noqa: E501
+    def __init__(self, name, platform_roles, *args, **kwargs):  # noqa: E501
         """UserDetails - a model defined in OpenAPI
 
         Args:
             name (str): the User name
+            platform_roles ([str]): the list of Platform roles
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -190,6 +198,7 @@ class UserDetails(ModelComposed):
         }
         required_args = {
             'name': name,
+            'platform_roles': platform_roles,
         }
         model_args = {}
         model_args.update(required_args)

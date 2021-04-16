@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**find_all_organizations**](OrganizationApi.md#find_all_organizations) | **GET** /organizations | List all Organizations
 [**find_organization_by_id**](OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an organization
-[**get_current_organization_user**](OrganizationApi.md#get_current_organization_user) | **GET** /organizations/{organization_id}/me | Get the current User information for the Organization
 [**register_organization**](OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
 [**unregister_organization**](OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
 [**update_organization**](OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an organization
@@ -153,81 +152,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Organization details |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_current_organization_user**
-> OrganizationUser get_current_organization_user(organization_id)
-
-Get the current User information for the Organization
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_user import OrganizationUser
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get the current User information for the Organization
-        api_response = api_instance.get_current_organization_user(organization_id)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->get_current_organization_user: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
-
-### Return type
-
-[**OrganizationUser**](OrganizationUser.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the User details |  -  |
 **404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -13,12 +13,10 @@ import unittest
 
 import cosmotech_api
 from cosmotech_api.model.user_workspace import UserWorkspace
-globals()['UserWorkspace'] = UserWorkspace
-from cosmotech_api.model.user_organization import UserOrganization
 
 
-class TestUserOrganization(unittest.TestCase):
-    """UserOrganization unit test stubs"""
+class TestUserWorkspace(unittest.TestCase):
+    """UserWorkspace unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,10 +24,10 @@ class TestUserOrganization(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testUserOrganization(self):
-        """Test UserOrganization"""
+    def testUserWorkspace(self):
+        """Test UserWorkspace"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = UserOrganization()  # noqa: E501
+        # model = UserWorkspace()  # noqa: E501
         pass
 
 

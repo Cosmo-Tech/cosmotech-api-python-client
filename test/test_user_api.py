@@ -37,6 +37,27 @@ class TestUserApi(unittest.TestCase):
         """
         pass
 
+    def test_get_current_user(self):
+        """Test case for get_current_user
+
+        Get the details of an user  # noqa: E501
+        """
+        pass
+
+    def test_get_organization_current_user(self):
+        """Test case for get_organization_current_user
+
+        Get the details of an user with roles for an Organization  # noqa: E501
+        """
+        pass
+
+    def test_get_workspace_current_user(self):
+        """Test case for get_workspace_current_user
+
+        Get the details of an user with roles for a Workspace  # noqa: E501
+        """
+        pass
+
     def test_register_user(self):
         """Test case for register_user
 

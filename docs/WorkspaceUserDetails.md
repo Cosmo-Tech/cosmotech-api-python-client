@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the User id | 
-**role** | **str** | the User role | 
+**roles** | **[str]** | the User roles | 
 **name** | **str** | the User name | [optional] [readonly] 
 **organization_id** | **str** | the Organization Id context | [optional] [readonly] 
 **organization_roles** | **[str]** | the Organizations roles for the User | [optional] [readonly] 
