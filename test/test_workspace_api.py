@@ -37,6 +37,20 @@ class TestWorkspaceApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_workspace_file(self):
+        """Test case for delete_workspace_file
+
+        Delete a workspace file  # noqa: E501
+        """
+        pass
+
+    def test_find_all_workspace_files(self):
+        """Test case for find_all_workspace_files
+
+        List all Workspace files  # noqa: E501
+        """
+        pass
+
     def test_find_all_workspaces(self):
         """Test case for find_all_workspaces
 
@@ -55,6 +69,13 @@ class TestWorkspaceApi(unittest.TestCase):
         """Test case for update_workspace
 
         Update a workspace  # noqa: E501
+        """
+        pass
+
+    def test_upload_workspace_file(self):
+        """Test case for upload_workspace_file
+
+        Upload a file for the Workspace  # noqa: E501
         """
         pass
 
