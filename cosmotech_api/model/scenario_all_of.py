@@ -27,8 +27,8 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
-    from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
-    globals()['ScenarioAnalysis'] = ScenarioAnalysis
+    from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
+    globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
 
 
 class ScenarioAllOf(ModelNormal):
@@ -77,9 +77,10 @@ class ScenarioAllOf(ModelNormal):
         """
         lazy_import()
         return {
-            'simulator_name': (str,),  # noqa: E501
-            'simulator_analysis_name': (str,),  # noqa: E501
-            'analysis': (ScenarioAnalysis,),  # noqa: E501
+            'solution_name': (str,),  # noqa: E501
+            'run_template_name': (str,),  # noqa: E501
+            'dataset_list': ([str],),  # noqa: E501
+            'parameters_values': ([ScenarioRunTemplateParameterValue],),  # noqa: E501
             'send_input_to_data_warehouse': (bool,),  # noqa: E501
         }
 
@@ -89,9 +90,10 @@ class ScenarioAllOf(ModelNormal):
 
 
     attribute_map = {
-        'simulator_name': 'simulatorName',  # noqa: E501
-        'simulator_analysis_name': 'simulatorAnalysisName',  # noqa: E501
-        'analysis': 'analysis',  # noqa: E501
+        'solution_name': 'solutionName',  # noqa: E501
+        'run_template_name': 'runTemplateName',  # noqa: E501
+        'dataset_list': 'datasetList',  # noqa: E501
+        'parameters_values': 'parametersValues',  # noqa: E501
         'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
     }
 
@@ -141,10 +143,11 @@ class ScenarioAllOf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            simulator_name (str): [optional]  # noqa: E501
-            simulator_analysis_name (str): [optional]  # noqa: E501
-            analysis (ScenarioAnalysis): [optional]  # noqa: E501
-            send_input_to_data_warehouse (bool): default setting for all Analysis to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
+            solution_name (str): the Solution name. [optional]  # noqa: E501
+            run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
+            dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
+            parameters_values ([ScenarioRunTemplateParameterValue]): the list of Solution Run Template parameters values. [optional]  # noqa: E501
+            send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

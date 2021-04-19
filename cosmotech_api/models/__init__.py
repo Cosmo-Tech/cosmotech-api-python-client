@@ -9,9 +9,6 @@
 # import sys
 # sys.setrecursionlimit(n)
 
-from cosmotech_api.model.analysis_parameter import AnalysisParameter
-from cosmotech_api.model.analysis_parameter_group import AnalysisParameterGroup
-from cosmotech_api.model.analysis_resource_storage import AnalysisResourceStorage
 from cosmotech_api.model.connector import Connector
 from cosmotech_api.model.connector_parameter import ConnectorParameter
 from cosmotech_api.model.connector_parameter_group import ConnectorParameterGroup
@@ -26,17 +23,20 @@ from cosmotech_api.model.organization_user import OrganizationUser
 from cosmotech_api.model.platform import Platform
 from cosmotech_api.model.platform_service import PlatformService
 from cosmotech_api.model.platform_services import PlatformServices
+from cosmotech_api.model.run_template import RunTemplate
+from cosmotech_api.model.run_template_parameter import RunTemplateParameter
+from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
+from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
+from cosmotech_api.model.run_template_resource_storage import RunTemplateResourceStorage
 from cosmotech_api.model.scenario import Scenario
 from cosmotech_api.model.scenario_all_of import ScenarioAllOf
-from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
-from cosmotech_api.model.scenario_analysis_parameter_value import ScenarioAnalysisParameterValue
 from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from cosmotech_api.model.scenario_user import ScenarioUser
 from cosmotech_api.model.simulation import Simulation
 from cosmotech_api.model.simulation_all_of import SimulationAllOf
-from cosmotech_api.model.simulation_analysis_parameter_value import SimulationAnalysisParameterValue
 from cosmotech_api.model.simulation_base import SimulationBase
 from cosmotech_api.model.simulation_container_log import SimulationContainerLog
 from cosmotech_api.model.simulation_container_logs import SimulationContainerLogs
@@ -46,9 +46,8 @@ from cosmotech_api.model.simulation_logs_options import SimulationLogsOptions
 from cosmotech_api.model.simulation_search import SimulationSearch
 from cosmotech_api.model.simulation_start_containers import SimulationStartContainers
 from cosmotech_api.model.simulation_start_scenario import SimulationStartScenario
-from cosmotech_api.model.simulation_start_simulator import SimulationStartSimulator
-from cosmotech_api.model.simulator import Simulator
-from cosmotech_api.model.simulator_analysis import SimulatorAnalysis
+from cosmotech_api.model.simulation_start_solution import SimulationStartSolution
+from cosmotech_api.model.solution import Solution
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.user import User
 from cosmotech_api.model.user_details import UserDetails
@@ -58,8 +57,9 @@ from cosmotech_api.model.user_workspace import UserWorkspace
 from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun
 from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.model.workspace_file import WorkspaceFile
 from cosmotech_api.model.workspace_service import WorkspaceService
 from cosmotech_api.model.workspace_services import WorkspaceServices
-from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
+from cosmotech_api.model.workspace_solution import WorkspaceSolution
 from cosmotech_api.model.workspace_user import WorkspaceUser
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp

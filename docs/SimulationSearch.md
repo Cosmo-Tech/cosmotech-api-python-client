@@ -5,8 +5,8 @@ the search options
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**simulator_id** | **str** | the Simulator Id to search | [optional] 
-**simulator_analysis_id** | **str** | the Simulator Analysis Id to search | [optional] 
+**solution_id** | **str** | the Solution Id to search | [optional] 
+**run_template_id** | **str** | the Solution Analysis Id to search | [optional] 
 **workspace_id** | **str** | the Workspace Id to search | [optional] 
 **scenario_id** | **str** | the Scenario Id to search | [optional] 
 **state** | **str** | the state to search | [optional] 

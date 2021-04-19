@@ -79,11 +79,11 @@ class SimulationBase(ModelNormal):
             'workspace_name': (str,),  # noqa: E501
             'scenario_id': (str,),  # noqa: E501
             'scenario_name': (str,),  # noqa: E501
-            'simulator_id': (str,),  # noqa: E501
-            'simulator_name': (str,),  # noqa: E501
-            'simulator_version': (str,),  # noqa: E501
-            'simulator_analysis_id': (str,),  # noqa: E501
-            'simulator_analysis_name': (str,),  # noqa: E501
+            'solution_id': (str,),  # noqa: E501
+            'solution_name': (str,),  # noqa: E501
+            'solution_version': (str,),  # noqa: E501
+            'run_template_id': (str,),  # noqa: E501
+            'run_template_name': (str,),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
             'start_time': (str,),  # noqa: E501
@@ -103,11 +103,11 @@ class SimulationBase(ModelNormal):
         'workspace_name': 'workspaceName',  # noqa: E501
         'scenario_id': 'scenarioId',  # noqa: E501
         'scenario_name': 'scenarioName',  # noqa: E501
-        'simulator_id': 'simulatorId',  # noqa: E501
-        'simulator_name': 'simulatorName',  # noqa: E501
-        'simulator_version': 'simulatorVersion',  # noqa: E501
-        'simulator_analysis_id': 'simulatorAnalysisId',  # noqa: E501
-        'simulator_analysis_name': 'simulatorAnalysisName',  # noqa: E501
+        'solution_id': 'solutionId',  # noqa: E501
+        'solution_name': 'solutionName',  # noqa: E501
+        'solution_version': 'solutionVersion',  # noqa: E501
+        'run_template_id': 'runTemplateId',  # noqa: E501
+        'run_template_name': 'runTemplateName',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
         'state': 'state',  # noqa: E501
         'start_time': 'startTime',  # noqa: E501
@@ -167,11 +167,11 @@ class SimulationBase(ModelNormal):
             workspace_name (str): the Workspace name. [optional]  # noqa: E501
             scenario_id (str): the Scenario Id. [optional]  # noqa: E501
             scenario_name (str): the Scenario name. [optional]  # noqa: E501
-            simulator_id (str): the Simulator Id. [optional]  # noqa: E501
-            simulator_name (str): the Simulator name. [optional]  # noqa: E501
-            simulator_version (str): the Simulator version. [optional]  # noqa: E501
-            simulator_analysis_id (str): the Simulator Analysis id. [optional]  # noqa: E501
-            simulator_analysis_name (str): the Simulator Analysis name. [optional]  # noqa: E501
+            solution_id (str): the Solution Id. [optional]  # noqa: E501
+            solution_name (str): the Solution name. [optional]  # noqa: E501
+            solution_version (str): the Solution version. [optional]  # noqa: E501
+            run_template_id (str): the Solution Run Template id. [optional]  # noqa: E501
+            run_template_name (str): the Run Template name. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
             state (str): the Simulation state. [optional]  # noqa: E501
             start_time (str): the Simulation start Date Time. [optional]  # noqa: E501

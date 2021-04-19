@@ -125,13 +125,13 @@ Class | Method | HTTP request | Description
 *SimulationApi* | [**search_simulations**](docs/SimulationApi.md#search_simulations) | **POST** /organizations/{organization_id}/simulations/search | Search Simulations
 *SimulationApi* | [**start_simulation_containers**](docs/SimulationApi.md#start_simulation_containers) | **POST** /organizations/{organization_id}/simulations/startcontainers | Start a new simulation with raw containers definition
 *SimulationApi* | [**start_simulation_scenario**](docs/SimulationApi.md#start_simulation_scenario) | **POST** /organizations/{organization_id}/simulations/start | Start a new simulation for a Scenario
-*SimulationApi* | [**start_simulation_simulator**](docs/SimulationApi.md#start_simulation_simulator) | **POST** /organizations/{organization_id}/simulations/startsimulator | Start a new simulation for a Simulator Analysis
-*SimulatorApi* | [**create_simulator**](docs/SimulatorApi.md#create_simulator) | **POST** /organizations/{organization_id}/simulators | Register a new simulator
-*SimulatorApi* | [**delete_simulator**](docs/SimulatorApi.md#delete_simulator) | **DELETE** /organizations/{organization_id}/simulators/{simulator_id} | Delete a simulator
-*SimulatorApi* | [**find_all_simulators**](docs/SimulatorApi.md#find_all_simulators) | **GET** /organizations/{organization_id}/simulators | List all Simulators
-*SimulatorApi* | [**find_simulator_by_id**](docs/SimulatorApi.md#find_simulator_by_id) | **GET** /organizations/{organization_id}/simulators/{simulator_id} | Get the details of a simulator
-*SimulatorApi* | [**update_simulator**](docs/SimulatorApi.md#update_simulator) | **PATCH** /organizations/{organization_id}/simulators/{simulator_id} | Update a simulator
-*SimulatorApi* | [**upload**](docs/SimulatorApi.md#upload) | **POST** /organizations/{organization_id}/simulators/upload | Upload and register a new simulator
+*SimulationApi* | [**start_simulation_solution**](docs/SimulationApi.md#start_simulation_solution) | **POST** /organizations/{organization_id}/simulations/startsolution | Start a new simulation for a Solution Run Template
+*SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
+*SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
+*SolutionApi* | [**find_all_solutions**](docs/SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
+*SolutionApi* | [**find_solution_by_id**](docs/SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
+*SolutionApi* | [**update_solution**](docs/SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
+*SolutionApi* | [**upload**](docs/SolutionApi.md#upload) | **POST** /organizations/{organization_id}/solutions/upload | Upload and register a new solution
 *UserApi* | [**authorize_user**](docs/UserApi.md#authorize_user) | **GET** /oauth2/authorize | Authorize an User with OAuth2. Delegated to configured OAuth2 service
 *UserApi* | [**find_all_users**](docs/UserApi.md#find_all_users) | **GET** /users | List all Users
 *UserApi* | [**find_user_by_id**](docs/UserApi.md#find_user_by_id) | **GET** /users/{user_id} | Get the details of an user
@@ -152,16 +152,16 @@ Class | Method | HTTP request | Description
 *ValidatorApi* | [**run_validator**](docs/ValidatorApi.md#run_validator) | **POST** /organizations/{organization_id}/datasets/validators/{validator_id}/run | Run a Validator
 *WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 *WorkspaceApi* | [**delete_workspace**](docs/WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
+*WorkspaceApi* | [**delete_workspace_file**](docs/WorkspaceApi.md#delete_workspace_file) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete a workspace file
+*WorkspaceApi* | [**find_all_workspace_files**](docs/WorkspaceApi.md#find_all_workspace_files) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files | List all Workspace files
 *WorkspaceApi* | [**find_all_workspaces**](docs/WorkspaceApi.md#find_all_workspaces) | **GET** /organizations/{organization_id}/workspaces | List all Workspaces
 *WorkspaceApi* | [**find_workspace_by_id**](docs/WorkspaceApi.md#find_workspace_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
 *WorkspaceApi* | [**update_workspace**](docs/WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
+*WorkspaceApi* | [**upload_workspace_file**](docs/WorkspaceApi.md#upload_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
 
 
 ## Documentation For Models
 
- - [AnalysisParameter](docs/AnalysisParameter.md)
- - [AnalysisParameterGroup](docs/AnalysisParameterGroup.md)
- - [AnalysisResourceStorage](docs/AnalysisResourceStorage.md)
  - [Connector](docs/Connector.md)
  - [ConnectorParameter](docs/ConnectorParameter.md)
  - [ConnectorParameterGroup](docs/ConnectorParameterGroup.md)
@@ -176,17 +176,20 @@ Class | Method | HTTP request | Description
  - [Platform](docs/Platform.md)
  - [PlatformService](docs/PlatformService.md)
  - [PlatformServices](docs/PlatformServices.md)
+ - [RunTemplate](docs/RunTemplate.md)
+ - [RunTemplateParameter](docs/RunTemplateParameter.md)
+ - [RunTemplateParameterGroup](docs/RunTemplateParameterGroup.md)
+ - [RunTemplateParameterValue](docs/RunTemplateParameterValue.md)
+ - [RunTemplateResourceStorage](docs/RunTemplateResourceStorage.md)
  - [Scenario](docs/Scenario.md)
  - [ScenarioAllOf](docs/ScenarioAllOf.md)
- - [ScenarioAnalysis](docs/ScenarioAnalysis.md)
- - [ScenarioAnalysisParameterValue](docs/ScenarioAnalysisParameterValue.md)
  - [ScenarioBase](docs/ScenarioBase.md)
  - [ScenarioChangedParameterValue](docs/ScenarioChangedParameterValue.md)
  - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
+ - [ScenarioRunTemplateParameterValue](docs/ScenarioRunTemplateParameterValue.md)
  - [ScenarioUser](docs/ScenarioUser.md)
  - [Simulation](docs/Simulation.md)
  - [SimulationAllOf](docs/SimulationAllOf.md)
- - [SimulationAnalysisParameterValue](docs/SimulationAnalysisParameterValue.md)
  - [SimulationBase](docs/SimulationBase.md)
  - [SimulationContainerLog](docs/SimulationContainerLog.md)
  - [SimulationContainerLogs](docs/SimulationContainerLogs.md)
@@ -196,9 +199,8 @@ Class | Method | HTTP request | Description
  - [SimulationSearch](docs/SimulationSearch.md)
  - [SimulationStartContainers](docs/SimulationStartContainers.md)
  - [SimulationStartScenario](docs/SimulationStartScenario.md)
- - [SimulationStartSimulator](docs/SimulationStartSimulator.md)
- - [Simulator](docs/Simulator.md)
- - [SimulatorAnalysis](docs/SimulatorAnalysis.md)
+ - [SimulationStartSolution](docs/SimulationStartSolution.md)
+ - [Solution](docs/Solution.md)
  - [TranslatedLabels](docs/TranslatedLabels.md)
  - [User](docs/User.md)
  - [UserDetails](docs/UserDetails.md)
@@ -208,9 +210,10 @@ Class | Method | HTTP request | Description
  - [Validator](docs/Validator.md)
  - [ValidatorRun](docs/ValidatorRun.md)
  - [Workspace](docs/Workspace.md)
+ - [WorkspaceFile](docs/WorkspaceFile.md)
  - [WorkspaceService](docs/WorkspaceService.md)
  - [WorkspaceServices](docs/WorkspaceServices.md)
- - [WorkspaceSimulator](docs/WorkspaceSimulator.md)
+ - [WorkspaceSolution](docs/WorkspaceSolution.md)
  - [WorkspaceUser](docs/WorkspaceUser.md)
  - [WorkspaceWebApp](docs/WorkspaceWebApp.md)
 

@@ -12,12 +12,12 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
 from cosmotech_api.model.simulation_all_of import SimulationAllOf
-from cosmotech_api.model.simulation_analysis_parameter_value import SimulationAnalysisParameterValue
 from cosmotech_api.model.simulation_base import SimulationBase
 from cosmotech_api.model.simulation_containers import SimulationContainers
+globals()['RunTemplateParameterValue'] = RunTemplateParameterValue
 globals()['SimulationAllOf'] = SimulationAllOf
-globals()['SimulationAnalysisParameterValue'] = SimulationAnalysisParameterValue
 globals()['SimulationBase'] = SimulationBase
 globals()['SimulationContainers'] = SimulationContainers
 from cosmotech_api.model.simulation import Simulation

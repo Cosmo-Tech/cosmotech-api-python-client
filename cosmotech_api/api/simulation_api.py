@@ -28,7 +28,7 @@ from cosmotech_api.model.simulation_logs_options import SimulationLogsOptions
 from cosmotech_api.model.simulation_search import SimulationSearch
 from cosmotech_api.model.simulation_start_containers import SimulationStartContainers
 from cosmotech_api.model.simulation_start_scenario import SimulationStartScenario
-from cosmotech_api.model.simulation_start_simulator import SimulationStartSimulator
+from cosmotech_api.model.simulation_start_solution import SimulationStartSolution
 
 
 class SimulationApi(object):
@@ -1525,23 +1525,23 @@ class SimulationApi(object):
             callable=__start_simulation_scenario
         )
 
-        def __start_simulation_simulator(
+        def __start_simulation_solution(
             self,
             organization_id,
-            simulation_start_simulator,
+            simulation_start_solution,
             **kwargs
         ):
-            """Start a new simulation for a Simulator Analysis  # noqa: E501
+            """Start a new simulation for a Solution Run Template  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.start_simulation_simulator(organization_id, simulation_start_simulator, async_req=True)
+            >>> thread = api.start_simulation_solution(organization_id, simulation_start_solution, async_req=True)
             >>> result = thread.get()
 
             Args:
                 organization_id (str): the Organization identifier
-                simulation_start_simulator (SimulationStartSimulator): the Simulator Analysis information to start
+                simulation_start_solution (SimulationStartSolution): the Solution Run Template information to start
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -1590,29 +1590,29 @@ class SimulationApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['organization_id'] = \
                 organization_id
-            kwargs['simulation_start_simulator'] = \
-                simulation_start_simulator
+            kwargs['simulation_start_solution'] = \
+                simulation_start_solution
             return self.call_with_http_info(**kwargs)
 
-        self.start_simulation_simulator = _Endpoint(
+        self.start_simulation_solution = _Endpoint(
             settings={
                 'response_type': (Simulation,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/simulations/startsimulator',
-                'operation_id': 'start_simulation_simulator',
+                'endpoint_path': '/organizations/{organization_id}/simulations/startsolution',
+                'operation_id': 'start_simulation_solution',
                 'http_method': 'POST',
                 'servers': None,
             },
             params_map={
                 'all': [
                     'organization_id',
-                    'simulation_start_simulator',
+                    'simulation_start_solution',
                 ],
                 'required': [
                     'organization_id',
-                    'simulation_start_simulator',
+                    'simulation_start_solution',
                 ],
                 'nullable': [
                 ],
@@ -1629,15 +1629,15 @@ class SimulationApi(object):
                 'openapi_types': {
                     'organization_id':
                         (str,),
-                    'simulation_start_simulator':
-                        (SimulationStartSimulator,),
+                    'simulation_start_solution':
+                        (SimulationStartSolution,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                 },
                 'location_map': {
                     'organization_id': 'path',
-                    'simulation_start_simulator': 'body',
+                    'simulation_start_solution': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -1651,5 +1651,5 @@ class SimulationApi(object):
                 ]
             },
             api_client=api_client,
-            callable=__start_simulation_simulator
+            callable=__start_simulation_solution
         )

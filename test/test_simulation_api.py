@@ -100,10 +100,10 @@ class TestSimulationApi(unittest.TestCase):
         """
         pass
 
-    def test_start_simulation_simulator(self):
-        """Test case for start_simulation_simulator
+    def test_start_simulation_solution(self):
+        """Test case for start_simulation_solution
 
-        Start a new simulation for a Simulator Analysis  # noqa: E501
+        Start a new simulation for a Solution Run Template  # noqa: E501
         """
         pass
 

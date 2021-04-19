@@ -28,12 +28,12 @@ from cosmotech_api.model_utils import (  # noqa: F401
 
 def lazy_import():
     from cosmotech_api.model.scenario_all_of import ScenarioAllOf
-    from cosmotech_api.model.scenario_analysis import ScenarioAnalysis
     from cosmotech_api.model.scenario_base import ScenarioBase
+    from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
     from cosmotech_api.model.scenario_user import ScenarioUser
     globals()['ScenarioAllOf'] = ScenarioAllOf
-    globals()['ScenarioAnalysis'] = ScenarioAnalysis
     globals()['ScenarioBase'] = ScenarioBase
+    globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
     globals()['ScenarioUser'] = ScenarioUser
 
 
@@ -96,11 +96,13 @@ class Scenario(ModelComposed):
             'tags': ([str],),  # noqa: E501
             'parent_id': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
-            'simulator_id': (str,),  # noqa: E501
+            'solution_id': (str,),  # noqa: E501
+            'run_template_id': (str,),  # noqa: E501
             'users': ([ScenarioUser],),  # noqa: E501
-            'simulator_name': (str,),  # noqa: E501
-            'simulator_analysis_name': (str,),  # noqa: E501
-            'analysis': (ScenarioAnalysis,),  # noqa: E501
+            'solution_name': (str,),  # noqa: E501
+            'run_template_name': (str,),  # noqa: E501
+            'dataset_list': ([str],),  # noqa: E501
+            'parameters_values': ([ScenarioRunTemplateParameterValue],),  # noqa: E501
             'send_input_to_data_warehouse': (bool,),  # noqa: E501
         }
 
@@ -116,11 +118,13 @@ class Scenario(ModelComposed):
         'tags': 'tags',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
-        'simulator_id': 'simulatorId',  # noqa: E501
+        'solution_id': 'solutionId',  # noqa: E501
+        'run_template_id': 'runTemplateId',  # noqa: E501
         'users': 'users',  # noqa: E501
-        'simulator_name': 'simulatorName',  # noqa: E501
-        'simulator_analysis_name': 'simulatorAnalysisName',  # noqa: E501
-        'analysis': 'analysis',  # noqa: E501
+        'solution_name': 'solutionName',  # noqa: E501
+        'run_template_name': 'runTemplateName',  # noqa: E501
+        'dataset_list': 'datasetList',  # noqa: E501
+        'parameters_values': 'parametersValues',  # noqa: E501
         'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
     }
 
@@ -179,12 +183,14 @@ class Scenario(ModelComposed):
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parent_id (str): the Scenario parent id. [optional]  # noqa: E501
             owner_id (str): the user id which own this Scenario. [optional]  # noqa: E501
-            simulator_id (str): the Simulator Id associated with this Scenario. [optional]  # noqa: E501
+            solution_id (str): the Solution Id associated with this Scenario. [optional]  # noqa: E501
+            run_template_id (str): the Solution Run Template Id associated with this Scenario. [optional]  # noqa: E501
             users ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
-            simulator_name (str): [optional]  # noqa: E501
-            simulator_analysis_name (str): [optional]  # noqa: E501
-            analysis (ScenarioAnalysis): [optional]  # noqa: E501
-            send_input_to_data_warehouse (bool): default setting for all Analysis to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
+            solution_name (str): the Solution name. [optional]  # noqa: E501
+            run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
+            dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
+            parameters_values ([ScenarioRunTemplateParameterValue]): the list of Solution Run Template parameters values. [optional]  # noqa: E501
+            send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

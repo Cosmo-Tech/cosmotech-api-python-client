@@ -163,7 +163,7 @@ class Dataset(ModelNormal):
             tags ([str]): the list of tags. [optional]  # noqa: E501
             fragments_ids ([str]): the list of other Datasets ids to compose as fragments. [optional]  # noqa: E501
             validator_id (str): the validator id. [optional]  # noqa: E501
-            compatibility ([DatasetCompatibility]): the list of compatible Simulators versions. [optional]  # noqa: E501
+            compatibility ([DatasetCompatibility]): the list of compatible Solutions versions. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

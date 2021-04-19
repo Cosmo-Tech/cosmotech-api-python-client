@@ -148,7 +148,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         validator_id="validator_id_example",
         compatibility=[
             DatasetCompatibility(
-                simulator_key="simulator_key_example",
+                solution_key="solution_key_example",
                 minimum_version="minimum_version_example",
                 maximum_version="maximum_version_example",
             ),
@@ -478,7 +478,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         validator_id="validator_id_example",
         compatibility=[
             DatasetCompatibility(
-                simulator_key="simulator_key_example",
+                solution_key="solution_key_example",
                 minimum_version="minimum_version_example",
                 maximum_version="maximum_version_example",
             ),

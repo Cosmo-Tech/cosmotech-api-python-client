@@ -28,11 +28,11 @@ from cosmotech_api.model_utils import (  # noqa: F401
 
 def lazy_import():
     from cosmotech_api.model.workspace_services import WorkspaceServices
-    from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
+    from cosmotech_api.model.workspace_solution import WorkspaceSolution
     from cosmotech_api.model.workspace_user import WorkspaceUser
     from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
     globals()['WorkspaceServices'] = WorkspaceServices
-    globals()['WorkspaceSimulator'] = WorkspaceSimulator
+    globals()['WorkspaceSolution'] = WorkspaceSolution
     globals()['WorkspaceUser'] = WorkspaceUser
     globals()['WorkspaceWebApp'] = WorkspaceWebApp
 
@@ -84,13 +84,12 @@ class Workspace(ModelNormal):
         lazy_import()
         return {
             'name': (str,),  # noqa: E501
-            'simulator': (WorkspaceSimulator,),  # noqa: E501
+            'solution': (WorkspaceSolution,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'version': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
-            'simulator_analysis_filter': ([str],),  # noqa: E501
             'users': ([WorkspaceUser],),  # noqa: E501
             'web_app': (WorkspaceWebApp,),  # noqa: E501
             'services': (WorkspaceServices,),  # noqa: E501
@@ -104,13 +103,12 @@ class Workspace(ModelNormal):
 
     attribute_map = {
         'name': 'name',  # noqa: E501
-        'simulator': 'simulator',  # noqa: E501
+        'solution': 'solution',  # noqa: E501
         'id': 'id',  # noqa: E501
         'description': 'description',  # noqa: E501
         'version': 'version',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
-        'simulator_analysis_filter': 'simulatorAnalysisFilter',  # noqa: E501
         'users': 'users',  # noqa: E501
         'web_app': 'webApp',  # noqa: E501
         'services': 'services',  # noqa: E501
@@ -129,12 +127,12 @@ class Workspace(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, simulator, *args, **kwargs):  # noqa: E501
+    def __init__(self, name, solution, *args, **kwargs):  # noqa: E501
         """Workspace - a model defined in OpenAPI
 
         Args:
             name (str): the Workspace name
-            simulator (WorkspaceSimulator):
+            solution (WorkspaceSolution):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,11 +170,10 @@ class Workspace(ModelNormal):
             version (str): the Workspace version MAJOR.MINOR.PATCH.. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             owner_id (str): the user id which own this workspace. [optional]  # noqa: E501
-            simulator_analysis_filter ([str]): a filter list of available Simulator Analysis. [optional]  # noqa: E501
             users ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
             web_app (WorkspaceWebApp): [optional]  # noqa: E501
             services (WorkspaceServices): [optional]  # noqa: E501
-            send_input_to_data_warehouse (bool): default setting for all Scenarios and Analysis to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
+            send_input_to_data_warehouse (bool): default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -203,7 +200,7 @@ class Workspace(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.name = name
-        self.simulator = simulator
+        self.solution = solution
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

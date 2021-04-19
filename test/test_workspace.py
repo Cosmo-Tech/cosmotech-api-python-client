@@ -12,12 +12,14 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.errorunknown import ERRORUNKNOWN
 from cosmotech_api.model.workspace_services import WorkspaceServices
-from cosmotech_api.model.workspace_simulator import WorkspaceSimulator
+from cosmotech_api.model.workspace_solution import WorkspaceSolution
 from cosmotech_api.model.workspace_user import WorkspaceUser
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
+globals()['ERRORUNKNOWN'] = ERRORUNKNOWN
 globals()['WorkspaceServices'] = WorkspaceServices
-globals()['WorkspaceSimulator'] = WorkspaceSimulator
+globals()['WorkspaceSolution'] = WorkspaceSolution
 globals()['WorkspaceUser'] = WorkspaceUser
 globals()['WorkspaceWebApp'] = WorkspaceWebApp
 from cosmotech_api.model.workspace import Workspace

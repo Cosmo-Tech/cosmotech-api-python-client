@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**search_simulations**](SimulationApi.md#search_simulations) | **POST** /organizations/{organization_id}/simulations/search | Search Simulations
 [**start_simulation_containers**](SimulationApi.md#start_simulation_containers) | **POST** /organizations/{organization_id}/simulations/startcontainers | Start a new simulation with raw containers definition
 [**start_simulation_scenario**](SimulationApi.md#start_simulation_scenario) | **POST** /organizations/{organization_id}/simulations/start | Start a new simulation for a Scenario
-[**start_simulation_simulator**](SimulationApi.md#start_simulation_simulator) | **POST** /organizations/{organization_id}/simulations/startsimulator | Start a new simulation for a Simulator Analysis
+[**start_simulation_solution**](SimulationApi.md#start_simulation_solution) | **POST** /organizations/{organization_id}/simulations/startsolution | Start a new simulation for a Solution Run Template
 
 
 # **delete_simulation**
@@ -689,8 +689,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = simulation_api.SimulationApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     simulation_search = SimulationSearch(
-        simulator_id="simulator_id_example",
-        simulator_analysis_id="simulator_analysis_id_example",
+        solution_id="solution_id_example",
+        run_template_id="run_template_id_example",
         workspace_id="workspace_id_example",
         scenario_id="scenario_id_example",
         state="state_example",
@@ -915,10 +915,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **start_simulation_simulator**
-> Simulation start_simulation_simulator(organization_id, simulation_start_simulator)
+# **start_simulation_solution**
+> Simulation start_simulation_solution(organization_id, simulation_start_solution)
 
-Start a new simulation for a Simulator Analysis
+Start a new simulation for a Solution Run Template
 
 ### Example
 
@@ -928,7 +928,7 @@ import time
 import cosmotech_api
 from cosmotech_api.api import simulation_api
 from cosmotech_api.model.simulation import Simulation
-from cosmotech_api.model.simulation_start_simulator import SimulationStartSimulator
+from cosmotech_api.model.simulation_start_solution import SimulationStartSolution
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -952,14 +952,14 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = simulation_api.SimulationApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
-    simulation_start_simulator = SimulationStartSimulator(
-        simulator_id="simulator_id_example",
-        simulator_analysis_id="simulator_analysis_id_example",
+    simulation_start_solution = SimulationStartSolution(
+        solution_id="solution_id_example",
+        run_template_id="run_template_id_example",
         dataset_list=[
             "dataset_list_example",
         ],
         parameters_values=[
-            SimulationAnalysisParameterValue(
+            RunTemplateParameterValue(
                 parameter_id="parameter_id_example",
                 var_type="var_type_example",
                 value="value_example",
@@ -969,15 +969,15 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         data_warehouse_db="data_warehouse_db_example",
         results_event_bus_resource_uri="results_event_bus_resource_uri_example",
         simulation_event_bus_resource_uri="simulation_event_bus_resource_uri_example",
-    ) # SimulationStartSimulator | the Simulator Analysis information to start
+    ) # SimulationStartSolution | the Solution Run Template information to start
 
     # example passing only required values which don't have defaults set
     try:
-        # Start a new simulation for a Simulator Analysis
-        api_response = api_instance.start_simulation_simulator(organization_id, simulation_start_simulator)
+        # Start a new simulation for a Solution Run Template
+        api_response = api_instance.start_simulation_solution(organization_id, simulation_start_solution)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling SimulationApi->start_simulation_simulator: %s\n" % e)
+        print("Exception when calling SimulationApi->start_simulation_solution: %s\n" % e)
 ```
 
 
@@ -986,7 +986,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
- **simulation_start_simulator** | [**SimulationStartSimulator**](SimulationStartSimulator.md)| the Simulator Analysis information to start |
+ **simulation_start_solution** | [**SimulationStartSolution**](SimulationStartSolution.md)| the Solution Run Template information to start |
 
 ### Return type
 

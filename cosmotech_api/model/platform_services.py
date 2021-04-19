@@ -84,7 +84,7 @@ class PlatformServices(ModelNormal):
             'credentials': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'storage': (PlatformService,),  # noqa: E501
             'core_container_registry': (PlatformService,),  # noqa: E501
-            'simulators_container_registry': (PlatformService,),  # noqa: E501
+            'solutions_container_registry': (PlatformService,),  # noqa: E501
             'event_bus_cluster': (PlatformService,),  # noqa: E501
             'data_warehouse_cluster': (PlatformService,),  # noqa: E501
             'database_cluster': (PlatformService,),  # noqa: E501
@@ -105,7 +105,7 @@ class PlatformServices(ModelNormal):
         'credentials': 'credentials',  # noqa: E501
         'storage': 'storage',  # noqa: E501
         'core_container_registry': 'coreContainerRegistry',  # noqa: E501
-        'simulators_container_registry': 'simulatorsContainerRegistry',  # noqa: E501
+        'solutions_container_registry': 'solutionsContainerRegistry',  # noqa: E501
         'event_bus_cluster': 'eventBusCluster',  # noqa: E501
         'data_warehouse_cluster': 'dataWarehouseCluster',  # noqa: E501
         'database_cluster': 'databaseCluster',  # noqa: E501
@@ -168,7 +168,7 @@ class PlatformServices(ModelNormal):
             credentials ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform credentials object for the Platform. Structure depends on cloud provider. [optional]  # noqa: E501
             storage (PlatformService): [optional]  # noqa: E501
             core_container_registry (PlatformService): [optional]  # noqa: E501
-            simulators_container_registry (PlatformService): [optional]  # noqa: E501
+            solutions_container_registry (PlatformService): [optional]  # noqa: E501
             event_bus_cluster (PlatformService): [optional]  # noqa: E501
             data_warehouse_cluster (PlatformService): [optional]  # noqa: E501
             database_cluster (PlatformService): [optional]  # noqa: E501

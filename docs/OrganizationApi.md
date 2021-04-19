@@ -214,7 +214,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 resource_uri="resource_uri_example",
                 credentials={},
             ),
-            simulators_container_registry=OrganizationService(
+            solutions_container_registry=OrganizationService(
                 cloud_service="cloud_service_example",
                 base_uri="base_uri_example",
                 platform_service="platform_service_example",
@@ -397,7 +397,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 resource_uri="resource_uri_example",
                 credentials={},
             ),
-            simulators_container_registry=OrganizationService(
+            solutions_container_registry=OrganizationService(
                 cloud_service="cloud_service_example",
                 base_uri="base_uri_example",
                 platform_service="platform_service_example",

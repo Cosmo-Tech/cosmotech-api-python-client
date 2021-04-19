@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **credentials** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | a freeform credentials object for the Platform. Structure depends on cloud provider | [optional] 
 **storage** | [**PlatformService**](PlatformService.md) |  | [optional] 
 **core_container_registry** | [**PlatformService**](PlatformService.md) |  | [optional] 
-**simulators_container_registry** | [**PlatformService**](PlatformService.md) |  | [optional] 
+**solutions_container_registry** | [**PlatformService**](PlatformService.md) |  | [optional] 
 **event_bus_cluster** | [**PlatformService**](PlatformService.md) |  | [optional] 
 **data_warehouse_cluster** | [**PlatformService**](PlatformService.md) |  | [optional] 
 **database_cluster** | [**PlatformService**](PlatformService.md) |  | [optional] 

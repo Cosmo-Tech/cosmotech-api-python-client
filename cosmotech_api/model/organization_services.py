@@ -79,7 +79,7 @@ class OrganizationServices(ModelNormal):
         return {
             'tenant_credentials': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'storage': (OrganizationService,),  # noqa: E501
-            'simulators_container_registry': (OrganizationService,),  # noqa: E501
+            'solutions_container_registry': (OrganizationService,),  # noqa: E501
         }
 
     @cached_property
@@ -90,7 +90,7 @@ class OrganizationServices(ModelNormal):
     attribute_map = {
         'tenant_credentials': 'tenantCredentials',  # noqa: E501
         'storage': 'storage',  # noqa: E501
-        'simulators_container_registry': 'simulatorsContainerRegistry',  # noqa: E501
+        'solutions_container_registry': 'solutionsContainerRegistry',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -141,7 +141,7 @@ class OrganizationServices(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             tenant_credentials ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform credentials object for the Organization tenant. Structure depends on cloud provider. [optional]  # noqa: E501
             storage (OrganizationService): [optional]  # noqa: E501
-            simulators_container_registry (OrganizationService): [optional]  # noqa: E501
+            solutions_container_registry (OrganizationService): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

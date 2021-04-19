@@ -27,9 +27,9 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
-    from cosmotech_api.model.simulation_analysis_parameter_value import SimulationAnalysisParameterValue
+    from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
     from cosmotech_api.model.simulation_containers import SimulationContainers
-    globals()['SimulationAnalysisParameterValue'] = SimulationAnalysisParameterValue
+    globals()['RunTemplateParameterValue'] = RunTemplateParameterValue
     globals()['SimulationContainers'] = SimulationContainers
 
 
@@ -80,7 +80,7 @@ class SimulationAllOf(ModelNormal):
         lazy_import()
         return {
             'dataset_list': ([str],),  # noqa: E501
-            'parameters_values': ([SimulationAnalysisParameterValue],),  # noqa: E501
+            'parameters_values': ([RunTemplateParameterValue],),  # noqa: E501
             'send_input_to_data_warehouse': (bool,),  # noqa: E501
             'data_warehouse_db': (str,),  # noqa: E501
             'results_event_bus_resource_uri': (str,),  # noqa: E501
@@ -154,7 +154,7 @@ class SimulationAllOf(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             dataset_list ([str]): the list of Dataset Id associated to this Analysis. [optional]  # noqa: E501
-            parameters_values ([SimulationAnalysisParameterValue]): the list of Simulator Analysis parameters values. [optional]  # noqa: E501
+            parameters_values ([RunTemplateParameterValue]): the list of Run Template parameters values. [optional]  # noqa: E501
             send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
             data_warehouse_db (str): the DataWarehouse database name to send data if sendInputToDataWarehouse is set. [optional]  # noqa: E501
             results_event_bus_resource_uri (str): the event bus which receive Workspace Simulation results messages. Message won't be send if this is not set. [optional]  # noqa: E501

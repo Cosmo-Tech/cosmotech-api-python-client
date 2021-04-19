@@ -72,8 +72,8 @@ class SimulationSearch(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'simulator_id': (str,),  # noqa: E501
-            'simulator_analysis_id': (str,),  # noqa: E501
+            'solution_id': (str,),  # noqa: E501
+            'run_template_id': (str,),  # noqa: E501
             'workspace_id': (str,),  # noqa: E501
             'scenario_id': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
@@ -87,8 +87,8 @@ class SimulationSearch(ModelNormal):
 
 
     attribute_map = {
-        'simulator_id': 'simulatorId',  # noqa: E501
-        'simulator_analysis_id': 'simulatorAnalysisId',  # noqa: E501
+        'solution_id': 'solutionId',  # noqa: E501
+        'run_template_id': 'runTemplateId',  # noqa: E501
         'workspace_id': 'workspaceId',  # noqa: E501
         'scenario_id': 'scenarioId',  # noqa: E501
         'state': 'state',  # noqa: E501
@@ -142,8 +142,8 @@ class SimulationSearch(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            simulator_id (str): the Simulator Id to search. [optional]  # noqa: E501
-            simulator_analysis_id (str): the Simulator Analysis Id to search. [optional]  # noqa: E501
+            solution_id (str): the Solution Id to search. [optional]  # noqa: E501
+            run_template_id (str): the Solution Analysis Id to search. [optional]  # noqa: E501
             workspace_id (str): the Workspace Id to search. [optional]  # noqa: E501
             scenario_id (str): the Scenario Id to search. [optional]  # noqa: E501
             state (str): the state to search. [optional]  # noqa: E501

@@ -6,9 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_workspace**](WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 [**delete_workspace**](WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
+[**delete_workspace_file**](WorkspaceApi.md#delete_workspace_file) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete a workspace file
+[**find_all_workspace_files**](WorkspaceApi.md#find_all_workspace_files) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files | List all Workspace files
 [**find_all_workspaces**](WorkspaceApi.md#find_all_workspaces) | **GET** /organizations/{organization_id}/workspaces | List all Workspaces
 [**find_workspace_by_id**](WorkspaceApi.md#find_workspace_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
 [**update_workspace**](WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
+[**upload_workspace_file**](WorkspaceApi.md#upload_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
 
 
 # **create_workspace**
@@ -56,16 +59,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             "tags_example",
         ],
         owner_id="owner_id_example",
-        simulator=WorkspaceSimulator(
-            simulator_id="simulator_id_example",
-            analysis_filter=[
-                "analysis_filter_example",
+        solution=WorkspaceSolution(
+            solution_id="solution_id_example",
+            run_template_filter=[
+                "run_template_filter_example",
             ],
-            default_analysis_dataset={},
+            default_run_template_dataset={},
         ),
-        simulator_analysis_filter=[
-            "simulator_analysis_filter_example",
-        ],
         users=[
             WorkspaceUser(
                 id="id_example",
@@ -227,6 +227,165 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | the workspace details |  -  |
 **400** | Bad request |  -  |
+**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_workspace_file**
+> WorkspaceFile delete_workspace_file(organization_id, workspace_id, workspace_file)
+
+Delete a workspace file
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import workspace_api
+from cosmotech_api.model.workspace_file import WorkspaceFile
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = workspace_api.WorkspaceApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    workspace_file = WorkspaceFile(
+        file_name="file_name_example",
+    ) # WorkspaceFile | the file to upload
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete a workspace file
+        api_response = api_instance.delete_workspace_file(organization_id, workspace_id, workspace_file)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling WorkspaceApi->delete_workspace_file: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **workspace_file** | [**WorkspaceFile**](WorkspaceFile.md)| the file to upload |
+
+### Return type
+
+[**WorkspaceFile**](WorkspaceFile.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the file resource details |  -  |
+**400** | Bad request |  -  |
+**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **find_all_workspace_files**
+> [WorkspaceFile] find_all_workspace_files(organization_id, workspace_id)
+
+List all Workspace files
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import workspace_api
+from cosmotech_api.model.workspace_file import WorkspaceFile
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = workspace_api.WorkspaceApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # List all Workspace files
+        api_response = api_instance.find_all_workspace_files(organization_id, workspace_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling WorkspaceApi->find_all_workspace_files: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+
+### Return type
+
+[**[WorkspaceFile]**](WorkspaceFile.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the workspace files |  -  |
 **404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -428,16 +587,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             "tags_example",
         ],
         owner_id="owner_id_example",
-        simulator=WorkspaceSimulator(
-            simulator_id="simulator_id_example",
-            analysis_filter=[
-                "analysis_filter_example",
+        solution=WorkspaceSolution(
+            solution_id="solution_id_example",
+            run_template_filter=[
+                "run_template_filter_example",
             ],
-            default_analysis_dataset={},
+            default_run_template_dataset={},
         ),
-        simulator_analysis_filter=[
-            "simulator_analysis_filter_example",
-        ],
         users=[
             WorkspaceUser(
                 id="id_example",
@@ -524,6 +680,94 @@ Name | Type | Description  | Notes
 **200** | the workspace details |  -  |
 **400** | Bad request |  -  |
 **404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_workspace_file**
+> WorkspaceFile upload_workspace_file(organization_id, workspace_id)
+
+Upload a file for the Workspace
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import workspace_api
+from cosmotech_api.model.workspace_file import WorkspaceFile
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = workspace_api.WorkspaceApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    file_name = open('/path/to/file', 'rb') # file_type |  (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Upload a file for the Workspace
+        api_response = api_instance.upload_workspace_file(organization_id, workspace_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling WorkspaceApi->upload_workspace_file: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Upload a file for the Workspace
+        api_response = api_instance.upload_workspace_file(organization_id, workspace_id, file_name=file_name)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling WorkspaceApi->upload_workspace_file: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **file_name** | **file_type**|  | [optional]
+
+### Return type
+
+[**WorkspaceFile**](WorkspaceFile.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the file resource details |  -  |
+**400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -72,7 +72,7 @@ class DatasetCompatibility(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'simulator_key': (str,),  # noqa: E501
+            'solution_key': (str,),  # noqa: E501
             'minimum_version': (str,),  # noqa: E501
             'maximum_version': (str,),  # noqa: E501
         }
@@ -83,7 +83,7 @@ class DatasetCompatibility(ModelNormal):
 
 
     attribute_map = {
-        'simulator_key': 'simulatorKey',  # noqa: E501
+        'solution_key': 'solutionKey',  # noqa: E501
         'minimum_version': 'minimumVersion',  # noqa: E501
         'maximum_version': 'maximumVersion',  # noqa: E501
     }
@@ -100,11 +100,11 @@ class DatasetCompatibility(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, simulator_key, *args, **kwargs):  # noqa: E501
+    def __init__(self, solution_key, *args, **kwargs):  # noqa: E501
         """DatasetCompatibility - a model defined in OpenAPI
 
         Args:
-            simulator_key (str): the Simulator key which group Simulator versions
+            solution_key (str): the Solution key which group Solution versions
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,8 +137,8 @@ class DatasetCompatibility(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            minimum_version (str): the Simulator minimum version compatibility (version included). [optional]  # noqa: E501
-            maximum_version (str): the Simulator maximum version compatibility (version included). [optional]  # noqa: E501
+            minimum_version (str): the Solution minimum version compatibility (version included). [optional]  # noqa: E501
+            maximum_version (str): the Solution maximum version compatibility (version included). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -164,7 +164,7 @@ class DatasetCompatibility(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.simulator_key = simulator_key
+        self.solution_key = solution_key
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

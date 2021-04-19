@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **tags** | **[str]** | the list of tags | [optional] 
 **fragments_ids** | **[str]** | the list of other Datasets ids to compose as fragments | [optional] 
 **validator_id** | **str** | the validator id | [optional] 
-**compatibility** | [**[DatasetCompatibility]**](DatasetCompatibility.md) | the list of compatible Simulators versions | [optional] 
+**compatibility** | [**[DatasetCompatibility]**](DatasetCompatibility.md) | the list of compatible Solutions versions | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

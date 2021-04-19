@@ -27,12 +27,12 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
     from cosmotech_api.model.simulation_all_of import SimulationAllOf
-    from cosmotech_api.model.simulation_analysis_parameter_value import SimulationAnalysisParameterValue
     from cosmotech_api.model.simulation_base import SimulationBase
     from cosmotech_api.model.simulation_containers import SimulationContainers
+    globals()['RunTemplateParameterValue'] = RunTemplateParameterValue
     globals()['SimulationAllOf'] = SimulationAllOf
-    globals()['SimulationAnalysisParameterValue'] = SimulationAnalysisParameterValue
     globals()['SimulationBase'] = SimulationBase
     globals()['SimulationContainers'] = SimulationContainers
 
@@ -97,17 +97,17 @@ class Simulation(ModelComposed):
             'workspace_name': (str,),  # noqa: E501
             'scenario_id': (str,),  # noqa: E501
             'scenario_name': (str,),  # noqa: E501
-            'simulator_id': (str,),  # noqa: E501
-            'simulator_name': (str,),  # noqa: E501
-            'simulator_version': (str,),  # noqa: E501
-            'simulator_analysis_id': (str,),  # noqa: E501
-            'simulator_analysis_name': (str,),  # noqa: E501
+            'solution_id': (str,),  # noqa: E501
+            'solution_name': (str,),  # noqa: E501
+            'solution_version': (str,),  # noqa: E501
+            'run_template_id': (str,),  # noqa: E501
+            'run_template_name': (str,),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
             'start_time': (str,),  # noqa: E501
             'end_time': (str,),  # noqa: E501
             'dataset_list': ([str],),  # noqa: E501
-            'parameters_values': ([SimulationAnalysisParameterValue],),  # noqa: E501
+            'parameters_values': ([RunTemplateParameterValue],),  # noqa: E501
             'send_input_to_data_warehouse': (bool,),  # noqa: E501
             'data_warehouse_db': (str,),  # noqa: E501
             'results_event_bus_resource_uri': (str,),  # noqa: E501
@@ -130,11 +130,11 @@ class Simulation(ModelComposed):
         'workspace_name': 'workspaceName',  # noqa: E501
         'scenario_id': 'scenarioId',  # noqa: E501
         'scenario_name': 'scenarioName',  # noqa: E501
-        'simulator_id': 'simulatorId',  # noqa: E501
-        'simulator_name': 'simulatorName',  # noqa: E501
-        'simulator_version': 'simulatorVersion',  # noqa: E501
-        'simulator_analysis_id': 'simulatorAnalysisId',  # noqa: E501
-        'simulator_analysis_name': 'simulatorAnalysisName',  # noqa: E501
+        'solution_id': 'solutionId',  # noqa: E501
+        'solution_name': 'solutionName',  # noqa: E501
+        'solution_version': 'solutionVersion',  # noqa: E501
+        'run_template_id': 'runTemplateId',  # noqa: E501
+        'run_template_name': 'runTemplateName',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
         'state': 'state',  # noqa: E501
         'start_time': 'startTime',  # noqa: E501
@@ -204,17 +204,17 @@ class Simulation(ModelComposed):
             workspace_name (str): the Workspace name. [optional]  # noqa: E501
             scenario_id (str): the Scenario Id. [optional]  # noqa: E501
             scenario_name (str): the Scenario name. [optional]  # noqa: E501
-            simulator_id (str): the Simulator Id. [optional]  # noqa: E501
-            simulator_name (str): the Simulator name. [optional]  # noqa: E501
-            simulator_version (str): the Simulator version. [optional]  # noqa: E501
-            simulator_analysis_id (str): the Simulator Analysis id. [optional]  # noqa: E501
-            simulator_analysis_name (str): the Simulator Analysis name. [optional]  # noqa: E501
+            solution_id (str): the Solution Id. [optional]  # noqa: E501
+            solution_name (str): the Solution name. [optional]  # noqa: E501
+            solution_version (str): the Solution version. [optional]  # noqa: E501
+            run_template_id (str): the Solution Run Template id. [optional]  # noqa: E501
+            run_template_name (str): the Run Template name. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
             state (str): the Simulation state. [optional]  # noqa: E501
             start_time (str): the Simulation start Date Time. [optional]  # noqa: E501
             end_time (str): the Simulation end Date Time. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Analysis. [optional]  # noqa: E501
-            parameters_values ([SimulationAnalysisParameterValue]): the list of Simulator Analysis parameters values. [optional]  # noqa: E501
+            parameters_values ([RunTemplateParameterValue]): the list of Run Template parameters values. [optional]  # noqa: E501
             send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional]  # noqa: E501
             data_warehouse_db (str): the DataWarehouse database name to send data if sendInputToDataWarehouse is set. [optional]  # noqa: E501
             results_event_bus_resource_uri (str): the event bus which receive Workspace Simulation results messages. Message won't be send if this is not set. [optional]  # noqa: E501
