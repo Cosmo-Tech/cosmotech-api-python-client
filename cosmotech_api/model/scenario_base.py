@@ -56,6 +56,12 @@ class ScenarioBase(ModelNormal):
     """
 
     allowed_values = {
+        ('state',): {
+            'CREATED': "Created",
+            'RUNNING': "Running",
+            'SUCCESSFUL': "Successful",
+            'FAILED': "Failed",
+        },
     }
 
     validations = {
@@ -86,6 +92,8 @@ class ScenarioBase(ModelNormal):
             'solution_id': (str,),  # noqa: E501
             'run_template_id': (str,),  # noqa: E501
             'users': ([ScenarioUser],),  # noqa: E501
+            'state': (str,),  # noqa: E501
+            'creation_date': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -103,6 +111,8 @@ class ScenarioBase(ModelNormal):
         'solution_id': 'solutionId',  # noqa: E501
         'run_template_id': 'runTemplateId',  # noqa: E501
         'users': 'users',  # noqa: E501
+        'state': 'state',  # noqa: E501
+        'creation_date': 'creationDate',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -162,6 +172,8 @@ class ScenarioBase(ModelNormal):
             solution_id (str): the Solution Id associated with this Scenario. [optional]  # noqa: E501
             run_template_id (str): the Solution Run Template Id associated with this Scenario. [optional]  # noqa: E501
             users ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
+            state (str): the Scenario state. [optional]  # noqa: E501
+            creation_date (str): the Scenario creation date. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

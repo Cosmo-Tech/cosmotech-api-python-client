@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **solution_id** | **str** | the Solution Id associated with this Scenario | [optional] [readonly] 
 **run_template_id** | **str** | the Solution Run Template Id associated with this Scenario | [optional] 
 **users** | [**[ScenarioUser]**](ScenarioUser.md) | the list of users Id with their role | [optional] 
+**state** | **str** | the Scenario state | [optional] [readonly] 
+**creation_date** | **str** | the Scenario creation date | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

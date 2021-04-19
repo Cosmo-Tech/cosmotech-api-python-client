@@ -62,6 +62,12 @@ class Scenario(ModelComposed):
     """
 
     allowed_values = {
+        ('state',): {
+            'CREATED': "Created",
+            'RUNNING': "Running",
+            'SUCCESSFUL': "Successful",
+            'FAILED': "Failed",
+        },
     }
 
     validations = {
@@ -99,6 +105,9 @@ class Scenario(ModelComposed):
             'solution_id': (str,),  # noqa: E501
             'run_template_id': (str,),  # noqa: E501
             'users': ([ScenarioUser],),  # noqa: E501
+            'state': (str,),  # noqa: E501
+            'creation_date': (str,),  # noqa: E501
+            'owner_name': (str,),  # noqa: E501
             'solution_name': (str,),  # noqa: E501
             'run_template_name': (str,),  # noqa: E501
             'dataset_list': ([str],),  # noqa: E501
@@ -121,6 +130,9 @@ class Scenario(ModelComposed):
         'solution_id': 'solutionId',  # noqa: E501
         'run_template_id': 'runTemplateId',  # noqa: E501
         'users': 'users',  # noqa: E501
+        'state': 'state',  # noqa: E501
+        'creation_date': 'creationDate',  # noqa: E501
+        'owner_name': 'ownerName',  # noqa: E501
         'solution_name': 'solutionName',  # noqa: E501
         'run_template_name': 'runTemplateName',  # noqa: E501
         'dataset_list': 'datasetList',  # noqa: E501
@@ -186,6 +198,9 @@ class Scenario(ModelComposed):
             solution_id (str): the Solution Id associated with this Scenario. [optional]  # noqa: E501
             run_template_id (str): the Solution Run Template Id associated with this Scenario. [optional]  # noqa: E501
             users ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
+            state (str): the Scenario state. [optional]  # noqa: E501
+            creation_date (str): the Scenario creation date. [optional]  # noqa: E501
+            owner_name (str): the name of the owner. [optional]  # noqa: E501
             solution_name (str): the Solution name. [optional]  # noqa: E501
             run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
