@@ -114,18 +114,18 @@ Class | Method | HTTP request | Description
 *ScenarioApi* | [**find_scenario_by_id**](docs/ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
 *ScenarioApi* | [**get_scenarios_tree**](docs/ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
 *ScenarioApi* | [**update_scenario**](docs/ScenarioApi.md#update_scenario) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Update a scenario
-*SimulationApi* | [**delete_simulation**](docs/SimulationApi.md#delete_simulation) | **DELETE** /organizations/{organization_id}/simulations/{simulation_id} | Delete a simulation
-*SimulationApi* | [**find_simulation_by_id**](docs/SimulationApi.md#find_simulation_by_id) | **GET** /organizations/{organization_id}/simulations/{simulation_id} | Get the details of a simulation
-*SimulationApi* | [**get_scenario_simulation**](docs/SimulationApi.md#get_scenario_simulation) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/simulations/{simulation_id} | get the Simulation for the Scenario
-*SimulationApi* | [**get_scenario_simulation_logs**](docs/SimulationApi.md#get_scenario_simulation_logs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/simulations/{simulation_id}/logs | get the logs for the Simulation
-*SimulationApi* | [**get_scenario_simulations**](docs/SimulationApi.md#get_scenario_simulations) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/simulations | get the list of Simulations for the Scenario
-*SimulationApi* | [**get_workspace_simulations**](docs/SimulationApi.md#get_workspace_simulations) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/simulations | get the list of Simulations for the Workspace
-*SimulationApi* | [**run_scenario**](docs/SimulationApi.md#run_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/run | run a Simulation for the Scenario
-*SimulationApi* | [**search_simulation_logs**](docs/SimulationApi.md#search_simulation_logs) | **POST** /organizations/{organization_id}/simulations/{simulation_id}/logs/search | Search the logs of a simulation
-*SimulationApi* | [**search_simulations**](docs/SimulationApi.md#search_simulations) | **POST** /organizations/{organization_id}/simulations/search | Search Simulations
-*SimulationApi* | [**start_simulation_containers**](docs/SimulationApi.md#start_simulation_containers) | **POST** /organizations/{organization_id}/simulations/startcontainers | Start a new simulation with raw containers definition
-*SimulationApi* | [**start_simulation_scenario**](docs/SimulationApi.md#start_simulation_scenario) | **POST** /organizations/{organization_id}/simulations/start | Start a new simulation for a Scenario
-*SimulationApi* | [**start_simulation_solution**](docs/SimulationApi.md#start_simulation_solution) | **POST** /organizations/{organization_id}/simulations/startsolution | Start a new simulation for a Solution Run Template
+*ScenariorunApi* | [**delete_scenario_run**](docs/ScenariorunApi.md#delete_scenario_run) | **DELETE** /organizations/{organization_id}/scenarioruns/{scenariorun_id} | Delete a scenariorun
+*ScenariorunApi* | [**find_scenario_run_by_id**](docs/ScenariorunApi.md#find_scenario_run_by_id) | **GET** /organizations/{organization_id}/scenarioruns/{scenariorun_id} | Get the details of a scenariorun
+*ScenariorunApi* | [**get_scenario_scenario_run**](docs/ScenariorunApi.md#get_scenario_scenario_run) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns/{scenariorun_id} | get the ScenarioRun for the Scenario
+*ScenariorunApi* | [**get_scenario_scenario_run_logs**](docs/ScenariorunApi.md#get_scenario_scenario_run_logs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns/{scenariorun_id}/logs | get the logs for the ScenarioRun
+*ScenariorunApi* | [**get_scenario_scenario_runs**](docs/ScenariorunApi.md#get_scenario_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns | get the list of ScenarioRuns for the Scenario
+*ScenariorunApi* | [**get_workspace_scenario_runs**](docs/ScenariorunApi.md#get_workspace_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarioruns | get the list of ScenarioRuns for the Workspace
+*ScenariorunApi* | [**run_scenario**](docs/ScenariorunApi.md#run_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/run | run a ScenarioRun for the Scenario
+*ScenariorunApi* | [**search_scenario_run_logs**](docs/ScenariorunApi.md#search_scenario_run_logs) | **POST** /organizations/{organization_id}/scenarioruns/{scenariorun_id}/logs/search | Search the logs of a scenariorun
+*ScenariorunApi* | [**search_scenario_runs**](docs/ScenariorunApi.md#search_scenario_runs) | **POST** /organizations/{organization_id}/scenarioruns/search | Search ScenarioRuns
+*ScenariorunApi* | [**start_scenario_run_containers**](docs/ScenariorunApi.md#start_scenario_run_containers) | **POST** /organizations/{organization_id}/scenarioruns/startcontainers | Start a new scenariorun with raw containers definition
+*ScenariorunApi* | [**start_scenario_run_scenario**](docs/ScenariorunApi.md#start_scenario_run_scenario) | **POST** /organizations/{organization_id}/scenarioruns/start | Start a new scenariorun for a Scenario
+*ScenariorunApi* | [**start_scenario_run_solution**](docs/ScenariorunApi.md#start_scenario_run_solution) | **POST** /organizations/{organization_id}/scenarioruns/startsolution | Start a new scenariorun for a Solution Run Template
 *SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 *SolutionApi* | [**find_all_solutions**](docs/SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
@@ -186,20 +186,20 @@ Class | Method | HTTP request | Description
  - [ScenarioBase](docs/ScenarioBase.md)
  - [ScenarioChangedParameterValue](docs/ScenarioChangedParameterValue.md)
  - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
+ - [ScenarioRun](docs/ScenarioRun.md)
+ - [ScenarioRunAllOf](docs/ScenarioRunAllOf.md)
+ - [ScenarioRunBase](docs/ScenarioRunBase.md)
+ - [ScenarioRunContainerLog](docs/ScenarioRunContainerLog.md)
+ - [ScenarioRunContainerLogs](docs/ScenarioRunContainerLogs.md)
+ - [ScenarioRunContainers](docs/ScenarioRunContainers.md)
+ - [ScenarioRunLogs](docs/ScenarioRunLogs.md)
+ - [ScenarioRunLogsOptions](docs/ScenarioRunLogsOptions.md)
+ - [ScenarioRunSearch](docs/ScenarioRunSearch.md)
+ - [ScenarioRunStart](docs/ScenarioRunStart.md)
+ - [ScenarioRunStartContainers](docs/ScenarioRunStartContainers.md)
+ - [ScenarioRunStartSolution](docs/ScenarioRunStartSolution.md)
  - [ScenarioRunTemplateParameterValue](docs/ScenarioRunTemplateParameterValue.md)
  - [ScenarioUser](docs/ScenarioUser.md)
- - [Simulation](docs/Simulation.md)
- - [SimulationAllOf](docs/SimulationAllOf.md)
- - [SimulationBase](docs/SimulationBase.md)
- - [SimulationContainerLog](docs/SimulationContainerLog.md)
- - [SimulationContainerLogs](docs/SimulationContainerLogs.md)
- - [SimulationContainers](docs/SimulationContainers.md)
- - [SimulationLogs](docs/SimulationLogs.md)
- - [SimulationLogsOptions](docs/SimulationLogsOptions.md)
- - [SimulationSearch](docs/SimulationSearch.md)
- - [SimulationStartContainers](docs/SimulationStartContainers.md)
- - [SimulationStartScenario](docs/SimulationStartScenario.md)
- - [SimulationStartSolution](docs/SimulationStartSolution.md)
  - [Solution](docs/Solution.md)
  - [TranslatedLabels](docs/TranslatedLabels.md)
  - [User](docs/User.md)

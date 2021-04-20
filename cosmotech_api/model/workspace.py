@@ -173,7 +173,7 @@ class Workspace(ModelNormal):
             users ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
             web_app (WorkspaceWebApp): [optional]  # noqa: E501
             services (WorkspaceServices): [optional]  # noqa: E501
-            send_input_to_data_warehouse (bool): default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
+            send_input_to_data_warehouse (bool): default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to the ScenarioRun. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

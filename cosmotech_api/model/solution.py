@@ -77,13 +77,13 @@ class Solution(ModelNormal):
         """
         lazy_import()
         return {
-            'solution_key': (str,),  # noqa: E501
+            'key': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'repository': (str,),  # noqa: E501
             'version': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
-            'simulator': (str,),  # noqa: E501
+            'csm_simulator': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
             'url': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
@@ -96,13 +96,13 @@ class Solution(ModelNormal):
 
 
     attribute_map = {
-        'solution_key': 'solutionKey',  # noqa: E501
+        'key': 'key',  # noqa: E501
         'name': 'name',  # noqa: E501
         'repository': 'repository',  # noqa: E501
         'version': 'version',  # noqa: E501
         'id': 'id',  # noqa: E501
         'description': 'description',  # noqa: E501
-        'simulator': 'simulator',  # noqa: E501
+        'csm_simulator': 'csmSimulator',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
         'url': 'url',  # noqa: E501
         'tags': 'tags',  # noqa: E501
@@ -121,11 +121,11 @@ class Solution(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, solution_key, name, repository, version, *args, **kwargs):  # noqa: E501
+    def __init__(self, key, name, repository, version, *args, **kwargs):  # noqa: E501
         """Solution - a model defined in OpenAPI
 
         Args:
-            solution_key (str): the Solution key which group Solution versions
+            key (str): the Solution key which group Solution versions
             name (str): the Solution name
             repository (str): the registry repository containing the image
             version (str): the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag
@@ -163,7 +163,7 @@ class Solution(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             id (str): the Solution version unique identifier. [optional]  # noqa: E501
             description (str): the Solution description. [optional]  # noqa: E501
-            simulator (str): the main simulator name used in standard Run Template. [optional]  # noqa: E501
+            csm_simulator (str): the main Cosmo Tech simulator name used in standard Run Template. [optional]  # noqa: E501
             owner_id (str): the User id which own this Solution. [optional]  # noqa: E501
             url (str): an optional URL link to solution page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
@@ -193,7 +193,7 @@ class Solution(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.solution_key = solution_key
+        self.key = key
         self.name = name
         self.repository = repository
         self.version = version

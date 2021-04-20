@@ -5,7 +5,7 @@ a version of a Connector
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**connector_key** | **str** | the Connector key which group Connector versions | 
+**key** | **str** | the Connector key which group Connector versions | 
 **name** | **str** | the Connector name | 
 **repository** | **str** | the registry repository containing the image | 
 **version** | **str** | the Connector version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 

@@ -50,11 +50,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     solution = Solution(
         id="id_example",
-        solution_key="solution_key_example",
+        key="key_example",
         name="name_example",
         description="description_example",
         repository="repository_example",
-        simulator="simulator_example",
+        csm_simulator="csm_simulator_example",
         version="version_example",
         owner_id="owner_id_example",
         url="url_example",
@@ -66,8 +66,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 id="id_example",
                 name="name_example",
                 description="description_example",
-                is_standard_simulator=True,
-                simulation="simulation_example",
+                use_direct_csm_simulator=True,
+                csm_simulation="csm_simulation_example",
                 tags=[
                     "tags_example",
                 ],
@@ -82,7 +82,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
-                custom_simulator_resource=RunTemplateResourceStorage(
+                engine_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
@@ -422,11 +422,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     solution_id = "solution_id_example" # str | the Solution identifier
     solution = Solution(
         id="id_example",
-        solution_key="solution_key_example",
+        key="key_example",
         name="name_example",
         description="description_example",
         repository="repository_example",
-        simulator="simulator_example",
+        csm_simulator="csm_simulator_example",
         version="version_example",
         owner_id="owner_id_example",
         url="url_example",
@@ -438,8 +438,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 id="id_example",
                 name="name_example",
                 description="description_example",
-                is_standard_simulator=True,
-                simulation="simulation_example",
+                use_direct_csm_simulator=True,
+                csm_simulation="csm_simulation_example",
                 tags=[
                     "tags_example",
                 ],
@@ -454,7 +454,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
-                custom_simulator_resource=RunTemplateResourceStorage(
+                engine_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",

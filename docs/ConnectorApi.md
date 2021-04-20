@@ -193,7 +193,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = connector_api.ConnectorApi(api_client)
     connector = Connector(
         id="id_example",
-        connector_key="connector_key_example",
+        key="key_example",
         name="name_example",
         description="description_example",
         repository="repository_example",

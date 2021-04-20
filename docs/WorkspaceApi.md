@@ -89,7 +89,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 resource_uri="resource_uri_example",
                 credentials={},
             ),
-            simulation_event_bus=WorkspaceService(
+            scenariorun_event_bus=WorkspaceService(
                 cloud_service="cloud_service_example",
                 base_uri="base_uri_example",
                 platform_service="platform_service_example",
@@ -617,7 +617,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 resource_uri="resource_uri_example",
                 credentials={},
             ),
-            simulation_event_bus=WorkspaceService(
+            scenariorun_event_bus=WorkspaceService(
                 cloud_service="cloud_service_example",
                 base_uri="base_uri_example",
                 platform_service="platform_service_example",

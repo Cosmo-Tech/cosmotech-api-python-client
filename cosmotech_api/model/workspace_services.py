@@ -79,7 +79,7 @@ class WorkspaceServices(ModelNormal):
         return {
             'tenant_credentials': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'results_event_bus': (WorkspaceService,),  # noqa: E501
-            'simulation_event_bus': (WorkspaceService,),  # noqa: E501
+            'scenariorun_event_bus': (WorkspaceService,),  # noqa: E501
             'data_warehouse': (WorkspaceService,),  # noqa: E501
             'storage': (WorkspaceService,),  # noqa: E501
         }
@@ -92,7 +92,7 @@ class WorkspaceServices(ModelNormal):
     attribute_map = {
         'tenant_credentials': 'tenantCredentials',  # noqa: E501
         'results_event_bus': 'resultsEventBus',  # noqa: E501
-        'simulation_event_bus': 'simulationEventBus',  # noqa: E501
+        'scenariorun_event_bus': 'scenariorunEventBus',  # noqa: E501
         'data_warehouse': 'dataWarehouse',  # noqa: E501
         'storage': 'storage',  # noqa: E501
     }
@@ -145,7 +145,7 @@ class WorkspaceServices(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             tenant_credentials ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform credentials object for the Organization tenant. Structure depends on cloud provider. [optional]  # noqa: E501
             results_event_bus (WorkspaceService): [optional]  # noqa: E501
-            simulation_event_bus (WorkspaceService): [optional]  # noqa: E501
+            scenariorun_event_bus (WorkspaceService): [optional]  # noqa: E501
             data_warehouse (WorkspaceService): [optional]  # noqa: E501
             storage (WorkspaceService): [optional]  # noqa: E501
         """

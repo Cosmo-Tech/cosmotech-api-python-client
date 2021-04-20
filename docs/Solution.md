@@ -5,13 +5,13 @@ a version of a Solution
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**solution_key** | **str** | the Solution key which group Solution versions | 
+**key** | **str** | the Solution key which group Solution versions | 
 **name** | **str** | the Solution name | 
 **repository** | **str** | the registry repository containing the image | 
 **version** | **str** | the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 
 **id** | **str** | the Solution version unique identifier | [optional] [readonly] 
 **description** | **str** | the Solution description | [optional] 
-**simulator** | **str** | the main simulator name used in standard Run Template | [optional] 
+**csm_simulator** | **str** | the main Cosmo Tech simulator name used in standard Run Template | [optional] 
 **owner_id** | **str** | the User id which own this Solution | [optional] [readonly] 
 **url** | **str** | an optional URL link to solution page | [optional] 
 **tags** | **[str]** | the list of tags | [optional] 

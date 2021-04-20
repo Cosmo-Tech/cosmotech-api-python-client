@@ -81,7 +81,7 @@ class Connector(ModelNormal):
         """
         lazy_import()
         return {
-            'connector_key': (str,),  # noqa: E501
+            'key': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'repository': (str,),  # noqa: E501
             'version': (str,),  # noqa: E501
@@ -100,7 +100,7 @@ class Connector(ModelNormal):
 
 
     attribute_map = {
-        'connector_key': 'connectorKey',  # noqa: E501
+        'key': 'key',  # noqa: E501
         'name': 'name',  # noqa: E501
         'repository': 'repository',  # noqa: E501
         'version': 'version',  # noqa: E501
@@ -125,11 +125,11 @@ class Connector(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, connector_key, name, repository, version, io_types, *args, **kwargs):  # noqa: E501
+    def __init__(self, key, name, repository, version, io_types, *args, **kwargs):  # noqa: E501
         """Connector - a model defined in OpenAPI
 
         Args:
-            connector_key (str): the Connector key which group Connector versions
+            key (str): the Connector key which group Connector versions
             name (str): the Connector name
             repository (str): the registry repository containing the image
             version (str): the Connector version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag
@@ -197,7 +197,7 @@ class Connector(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.connector_key = connector_key
+        self.key = key
         self.name = name
         self.repository = repository
         self.version = version

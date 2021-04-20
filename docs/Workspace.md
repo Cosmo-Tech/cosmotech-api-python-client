@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **users** | [**[WorkspaceUser]**](WorkspaceUser.md) | the list of users Id with their role | [optional] 
 **web_app** | [**WorkspaceWebApp**](WorkspaceWebApp.md) |  | [optional] 
 **services** | [**WorkspaceServices**](WorkspaceServices.md) |  | [optional] 
-**send_input_to_data_warehouse** | **bool** | default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run | [optional]  if omitted the server will use the default value of True
+**send_input_to_data_warehouse** | **bool** | default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to the ScenarioRun | [optional]  if omitted the server will use the default value of True
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
