@@ -52,6 +52,18 @@ class ScenarioRunSearch(ModelNormal):
     """
 
     allowed_values = {
+        ('state',): {
+            'FETCHINGDATASETS': "FetchingDatasets",
+            'FETCHINGSCENARIOPARAMETERS': "FetchingScenarioParameters",
+            'APPLYINGSCENARIOPARAMETERS': "ApplyingScenarioParameters",
+            'VALIDATINGSCENARIODATA': "ValidatingScenarioData",
+            'SENDINGSCENARIODATATODATAWAREHOUSE': "SendingScenarioDataToDataWarehouse",
+            'PRERUN': "PreRun",
+            'RUNNING': "Running",
+            'POSTRUN': "PostRun",
+            'SUCCESS': "Success",
+            'FAILED': "Failed",
+        },
     }
 
     validations = {

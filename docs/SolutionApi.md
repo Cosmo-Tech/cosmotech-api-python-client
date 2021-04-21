@@ -1,6 +1,6 @@
 # cosmotech_api.SolutionApi
 
-All URIs are relative to *https://api.azure.cosmo-platform.com*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -39,7 +39,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -82,16 +82,22 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
+                pre_run_resource=RunTemplateResourceStorage(
+                    storage_type="local",
+                    _resource_path="_resource_path_example",
+                    custom_uri="custom_uri_example",
+                ),
                 engine_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
-                dataset_schema_resource=RunTemplateResourceStorage(
+                post_run_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
+                send_input_to_data_warehouse=True,
                 parameter_groups=[
                     RunTemplateParameterGroup(
                         id="id_example",
@@ -168,10 +174,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -181,7 +187,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -246,10 +252,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -259,7 +265,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -320,10 +326,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -333,7 +339,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -397,10 +403,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -410,7 +416,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -454,16 +460,22 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
+                pre_run_resource=RunTemplateResourceStorage(
+                    storage_type="local",
+                    _resource_path="_resource_path_example",
+                    custom_uri="custom_uri_example",
+                ),
                 engine_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
-                dataset_schema_resource=RunTemplateResourceStorage(
+                post_run_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
+                send_input_to_data_warehouse=True,
                 parameter_groups=[
                     RunTemplateParameterGroup(
                         id="id_example",
@@ -542,10 +554,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -555,7 +567,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

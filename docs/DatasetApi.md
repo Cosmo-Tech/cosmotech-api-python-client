@@ -1,6 +1,6 @@
 # cosmotech_api.DatasetApi
 
-All URIs are relative to *https://api.azure.cosmo-platform.com*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import cosmotech_api
 from cosmotech_api.api import dataset_api
 from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -39,7 +39,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -108,10 +108,10 @@ import cosmotech_api
 from cosmotech_api.api import dataset_api
 from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -121,7 +121,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -208,10 +208,10 @@ import cosmotech_api
 from cosmotech_api.api import dataset_api
 from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -221,7 +221,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -286,10 +286,10 @@ import cosmotech_api
 from cosmotech_api.api import dataset_api
 from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -299,7 +299,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -360,10 +360,10 @@ import cosmotech_api
 from cosmotech_api.api import dataset_api
 from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -373,7 +373,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -437,10 +437,10 @@ import cosmotech_api
 from cosmotech_api.api import dataset_api
 from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -450,7 +450,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

@@ -12,12 +12,8 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.scenario_all_of import ScenarioAllOf
-from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from cosmotech_api.model.scenario_user import ScenarioUser
-globals()['ScenarioAllOf'] = ScenarioAllOf
-globals()['ScenarioBase'] = ScenarioBase
 globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
 globals()['ScenarioUser'] = ScenarioUser
 from cosmotech_api.model.scenario import Scenario

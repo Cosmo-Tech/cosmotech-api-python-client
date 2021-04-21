@@ -29,16 +29,12 @@ from cosmotech_api.model.run_template_parameter_group import RunTemplateParamete
 from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
 from cosmotech_api.model.run_template_resource_storage import RunTemplateResourceStorage
 from cosmotech_api.model.scenario import Scenario
-from cosmotech_api.model.scenario_all_of import ScenarioAllOf
-from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 from cosmotech_api.model.scenario_run import ScenarioRun
-from cosmotech_api.model.scenario_run_all_of import ScenarioRunAllOf
-from cosmotech_api.model.scenario_run_base import ScenarioRunBase
+from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 from cosmotech_api.model.scenario_run_container_log import ScenarioRunContainerLog
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
-from cosmotech_api.model.scenario_run_containers import ScenarioRunContainers
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
 from cosmotech_api.model.scenario_run_logs_options import ScenarioRunLogsOptions
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
@@ -50,8 +46,6 @@ from cosmotech_api.model.scenario_user import ScenarioUser
 from cosmotech_api.model.solution import Solution
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.user import User
-from cosmotech_api.model.user_details import UserDetails
-from cosmotech_api.model.user_details_all_of import UserDetailsAllOf
 from cosmotech_api.model.user_organization import UserOrganization
 from cosmotech_api.model.user_workspace import UserWorkspace
 from cosmotech_api.model.validator import Validator

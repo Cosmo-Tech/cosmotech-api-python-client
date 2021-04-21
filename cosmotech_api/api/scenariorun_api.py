@@ -22,7 +22,6 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.scenario_run import ScenarioRun
-from cosmotech_api.model.scenario_run_base import ScenarioRunBase
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
 from cosmotech_api.model.scenario_run_logs_options import ScenarioRunLogsOptions
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
@@ -637,7 +636,7 @@ class ScenariorunApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [ScenarioRunBase]
+                [ScenarioRun]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -670,7 +669,7 @@ class ScenariorunApi(object):
 
         self.get_scenario_scenario_runs = _Endpoint(
             settings={
-                'response_type': ([ScenarioRunBase],),
+                'response_type': ([ScenarioRun],),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -773,7 +772,7 @@ class ScenariorunApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [ScenarioRunBase]
+                [ScenarioRun]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -804,7 +803,7 @@ class ScenariorunApi(object):
 
         self.get_workspace_scenario_runs = _Endpoint(
             settings={
-                'response_type': ([ScenarioRunBase],),
+                'response_type': ([ScenarioRun],),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -903,7 +902,7 @@ class ScenariorunApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ScenarioRunBase
+                ScenarioRun
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -936,7 +935,7 @@ class ScenariorunApi(object):
 
         self.run_scenario = _Endpoint(
             settings={
-                'response_type': (ScenarioRunBase,),
+                'response_type': (ScenarioRun,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -1178,7 +1177,7 @@ class ScenariorunApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [ScenarioRunBase]
+                [ScenarioRun]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1209,7 +1208,7 @@ class ScenariorunApi(object):
 
         self.search_scenario_runs = _Endpoint(
             settings={
-                'response_type': ([ScenarioRunBase],),
+                'response_type': ([ScenarioRun],),
                 'auth': [
                     'oAuth2AuthCode'
                 ],

@@ -22,7 +22,6 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.user import User
-from cosmotech_api.model.user_details import UserDetails
 
 
 class UserApi(object):
@@ -285,7 +284,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UserDetails
+                User
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -314,7 +313,7 @@ class UserApi(object):
 
         self.find_user_by_id = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -400,7 +399,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UserDetails
+                User
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -427,7 +426,7 @@ class UserApi(object):
 
         self.get_current_user = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -509,7 +508,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UserDetails
+                User
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -538,7 +537,7 @@ class UserApi(object):
 
         self.get_organization_current_user = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -629,7 +628,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UserDetails
+                User
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -660,7 +659,7 @@ class UserApi(object):
 
         self.get_workspace_current_user = _Endpoint(
             settings={
-                'response_type': (UserDetails,),
+                'response_type': (User,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],

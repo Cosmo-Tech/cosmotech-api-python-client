@@ -12,6 +12,8 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.user_organization import UserOrganization
+globals()['UserOrganization'] = UserOrganization
 from cosmotech_api.model.user import User
 
 

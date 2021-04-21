@@ -12,15 +12,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
 from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
-globals()['RunTemplateParameterValue'] = RunTemplateParameterValue
-globals()['ScenarioRunContainer'] = ScenarioRunContainer
-from cosmotech_api.model.scenario_run import ScenarioRun
 
 
-class TestScenarioRun(unittest.TestCase):
-    """ScenarioRun unit test stubs"""
+class TestScenarioRunContainer(unittest.TestCase):
+    """ScenarioRunContainer unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +24,10 @@ class TestScenarioRun(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testScenarioRun(self):
-        """Test ScenarioRun"""
+    def testScenarioRunContainer(self):
+        """Test ScenarioRunContainer"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = ScenarioRun()  # noqa: E501
+        # model = ScenarioRunContainer()  # noqa: E501
         pass
 
 

@@ -1,5 +1,6 @@
 # Scenario
 
+a Scenario with base information
 
 ## Properties
 Name | Type | Description | Notes
@@ -20,8 +21,6 @@ Name | Type | Description | Notes
 **run_template_name** | **str** | the Solution Run Template name associated with this Scenario | [optional] [readonly] 
 **dataset_list** | **[str]** | the list of Dataset Id associated to this Scenario Run Template | [optional] 
 **parameters_values** | [**[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] 
-**send_input_to_data_warehouse** | **bool** | whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

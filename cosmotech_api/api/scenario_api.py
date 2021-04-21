@@ -22,7 +22,6 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.scenario import Scenario
-from cosmotech_api.model.scenario_base import ScenarioBase
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 
 
@@ -769,7 +768,7 @@ class ScenarioApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [ScenarioBase]
+                [Scenario]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -800,7 +799,7 @@ class ScenarioApi(object):
 
         self.get_scenarios_tree = _Endpoint(
             settings={
-                'response_type': ([ScenarioBase],),
+                'response_type': ([Scenario],),
                 'auth': [
                     'oAuth2AuthCode'
                 ],

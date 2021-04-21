@@ -1,6 +1,6 @@
 # cosmotech_api.ScenarioApi
 
-All URIs are relative to *https://api.azure.cosmo-platform.com*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,10 +27,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,7 +40,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -108,10 +108,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -121,7 +121,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -131,7 +131,41 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = scenario_api.ScenarioApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario = Scenario() # Scenario | the Scenario to create
+    scenario = Scenario(
+        id="id_example",
+        name="name_example",
+        description="description_example",
+        tags=[
+            "tags_example",
+        ],
+        parent_id="parent_id_example",
+        owner_id="owner_id_example",
+        solution_id="solution_id_example",
+        run_template_id="run_template_id_example",
+        users=[
+            ScenarioUser(
+                id="id_example",
+                name="name_example",
+                roles="Viewer",
+            ),
+        ],
+        state="Created",
+        creation_date="creation_date_example",
+        owner_name="owner_name_example",
+        solution_name="solution_name_example",
+        run_template_name="run_template_name_example",
+        dataset_list=[
+            "dataset_list_example",
+        ],
+        parameters_values=[
+            ScenarioRunTemplateParameterValue(
+                parameter_id="parameter_id_example",
+                var_type="var_type_example",
+                value="value_example",
+                is_inherited="is_inherited_example",
+            ),
+        ],
+    ) # Scenario | the Scenario to create
 
     # example passing only required values which don't have defaults set
     try:
@@ -187,10 +221,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -200,7 +234,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -267,10 +301,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -280,7 +314,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -343,10 +377,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -356,7 +390,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -409,7 +443,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_scenarios_tree**
-> [ScenarioBase] get_scenarios_tree(organization_id, workspace_id)
+> [Scenario] get_scenarios_tree(organization_id, workspace_id)
 
 Get the Scenarios Tree
 
@@ -420,12 +454,12 @@ Get the Scenarios Tree
 import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_base import ScenarioBase
+from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -435,7 +469,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -465,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ScenarioBase]**](ScenarioBase.md)
+[**[Scenario]**](Scenario.md)
 
 ### Authorization
 
@@ -498,10 +532,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -511,7 +545,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "http://localhost:8080"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -522,7 +556,41 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace_id = "workspace_id_example" # str | the Workspace identifier
     scenario_id = "scenario_id_example" # str | the Scenario identifier
-    scenario = Scenario() # Scenario | the new Scenario details.
+    scenario = Scenario(
+        id="id_example",
+        name="name_example",
+        description="description_example",
+        tags=[
+            "tags_example",
+        ],
+        parent_id="parent_id_example",
+        owner_id="owner_id_example",
+        solution_id="solution_id_example",
+        run_template_id="run_template_id_example",
+        users=[
+            ScenarioUser(
+                id="id_example",
+                name="name_example",
+                roles="Viewer",
+            ),
+        ],
+        state="Created",
+        creation_date="creation_date_example",
+        owner_name="owner_name_example",
+        solution_name="solution_name_example",
+        run_template_name="run_template_name_example",
+        dataset_list=[
+            "dataset_list_example",
+        ],
+        parameters_values=[
+            ScenarioRunTemplateParameterValue(
+                parameter_id="parameter_id_example",
+                var_type="var_type_example",
+                value="value_example",
+                is_inherited="is_inherited_example",
+            ),
+        ],
+    ) # Scenario | the new Scenario details.
 
     # example passing only required values which don't have defaults set
     try:

@@ -27,8 +27,8 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
-    from cosmotech_api.model.scenario_run_containers import ScenarioRunContainers
-    globals()['ScenarioRunContainers'] = ScenarioRunContainers
+    from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
+    globals()['ScenarioRunContainer'] = ScenarioRunContainer
 
 
 class ScenarioRunStartContainers(ModelNormal):
@@ -78,8 +78,14 @@ class ScenarioRunStartContainers(ModelNormal):
         lazy_import()
         return {
             'node_label': (str,),  # noqa: E501
-            'init_containers': ([ScenarioRunContainers],),  # noqa: E501
-            'main_container': (ScenarioRunContainers,),  # noqa: E501
+            'fetch_dataset_containers': ([ScenarioRunContainer],),  # noqa: E501
+            'fetch_scenario_parameters_container': (ScenarioRunContainer,),  # noqa: E501
+            'apply_parameters_container': (ScenarioRunContainer,),  # noqa: E501
+            'validate_data_container': (ScenarioRunContainer,),  # noqa: E501
+            'send_data_warehouse_container': (ScenarioRunContainer,),  # noqa: E501
+            'pre_run_container': (ScenarioRunContainer,),  # noqa: E501
+            'run_container': (ScenarioRunContainer,),  # noqa: E501
+            'post_run_container': (ScenarioRunContainer,),  # noqa: E501
         }
 
     @cached_property
@@ -89,8 +95,14 @@ class ScenarioRunStartContainers(ModelNormal):
 
     attribute_map = {
         'node_label': 'nodeLabel',  # noqa: E501
-        'init_containers': 'initContainers',  # noqa: E501
-        'main_container': 'mainContainer',  # noqa: E501
+        'fetch_dataset_containers': 'fetchDatasetContainers',  # noqa: E501
+        'fetch_scenario_parameters_container': 'fetchScenarioParametersContainer',  # noqa: E501
+        'apply_parameters_container': 'applyParametersContainer',  # noqa: E501
+        'validate_data_container': 'validateDataContainer',  # noqa: E501
+        'send_data_warehouse_container': 'sendDataWarehouseContainer',  # noqa: E501
+        'pre_run_container': 'preRunContainer',  # noqa: E501
+        'run_container': 'runContainer',  # noqa: E501
+        'post_run_container': 'postRunContainer',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -140,8 +152,14 @@ class ScenarioRunStartContainers(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             node_label (str): the node label request. [optional]  # noqa: E501
-            init_containers ([ScenarioRunContainers]): the list of init containers. [optional]  # noqa: E501
-            main_container (ScenarioRunContainers): [optional]  # noqa: E501
+            fetch_dataset_containers ([ScenarioRunContainer]): the containers which fetch the Scenario Datasets. [optional]  # noqa: E501
+            fetch_scenario_parameters_container (ScenarioRunContainer): [optional]  # noqa: E501
+            apply_parameters_container (ScenarioRunContainer): [optional]  # noqa: E501
+            validate_data_container (ScenarioRunContainer): [optional]  # noqa: E501
+            send_data_warehouse_container (ScenarioRunContainer): [optional]  # noqa: E501
+            pre_run_container (ScenarioRunContainer): [optional]  # noqa: E501
+            run_container (ScenarioRunContainer): [optional]  # noqa: E501
+            post_run_container (ScenarioRunContainer): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -12,7 +12,9 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 from cosmotech_api.model.scenario_run_container_log import ScenarioRunContainerLog
+globals()['ScenarioRunContainer'] = ScenarioRunContainer
 globals()['ScenarioRunContainerLog'] = ScenarioRunContainerLog
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
 

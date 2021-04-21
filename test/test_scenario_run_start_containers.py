@@ -12,8 +12,8 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.scenario_run_containers import ScenarioRunContainers
-globals()['ScenarioRunContainers'] = ScenarioRunContainers
+from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
+globals()['ScenarioRunContainer'] = ScenarioRunContainer
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
 
 

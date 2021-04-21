@@ -88,8 +88,10 @@ class RunTemplate(ModelNormal):
             'compute_size': (str,),  # noqa: E501
             'parameters_handler_resource': (RunTemplateResourceStorage,),  # noqa: E501
             'dataset_validator_resource': (RunTemplateResourceStorage,),  # noqa: E501
+            'pre_run_resource': (RunTemplateResourceStorage,),  # noqa: E501
             'engine_resource': (RunTemplateResourceStorage,),  # noqa: E501
-            'dataset_schema_resource': (RunTemplateResourceStorage,),  # noqa: E501
+            'post_run_resource': (RunTemplateResourceStorage,),  # noqa: E501
+            'send_input_to_data_warehouse': (bool,),  # noqa: E501
             'parameter_groups': ([RunTemplateParameterGroup],),  # noqa: E501
         }
 
@@ -108,8 +110,10 @@ class RunTemplate(ModelNormal):
         'compute_size': 'computeSize',  # noqa: E501
         'parameters_handler_resource': 'parametersHandlerResource',  # noqa: E501
         'dataset_validator_resource': 'datasetValidatorResource',  # noqa: E501
+        'pre_run_resource': 'preRunResource',  # noqa: E501
         'engine_resource': 'engineResource',  # noqa: E501
-        'dataset_schema_resource': 'datasetSchemaResource',  # noqa: E501
+        'post_run_resource': 'postRunResource',  # noqa: E501
+        'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
     }
 
@@ -170,8 +174,10 @@ class RunTemplate(ModelNormal):
             compute_size (str): the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
             parameters_handler_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
             dataset_validator_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
+            pre_run_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
             engine_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
-            dataset_schema_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
+            post_run_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
+            send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
             parameter_groups ([RunTemplateParameterGroup]): the list of parameters groups for the Run Template. [optional]  # noqa: E501
         """
 

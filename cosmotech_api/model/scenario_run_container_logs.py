@@ -27,7 +27,9 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
     from cosmotech_api.model.scenario_run_container_log import ScenarioRunContainerLog
+    globals()['ScenarioRunContainer'] = ScenarioRunContainer
     globals()['ScenarioRunContainerLog'] = ScenarioRunContainerLog
 
 
@@ -77,7 +79,7 @@ class ScenarioRunContainerLogs(ModelNormal):
         """
         lazy_import()
         return {
-            'container_id': (str,),  # noqa: E501
+            'container': (ScenarioRunContainer,),  # noqa: E501
             'computer': (str,),  # noqa: E501
             'logs': ([ScenarioRunContainerLog],),  # noqa: E501
             'text_log': (str,),  # noqa: E501
@@ -89,7 +91,7 @@ class ScenarioRunContainerLogs(ModelNormal):
 
 
     attribute_map = {
-        'container_id': 'containerId',  # noqa: E501
+        'container': 'container',  # noqa: E501
         'computer': 'computer',  # noqa: E501
         'logs': 'logs',  # noqa: E501
         'text_log': 'textLog',  # noqa: E501
@@ -141,7 +143,7 @@ class ScenarioRunContainerLogs(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            container_id (str): container ID for log source as seen by Docker engine. [optional]  # noqa: E501
+            container (ScenarioRunContainer): [optional]  # noqa: E501
             computer (str): computer/node that's generating the log. [optional]  # noqa: E501
             logs ([ScenarioRunContainerLog]): the list of container logs in structured format. [optional]  # noqa: E501
             text_log (str): the plain text log if plainText option has been set. [optional]  # noqa: E501
