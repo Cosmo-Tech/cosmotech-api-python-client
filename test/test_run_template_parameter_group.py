@@ -12,9 +12,7 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.translated_labels import TranslatedLabels
-globals()['RunTemplateParameter'] = RunTemplateParameter
 globals()['TranslatedLabels'] = TranslatedLabels
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 

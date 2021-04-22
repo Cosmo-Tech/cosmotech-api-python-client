@@ -56,6 +56,9 @@ fi
 # Clone remote repository
 pushd ../../release
 git clone ${github_uri}
+# Delete all files to remove renamed or deleted files
+cd ${git_repo_id}
+rm -rf *
 popd
 # Adds the files in the local repository
 cp -r * ../../release/${git_repo_id}
@@ -73,4 +76,4 @@ git push origin master 2>&1 | grep -v 'To https'
 
 popd
 # Cleaning release repository
-# rm -rf ../../release
+rm -rf ../../release

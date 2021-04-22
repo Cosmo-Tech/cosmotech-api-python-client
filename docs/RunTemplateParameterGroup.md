@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Parameter Group id | 
 **labels** | [**TranslatedLabels**](TranslatedLabels.md) |  | 
-**parameters** | [**[RunTemplateParameter]**](RunTemplateParameter.md) | a list of Run Template Parameters | 
+**parameters** | **[str]** | an ordered list of Run Template Parameters | 
 **order** | **int** | the Parameter Group order | [optional] 
 **is_table** | **bool** | does the group define a table | [optional] 
 **options** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | freeform options | [optional] 

@@ -61,12 +61,33 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         tags=[
             "tags_example",
         ],
+        parameters=[
+            RunTemplateParameter(
+                id="id_example",
+                labels=TranslatedLabels(),
+                var_type="var_type_example",
+                order=1,
+                options={},
+            ),
+        ],
+        parameter_groups=[
+            RunTemplateParameterGroup(
+                id="id_example",
+                labels=TranslatedLabels(),
+                order=1,
+                is_table=True,
+                options={},
+                parent_id="parent_id_example",
+                parameters=[
+                    "parameters_example",
+                ],
+            ),
+        ],
         run_templates=[
             RunTemplate(
                 id="id_example",
                 name="name_example",
                 description="description_example",
-                use_direct_csm_simulator=True,
                 csm_simulation="csm_simulation_example",
                 tags=[
                     "tags_example",
@@ -97,25 +118,10 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
-                send_input_to_data_warehouse=True,
+                send_datasets_to_data_warehouse=True,
+                send_input_parameters_to_data_warehouse=True,
                 parameter_groups=[
-                    RunTemplateParameterGroup(
-                        id="id_example",
-                        labels=TranslatedLabels(),
-                        order=1,
-                        is_table=True,
-                        options={},
-                        parent_id="parent_id_example",
-                        parameters=[
-                            RunTemplateParameter(
-                                id="id_example",
-                                labels=TranslatedLabels(),
-                                var_type="var_type_example",
-                                order=1,
-                                options={},
-                            ),
-                        ],
-                    ),
+                    "parameter_groups_example",
                 ],
             ),
         ],
@@ -439,12 +445,33 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         tags=[
             "tags_example",
         ],
+        parameters=[
+            RunTemplateParameter(
+                id="id_example",
+                labels=TranslatedLabels(),
+                var_type="var_type_example",
+                order=1,
+                options={},
+            ),
+        ],
+        parameter_groups=[
+            RunTemplateParameterGroup(
+                id="id_example",
+                labels=TranslatedLabels(),
+                order=1,
+                is_table=True,
+                options={},
+                parent_id="parent_id_example",
+                parameters=[
+                    "parameters_example",
+                ],
+            ),
+        ],
         run_templates=[
             RunTemplate(
                 id="id_example",
                 name="name_example",
                 description="description_example",
-                use_direct_csm_simulator=True,
                 csm_simulation="csm_simulation_example",
                 tags=[
                     "tags_example",
@@ -475,25 +502,10 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     _resource_path="_resource_path_example",
                     custom_uri="custom_uri_example",
                 ),
-                send_input_to_data_warehouse=True,
+                send_datasets_to_data_warehouse=True,
+                send_input_parameters_to_data_warehouse=True,
                 parameter_groups=[
-                    RunTemplateParameterGroup(
-                        id="id_example",
-                        labels=TranslatedLabels(),
-                        order=1,
-                        is_table=True,
-                        options={},
-                        parent_id="parent_id_example",
-                        parameters=[
-                            RunTemplateParameter(
-                                id="id_example",
-                                labels=TranslatedLabels(),
-                                var_type="var_type_example",
-                                order=1,
-                                options={},
-                            ),
-                        ],
-                    ),
+                    "parameter_groups_example",
                 ],
             ),
         ],

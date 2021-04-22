@@ -27,9 +27,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
-    from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
     from cosmotech_api.model.run_template_resource_storage import RunTemplateResourceStorage
-    globals()['RunTemplateParameterGroup'] = RunTemplateParameterGroup
     globals()['RunTemplateResourceStorage'] = RunTemplateResourceStorage
 
 
@@ -82,7 +80,6 @@ class RunTemplate(ModelNormal):
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
-            'use_direct_csm_simulator': (bool,),  # noqa: E501
             'csm_simulation': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
@@ -91,8 +88,9 @@ class RunTemplate(ModelNormal):
             'pre_run_resource': (RunTemplateResourceStorage,),  # noqa: E501
             'engine_resource': (RunTemplateResourceStorage,),  # noqa: E501
             'post_run_resource': (RunTemplateResourceStorage,),  # noqa: E501
-            'send_input_to_data_warehouse': (bool,),  # noqa: E501
-            'parameter_groups': ([RunTemplateParameterGroup],),  # noqa: E501
+            'send_datasets_to_data_warehouse': (bool,),  # noqa: E501
+            'send_input_parameters_to_data_warehouse': (bool,),  # noqa: E501
+            'parameter_groups': ([str],),  # noqa: E501
         }
 
     @cached_property
@@ -104,7 +102,6 @@ class RunTemplate(ModelNormal):
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'description': 'description',  # noqa: E501
-        'use_direct_csm_simulator': 'useDirectCsmSimulator',  # noqa: E501
         'csm_simulation': 'csmSimulation',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
@@ -113,7 +110,8 @@ class RunTemplate(ModelNormal):
         'pre_run_resource': 'preRunResource',  # noqa: E501
         'engine_resource': 'engineResource',  # noqa: E501
         'post_run_resource': 'postRunResource',  # noqa: E501
-        'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
+        'send_datasets_to_data_warehouse': 'sendDatasetsToDataWarehouse',  # noqa: E501
+        'send_input_parameters_to_data_warehouse': 'sendInputParametersToDataWarehouse',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
     }
 
@@ -168,7 +166,6 @@ class RunTemplate(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             description (str): the Run Template description. [optional]  # noqa: E501
-            use_direct_csm_simulator (bool): whether or not the Run Template use the main standard csmSimulator directly. False if there is an Engine set. [optional]  # noqa: E501
             csm_simulation (str): the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined. [optional]  # noqa: E501
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
@@ -177,8 +174,9 @@ class RunTemplate(ModelNormal):
             pre_run_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
             engine_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
             post_run_resource (RunTemplateResourceStorage): [optional]  # noqa: E501
-            send_input_to_data_warehouse (bool): whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
-            parameter_groups ([RunTemplateParameterGroup]): the list of parameters groups for the Run Template. [optional]  # noqa: E501
+            send_datasets_to_data_warehouse (bool): whether or not the Datasets values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
+            send_input_parameters_to_data_warehouse (bool): whether or not the input parameters values are send to the DataWarehouse prior to Simulation Run. [optional] if omitted the server will use the default value of True  # noqa: E501
+            parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -27,9 +27,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
-    from cosmotech_api.model.run_template_parameter import RunTemplateParameter
     from cosmotech_api.model.translated_labels import TranslatedLabels
-    globals()['RunTemplateParameter'] = RunTemplateParameter
     globals()['TranslatedLabels'] = TranslatedLabels
 
 
@@ -81,7 +79,7 @@ class RunTemplateParameterGroup(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'labels': (TranslatedLabels,),  # noqa: E501
-            'parameters': ([RunTemplateParameter],),  # noqa: E501
+            'parameters': ([str],),  # noqa: E501
             'order': (int,),  # noqa: E501
             'is_table': (bool,),  # noqa: E501
             'options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
@@ -121,7 +119,7 @@ class RunTemplateParameterGroup(ModelNormal):
         Args:
             id (str): the Parameter Group id
             labels (TranslatedLabels):
-            parameters ([RunTemplateParameter]): a list of Run Template Parameters
+            parameters ([str]): an ordered list of Run Template Parameters
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

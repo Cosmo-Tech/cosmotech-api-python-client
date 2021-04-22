@@ -12,9 +12,7 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.model.run_template_resource_storage import RunTemplateResourceStorage
-globals()['RunTemplateParameterGroup'] = RunTemplateParameterGroup
 globals()['RunTemplateResourceStorage'] = RunTemplateResourceStorage
 from cosmotech_api.model.run_template import RunTemplate
 

@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **owner_id** | **str** | the User id which own this Solution | [optional] [readonly] 
 **url** | **str** | an optional URL link to solution page | [optional] 
 **tags** | **[str]** | the list of tags | [optional] 
+**parameters** | [**[RunTemplateParameter]**](RunTemplateParameter.md) | the list of Run Template Parameters | [optional] 
+**parameter_groups** | [**[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md) | the list of parameters groups for the Run Templates | [optional] 
 **run_templates** | [**[RunTemplate]**](RunTemplate.md) | list of Run Template | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

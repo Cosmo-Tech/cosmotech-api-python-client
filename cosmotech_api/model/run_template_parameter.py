@@ -115,7 +115,7 @@ class RunTemplateParameter(ModelNormal):
         Args:
             id (str): the Parameter id
             labels (TranslatedLabels):
-            var_type (str): the variable type for the parameter. Basic types or special type $DATASETID, $DATAPATH
+            var_type (str): the variable type for the parameter. Basic types or special type %DATASETID%
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

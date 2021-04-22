@@ -28,7 +28,11 @@ from cosmotech_api.model_utils import (  # noqa: F401
 
 def lazy_import():
     from cosmotech_api.model.run_template import RunTemplate
+    from cosmotech_api.model.run_template_parameter import RunTemplateParameter
+    from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
     globals()['RunTemplate'] = RunTemplate
+    globals()['RunTemplateParameter'] = RunTemplateParameter
+    globals()['RunTemplateParameterGroup'] = RunTemplateParameterGroup
 
 
 class Solution(ModelNormal):
@@ -87,6 +91,8 @@ class Solution(ModelNormal):
             'owner_id': (str,),  # noqa: E501
             'url': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
+            'parameters': ([RunTemplateParameter],),  # noqa: E501
+            'parameter_groups': ([RunTemplateParameterGroup],),  # noqa: E501
             'run_templates': ([RunTemplate],),  # noqa: E501
         }
 
@@ -106,6 +112,8 @@ class Solution(ModelNormal):
         'owner_id': 'ownerId',  # noqa: E501
         'url': 'url',  # noqa: E501
         'tags': 'tags',  # noqa: E501
+        'parameters': 'parameters',  # noqa: E501
+        'parameter_groups': 'parameterGroups',  # noqa: E501
         'run_templates': 'run_templates',  # noqa: E501
     }
 
@@ -167,6 +175,8 @@ class Solution(ModelNormal):
             owner_id (str): the User id which own this Solution. [optional]  # noqa: E501
             url (str): an optional URL link to solution page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
+            parameters ([RunTemplateParameter]): the list of Run Template Parameters. [optional]  # noqa: E501
+            parameter_groups ([RunTemplateParameterGroup]): the list of parameters groups for the Run Templates. [optional]  # noqa: E501
             run_templates ([RunTemplate]): list of Run Template. [optional]  # noqa: E501
         """
 
