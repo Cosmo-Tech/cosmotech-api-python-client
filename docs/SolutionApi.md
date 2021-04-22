@@ -66,7 +66,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 id="id_example",
                 labels=TranslatedLabels(),
                 var_type="var_type_example",
-                order=1,
                 options={},
             ),
         ],
@@ -74,7 +73,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             RunTemplateParameterGroup(
                 id="id_example",
                 labels=TranslatedLabels(),
-                order=1,
                 is_table=True,
                 options={},
                 parent_id="parent_id_example",
@@ -450,7 +448,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 id="id_example",
                 labels=TranslatedLabels(),
                 var_type="var_type_example",
-                order=1,
                 options={},
             ),
         ],
@@ -458,7 +455,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             RunTemplateParameterGroup(
                 id="id_example",
                 labels=TranslatedLabels(),
-                order=1,
                 is_table=True,
                 options={},
                 parent_id="parent_id_example",

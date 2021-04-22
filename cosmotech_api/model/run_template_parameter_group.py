@@ -80,7 +80,6 @@ class RunTemplateParameterGroup(ModelNormal):
             'id': (str,),  # noqa: E501
             'labels': (TranslatedLabels,),  # noqa: E501
             'parameters': ([str],),  # noqa: E501
-            'order': (int,),  # noqa: E501
             'is_table': (bool,),  # noqa: E501
             'options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'parent_id': (str,),  # noqa: E501
@@ -95,7 +94,6 @@ class RunTemplateParameterGroup(ModelNormal):
         'id': 'id',  # noqa: E501
         'labels': 'labels',  # noqa: E501
         'parameters': 'parameters',  # noqa: E501
-        'order': 'order',  # noqa: E501
         'is_table': 'isTable',  # noqa: E501
         'options': 'options',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
@@ -152,7 +150,6 @@ class RunTemplateParameterGroup(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            order (int): the Parameter Group order. [optional]  # noqa: E501
             is_table (bool): does the group define a table. [optional]  # noqa: E501
             options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): freeform options. [optional]  # noqa: E501
             parent_id (str): the Run Template Group parent Id. [optional]  # noqa: E501

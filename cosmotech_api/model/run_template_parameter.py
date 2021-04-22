@@ -80,7 +80,6 @@ class RunTemplateParameter(ModelNormal):
             'id': (str,),  # noqa: E501
             'labels': (TranslatedLabels,),  # noqa: E501
             'var_type': (str,),  # noqa: E501
-            'order': (int,),  # noqa: E501
             'options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
@@ -93,7 +92,6 @@ class RunTemplateParameter(ModelNormal):
         'id': 'id',  # noqa: E501
         'labels': 'labels',  # noqa: E501
         'var_type': 'varType',  # noqa: E501
-        'order': 'order',  # noqa: E501
         'options': 'options',  # noqa: E501
     }
 
@@ -148,7 +146,6 @@ class RunTemplateParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            order (int): the Parameter Group order. [optional]  # noqa: E501
             options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): freeform options. [optional]  # noqa: E501
         """
 
