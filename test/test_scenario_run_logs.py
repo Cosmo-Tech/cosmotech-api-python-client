@@ -13,9 +13,7 @@ import unittest
 
 import cosmotech_api
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
-from cosmotech_api.model.scenario_run_logs_options import ScenarioRunLogsOptions
 globals()['ScenarioRunContainerLogs'] = ScenarioRunContainerLogs
-globals()['ScenarioRunLogsOptions'] = ScenarioRunLogsOptions
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
 
 

@@ -92,7 +92,8 @@ class ScenarioRun(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'job_id': (str,),  # noqa: E501
+            'workflow_id': (str,),  # noqa: E501
+            'workflow_name': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
             'workspace_id': (str,),  # noqa: E501
             'workspace_name': (str,),  # noqa: E501
@@ -133,7 +134,8 @@ class ScenarioRun(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'job_id': 'jobId',  # noqa: E501
+        'workflow_id': 'workflowId',  # noqa: E501
+        'workflow_name': 'workflowName',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
         'workspace_id': 'workspaceId',  # noqa: E501
         'workspace_name': 'workspaceName',  # noqa: E501
@@ -214,7 +216,8 @@ class ScenarioRun(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the ScenarioRun. [optional]  # noqa: E501
-            job_id (str): the Platform compute cluster Job Id. [optional]  # noqa: E501
+            workflow_id (str): the Cosmo Tech compute cluster Argo Workflow Id to search. [optional]  # noqa: E501
+            workflow_name (str): the Cosmo Tech compute cluster Argo Workflow Name. [optional]  # noqa: E501
             owner_id (str): the user id which own this scenariorun. [optional]  # noqa: E501
             workspace_id (str): the Workspace Id. [optional]  # noqa: E501
             workspace_name (str): the Workspace name. [optional]  # noqa: E501

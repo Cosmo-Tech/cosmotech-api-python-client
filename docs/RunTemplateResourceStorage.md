@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storage_type** | **str** | the storage type. Use ${CSM_PROJECT_PATH} or ${CSM_STORAGE_SIMULATOR} behind the scene | 
+**storage_type** | **str** | the storage type | 
 **_resource_path** | **str** | the resource path | 
-**custom_uri** | **str** | a custom Uri to provide the resource in resourcePath | [optional] 
+**storage_options** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | freeform options for storage | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

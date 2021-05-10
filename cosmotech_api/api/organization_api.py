@@ -22,6 +22,8 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.organization import Organization
+from cosmotech_api.model.organization_service import OrganizationService
+from cosmotech_api.model.organization_user import OrganizationUser
 
 
 class OrganizationApi(object):
@@ -35,6 +37,135 @@ class OrganizationApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+
+        def __add_or_replace_users_in_organization(
+            self,
+            organization_id,
+            organization_user,
+            **kwargs
+        ):
+            """Add (or replace) users in the Organization specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.add_or_replace_users_in_organization(organization_id, organization_user, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                organization_user ([OrganizationUser]): the Users to add. Any User with the same ID is overwritten
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [OrganizationUser]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['organization_user'] = \
+                organization_user
+            return self.call_with_http_info(**kwargs)
+
+        self.add_or_replace_users_in_organization = _Endpoint(
+            settings={
+                'response_type': ([OrganizationUser],),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/users',
+                'operation_id': 'add_or_replace_users_in_organization',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'organization_user',
+                ],
+                'required': [
+                    'organization_id',
+                    'organization_user',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'organization_user':
+                        ([OrganizationUser],),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'organization_user': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__add_or_replace_users_in_organization
+        )
 
         def __find_all_organizations(
             self,
@@ -147,7 +278,7 @@ class OrganizationApi(object):
             organization_id,
             **kwargs
         ):
-            """Get the details of an organization  # noqa: E501
+            """Get the details of an Organization  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -372,11 +503,254 @@ class OrganizationApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
             callable=__register_organization
+        )
+
+        def __remove_all_users_in_organization(
+            self,
+            organization_id,
+            **kwargs
+        ):
+            """Remove all users from the Organization specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.remove_all_users_in_organization(organization_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            return self.call_with_http_info(**kwargs)
+
+        self.remove_all_users_in_organization = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/users',
+                'operation_id': 'remove_all_users_in_organization',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                ],
+                'required': [
+                    'organization_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__remove_all_users_in_organization
+        )
+
+        def __remove_user_from_organization(
+            self,
+            organization_id,
+            user_id,
+            **kwargs
+        ):
+            """Remove the specified user from the given Organization  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.remove_user_from_organization(organization_id, user_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                user_id (str): the User identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['user_id'] = \
+                user_id
+            return self.call_with_http_info(**kwargs)
+
+        self.remove_user_from_organization = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/users/{user_id}',
+                'operation_id': 'remove_user_from_organization',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'user_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'user_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'user_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'user_id': 'user_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'user_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__remove_user_from_organization
         )
 
         def __unregister_organization(
@@ -417,7 +791,7 @@ class OrganizationApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Organization
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -446,7 +820,7 @@ class OrganizationApi(object):
 
         self.unregister_organization = _Endpoint(
             settings={
-                'response_type': (Organization,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -488,9 +862,7 @@ class OrganizationApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -503,7 +875,7 @@ class OrganizationApi(object):
             organization,
             **kwargs
         ):
-            """Update an organization  # noqa: E501
+            """Update an Organization  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -619,9 +991,399 @@ class OrganizationApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
             callable=__update_organization
+        )
+
+        def __update_solutions_container_registry_by_organization_id(
+            self,
+            organization_id,
+            organization_service,
+            **kwargs
+        ):
+            """Update the solutions container registry configuration for the Organization specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.update_solutions_container_registry_by_organization_id(organization_id, organization_service, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                organization_service (OrganizationService): the new solutions container registry configuration to use
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                OrganizationService
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['organization_service'] = \
+                organization_service
+            return self.call_with_http_info(**kwargs)
+
+        self.update_solutions_container_registry_by_organization_id = _Endpoint(
+            settings={
+                'response_type': (OrganizationService,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/services/solutionsContainerRegistry',
+                'operation_id': 'update_solutions_container_registry_by_organization_id',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'organization_service',
+                ],
+                'required': [
+                    'organization_id',
+                    'organization_service',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'organization_service':
+                        (OrganizationService,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'organization_service': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json',
+                    'application/yaml'
+                ]
+            },
+            api_client=api_client,
+            callable=__update_solutions_container_registry_by_organization_id
+        )
+
+        def __update_storage_by_organization_id(
+            self,
+            organization_id,
+            organization_service,
+            **kwargs
+        ):
+            """Update storage configuration for the Organization specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.update_storage_by_organization_id(organization_id, organization_service, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                organization_service (OrganizationService): the new Storage configuration to use
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                OrganizationService
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['organization_service'] = \
+                organization_service
+            return self.call_with_http_info(**kwargs)
+
+        self.update_storage_by_organization_id = _Endpoint(
+            settings={
+                'response_type': (OrganizationService,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/services/storage',
+                'operation_id': 'update_storage_by_organization_id',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'organization_service',
+                ],
+                'required': [
+                    'organization_id',
+                    'organization_service',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'organization_service':
+                        (OrganizationService,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'organization_service': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json',
+                    'application/yaml'
+                ]
+            },
+            api_client=api_client,
+            callable=__update_storage_by_organization_id
+        )
+
+        def __update_tenant_credentials_by_organization_id(
+            self,
+            organization_id,
+            request_body,
+            **kwargs
+        ):
+            """Update tenant credentials for the Organization specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.update_tenant_credentials_by_organization_id(organization_id, request_body, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                request_body ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): the new Tenant Credentials to use
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['request_body'] = \
+                request_body
+            return self.call_with_http_info(**kwargs)
+
+        self.update_tenant_credentials_by_organization_id = _Endpoint(
+            settings={
+                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/services/tenantCredentials',
+                'operation_id': 'update_tenant_credentials_by_organization_id',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'request_body',
+                ],
+                'required': [
+                    'organization_id',
+                    'request_body',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'request_body':
+                        ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'request_body': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__update_tenant_credentials_by_organization_id
         )

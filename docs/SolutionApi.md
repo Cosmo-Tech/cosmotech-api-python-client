@@ -1,16 +1,321 @@
 # cosmotech_api.SolutionApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_or_replace_parameter_groups**](SolutionApi.md#add_or_replace_parameter_groups) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Add Parameter Groups. Any item with the same ID will be overwritten
+[**add_or_replace_parameters**](SolutionApi.md#add_or_replace_parameters) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameters | Add Parameters. Any item with the same ID will be overwritten
+[**add_or_replace_run_templates**](SolutionApi.md#add_or_replace_run_templates) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Add Run Templates. Any item with the same ID will be overwritten
 [**create_solution**](SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 [**delete_solution**](SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 [**find_all_solutions**](SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 [**find_solution_by_id**](SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
+[**remove_all_run_templates**](SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified
+[**remove_all_solution_parameter_groups**](SolutionApi.md#remove_all_solution_parameter_groups) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Remove all Parameter Groups from the Solution specified
+[**remove_all_solution_parameters**](SolutionApi.md#remove_all_solution_parameters) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters | Remove all Parameters from the Solution specified
 [**update_solution**](SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
-[**upload**](SolutionApi.md#upload) | **POST** /organizations/{organization_id}/solutions/upload | Upload and register a new solution
+[**upload_run_template_handler**](SolutionApi.md#upload_run_template_handler) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/upload | Upload a Run Template step handler zip file
 
+
+# **add_or_replace_parameter_groups**
+> [RunTemplateParameterGroup] add_or_replace_parameter_groups(organization_id, solution_id, run_template_parameter_group)
+
+Add Parameter Groups. Any item with the same ID will be overwritten
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template_parameter_group = [
+        RunTemplateParameterGroup(
+            id="id_example",
+            labels=TranslatedLabels(),
+            is_table=True,
+            options={},
+            parent_id="parent_id_example",
+            parameters=[
+                "parameters_example",
+            ],
+        ),
+    ] # [RunTemplateParameterGroup] | the Parameter Groups
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add Parameter Groups. Any item with the same ID will be overwritten
+        api_response = api_instance.add_or_replace_parameter_groups(organization_id, solution_id, run_template_parameter_group)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->add_or_replace_parameter_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template_parameter_group** | [**[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md)| the Parameter Groups |
+
+### Return type
+
+[**[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the Parameter Groups |  -  |
+**400** | Bad request |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_or_replace_parameters**
+> [RunTemplateParameter] add_or_replace_parameters(organization_id, solution_id, run_template_parameter)
+
+Add Parameters. Any item with the same ID will be overwritten
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.run_template_parameter import RunTemplateParameter
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template_parameter = [
+        RunTemplateParameter(
+            id="id_example",
+            labels=TranslatedLabels(),
+            var_type="var_type_example",
+            options={},
+        ),
+    ] # [RunTemplateParameter] | the Parameters
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add Parameters. Any item with the same ID will be overwritten
+        api_response = api_instance.add_or_replace_parameters(organization_id, solution_id, run_template_parameter)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->add_or_replace_parameters: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template_parameter** | [**[RunTemplateParameter]**](RunTemplateParameter.md)| the Parameters |
+
+### Return type
+
+[**[RunTemplateParameter]**](RunTemplateParameter.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the Parameters |  -  |
+**400** | Bad request |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_or_replace_run_templates**
+> [RunTemplate] add_or_replace_run_templates(organization_id, solution_id, run_template)
+
+Add Run Templates. Any item with the same ID will be overwritten
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.run_template import RunTemplate
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template = [
+        RunTemplate(
+            id="id_example",
+            name="name_example",
+            description="description_example",
+            csm_simulation="csm_simulation_example",
+            tags=[
+                "tags_example",
+            ],
+            compute_size="compute_size_example",
+            parameters_handler_resource=RunTemplateResourceStorage(
+                storage_type="local",
+                _resource_path="_resource_path_example",
+                storage_options={},
+            ),
+            dataset_validator_resource=RunTemplateResourceStorage(
+                storage_type="local",
+                _resource_path="_resource_path_example",
+                storage_options={},
+            ),
+            pre_run_resource=RunTemplateResourceStorage(
+                storage_type="local",
+                _resource_path="_resource_path_example",
+                storage_options={},
+            ),
+            engine_resource=RunTemplateResourceStorage(
+                storage_type="local",
+                _resource_path="_resource_path_example",
+                storage_options={},
+            ),
+            post_run_resource=RunTemplateResourceStorage(
+                storage_type="local",
+                _resource_path="_resource_path_example",
+                storage_options={},
+            ),
+            send_datasets_to_data_warehouse=True,
+            send_input_parameters_to_data_warehouse=True,
+            parameter_groups=[
+                "parameter_groups_example",
+            ],
+        ),
+    ] # [RunTemplate] | the Run Templates
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add Run Templates. Any item with the same ID will be overwritten
+        api_response = api_instance.add_or_replace_run_templates(organization_id, solution_id, run_template)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->add_or_replace_run_templates: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template** | [**[RunTemplate]**](RunTemplate.md)| the Run Templates |
+
+### Return type
+
+[**[RunTemplate]**](RunTemplate.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the Parameters |  -  |
+**400** | Bad request |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_solution**
 > Solution create_solution(organization_id, solution)
@@ -26,10 +331,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -39,7 +344,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -94,27 +399,27 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 parameters_handler_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 dataset_validator_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 pre_run_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 engine_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 post_run_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 send_datasets_to_data_warehouse=True,
                 send_input_parameters_to_data_warehouse=True,
@@ -152,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 
@@ -165,7 +470,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_solution**
-> Solution delete_solution(organization_id, solution_id)
+> delete_solution(organization_id, solution_id)
 
 Delete a solution
 
@@ -176,12 +481,11 @@ Delete a solution
 import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
-from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -191,7 +495,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -205,8 +509,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Delete a solution
-        api_response = api_instance.delete_solution(organization_id, solution_id)
-        pprint(api_response)
+        api_instance.delete_solution(organization_id, solution_id)
     except cosmotech_api.ApiException as e:
         print("Exception when calling SolutionApi->delete_solution: %s\n" % e)
 ```
@@ -221,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Solution**](Solution.md)
+void (empty response body)
 
 ### Authorization
 
@@ -230,14 +533,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the solution details |  -  |
-**400** | Bad request |  -  |
+**204** | Request succeeded |  -  |
 **404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -256,10 +558,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -269,7 +571,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -330,10 +632,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -343,7 +645,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -393,6 +695,231 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **remove_all_run_templates**
+> remove_all_run_templates(organization_id, solution_id)
+
+Remove all Run Templates from the Solution specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove all Run Templates from the Solution specified
+        api_instance.remove_all_run_templates(organization_id, solution_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->remove_all_run_templates: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | the operation succeeded |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **remove_all_solution_parameter_groups**
+> remove_all_solution_parameter_groups(organization_id, solution_id)
+
+Remove all Parameter Groups from the Solution specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove all Parameter Groups from the Solution specified
+        api_instance.remove_all_solution_parameter_groups(organization_id, solution_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->remove_all_solution_parameter_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | the operation succeeded |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **remove_all_solution_parameters**
+> remove_all_solution_parameters(organization_id, solution_id)
+
+Remove all Parameters from the Solution specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove all Parameters from the Solution specified
+        api_instance.remove_all_solution_parameters(organization_id, solution_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->remove_all_solution_parameters: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | the operation succeeded |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_solution**
 > Solution update_solution(organization_id, solution_id, solution)
 
@@ -407,10 +934,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -420,7 +947,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -476,27 +1003,27 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 parameters_handler_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 dataset_validator_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 pre_run_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 engine_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 post_run_resource=RunTemplateResourceStorage(
                     storage_type="local",
                     _resource_path="_resource_path_example",
-                    custom_uri="custom_uri_example",
+                    storage_options={},
                 ),
                 send_datasets_to_data_warehouse=True,
                 send_input_parameters_to_data_warehouse=True,
@@ -535,7 +1062,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 
@@ -548,10 +1075,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **upload**
-> Solution upload(organization_id, body)
+# **upload_run_template_handler**
+> upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
 
-Upload and register a new solution
+Upload a Run Template step handler zip file
 
 ### Example
 
@@ -560,12 +1087,11 @@ Upload and register a new solution
 import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
-from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -575,7 +1101,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -584,15 +1110,25 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solution_api.SolutionApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
-    body = open('/path/to/file', 'rb') # file_type | the Solution to upload and register
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template_id = "run_template_id_example" # str | the Run Template identifier
+    handler_id = "parameters_handler" # str | the Handler id identifier
+    body = open('/path/to/file', 'rb') # file_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Upload and register a new solution
-        api_response = api_instance.upload(organization_id, body)
-        pprint(api_response)
+        # Upload a Run Template step handler zip file
+        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling SolutionApi->upload: %s\n" % e)
+        print("Exception when calling SolutionApi->upload_run_template_handler: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Upload a Run Template step handler zip file
+        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body=body)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->upload_run_template_handler: %s\n" % e)
 ```
 
 
@@ -601,11 +1137,14 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
- **body** | **file_type**| the Solution to upload and register |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template_id** | **str**| the Run Template identifier |
+ **handler_id** | **str**| the Handler id identifier |
+ **body** | **file_type**|  | [optional]
 
 ### Return type
 
-[**Solution**](Solution.md)
+void (empty response body)
 
 ### Authorization
 
@@ -613,14 +1152,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml
- - **Accept**: application/json
+ - **Content-Type**: image/zip
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the solution details |  -  |
+**201** | zip file uploaded |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

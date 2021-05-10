@@ -1,17 +1,199 @@
 # cosmotech_api.ScenarioApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_or_replace_scenario_parameter_values**](ScenarioApi.md#add_or_replace_scenario_parameter_values) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Add (or replace) Parameter Values for the Scenario specified
+[**add_or_replace_users_in_scenario**](ScenarioApi.md#add_or_replace_users_in_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Add (or replace) users in the Scenario specified
 [**compare_scenarios**](ScenarioApi.md#compare_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} | Compare the Scenario with another one and returns the difference for parameters values
-[**create_scenario**](ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new scenario
+[**create_scenario**](ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new Scenario
 [**delete_scenario**](ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
 [**find_all_scenarios**](ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 [**find_scenario_by_id**](ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
 [**get_scenarios_tree**](ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
+[**remove_all_scenario_parameter_values**](ScenarioApi.md#remove_all_scenario_parameter_values) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Remove all Parameter Values from the Scenario specified
+[**remove_all_users_of_scenario**](ScenarioApi.md#remove_all_users_of_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Remove all users from the Scenario specified
+[**remove_user_from_scenario**](ScenarioApi.md#remove_user_from_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users/{user_id} | Remove the specified user from the given Scenario
 [**update_scenario**](ScenarioApi.md#update_scenario) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Update a scenario
 
+
+# **add_or_replace_scenario_parameter_values**
+> [ScenarioRunTemplateParameterValue] add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value)
+
+Add (or replace) Parameter Values for the Scenario specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    scenario_run_template_parameter_value = [
+        ScenarioRunTemplateParameterValue(
+            parameter_id="parameter_id_example",
+            var_type="var_type_example",
+            value="value_example",
+            is_inherited="is_inherited_example",
+        ),
+    ] # [ScenarioRunTemplateParameterValue] | the Parameter Value to add. Any Parameter Value with the same ID is overwritten
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add (or replace) Parameter Values for the Scenario specified
+        api_response = api_instance.add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->add_or_replace_scenario_parameter_values: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **scenario_run_template_parameter_value** | [**[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md)| the Parameter Value to add. Any Parameter Value with the same ID is overwritten |
+
+### Return type
+
+[**[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the Parameter values |  -  |
+**400** | Bad request |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_or_replace_users_in_scenario**
+> [ScenarioUser] add_or_replace_users_in_scenario(organization_id, workspace_id, scenario_id, scenario_user)
+
+Add (or replace) users in the Scenario specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_user import ScenarioUser
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    scenario_user = [
+        ScenarioUser(
+            id="id_example",
+            name="name_example",
+            roles="Viewer",
+        ),
+    ] # [ScenarioUser] | the Users to add. Any User with the same ID is overwritten
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add (or replace) users in the Scenario specified
+        api_response = api_instance.add_or_replace_users_in_scenario(organization_id, workspace_id, scenario_id, scenario_user)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->add_or_replace_users_in_scenario: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **scenario_user** | [**[ScenarioUser]**](ScenarioUser.md)| the Users to add. Any User with the same ID is overwritten |
+
+### Return type
+
+[**[ScenarioUser]**](ScenarioUser.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the Scenario Users |  -  |
+**400** | Bad request |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **compare_scenarios**
 > ScenarioComparisonResult compare_scenarios(organization_id, workspace_id, scenario_id, compared_scenario_id)
@@ -27,10 +209,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,7 +222,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -90,14 +272,14 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the comparison result for parameters values |  -  |
-**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+**404** | one of the Scenarios specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_scenario**
 > Scenario create_scenario(organization_id, workspace_id, scenario)
 
-Create a new scenario
+Create a new Scenario
 
 ### Example
 
@@ -108,10 +290,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -121,7 +303,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -169,7 +351,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Create a new scenario
+        # Create a new Scenario
         api_response = api_instance.create_scenario(organization_id, workspace_id, scenario)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -195,7 +377,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 
@@ -208,7 +390,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_scenario**
-> Scenario delete_scenario(organization_id, workspace_id, scenario_id)
+> delete_scenario(organization_id, workspace_id, scenario_id)
 
 Delete a scenario
 
@@ -219,12 +401,11 @@ Delete a scenario
 import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -234,7 +415,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -249,8 +430,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Delete a scenario
-        api_response = api_instance.delete_scenario(organization_id, workspace_id, scenario_id)
-        pprint(api_response)
+        api_instance.delete_scenario(organization_id, workspace_id, scenario_id)
     except cosmotech_api.ApiException as e:
         print("Exception when calling ScenarioApi->delete_scenario: %s\n" % e)
 ```
@@ -266,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Scenario**](Scenario.md)
+void (empty response body)
 
 ### Authorization
 
@@ -275,14 +455,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the scenario details |  -  |
-**400** | Bad request |  -  |
+**204** | Request succeeded |  -  |
 **404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -301,10 +480,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -314,7 +493,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -359,7 +538,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the scenario details |  -  |
+**200** | the list of Scenarios |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -377,10 +556,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -390,7 +569,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -456,10 +635,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -469,7 +648,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -518,6 +697,239 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **remove_all_scenario_parameter_values**
+> remove_all_scenario_parameter_values(organization_id, workspace_id, scenario_id)
+
+Remove all Parameter Values from the Scenario specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove all Parameter Values from the Scenario specified
+        api_instance.remove_all_scenario_parameter_values(organization_id, workspace_id, scenario_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->remove_all_scenario_parameter_values: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | the operation succeeded |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **remove_all_users_of_scenario**
+> remove_all_users_of_scenario(organization_id, workspace_id, scenario_id)
+
+Remove all users from the Scenario specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove all users from the Scenario specified
+        api_instance.remove_all_users_of_scenario(organization_id, workspace_id, scenario_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->remove_all_users_of_scenario: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | the operation succeeded |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **remove_user_from_scenario**
+> remove_user_from_scenario(organization_id, workspace_id, scenario_id, user_id)
+
+Remove the specified user from the given Scenario
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    user_id = "user_id_example" # str | the User identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove the specified user from the given Scenario
+        api_instance.remove_user_from_scenario(organization_id, workspace_id, scenario_id, user_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->remove_user_from_scenario: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **user_id** | **str**| the User identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Request succeeded |  -  |
+**404** | the Scenario or the User specified is unknown or you don&#39;t have access to them |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_scenario**
 > Scenario update_scenario(organization_id, workspace_id, scenario_id, scenario)
 
@@ -532,10 +944,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -545,7 +957,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -621,7 +1033,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 

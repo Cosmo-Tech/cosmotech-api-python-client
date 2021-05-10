@@ -368,7 +368,7 @@ class UserApi(object):
             self,
             **kwargs
         ):
-            """Get the details of an user  # noqa: E501
+            """Get the details of the logged-in User  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -475,7 +475,7 @@ class UserApi(object):
             organization_id,
             **kwargs
         ):
-            """Get the details of an user with roles for an Organization  # noqa: E501
+            """Get the details of a logged-in User with roles for an Organization  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -594,7 +594,7 @@ class UserApi(object):
             workspace_id,
             **kwargs
         ):
-            """Get the details of an user with roles for a Workspace  # noqa: E501
+            """Get the details of the logged-in user with roles for a Workspace  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -828,7 +828,8 @@ class UserApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -873,7 +874,7 @@ class UserApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                User
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -902,7 +903,7 @@ class UserApi(object):
 
         self.unregister_user = _Endpoint(
             settings={
-                'response_type': (User,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -944,9 +945,7 @@ class UserApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -959,7 +958,7 @@ class UserApi(object):
             user,
             **kwargs
         ):
-            """Update an user  # noqa: E501
+            """Update a User  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -969,7 +968,7 @@ class UserApi(object):
 
             Args:
                 user_id (str): the User identifier
-                user (User): the new User details. Organization membership is handled in Organzation service.
+                user (User): the new User details. Organization membership is handled via the /organizations endpoint.
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -1075,7 +1074,8 @@ class UserApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,

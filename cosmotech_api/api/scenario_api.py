@@ -23,6 +23,8 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 from cosmotech_api.model.scenario import Scenario
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
+from cosmotech_api.model.scenario_user import ScenarioUser
 
 
 class ScenarioApi(object):
@@ -36,6 +38,304 @@ class ScenarioApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+
+        def __add_or_replace_scenario_parameter_values(
+            self,
+            organization_id,
+            workspace_id,
+            scenario_id,
+            scenario_run_template_parameter_value,
+            **kwargs
+        ):
+            """Add (or replace) Parameter Values for the Scenario specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+                scenario_id (str): the Scenario identifier
+                scenario_run_template_parameter_value ([ScenarioRunTemplateParameterValue]): the Parameter Value to add. Any Parameter Value with the same ID is overwritten
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [ScenarioRunTemplateParameterValue]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            kwargs['scenario_id'] = \
+                scenario_id
+            kwargs['scenario_run_template_parameter_value'] = \
+                scenario_run_template_parameter_value
+            return self.call_with_http_info(**kwargs)
+
+        self.add_or_replace_scenario_parameter_values = _Endpoint(
+            settings={
+                'response_type': ([ScenarioRunTemplateParameterValue],),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues',
+                'operation_id': 'add_or_replace_scenario_parameter_values',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                    'scenario_run_template_parameter_value',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                    'scenario_run_template_parameter_value',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                    'scenario_id':
+                        (str,),
+                    'scenario_run_template_parameter_value':
+                        ([ScenarioRunTemplateParameterValue],),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                    'scenario_id': 'scenario_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                    'scenario_id': 'path',
+                    'scenario_run_template_parameter_value': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__add_or_replace_scenario_parameter_values
+        )
+
+        def __add_or_replace_users_in_scenario(
+            self,
+            organization_id,
+            workspace_id,
+            scenario_id,
+            scenario_user,
+            **kwargs
+        ):
+            """Add (or replace) users in the Scenario specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.add_or_replace_users_in_scenario(organization_id, workspace_id, scenario_id, scenario_user, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+                scenario_id (str): the Scenario identifier
+                scenario_user ([ScenarioUser]): the Users to add. Any User with the same ID is overwritten
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [ScenarioUser]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            kwargs['scenario_id'] = \
+                scenario_id
+            kwargs['scenario_user'] = \
+                scenario_user
+            return self.call_with_http_info(**kwargs)
+
+        self.add_or_replace_users_in_scenario = _Endpoint(
+            settings={
+                'response_type': ([ScenarioUser],),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users',
+                'operation_id': 'add_or_replace_users_in_scenario',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                    'scenario_user',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                    'scenario_user',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                    'scenario_id':
+                        (str,),
+                    'scenario_user':
+                        ([ScenarioUser],),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                    'scenario_id': 'scenario_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                    'scenario_id': 'path',
+                    'scenario_user': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__add_or_replace_users_in_scenario
+        )
 
         def __compare_scenarios(
             self,
@@ -192,7 +492,7 @@ class ScenarioApi(object):
             scenario,
             **kwargs
         ):
-            """Create a new scenario  # noqa: E501
+            """Create a new Scenario  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -317,7 +617,8 @@ class ScenarioApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -366,7 +667,7 @@ class ScenarioApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Scenario
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -399,7 +700,7 @@ class ScenarioApi(object):
 
         self.delete_scenario = _Endpoint(
             settings={
-                'response_type': (Scenario,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -453,9 +754,7 @@ class ScenarioApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -856,6 +1155,424 @@ class ScenarioApi(object):
             callable=__get_scenarios_tree
         )
 
+        def __remove_all_scenario_parameter_values(
+            self,
+            organization_id,
+            workspace_id,
+            scenario_id,
+            **kwargs
+        ):
+            """Remove all Parameter Values from the Scenario specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.remove_all_scenario_parameter_values(organization_id, workspace_id, scenario_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+                scenario_id (str): the Scenario identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            kwargs['scenario_id'] = \
+                scenario_id
+            return self.call_with_http_info(**kwargs)
+
+        self.remove_all_scenario_parameter_values = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues',
+                'operation_id': 'remove_all_scenario_parameter_values',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                    'scenario_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                    'scenario_id': 'scenario_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                    'scenario_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__remove_all_scenario_parameter_values
+        )
+
+        def __remove_all_users_of_scenario(
+            self,
+            organization_id,
+            workspace_id,
+            scenario_id,
+            **kwargs
+        ):
+            """Remove all users from the Scenario specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.remove_all_users_of_scenario(organization_id, workspace_id, scenario_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+                scenario_id (str): the Scenario identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            kwargs['scenario_id'] = \
+                scenario_id
+            return self.call_with_http_info(**kwargs)
+
+        self.remove_all_users_of_scenario = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users',
+                'operation_id': 'remove_all_users_of_scenario',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                    'scenario_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                    'scenario_id': 'scenario_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                    'scenario_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__remove_all_users_of_scenario
+        )
+
+        def __remove_user_from_scenario(
+            self,
+            organization_id,
+            workspace_id,
+            scenario_id,
+            user_id,
+            **kwargs
+        ):
+            """Remove the specified user from the given Scenario  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.remove_user_from_scenario(organization_id, workspace_id, scenario_id, user_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+                scenario_id (str): the Scenario identifier
+                user_id (str): the User identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            kwargs['scenario_id'] = \
+                scenario_id
+            kwargs['user_id'] = \
+                user_id
+            return self.call_with_http_info(**kwargs)
+
+        self.remove_user_from_scenario = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users/{user_id}',
+                'operation_id': 'remove_user_from_scenario',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                    'user_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                    'scenario_id',
+                    'user_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                    'scenario_id':
+                        (str,),
+                    'user_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                    'scenario_id': 'scenario_id',
+                    'user_id': 'user_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                    'scenario_id': 'path',
+                    'user_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__remove_user_from_scenario
+        )
+
         def __update_scenario(
             self,
             organization_id,
@@ -998,7 +1715,8 @@ class ScenarioApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,

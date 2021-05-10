@@ -159,7 +159,8 @@ class ValidatorApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -298,7 +299,8 @@ class ValidatorApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -345,7 +347,7 @@ class ValidatorApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Validator
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -376,7 +378,7 @@ class ValidatorApi(object):
 
         self.delete_validator = _Endpoint(
             settings={
-                'response_type': (Validator,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -424,9 +426,7 @@ class ValidatorApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -475,7 +475,7 @@ class ValidatorApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ValidatorRun
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -508,7 +508,7 @@ class ValidatorApi(object):
 
         self.delete_validator_run = _Endpoint(
             settings={
-                'response_type': (ValidatorRun,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -562,9 +562,7 @@ class ValidatorApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -1215,7 +1213,8 @@ class ValidatorApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,

@@ -54,8 +54,7 @@ class RunTemplateResourceStorage(ModelNormal):
     allowed_values = {
         ('storage_type',): {
             'LOCAL': "local",
-            'CLOUD': "cloud",
-            'CUSTOMURI': "customUri",
+            'CLOUDSTORAGE': "cloudStorage",
         },
     }
 
@@ -79,7 +78,7 @@ class RunTemplateResourceStorage(ModelNormal):
         return {
             'storage_type': (str,),  # noqa: E501
             '_resource_path': (str,),  # noqa: E501
-            'custom_uri': (str,),  # noqa: E501
+            'storage_options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -90,7 +89,7 @@ class RunTemplateResourceStorage(ModelNormal):
     attribute_map = {
         'storage_type': 'storageType',  # noqa: E501
         '_resource_path': 'resourcePath',  # noqa: E501
-        'custom_uri': 'customUri',  # noqa: E501
+        'storage_options': 'storageOptions',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -109,7 +108,7 @@ class RunTemplateResourceStorage(ModelNormal):
         """RunTemplateResourceStorage - a model defined in OpenAPI
 
         Args:
-            storage_type (str): the storage type. Use ${CSM_PROJECT_PATH} or ${CSM_STORAGE_SIMULATOR} behind the scene
+            storage_type (str): the storage type
             _resource_path (str): the resource path
 
         Keyword Args:
@@ -143,7 +142,7 @@ class RunTemplateResourceStorage(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            custom_uri (str): a custom Uri to provide the resource in resourcePath. [optional]  # noqa: E501
+            storage_options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): freeform options for storage. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

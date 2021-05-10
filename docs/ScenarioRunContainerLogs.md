@@ -5,10 +5,10 @@ logs for a given container
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**container** | [**ScenarioRunContainer**](ScenarioRunContainer.md) |  | [optional] 
-**computer** | **str** | computer/node that&#39;s generating the log | [optional] [readonly] 
-**logs** | [**[ScenarioRunContainerLog]**](ScenarioRunContainerLog.md) | the list of container logs in structured format | [optional] [readonly] 
-**text_log** | **str** | the plain text log if plainText option has been set | [optional] 
+**node_id** | **str** | the node Id which has executed this log | [optional] [readonly] 
+**container_name** | **str** | the container name | [optional] [readonly] 
+**children** | **[str]** | the list of children node id | [optional] [readonly] 
+**logs** | **str** | the node logs in plain text | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -52,10 +52,10 @@ import cosmotech_api
 from pprint import pprint
 from cosmotech_api.api import connector_api
 from cosmotech_api.model.connector import Connector
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -65,7 +65,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -85,63 +85,75 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ConnectorApi* | [**find_all_connectors**](docs/ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
-*ConnectorApi* | [**find_connector_by_id**](docs/ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of an connector
+*ConnectorApi* | [**find_connector_by_id**](docs/ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of a connector
 *ConnectorApi* | [**register_connector**](docs/ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
-*ConnectorApi* | [**unregister_connector**](docs/ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister an connector
-*ConnectorApi* | [**upload_connector**](docs/ConnectorApi.md#upload_connector) | **POST** /connectors/upload | Upload and register a new connector
+*ConnectorApi* | [**unregister_connector**](docs/ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister a connector
+*DatasetApi* | [**add_or_replace_dataset_compatibility_elements**](docs/DatasetApi.md#add_or_replace_dataset_compatibility_elements) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Add Dataset Compatibility elements. Any item with the same solutionKey will be overwritten
 *DatasetApi* | [**copy_dataset**](docs/DatasetApi.md#copy_dataset) | **POST** /organizations/{organization_id}/datasets/copy | Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.
-*DatasetApi* | [**create_dataset**](docs/DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Create a new dataset
+*DatasetApi* | [**create_dataset**](docs/DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Create a new Dataset
 *DatasetApi* | [**delete_dataset**](docs/DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id} | Delete a dataset
 *DatasetApi* | [**find_all_datasets**](docs/DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
-*DatasetApi* | [**find_dataset_by_id**](docs/DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a dataset
+*DatasetApi* | [**find_dataset_by_id**](docs/DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a Dataset
+*DatasetApi* | [**remove_all_dataset_compatibility_elements**](docs/DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
 *DatasetApi* | [**update_dataset**](docs/DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
+*OrganizationApi* | [**add_or_replace_users_in_organization**](docs/OrganizationApi.md#add_or_replace_users_in_organization) | **POST** /organizations/{organization_id}/users | Add (or replace) users in the Organization specified
 *OrganizationApi* | [**find_all_organizations**](docs/OrganizationApi.md#find_all_organizations) | **GET** /organizations | List all Organizations
-*OrganizationApi* | [**find_organization_by_id**](docs/OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an organization
+*OrganizationApi* | [**find_organization_by_id**](docs/OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an Organization
 *OrganizationApi* | [**register_organization**](docs/OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
+*OrganizationApi* | [**remove_all_users_in_organization**](docs/OrganizationApi.md#remove_all_users_in_organization) | **DELETE** /organizations/{organization_id}/users | Remove all users from the Organization specified
+*OrganizationApi* | [**remove_user_from_organization**](docs/OrganizationApi.md#remove_user_from_organization) | **DELETE** /organizations/{organization_id}/users/{user_id} | Remove the specified user from the given Organization
 *OrganizationApi* | [**unregister_organization**](docs/OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
-*OrganizationApi* | [**update_organization**](docs/OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an organization
-*PlatformApi* | [**create_platform**](docs/PlatformApi.md#create_platform) | **POST** /platform | Create a new platform
-*PlatformApi* | [**get_platform**](docs/PlatformApi.md#get_platform) | **GET** /platform | Get the details of the platform
-*PlatformApi* | [**update_platform**](docs/PlatformApi.md#update_platform) | **PATCH** /platform | Update a platform
+*OrganizationApi* | [**update_organization**](docs/OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an Organization
+*OrganizationApi* | [**update_solutions_container_registry_by_organization_id**](docs/OrganizationApi.md#update_solutions_container_registry_by_organization_id) | **PATCH** /organizations/{organization_id}/services/solutionsContainerRegistry | Update the solutions container registry configuration for the Organization specified
+*OrganizationApi* | [**update_storage_by_organization_id**](docs/OrganizationApi.md#update_storage_by_organization_id) | **PATCH** /organizations/{organization_id}/services/storage | Update storage configuration for the Organization specified
+*OrganizationApi* | [**update_tenant_credentials_by_organization_id**](docs/OrganizationApi.md#update_tenant_credentials_by_organization_id) | **PUT** /organizations/{organization_id}/services/tenantCredentials | Update tenant credentials for the Organization specified
+*ScenarioApi* | [**add_or_replace_scenario_parameter_values**](docs/ScenarioApi.md#add_or_replace_scenario_parameter_values) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Add (or replace) Parameter Values for the Scenario specified
+*ScenarioApi* | [**add_or_replace_users_in_scenario**](docs/ScenarioApi.md#add_or_replace_users_in_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Add (or replace) users in the Scenario specified
 *ScenarioApi* | [**compare_scenarios**](docs/ScenarioApi.md#compare_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} | Compare the Scenario with another one and returns the difference for parameters values
-*ScenarioApi* | [**create_scenario**](docs/ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new scenario
+*ScenarioApi* | [**create_scenario**](docs/ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new Scenario
 *ScenarioApi* | [**delete_scenario**](docs/ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
 *ScenarioApi* | [**find_all_scenarios**](docs/ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 *ScenarioApi* | [**find_scenario_by_id**](docs/ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
 *ScenarioApi* | [**get_scenarios_tree**](docs/ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
+*ScenarioApi* | [**remove_all_scenario_parameter_values**](docs/ScenarioApi.md#remove_all_scenario_parameter_values) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Remove all Parameter Values from the Scenario specified
+*ScenarioApi* | [**remove_all_users_of_scenario**](docs/ScenarioApi.md#remove_all_users_of_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Remove all users from the Scenario specified
+*ScenarioApi* | [**remove_user_from_scenario**](docs/ScenarioApi.md#remove_user_from_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users/{user_id} | Remove the specified user from the given Scenario
 *ScenarioApi* | [**update_scenario**](docs/ScenarioApi.md#update_scenario) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Update a scenario
 *ScenariorunApi* | [**delete_scenario_run**](docs/ScenariorunApi.md#delete_scenario_run) | **DELETE** /organizations/{organization_id}/scenarioruns/{scenariorun_id} | Delete a scenariorun
 *ScenariorunApi* | [**find_scenario_run_by_id**](docs/ScenariorunApi.md#find_scenario_run_by_id) | **GET** /organizations/{organization_id}/scenarioruns/{scenariorun_id} | Get the details of a scenariorun
-*ScenariorunApi* | [**get_scenario_scenario_run**](docs/ScenariorunApi.md#get_scenario_scenario_run) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns/{scenariorun_id} | get the ScenarioRun for the Scenario
-*ScenariorunApi* | [**get_scenario_scenario_run_logs**](docs/ScenariorunApi.md#get_scenario_scenario_run_logs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns/{scenariorun_id}/logs | get the logs for the ScenarioRun
-*ScenariorunApi* | [**get_scenario_scenario_runs**](docs/ScenariorunApi.md#get_scenario_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns | get the list of ScenarioRuns for the Scenario
+*ScenariorunApi* | [**get_scenario_run_cumulated_logs**](docs/ScenariorunApi.md#get_scenario_run_cumulated_logs) | **GET** /organizations/{organization_id}/scenarioruns/{scenariorun_id}/cumulatedlogs | Get the cumulated logs of a scenariorun
+*ScenariorunApi* | [**get_scenario_run_logs**](docs/ScenariorunApi.md#get_scenario_run_logs) | **GET** /organizations/{organization_id}/scenarioruns/{scenariorun_id}/logs | get the logs for the ScenarioRun
+*ScenariorunApi* | [**get_scenario_runs**](docs/ScenariorunApi.md#get_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns | get the list of ScenarioRuns for the Scenario
 *ScenariorunApi* | [**get_workspace_scenario_runs**](docs/ScenariorunApi.md#get_workspace_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarioruns | get the list of ScenarioRuns for the Workspace
 *ScenariorunApi* | [**run_scenario**](docs/ScenariorunApi.md#run_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/run | run a ScenarioRun for the Scenario
-*ScenariorunApi* | [**search_scenario_run_logs**](docs/ScenariorunApi.md#search_scenario_run_logs) | **POST** /organizations/{organization_id}/scenarioruns/{scenariorun_id}/logs/search | Search the logs of a scenariorun
 *ScenariorunApi* | [**search_scenario_runs**](docs/ScenariorunApi.md#search_scenario_runs) | **POST** /organizations/{organization_id}/scenarioruns/search | Search ScenarioRuns
 *ScenariorunApi* | [**start_scenario_run_containers**](docs/ScenariorunApi.md#start_scenario_run_containers) | **POST** /organizations/{organization_id}/scenarioruns/startcontainers | Start a new scenariorun with raw containers definition
-*ScenariorunApi* | [**start_scenario_run_scenario**](docs/ScenariorunApi.md#start_scenario_run_scenario) | **POST** /organizations/{organization_id}/scenarioruns/start | Start a new scenariorun for a Scenario
-*ScenariorunApi* | [**start_scenario_run_solution**](docs/ScenariorunApi.md#start_scenario_run_solution) | **POST** /organizations/{organization_id}/scenarioruns/startsolution | Start a new scenariorun for a Solution Run Template
+*SolutionApi* | [**add_or_replace_parameter_groups**](docs/SolutionApi.md#add_or_replace_parameter_groups) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Add Parameter Groups. Any item with the same ID will be overwritten
+*SolutionApi* | [**add_or_replace_parameters**](docs/SolutionApi.md#add_or_replace_parameters) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameters | Add Parameters. Any item with the same ID will be overwritten
+*SolutionApi* | [**add_or_replace_run_templates**](docs/SolutionApi.md#add_or_replace_run_templates) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Add Run Templates. Any item with the same ID will be overwritten
 *SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 *SolutionApi* | [**find_all_solutions**](docs/SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 *SolutionApi* | [**find_solution_by_id**](docs/SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
+*SolutionApi* | [**remove_all_run_templates**](docs/SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified
+*SolutionApi* | [**remove_all_solution_parameter_groups**](docs/SolutionApi.md#remove_all_solution_parameter_groups) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Remove all Parameter Groups from the Solution specified
+*SolutionApi* | [**remove_all_solution_parameters**](docs/SolutionApi.md#remove_all_solution_parameters) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters | Remove all Parameters from the Solution specified
 *SolutionApi* | [**update_solution**](docs/SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
-*SolutionApi* | [**upload**](docs/SolutionApi.md#upload) | **POST** /organizations/{organization_id}/solutions/upload | Upload and register a new solution
+*SolutionApi* | [**upload_run_template_handler**](docs/SolutionApi.md#upload_run_template_handler) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/upload | Upload a Run Template step handler zip file
 *UserApi* | [**authorize_user**](docs/UserApi.md#authorize_user) | **GET** /oauth2/authorize | Authorize an User with OAuth2. Delegated to configured OAuth2 service
 *UserApi* | [**find_all_users**](docs/UserApi.md#find_all_users) | **GET** /users | List all Users
 *UserApi* | [**find_user_by_id**](docs/UserApi.md#find_user_by_id) | **GET** /users/{user_id} | Get the details of an user
-*UserApi* | [**get_current_user**](docs/UserApi.md#get_current_user) | **GET** /users/me | Get the details of an user
-*UserApi* | [**get_organization_current_user**](docs/UserApi.md#get_organization_current_user) | **GET** /organizations/{organization_id}/me | Get the details of an user with roles for an Organization
-*UserApi* | [**get_workspace_current_user**](docs/UserApi.md#get_workspace_current_user) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/me | Get the details of an user with roles for a Workspace
+*UserApi* | [**get_current_user**](docs/UserApi.md#get_current_user) | **GET** /users/me | Get the details of the logged-in User
+*UserApi* | [**get_organization_current_user**](docs/UserApi.md#get_organization_current_user) | **GET** /organizations/{organization_id}/me | Get the details of a logged-in User with roles for an Organization
+*UserApi* | [**get_workspace_current_user**](docs/UserApi.md#get_workspace_current_user) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/me | Get the details of the logged-in user with roles for a Workspace
 *UserApi* | [**register_user**](docs/UserApi.md#register_user) | **POST** /users | Register a new user
 *UserApi* | [**unregister_user**](docs/UserApi.md#unregister_user) | **DELETE** /users/{user_id} | Unregister an user
-*UserApi* | [**update_user**](docs/UserApi.md#update_user) | **PATCH** /users/{user_id} | Update an user
+*UserApi* | [**update_user**](docs/UserApi.md#update_user) | **PATCH** /users/{user_id} | Update a User
 *ValidatorApi* | [**create_validator**](docs/ValidatorApi.md#create_validator) | **POST** /organizations/{organization_id}/datasets/validators | Register a new validator
 *ValidatorApi* | [**create_validator_run**](docs/ValidatorApi.md#create_validator_run) | **POST** /organizations/{organization_id}/datasets/validators/{validator_id}/history | Register a new validator run
 *ValidatorApi* | [**delete_validator**](docs/ValidatorApi.md#delete_validator) | **DELETE** /organizations/{organization_id}/datasets/validators/{validator_id} | Delete a validator
@@ -151,12 +163,14 @@ Class | Method | HTTP request | Description
 *ValidatorApi* | [**find_validator_by_id**](docs/ValidatorApi.md#find_validator_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id} | Get the details of a validator
 *ValidatorApi* | [**find_validator_run_by_id**](docs/ValidatorApi.md#find_validator_run_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id} | Get the details of a validator run
 *ValidatorApi* | [**run_validator**](docs/ValidatorApi.md#run_validator) | **POST** /organizations/{organization_id}/datasets/validators/{validator_id}/run | Run a Validator
+*WorkspaceApi* | [**add_users_to_organization_workspace**](docs/WorkspaceApi.md#add_users_to_organization_workspace) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/users | Add (or replace) users to the Workspace specified
 *WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 *WorkspaceApi* | [**delete_workspace**](docs/WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
 *WorkspaceApi* | [**delete_workspace_file**](docs/WorkspaceApi.md#delete_workspace_file) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete a workspace file
 *WorkspaceApi* | [**find_all_workspace_files**](docs/WorkspaceApi.md#find_all_workspace_files) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files | List all Workspace files
 *WorkspaceApi* | [**find_all_workspaces**](docs/WorkspaceApi.md#find_all_workspaces) | **GET** /organizations/{organization_id}/workspaces | List all Workspaces
 *WorkspaceApi* | [**find_workspace_by_id**](docs/WorkspaceApi.md#find_workspace_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
+*WorkspaceApi* | [**remove_all_users_of_workspace**](docs/WorkspaceApi.md#remove_all_users_of_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/users | Remove all users from the Workspace specified
 *WorkspaceApi* | [**update_workspace**](docs/WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
 *WorkspaceApi* | [**upload_workspace_file**](docs/WorkspaceApi.md#upload_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
 
@@ -174,9 +188,6 @@ Class | Method | HTTP request | Description
  - [OrganizationService](docs/OrganizationService.md)
  - [OrganizationServices](docs/OrganizationServices.md)
  - [OrganizationUser](docs/OrganizationUser.md)
- - [Platform](docs/Platform.md)
- - [PlatformService](docs/PlatformService.md)
- - [PlatformServices](docs/PlatformServices.md)
  - [RunTemplate](docs/RunTemplate.md)
  - [RunTemplateParameter](docs/RunTemplateParameter.md)
  - [RunTemplateParameterGroup](docs/RunTemplateParameterGroup.md)
@@ -187,14 +198,10 @@ Class | Method | HTTP request | Description
  - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
  - [ScenarioRun](docs/ScenarioRun.md)
  - [ScenarioRunContainer](docs/ScenarioRunContainer.md)
- - [ScenarioRunContainerLog](docs/ScenarioRunContainerLog.md)
  - [ScenarioRunContainerLogs](docs/ScenarioRunContainerLogs.md)
  - [ScenarioRunLogs](docs/ScenarioRunLogs.md)
- - [ScenarioRunLogsOptions](docs/ScenarioRunLogsOptions.md)
  - [ScenarioRunSearch](docs/ScenarioRunSearch.md)
- - [ScenarioRunStart](docs/ScenarioRunStart.md)
  - [ScenarioRunStartContainers](docs/ScenarioRunStartContainers.md)
- - [ScenarioRunStartSolution](docs/ScenarioRunStartSolution.md)
  - [ScenarioRunTemplateParameterValue](docs/ScenarioRunTemplateParameterValue.md)
  - [ScenarioUser](docs/ScenarioUser.md)
  - [Solution](docs/Solution.md)

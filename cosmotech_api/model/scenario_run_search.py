@@ -89,7 +89,8 @@ class ScenarioRunSearch(ModelNormal):
             'workspace_id': (str,),  # noqa: E501
             'scenario_id': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
-            'job_id': (str,),  # noqa: E501
+            'workflow_id': (str,),  # noqa: E501
+            'workflow_name': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
         }
 
@@ -104,7 +105,8 @@ class ScenarioRunSearch(ModelNormal):
         'workspace_id': 'workspaceId',  # noqa: E501
         'scenario_id': 'scenarioId',  # noqa: E501
         'state': 'state',  # noqa: E501
-        'job_id': 'jobId',  # noqa: E501
+        'workflow_id': 'workflowId',  # noqa: E501
+        'workflow_name': 'workflowName',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
     }
 
@@ -159,7 +161,8 @@ class ScenarioRunSearch(ModelNormal):
             workspace_id (str): the Workspace Id to search. [optional]  # noqa: E501
             scenario_id (str): the Scenario Id to search. [optional]  # noqa: E501
             state (str): the state to search. [optional]  # noqa: E501
-            job_id (str): the Cosmo Tech compute cluster Job Id to search. [optional]  # noqa: E501
+            workflow_id (str): the Cosmo Tech compute cluster Argo Workflow Id to search. [optional]  # noqa: E501
+            workflow_name (str): the Cosmo Tech compute cluster Argo Workflow Name. [optional]  # noqa: E501
             owner_id (str): the owner Id to search. [optional]  # noqa: E501
         """
 

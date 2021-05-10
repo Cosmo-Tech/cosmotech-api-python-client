@@ -82,9 +82,9 @@ class User(ModelNormal):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'platform_roles': ([str],),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'organizations': ([UserOrganization],),  # noqa: E501
         }
 
@@ -94,9 +94,9 @@ class User(ModelNormal):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'platform_roles': 'platformRoles',  # noqa: E501
-        'id': 'id',  # noqa: E501
         'organizations': 'organizations',  # noqa: E501
     }
 
@@ -112,12 +112,8 @@ class User(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, platform_roles, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """User - a model defined in OpenAPI
-
-        Args:
-            name (str): the User name
-            platform_roles ([str]): the list of Platform roles
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -151,6 +147,8 @@ class User(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the User unique identifier. [optional]  # noqa: E501
+            name (str): the User name. [optional]  # noqa: E501
+            platform_roles ([str]): the list of Platform roles. [optional]  # noqa: E501
             organizations ([UserOrganization]): [optional]  # noqa: E501
         """
 
@@ -177,8 +175,6 @@ class User(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
-        self.platform_roles = platform_roles
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

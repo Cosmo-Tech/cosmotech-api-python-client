@@ -1,14 +1,13 @@
 # cosmotech_api.ConnectorApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.azure.cosmo-platform.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**find_all_connectors**](ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
-[**find_connector_by_id**](ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of an connector
+[**find_connector_by_id**](ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of a connector
 [**register_connector**](ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
-[**unregister_connector**](ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister an connector
-[**upload_connector**](ConnectorApi.md#upload_connector) | **POST** /connectors/upload | Upload and register a new connector
+[**unregister_connector**](ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister a connector
 
 
 # **find_all_connectors**
@@ -25,10 +24,10 @@ import cosmotech_api
 from cosmotech_api.api import connector_api
 from cosmotech_api.model.connector import Connector
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -38,7 +37,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -77,14 +76,14 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the connector details |  -  |
+**200** | the list of Connectors |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_connector_by_id**
 > Connector find_connector_by_id(connector_id)
 
-Get the details of an connector
+Get the details of a connector
 
 ### Example
 
@@ -95,10 +94,10 @@ import cosmotech_api
 from cosmotech_api.api import connector_api
 from cosmotech_api.model.connector import Connector
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -108,7 +107,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -120,7 +119,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get the details of an connector
+        # Get the details of a connector
         api_response = api_instance.find_connector_by_id(connector_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -170,10 +169,10 @@ import cosmotech_api
 from cosmotech_api.api import connector_api
 from cosmotech_api.model.connector import Connector
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -183,7 +182,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -252,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 
@@ -265,9 +264,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unregister_connector**
-> Connector unregister_connector(connector_id)
+> unregister_connector(connector_id)
 
-Unregister an connector
+Unregister a connector
 
 ### Example
 
@@ -276,12 +275,11 @@ Unregister an connector
 import time
 import cosmotech_api
 from cosmotech_api.api import connector_api
-from cosmotech_api.model.connector import Connector
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -291,7 +289,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "https://api.azure.cosmo-platform.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -303,9 +301,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Unregister an connector
-        api_response = api_instance.unregister_connector(connector_id)
-        pprint(api_response)
+        # Unregister a connector
+        api_instance.unregister_connector(connector_id)
     except cosmotech_api.ApiException as e:
         print("Exception when calling ConnectorApi->unregister_connector: %s\n" % e)
 ```
@@ -319,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Connector**](Connector.md)
+void (empty response body)
 
 ### Authorization
 
@@ -328,90 +325,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the connector details |  -  |
-**400** | Bad request |  -  |
+**204** | Request successful |  -  |
 **404** | the Connector specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **upload_connector**
-> Connector upload_connector(body)
-
-Upload and register a new connector
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import connector_api
-from cosmotech_api.model.connector import Connector
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = connector_api.ConnectorApi(api_client)
-    body = open('/path/to/file', 'rb') # file_type | the Connector to upload and register
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Upload and register a new connector
-        api_response = api_instance.upload_connector(body)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling ConnectorApi->upload_connector: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **file_type**| the Connector to upload and register |
-
-### Return type
-
-[**Connector**](Connector.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/yaml
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | the connector details |  -  |
-**400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

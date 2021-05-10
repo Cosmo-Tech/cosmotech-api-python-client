@@ -28,9 +28,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
 
 def lazy_import():
     from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
-    from cosmotech_api.model.scenario_run_logs_options import ScenarioRunLogsOptions
     globals()['ScenarioRunContainerLogs'] = ScenarioRunContainerLogs
-    globals()['ScenarioRunLogsOptions'] = ScenarioRunLogsOptions
 
 
 class ScenarioRunLogs(ModelNormal):
@@ -80,15 +78,7 @@ class ScenarioRunLogs(ModelNormal):
         lazy_import()
         return {
             'scenariorun_id': (str,),  # noqa: E501
-            'options': (ScenarioRunLogsOptions,),  # noqa: E501
-            'fetch_dataset_logs': ([ScenarioRunContainerLogs],),  # noqa: E501
-            'fetch_scenario_parameters_log': (ScenarioRunContainerLogs,),  # noqa: E501
-            'apply_parameters_logs': (ScenarioRunContainerLogs,),  # noqa: E501
-            'validate_data_logs': (ScenarioRunContainerLogs,),  # noqa: E501
-            'send_data_warehouse_logs': (ScenarioRunContainerLogs,),  # noqa: E501
-            'pre_run_logs': (ScenarioRunContainerLogs,),  # noqa: E501
-            'run_logs': (ScenarioRunContainerLogs,),  # noqa: E501
-            'post_run_logs': (ScenarioRunContainerLogs,),  # noqa: E501
+            'containers': ({str: (ScenarioRunContainerLogs,)},),  # noqa: E501
         }
 
     @cached_property
@@ -98,15 +88,7 @@ class ScenarioRunLogs(ModelNormal):
 
     attribute_map = {
         'scenariorun_id': 'scenariorunId',  # noqa: E501
-        'options': 'options',  # noqa: E501
-        'fetch_dataset_logs': 'fetchDatasetLogs',  # noqa: E501
-        'fetch_scenario_parameters_log': 'fetchScenarioParametersLog',  # noqa: E501
-        'apply_parameters_logs': 'applyParametersLogs',  # noqa: E501
-        'validate_data_logs': 'validateDataLogs',  # noqa: E501
-        'send_data_warehouse_logs': 'sendDataWarehouseLogs',  # noqa: E501
-        'pre_run_logs': 'preRunLogs',  # noqa: E501
-        'run_logs': 'runLogs',  # noqa: E501
-        'post_run_logs': 'postRunLogs',  # noqa: E501
+        'containers': 'containers',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -156,15 +138,7 @@ class ScenarioRunLogs(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             scenariorun_id (str): the ScenarioRun Id. [optional]  # noqa: E501
-            options (ScenarioRunLogsOptions): [optional]  # noqa: E501
-            fetch_dataset_logs ([ScenarioRunContainerLogs]): logs for the containers which fetch the Scenario Datasets. [optional]  # noqa: E501
-            fetch_scenario_parameters_log (ScenarioRunContainerLogs): [optional]  # noqa: E501
-            apply_parameters_logs (ScenarioRunContainerLogs): [optional]  # noqa: E501
-            validate_data_logs (ScenarioRunContainerLogs): [optional]  # noqa: E501
-            send_data_warehouse_logs (ScenarioRunContainerLogs): [optional]  # noqa: E501
-            pre_run_logs (ScenarioRunContainerLogs): [optional]  # noqa: E501
-            run_logs (ScenarioRunContainerLogs): [optional]  # noqa: E501
-            post_run_logs (ScenarioRunContainerLogs): [optional]  # noqa: E501
+            containers ({str: (ScenarioRunContainerLogs,)}): the container map of logs. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

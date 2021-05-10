@@ -77,15 +77,9 @@ class ScenarioRunStartContainers(ModelNormal):
         """
         lazy_import()
         return {
+            'containers': ([ScenarioRunContainer],),  # noqa: E501
+            'generate_name': (str,),  # noqa: E501
             'node_label': (str,),  # noqa: E501
-            'fetch_dataset_containers': ([ScenarioRunContainer],),  # noqa: E501
-            'fetch_scenario_parameters_container': (ScenarioRunContainer,),  # noqa: E501
-            'apply_parameters_container': (ScenarioRunContainer,),  # noqa: E501
-            'validate_data_container': (ScenarioRunContainer,),  # noqa: E501
-            'send_data_warehouse_container': (ScenarioRunContainer,),  # noqa: E501
-            'pre_run_container': (ScenarioRunContainer,),  # noqa: E501
-            'run_container': (ScenarioRunContainer,),  # noqa: E501
-            'post_run_container': (ScenarioRunContainer,),  # noqa: E501
         }
 
     @cached_property
@@ -94,15 +88,9 @@ class ScenarioRunStartContainers(ModelNormal):
 
 
     attribute_map = {
+        'containers': 'containers',  # noqa: E501
+        'generate_name': 'generateName',  # noqa: E501
         'node_label': 'nodeLabel',  # noqa: E501
-        'fetch_dataset_containers': 'fetchDatasetContainers',  # noqa: E501
-        'fetch_scenario_parameters_container': 'fetchScenarioParametersContainer',  # noqa: E501
-        'apply_parameters_container': 'applyParametersContainer',  # noqa: E501
-        'validate_data_container': 'validateDataContainer',  # noqa: E501
-        'send_data_warehouse_container': 'sendDataWarehouseContainer',  # noqa: E501
-        'pre_run_container': 'preRunContainer',  # noqa: E501
-        'run_container': 'runContainer',  # noqa: E501
-        'post_run_container': 'postRunContainer',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -117,8 +105,11 @@ class ScenarioRunStartContainers(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, containers, *args, **kwargs):  # noqa: E501
         """ScenarioRunStartContainers - a model defined in OpenAPI
+
+        Args:
+            containers ([ScenarioRunContainer]): the containers map with name and ScenarioRunContainer
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -151,15 +142,8 @@ class ScenarioRunStartContainers(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            generate_name (str): the base name for workflow name generation. [optional]  # noqa: E501
             node_label (str): the node label request. [optional]  # noqa: E501
-            fetch_dataset_containers ([ScenarioRunContainer]): the containers which fetch the Scenario Datasets. [optional]  # noqa: E501
-            fetch_scenario_parameters_container (ScenarioRunContainer): [optional]  # noqa: E501
-            apply_parameters_container (ScenarioRunContainer): [optional]  # noqa: E501
-            validate_data_container (ScenarioRunContainer): [optional]  # noqa: E501
-            send_data_warehouse_container (ScenarioRunContainer): [optional]  # noqa: E501
-            pre_run_container (ScenarioRunContainer): [optional]  # noqa: E501
-            run_container (ScenarioRunContainer): [optional]  # noqa: E501
-            post_run_container (ScenarioRunContainer): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -185,6 +169,7 @@ class ScenarioRunStartContainers(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.containers = containers
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

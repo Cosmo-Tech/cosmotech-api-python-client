@@ -72,10 +72,13 @@ class ScenarioRunContainer(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
-            'env_vars': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'image': (str,),  # noqa: E501
+            'id': (str,),  # noqa: E501
+            'env_vars': ({str: (str,)},),  # noqa: E501
+            'entrypoint': (str,),  # noqa: E501
             'run_args': ([str],),  # noqa: E501
+            'dependencies': ([str],),  # noqa: E501
         }
 
     @cached_property
@@ -84,10 +87,13 @@ class ScenarioRunContainer(ModelNormal):
 
 
     attribute_map = {
+        'name': 'name',  # noqa: E501
+        'image': 'image',  # noqa: E501
         'id': 'id',  # noqa: E501
         'env_vars': 'envVars',  # noqa: E501
-        'image': 'image',  # noqa: E501
+        'entrypoint': 'entrypoint',  # noqa: E501
         'run_args': 'runArgs',  # noqa: E501
+        'dependencies': 'dependencies',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -102,8 +108,12 @@ class ScenarioRunContainer(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, name, image, *args, **kwargs):  # noqa: E501
         """ScenarioRunContainer - a model defined in OpenAPI
+
+        Args:
+            name (str): the container name
+            image (str): the container image URI
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,9 +147,10 @@ class ScenarioRunContainer(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the container Id. [optional]  # noqa: E501
-            env_vars ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a freeform environment variable map. [optional]  # noqa: E501
-            image (str): the container image URI. [optional]  # noqa: E501
+            env_vars ({str: (str,)}): environment variable map. [optional]  # noqa: E501
+            entrypoint (str): the container entry point. [optional]  # noqa: E501
             run_args ([str]): the list of run arguments for the container. [optional]  # noqa: E501
+            dependencies ([str]): the list of dependencies container name to run this container. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -165,6 +176,8 @@ class ScenarioRunContainer(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.name = name
+        self.image = image
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

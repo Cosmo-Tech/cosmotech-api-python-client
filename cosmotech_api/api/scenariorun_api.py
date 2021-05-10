@@ -23,11 +23,8 @@ from cosmotech_api.model_utils import (  # noqa: F401
 )
 from cosmotech_api.model.scenario_run import ScenarioRun
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
-from cosmotech_api.model.scenario_run_logs_options import ScenarioRunLogsOptions
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
-from cosmotech_api.model.scenario_run_start import ScenarioRunStart
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
-from cosmotech_api.model.scenario_run_start_solution import ScenarioRunStartSolution
 
 
 class ScenariorunApi(object):
@@ -82,7 +79,7 @@ class ScenariorunApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ScenarioRun
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -113,7 +110,7 @@ class ScenariorunApi(object):
 
         self.delete_scenario_run = _Endpoint(
             settings={
-                'response_type': (ScenarioRun,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -161,9 +158,7 @@ class ScenariorunApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -298,26 +293,22 @@ class ScenariorunApi(object):
             callable=__find_scenario_run_by_id
         )
 
-        def __get_scenario_scenario_run(
+        def __get_scenario_run_cumulated_logs(
             self,
             organization_id,
-            workspace_id,
-            scenario_id,
             scenariorun_id,
             **kwargs
         ):
-            """get the ScenarioRun for the Scenario  # noqa: E501
+            """Get the cumulated logs of a scenariorun  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_scenario_scenario_run(organization_id, workspace_id, scenario_id, scenariorun_id, async_req=True)
+            >>> thread = api.get_scenario_run_cumulated_logs(organization_id, scenariorun_id, async_req=True)
             >>> result = thread.get()
 
             Args:
                 organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
                 scenariorun_id (str): the ScenarioRun identifier
 
             Keyword Args:
@@ -342,7 +333,7 @@ class ScenariorunApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ScenarioRun
+                str
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -367,36 +358,28 @@ class ScenariorunApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['organization_id'] = \
                 organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
             kwargs['scenariorun_id'] = \
                 scenariorun_id
             return self.call_with_http_info(**kwargs)
 
-        self.get_scenario_scenario_run = _Endpoint(
+        self.get_scenario_run_cumulated_logs = _Endpoint(
             settings={
-                'response_type': (ScenarioRun,),
+                'response_type': (str,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns/{scenariorun_id}',
-                'operation_id': 'get_scenario_scenario_run',
+                'endpoint_path': '/organizations/{organization_id}/scenarioruns/{scenariorun_id}/cumulatedlogs',
+                'operation_id': 'get_scenario_run_cumulated_logs',
                 'http_method': 'GET',
                 'servers': None,
             },
             params_map={
                 'all': [
                     'organization_id',
-                    'workspace_id',
-                    'scenario_id',
                     'scenariorun_id',
                 ],
                 'required': [
                     'organization_id',
-                    'workspace_id',
-                    'scenario_id',
                     'scenariorun_id',
                 ],
                 'nullable': [
@@ -414,23 +397,15 @@ class ScenariorunApi(object):
                 'openapi_types': {
                     'organization_id':
                         (str,),
-                    'workspace_id':
-                        (str,),
-                    'scenario_id':
-                        (str,),
                     'scenariorun_id':
                         (str,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
-                    'workspace_id': 'workspace_id',
-                    'scenario_id': 'scenario_id',
                     'scenariorun_id': 'scenariorun_id',
                 },
                 'location_map': {
                     'organization_id': 'path',
-                    'workspace_id': 'path',
-                    'scenario_id': 'path',
                     'scenariorun_id': 'path',
                 },
                 'collection_format_map': {
@@ -438,19 +413,17 @@ class ScenariorunApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json'
+                    'text/plain'
                 ],
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_scenario_scenario_run
+            callable=__get_scenario_run_cumulated_logs
         )
 
-        def __get_scenario_scenario_run_logs(
+        def __get_scenario_run_logs(
             self,
             organization_id,
-            workspace_id,
-            scenario_id,
             scenariorun_id,
             **kwargs
         ):
@@ -459,13 +432,11 @@ class ScenariorunApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_scenario_scenario_run_logs(organization_id, workspace_id, scenario_id, scenariorun_id, async_req=True)
+            >>> thread = api.get_scenario_run_logs(organization_id, scenariorun_id, async_req=True)
             >>> result = thread.get()
 
             Args:
                 organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
                 scenariorun_id (str): the ScenarioRun identifier
 
             Keyword Args:
@@ -515,36 +486,28 @@ class ScenariorunApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['organization_id'] = \
                 organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
             kwargs['scenariorun_id'] = \
                 scenariorun_id
             return self.call_with_http_info(**kwargs)
 
-        self.get_scenario_scenario_run_logs = _Endpoint(
+        self.get_scenario_run_logs = _Endpoint(
             settings={
                 'response_type': (ScenarioRunLogs,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns/{scenariorun_id}/logs',
-                'operation_id': 'get_scenario_scenario_run_logs',
+                'endpoint_path': '/organizations/{organization_id}/scenarioruns/{scenariorun_id}/logs',
+                'operation_id': 'get_scenario_run_logs',
                 'http_method': 'GET',
                 'servers': None,
             },
             params_map={
                 'all': [
                     'organization_id',
-                    'workspace_id',
-                    'scenario_id',
                     'scenariorun_id',
                 ],
                 'required': [
                     'organization_id',
-                    'workspace_id',
-                    'scenario_id',
                     'scenariorun_id',
                 ],
                 'nullable': [
@@ -562,23 +525,15 @@ class ScenariorunApi(object):
                 'openapi_types': {
                     'organization_id':
                         (str,),
-                    'workspace_id':
-                        (str,),
-                    'scenario_id':
-                        (str,),
                     'scenariorun_id':
                         (str,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
-                    'workspace_id': 'workspace_id',
-                    'scenario_id': 'scenario_id',
                     'scenariorun_id': 'scenariorun_id',
                 },
                 'location_map': {
                     'organization_id': 'path',
-                    'workspace_id': 'path',
-                    'scenario_id': 'path',
                     'scenariorun_id': 'path',
                 },
                 'collection_format_map': {
@@ -591,10 +546,10 @@ class ScenariorunApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_scenario_scenario_run_logs
+            callable=__get_scenario_run_logs
         )
 
-        def __get_scenario_scenario_runs(
+        def __get_scenario_runs(
             self,
             organization_id,
             workspace_id,
@@ -606,7 +561,7 @@ class ScenariorunApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_scenario_scenario_runs(organization_id, workspace_id, scenario_id, async_req=True)
+            >>> thread = api.get_scenario_runs(organization_id, workspace_id, scenario_id, async_req=True)
             >>> result = thread.get()
 
             Args:
@@ -667,14 +622,14 @@ class ScenariorunApi(object):
                 scenario_id
             return self.call_with_http_info(**kwargs)
 
-        self.get_scenario_scenario_runs = _Endpoint(
+        self.get_scenario_runs = _Endpoint(
             settings={
                 'response_type': ([ScenarioRun],),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
                 'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns',
-                'operation_id': 'get_scenario_scenario_runs',
+                'operation_id': 'get_scenario_runs',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -729,7 +684,7 @@ class ScenariorunApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_scenario_scenario_runs
+            callable=__get_scenario_runs
         )
 
         def __get_workspace_scenario_runs(
@@ -998,145 +953,6 @@ class ScenariorunApi(object):
             callable=__run_scenario
         )
 
-        def __search_scenario_run_logs(
-            self,
-            organization_id,
-            scenariorun_id,
-            scenario_run_logs_options,
-            **kwargs
-        ):
-            """Search the logs of a scenariorun  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.search_scenario_run_logs(organization_id, scenariorun_id, scenario_run_logs_options, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                scenariorun_id (str): the ScenarioRun identifier
-                scenario_run_logs_options (ScenarioRunLogsOptions): the options to search logs
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioRunLogs
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['scenariorun_id'] = \
-                scenariorun_id
-            kwargs['scenario_run_logs_options'] = \
-                scenario_run_logs_options
-            return self.call_with_http_info(**kwargs)
-
-        self.search_scenario_run_logs = _Endpoint(
-            settings={
-                'response_type': (ScenarioRunLogs,),
-                'auth': [
-                    'oAuth2AuthCode'
-                ],
-                'endpoint_path': '/organizations/{organization_id}/scenarioruns/{scenariorun_id}/logs/search',
-                'operation_id': 'search_scenario_run_logs',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'organization_id',
-                    'scenariorun_id',
-                    'scenario_run_logs_options',
-                ],
-                'required': [
-                    'organization_id',
-                    'scenariorun_id',
-                    'scenario_run_logs_options',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'organization_id':
-                        (str,),
-                    'scenariorun_id':
-                        (str,),
-                    'scenario_run_logs_options':
-                        (ScenarioRunLogsOptions,),
-                },
-                'attribute_map': {
-                    'organization_id': 'organization_id',
-                    'scenariorun_id': 'scenariorun_id',
-                },
-                'location_map': {
-                    'organization_id': 'path',
-                    'scenariorun_id': 'path',
-                    'scenario_run_logs_options': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client,
-            callable=__search_scenario_run_logs
-        )
-
         def __search_scenario_runs(
             self,
             organization_id,
@@ -1259,7 +1075,8 @@ class ScenariorunApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -1388,267 +1205,10 @@ class ScenariorunApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
             callable=__start_scenario_run_containers
-        )
-
-        def __start_scenario_run_scenario(
-            self,
-            organization_id,
-            scenario_run_start,
-            **kwargs
-        ):
-            """Start a new scenariorun for a Scenario  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.start_scenario_run_scenario(organization_id, scenario_run_start, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                scenario_run_start (ScenarioRunStart): the Scenario information to start
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioRun
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['scenario_run_start'] = \
-                scenario_run_start
-            return self.call_with_http_info(**kwargs)
-
-        self.start_scenario_run_scenario = _Endpoint(
-            settings={
-                'response_type': (ScenarioRun,),
-                'auth': [
-                    'oAuth2AuthCode'
-                ],
-                'endpoint_path': '/organizations/{organization_id}/scenarioruns/start',
-                'operation_id': 'start_scenario_run_scenario',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'organization_id',
-                    'scenario_run_start',
-                ],
-                'required': [
-                    'organization_id',
-                    'scenario_run_start',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'organization_id':
-                        (str,),
-                    'scenario_run_start':
-                        (ScenarioRunStart,),
-                },
-                'attribute_map': {
-                    'organization_id': 'organization_id',
-                },
-                'location_map': {
-                    'organization_id': 'path',
-                    'scenario_run_start': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client,
-            callable=__start_scenario_run_scenario
-        )
-
-        def __start_scenario_run_solution(
-            self,
-            organization_id,
-            scenario_run_start_solution,
-            **kwargs
-        ):
-            """Start a new scenariorun for a Solution Run Template  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.start_scenario_run_solution(organization_id, scenario_run_start_solution, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                scenario_run_start_solution (ScenarioRunStartSolution): the Solution Run Template information to start
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioRun
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['scenario_run_start_solution'] = \
-                scenario_run_start_solution
-            return self.call_with_http_info(**kwargs)
-
-        self.start_scenario_run_solution = _Endpoint(
-            settings={
-                'response_type': (ScenarioRun,),
-                'auth': [
-                    'oAuth2AuthCode'
-                ],
-                'endpoint_path': '/organizations/{organization_id}/scenarioruns/startsolution',
-                'operation_id': 'start_scenario_run_solution',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'organization_id',
-                    'scenario_run_start_solution',
-                ],
-                'required': [
-                    'organization_id',
-                    'scenario_run_start_solution',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'organization_id':
-                        (str,),
-                    'scenario_run_start_solution':
-                        (ScenarioRunStartSolution,),
-                },
-                'attribute_map': {
-                    'organization_id': 'organization_id',
-                },
-                'location_map': {
-                    'organization_id': 'path',
-                    'scenario_run_start_solution': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client,
-            callable=__start_scenario_run_solution
         )

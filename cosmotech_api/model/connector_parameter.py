@@ -106,13 +106,12 @@ class ConnectorParameter(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, label, value_type, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, label, *args, **kwargs):  # noqa: E501
         """ConnectorParameter - a model defined in OpenAPI
 
         Args:
             id (str): the connector parameter id
             label (str): the list of translated parameter group labels
-            value_type (str): the parameter value type
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -145,6 +144,7 @@ class ConnectorParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            value_type (str): the parameter value type. [optional]  # noqa: E501
             options ([str]): the list of available and valid values for the parameter. [optional]  # noqa: E501
             default (str): the default value. [optional]  # noqa: E501
             env_var (str): associated environment variable in connector image. [optional]  # noqa: E501
@@ -175,7 +175,6 @@ class ConnectorParameter(ModelNormal):
 
         self.id = id
         self.label = label
-        self.value_type = value_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

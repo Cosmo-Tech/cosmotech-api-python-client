@@ -20,9 +20,6 @@ from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_service import OrganizationService
 from cosmotech_api.model.organization_services import OrganizationServices
 from cosmotech_api.model.organization_user import OrganizationUser
-from cosmotech_api.model.platform import Platform
-from cosmotech_api.model.platform_service import PlatformService
-from cosmotech_api.model.platform_services import PlatformServices
 from cosmotech_api.model.run_template import RunTemplate
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
@@ -33,14 +30,10 @@ from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChanged
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 from cosmotech_api.model.scenario_run import ScenarioRun
 from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
-from cosmotech_api.model.scenario_run_container_log import ScenarioRunContainerLog
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
-from cosmotech_api.model.scenario_run_logs_options import ScenarioRunLogsOptions
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
-from cosmotech_api.model.scenario_run_start import ScenarioRunStart
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
-from cosmotech_api.model.scenario_run_start_solution import ScenarioRunStartSolution
 from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from cosmotech_api.model.scenario_user import ScenarioUser
 from cosmotech_api.model.solution import Solution

@@ -22,6 +22,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.dataset import Dataset
+from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
 
 
@@ -36,6 +37,145 @@ class DatasetApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+
+        def __add_or_replace_dataset_compatibility_elements(
+            self,
+            organization_id,
+            dataset_id,
+            dataset_compatibility,
+            **kwargs
+        ):
+            """Add Dataset Compatibility elements. Any item with the same solutionKey will be overwritten  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.add_or_replace_dataset_compatibility_elements(organization_id, dataset_id, dataset_compatibility, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                dataset_id (str): the Dataset identifier
+                dataset_compatibility ([DatasetCompatibility]): the Dataset Compatibility elements
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [DatasetCompatibility]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['dataset_id'] = \
+                dataset_id
+            kwargs['dataset_compatibility'] = \
+                dataset_compatibility
+            return self.call_with_http_info(**kwargs)
+
+        self.add_or_replace_dataset_compatibility_elements = _Endpoint(
+            settings={
+                'response_type': ([DatasetCompatibility],),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}/compatibility',
+                'operation_id': 'add_or_replace_dataset_compatibility_elements',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'dataset_id',
+                    'dataset_compatibility',
+                ],
+                'required': [
+                    'organization_id',
+                    'dataset_id',
+                    'dataset_compatibility',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'dataset_compatibility':
+                        ([DatasetCompatibility],),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'dataset_id': 'path',
+                    'dataset_compatibility': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__add_or_replace_dataset_compatibility_elements
+        )
 
         def __copy_dataset(
             self,
@@ -159,7 +299,8 @@ class DatasetApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -172,7 +313,7 @@ class DatasetApi(object):
             dataset,
             **kwargs
         ):
-            """Create a new dataset  # noqa: E501
+            """Create a new Dataset  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -288,7 +429,8 @@ class DatasetApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
@@ -335,7 +477,7 @@ class DatasetApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                Dataset
+                None
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -366,7 +508,7 @@ class DatasetApi(object):
 
         self.delete_dataset = _Endpoint(
             settings={
-                'response_type': (Dataset,),
+                'response_type': None,
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -414,9 +556,7 @@ class DatasetApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client,
@@ -547,7 +687,7 @@ class DatasetApi(object):
             dataset_id,
             **kwargs
         ):
-            """Get the details of a dataset  # noqa: E501
+            """Get the details of a Dataset  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
@@ -667,6 +807,132 @@ class DatasetApi(object):
             },
             api_client=api_client,
             callable=__find_dataset_by_id
+        )
+
+        def __remove_all_dataset_compatibility_elements(
+            self,
+            organization_id,
+            dataset_id,
+            **kwargs
+        ):
+            """Remove all Dataset Compatibility elements from the Dataset specified  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.remove_all_dataset_compatibility_elements(organization_id, dataset_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                dataset_id (str): the Dataset identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['dataset_id'] = \
+                dataset_id
+            return self.call_with_http_info(**kwargs)
+
+        self.remove_all_dataset_compatibility_elements = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}/compatibility',
+                'operation_id': 'remove_all_dataset_compatibility_elements',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'dataset_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'dataset_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'dataset_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__remove_all_dataset_compatibility_elements
         )
 
         def __update_dataset(
@@ -801,7 +1067,8 @@ class DatasetApi(object):
                     'application/json'
                 ],
                 'content_type': [
-                    'application/json'
+                    'application/json',
+                    'application/yaml'
                 ]
             },
             api_client=api_client,
