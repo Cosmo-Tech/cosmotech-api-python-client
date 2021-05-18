@@ -22,6 +22,7 @@ from cosmotech_api.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from cosmotech_api.model.run_template import RunTemplate
+from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.model.solution import Solution
@@ -710,6 +711,142 @@ class SolutionApi(object):
             },
             api_client=api_client,
             callable=__delete_solution
+        )
+
+        def __delete_solution_run_template(
+            self,
+            organization_id,
+            solution_id,
+            run_template_id,
+            **kwargs
+        ):
+            """Remove the specified Solution Run Template  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.delete_solution_run_template(organization_id, solution_id, run_template_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                solution_id (str): the Solution identifier
+                run_template_id (str): the Run Template identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['solution_id'] = \
+                solution_id
+            kwargs['run_template_id'] = \
+                run_template_id
+            return self.call_with_http_info(**kwargs)
+
+        self.delete_solution_run_template = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id}',
+                'operation_id': 'delete_solution_run_template',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'solution_id',
+                    'run_template_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'solution_id',
+                    'run_template_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'solution_id':
+                        (str,),
+                    'run_template_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'solution_id': 'solution_id',
+                    'run_template_id': 'run_template_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'solution_id': 'path',
+                    'run_template_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__delete_solution_run_template
         )
 
         def __find_all_solutions(
@@ -1476,12 +1613,163 @@ class SolutionApi(object):
             callable=__update_solution
         )
 
+        def __update_solution_run_template(
+            self,
+            organization_id,
+            solution_id,
+            run_template_id,
+            run_template,
+            **kwargs
+        ):
+            """Update the specified Solution Run Template  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.update_solution_run_template(organization_id, solution_id, run_template_id, run_template, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                solution_id (str): the Solution identifier
+                run_template_id (str): the Run Template identifier
+                run_template (RunTemplate): the Run Templates
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [RunTemplate]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['solution_id'] = \
+                solution_id
+            kwargs['run_template_id'] = \
+                run_template_id
+            kwargs['run_template'] = \
+                run_template
+            return self.call_with_http_info(**kwargs)
+
+        self.update_solution_run_template = _Endpoint(
+            settings={
+                'response_type': ([RunTemplate],),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id}',
+                'operation_id': 'update_solution_run_template',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'solution_id',
+                    'run_template_id',
+                    'run_template',
+                ],
+                'required': [
+                    'organization_id',
+                    'solution_id',
+                    'run_template_id',
+                    'run_template',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'solution_id':
+                        (str,),
+                    'run_template_id':
+                        (str,),
+                    'run_template':
+                        (RunTemplate,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'solution_id': 'solution_id',
+                    'run_template_id': 'run_template_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'solution_id': 'path',
+                    'run_template_id': 'path',
+                    'run_template': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json',
+                    'application/yaml'
+                ]
+            },
+            api_client=api_client,
+            callable=__update_solution_run_template
+        )
+
         def __upload_run_template_handler(
             self,
             organization_id,
             solution_id,
             run_template_id,
             handler_id,
+            body,
             **kwargs
         ):
             """Upload a Run Template step handler zip file  # noqa: E501
@@ -1489,17 +1777,18 @@ class SolutionApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, async_req=True)
+            >>> thread = api.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body, async_req=True)
             >>> result = thread.get()
 
             Args:
                 organization_id (str): the Organization identifier
                 solution_id (str): the Solution identifier
                 run_template_id (str): the Run Template identifier
-                handler_id (str): the Handler id identifier
+                handler_id (RunTemplateHandlerId): the Handler identifier
+                body (file_type):
 
             Keyword Args:
-                body (file_type): [optional]
+                overwrite (bool): whether to overwrite any existing handler resource. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1552,6 +1841,8 @@ class SolutionApi(object):
                 run_template_id
             kwargs['handler_id'] = \
                 handler_id
+            kwargs['body'] = \
+                body
             return self.call_with_http_info(**kwargs)
 
         self.upload_run_template_handler = _Endpoint(
@@ -1572,17 +1863,18 @@ class SolutionApi(object):
                     'run_template_id',
                     'handler_id',
                     'body',
+                    'overwrite',
                 ],
                 'required': [
                     'organization_id',
                     'solution_id',
                     'run_template_id',
                     'handler_id',
+                    'body',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'handler_id',
                 ],
                 'validation': [
                 ]
@@ -1591,14 +1883,6 @@ class SolutionApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('handler_id',): {
-
-                        "PARAMETERS_HANDLER": "parameters_handler",
-                        "VALIDATOR": "validator",
-                        "PRERUN": "prerun",
-                        "ENGINE": "engine",
-                        "POSTRUN": "postrun"
-                    },
                 },
                 'openapi_types': {
                     'organization_id':
@@ -1608,15 +1892,18 @@ class SolutionApi(object):
                     'run_template_id':
                         (str,),
                     'handler_id':
-                        (str,),
+                        (RunTemplateHandlerId,),
                     'body':
                         (file_type,),
+                    'overwrite':
+                        (bool,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'solution_id': 'solution_id',
                     'run_template_id': 'run_template_id',
                     'handler_id': 'handler_id',
+                    'overwrite': 'overwrite',
                 },
                 'location_map': {
                     'organization_id': 'path',
@@ -1624,6 +1911,7 @@ class SolutionApi(object):
                     'run_template_id': 'path',
                     'handler_id': 'path',
                     'body': 'body',
+                    'overwrite': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -1631,7 +1919,7 @@ class SolutionApi(object):
             headers_map={
                 'accept': [],
                 'content_type': [
-                    'image/zip'
+                    'application/octet-stream'
                 ]
             },
             api_client=api_client,

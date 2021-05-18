@@ -25,6 +25,7 @@ from cosmotech_api.model.scenario_run import ScenarioRun
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
+from cosmotech_api.model.scenario_run_status import ScenarioRunStatus
 
 
 class ScenariorunApi(object):
@@ -547,6 +548,134 @@ class ScenariorunApi(object):
             },
             api_client=api_client,
             callable=__get_scenario_run_logs
+        )
+
+        def __get_scenario_run_status(
+            self,
+            organization_id,
+            scenariorun_id,
+            **kwargs
+        ):
+            """get the status for the ScenarioRun  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_scenario_run_status(organization_id, scenariorun_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                scenariorun_id (str): the ScenarioRun identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                ScenarioRunStatus
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['scenariorun_id'] = \
+                scenariorun_id
+            return self.call_with_http_info(**kwargs)
+
+        self.get_scenario_run_status = _Endpoint(
+            settings={
+                'response_type': (ScenarioRunStatus,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/scenarioruns/{scenariorun_id}/status',
+                'operation_id': 'get_scenario_run_status',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'scenariorun_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'scenariorun_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'scenariorun_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'scenariorun_id': 'scenariorun_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'scenariorun_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_scenario_run_status
         )
 
         def __get_scenario_runs(

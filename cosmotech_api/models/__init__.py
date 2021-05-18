@@ -21,6 +21,7 @@ from cosmotech_api.model.organization_service import OrganizationService
 from cosmotech_api.model.organization_services import OrganizationServices
 from cosmotech_api.model.organization_user import OrganizationUser
 from cosmotech_api.model.run_template import RunTemplate
+from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
@@ -34,6 +35,8 @@ from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainer
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
+from cosmotech_api.model.scenario_run_status import ScenarioRunStatus
+from cosmotech_api.model.scenario_run_status_node import ScenarioRunStatusNode
 from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from cosmotech_api.model.scenario_user import ScenarioUser
 from cosmotech_api.model.solution import Solution

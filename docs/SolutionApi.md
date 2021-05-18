@@ -9,12 +9,14 @@ Method | HTTP request | Description
 [**add_or_replace_run_templates**](SolutionApi.md#add_or_replace_run_templates) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Add Run Templates. Any item with the same ID will be overwritten
 [**create_solution**](SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 [**delete_solution**](SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
+[**delete_solution_run_template**](SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Remove the specified Solution Run Template
 [**find_all_solutions**](SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 [**find_solution_by_id**](SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 [**remove_all_run_templates**](SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified
 [**remove_all_solution_parameter_groups**](SolutionApi.md#remove_all_solution_parameter_groups) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Remove all Parameter Groups from the Solution specified
 [**remove_all_solution_parameters**](SolutionApi.md#remove_all_solution_parameters) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters | Remove all Parameters from the Solution specified
 [**update_solution**](SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
+[**update_solution_run_template**](SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update the specified Solution Run Template
 [**upload_run_template_handler**](SolutionApi.md#upload_run_template_handler) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/upload | Upload a Run Template step handler zip file
 
 
@@ -520,6 +522,83 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_solution_run_template**
+> delete_solution_run_template(organization_id, solution_id, run_template_id)
+
+Remove the specified Solution Run Template
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template_id = "run_template_id_example" # str | the Run Template identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove the specified Solution Run Template
+        api_instance.delete_solution_run_template(organization_id, solution_id, run_template_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->delete_solution_run_template: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template_id** | **str**| the Run Template identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | the operation succeeded |  -  |
 **404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1044,10 +1123,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **upload_run_template_handler**
-> upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
+# **update_solution_run_template**
+> [RunTemplate] update_solution_run_template(organization_id, solution_id, run_template_id, run_template)
 
-Upload a Run Template step handler zip file
+Update the specified Solution Run Template
 
 ### Example
 
@@ -1056,6 +1135,7 @@ Upload a Run Template step handler zip file
 import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
+from cosmotech_api.model.run_template import RunTemplate
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -1081,13 +1161,122 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     solution_id = "solution_id_example" # str | the Solution identifier
     run_template_id = "run_template_id_example" # str | the Run Template identifier
-    handler_id = "parameters_handler" # str | the Handler id identifier
-    body = open('/path/to/file', 'rb') # file_type |  (optional)
+    run_template = RunTemplate(
+        id="id_example",
+        name="name_example",
+        description="description_example",
+        csm_simulation="csm_simulation_example",
+        tags=[
+            "tags_example",
+        ],
+        compute_size="compute_size_example",
+        fetch_datasets=True,
+        fetch_scenario_parameters=True,
+        apply_parameters=True,
+        validate_data=True,
+        send_datasets_to_data_warehouse=True,
+        send_input_parameters_to_data_warehouse=True,
+        pre_run=True,
+        run=True,
+        post_run=True,
+        parameters_handler_source=RunTemplateStepSource("local"),
+        dataset_validator_source=RunTemplateStepSource("local"),
+        pre_run_source=RunTemplateStepSource("local"),
+        run_source=RunTemplateStepSource("local"),
+        post_run_source=RunTemplateStepSource("local"),
+        parameter_groups=[
+            "parameter_groups_example",
+        ],
+    ) # RunTemplate | the Run Templates
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Update the specified Solution Run Template
+        api_response = api_instance.update_solution_run_template(organization_id, solution_id, run_template_id, run_template)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->update_solution_run_template: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template_id** | **str**| the Run Template identifier |
+ **run_template** | [**RunTemplate**](RunTemplate.md)| the Run Templates |
+
+### Return type
+
+[**[RunTemplate]**](RunTemplate.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Parameters |  -  |
+**400** | Bad request |  -  |
+**404** | the Solution or Run Template specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_run_template_handler**
+> upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body)
+
+Upload a Run Template step handler zip file
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.azure.cosmo-platform.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template_id = "run_template_id_example" # str | the Run Template identifier
+    handler_id = RunTemplateHandlerId("parameters_handler") # RunTemplateHandlerId | the Handler identifier
+    body = open('/path/to/file', 'rb') # file_type | 
+    overwrite = False # bool | whether to overwrite any existing handler resource (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Upload a Run Template step handler zip file
-        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
+        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body)
     except cosmotech_api.ApiException as e:
         print("Exception when calling SolutionApi->upload_run_template_handler: %s\n" % e)
 
@@ -1095,7 +1284,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Upload a Run Template step handler zip file
-        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body=body)
+        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body, overwrite=overwrite)
     except cosmotech_api.ApiException as e:
         print("Exception when calling SolutionApi->upload_run_template_handler: %s\n" % e)
 ```
@@ -1108,8 +1297,9 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **solution_id** | **str**| the Solution identifier |
  **run_template_id** | **str**| the Run Template identifier |
- **handler_id** | **str**| the Handler id identifier |
- **body** | **file_type**|  | [optional]
+ **handler_id** | **RunTemplateHandlerId**| the Handler identifier |
+ **body** | **file_type**|  |
+ **overwrite** | **bool**| whether to overwrite any existing handler resource | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -1121,7 +1311,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: image/zip
+ - **Content-Type**: application/octet-stream
  - **Accept**: Not defined
 
 
