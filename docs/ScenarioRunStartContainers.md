@@ -5,6 +5,7 @@ the parameters to run directly containers
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**csm_simulation_id** | **str** | Cosmo Tech Simulation Run Id | 
 **containers** | [**[ScenarioRunContainer]**](ScenarioRunContainer.md) | the containerslist | 
 **generate_name** | **str** | the base name for workflow name generation | [optional] 
 **node_label** | **str** | the node label request | [optional] 

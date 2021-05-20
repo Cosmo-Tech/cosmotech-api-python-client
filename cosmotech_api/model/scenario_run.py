@@ -82,6 +82,7 @@ class ScenarioRun(ModelNormal):
             'id': (str,),  # noqa: E501
             'organization_id': (str,),  # noqa: E501
             'workflow_id': (str,),  # noqa: E501
+            'csm_simulation_run': (str,),  # noqa: E501
             'generate_name': (str,),  # noqa: E501
             'workflow_name': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
@@ -108,6 +109,7 @@ class ScenarioRun(ModelNormal):
         'id': 'id',  # noqa: E501
         'organization_id': 'organizationId',  # noqa: E501
         'workflow_id': 'workflowId',  # noqa: E501
+        'csm_simulation_run': 'csmSimulationRun',  # noqa: E501
         'generate_name': 'generateName',  # noqa: E501
         'workflow_name': 'workflowName',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
@@ -174,6 +176,7 @@ class ScenarioRun(ModelNormal):
             id (str): the ScenarioRun. [optional]  # noqa: E501
             organization_id (str): the Organization id. [optional]  # noqa: E501
             workflow_id (str): the Cosmo Tech compute cluster Argo Workflow Id to search. [optional]  # noqa: E501
+            csm_simulation_run (str): the Cosmo Tech Simulation Run Id. [optional]  # noqa: E501
             generate_name (str): the base name for workflow name generation. [optional]  # noqa: E501
             workflow_name (str): the Cosmo Tech compute cluster Argo Workflow Name. [optional]  # noqa: E501
             owner_id (str): the user id which own this scenariorun. [optional]  # noqa: E501

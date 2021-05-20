@@ -755,6 +755,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     scenario_run_start_containers = ScenarioRunStartContainers(
         generate_name="generate_name_example",
+        csm_simulation_id="csm_simulation_id_example",
         node_label="node_label_example",
         containers=[
             ScenarioRunContainer(

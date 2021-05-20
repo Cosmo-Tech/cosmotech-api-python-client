@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** | the ScenarioRun | [optional] [readonly] 
 **organization_id** | **str** | the Organization id | [optional] 
 **workflow_id** | **str** | the Cosmo Tech compute cluster Argo Workflow Id to search | [optional] 
+**csm_simulation_run** | **str** | the Cosmo Tech Simulation Run Id | [optional] [readonly] 
 **generate_name** | **str** | the base name for workflow name generation | [optional] 
 **workflow_name** | **str** | the Cosmo Tech compute cluster Argo Workflow Name | [optional] 
 **owner_id** | **str** | the user id which own this scenariorun | [optional] [readonly] 

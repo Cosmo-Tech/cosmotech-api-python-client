@@ -74,7 +74,7 @@ class ScenarioRunStatusNode(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'display_name': (str,),  # noqa: E501
+            'container_name': (str,),  # noqa: E501
             'estimated_duration': (int,),  # noqa: E501
             'host_node_name': (str,),  # noqa: E501
             'message': (str,),  # noqa: E501
@@ -92,7 +92,7 @@ class ScenarioRunStatusNode(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'display_name': 'displayName',  # noqa: E501
+        'container_name': 'containerName',  # noqa: E501
         'estimated_duration': 'estimatedDuration',  # noqa: E501
         'host_node_name': 'hostNodeName',  # noqa: E501
         'message': 'message',  # noqa: E501
@@ -150,7 +150,7 @@ class ScenarioRunStatusNode(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             id (str): the node id. [optional]  # noqa: E501
             name (str): the node unique name. [optional]  # noqa: E501
-            display_name (str): the display name, equivalent to ScenarioRun Container name. [optional]  # noqa: E501
+            container_name (str): the ScenarioRun container name. [optional]  # noqa: E501
             estimated_duration (int): estimatedDuration in seconds. [optional]  # noqa: E501
             host_node_name (str): HostNodeName name of the Kubernetes node on which the Pod is running, if applicable. [optional]  # noqa: E501
             message (str): a human readable message indicating details about why the node is in this condition. [optional]  # noqa: E501

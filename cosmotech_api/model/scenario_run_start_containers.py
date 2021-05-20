@@ -77,6 +77,7 @@ class ScenarioRunStartContainers(ModelNormal):
         """
         lazy_import()
         return {
+            'csm_simulation_id': (str,),  # noqa: E501
             'containers': ([ScenarioRunContainer],),  # noqa: E501
             'generate_name': (str,),  # noqa: E501
             'node_label': (str,),  # noqa: E501
@@ -88,6 +89,7 @@ class ScenarioRunStartContainers(ModelNormal):
 
 
     attribute_map = {
+        'csm_simulation_id': 'csmSimulationId',  # noqa: E501
         'containers': 'containers',  # noqa: E501
         'generate_name': 'generateName',  # noqa: E501
         'node_label': 'nodeLabel',  # noqa: E501
@@ -105,10 +107,11 @@ class ScenarioRunStartContainers(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, containers, *args, **kwargs):  # noqa: E501
+    def __init__(self, csm_simulation_id, containers, *args, **kwargs):  # noqa: E501
         """ScenarioRunStartContainers - a model defined in OpenAPI
 
         Args:
+            csm_simulation_id (str): Cosmo Tech Simulation Run Id
             containers ([ScenarioRunContainer]): the containerslist
 
         Keyword Args:
@@ -169,6 +172,7 @@ class ScenarioRunStartContainers(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.csm_simulation_id = csm_simulation_id
         self.containers = containers
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
