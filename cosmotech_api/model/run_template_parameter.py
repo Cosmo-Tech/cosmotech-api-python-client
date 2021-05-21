@@ -80,6 +80,10 @@ class RunTemplateParameter(ModelNormal):
             'id': (str,),  # noqa: E501
             'labels': (TranslatedLabels,),  # noqa: E501
             'var_type': (str,),  # noqa: E501
+            'default_value': (str,),  # noqa: E501
+            'min_value': (str,),  # noqa: E501
+            'max_value': (str,),  # noqa: E501
+            'regex_validation': (str,),  # noqa: E501
             'options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
@@ -92,6 +96,10 @@ class RunTemplateParameter(ModelNormal):
         'id': 'id',  # noqa: E501
         'labels': 'labels',  # noqa: E501
         'var_type': 'varType',  # noqa: E501
+        'default_value': 'defaultValue',  # noqa: E501
+        'min_value': 'minValue',  # noqa: E501
+        'max_value': 'maxValue',  # noqa: E501
+        'regex_validation': 'regexValidation',  # noqa: E501
         'options': 'options',  # noqa: E501
     }
 
@@ -146,6 +154,10 @@ class RunTemplateParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            default_value (str): the default value for this parameter. [optional]  # noqa: E501
+            min_value (str): the minimum value for this parameter. [optional]  # noqa: E501
+            max_value (str): the maximum value for this parameter. [optional]  # noqa: E501
+            regex_validation (str): a regex to validate the value. [optional]  # noqa: E501
             options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): freeform options. [optional]  # noqa: E501
         """
 

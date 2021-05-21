@@ -92,6 +92,7 @@ class RunTemplate(ModelNormal):
             'pre_run': (bool,),  # noqa: E501
             'run': (bool,),  # noqa: E501
             'post_run': (bool,),  # noqa: E501
+            'parameters_json': (bool,),  # noqa: E501
             'parameters_handler_source': (RunTemplateStepSource,),  # noqa: E501
             'dataset_validator_source': (RunTemplateStepSource,),  # noqa: E501
             'pre_run_source': (RunTemplateStepSource,),  # noqa: E501
@@ -121,6 +122,7 @@ class RunTemplate(ModelNormal):
         'pre_run': 'preRun',  # noqa: E501
         'run': 'run',  # noqa: E501
         'post_run': 'postRun',  # noqa: E501
+        'parameters_json': 'parametersJson',  # noqa: E501
         'parameters_handler_source': 'parametersHandlerSource',  # noqa: E501
         'dataset_validator_source': 'datasetValidatorSource',  # noqa: E501
         'pre_run_source': 'preRunSource',  # noqa: E501
@@ -192,6 +194,7 @@ class RunTemplate(ModelNormal):
             pre_run (bool): whether or not the pre-run step is done. [optional]  # noqa: E501
             run (bool): whether or not the run step is done. [optional]  # noqa: E501
             post_run (bool): whether or not the post-run step is done. [optional]  # noqa: E501
+            parameters_json (bool): whether or not to store the scenario parameters in json instead of csv. [optional]  # noqa: E501
             parameters_handler_source (RunTemplateStepSource): [optional]  # noqa: E501
             dataset_validator_source (RunTemplateStepSource): [optional]  # noqa: E501
             pre_run_source (RunTemplateStepSource): [optional]  # noqa: E501

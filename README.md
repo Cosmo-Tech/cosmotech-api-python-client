@@ -155,6 +155,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**get_organization_current_user**](docs/UserApi.md#get_organization_current_user) | **GET** /organizations/{organization_id}/me | Get the details of a logged-in User with roles for an Organization
 *UserApi* | [**get_workspace_current_user**](docs/UserApi.md#get_workspace_current_user) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/me | Get the details of the logged-in user with roles for a Workspace
 *UserApi* | [**register_user**](docs/UserApi.md#register_user) | **POST** /users | Register a new user
+*UserApi* | [**test_platform**](docs/UserApi.md#test_platform) | **GET** /test | test platform API call
 *UserApi* | [**unregister_user**](docs/UserApi.md#unregister_user) | **DELETE** /users/{user_id} | Unregister an user
 *UserApi* | [**update_user**](docs/UserApi.md#update_user) | **PATCH** /users/{user_id} | Update a User
 *ValidatorApi* | [**create_validator**](docs/ValidatorApi.md#create_validator) | **POST** /organizations/{organization_id}/datasets/validators | Register a new validator

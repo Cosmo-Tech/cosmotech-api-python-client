@@ -72,6 +72,13 @@ class TestUserApi(unittest.TestCase):
         """
         pass
 
+    def test_test_platform(self):
+        """Test case for test_platform
+
+        test platform API call  # noqa: E501
+        """
+        pass
+
     def test_unregister_user(self):
         """Test case for unregister_user
 
