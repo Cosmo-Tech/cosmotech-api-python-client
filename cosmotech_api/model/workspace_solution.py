@@ -100,11 +100,8 @@ class WorkspaceSolution(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, solution_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """WorkspaceSolution - a model defined in OpenAPI
-
-        Args:
-            solution_id (str): the Solution Id attached to this workspace
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,6 +134,7 @@ class WorkspaceSolution(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            solution_id (str): the Solution Id attached to this workspace. [optional]  # noqa: E501
             run_template_filter ([str]): the list of Solution Run Template Id to filter. [optional]  # noqa: E501
             default_run_template_dataset ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): a map of RunTemplateId/DatasetId to set a default dataset for a Run Template. [optional]  # noqa: E501
         """
@@ -164,7 +162,6 @@ class WorkspaceSolution(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.solution_id = solution_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
