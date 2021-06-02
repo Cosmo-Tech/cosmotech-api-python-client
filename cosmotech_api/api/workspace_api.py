@@ -1633,6 +1633,7 @@ class WorkspaceApi(object):
 
             Keyword Args:
                 overwrite (bool): [optional] if omitted the server will use the default value of False
+                destination (str): Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1702,6 +1703,7 @@ class WorkspaceApi(object):
                     'workspace_id',
                     'file',
                     'overwrite',
+                    'destination',
                 ],
                 'required': [
                     'organization_id',
@@ -1729,18 +1731,22 @@ class WorkspaceApi(object):
                         (file_type,),
                     'overwrite':
                         (bool,),
+                    'destination':
+                        (str,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'workspace_id': 'workspace_id',
                     'file': 'file',
                     'overwrite': 'overwrite',
+                    'destination': 'destination',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'workspace_id': 'path',
                     'file': 'form',
                     'overwrite': 'form',
+                    'destination': 'form',
                 },
                 'collection_format_map': {
                 }

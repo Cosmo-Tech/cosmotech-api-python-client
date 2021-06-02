@@ -1047,6 +1047,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     workspace_id = "workspace_id_example" # str | the Workspace identifier
     file = open('/path/to/file', 'rb') # file_type | 
     overwrite = False # bool |  (optional) if omitted the server will use the default value of False
+    destination = "path/to/a/directory/" # str | Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location.  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -1060,7 +1061,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Upload a file for the Workspace
-        api_response = api_instance.upload_workspace_file(organization_id, workspace_id, file, overwrite=overwrite)
+        api_response = api_instance.upload_workspace_file(organization_id, workspace_id, file, overwrite=overwrite, destination=destination)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling WorkspaceApi->upload_workspace_file: %s\n" % e)
@@ -1075,6 +1076,7 @@ Name | Type | Description  | Notes
  **workspace_id** | **str**| the Workspace identifier |
  **file** | **file_type**|  |
  **overwrite** | **bool**|  | [optional] if omitted the server will use the default value of False
+ **destination** | **str**| Destination path. Must end with a &#39;/&#39; if specifying a folder. Note that paths may or may not start with a &#39;/&#39;, but they are always treated as relative to the Workspace root location.  | [optional]
 
 ### Return type
 
