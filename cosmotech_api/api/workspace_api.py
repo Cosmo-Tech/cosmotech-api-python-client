@@ -640,7 +640,7 @@ class WorkspaceApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/files/{file_name}',
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/files/delete',
                 'operation_id': 'delete_workspace_file',
                 'http_method': 'DELETE',
                 'servers': None,
@@ -684,7 +684,7 @@ class WorkspaceApi(object):
                 'location_map': {
                     'organization_id': 'path',
                     'workspace_id': 'path',
-                    'file_name': 'path',
+                    'file_name': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -776,7 +776,7 @@ class WorkspaceApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/files/{file_name}',
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/files/download',
                 'operation_id': 'download_workspace_file',
                 'http_method': 'GET',
                 'servers': None,
@@ -820,7 +820,7 @@ class WorkspaceApi(object):
                 'location_map': {
                     'organization_id': 'path',
                     'workspace_id': 'path',
-                    'file_name': 'path',
+                    'file_name': 'query',
                 },
                 'collection_format_map': {
                 }

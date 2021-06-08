@@ -171,8 +171,8 @@ Class | Method | HTTP request | Description
 *WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 *WorkspaceApi* | [**delete_all_workspace_files**](docs/WorkspaceApi.md#delete_all_workspace_files) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete all Workspace files
 *WorkspaceApi* | [**delete_workspace**](docs/WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
-*WorkspaceApi* | [**delete_workspace_file**](docs/WorkspaceApi.md#delete_workspace_file) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files/{file_name} | Delete a workspace file
-*WorkspaceApi* | [**download_workspace_file**](docs/WorkspaceApi.md#download_workspace_file) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files/{file_name} | Download the Workspace File specified
+*WorkspaceApi* | [**delete_workspace_file**](docs/WorkspaceApi.md#delete_workspace_file) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files/delete | Delete a workspace file
+*WorkspaceApi* | [**download_workspace_file**](docs/WorkspaceApi.md#download_workspace_file) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files/download | Download the Workspace File specified
 *WorkspaceApi* | [**find_all_workspace_files**](docs/WorkspaceApi.md#find_all_workspace_files) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files | List all Workspace files
 *WorkspaceApi* | [**find_all_workspaces**](docs/WorkspaceApi.md#find_all_workspaces) | **GET** /organizations/{organization_id}/workspaces | List all Workspaces
 *WorkspaceApi* | [**find_workspace_by_id**](docs/WorkspaceApi.md#find_workspace_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
@@ -235,8 +235,9 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: implicit
-- **Authorization URL**: oauth2/authorize
-- **Scopes**: N/A
+- **Authorization URL**: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+- **Scopes**: 
+ - **http://dev.api.cosmotech.com/platform**: Platform scope
 
 
 ## Author
