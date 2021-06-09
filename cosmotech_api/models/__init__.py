@@ -29,6 +29,7 @@ from cosmotech_api.model.run_template_step_source import RunTemplateStepSource
 from cosmotech_api.model.scenario import Scenario
 from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.model.scenario_last_run import ScenarioLastRun
 from cosmotech_api.model.scenario_run import ScenarioRun
 from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs

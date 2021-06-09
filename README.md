@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
  - [Scenario](docs/Scenario.md)
  - [ScenarioChangedParameterValue](docs/ScenarioChangedParameterValue.md)
  - [ScenarioComparisonResult](docs/ScenarioComparisonResult.md)
+ - [ScenarioLastRun](docs/ScenarioLastRun.md)
  - [ScenarioRun](docs/ScenarioRun.md)
  - [ScenarioRunContainer](docs/ScenarioRunContainer.md)
  - [ScenarioRunContainerLogs](docs/ScenarioRunContainerLogs.md)
