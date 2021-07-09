@@ -52,10 +52,10 @@ import cosmotech_api
 from pprint import pprint
 from cosmotech_api.api import connector_api
 from cosmotech_api.model.connector import Connector
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -65,7 +65,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -85,7 +85,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.cosmotech.com*
+All URIs are relative to *https://dev.api.cosmotech.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -244,7 +244,7 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-
+platform@cosmotech.com
 
 
 ## Notes for Large OpenAPI documents

@@ -1,6 +1,6 @@
 # cosmotech_api.SolutionApi
 
-All URIs are relative to *https://api.cosmotech.com*
+All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,10 +34,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -47,7 +47,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -127,10 +127,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -140,7 +140,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -220,10 +220,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.run_template import RunTemplate
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -233,7 +233,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -329,10 +329,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -342,7 +342,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -474,10 +474,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -487,7 +487,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -549,10 +549,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -562,7 +562,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -627,10 +627,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -640,7 +640,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -701,10 +701,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -714,7 +714,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -777,10 +777,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -790,7 +790,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -852,10 +852,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -865,7 +865,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -927,10 +927,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import solution_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -940,7 +940,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -1003,10 +1003,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.solution import Solution
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1016,7 +1016,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -1152,10 +1152,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.run_template import RunTemplate
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1165,7 +1165,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -1261,10 +1261,10 @@ import cosmotech_api
 from cosmotech_api.api import solution_api
 from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.cosmotech.com
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1274,7 +1274,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.cosmotech.com"
+    host = "https://dev.api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 

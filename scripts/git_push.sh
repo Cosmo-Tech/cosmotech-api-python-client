@@ -64,16 +64,28 @@ popd
 cp -r ../* ../../../release/${git_repo_id}
 pushd ../../../release/${git_repo_id}
 
+git status
+
 # Stages the new files for commit.
-git add .
+git add --all .
 
-# Commits the tracked changes and prepares them to be pushed to a remote repository.
-git commit -m "$release_note"
+git status
 
-# Pushes (Forces) the changes in the local repository up to the remote repository
-echo "Git pushing to https://${git_host}/${git_organization_id}/${git_repo_id}.git"
-git push origin master 2>&1 | grep -v 'To https'
+if [[ $(git status --porcelain) ]]; then
+
+  if [[ -f "${GIT_COMMIT_MESSAGE_FILE:-}" ]]; then
+    git commit -F "${GIT_COMMIT_MESSAGE_FILE}"
+  else
+    git commit -m "$release_note"
+  fi
+
+  # Pushes (Forces) the changes in the local repository up to the remote repository
+  echo "Git pushing to https://${git_host}/${git_organization_id}/${git_repo_id}.git"
+  git push origin master 2>&1 | grep -v 'To https'
+
+fi
 
 popd
+
 # Cleaning release repository
 rm -rf ../../../release
