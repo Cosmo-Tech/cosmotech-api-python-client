@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **tags** | **[str]** | the list of tags | [optional] 
 **parent_id** | **str** | the Scenario parent id | [optional] 
 **owner_id** | **str** | the user id which own this Scenario | [optional] [readonly] 
+**root_id** | **str** | the scenario root id | [optional] [readonly] 
 **solution_id** | **str** | the Solution Id associated with this Scenario | [optional] [readonly] 
 **run_template_id** | **str** | the Solution Run Template Id associated with this Scenario | [optional] 
 **workspace_id** | **str** | the associated Workspace Id | [optional] [readonly] 

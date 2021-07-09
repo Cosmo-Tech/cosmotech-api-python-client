@@ -75,7 +75,7 @@ class ScenarioRunTemplateParameterValue(ModelNormal):
             'parameter_id': (str,),  # noqa: E501
             'value': (str,),  # noqa: E501
             'var_type': (str,),  # noqa: E501
-            'is_inherited': (str,),  # noqa: E501
+            'is_inherited': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -141,7 +141,7 @@ class ScenarioRunTemplateParameterValue(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             var_type (str): the parameter value type. [optional]  # noqa: E501
-            is_inherited (str): whether or not the value is inherited from parent or has been changed. [optional]  # noqa: E501
+            is_inherited (bool): whether or not the value is inherited from parent or has been changed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

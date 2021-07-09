@@ -52,10 +52,10 @@ import cosmotech_api
 from pprint import pprint
 from cosmotech_api.api import connector_api
 from cosmotech_api.model.connector import Connector
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -65,7 +65,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -85,7 +85,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.azure.cosmo-platform.com*
+All URIs are relative to *https://api.cosmotech.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
 *ScenarioApi* | [**add_or_replace_users_in_scenario**](docs/ScenarioApi.md#add_or_replace_users_in_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Add (or replace) users in the Scenario specified
 *ScenarioApi* | [**compare_scenarios**](docs/ScenarioApi.md#compare_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} | Compare the Scenario with another one and returns the difference for parameters values
 *ScenarioApi* | [**create_scenario**](docs/ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new Scenario
+*ScenarioApi* | [**delete_all_scenarios**](docs/ScenarioApi.md#delete_all_scenarios) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Delete all Scenarios of the Workspace
 *ScenarioApi* | [**delete_scenario**](docs/ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
 *ScenarioApi* | [**find_all_scenarios**](docs/ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 *ScenarioApi* | [**find_scenario_by_id**](docs/ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario

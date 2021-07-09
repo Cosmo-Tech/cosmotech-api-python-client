@@ -625,6 +625,132 @@ class ScenarioApi(object):
             callable=__create_scenario
         )
 
+        def __delete_all_scenarios(
+            self,
+            organization_id,
+            workspace_id,
+            **kwargs
+        ):
+            """Delete all Scenarios of the Workspace  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.delete_all_scenarios(organization_id, workspace_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                organization_id (str): the Organization identifier
+                workspace_id (str): the Workspace identifier
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['organization_id'] = \
+                organization_id
+            kwargs['workspace_id'] = \
+                workspace_id
+            return self.call_with_http_info(**kwargs)
+
+        self.delete_all_scenarios = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/workspaces/{workspace_id}/scenarios',
+                'operation_id': 'delete_all_scenarios',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'workspace_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'workspace_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'workspace_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'workspace_id': 'workspace_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'workspace_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__delete_all_scenarios
+        )
+
         def __delete_scenario(
             self,
             organization_id,

@@ -51,6 +51,13 @@ class TestScenarioApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_all_scenarios(self):
+        """Test case for delete_all_scenarios
+
+        Delete all Scenarios of the Workspace  # noqa: E501
+        """
+        pass
+
     def test_delete_scenario(self):
         """Test case for delete_scenario
 

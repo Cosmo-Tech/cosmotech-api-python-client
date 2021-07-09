@@ -1,6 +1,6 @@
 # cosmotech_api.ScenarioApi
 
-All URIs are relative to *https://api.azure.cosmo-platform.com*
+All URIs are relative to *https://api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**add_or_replace_users_in_scenario**](ScenarioApi.md#add_or_replace_users_in_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Add (or replace) users in the Scenario specified
 [**compare_scenarios**](ScenarioApi.md#compare_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} | Compare the Scenario with another one and returns the difference for parameters values
 [**create_scenario**](ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new Scenario
+[**delete_all_scenarios**](ScenarioApi.md#delete_all_scenarios) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Delete all Scenarios of the Workspace
 [**delete_scenario**](ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
 [**find_all_scenarios**](ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 [**find_scenario_by_id**](ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
@@ -32,10 +33,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -45,7 +46,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -60,7 +61,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         ScenarioRunTemplateParameterValue(
             parameter_id="parameter_id_example",
             value="value_example",
-            is_inherited="is_inherited_example",
+            is_inherited=True,
         ),
     ] # [ScenarioRunTemplateParameterValue] | the Parameter Value to add. Any Parameter Value with the same ID is overwritten
 
@@ -120,10 +121,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario_user import ScenarioUser
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -133,7 +134,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -209,10 +210,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -222,7 +223,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -290,10 +291,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -303,7 +304,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -336,7 +337,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             ScenarioRunTemplateParameterValue(
                 parameter_id="parameter_id_example",
                 value="value_example",
-                is_inherited="is_inherited_example",
+                is_inherited=True,
             ),
         ],
         last_run=ScenarioLastRun(
@@ -387,6 +388,81 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_all_scenarios**
+> delete_all_scenarios(organization_id, workspace_id)
+
+Delete all Scenarios of the Workspace
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete all Scenarios of the Workspace
+        api_instance.delete_all_scenarios(organization_id, workspace_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->delete_all_scenarios: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Request succeeded |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_scenario**
 > delete_scenario(organization_id, workspace_id, scenario_id)
 
@@ -400,10 +476,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -413,7 +489,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -478,10 +554,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -491,7 +567,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -554,10 +630,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -567,7 +643,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -633,10 +709,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -646,7 +722,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -708,10 +784,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -721,7 +797,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -785,10 +861,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -798,7 +874,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -862,10 +938,10 @@ import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -875,7 +951,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -942,10 +1018,10 @@ import cosmotech_api
 from cosmotech_api.api import scenario_api
 from cosmotech_api.model.scenario import Scenario
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.azure.cosmo-platform.com
+# Defining the host is optional and defaults to https://api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -955,7 +1031,7 @@ configuration = cosmotech_api.Configuration(
 
 # Configure OAuth2 access token for authorization: oAuth2AuthCode
 configuration = cosmotech_api.Configuration(
-    host = "https://api.azure.cosmo-platform.com"
+    host = "https://api.cosmotech.com"
 )
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -989,7 +1065,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             ScenarioRunTemplateParameterValue(
                 parameter_id="parameter_id_example",
                 value="value_example",
-                is_inherited="is_inherited_example",
+                is_inherited=True,
             ),
         ],
         last_run=ScenarioLastRun(

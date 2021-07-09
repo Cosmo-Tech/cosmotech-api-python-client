@@ -93,6 +93,7 @@ class Scenario(ModelNormal):
             'tags': ([str],),  # noqa: E501
             'parent_id': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
+            'root_id': (str,),  # noqa: E501
             'solution_id': (str,),  # noqa: E501
             'run_template_id': (str,),  # noqa: E501
             'workspace_id': (str,),  # noqa: E501
@@ -120,6 +121,7 @@ class Scenario(ModelNormal):
         'tags': 'tags',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
+        'root_id': 'rootId',  # noqa: E501
         'solution_id': 'solutionId',  # noqa: E501
         'run_template_id': 'runTemplateId',  # noqa: E501
         'workspace_id': 'workspaceId',  # noqa: E501
@@ -187,6 +189,7 @@ class Scenario(ModelNormal):
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parent_id (str): the Scenario parent id. [optional]  # noqa: E501
             owner_id (str): the user id which own this Scenario. [optional]  # noqa: E501
+            root_id (str): the scenario root id. [optional]  # noqa: E501
             solution_id (str): the Solution Id associated with this Scenario. [optional]  # noqa: E501
             run_template_id (str): the Solution Run Template Id associated with this Scenario. [optional]  # noqa: E501
             workspace_id (str): the associated Workspace Id. [optional]  # noqa: E501
