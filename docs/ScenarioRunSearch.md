@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **workflow_id** | **str** | the Cosmo Tech compute cluster Argo Workflow Id to search | [optional] 
 **workflow_name** | **str** | the Cosmo Tech compute cluster Argo Workflow Name | [optional] 
 **owner_id** | **str** | the owner Id to search | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

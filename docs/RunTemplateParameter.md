@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **max_value** | **str** | the maximum value for this parameter | [optional] 
 **regex_validation** | **str** | a regex to validate the value | [optional] 
 **options** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | freeform options | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

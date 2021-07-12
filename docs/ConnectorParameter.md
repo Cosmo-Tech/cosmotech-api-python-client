@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **options** | **[str]** | the list of available and valid values for the parameter | [optional] 
 **default** | **str** | the default value | [optional] 
 **env_var** | **str** | associated environment variable in connector image | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

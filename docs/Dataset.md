@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **fragments_ids** | **[str]** | the list of other Datasets ids to compose as fragments | [optional] 
 **validator_id** | **str** | the validator id | [optional] 
 **compatibility** | [**[DatasetCompatibility]**](DatasetCompatibility.md) | the list of compatible Solutions versions | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
