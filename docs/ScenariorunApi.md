@@ -760,6 +760,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         containers=[
             ScenarioRunContainer(
                 name="name_example",
+                labels={
+                    "key": "key_example",
+                },
                 env_vars={
                     "key": "key_example",
                 },

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** | the container name | 
 **image** | **str** | the container image URI | 
 **id** | **str** | the container Id | [optional] [readonly] 
+**labels** | **{str: (str,)}** | the metadata labels | [optional] 
 **env_vars** | **{str: (str,)}** | environment variable map | [optional] 
 **entrypoint** | **str** | the container entry point | [optional] 
 **run_args** | **[str]** | the list of run arguments for the container | [optional] 

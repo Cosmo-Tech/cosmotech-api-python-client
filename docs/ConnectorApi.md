@@ -200,6 +200,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             "tags_example",
         ],
         url="url_example",
+        azure_managed_identity=True,
         io_types=[
             "read",
         ],

@@ -85,6 +85,7 @@ class ScenarioRunContainer(ModelNormal):
             'name': (str,),  # noqa: E501
             'image': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'labels': ({str: (str,)},),  # noqa: E501
             'env_vars': ({str: (str,)},),  # noqa: E501
             'entrypoint': (str,),  # noqa: E501
             'run_args': ([str],),  # noqa: E501
@@ -100,6 +101,7 @@ class ScenarioRunContainer(ModelNormal):
         'name': 'name',  # noqa: E501
         'image': 'image',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'labels': 'labels',  # noqa: E501
         'env_vars': 'envVars',  # noqa: E501
         'entrypoint': 'entrypoint',  # noqa: E501
         'run_args': 'runArgs',  # noqa: E501
@@ -153,6 +155,7 @@ class ScenarioRunContainer(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the container Id. [optional]  # noqa: E501
+            labels ({str: (str,)}): the metadata labels. [optional]  # noqa: E501
             env_vars ({str: (str,)}): environment variable map. [optional]  # noqa: E501
             entrypoint (str): the container entry point. [optional]  # noqa: E501
             run_args ([str]): the list of run arguments for the container. [optional]  # noqa: E501
@@ -245,6 +248,7 @@ class ScenarioRunContainer(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the container Id. [optional]  # noqa: E501
+            labels ({str: (str,)}): the metadata labels. [optional]  # noqa: E501
             env_vars ({str: (str,)}): environment variable map. [optional]  # noqa: E501
             entrypoint (str): the container entry point. [optional]  # noqa: E501
             run_args ([str]): the list of run arguments for the container. [optional]  # noqa: E501

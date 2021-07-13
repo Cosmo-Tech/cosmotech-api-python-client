@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **tags** | **[str]** | the list of tags | [optional] 
 **owner_id** | **str** | the user id which own this connector version | [optional] [readonly] 
 **url** | **str** | an optional URL link to connector page | [optional] 
+**azure_managed_identity** | **bool** | whether or not the connector uses Azure Managed Identity | [optional] 
 **parameter_groups** | [**[ConnectorParameterGroup]**](ConnectorParameterGroup.md) | the list of connector parameters groups | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
