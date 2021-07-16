@@ -69,6 +69,7 @@ class Scenario(ModelNormal):
             'RUNNING': "Running",
             'SUCCESSFUL': "Successful",
             'FAILED': "Failed",
+            'UNKNOWN': "Unknown",
         },
     }
 
