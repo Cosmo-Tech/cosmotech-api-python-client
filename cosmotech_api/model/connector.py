@@ -103,6 +103,7 @@ class Connector(ModelNormal):
             'owner_id': (str,),  # noqa: E501
             'url': (str,),  # noqa: E501
             'azure_managed_identity': (bool,),  # noqa: E501
+            'azure_authentication_with_customer_app_registration': (bool,),  # noqa: E501
             'parameter_groups': ([ConnectorParameterGroup],),  # noqa: E501
         }
 
@@ -123,6 +124,7 @@ class Connector(ModelNormal):
         'owner_id': 'ownerId',  # noqa: E501
         'url': 'url',  # noqa: E501
         'azure_managed_identity': 'azureManagedIdentity',  # noqa: E501
+        'azure_authentication_with_customer_app_registration': 'azureAuthenticationWithCustomerAppRegistration',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
     }
 
@@ -182,6 +184,7 @@ class Connector(ModelNormal):
             owner_id (str): the user id which own this connector version. [optional]  # noqa: E501
             url (str): an optional URL link to connector page. [optional]  # noqa: E501
             azure_managed_identity (bool): whether or not the connector uses Azure Managed Identity. [optional]  # noqa: E501
+            azure_authentication_with_customer_app_registration (bool): whether to authenticate against Azure using the app registration credentials provided by the customer. [optional]  # noqa: E501
             parameter_groups ([ConnectorParameterGroup]): the list of connector parameters groups. [optional]  # noqa: E501
         """
 
@@ -282,6 +285,7 @@ class Connector(ModelNormal):
             owner_id (str): the user id which own this connector version. [optional]  # noqa: E501
             url (str): an optional URL link to connector page. [optional]  # noqa: E501
             azure_managed_identity (bool): whether or not the connector uses Azure Managed Identity. [optional]  # noqa: E501
+            azure_authentication_with_customer_app_registration (bool): whether to authenticate against Azure using the app registration credentials provided by the customer. [optional]  # noqa: E501
             parameter_groups ([ConnectorParameterGroup]): the list of connector parameters groups. [optional]  # noqa: E501
         """
 

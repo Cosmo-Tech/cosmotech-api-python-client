@@ -201,6 +201,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         ],
         url="url_example",
         azure_managed_identity=True,
+        azure_authentication_with_customer_app_registration=True,
         io_types=[
             "read",
         ],
