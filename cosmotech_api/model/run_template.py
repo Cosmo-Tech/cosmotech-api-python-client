@@ -110,6 +110,7 @@ class RunTemplate(ModelNormal):
             'run_source': (RunTemplateStepSource,),  # noqa: E501
             'post_run_source': (RunTemplateStepSource,),  # noqa: E501
             'parameter_groups': ([str],),  # noqa: E501
+            'stack_steps': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -140,6 +141,7 @@ class RunTemplate(ModelNormal):
         'run_source': 'runSource',  # noqa: E501
         'post_run_source': 'postRunSource',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
+        'stack_steps': 'stackSteps',  # noqa: E501
     }
 
     read_only_vars = {
@@ -207,6 +209,7 @@ class RunTemplate(ModelNormal):
             run_source (RunTemplateStepSource): [optional]  # noqa: E501
             post_run_source (RunTemplateStepSource): [optional]  # noqa: E501
             parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
+            stack_steps (bool): whether or not to stack adjacent scenario run steps in one container run which will chain steps. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -314,6 +317,7 @@ class RunTemplate(ModelNormal):
             run_source (RunTemplateStepSource): [optional]  # noqa: E501
             post_run_source (RunTemplateStepSource): [optional]  # noqa: E501
             parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
+            stack_steps (bool): whether or not to stack adjacent scenario run steps in one container run which will chain steps. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

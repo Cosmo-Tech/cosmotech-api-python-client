@@ -90,6 +90,7 @@ class ScenarioRunContainer(ModelNormal):
             'entrypoint': (str,),  # noqa: E501
             'run_args': ([str],),  # noqa: E501
             'dependencies': ([str],),  # noqa: E501
+            'solution_container': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -106,10 +107,12 @@ class ScenarioRunContainer(ModelNormal):
         'entrypoint': 'entrypoint',  # noqa: E501
         'run_args': 'runArgs',  # noqa: E501
         'dependencies': 'dependencies',  # noqa: E501
+        'solution_container': 'solutionContainer',  # noqa: E501
     }
 
     read_only_vars = {
         'id',  # noqa: E501
+        'solution_container',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -160,6 +163,7 @@ class ScenarioRunContainer(ModelNormal):
             entrypoint (str): the container entry point. [optional]  # noqa: E501
             run_args ([str]): the list of run arguments for the container. [optional]  # noqa: E501
             dependencies ([str]): the list of dependencies container name to run this container. [optional]  # noqa: E501
+            solution_container (bool): whether or not this container is a Cosmo Tech solution container. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +257,7 @@ class ScenarioRunContainer(ModelNormal):
             entrypoint (str): the container entry point. [optional]  # noqa: E501
             run_args ([str]): the list of run arguments for the container. [optional]  # noqa: E501
             dependencies ([str]): the list of dependencies container name to run this container. [optional]  # noqa: E501
+            solution_container (bool): whether or not this container is a Cosmo Tech solution container. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

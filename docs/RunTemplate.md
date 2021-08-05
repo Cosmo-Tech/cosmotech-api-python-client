@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **run_source** | [**RunTemplateStepSource**](RunTemplateStepSource.md) |  | [optional] 
 **post_run_source** | [**RunTemplateStepSource**](RunTemplateStepSource.md) |  | [optional] 
 **parameter_groups** | **[str]** | the ordered list of parameters groups for the Run Template | [optional] 
+**stack_steps** | **bool** | whether or not to stack adjacent scenario run steps in one container run which will chain steps | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

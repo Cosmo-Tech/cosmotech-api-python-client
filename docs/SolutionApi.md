@@ -271,6 +271,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             parameter_groups=[
                 "parameter_groups_example",
             ],
+            stack_steps=True,
         ),
     ] # [RunTemplate] | the Run Templates
 
@@ -418,6 +419,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 parameter_groups=[
                     "parameter_groups_example",
                 ],
+                stack_steps=True,
             ),
         ],
     ) # Solution | the Solution to create
@@ -1093,6 +1095,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 parameter_groups=[
                     "parameter_groups_example",
                 ],
+                stack_steps=True,
             ),
         ],
     ) # Solution | the new Solution details.
@@ -1203,6 +1206,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         parameter_groups=[
             "parameter_groups_example",
         ],
+        stack_steps=True,
     ) # RunTemplate | the Run Templates
 
     # example passing only required values which don't have defaults set
