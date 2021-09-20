@@ -1,6 +1,5 @@
 # ScenarioLastRun
 
-the last Scenarion Run for this Scenario
 
 ## Properties
 Name | Type | Description | Notes

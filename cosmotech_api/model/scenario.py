@@ -31,10 +31,8 @@ from cosmotech_api.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from cosmotech_api.model.scenario_last_run import ScenarioLastRun
     from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
     from cosmotech_api.model.scenario_user import ScenarioUser
-    globals()['ScenarioLastRun'] = ScenarioLastRun
     globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
     globals()['ScenarioUser'] = ScenarioUser
 
@@ -118,7 +116,9 @@ class Scenario(ModelNormal):
             'run_template_name': (str,),  # noqa: E501
             'dataset_list': ([str],),  # noqa: E501
             'parameters_values': ([ScenarioRunTemplateParameterValue],),  # noqa: E501
-            'last_run': (ScenarioLastRun,),  # noqa: E501
+            'last_run': (dict,),  # noqa: E501
+            'parent_last_run': (dict,),  # noqa: E501
+            'root_last_run': (dict,),  # noqa: E501
         }
 
     @cached_property
@@ -147,6 +147,8 @@ class Scenario(ModelNormal):
         'dataset_list': 'datasetList',  # noqa: E501
         'parameters_values': 'parametersValues',  # noqa: E501
         'last_run': 'lastRun',  # noqa: E501
+        'parent_last_run': 'parentLastRun',  # noqa: E501
+        'root_last_run': 'rootLastRun',  # noqa: E501
     }
 
     read_only_vars = {
@@ -220,7 +222,9 @@ class Scenario(ModelNormal):
             run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
             parameters_values ([ScenarioRunTemplateParameterValue]): the list of Solution Run Template parameters values. [optional]  # noqa: E501
-            last_run (ScenarioLastRun): [optional]  # noqa: E501
+            last_run (dict): [optional]  # noqa: E501
+            parent_last_run (dict): [optional]  # noqa: E501
+            root_last_run (dict): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -321,7 +325,9 @@ class Scenario(ModelNormal):
             run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
             parameters_values ([ScenarioRunTemplateParameterValue]): the list of Solution Run Template parameters values. [optional]  # noqa: E501
-            last_run (ScenarioLastRun): [optional]  # noqa: E501
+            last_run (dict): [optional]  # noqa: E501
+            parent_last_run (dict): [optional]  # noqa: E501
+            root_last_run (dict): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -340,12 +340,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 is_inherited=True,
             ),
         ],
-        last_run=ScenarioLastRun(
-            scenario_run_id="scenario_run_id_example",
-            csm_simulation_run="csm_simulation_run_example",
-            workflow_id="workflow_id_example",
-            workflow_name="workflow_name_example",
-        ),
+        last_run=,
+        parent_last_run=,
+        root_last_run=,
     ) # Scenario | the Scenario to create
 
     # example passing only required values which don't have defaults set
@@ -1078,12 +1075,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 is_inherited=True,
             ),
         ],
-        last_run=ScenarioLastRun(
-            scenario_run_id="scenario_run_id_example",
-            csm_simulation_run="csm_simulation_run_example",
-            workflow_id="workflow_id_example",
-            workflow_name="workflow_name_example",
-        ),
+        last_run=,
+        parent_last_run=,
+        root_last_run=,
     ) # Scenario | the new Scenario details.
 
     # example passing only required values which don't have defaults set
