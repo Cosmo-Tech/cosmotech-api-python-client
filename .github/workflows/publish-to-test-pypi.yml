@@ -10,14 +10,12 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@master
-    - name: Retrieve branch or tag name
-      id: refvar
-      env:
-        GH_REF: ${{ github.event.client_payload.gh_ref }}
-      run: echo "::set-output name=gitRefName::${GH_REF#refs/*/}"
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     - name: Replace version
       run: |
-        export gitRefName="${{ steps.refvar.outputs.gitRefName }}"
+        export gitRefName="${{ steps.get_version.outputs.VERSION }}"
         echo Changing version in setup.py to $gitRefName
         sed -i 's/VERSION = ".*"/VERSION = "${gitRefName}"/g' setup.py
     - name: Set up Python 3.9
