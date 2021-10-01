@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **run_template_id** | **str** | the Solution Run Template Id associated with this Scenario | [optional] 
 **workspace_id** | **str** | the associated Workspace Id | [optional] [readonly] 
 **users** | [**[ScenarioUser]**](ScenarioUser.md) | the list of users Id with their role | [optional] 
-**state** | **str** | the Scenario state | [optional] [readonly] 
+**state** | [**ScenarioJobState**](ScenarioJobState.md) |  | [optional] 
 **creation_date** | **datetime** | the Scenario creation date | [optional] [readonly] 
 **last_update** | **datetime** | the last time a Scenario was updated | [optional] [readonly] 
 **owner_name** | **str** | the name of the owner | [optional] [readonly] 

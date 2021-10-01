@@ -95,6 +95,7 @@ class RunTemplate(ModelNormal):
             'tags': ([str],),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
             'fetch_datasets': (bool,),  # noqa: E501
+            'scenario_data_download_transform': (bool,),  # noqa: E501
             'fetch_scenario_parameters': (bool,),  # noqa: E501
             'apply_parameters': (bool,),  # noqa: E501
             'validate_data': (bool,),  # noqa: E501
@@ -109,6 +110,7 @@ class RunTemplate(ModelNormal):
             'pre_run_source': (RunTemplateStepSource,),  # noqa: E501
             'run_source': (RunTemplateStepSource,),  # noqa: E501
             'post_run_source': (RunTemplateStepSource,),  # noqa: E501
+            'scenariodata_transform_source': (RunTemplateStepSource,),  # noqa: E501
             'parameter_groups': ([str],),  # noqa: E501
             'stack_steps': (bool,),  # noqa: E501
         }
@@ -126,6 +128,7 @@ class RunTemplate(ModelNormal):
         'tags': 'tags',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
         'fetch_datasets': 'fetchDatasets',  # noqa: E501
+        'scenario_data_download_transform': 'scenarioDataDownloadTransform',  # noqa: E501
         'fetch_scenario_parameters': 'fetchScenarioParameters',  # noqa: E501
         'apply_parameters': 'applyParameters',  # noqa: E501
         'validate_data': 'validateData',  # noqa: E501
@@ -140,6 +143,7 @@ class RunTemplate(ModelNormal):
         'pre_run_source': 'preRunSource',  # noqa: E501
         'run_source': 'runSource',  # noqa: E501
         'post_run_source': 'postRunSource',  # noqa: E501
+        'scenariodata_transform_source': 'scenariodataTransformSource',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
         'stack_steps': 'stackSteps',  # noqa: E501
     }
@@ -194,6 +198,7 @@ class RunTemplate(ModelNormal):
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
             fetch_datasets (bool): whether or not the fetch dataset step is done. [optional]  # noqa: E501
+            scenario_data_download_transform (bool): whether or not the scenario data download transform step step is done. [optional]  # noqa: E501
             fetch_scenario_parameters (bool): whether or not the fetch parameters step is done. [optional]  # noqa: E501
             apply_parameters (bool): whether or not the apply parameter step is done. [optional]  # noqa: E501
             validate_data (bool): whether or not the validate step is done. [optional]  # noqa: E501
@@ -208,6 +213,7 @@ class RunTemplate(ModelNormal):
             pre_run_source (RunTemplateStepSource): [optional]  # noqa: E501
             run_source (RunTemplateStepSource): [optional]  # noqa: E501
             post_run_source (RunTemplateStepSource): [optional]  # noqa: E501
+            scenariodata_transform_source (RunTemplateStepSource): [optional]  # noqa: E501
             parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
             stack_steps (bool): whether or not to stack adjacent scenario run steps in one container run which will chain steps. [optional]  # noqa: E501
         """
@@ -302,6 +308,7 @@ class RunTemplate(ModelNormal):
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
             fetch_datasets (bool): whether or not the fetch dataset step is done. [optional]  # noqa: E501
+            scenario_data_download_transform (bool): whether or not the scenario data download transform step step is done. [optional]  # noqa: E501
             fetch_scenario_parameters (bool): whether or not the fetch parameters step is done. [optional]  # noqa: E501
             apply_parameters (bool): whether or not the apply parameter step is done. [optional]  # noqa: E501
             validate_data (bool): whether or not the validate step is done. [optional]  # noqa: E501
@@ -316,6 +323,7 @@ class RunTemplate(ModelNormal):
             pre_run_source (RunTemplateStepSource): [optional]  # noqa: E501
             run_source (RunTemplateStepSource): [optional]  # noqa: E501
             post_run_source (RunTemplateStepSource): [optional]  # noqa: E501
+            scenariodata_transform_source (RunTemplateStepSource): [optional]  # noqa: E501
             parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
             stack_steps (bool): whether or not to stack adjacent scenario run steps in one container run which will chain steps. [optional]  # noqa: E501
         """

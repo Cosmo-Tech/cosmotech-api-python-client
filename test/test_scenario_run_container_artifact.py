@@ -14,12 +14,10 @@ import unittest
 
 import cosmotech_api
 from cosmotech_api.model.scenario_run_container_artifact import ScenarioRunContainerArtifact
-globals()['ScenarioRunContainerArtifact'] = ScenarioRunContainerArtifact
-from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 
 
-class TestScenarioRunContainer(unittest.TestCase):
-    """ScenarioRunContainer unit test stubs"""
+class TestScenarioRunContainerArtifact(unittest.TestCase):
+    """ScenarioRunContainerArtifact unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,10 +25,10 @@ class TestScenarioRunContainer(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testScenarioRunContainer(self):
-        """Test ScenarioRunContainer"""
+    def testScenarioRunContainerArtifact(self):
+        """Test ScenarioRunContainerArtifact"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = ScenarioRunContainer()  # noqa: E501
+        # model = ScenarioRunContainerArtifact()  # noqa: E501
         pass
 
 

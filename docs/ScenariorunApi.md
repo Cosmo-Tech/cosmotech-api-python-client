@@ -757,6 +757,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         generate_name="generate_name_example",
         csm_simulation_id="csm_simulation_id_example",
         node_label="node_label_example",
+        labels={
+            "key": "key_example",
+        },
         containers=[
             ScenarioRunContainer(
                 name="name_example",
@@ -773,6 +776,12 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 ],
                 dependencies=[
                     "dependencies_example",
+                ],
+                artifacts=[
+                    ScenarioRunContainerArtifact(
+                        name="name_example",
+                        path="path_example",
+                    ),
                 ],
             ),
         ],

@@ -58,6 +58,7 @@ class RunTemplateHandlerId(ModelSimple):
             'PRERUN': "prerun",
             'ENGINE': "engine",
             'POSTRUN': "postrun",
+            'SCENARIODATA_TRANSFORM': "scenariodata_transform",
         },
     }
 
@@ -115,10 +116,10 @@ class RunTemplateHandlerId(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", ]  # noqa: E501
+            args[0] (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", "scenariodata_transform", ]  # noqa: E501
 
         Keyword Args:
-            value (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", ]  # noqa: E501
+            value (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", "scenariodata_transform", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -205,10 +206,10 @@ class RunTemplateHandlerId(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", ]  # noqa: E501
+            args[0] (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", "scenariodata_transform", ]  # noqa: E501
 
         Keyword Args:
-            value (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", ]  # noqa: E501
+            value (str): the Run Template step handler identifier., must be one of ["parameters_handler", "validator", "prerun", "engine", "postrun", "scenariodata_transform", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

@@ -31,8 +31,10 @@ from cosmotech_api.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from cosmotech_api.model.scenario_job_state import ScenarioJobState
     from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
     from cosmotech_api.model.scenario_user import ScenarioUser
+    globals()['ScenarioJobState'] = ScenarioJobState
     globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
     globals()['ScenarioUser'] = ScenarioUser
 
@@ -62,13 +64,6 @@ class Scenario(ModelNormal):
     """
 
     allowed_values = {
-        ('state',): {
-            'CREATED': "Created",
-            'RUNNING': "Running",
-            'SUCCESSFUL': "Successful",
-            'FAILED': "Failed",
-            'UNKNOWN': "Unknown",
-        },
     }
 
     validations = {
@@ -108,7 +103,7 @@ class Scenario(ModelNormal):
             'run_template_id': (str,),  # noqa: E501
             'workspace_id': (str,),  # noqa: E501
             'users': ([ScenarioUser],),  # noqa: E501
-            'state': (str,),  # noqa: E501
+            'state': (ScenarioJobState,),  # noqa: E501
             'creation_date': (datetime,),  # noqa: E501
             'last_update': (datetime,),  # noqa: E501
             'owner_name': (str,),  # noqa: E501
@@ -157,7 +152,6 @@ class Scenario(ModelNormal):
         'root_id',  # noqa: E501
         'solution_id',  # noqa: E501
         'workspace_id',  # noqa: E501
-        'state',  # noqa: E501
         'creation_date',  # noqa: E501
         'last_update',  # noqa: E501
         'owner_name',  # noqa: E501
@@ -214,7 +208,7 @@ class Scenario(ModelNormal):
             run_template_id (str): the Solution Run Template Id associated with this Scenario. [optional]  # noqa: E501
             workspace_id (str): the associated Workspace Id. [optional]  # noqa: E501
             users ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
-            state (str): the Scenario state. [optional]  # noqa: E501
+            state (ScenarioJobState): [optional]  # noqa: E501
             creation_date (datetime): the Scenario creation date. [optional]  # noqa: E501
             last_update (datetime): the last time a Scenario was updated. [optional]  # noqa: E501
             owner_name (str): the name of the owner. [optional]  # noqa: E501
@@ -317,7 +311,7 @@ class Scenario(ModelNormal):
             run_template_id (str): the Solution Run Template Id associated with this Scenario. [optional]  # noqa: E501
             workspace_id (str): the associated Workspace Id. [optional]  # noqa: E501
             users ([ScenarioUser]): the list of users Id with their role. [optional]  # noqa: E501
-            state (str): the Scenario state. [optional]  # noqa: E501
+            state (ScenarioJobState): [optional]  # noqa: E501
             creation_date (datetime): the Scenario creation date. [optional]  # noqa: E501
             last_update (datetime): the last time a Scenario was updated. [optional]  # noqa: E501
             owner_name (str): the name of the owner. [optional]  # noqa: E501

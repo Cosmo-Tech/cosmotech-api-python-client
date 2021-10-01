@@ -10,8 +10,10 @@ Method | HTTP request | Description
 [**create_scenario**](ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new Scenario
 [**delete_all_scenarios**](ScenarioApi.md#delete_all_scenarios) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Delete all Scenarios of the Workspace
 [**delete_scenario**](ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
+[**download_scenario_data**](ScenarioApi.md#download_scenario_data) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads | Download Scenario data
 [**find_all_scenarios**](ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 [**find_scenario_by_id**](ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
+[**get_scenario_data_download_job_info**](ScenarioApi.md#get_scenario_data_download_job_info) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads/{download_id} | Get Scenario data download URL
 [**get_scenarios_tree**](ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
 [**remove_all_scenario_parameter_values**](ScenarioApi.md#remove_all_scenario_parameter_values) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Remove all Parameter Values from the Scenario specified
 [**remove_all_users_of_scenario**](ScenarioApi.md#remove_all_users_of_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Remove all users from the Scenario specified
@@ -547,6 +549,85 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **download_scenario_data**
+> ScenarioDataDownloadJob download_scenario_data(organization_id, workspace_id, scenario_id)
+
+Download Scenario data
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_data_download_job import ScenarioDataDownloadJob
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Download Scenario data
+        api_response = api_instance.download_scenario_data(organization_id, workspace_id, scenario_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->download_scenario_data: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+
+### Return type
+
+[**ScenarioDataDownloadJob**](ScenarioDataDownloadJob.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | the Scenario Data response, once acknowledged. |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_all_scenarios**
 > [Scenario] find_all_scenarios(organization_id, workspace_id)
 
@@ -698,6 +779,87 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Scenario details |  -  |
+**404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_scenario_data_download_job_info**
+> ScenarioDataDownloadInfo get_scenario_data_download_job_info(organization_id, workspace_id, scenario_id, download_id)
+
+Get Scenario data download URL
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_data_download_info import ScenarioDataDownloadInfo
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    download_id = "download_id_example" # str | the Scenario Download identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Scenario data download URL
+        api_response = api_instance.get_scenario_data_download_job_info(organization_id, workspace_id, scenario_id, download_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->get_scenario_data_download_job_info: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **download_id** | **str**| the Scenario Download identifier |
+
+### Return type
+
+[**ScenarioDataDownloadInfo**](ScenarioDataDownloadInfo.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the scenario data download URL. |  -  |
 **404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

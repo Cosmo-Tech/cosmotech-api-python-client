@@ -66,6 +66,13 @@ class TestScenarioApi(unittest.TestCase):
         """
         pass
 
+    def test_download_scenario_data(self):
+        """Test case for download_scenario_data
+
+        Download Scenario data  # noqa: E501
+        """
+        pass
+
     def test_find_all_scenarios(self):
         """Test case for find_all_scenarios
 
@@ -77,6 +84,13 @@ class TestScenarioApi(unittest.TestCase):
         """Test case for find_scenario_by_id
 
         Get the details of an scenario  # noqa: E501
+        """
+        pass
+
+    def test_get_scenario_data_download_job_info(self):
+        """Test case for get_scenario_data_download_job_info
+
+        Get Scenario data download URL  # noqa: E501
         """
         pass
 

@@ -14,16 +14,12 @@ import unittest
 
 import cosmotech_api
 from cosmotech_api.model.scenario_job_state import ScenarioJobState
-from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
-from cosmotech_api.model.scenario_user import ScenarioUser
 globals()['ScenarioJobState'] = ScenarioJobState
-globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
-globals()['ScenarioUser'] = ScenarioUser
-from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.model.scenario_data_download_info import ScenarioDataDownloadInfo
 
 
-class TestScenario(unittest.TestCase):
-    """Scenario unit test stubs"""
+class TestScenarioDataDownloadInfo(unittest.TestCase):
+    """ScenarioDataDownloadInfo unit test stubs"""
 
     def setUp(self):
         pass
@@ -31,10 +27,10 @@ class TestScenario(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testScenario(self):
-        """Test Scenario"""
+    def testScenarioDataDownloadInfo(self):
+        """Test ScenarioDataDownloadInfo"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Scenario()  # noqa: E501
+        # model = ScenarioDataDownloadInfo()  # noqa: E501
         pass
 
 

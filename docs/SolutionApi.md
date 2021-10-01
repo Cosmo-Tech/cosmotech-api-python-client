@@ -254,6 +254,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             ],
             compute_size="compute_size_example",
             fetch_datasets=True,
+            scenario_data_download_transform=True,
             fetch_scenario_parameters=True,
             apply_parameters=True,
             validate_data=True,
@@ -268,6 +269,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             pre_run_source=RunTemplateStepSource("local"),
             run_source=RunTemplateStepSource("local"),
             post_run_source=RunTemplateStepSource("local"),
+            scenariodata_transform_source=RunTemplateStepSource("local"),
             parameter_groups=[
                 "parameter_groups_example",
             ],
@@ -402,6 +404,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 ],
                 compute_size="compute_size_example",
                 fetch_datasets=True,
+                scenario_data_download_transform=True,
                 fetch_scenario_parameters=True,
                 apply_parameters=True,
                 validate_data=True,
@@ -416,6 +419,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 pre_run_source=RunTemplateStepSource("local"),
                 run_source=RunTemplateStepSource("local"),
                 post_run_source=RunTemplateStepSource("local"),
+                scenariodata_transform_source=RunTemplateStepSource("local"),
                 parameter_groups=[
                     "parameter_groups_example",
                 ],
@@ -1078,6 +1082,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 ],
                 compute_size="compute_size_example",
                 fetch_datasets=True,
+                scenario_data_download_transform=True,
                 fetch_scenario_parameters=True,
                 apply_parameters=True,
                 validate_data=True,
@@ -1092,6 +1097,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 pre_run_source=RunTemplateStepSource("local"),
                 run_source=RunTemplateStepSource("local"),
                 post_run_source=RunTemplateStepSource("local"),
+                scenariodata_transform_source=RunTemplateStepSource("local"),
                 parameter_groups=[
                     "parameter_groups_example",
                 ],
@@ -1189,6 +1195,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         ],
         compute_size="compute_size_example",
         fetch_datasets=True,
+        scenario_data_download_transform=True,
         fetch_scenario_parameters=True,
         apply_parameters=True,
         validate_data=True,
@@ -1203,6 +1210,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         pre_run_source=RunTemplateStepSource("local"),
         run_source=RunTemplateStepSource("local"),
         post_run_source=RunTemplateStepSource("local"),
+        scenariodata_transform_source=RunTemplateStepSource("local"),
         parameter_groups=[
             "parameter_groups_example",
         ],
