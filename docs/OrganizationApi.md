@@ -25,6 +25,7 @@ Add (or replace) users in the Organization specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -94,6 +95,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Organization Users |  -  |
@@ -110,6 +112,7 @@ List all Organizations
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -166,6 +169,7 @@ This endpoint does not need any parameter.
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the list of Organizations |  -  |
@@ -180,6 +184,7 @@ Get the details of an Organization
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -240,6 +245,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Organization details |  -  |
@@ -255,6 +261,7 @@ Register a new organization
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -342,6 +349,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Organization details |  -  |
@@ -357,6 +365,7 @@ Remove all users from the Organization specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -415,6 +424,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
@@ -430,6 +440,7 @@ Remove the specified user from the given Organization
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -490,6 +501,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -505,6 +517,7 @@ Unregister an organization
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -563,6 +576,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -578,6 +592,7 @@ Update an Organization
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -667,6 +682,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the organization details |  -  |
@@ -683,6 +699,7 @@ Update the solutions container registry configuration for the Organization speci
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -751,6 +768,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Organization solutions container registry configuration |  -  |
@@ -766,6 +784,7 @@ Update storage configuration for the Organization specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -834,6 +853,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Organization Storage configuration |  -  |
@@ -849,6 +869,7 @@ Update tenant credentials for the Organization specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -910,6 +931,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Organization Tenant Credentials |  -  |

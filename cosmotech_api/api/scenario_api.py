@@ -41,85 +41,7 @@ class ScenarioApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-
-        def __add_or_replace_scenario_parameter_values(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            scenario_run_template_parameter_value,
-            **kwargs
-        ):
-            """Add (or replace) Parameter Values for the Scenario specified  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                scenario_run_template_parameter_value ([ScenarioRunTemplateParameterValue]): the Parameter Value to add. Any Parameter Value with the same ID is overwritten
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [ScenarioRunTemplateParameterValue]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['scenario_run_template_parameter_value'] = \
-                scenario_run_template_parameter_value
-            return self.call_with_http_info(**kwargs)
-
-        self.add_or_replace_scenario_parameter_values = _Endpoint(
+        self.add_or_replace_scenario_parameter_values_endpoint = _Endpoint(
             settings={
                 'response_type': ([ScenarioRunTemplateParameterValue],),
                 'auth': [
@@ -187,88 +109,9 @@ class ScenarioApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__add_or_replace_scenario_parameter_values
+            api_client=api_client
         )
-
-        def __add_or_replace_users_in_scenario(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            scenario_user,
-            **kwargs
-        ):
-            """Add (or replace) users in the Scenario specified  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.add_or_replace_users_in_scenario(organization_id, workspace_id, scenario_id, scenario_user, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                scenario_user ([ScenarioUser]): the Users to add. Any User with the same ID is overwritten
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [ScenarioUser]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['scenario_user'] = \
-                scenario_user
-            return self.call_with_http_info(**kwargs)
-
-        self.add_or_replace_users_in_scenario = _Endpoint(
+        self.add_or_replace_users_in_scenario_endpoint = _Endpoint(
             settings={
                 'response_type': ([ScenarioUser],),
                 'auth': [
@@ -336,88 +179,9 @@ class ScenarioApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__add_or_replace_users_in_scenario
+            api_client=api_client
         )
-
-        def __compare_scenarios(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            compared_scenario_id,
-            **kwargs
-        ):
-            """Compare the Scenario with another one and returns the difference for parameters values  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.compare_scenarios(organization_id, workspace_id, scenario_id, compared_scenario_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                compared_scenario_id (str): the Scenario identifier to compare to
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioComparisonResult
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['compared_scenario_id'] = \
-                compared_scenario_id
-            return self.call_with_http_info(**kwargs)
-
-        self.compare_scenarios = _Endpoint(
+        self.compare_scenarios_endpoint = _Endpoint(
             settings={
                 'response_type': (ScenarioComparisonResult,),
                 'auth': [
@@ -484,84 +248,9 @@ class ScenarioApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__compare_scenarios
+            api_client=api_client
         )
-
-        def __create_scenario(
-            self,
-            organization_id,
-            workspace_id,
-            scenario,
-            **kwargs
-        ):
-            """Create a new Scenario  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.create_scenario(organization_id, workspace_id, scenario, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario (Scenario): the Scenario to create
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Scenario
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario'] = \
-                scenario
-            return self.call_with_http_info(**kwargs)
-
-        self.create_scenario = _Endpoint(
+        self.create_scenario_endpoint = _Endpoint(
             settings={
                 'response_type': (Scenario,),
                 'auth': [
@@ -624,80 +313,9 @@ class ScenarioApi(object):
                     'application/yaml'
                 ]
             },
-            api_client=api_client,
-            callable=__create_scenario
+            api_client=api_client
         )
-
-        def __delete_all_scenarios(
-            self,
-            organization_id,
-            workspace_id,
-            **kwargs
-        ):
-            """Delete all Scenarios of the Workspace  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.delete_all_scenarios(organization_id, workspace_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            return self.call_with_http_info(**kwargs)
-
-        self.delete_all_scenarios = _Endpoint(
+        self.delete_all_scenarios_endpoint = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
@@ -750,85 +368,9 @@ class ScenarioApi(object):
                 'accept': [],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__delete_all_scenarios
+            api_client=api_client
         )
-
-        def __delete_scenario(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            **kwargs
-        ):
-            """Delete a scenario  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.delete_scenario(organization_id, workspace_id, scenario_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-
-            Keyword Args:
-                wait_relationship_propagation (bool): whether to wait until child scenarios are effectively updated. [optional] if omitted the server will use the default value of False
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            return self.call_with_http_info(**kwargs)
-
-        self.delete_scenario = _Endpoint(
+        self.delete_scenario_endpoint = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
@@ -892,84 +434,9 @@ class ScenarioApi(object):
                 'accept': [],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__delete_scenario
+            api_client=api_client
         )
-
-        def __download_scenario_data(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            **kwargs
-        ):
-            """Download Scenario data  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.download_scenario_data(organization_id, workspace_id, scenario_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioDataDownloadJob
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            return self.call_with_http_info(**kwargs)
-
-        self.download_scenario_data = _Endpoint(
+        self.download_scenario_data_endpoint = _Endpoint(
             settings={
                 'response_type': (ScenarioDataDownloadJob,),
                 'auth': [
@@ -1030,80 +497,9 @@ class ScenarioApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__download_scenario_data
+            api_client=api_client
         )
-
-        def __find_all_scenarios(
-            self,
-            organization_id,
-            workspace_id,
-            **kwargs
-        ):
-            """List all Scenarios  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.find_all_scenarios(organization_id, workspace_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [Scenario]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            return self.call_with_http_info(**kwargs)
-
-        self.find_all_scenarios = _Endpoint(
+        self.find_all_scenarios_endpoint = _Endpoint(
             settings={
                 'response_type': ([Scenario],),
                 'auth': [
@@ -1158,84 +554,9 @@ class ScenarioApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__find_all_scenarios
+            api_client=api_client
         )
-
-        def __find_scenario_by_id(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            **kwargs
-        ):
-            """Get the details of an scenario  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.find_scenario_by_id(organization_id, workspace_id, scenario_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Scenario
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            return self.call_with_http_info(**kwargs)
-
-        self.find_scenario_by_id = _Endpoint(
+        self.find_scenario_by_id_endpoint = _Endpoint(
             settings={
                 'response_type': (Scenario,),
                 'auth': [
@@ -1296,88 +617,9 @@ class ScenarioApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__find_scenario_by_id
+            api_client=api_client
         )
-
-        def __get_scenario_data_download_job_info(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            download_id,
-            **kwargs
-        ):
-            """Get Scenario data download URL  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_scenario_data_download_job_info(organization_id, workspace_id, scenario_id, download_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                download_id (str): the Scenario Download identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                ScenarioDataDownloadInfo
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['download_id'] = \
-                download_id
-            return self.call_with_http_info(**kwargs)
-
-        self.get_scenario_data_download_job_info = _Endpoint(
+        self.get_scenario_data_download_job_info_endpoint = _Endpoint(
             settings={
                 'response_type': (ScenarioDataDownloadInfo,),
                 'auth': [
@@ -1444,80 +686,9 @@ class ScenarioApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_scenario_data_download_job_info
+            api_client=api_client
         )
-
-        def __get_scenarios_tree(
-            self,
-            organization_id,
-            workspace_id,
-            **kwargs
-        ):
-            """Get the Scenarios Tree  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_scenarios_tree(organization_id, workspace_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [Scenario]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            return self.call_with_http_info(**kwargs)
-
-        self.get_scenarios_tree = _Endpoint(
+        self.get_scenarios_tree_endpoint = _Endpoint(
             settings={
                 'response_type': ([Scenario],),
                 'auth': [
@@ -1572,84 +743,9 @@ class ScenarioApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_scenarios_tree
+            api_client=api_client
         )
-
-        def __remove_all_scenario_parameter_values(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            **kwargs
-        ):
-            """Remove all Parameter Values from the Scenario specified  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.remove_all_scenario_parameter_values(organization_id, workspace_id, scenario_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            return self.call_with_http_info(**kwargs)
-
-        self.remove_all_scenario_parameter_values = _Endpoint(
+        self.remove_all_scenario_parameter_values_endpoint = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
@@ -1708,84 +804,9 @@ class ScenarioApi(object):
                 'accept': [],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__remove_all_scenario_parameter_values
+            api_client=api_client
         )
-
-        def __remove_all_users_of_scenario(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            **kwargs
-        ):
-            """Remove all users from the Scenario specified  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.remove_all_users_of_scenario(organization_id, workspace_id, scenario_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            return self.call_with_http_info(**kwargs)
-
-        self.remove_all_users_of_scenario = _Endpoint(
+        self.remove_all_users_of_scenario_endpoint = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
@@ -1844,88 +865,9 @@ class ScenarioApi(object):
                 'accept': [],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__remove_all_users_of_scenario
+            api_client=api_client
         )
-
-        def __remove_user_from_scenario(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            user_id,
-            **kwargs
-        ):
-            """Remove the specified user from the given Scenario  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.remove_user_from_scenario(organization_id, workspace_id, scenario_id, user_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                user_id (str): the User identifier
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['user_id'] = \
-                user_id
-            return self.call_with_http_info(**kwargs)
-
-        self.remove_user_from_scenario = _Endpoint(
+        self.remove_user_from_scenario_endpoint = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
@@ -1990,88 +932,9 @@ class ScenarioApi(object):
                 'accept': [],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__remove_user_from_scenario
+            api_client=api_client
         )
-
-        def __update_scenario(
-            self,
-            organization_id,
-            workspace_id,
-            scenario_id,
-            scenario,
-            **kwargs
-        ):
-            """Update a scenario  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.update_scenario(organization_id, workspace_id, scenario_id, scenario, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                organization_id (str): the Organization identifier
-                workspace_id (str): the Workspace identifier
-                scenario_id (str): the Scenario identifier
-                scenario (Scenario): the new Scenario details.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Scenario
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['organization_id'] = \
-                organization_id
-            kwargs['workspace_id'] = \
-                workspace_id
-            kwargs['scenario_id'] = \
-                scenario_id
-            kwargs['scenario'] = \
-                scenario
-            return self.call_with_http_info(**kwargs)
-
-        self.update_scenario = _Endpoint(
+        self.update_scenario_endpoint = _Endpoint(
             settings={
                 'response_type': (Scenario,),
                 'auth': [
@@ -2140,6 +1003,1114 @@ class ScenarioApi(object):
                     'application/yaml'
                 ]
             },
-            api_client=api_client,
-            callable=__update_scenario
+            api_client=api_client
         )
+
+    def add_or_replace_scenario_parameter_values(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        scenario_run_template_parameter_value,
+        **kwargs
+    ):
+        """Add (or replace) Parameter Values for the Scenario specified  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+            scenario_run_template_parameter_value ([ScenarioRunTemplateParameterValue]): the Parameter Value to add. Any Parameter Value with the same ID is overwritten
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [ScenarioRunTemplateParameterValue]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        kwargs['scenario_run_template_parameter_value'] = \
+            scenario_run_template_parameter_value
+        return self.add_or_replace_scenario_parameter_values_endpoint.call_with_http_info(**kwargs)
+
+    def add_or_replace_users_in_scenario(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        scenario_user,
+        **kwargs
+    ):
+        """Add (or replace) users in the Scenario specified  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.add_or_replace_users_in_scenario(organization_id, workspace_id, scenario_id, scenario_user, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+            scenario_user ([ScenarioUser]): the Users to add. Any User with the same ID is overwritten
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [ScenarioUser]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        kwargs['scenario_user'] = \
+            scenario_user
+        return self.add_or_replace_users_in_scenario_endpoint.call_with_http_info(**kwargs)
+
+    def compare_scenarios(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        compared_scenario_id,
+        **kwargs
+    ):
+        """Compare the Scenario with another one and returns the difference for parameters values  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.compare_scenarios(organization_id, workspace_id, scenario_id, compared_scenario_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+            compared_scenario_id (str): the Scenario identifier to compare to
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ScenarioComparisonResult
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        kwargs['compared_scenario_id'] = \
+            compared_scenario_id
+        return self.compare_scenarios_endpoint.call_with_http_info(**kwargs)
+
+    def create_scenario(
+        self,
+        organization_id,
+        workspace_id,
+        scenario,
+        **kwargs
+    ):
+        """Create a new Scenario  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_scenario(organization_id, workspace_id, scenario, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario (Scenario): the Scenario to create
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Scenario
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario'] = \
+            scenario
+        return self.create_scenario_endpoint.call_with_http_info(**kwargs)
+
+    def delete_all_scenarios(
+        self,
+        organization_id,
+        workspace_id,
+        **kwargs
+    ):
+        """Delete all Scenarios of the Workspace  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_all_scenarios(organization_id, workspace_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        return self.delete_all_scenarios_endpoint.call_with_http_info(**kwargs)
+
+    def delete_scenario(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        **kwargs
+    ):
+        """Delete a scenario  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_scenario(organization_id, workspace_id, scenario_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+
+        Keyword Args:
+            wait_relationship_propagation (bool): whether to wait until child scenarios are effectively updated. [optional] if omitted the server will use the default value of False
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        return self.delete_scenario_endpoint.call_with_http_info(**kwargs)
+
+    def download_scenario_data(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        **kwargs
+    ):
+        """Download Scenario data  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.download_scenario_data(organization_id, workspace_id, scenario_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ScenarioDataDownloadJob
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        return self.download_scenario_data_endpoint.call_with_http_info(**kwargs)
+
+    def find_all_scenarios(
+        self,
+        organization_id,
+        workspace_id,
+        **kwargs
+    ):
+        """List all Scenarios  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.find_all_scenarios(organization_id, workspace_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [Scenario]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        return self.find_all_scenarios_endpoint.call_with_http_info(**kwargs)
+
+    def find_scenario_by_id(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        **kwargs
+    ):
+        """Get the details of an scenario  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.find_scenario_by_id(organization_id, workspace_id, scenario_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Scenario
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        return self.find_scenario_by_id_endpoint.call_with_http_info(**kwargs)
+
+    def get_scenario_data_download_job_info(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        download_id,
+        **kwargs
+    ):
+        """Get Scenario data download URL  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_scenario_data_download_job_info(organization_id, workspace_id, scenario_id, download_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+            download_id (str): the Scenario Download identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ScenarioDataDownloadInfo
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        kwargs['download_id'] = \
+            download_id
+        return self.get_scenario_data_download_job_info_endpoint.call_with_http_info(**kwargs)
+
+    def get_scenarios_tree(
+        self,
+        organization_id,
+        workspace_id,
+        **kwargs
+    ):
+        """Get the Scenarios Tree  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_scenarios_tree(organization_id, workspace_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [Scenario]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        return self.get_scenarios_tree_endpoint.call_with_http_info(**kwargs)
+
+    def remove_all_scenario_parameter_values(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        **kwargs
+    ):
+        """Remove all Parameter Values from the Scenario specified  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_all_scenario_parameter_values(organization_id, workspace_id, scenario_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        return self.remove_all_scenario_parameter_values_endpoint.call_with_http_info(**kwargs)
+
+    def remove_all_users_of_scenario(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        **kwargs
+    ):
+        """Remove all users from the Scenario specified  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_all_users_of_scenario(organization_id, workspace_id, scenario_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        return self.remove_all_users_of_scenario_endpoint.call_with_http_info(**kwargs)
+
+    def remove_user_from_scenario(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        user_id,
+        **kwargs
+    ):
+        """Remove the specified user from the given Scenario  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_user_from_scenario(organization_id, workspace_id, scenario_id, user_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+            user_id (str): the User identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        kwargs['user_id'] = \
+            user_id
+        return self.remove_user_from_scenario_endpoint.call_with_http_info(**kwargs)
+
+    def update_scenario(
+        self,
+        organization_id,
+        workspace_id,
+        scenario_id,
+        scenario,
+        **kwargs
+    ):
+        """Update a scenario  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_scenario(organization_id, workspace_id, scenario_id, scenario, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            workspace_id (str): the Workspace identifier
+            scenario_id (str): the Scenario identifier
+            scenario (Scenario): the new Scenario details.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Scenario
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['workspace_id'] = \
+            workspace_id
+        kwargs['scenario_id'] = \
+            scenario_id
+        kwargs['scenario'] = \
+            scenario
+        return self.update_scenario_endpoint.call_with_http_info(**kwargs)
+

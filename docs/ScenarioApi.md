@@ -29,6 +29,7 @@ Add (or replace) Parameter Values for the Scenario specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -101,6 +102,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Parameter values |  -  |
@@ -117,6 +119,7 @@ Add (or replace) users in the Scenario specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -190,6 +193,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Scenario Users |  -  |
@@ -206,6 +210,7 @@ Compare the Scenario with another one and returns the difference for parameters 
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -272,6 +277,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the comparison result for parameters values |  -  |
@@ -287,6 +293,7 @@ Create a new Scenario
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -342,9 +349,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 is_inherited=True,
             ),
         ],
-        last_run=,
-        parent_last_run=,
-        root_last_run=,
+        last_run=None,
+        parent_last_run=None,
+        root_last_run=None,
     ) # Scenario | the Scenario to create
 
     # example passing only required values which don't have defaults set
@@ -380,6 +387,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the scenario details |  -  |
@@ -395,6 +403,7 @@ Delete all Scenarios of the Workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -455,6 +464,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -470,6 +480,7 @@ Delete a scenario
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -542,6 +553,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -557,6 +569,7 @@ Download Scenario data
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -621,6 +634,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Scenario Data response, once acknowledged. |  -  |
@@ -636,6 +650,7 @@ List all Scenarios
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -698,6 +713,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the list of Scenarios |  -  |
@@ -712,6 +728,7 @@ Get the details of an scenario
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -776,6 +793,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Scenario details |  -  |
@@ -791,6 +809,7 @@ Get Scenario data download URL
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -857,6 +876,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the scenario data download URL. |  -  |
@@ -872,6 +892,7 @@ Get the Scenarios Tree
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -934,6 +955,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the scenario tree |  -  |
@@ -948,6 +970,7 @@ Remove all Parameter Values from the Scenario specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -1010,6 +1033,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
@@ -1025,6 +1049,7 @@ Remove all users from the Scenario specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -1087,6 +1112,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
@@ -1102,6 +1128,7 @@ Remove the specified user from the given Scenario
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -1166,6 +1193,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -1181,6 +1209,7 @@ Update a scenario
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -1237,9 +1266,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 is_inherited=True,
             ),
         ],
-        last_run=,
-        parent_last_run=,
-        root_last_run=,
+        last_run=None,
+        parent_last_run=None,
+        root_last_run=None,
     ) # Scenario | the new Scenario details.
 
     # example passing only required values which don't have defaults set
@@ -1276,6 +1305,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the scenario details |  -  |

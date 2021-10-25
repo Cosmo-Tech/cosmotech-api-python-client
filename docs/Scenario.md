@@ -24,9 +24,9 @@ Name | Type | Description | Notes
 **run_template_name** | **str** | the Solution Run Template name associated with this Scenario | [optional] [readonly] 
 **dataset_list** | **[str]** | the list of Dataset Id associated to this Scenario Run Template | [optional] 
 **parameters_values** | [**[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] 
-**last_run** | **dict** |  | [optional] 
-**parent_last_run** | **dict** |  | [optional] 
-**root_last_run** | **dict** |  | [optional] 
+**last_run** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**parent_last_run** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**root_last_run** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

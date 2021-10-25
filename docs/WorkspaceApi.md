@@ -27,6 +27,7 @@ Add (or replace) users to the Workspace specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -98,6 +99,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Workspace Users |  -  |
@@ -113,6 +115,7 @@ Create a new workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -204,6 +207,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the workspace details |  -  |
@@ -219,6 +223,7 @@ Delete all Workspace files
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -279,6 +284,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -294,6 +300,7 @@ Delete a workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -356,6 +363,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the workspace details |  -  |
@@ -372,6 +380,7 @@ Delete a workspace file
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -434,6 +443,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -449,6 +459,7 @@ Download the Workspace File specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -512,6 +523,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the workspace file as a resource |  -  |
@@ -527,6 +539,7 @@ List all Workspace files
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -589,6 +602,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the workspace files |  -  |
@@ -604,6 +618,7 @@ List all Workspaces
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -664,6 +679,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the workspace details |  -  |
@@ -678,6 +694,7 @@ Get the details of an workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -740,6 +757,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Workspace details |  -  |
@@ -755,6 +773,7 @@ Remove all users from the Workspace specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -815,6 +834,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
@@ -830,6 +850,7 @@ Remove the specified user from the given Organization Workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -892,6 +913,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -907,6 +929,7 @@ Update a workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -1000,6 +1023,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the workspace details |  -  |
@@ -1016,6 +1040,7 @@ Upload a file for the Workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -1093,6 +1118,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the file resource details |  -  |

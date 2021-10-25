@@ -24,6 +24,7 @@ Authorize an User with OAuth2. Delegated to configured OAuth2 service
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -78,6 +79,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **302** | Redirection response |  * Location -  <br>  |
@@ -92,6 +94,7 @@ List all Users
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -148,6 +151,7 @@ This endpoint does not need any parameter.
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the user details |  -  |
@@ -162,6 +166,7 @@ Get the details of an user
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -222,6 +227,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the User details |  -  |
@@ -237,6 +243,7 @@ Get the details of the logged-in User
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -293,6 +300,7 @@ This endpoint does not need any parameter.
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the User details |  -  |
@@ -307,6 +315,7 @@ Get the details of a logged-in User with roles for an Organization
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -367,6 +376,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the User details |  -  |
@@ -381,6 +391,7 @@ Get the details of the logged-in user with roles for a Workspace
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -443,6 +454,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the User details |  -  |
@@ -457,6 +469,7 @@ Register a new user
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -522,6 +535,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the user details |  -  |
@@ -537,6 +551,7 @@ test platform API call
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -592,6 +607,7 @@ This endpoint does not need any parameter.
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | test string |  -  |
@@ -606,6 +622,7 @@ Unregister an user
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -664,6 +681,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
@@ -679,6 +697,7 @@ Update a User
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -746,6 +765,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the user details |  -  |

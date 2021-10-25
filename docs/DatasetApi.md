@@ -22,6 +22,7 @@ Add Dataset Compatibility elements.
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Dataset Compatibility elements |  -  |
@@ -108,6 +110,7 @@ Copy a Dataset to another Dataset. Source must have a read capable connector and
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -174,6 +177,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the Dataset copy operation parameters |  -  |
@@ -190,6 +194,7 @@ Create a new Dataset
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -277,6 +282,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the dataset details |  -  |
@@ -292,6 +298,7 @@ Delete a dataset
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -352,6 +359,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request successful |  -  |
@@ -367,6 +375,7 @@ List all Datasets
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -427,6 +436,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the list of Datasets |  -  |
@@ -441,6 +451,7 @@ Get the details of a Dataset
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -503,6 +514,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Dataset details |  -  |
@@ -518,6 +530,7 @@ Remove all Dataset Compatibility elements from the Dataset specified
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -578,6 +591,7 @@ void (empty response body)
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
@@ -593,6 +607,7 @@ Update a dataset
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
+
 ```python
 import time
 import cosmotech_api
@@ -682,6 +697,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the dataset details |  -  |

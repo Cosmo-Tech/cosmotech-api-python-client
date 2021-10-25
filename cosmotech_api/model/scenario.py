@@ -111,9 +111,9 @@ class Scenario(ModelNormal):
             'run_template_name': (str,),  # noqa: E501
             'dataset_list': ([str],),  # noqa: E501
             'parameters_values': ([ScenarioRunTemplateParameterValue],),  # noqa: E501
-            'last_run': (dict,),  # noqa: E501
-            'parent_last_run': (dict,),  # noqa: E501
-            'root_last_run': (dict,),  # noqa: E501
+            'last_run': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'parent_last_run': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'root_last_run': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -216,9 +216,9 @@ class Scenario(ModelNormal):
             run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
             parameters_values ([ScenarioRunTemplateParameterValue]): the list of Solution Run Template parameters values. [optional]  # noqa: E501
-            last_run (dict): [optional]  # noqa: E501
-            parent_last_run (dict): [optional]  # noqa: E501
-            root_last_run (dict): [optional]  # noqa: E501
+            last_run (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            parent_last_run (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            root_last_run (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -319,9 +319,9 @@ class Scenario(ModelNormal):
             run_template_name (str): the Solution Run Template name associated with this Scenario. [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Scenario Run Template. [optional]  # noqa: E501
             parameters_values ([ScenarioRunTemplateParameterValue]): the list of Solution Run Template parameters values. [optional]  # noqa: E501
-            last_run (dict): [optional]  # noqa: E501
-            parent_last_run (dict): [optional]  # noqa: E501
-            root_last_run (dict): [optional]  # noqa: E501
+            last_run (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            parent_last_run (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            root_last_run (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
