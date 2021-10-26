@@ -173,6 +173,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             options={},
         ),
         send_input_to_data_warehouse=True,
+        use_dedicated_event_hub_namespace=False,
     ) # Workspace | the Workspace to create
 
     # example passing only required values which don't have defaults set
@@ -988,6 +989,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             options={},
         ),
         send_input_to_data_warehouse=True,
+        use_dedicated_event_hub_namespace=False,
     ) # Workspace | the new Workspace details.
 
     # example passing only required values which don't have defaults set

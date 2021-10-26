@@ -103,6 +103,7 @@ class Workspace(ModelNormal):
             'users': ([WorkspaceUser],),  # noqa: E501
             'web_app': (WorkspaceWebApp,),  # noqa: E501
             'send_input_to_data_warehouse': (bool,),  # noqa: E501
+            'use_dedicated_event_hub_namespace': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -122,6 +123,7 @@ class Workspace(ModelNormal):
         'users': 'users',  # noqa: E501
         'web_app': 'webApp',  # noqa: E501
         'send_input_to_data_warehouse': 'sendInputToDataWarehouse',  # noqa: E501
+        'use_dedicated_event_hub_namespace': 'useDedicatedEventHubNamespace',  # noqa: E501
     }
 
     read_only_vars = {
@@ -180,6 +182,7 @@ class Workspace(ModelNormal):
             users ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
             web_app (WorkspaceWebApp): [optional]  # noqa: E501
             send_input_to_data_warehouse (bool): default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to the ScenarioRun. [optional]  # noqa: E501
+            use_dedicated_event_hub_namespace (bool): Set this property to true to use a dedicated Azure Event Hub Namespace for this Workspace. The Event Hub Namespace must be named \\'<organization_id\\>-<workspace_id\\>\\' (in lower case). This Namespace must also contain two Event Hubs named \\'probesmeasures\\' and \\'scenariorun\\'.. [optional] if omitted the server will use the default value of False  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -277,6 +280,7 @@ class Workspace(ModelNormal):
             users ([WorkspaceUser]): the list of users Id with their role. [optional]  # noqa: E501
             web_app (WorkspaceWebApp): [optional]  # noqa: E501
             send_input_to_data_warehouse (bool): default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to the ScenarioRun. [optional]  # noqa: E501
+            use_dedicated_event_hub_namespace (bool): Set this property to true to use a dedicated Azure Event Hub Namespace for this Workspace. The Event Hub Namespace must be named \\'<organization_id\\>-<workspace_id\\>\\' (in lower case). This Namespace must also contain two Event Hubs named \\'probesmeasures\\' and \\'scenariorun\\'.. [optional] if omitted the server will use the default value of False  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
