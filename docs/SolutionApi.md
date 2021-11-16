@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**create_solution**](SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 [**delete_solution**](SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 [**delete_solution_run_template**](SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Remove the specified Solution Run Template
+[**download_run_template_handler**](SolutionApi.md#download_run_template_handler) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/download | Download a Run Template step handler zip file
 [**find_all_solutions**](SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 [**find_solution_by_id**](SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 [**remove_all_run_templates**](SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified
@@ -628,6 +629,89 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
 **404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **download_run_template_handler**
+> file_type download_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
+
+Download a Run Template step handler zip file
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    run_template_id = "run_template_id_example" # str | the Run Template identifier
+    handler_id = RunTemplateHandlerId("parameters_handler") # RunTemplateHandlerId | the Handler identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Download a Run Template step handler zip file
+        api_response = api_instance.download_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->download_run_template_handler: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **run_template_id** | **str**| the Run Template identifier |
+ **handler_id** | **RunTemplateHandlerId**| the Handler identifier |
+
+### Return type
+
+**file_type**
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the run template handle file as a resource |  * Content-Disposition -  <br>  |
+**404** | the Run Template Handler file specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

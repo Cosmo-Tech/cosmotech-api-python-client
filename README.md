@@ -143,6 +143,7 @@ Class | Method | HTTP request | Description
 *SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 *SolutionApi* | [**delete_solution_run_template**](docs/SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Remove the specified Solution Run Template
+*SolutionApi* | [**download_run_template_handler**](docs/SolutionApi.md#download_run_template_handler) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/download | Download a Run Template step handler zip file
 *SolutionApi* | [**find_all_solutions**](docs/SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 *SolutionApi* | [**find_solution_by_id**](docs/SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 *SolutionApi* | [**remove_all_run_templates**](docs/SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified

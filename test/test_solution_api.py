@@ -66,6 +66,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_download_run_template_handler(self):
+        """Test case for download_run_template_handler
+
+        Download a Run Template step handler zip file  # noqa: E501
+        """
+        pass
+
     def test_find_all_solutions(self):
         """Test case for find_all_solutions
 

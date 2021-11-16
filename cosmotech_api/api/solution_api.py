@@ -407,6 +407,75 @@ class SolutionApi(object):
             },
             api_client=api_client
         )
+        self.download_run_template_handler_endpoint = _Endpoint(
+            settings={
+                'response_type': (file_type,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/download',
+                'operation_id': 'download_run_template_handler',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'solution_id',
+                    'run_template_id',
+                    'handler_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'solution_id',
+                    'run_template_id',
+                    'handler_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'solution_id':
+                        (str,),
+                    'run_template_id':
+                        (str,),
+                    'handler_id':
+                        (RunTemplateHandlerId,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'solution_id': 'solution_id',
+                    'run_template_id': 'run_template_id',
+                    'handler_id': 'handler_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'solution_id': 'path',
+                    'run_template_id': 'path',
+                    'handler_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/octet-stream'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.find_all_solutions_endpoint = _Endpoint(
             settings={
                 'response_type': ([Solution],),
@@ -1325,6 +1394,83 @@ class SolutionApi(object):
         kwargs['run_template_id'] = \
             run_template_id
         return self.delete_solution_run_template_endpoint.call_with_http_info(**kwargs)
+
+    def download_run_template_handler(
+        self,
+        organization_id,
+        solution_id,
+        run_template_id,
+        handler_id,
+        **kwargs
+    ):
+        """Download a Run Template step handler zip file  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.download_run_template_handler(organization_id, solution_id, run_template_id, handler_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            solution_id (str): the Solution identifier
+            run_template_id (str): the Run Template identifier
+            handler_id (RunTemplateHandlerId): the Handler identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            file_type
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['solution_id'] = \
+            solution_id
+        kwargs['run_template_id'] = \
+            run_template_id
+        kwargs['handler_id'] = \
+            handler_id
+        return self.download_run_template_handler_endpoint.call_with_http_info(**kwargs)
 
     def find_all_solutions(
         self,
