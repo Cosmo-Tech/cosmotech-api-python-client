@@ -710,7 +710,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the run template handle file as a resource |  * Content-Disposition -  <br>  |
+**200** | the run template handle file as a resource |  -  |
 **404** | the Run Template Handler file specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
