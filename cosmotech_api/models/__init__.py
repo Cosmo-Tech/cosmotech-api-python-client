@@ -16,6 +16,7 @@ from cosmotech_api.model.dataset import Dataset
 from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_connector import DatasetConnector
 from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
+from cosmotech_api.model.dataset_search import DatasetSearch
 from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_service import OrganizationService
 from cosmotech_api.model.organization_services import OrganizationServices

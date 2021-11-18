@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
 [**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a Dataset
 [**remove_all_dataset_compatibility_elements**](DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
+[**search_datasets**](DatasetApi.md#search_datasets) | **POST** /organizations/{organization_id}/datasets/search | Search Datasets
 [**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
 
 
@@ -596,6 +597,89 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
 **404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_datasets**
+> [Dataset] search_datasets(organization_id, dataset_search)
+
+Search Datasets
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
+from cosmotech_api.model.dataset_search import DatasetSearch
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_search = DatasetSearch(
+        dataset_tags=[
+            "dataset_tags_example",
+        ],
+    ) # DatasetSearch | the Dataset search parameters
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Search Datasets
+        api_response = api_instance.search_datasets(organization_id, dataset_search)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->search_datasets: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_search** | [**DatasetSearch**](DatasetSearch.md)| the Dataset search parameters |
+
+### Return type
+
+[**[Dataset]**](Dataset.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the list of Datasets |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -73,6 +73,13 @@ class TestDatasetApi(unittest.TestCase):
         """
         pass
 
+    def test_search_datasets(self):
+        """Test case for search_datasets
+
+        Search Datasets  # noqa: E501
+        """
+        pass
+
     def test_update_dataset(self):
         """Test case for update_dataset
 
