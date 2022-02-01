@@ -15,8 +15,10 @@ import unittest
 import cosmotech_api
 from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
 from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
+from cosmotech_api.model.scenario_run_state import ScenarioRunState
 globals()['RunTemplateParameterValue'] = RunTemplateParameterValue
 globals()['ScenarioRunContainer'] = ScenarioRunContainer
+globals()['ScenarioRunState'] = ScenarioRunState
 from cosmotech_api.model.scenario_run import ScenarioRun
 
 

@@ -14,14 +14,10 @@ import unittest
 
 import cosmotech_api
 from cosmotech_api.model.scenario_run_state import ScenarioRunState
-from cosmotech_api.model.scenario_run_status_node import ScenarioRunStatusNode
-globals()['ScenarioRunState'] = ScenarioRunState
-globals()['ScenarioRunStatusNode'] = ScenarioRunStatusNode
-from cosmotech_api.model.scenario_run_status import ScenarioRunStatus
 
 
-class TestScenarioRunStatus(unittest.TestCase):
-    """ScenarioRunStatus unit test stubs"""
+class TestScenarioRunState(unittest.TestCase):
+    """ScenarioRunState unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +25,10 @@ class TestScenarioRunStatus(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testScenarioRunStatus(self):
-        """Test ScenarioRunStatus"""
+    def testScenarioRunState(self):
+        """Test ScenarioRunState"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = ScenarioRunStatus()  # noqa: E501
+        # model = ScenarioRunState()  # noqa: E501
         pass
 
 

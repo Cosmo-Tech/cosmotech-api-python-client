@@ -31,7 +31,9 @@ from cosmotech_api.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from cosmotech_api.model.scenario_run_state import ScenarioRunState
     from cosmotech_api.model.scenario_run_status_node import ScenarioRunStatusNode
+    globals()['ScenarioRunState'] = ScenarioRunState
     globals()['ScenarioRunStatusNode'] = ScenarioRunStatusNode
 
 
@@ -99,6 +101,7 @@ class ScenarioRunStatus(ModelNormal):
             'message': (str,),  # noqa: E501
             'estimated_duration': (int,),  # noqa: E501
             'nodes': ([ScenarioRunStatusNode],),  # noqa: E501
+            'state': (ScenarioRunState,),  # noqa: E501
         }
 
     @cached_property
@@ -118,6 +121,7 @@ class ScenarioRunStatus(ModelNormal):
         'message': 'message',  # noqa: E501
         'estimated_duration': 'estimatedDuration',  # noqa: E501
         'nodes': 'nodes',  # noqa: E501
+        'state': 'state',  # noqa: E501
     }
 
     read_only_vars = {
@@ -172,6 +176,7 @@ class ScenarioRunStatus(ModelNormal):
             message (str): a  human readable message indicating details about why the workflow is in this condition. [optional]  # noqa: E501
             estimated_duration (int): estimatedDuration in seconds. [optional]  # noqa: E501
             nodes ([ScenarioRunStatusNode]): status of ScenarioRun nodes. [optional]  # noqa: E501
+            state (ScenarioRunState): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -264,6 +269,7 @@ class ScenarioRunStatus(ModelNormal):
             message (str): a  human readable message indicating details about why the workflow is in this condition. [optional]  # noqa: E501
             estimated_duration (int): estimatedDuration in seconds. [optional]  # noqa: E501
             nodes ([ScenarioRunStatusNode]): status of ScenarioRun nodes. [optional]  # noqa: E501
+            state (ScenarioRunState): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

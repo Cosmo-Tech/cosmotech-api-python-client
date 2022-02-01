@@ -33,8 +33,10 @@ from cosmotech_api.exceptions import ApiAttributeError
 def lazy_import():
     from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
     from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
+    from cosmotech_api.model.scenario_run_state import ScenarioRunState
     globals()['RunTemplateParameterValue'] = RunTemplateParameterValue
     globals()['ScenarioRunContainer'] = ScenarioRunContainer
+    globals()['ScenarioRunState'] = ScenarioRunState
 
 
 class ScenarioRun(ModelNormal):
@@ -91,6 +93,7 @@ class ScenarioRun(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
+            'state': (ScenarioRunState,),  # noqa: E501
             'organization_id': (str,),  # noqa: E501
             'workflow_id': (str,),  # noqa: E501
             'csm_simulation_run': (str,),  # noqa: E501
@@ -118,6 +121,7 @@ class ScenarioRun(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
+        'state': 'state',  # noqa: E501
         'organization_id': 'organizationId',  # noqa: E501
         'workflow_id': 'workflowId',  # noqa: E501
         'csm_simulation_run': 'csmSimulationRun',  # noqa: E501
@@ -194,6 +198,7 @@ class ScenarioRun(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the ScenarioRun. [optional]  # noqa: E501
+            state (ScenarioRunState): [optional]  # noqa: E501
             organization_id (str): the Organization id. [optional]  # noqa: E501
             workflow_id (str): the Cosmo Tech compute cluster Argo Workflow Id to search. [optional]  # noqa: E501
             csm_simulation_run (str): the Cosmo Tech Simulation Run Id. [optional]  # noqa: E501
@@ -294,6 +299,7 @@ class ScenarioRun(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the ScenarioRun. [optional]  # noqa: E501
+            state (ScenarioRunState): [optional]  # noqa: E501
             organization_id (str): the Organization id. [optional]  # noqa: E501
             workflow_id (str): the Cosmo Tech compute cluster Argo Workflow Id to search. [optional]  # noqa: E501
             csm_simulation_run (str): the Cosmo Tech Simulation Run Id. [optional]  # noqa: E501
