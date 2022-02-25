@@ -10,7 +10,7 @@ For more information, please visit [https://github.com/Cosmo-Tech/cosmotech-api]
 
 ## Requirements.
 
-Python >= 3.6
+Python >=3.6
 
 ## Installation & Usage
 ### pip install

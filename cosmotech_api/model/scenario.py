@@ -32,9 +32,11 @@ from cosmotech_api.exceptions import ApiAttributeError
 
 def lazy_import():
     from cosmotech_api.model.scenario_job_state import ScenarioJobState
+    from cosmotech_api.model.scenario_last_run import ScenarioLastRun
     from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
     from cosmotech_api.model.scenario_user import ScenarioUser
     globals()['ScenarioJobState'] = ScenarioJobState
+    globals()['ScenarioLastRun'] = ScenarioLastRun
     globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
     globals()['ScenarioUser'] = ScenarioUser
 
