@@ -94,6 +94,13 @@ class TestScenariorunApi(unittest.TestCase):
         """
         pass
 
+    def test_stop_scenario_run(self):
+        """Test case for stop_scenario_run
+
+        stop a ScenarioRun for the Scenario  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

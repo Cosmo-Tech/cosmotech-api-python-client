@@ -624,6 +624,63 @@ class ScenariorunApi(object):
             },
             api_client=api_client
         )
+        self.stop_scenario_run_endpoint = _Endpoint(
+            settings={
+                'response_type': (ScenarioRunStatus,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/scenarioruns/{scenariorun_id}/stop',
+                'operation_id': 'stop_scenario_run',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'scenariorun_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'scenariorun_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'scenariorun_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'scenariorun_id': 'scenariorun_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'scenariorun_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
 
     def delete_scenario_run(
         self,
@@ -1372,4 +1429,78 @@ class ScenariorunApi(object):
         kwargs['scenario_run_start_containers'] = \
             scenario_run_start_containers
         return self.start_scenario_run_containers_endpoint.call_with_http_info(**kwargs)
+
+    def stop_scenario_run(
+        self,
+        organization_id,
+        scenariorun_id,
+        **kwargs
+    ):
+        """stop a ScenarioRun for the Scenario  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.stop_scenario_run(organization_id, scenariorun_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            scenariorun_id (str): the scenariorun identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ScenarioRunStatus
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['scenariorun_id'] = \
+            scenariorun_id
+        return self.stop_scenario_run_endpoint.call_with_http_info(**kwargs)
 

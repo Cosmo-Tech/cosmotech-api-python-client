@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**run_scenario**](ScenariorunApi.md#run_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/run | run a ScenarioRun for the Scenario
 [**search_scenario_runs**](ScenariorunApi.md#search_scenario_runs) | **POST** /organizations/{organization_id}/scenarioruns/search | Search ScenarioRuns
 [**start_scenario_run_containers**](ScenariorunApi.md#start_scenario_run_containers) | **POST** /organizations/{organization_id}/scenarioruns/startcontainers | Start a new scenariorun with raw containers definition
+[**stop_scenario_run**](ScenariorunApi.md#stop_scenario_run) | **POST** /organizations/{organization_id}/scenarioruns/{scenariorun_id}/stop | stop a ScenarioRun for the Scenario
 
 
 # **delete_scenario_run**
@@ -844,6 +845,84 @@ Name | Type | Description  | Notes
 **202** | the scenariorun details |  -  |
 **400** | Bad request |  -  |
 **404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **stop_scenario_run**
+> ScenarioRunStatus stop_scenario_run(organization_id, scenariorun_id)
+
+stop a ScenarioRun for the Scenario
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenariorun_api
+from cosmotech_api.model.scenario_run_status import ScenarioRunStatus
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenariorun_api.ScenariorunApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    scenariorun_id = "scenariorun_id_example" # str | the scenariorun identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # stop a ScenarioRun for the Scenario
+        api_response = api_instance.stop_scenario_run(organization_id, scenariorun_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenariorunApi->stop_scenario_run: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **scenariorun_id** | **str**| the scenariorun identifier |
+
+### Return type
+
+[**ScenarioRunStatus**](ScenarioRunStatus.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the scenariorun status details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
