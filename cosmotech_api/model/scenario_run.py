@@ -216,7 +216,7 @@ class ScenarioRun(ModelNormal):
             send_datasets_to_data_warehouse (bool): whether or not the Datasets values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting. [optional]  # noqa: E501
             send_input_parameters_to_data_warehouse (bool): whether or not the input parameters values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting. [optional]  # noqa: E501
             node_label (str): the node label request. [optional]  # noqa: E501
-            containers ([ScenarioRunContainer]): the containers list. [optional]  # noqa: E501
+            containers ([ScenarioRunContainer]): the containers list. This information is not returned by the API.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -317,7 +317,7 @@ class ScenarioRun(ModelNormal):
             send_datasets_to_data_warehouse (bool): whether or not the Datasets values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting. [optional]  # noqa: E501
             send_input_parameters_to_data_warehouse (bool): whether or not the input parameters values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting. [optional]  # noqa: E501
             node_label (str): the node label request. [optional]  # noqa: E501
-            containers ([ScenarioRunContainer]): the containers list. [optional]  # noqa: E501
+            containers ([ScenarioRunContainer]): the containers list. This information is not returned by the API.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
