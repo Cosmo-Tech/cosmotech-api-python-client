@@ -106,6 +106,8 @@ class ScenarioRun(ModelNormal):
             'solution_id': (str,),  # noqa: E501
             'run_template_id': (str,),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
+            'sdk_version': (str,),  # noqa: E501
+            'no_data_ingestion_state': (bool,),  # noqa: E501
             'dataset_list': ([str],),  # noqa: E501
             'parameters_values': ([RunTemplateParameterValue],),  # noqa: E501
             'send_datasets_to_data_warehouse': (bool,),  # noqa: E501
@@ -134,6 +136,8 @@ class ScenarioRun(ModelNormal):
         'solution_id': 'solutionId',  # noqa: E501
         'run_template_id': 'runTemplateId',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
+        'sdk_version': 'sdkVersion',  # noqa: E501
+        'no_data_ingestion_state': 'noDataIngestionState',  # noqa: E501
         'dataset_list': 'datasetList',  # noqa: E501
         'parameters_values': 'parametersValues',  # noqa: E501
         'send_datasets_to_data_warehouse': 'sendDatasetsToDataWarehouse',  # noqa: E501
@@ -211,6 +215,8 @@ class ScenarioRun(ModelNormal):
             solution_id (str): the Solution Id. [optional]  # noqa: E501
             run_template_id (str): the Solution Run Template id. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
+            sdk_version (str): the MAJOR.MINOR version used to build the solution solution. [optional]  # noqa: E501
+            no_data_ingestion_state (bool): set to true if the run template does not use any Datawarehouse consumers (AMQP consumers for Azure). [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Analysis. [optional]  # noqa: E501
             parameters_values ([RunTemplateParameterValue]): the list of Run Template parameters values. [optional]  # noqa: E501
             send_datasets_to_data_warehouse (bool): whether or not the Datasets values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting. [optional]  # noqa: E501
@@ -312,6 +318,8 @@ class ScenarioRun(ModelNormal):
             solution_id (str): the Solution Id. [optional]  # noqa: E501
             run_template_id (str): the Solution Run Template id. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
+            sdk_version (str): the MAJOR.MINOR version used to build the solution solution. [optional]  # noqa: E501
+            no_data_ingestion_state (bool): set to true if the run template does not use any Datawarehouse consumers (AMQP consumers for Azure). [optional]  # noqa: E501
             dataset_list ([str]): the list of Dataset Id associated to this Analysis. [optional]  # noqa: E501
             parameters_values ([RunTemplateParameterValue]): the list of Run Template parameters values. [optional]  # noqa: E501
             send_datasets_to_data_warehouse (bool): whether or not the Datasets values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting. [optional]  # noqa: E501

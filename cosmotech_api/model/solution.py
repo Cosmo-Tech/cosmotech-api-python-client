@@ -101,6 +101,7 @@ class Solution(ModelNormal):
             'description': (str,),  # noqa: E501
             'csm_simulator': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
+            'sdk_version': (str,),  # noqa: E501
             'url': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'parameters': ([RunTemplateParameter],),  # noqa: E501
@@ -122,6 +123,7 @@ class Solution(ModelNormal):
         'description': 'description',  # noqa: E501
         'csm_simulator': 'csmSimulator',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
+        'sdk_version': 'sdkVersion',  # noqa: E501
         'url': 'url',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'parameters': 'parameters',  # noqa: E501
@@ -182,6 +184,7 @@ class Solution(ModelNormal):
             description (str): the Solution description. [optional]  # noqa: E501
             csm_simulator (str): the main Cosmo Tech simulator name used in standard Run Template. [optional]  # noqa: E501
             owner_id (str): the User id which own this Solution. [optional]  # noqa: E501
+            sdk_version (str): the MAJOR.MINOR version used to build this solution. [optional]  # noqa: E501
             url (str): an optional URL link to solution page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parameters ([RunTemplateParameter]): the list of Run Template Parameters. [optional]  # noqa: E501
@@ -283,6 +286,7 @@ class Solution(ModelNormal):
             description (str): the Solution description. [optional]  # noqa: E501
             csm_simulator (str): the main Cosmo Tech simulator name used in standard Run Template. [optional]  # noqa: E501
             owner_id (str): the User id which own this Solution. [optional]  # noqa: E501
+            sdk_version (str): the MAJOR.MINOR version used to build this solution. [optional]  # noqa: E501
             url (str): an optional URL link to solution page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parameters ([RunTemplateParameter]): the list of Run Template Parameters. [optional]  # noqa: E501

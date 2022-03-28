@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **description** | **str** | the Solution description | [optional] 
 **csm_simulator** | **str** | the main Cosmo Tech simulator name used in standard Run Template | [optional] 
 **owner_id** | **str** | the User id which own this Solution | [optional] [readonly] 
+**sdk_version** | **str** | the MAJOR.MINOR version used to build this solution | [optional] 
 **url** | **str** | an optional URL link to solution page | [optional] 
 **tags** | **[str]** | the list of tags | [optional] 
 **parameters** | [**[RunTemplateParameter]**](RunTemplateParameter.md) | the list of Run Template Parameters | [optional] 

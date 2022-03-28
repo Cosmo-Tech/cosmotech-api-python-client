@@ -94,6 +94,7 @@ class RunTemplate(ModelNormal):
             'csm_simulation': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'compute_size': (str,),  # noqa: E501
+            'no_data_ingestion_state': (bool,),  # noqa: E501
             'fetch_datasets': (bool,),  # noqa: E501
             'scenario_data_download_transform': (bool,),  # noqa: E501
             'fetch_scenario_parameters': (bool,),  # noqa: E501
@@ -127,6 +128,7 @@ class RunTemplate(ModelNormal):
         'csm_simulation': 'csmSimulation',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'compute_size': 'computeSize',  # noqa: E501
+        'no_data_ingestion_state': 'noDataIngestionState',  # noqa: E501
         'fetch_datasets': 'fetchDatasets',  # noqa: E501
         'scenario_data_download_transform': 'scenarioDataDownloadTransform',  # noqa: E501
         'fetch_scenario_parameters': 'fetchScenarioParameters',  # noqa: E501
@@ -197,6 +199,7 @@ class RunTemplate(ModelNormal):
             csm_simulation (str): the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined. [optional]  # noqa: E501
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
+            no_data_ingestion_state (bool): set to true if the run template does not want to check data ingestion state (no probes or not control plane). [optional]  # noqa: E501
             fetch_datasets (bool): whether or not the fetch dataset step is done. [optional]  # noqa: E501
             scenario_data_download_transform (bool): whether or not the scenario data download transform step step is done. [optional]  # noqa: E501
             fetch_scenario_parameters (bool): whether or not the fetch parameters step is done. [optional]  # noqa: E501
@@ -307,6 +310,7 @@ class RunTemplate(ModelNormal):
             csm_simulation (str): the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined. [optional]  # noqa: E501
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
             compute_size (str): the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic. [optional]  # noqa: E501
+            no_data_ingestion_state (bool): set to true if the run template does not want to check data ingestion state (no probes or not control plane). [optional]  # noqa: E501
             fetch_datasets (bool): whether or not the fetch dataset step is done. [optional]  # noqa: E501
             scenario_data_download_transform (bool): whether or not the scenario data download transform step step is done. [optional]  # noqa: E501
             fetch_scenario_parameters (bool): whether or not the fetch parameters step is done. [optional]  # noqa: E501
