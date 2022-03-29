@@ -114,6 +114,9 @@ class RunTemplate(ModelNormal):
             'scenariodata_transform_source': (RunTemplateStepSource,),  # noqa: E501
             'parameter_groups': ([str],),  # noqa: E501
             'stack_steps': (bool,),  # noqa: E501
+            'git_repository_url': (str,),  # noqa: E501
+            'git_branch_name': (str,),  # noqa: E501
+            'run_template_source_dir': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -148,6 +151,9 @@ class RunTemplate(ModelNormal):
         'scenariodata_transform_source': 'scenariodataTransformSource',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
         'stack_steps': 'stackSteps',  # noqa: E501
+        'git_repository_url': 'gitRepositoryUrl',  # noqa: E501
+        'git_branch_name': 'gitBranchName',  # noqa: E501
+        'run_template_source_dir': 'runTemplateSourceDir',  # noqa: E501
     }
 
     read_only_vars = {
@@ -219,6 +225,9 @@ class RunTemplate(ModelNormal):
             scenariodata_transform_source (RunTemplateStepSource): [optional]  # noqa: E501
             parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
             stack_steps (bool): whether or not to stack adjacent scenario run steps in one container run which will chain steps. [optional]  # noqa: E501
+            git_repository_url (str): an optional URL to the git repository. [optional]  # noqa: E501
+            git_branch_name (str): an optional git branch name. [optional]  # noqa: E501
+            run_template_source_dir (str): an optional directory where to find the run template source. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -330,6 +339,9 @@ class RunTemplate(ModelNormal):
             scenariodata_transform_source (RunTemplateStepSource): [optional]  # noqa: E501
             parameter_groups ([str]): the ordered list of parameters groups for the Run Template. [optional]  # noqa: E501
             stack_steps (bool): whether or not to stack adjacent scenario run steps in one container run which will chain steps. [optional]  # noqa: E501
+            git_repository_url (str): an optional URL to the git repository. [optional]  # noqa: E501
+            git_branch_name (str): an optional git branch name. [optional]  # noqa: E501
+            run_template_source_dir (str): an optional directory where to find the run template source. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
