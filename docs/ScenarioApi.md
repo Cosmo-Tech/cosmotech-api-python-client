@@ -12,8 +12,10 @@ Method | HTTP request | Description
 [**delete_scenario**](ScenarioApi.md#delete_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Delete a scenario
 [**download_scenario_data**](ScenarioApi.md#download_scenario_data) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads | Download Scenario data
 [**find_all_scenarios**](ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
+[**find_all_scenarios_by_validation_status**](ScenarioApi.md#find_all_scenarios_by_validation_status) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/{validationStatus} | List all Scenarios by validation status
 [**find_scenario_by_id**](ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
 [**get_scenario_data_download_job_info**](ScenarioApi.md#get_scenario_data_download_job_info) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads/{download_id} | Get Scenario data download URL
+[**get_scenario_validation_status_by_id**](ScenarioApi.md#get_scenario_validation_status_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/ValidationStatus | Get the validation status of an scenario
 [**get_scenarios_tree**](ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
 [**remove_all_scenario_parameter_values**](ScenarioApi.md#remove_all_scenario_parameter_values) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Remove all Parameter Values from the Scenario specified
 [**remove_all_users_of_scenario**](ScenarioApi.md#remove_all_users_of_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/users | Remove all users from the Scenario specified
@@ -352,6 +354,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         last_run=None,
         parent_last_run=None,
         root_last_run=None,
+        validation_status=ScenarioValidationStatus("Draft"),
     ) # Scenario | the Scenario to create
 
     # example passing only required values which don't have defaults set
@@ -720,6 +723,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **find_all_scenarios_by_validation_status**
+> [Scenario] find_all_scenarios_by_validation_status(organization_id, workspace_id, validation_status)
+
+List all Scenarios by validation status
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    validation_status = ScenarioValidationStatus("Draft") # ScenarioValidationStatus | the Scenario Validation Status
+
+    # example passing only required values which don't have defaults set
+    try:
+        # List all Scenarios by validation status
+        api_response = api_instance.find_all_scenarios_by_validation_status(organization_id, workspace_id, validation_status)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->find_all_scenarios_by_validation_status: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **validation_status** | **ScenarioValidationStatus**| the Scenario Validation Status |
+
+### Return type
+
+[**[Scenario]**](Scenario.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the list of Scenarios by a given validation status |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_scenario_by_id**
 > Scenario find_scenario_by_id(organization_id, workspace_id, scenario_id)
 
@@ -881,6 +965,86 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | the scenario data download URL. |  -  |
 **404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_scenario_validation_status_by_id**
+> ScenarioValidationStatus get_scenario_validation_status_by_id(organization_id, workspace_id, scenario_id)
+
+Get the validation status of an scenario
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get the validation status of an scenario
+        api_response = api_instance.get_scenario_validation_status_by_id(organization_id, workspace_id, scenario_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->get_scenario_validation_status_by_id: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+
+### Return type
+
+[**ScenarioValidationStatus**](ScenarioValidationStatus.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Scenario validation status |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1269,6 +1433,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         last_run=None,
         parent_last_run=None,
         root_last_run=None,
+        validation_status=ScenarioValidationStatus("Draft"),
     ) # Scenario | the new Scenario details.
 
     # example passing only required values which don't have defaults set

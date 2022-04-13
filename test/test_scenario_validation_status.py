@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.scenario_run_state import ScenarioRunState
+from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
 
 
-class TestScenarioRunState(unittest.TestCase):
-    """ScenarioRunState unit test stubs"""
+class TestScenarioValidationStatus(unittest.TestCase):
+    """ScenarioValidationStatus unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestScenarioRunState(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testScenarioRunState(self):
-        """Test ScenarioRunState"""
+    def testScenarioValidationStatus(self):
+        """Test ScenarioValidationStatus"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = ScenarioRunState()  # noqa: E501
+        # model = ScenarioValidationStatus()  # noqa: E501
         pass
 
 

@@ -46,6 +46,7 @@ from cosmotech_api.model.scenario_run_status import ScenarioRunStatus
 from cosmotech_api.model.scenario_run_status_node import ScenarioRunStatusNode
 from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from cosmotech_api.model.scenario_user import ScenarioUser
+from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
 from cosmotech_api.model.solution import Solution
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.user import User
