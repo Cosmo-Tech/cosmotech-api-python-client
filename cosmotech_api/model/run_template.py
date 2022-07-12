@@ -117,6 +117,7 @@ class RunTemplate(ModelNormal):
             'git_repository_url': (str,),  # noqa: E501
             'git_branch_name': (str,),  # noqa: E501
             'run_template_source_dir': (str,),  # noqa: E501
+            'execution_timeout': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -154,6 +155,7 @@ class RunTemplate(ModelNormal):
         'git_repository_url': 'gitRepositoryUrl',  # noqa: E501
         'git_branch_name': 'gitBranchName',  # noqa: E501
         'run_template_source_dir': 'runTemplateSourceDir',  # noqa: E501
+        'execution_timeout': 'executionTimeout',  # noqa: E501
     }
 
     read_only_vars = {
@@ -228,6 +230,7 @@ class RunTemplate(ModelNormal):
             git_repository_url (str): an optional URL to the git repository. [optional]  # noqa: E501
             git_branch_name (str): an optional git branch name. [optional]  # noqa: E501
             run_template_source_dir (str): an optional directory where to find the run template source. [optional]  # noqa: E501
+            execution_timeout (int): an optional duration in seconds in which a workflow is allowed to run. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -342,6 +345,7 @@ class RunTemplate(ModelNormal):
             git_repository_url (str): an optional URL to the git repository. [optional]  # noqa: E501
             git_branch_name (str): an optional git branch name. [optional]  # noqa: E501
             run_template_source_dir (str): an optional directory where to find the run template source. [optional]  # noqa: E501
+            execution_timeout (int): an optional duration in seconds in which a workflow is allowed to run. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

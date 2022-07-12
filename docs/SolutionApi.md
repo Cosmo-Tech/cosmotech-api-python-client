@@ -284,6 +284,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             git_repository_url="git_repository_url_example",
             git_branch_name="git_branch_name_example",
             run_template_source_dir="run_template_source_dir_example",
+            execution_timeout=1,
         ),
     ] # [RunTemplate] | the Run Templates
 
@@ -441,6 +442,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_repository_url="git_repository_url_example",
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
+                execution_timeout=1,
             ),
         ],
     ) # Solution | the Solution to create
@@ -1223,6 +1225,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_repository_url="git_repository_url_example",
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
+                execution_timeout=1,
             ),
         ],
     ) # Solution | the new Solution details.
@@ -1342,6 +1345,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         git_repository_url="git_repository_url_example",
         git_branch_name="git_branch_name_example",
         run_template_source_dir="run_template_source_dir_example",
+        execution_timeout=1,
     ) # RunTemplate | the Run Templates
 
     # example passing only required values which don't have defaults set
