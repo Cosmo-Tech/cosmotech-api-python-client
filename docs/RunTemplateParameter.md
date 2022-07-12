@@ -6,8 +6,8 @@ a Run Template Parameter
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Parameter id | 
-**labels** | [**TranslatedLabels**](TranslatedLabels.md) |  | 
-**var_type** | **str** | the variable type for the parameter. Basic types or special type %DATASETID% | 
+**labels** | [**TranslatedLabels**](TranslatedLabels.md) |  | [optional] 
+**var_type** | **str** | the variable type for the parameter. Basic types or special type %DATASETID% | [optional] 
 **default_value** | **str** | the default value for this parameter | [optional] 
 **min_value** | **str** | the minimum value for this parameter | [optional] 
 **max_value** | **str** | the maximum value for this parameter | [optional] 

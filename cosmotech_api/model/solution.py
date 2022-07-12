@@ -92,20 +92,20 @@ class Solution(ModelNormal):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'key': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'repository': (str,),  # noqa: E501
-            'version': (str,),  # noqa: E501
-            'run_templates': ([RunTemplate],),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
+            'repository': (str,),  # noqa: E501
             'csm_simulator': (str,),  # noqa: E501
+            'version': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
             'sdk_version': (str,),  # noqa: E501
             'url': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'parameters': ([RunTemplateParameter],),  # noqa: E501
             'parameter_groups': ([RunTemplateParameterGroup],),  # noqa: E501
+            'run_templates': ([RunTemplate],),  # noqa: E501
         }
 
     @cached_property
@@ -114,20 +114,20 @@ class Solution(ModelNormal):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'key': 'key',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'repository': 'repository',  # noqa: E501
-        'version': 'version',  # noqa: E501
-        'run_templates': 'runTemplates',  # noqa: E501
-        'id': 'id',  # noqa: E501
         'description': 'description',  # noqa: E501
+        'repository': 'repository',  # noqa: E501
         'csm_simulator': 'csmSimulator',  # noqa: E501
+        'version': 'version',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
         'sdk_version': 'sdkVersion',  # noqa: E501
         'url': 'url',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'parameters': 'parameters',  # noqa: E501
         'parameter_groups': 'parameterGroups',  # noqa: E501
+        'run_templates': 'runTemplates',  # noqa: E501
     }
 
     read_only_vars = {
@@ -139,15 +139,8 @@ class Solution(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, key, name, repository, version, run_templates, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """Solution - a model defined in OpenAPI
-
-        Args:
-            key (str): the Solution key which group Solution versions
-            name (str): the Solution name
-            repository (str): the registry repository containing the image
-            version (str): the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag
-            run_templates ([RunTemplate]): list of Run Template
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -181,14 +174,19 @@ class Solution(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the Solution version unique identifier. [optional]  # noqa: E501
+            key (str): the Solution key which group Solution versions. [optional]  # noqa: E501
+            name (str): the Solution name. [optional]  # noqa: E501
             description (str): the Solution description. [optional]  # noqa: E501
+            repository (str): the registry repository containing the image. [optional]  # noqa: E501
             csm_simulator (str): the main Cosmo Tech simulator name used in standard Run Template. [optional]  # noqa: E501
+            version (str): the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag. [optional]  # noqa: E501
             owner_id (str): the User id which own this Solution. [optional]  # noqa: E501
             sdk_version (str): the MAJOR.MINOR version used to build this solution. [optional]  # noqa: E501
             url (str): an optional URL link to solution page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parameters ([RunTemplateParameter]): the list of Run Template Parameters. [optional]  # noqa: E501
             parameter_groups ([RunTemplateParameterGroup]): the list of parameters groups for the Run Templates. [optional]  # noqa: E501
+            run_templates ([RunTemplate]): list of Run Template. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -216,11 +214,6 @@ class Solution(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.key = key
-        self.name = name
-        self.repository = repository
-        self.version = version
-        self.run_templates = run_templates
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -241,15 +234,8 @@ class Solution(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, key, name, repository, version, run_templates, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """Solution - a model defined in OpenAPI
-
-        Args:
-            key (str): the Solution key which group Solution versions
-            name (str): the Solution name
-            repository (str): the registry repository containing the image
-            version (str): the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag
-            run_templates ([RunTemplate]): list of Run Template
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -283,14 +269,19 @@ class Solution(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): the Solution version unique identifier. [optional]  # noqa: E501
+            key (str): the Solution key which group Solution versions. [optional]  # noqa: E501
+            name (str): the Solution name. [optional]  # noqa: E501
             description (str): the Solution description. [optional]  # noqa: E501
+            repository (str): the registry repository containing the image. [optional]  # noqa: E501
             csm_simulator (str): the main Cosmo Tech simulator name used in standard Run Template. [optional]  # noqa: E501
+            version (str): the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag. [optional]  # noqa: E501
             owner_id (str): the User id which own this Solution. [optional]  # noqa: E501
             sdk_version (str): the MAJOR.MINOR version used to build this solution. [optional]  # noqa: E501
             url (str): an optional URL link to solution page. [optional]  # noqa: E501
             tags ([str]): the list of tags. [optional]  # noqa: E501
             parameters ([RunTemplateParameter]): the list of Run Template Parameters. [optional]  # noqa: E501
             parameter_groups ([RunTemplateParameterGroup]): the list of parameters groups for the Run Templates. [optional]  # noqa: E501
+            run_templates ([RunTemplate]): list of Run Template. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -316,11 +307,6 @@ class Solution(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.key = key
-        self.name = name
-        self.repository = repository
-        self.version = version
-        self.run_templates = run_templates
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

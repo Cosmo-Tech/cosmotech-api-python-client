@@ -6,7 +6,7 @@ a Solution Run Template
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Solution Run Template id | 
-**name** | **str** | the Run Template name | 
+**name** | **str** | the Run Template name | [optional] 
 **description** | **str** | the Run Template description | [optional] 
 **csm_simulation** | **str** | the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined | [optional] 
 **tags** | **[str]** | the list of Run Template tags | [optional] 

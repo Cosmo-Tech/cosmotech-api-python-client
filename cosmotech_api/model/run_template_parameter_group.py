@@ -90,10 +90,10 @@ class RunTemplateParameterGroup(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'labels': (TranslatedLabels,),  # noqa: E501
-            'parameters': ([str],),  # noqa: E501
             'is_table': (bool,),  # noqa: E501
             'options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'parent_id': (str,),  # noqa: E501
+            'parameters': ([str],),  # noqa: E501
         }
 
     @cached_property
@@ -104,10 +104,10 @@ class RunTemplateParameterGroup(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'labels': 'labels',  # noqa: E501
-        'parameters': 'parameters',  # noqa: E501
         'is_table': 'isTable',  # noqa: E501
         'options': 'options',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
+        'parameters': 'parameters',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,13 +117,11 @@ class RunTemplateParameterGroup(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, labels, parameters, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, *args, **kwargs):  # noqa: E501
         """RunTemplateParameterGroup - a model defined in OpenAPI
 
         Args:
             id (str): the Parameter Group id
-            labels (TranslatedLabels):
-            parameters ([str]): an ordered list of Run Template Parameters
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -156,9 +154,11 @@ class RunTemplateParameterGroup(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            labels (TranslatedLabels): [optional]  # noqa: E501
             is_table (bool): does the group define a table. [optional]  # noqa: E501
             options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): freeform options. [optional]  # noqa: E501
             parent_id (str): the Run Template Group parent Id. [optional]  # noqa: E501
+            parameters ([str]): an ordered list of Run Template Parameters. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -187,8 +187,6 @@ class RunTemplateParameterGroup(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.labels = labels
-        self.parameters = parameters
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -209,13 +207,11 @@ class RunTemplateParameterGroup(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, labels, parameters, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, *args, **kwargs):  # noqa: E501
         """RunTemplateParameterGroup - a model defined in OpenAPI
 
         Args:
             id (str): the Parameter Group id
-            labels (TranslatedLabels):
-            parameters ([str]): an ordered list of Run Template Parameters
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -248,9 +244,11 @@ class RunTemplateParameterGroup(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            labels (TranslatedLabels): [optional]  # noqa: E501
             is_table (bool): does the group define a table. [optional]  # noqa: E501
             options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): freeform options. [optional]  # noqa: E501
             parent_id (str): the Run Template Group parent Id. [optional]  # noqa: E501
+            parameters ([str]): an ordered list of Run Template Parameters. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -277,8 +275,6 @@ class RunTemplateParameterGroup(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.labels = labels
-        self.parameters = parameters
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -121,13 +121,11 @@ class RunTemplateParameter(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, labels, var_type, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, *args, **kwargs):  # noqa: E501
         """RunTemplateParameter - a model defined in OpenAPI
 
         Args:
             id (str): the Parameter id
-            labels (TranslatedLabels):
-            var_type (str): the variable type for the parameter. Basic types or special type %DATASETID%
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -160,6 +158,8 @@ class RunTemplateParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            labels (TranslatedLabels): [optional]  # noqa: E501
+            var_type (str): the variable type for the parameter. Basic types or special type %DATASETID%. [optional]  # noqa: E501
             default_value (str): the default value for this parameter. [optional]  # noqa: E501
             min_value (str): the minimum value for this parameter. [optional]  # noqa: E501
             max_value (str): the maximum value for this parameter. [optional]  # noqa: E501
@@ -193,8 +193,6 @@ class RunTemplateParameter(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.labels = labels
-        self.var_type = var_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -215,13 +213,11 @@ class RunTemplateParameter(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, labels, var_type, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, *args, **kwargs):  # noqa: E501
         """RunTemplateParameter - a model defined in OpenAPI
 
         Args:
             id (str): the Parameter id
-            labels (TranslatedLabels):
-            var_type (str): the variable type for the parameter. Basic types or special type %DATASETID%
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -254,6 +250,8 @@ class RunTemplateParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            labels (TranslatedLabels): [optional]  # noqa: E501
+            var_type (str): the variable type for the parameter. Basic types or special type %DATASETID%. [optional]  # noqa: E501
             default_value (str): the default value for this parameter. [optional]  # noqa: E501
             min_value (str): the minimum value for this parameter. [optional]  # noqa: E501
             max_value (str): the maximum value for this parameter. [optional]  # noqa: E501
@@ -285,8 +283,6 @@ class RunTemplateParameter(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.labels = labels
-        self.var_type = var_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

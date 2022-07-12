@@ -165,12 +165,11 @@ class RunTemplate(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, *args, **kwargs):  # noqa: E501
         """RunTemplate - a model defined in OpenAPI
 
         Args:
             id (str): the Solution Run Template id
-            name (str): the Run Template name
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -203,6 +202,7 @@ class RunTemplate(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            name (str): the Run Template name. [optional]  # noqa: E501
             description (str): the Run Template description. [optional]  # noqa: E501
             csm_simulation (str): the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined. [optional]  # noqa: E501
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
@@ -259,7 +259,6 @@ class RunTemplate(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.name = name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -280,12 +279,11 @@ class RunTemplate(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, *args, **kwargs):  # noqa: E501
         """RunTemplate - a model defined in OpenAPI
 
         Args:
             id (str): the Solution Run Template id
-            name (str): the Run Template name
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -318,6 +316,7 @@ class RunTemplate(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            name (str): the Run Template name. [optional]  # noqa: E501
             description (str): the Run Template description. [optional]  # noqa: E501
             csm_simulation (str): the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined. [optional]  # noqa: E501
             tags ([str]): the list of Run Template tags. [optional]  # noqa: E501
@@ -372,7 +371,6 @@ class RunTemplate(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.name = name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
