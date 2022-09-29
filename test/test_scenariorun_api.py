@@ -24,6 +24,20 @@ class TestScenariorunApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_delete_historical_data_organization(self):
+        """Test case for delete_historical_data_organization
+
+        Delete all historical ScenarioRuns in the database  # noqa: E501
+        """
+        pass
+
+    def test_delete_historical_scenario_runs_by_scenario(self):
+        """Test case for delete_historical_scenario_runs_by_scenario
+
+        Delete all historical ScenarioRuns for the Scenario  # noqa: E501
+        """
+        pass
+
     def test_delete_scenario_run(self):
         """Test case for delete_scenario_run
 
