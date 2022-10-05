@@ -23,7 +23,6 @@ from cosmotech_api.model.organization_access_control import OrganizationAccessCo
 from cosmotech_api.model.organization_security import OrganizationSecurity
 from cosmotech_api.model.organization_service import OrganizationService
 from cosmotech_api.model.organization_services import OrganizationServices
-from cosmotech_api.model.organization_user import OrganizationUser
 from cosmotech_api.model.run_template import RunTemplate
 from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
