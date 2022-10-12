@@ -4,7 +4,8 @@ All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_historical_data_organization**](ScenariorunApi.md#delete_historical_data_organization) | **DELETE** /organizations/{organization_id}/scenarioruns/deletehistoricaldata | Delete all historical ScenarioRuns in the database
+[**delete_historical_data_organization**](ScenariorunApi.md#delete_historical_data_organization) | **DELETE** /organizations/{organization_id}/scenarioruns/historicaldata | Delete all historical ScenarioRuns in the Organization
+[**delete_historical_data_workspace**](ScenariorunApi.md#delete_historical_data_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarioruns/historicaldata | Delete all historical ScenarioRuns in the Workspace
 [**delete_historical_scenario_runs_by_scenario**](ScenariorunApi.md#delete_historical_scenario_runs_by_scenario) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns | Delete all historical ScenarioRuns for the Scenario
 [**delete_scenario_run**](ScenariorunApi.md#delete_scenario_run) | **DELETE** /organizations/{organization_id}/scenarioruns/{scenariorun_id} | Delete a scenariorun
 [**find_scenario_run_by_id**](ScenariorunApi.md#find_scenario_run_by_id) | **GET** /organizations/{organization_id}/scenarioruns/{scenariorun_id} | Get the details of a scenariorun
@@ -22,7 +23,7 @@ Method | HTTP request | Description
 # **delete_historical_data_organization**
 > delete_historical_data_organization(organization_id)
 
-Delete all historical ScenarioRuns in the database
+Delete all historical ScenarioRuns in the Organization
 
 ### Example
 
@@ -58,7 +59,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Delete all historical ScenarioRuns in the database
+        # Delete all historical ScenarioRuns in the Organization
         api_instance.delete_historical_data_organization(organization_id)
     except cosmotech_api.ApiException as e:
         print("Exception when calling ScenariorunApi->delete_historical_data_organization: %s\n" % e)
@@ -92,6 +93,84 @@ void (empty response body)
 **204** | Request succeeded |  -  |
 **400** | Bad request |  -  |
 **404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_historical_data_workspace**
+> delete_historical_data_workspace(organization_id, workspace_id)
+
+Delete all historical ScenarioRuns in the Workspace
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenariorun_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenariorun_api.ScenariorunApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete all historical ScenarioRuns in the Workspace
+        api_instance.delete_historical_data_workspace(organization_id, workspace_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenariorunApi->delete_historical_data_workspace: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Request succeeded |  -  |
+**400** | Bad request |  -  |
+**404** | the Organization or Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
