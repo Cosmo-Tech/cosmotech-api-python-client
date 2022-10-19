@@ -955,6 +955,17 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 dependencies=[
                     "dependencies_example",
                 ],
+                node_label="node_label_example",
+                run_sizing=ContainerResourceSizing(
+                    requests=ContainerResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                    limits=ContainerResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                ),
                 artifacts=[
                     ScenarioRunContainerArtifact(
                         name="name_example",
