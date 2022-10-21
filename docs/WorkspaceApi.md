@@ -4,7 +4,7 @@ All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_workspace_access_control**](WorkspaceApi.md#add_workspace_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/access | Add a control access to the Workspace
+[**add_workspace_access_control**](WorkspaceApi.md#add_workspace_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/access | add a control acccess to the Workspace
 [**create_workspace**](WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 [**delete_all_workspace_files**](WorkspaceApi.md#delete_all_workspace_files) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete all Workspace files
 [**delete_workspace**](WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
@@ -13,21 +13,20 @@ Method | HTTP request | Description
 [**find_all_workspace_files**](WorkspaceApi.md#find_all_workspace_files) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files | List all Workspace files
 [**find_all_workspaces**](WorkspaceApi.md#find_all_workspaces) | **GET** /organizations/{organization_id}/workspaces | List all Workspaces
 [**find_workspace_by_id**](WorkspaceApi.md#find_workspace_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
-[**get_workspace_access_control**](WorkspaceApi.md#get_workspace_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Get a control access for the Workspace
+[**get_workspace_access_control**](WorkspaceApi.md#get_workspace_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | get a control acccess for the Workspace
 [**get_workspace_permissions**](WorkspaceApi.md#get_workspace_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role} | Get the Workspace permission by given role
 [**get_workspace_security**](WorkspaceApi.md#get_workspace_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security | Get the Workspace security information
 [**get_workspace_security_users**](WorkspaceApi.md#get_workspace_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/users | Get the Workspace security users list
 [**remove_workspace_access_control**](WorkspaceApi.md#remove_workspace_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Remove the specified access from the given Organization Workspace
-[**set_workspace_default_security**](WorkspaceApi.md#set_workspace_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/default | Set the Workspace default security
+[**set_workspace_default_security**](WorkspaceApi.md#set_workspace_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/default | set the Workspace default security
 [**update_workspace**](WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
-[**update_workspace_access_control**](WorkspaceApi.md#update_workspace_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Update the specified access to User for a Workspace
 [**upload_workspace_file**](WorkspaceApi.md#upload_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
 
 
 # **add_workspace_access_control**
 > WorkspaceAccessControl add_workspace_access_control(organization_id, workspace_id, workspace_access_control)
 
-Add a control access to the Workspace
+add a control acccess to the Workspace
 
 ### Example
 
@@ -69,7 +68,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Add a control access to the Workspace
+        # add a control acccess to the Workspace
         api_response = api_instance.add_workspace_access_control(organization_id, workspace_id, workspace_access_control)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -757,14 +756,14 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the Workspace details |  -  |
-**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspace_access_control**
 > WorkspaceAccessControl get_workspace_access_control(organization_id, workspace_id, identity_id)
 
-Get a control access for the Workspace
+get a control acccess for the Workspace
 
 ### Example
 
@@ -803,7 +802,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get a control access for the Workspace
+        # get a control acccess for the Workspace
         api_response = api_instance.get_workspace_access_control(organization_id, workspace_id, identity_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -838,7 +837,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The Workspace access |  -  |
-**404** | The Workspace or user specified is unknown or you don&#39;t have access to it |  -  |
+**404** | the Workspace or user specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1153,14 +1152,14 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
-**404** | The Workspace or the user specified is unknown or you don&#39;t have access to them |  -  |
+**404** | the Workspace or the user specified is unknown or you don&#39;t have access to them |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_workspace_default_security**
-> WorkspaceSecurity set_workspace_default_security(organization_id, workspace_id, workspace_role)
+> WorkspaceSecurity set_workspace_default_security(organization_id, workspace_id, body)
 
-Set the Workspace default security
+set the Workspace default security
 
 ### Example
 
@@ -1170,7 +1169,6 @@ Set the Workspace default security
 import time
 import cosmotech_api
 from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_role import WorkspaceRole
 from cosmotech_api.model.workspace_security import WorkspaceSecurity
 from pprint import pprint
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
@@ -1196,14 +1194,12 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = workspace_api.WorkspaceApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace_id = "workspace_id_example" # str | the Workspace identifier
-    workspace_role = WorkspaceRole(
-        role="role_example",
-    ) # WorkspaceRole | the new Workspace default security.
+    body = "writer" # str | the new Workspace default security.
 
     # example passing only required values which don't have defaults set
     try:
-        # Set the Workspace default security
-        api_response = api_instance.set_workspace_default_security(organization_id, workspace_id, workspace_role)
+        # set the Workspace default security
+        api_response = api_instance.set_workspace_default_security(organization_id, workspace_id, body)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling WorkspaceApi->set_workspace_default_security: %s\n" % e)
@@ -1216,7 +1212,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
- **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| the new Workspace default security. |
+ **body** | **str**| the new Workspace default security. |
 
 ### Return type
 
@@ -1303,7 +1299,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         use_dedicated_event_hub_namespace=False,
         send_scenario_metadata_to_event_hub=False,
         security=None,
-    ) # Workspace | The new Workspace details.
+    ) # Workspace | the new Workspace details.
 
     # example passing only required values which don't have defaults set
     try:
@@ -1321,7 +1317,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
- **workspace** | [**Workspace**](Workspace.md)| The new Workspace details. |
+ **workspace** | [**Workspace**](Workspace.md)| the new Workspace details. |
 
 ### Return type
 
@@ -1344,92 +1340,6 @@ Name | Type | Description  | Notes
 **200** | the workspace details |  -  |
 **400** | Bad request |  -  |
 **404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_workspace_access_control**
-> WorkspaceAccessControl update_workspace_access_control(organization_id, workspace_id, identity_id, workspace_role)
-
-Update the specified access to User for a Workspace
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_role import WorkspaceRole
-from cosmotech_api.model.workspace_access_control import WorkspaceAccessControl
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    identity_id = "identity_id_example" # str | the User identifier
-    workspace_role = WorkspaceRole(
-        role="role_example",
-    ) # WorkspaceRole | The new Workspace Access Control
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Update the specified access to User for a Workspace
-        api_response = api_instance.update_workspace_access_control(organization_id, workspace_id, identity_id, workspace_role)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling WorkspaceApi->update_workspace_access_control: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **identity_id** | **str**| the User identifier |
- **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| The new Workspace Access Control |
-
-### Return type
-
-[**WorkspaceAccessControl**](WorkspaceAccessControl.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The Workspace access |  -  |
-**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
