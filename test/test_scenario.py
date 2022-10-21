@@ -15,13 +15,15 @@ import unittest
 import cosmotech_api
 from cosmotech_api.model.scenario_job_state import ScenarioJobState
 from cosmotech_api.model.scenario_last_run import ScenarioLastRun
+from cosmotech_api.model.scenario_resource_sizing import ScenarioResourceSizing
 from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
-from cosmotech_api.model.scenario_user import ScenarioUser
+from cosmotech_api.model.scenario_security import ScenarioSecurity
 from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
 globals()['ScenarioJobState'] = ScenarioJobState
 globals()['ScenarioLastRun'] = ScenarioLastRun
+globals()['ScenarioResourceSizing'] = ScenarioResourceSizing
 globals()['ScenarioRunTemplateParameterValue'] = ScenarioRunTemplateParameterValue
-globals()['ScenarioUser'] = ScenarioUser
+globals()['ScenarioSecurity'] = ScenarioSecurity
 globals()['ScenarioValidationStatus'] = ScenarioValidationStatus
 from cosmotech_api.model.scenario import Scenario
 

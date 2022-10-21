@@ -13,7 +13,9 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.run_template_resource_sizing import RunTemplateResourceSizing
 from cosmotech_api.model.run_template_step_source import RunTemplateStepSource
+globals()['RunTemplateResourceSizing'] = RunTemplateResourceSizing
 globals()['RunTemplateStepSource'] = RunTemplateStepSource
 from cosmotech_api.model.run_template import RunTemplate
 

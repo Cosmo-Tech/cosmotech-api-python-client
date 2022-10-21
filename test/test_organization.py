@@ -13,10 +13,10 @@ import sys
 import unittest
 
 import cosmotech_api
+from cosmotech_api.model.organization_security import OrganizationSecurity
 from cosmotech_api.model.organization_services import OrganizationServices
-from cosmotech_api.model.organization_user import OrganizationUser
+globals()['OrganizationSecurity'] = OrganizationSecurity
 globals()['OrganizationServices'] = OrganizationServices
-globals()['OrganizationUser'] = OrganizationUser
 from cosmotech_api.model.organization import Organization
 
 
