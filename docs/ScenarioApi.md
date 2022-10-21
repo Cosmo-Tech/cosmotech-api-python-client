@@ -5,7 +5,7 @@ All URIs are relative to *https://dev.api.cosmotech.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_or_replace_scenario_parameter_values**](ScenarioApi.md#add_or_replace_scenario_parameter_values) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Add (or replace) Parameter Values for the Scenario specified
-[**add_scenario_access_control**](ScenarioApi.md#add_scenario_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access | add a control acccess to the Scenario
+[**add_scenario_access_control**](ScenarioApi.md#add_scenario_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access | Add a control access to the Scenario
 [**compare_scenarios**](ScenarioApi.md#compare_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} | Compare the Scenario with another one and returns the difference for parameters values
 [**create_scenario**](ScenarioApi.md#create_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Create a new Scenario
 [**delete_all_scenarios**](ScenarioApi.md#delete_all_scenarios) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | Delete all Scenarios of the Workspace
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**find_all_scenarios**](ScenarioApi.md#find_all_scenarios) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios | List all Scenarios
 [**find_all_scenarios_by_validation_status**](ScenarioApi.md#find_all_scenarios_by_validation_status) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/{validationStatus} | List all Scenarios by validation status
 [**find_scenario_by_id**](ScenarioApi.md#find_scenario_by_id) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Get the details of an scenario
-[**get_scenario_access_control**](ScenarioApi.md#get_scenario_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} | get a control acccess for the Scenario
+[**get_scenario_access_control**](ScenarioApi.md#get_scenario_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} | Get a control access for the Scenario
 [**get_scenario_data_download_job_info**](ScenarioApi.md#get_scenario_data_download_job_info) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads/{download_id} | Get Scenario data download URL
 [**get_scenario_permissions**](ScenarioApi.md#get_scenario_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/permissions/{role} | Get the Scenario permission by given role
 [**get_scenario_security**](ScenarioApi.md#get_scenario_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security | Get the Scenario security information
@@ -23,8 +23,9 @@ Method | HTTP request | Description
 [**get_scenarios_tree**](ScenarioApi.md#get_scenarios_tree) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree | Get the Scenarios Tree
 [**remove_all_scenario_parameter_values**](ScenarioApi.md#remove_all_scenario_parameter_values) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues | Remove all Parameter Values from the Scenario specified
 [**remove_scenario_access_control**](ScenarioApi.md#remove_scenario_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} | Remove the specified access from the given Organization Scenario
-[**set_scenario_default_security**](ScenarioApi.md#set_scenario_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/default | set the Scenario default security
+[**set_scenario_default_security**](ScenarioApi.md#set_scenario_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/default | Set the Scenario default security
 [**update_scenario**](ScenarioApi.md#update_scenario) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} | Update a scenario
+[**update_scenario_access_control**](ScenarioApi.md#update_scenario_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} | Update the specified access to User for a Scenario
 
 
 # **add_or_replace_scenario_parameter_values**
@@ -120,7 +121,7 @@ Name | Type | Description  | Notes
 # **add_scenario_access_control**
 > ScenarioAccessControl add_scenario_access_control(organization_id, workspace_id, scenario_id, scenario_access_control)
 
-add a control acccess to the Scenario
+Add a control access to the Scenario
 
 ### Example
 
@@ -163,7 +164,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # add a control acccess to the Scenario
+        # Add a control access to the Scenario
         api_response = api_instance.add_scenario_access_control(organization_id, workspace_id, scenario_id, scenario_access_control)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -335,16 +336,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         dataset_list=[
             "dataset_list_example",
         ],
-        run_sizing=ScenarioResourceSizing(
-            requests=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-            limits=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-        ),
         parameters_values=[
             ScenarioRunTemplateParameterValue(
                 parameter_id="parameter_id_example",
@@ -890,7 +881,7 @@ Name | Type | Description  | Notes
 # **get_scenario_access_control**
 > ScenarioAccessControl get_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id)
 
-get a control acccess for the Scenario
+Get a control access for the Scenario
 
 ### Example
 
@@ -930,7 +921,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # get a control acccess for the Scenario
+        # Get a control access for the Scenario
         api_response = api_instance.get_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1612,9 +1603,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_scenario_default_security**
-> ScenarioSecurity set_scenario_default_security(organization_id, workspace_id, scenario_id, body)
+> ScenarioSecurity set_scenario_default_security(organization_id, workspace_id, scenario_id, scenario_role)
 
-set the Scenario default security
+Set the Scenario default security
 
 ### Example
 
@@ -1624,6 +1615,7 @@ set the Scenario default security
 import time
 import cosmotech_api
 from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_role import ScenarioRole
 from cosmotech_api.model.scenario_security import ScenarioSecurity
 from pprint import pprint
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
@@ -1650,12 +1642,14 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace_id = "workspace_id_example" # str | the Workspace identifier
     scenario_id = "scenario_id_example" # str | the Scenario identifier
-    body = "writer" # str | the new Scenario default security.
+    scenario_role = ScenarioRole(
+        role="role_example",
+    ) # ScenarioRole | the new Scenario default security.
 
     # example passing only required values which don't have defaults set
     try:
-        # set the Scenario default security
-        api_response = api_instance.set_scenario_default_security(organization_id, workspace_id, scenario_id, body)
+        # Set the Scenario default security
+        api_response = api_instance.set_scenario_default_security(organization_id, workspace_id, scenario_id, scenario_role)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling ScenarioApi->set_scenario_default_security: %s\n" % e)
@@ -1669,7 +1663,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
  **scenario_id** | **str**| the Scenario identifier |
- **body** | **str**| the new Scenario default security. |
+ **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| the new Scenario default security. |
 
 ### Return type
 
@@ -1744,16 +1738,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         dataset_list=[
             "dataset_list_example",
         ],
-        run_sizing=ScenarioResourceSizing(
-            requests=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-            limits=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-        ),
         parameters_values=[
             ScenarioRunTemplateParameterValue(
                 parameter_id="parameter_id_example",
@@ -1808,6 +1792,94 @@ Name | Type | Description  | Notes
 **200** | the scenario details |  -  |
 **400** | Bad request |  -  |
 **404** | the Scenario specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_scenario_access_control**
+> ScenarioAccessControl update_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id, scenario_role)
+
+Update the specified access to User for a Scenario
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenario_api
+from cosmotech_api.model.scenario_role import ScenarioRole
+from cosmotech_api.model.scenario_access_control import ScenarioAccessControl
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenario_api.ScenarioApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    identity_id = "identity_id_example" # str | the User identifier
+    scenario_role = ScenarioRole(
+        role="role_example",
+    ) # ScenarioRole | The new Scenario Access Control
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Update the specified access to User for a Scenario
+        api_response = api_instance.update_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id, scenario_role)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->update_scenario_access_control: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **identity_id** | **str**| the User identifier |
+ **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| The new Scenario Access Control |
+
+### Return type
+
+[**ScenarioAccessControl**](ScenarioAccessControl.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Scenario access |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
