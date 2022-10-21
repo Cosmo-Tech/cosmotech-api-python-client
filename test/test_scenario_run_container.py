@@ -13,9 +13,7 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.container_resource_sizing import ContainerResourceSizing
 from cosmotech_api.model.scenario_run_container_artifact import ScenarioRunContainerArtifact
-globals()['ContainerResourceSizing'] = ContainerResourceSizing
 globals()['ScenarioRunContainerArtifact'] = ScenarioRunContainerArtifact
 from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 

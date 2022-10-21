@@ -24,10 +24,10 @@ class TestOrganizationApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_add_organization_access_control(self):
-        """Test case for add_organization_access_control
+    def test_add_or_replace_users_in_organization(self):
+        """Test case for add_or_replace_users_in_organization
 
-        add a control acccess to the Organization  # noqa: E501
+        Add (or replace) users in the Organization specified  # noqa: E501
         """
         pass
 
@@ -45,41 +45,6 @@ class TestOrganizationApi(unittest.TestCase):
         """
         pass
 
-    def test_get_all_permissions(self):
-        """Test case for get_all_permissions
-
-        Get all permissions per components  # noqa: E501
-        """
-        pass
-
-    def test_get_organization_access_control(self):
-        """Test case for get_organization_access_control
-
-        get a control acccess for the Organization  # noqa: E501
-        """
-        pass
-
-    def test_get_organization_permissions(self):
-        """Test case for get_organization_permissions
-
-        Get the Organization permissions by given role  # noqa: E501
-        """
-        pass
-
-    def test_get_organization_security(self):
-        """Test case for get_organization_security
-
-        Get the Organization security information  # noqa: E501
-        """
-        pass
-
-    def test_get_organization_security_users(self):
-        """Test case for get_organization_security_users
-
-        Get the Organization security users list  # noqa: E501
-        """
-        pass
-
     def test_register_organization(self):
         """Test case for register_organization
 
@@ -87,17 +52,17 @@ class TestOrganizationApi(unittest.TestCase):
         """
         pass
 
-    def test_remove_organization_access_control(self):
-        """Test case for remove_organization_access_control
+    def test_remove_all_users_in_organization(self):
+        """Test case for remove_all_users_in_organization
 
-        Remove the specified access from the given Organization  # noqa: E501
+        Remove all users from the Organization specified  # noqa: E501
         """
         pass
 
-    def test_set_organization_default_security(self):
-        """Test case for set_organization_default_security
+    def test_remove_user_from_organization(self):
+        """Test case for remove_user_from_organization
 
-        set the Organization default security  # noqa: E501
+        Remove the specified user from the given Organization  # noqa: E501
         """
         pass
 
