@@ -13,6 +13,8 @@ from cosmotech_api.model.component_role_permissions import ComponentRolePermissi
 from cosmotech_api.model.connector import Connector
 from cosmotech_api.model.connector_parameter import ConnectorParameter
 from cosmotech_api.model.connector_parameter_group import ConnectorParameterGroup
+from cosmotech_api.model.container_resource_size_info import ContainerResourceSizeInfo
+from cosmotech_api.model.container_resource_sizing import ContainerResourceSizing
 from cosmotech_api.model.dataset import Dataset
 from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_connector import DatasetConnector
@@ -25,11 +27,13 @@ from cosmotech_api.model.organization_role import OrganizationRole
 from cosmotech_api.model.organization_security import OrganizationSecurity
 from cosmotech_api.model.organization_service import OrganizationService
 from cosmotech_api.model.organization_services import OrganizationServices
+from cosmotech_api.model.resource_size_info import ResourceSizeInfo
 from cosmotech_api.model.run_template import RunTemplate
 from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
+from cosmotech_api.model.run_template_resource_sizing import RunTemplateResourceSizing
 from cosmotech_api.model.run_template_step_source import RunTemplateStepSource
 from cosmotech_api.model.scenario import Scenario
 from cosmotech_api.model.scenario_access_control import ScenarioAccessControl
@@ -39,6 +43,7 @@ from cosmotech_api.model.scenario_data_download_info import ScenarioDataDownload
 from cosmotech_api.model.scenario_data_download_job import ScenarioDataDownloadJob
 from cosmotech_api.model.scenario_job_state import ScenarioJobState
 from cosmotech_api.model.scenario_last_run import ScenarioLastRun
+from cosmotech_api.model.scenario_resource_sizing import ScenarioResourceSizing
 from cosmotech_api.model.scenario_role import ScenarioRole
 from cosmotech_api.model.scenario_run import ScenarioRun
 from cosmotech_api.model.scenario_run_container import ScenarioRunContainer

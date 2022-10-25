@@ -336,6 +336,16 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         dataset_list=[
             "dataset_list_example",
         ],
+        run_sizing=ScenarioResourceSizing(
+            requests=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+            limits=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+        ),
         parameters_values=[
             ScenarioRunTemplateParameterValue(
                 parameter_id="parameter_id_example",
@@ -1738,6 +1748,16 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         dataset_list=[
             "dataset_list_example",
         ],
+        run_sizing=ScenarioResourceSizing(
+            requests=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+            limits=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+        ),
         parameters_values=[
             ScenarioRunTemplateParameterValue(
                 parameter_id="parameter_id_example",
