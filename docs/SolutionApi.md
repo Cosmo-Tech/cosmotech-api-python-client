@@ -285,6 +285,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             git_branch_name="git_branch_name_example",
             run_template_source_dir="run_template_source_dir_example",
             execution_timeout=1,
+            delete_historical_data=DeleteHistoricalData(
+                enable=True,
+                poll_frequency=10000,
+                time_out=28800,
+            ),
         ),
     ] # [RunTemplate] | the Run Templates
 
@@ -443,6 +448,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
                 execution_timeout=1,
+                delete_historical_data=DeleteHistoricalData(
+                    enable=True,
+                    poll_frequency=10000,
+                    time_out=28800,
+                ),
             ),
         ],
     ) # Solution | the Solution to create
@@ -1226,6 +1236,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
                 execution_timeout=1,
+                delete_historical_data=DeleteHistoricalData(
+                    enable=True,
+                    poll_frequency=10000,
+                    time_out=28800,
+                ),
             ),
         ],
     ) # Solution | the new Solution details.
@@ -1346,6 +1361,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         git_branch_name="git_branch_name_example",
         run_template_source_dir="run_template_source_dir_example",
         execution_timeout=1,
+        delete_historical_data=DeleteHistoricalData(
+            enable=True,
+            poll_frequency=10000,
+            time_out=28800,
+        ),
     ) # RunTemplate | the Run Templates
 
     # example passing only required values which don't have defaults set

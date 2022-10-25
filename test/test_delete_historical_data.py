@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.organization_service import OrganizationService
+from cosmotech_api.model.delete_historical_data import DeleteHistoricalData
 
 
-class TestOrganizationService(unittest.TestCase):
-    """OrganizationService unit test stubs"""
+class TestDeleteHistoricalData(unittest.TestCase):
+    """DeleteHistoricalData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestOrganizationService(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testOrganizationService(self):
-        """Test OrganizationService"""
+    def testDeleteHistoricalData(self):
+        """Test DeleteHistoricalData"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = OrganizationService()  # noqa: E501
+        # model = DeleteHistoricalData()  # noqa: E501
         pass
 
 
