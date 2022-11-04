@@ -31,17 +31,17 @@ class TestScenariorunApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_historical_data_scenario(self):
+        """Test case for delete_historical_data_scenario
+
+        Delete all historical ScenarioRuns in the Scenario  # noqa: E501
+        """
+        pass
+
     def test_delete_historical_data_workspace(self):
         """Test case for delete_historical_data_workspace
 
         Delete all historical ScenarioRuns in the Workspace  # noqa: E501
-        """
-        pass
-
-    def test_delete_historical_scenario_runs_by_scenario(self):
-        """Test case for delete_historical_scenario_runs_by_scenario
-
-        Delete all historical ScenarioRuns for the Scenario  # noqa: E501
         """
         pass
 
