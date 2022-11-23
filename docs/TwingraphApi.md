@@ -4,9 +4,9 @@ All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/delete/{graphId} | 
-[**import_graph**](TwingraphApi.md#import_graph) | **POST** /organizations/{organization_id}/import | 
-[**query**](TwingraphApi.md#query) | **POST** /organizations/{organization_id}/query | 
+[**delete**](TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id} | 
+[**import_graph**](TwingraphApi.md#import_graph) | **POST** /organizations/{organization_id}/twingraph/import | 
+[**query**](TwingraphApi.md#query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/query | 
 
 
 # **delete**
@@ -47,7 +47,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
-    graph_id = "graphId_example" # str | the Graph Identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
 
     # example passing only required values which don't have defaults set
     try:
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query**
-> str query(organization_id, twin_graph_query)
+> str query(organization_id, graph_id, twin_graph_query)
 
 
 
@@ -209,15 +209,15 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
     twin_graph_query = TwinGraphQuery(
-        graph_id="graph_id_example",
         version="version_example",
         query="query_example",
     ) # TwinGraphQuery | the query to run
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.query(organization_id, twin_graph_query)
+        api_response = api_instance.query(organization_id, graph_id, twin_graph_query)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->query: %s\n" % e)
@@ -229,6 +229,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
  **twin_graph_query** | [**TwinGraphQuery**](TwinGraphQuery.md)| the query to run |
 
 ### Return type
