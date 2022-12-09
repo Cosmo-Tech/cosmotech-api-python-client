@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.scenario_role import ScenarioRole
+from cosmotech_api.model.source_info import SourceInfo
 
 
-class TestScenarioRole(unittest.TestCase):
-    """ScenarioRole unit test stubs"""
+class TestSourceInfo(unittest.TestCase):
+    """SourceInfo unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestScenarioRole(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testScenarioRole(self):
-        """Test ScenarioRole"""
+    def testSourceInfo(self):
+        """Test SourceInfo"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = ScenarioRole()  # noqa: E501
+        # model = SourceInfo()  # noqa: E501
         pass
 
 

@@ -128,8 +128,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     twin_graph_import = TwinGraphImport(
-        storage_path="storage_path_example",
-        graph_name="graph_name_example",
+        source=SourceInfo(
+            name="name_example",
+            location="location_example",
+            path="path_example",
+            type="ADT",
+        ),
+        graph_id="graph_id_example",
         version="version_example",
     ) # TwinGraphImport | the graph to import
 
