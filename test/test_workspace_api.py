@@ -31,6 +31,13 @@ class TestWorkspaceApi(unittest.TestCase):
         """
         pass
 
+    def test_create_secret(self):
+        """Test case for create_secret
+
+        Create a secret for the Workspace  # noqa: E501
+        """
+        pass
+
     def test_create_workspace(self):
         """Test case for create_workspace
 

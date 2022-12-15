@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *ValidatorApi* | [**find_validator_run_by_id**](docs/ValidatorApi.md#find_validator_run_by_id) | **GET** /organizations/{organization_id}/datasets/validators/{validator_id}/history/{validatorrun_id} | Get the details of a validator run
 *ValidatorApi* | [**run_validator**](docs/ValidatorApi.md#run_validator) | **POST** /organizations/{organization_id}/datasets/validators/{validator_id}/run | Run a Validator
 *WorkspaceApi* | [**add_or_replace_users_in_organization_workspace**](docs/WorkspaceApi.md#add_or_replace_users_in_organization_workspace) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/users | Add (or replace) users to the Workspace specified
+*WorkspaceApi* | [**create_secret**](docs/WorkspaceApi.md#create_secret) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/secret | Create a secret for the Workspace
 *WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 *WorkspaceApi* | [**delete_all_workspace_files**](docs/WorkspaceApi.md#delete_all_workspace_files) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete all Workspace files
 *WorkspaceApi* | [**delete_workspace**](docs/WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
@@ -243,6 +244,7 @@ Class | Method | HTTP request | Description
  - [ValidatorRun](docs/ValidatorRun.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceFile](docs/WorkspaceFile.md)
+ - [WorkspaceSecret](docs/WorkspaceSecret.md)
  - [WorkspaceSolution](docs/WorkspaceSolution.md)
  - [WorkspaceUser](docs/WorkspaceUser.md)
  - [WorkspaceWebApp](docs/WorkspaceWebApp.md)

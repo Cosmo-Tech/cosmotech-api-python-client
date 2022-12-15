@@ -57,6 +57,7 @@ from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun
 from cosmotech_api.model.workspace import Workspace
 from cosmotech_api.model.workspace_file import WorkspaceFile
+from cosmotech_api.model.workspace_secret import WorkspaceSecret
 from cosmotech_api.model.workspace_solution import WorkspaceSolution
 from cosmotech_api.model.workspace_user import WorkspaceUser
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
