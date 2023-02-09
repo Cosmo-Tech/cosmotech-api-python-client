@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **version** | **str** | the Workspace version MAJOR.MINOR.PATCH. | [optional] 
 **tags** | **[str]** | the list of tags | [optional] 
 **owner_id** | **str** | the user id which own this workspace | [optional] [readonly] 
-**users** | [**[WorkspaceUser]**](WorkspaceUser.md) | the list of users Id with their role | [optional] 
 **web_app** | [**WorkspaceWebApp**](WorkspaceWebApp.md) |  | [optional] 
 **send_input_to_data_warehouse** | **bool** | default setting for all Scenarios and Run Templates to set whether or not the Dataset values and the input parameters values are send to the DataWarehouse prior to the ScenarioRun | [optional] 
 **use_dedicated_event_hub_namespace** | **bool** | Set this property to true to use a dedicated Azure Event Hub Namespace for this Workspace. The Event Hub Namespace must be named \\&#39;&lt;organization_id\\&gt;-&lt;workspace_id\\&gt;\\&#39; (in lower case). This Namespace must also contain two Event Hubs named \\&#39;probesmeasures\\&#39; and \\&#39;scenariorun\\&#39;. | [optional]  if omitted the server will use the default value of False
@@ -21,6 +20,7 @@ Name | Type | Description | Notes
 **dedicated_event_hub_authentication_strategy** | **str** | the Event Hub authentication strategy, SHARED_ACCESS_POLICY or TENANT_CLIENT_CREDENTIALS. Default to the one defined for the tenant. | [optional] 
 **send_scenario_run_to_event_hub** | **bool** | default setting for all Scenarios and Run Templates to set whether or not the ScenarioRun is send to the Event Hub | [optional]  if omitted the server will use the default value of True
 **send_scenario_metadata_to_event_hub** | **bool** | Set this property to false to not send scenario metada to Azure Event Hub Namespace for this Workspace. The Event Hub Namespace must be named \\&#39;&lt;organization_id\\&gt;-&lt;workspace_id\\&gt;\\&#39; (in lower case). This Namespace must also contain two Event Hubs named \\&#39;scenariometadata\\&#39; and \\&#39;scenariorunmetadata\\&#39;. | [optional]  if omitted the server will use the default value of False
+**security** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
