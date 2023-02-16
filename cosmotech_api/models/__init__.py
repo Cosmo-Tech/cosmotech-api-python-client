@@ -64,6 +64,9 @@ from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.twin_graph_import import TwinGraphImport
 from cosmotech_api.model.twin_graph_import_info import TwinGraphImportInfo
 from cosmotech_api.model.twin_graph_query import TwinGraphQuery
+from cosmotech_api.model.user import User
+from cosmotech_api.model.user_organization import UserOrganization
+from cosmotech_api.model.user_workspace import UserWorkspace
 from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun
 from cosmotech_api.model.workspace import Workspace
