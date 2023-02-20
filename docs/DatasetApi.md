@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id} | Delete a dataset
 [**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
 [**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a Dataset
-[**import_dataset**](DatasetApi.md#import_dataset) | **POST** /organizations/{organization_id}/datasets/import | Import a new Dataset
 [**remove_all_dataset_compatibility_elements**](DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
 [**search_datasets**](DatasetApi.md#search_datasets) | **POST** /organizations/{organization_id}/datasets/search | Search Datasets
 [**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
@@ -231,7 +230,14 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         tags=[
             "tags_example",
         ],
-        connector=None,
+        connector=DatasetConnector(
+            id="id_example",
+            name="name_example",
+            version="version_example",
+            parameters_values={
+                "key": "key_example",
+            },
+        ),
         fragments_ids=[
             "fragments_ids_example",
         ],
@@ -517,103 +523,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_dataset**
-> Dataset import_dataset(organization_id, dataset)
-
-Import a new Dataset
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import dataset_api
-from cosmotech_api.model.dataset import Dataset
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = dataset_api.DatasetApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    dataset = Dataset(
-        name="name_example",
-        description="description_example",
-        tags=[
-            "tags_example",
-        ],
-        connector=None,
-        fragments_ids=[
-            "fragments_ids_example",
-        ],
-        validator_id="validator_id_example",
-        compatibility=[
-            DatasetCompatibility(
-                solution_key="solution_key_example",
-                minimum_version="minimum_version_example",
-                maximum_version="maximum_version_example",
-            ),
-        ],
-    ) # Dataset | the Dataset to import
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Import a new Dataset
-        api_response = api_instance.import_dataset(organization_id, dataset)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling DatasetApi->import_dataset: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **dataset** | [**Dataset**](Dataset.md)| the Dataset to import |
-
-### Return type
-
-[**Dataset**](Dataset.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | the dataset details |  -  |
-**400** | Bad request |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **remove_all_dataset_compatibility_elements**
 > remove_all_dataset_compatibility_elements(organization_id, dataset_id)
 
@@ -818,7 +727,14 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         tags=[
             "tags_example",
         ],
-        connector=None,
+        connector=DatasetConnector(
+            id="id_example",
+            name="name_example",
+            version="version_example",
+            parameters_values={
+                "key": "key_example",
+            },
+        ),
         fragments_ids=[
             "fragments_ids_example",
         ],
