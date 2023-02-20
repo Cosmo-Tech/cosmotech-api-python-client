@@ -259,6 +259,16 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 "tags_example",
             ],
             compute_size="compute_size_example",
+            run_sizing=RunTemplateResourceSizing(
+                requests=ResourceSizeInfo(
+                    cpu="cpu_example",
+                    memory="memory_example",
+                ),
+                limits=ResourceSizeInfo(
+                    cpu="cpu_example",
+                    memory="memory_example",
+                ),
+            ),
             no_data_ingestion_state=True,
             fetch_datasets=True,
             scenario_data_download_transform=True,
@@ -422,6 +432,16 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     "tags_example",
                 ],
                 compute_size="compute_size_example",
+                run_sizing=RunTemplateResourceSizing(
+                    requests=ResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                    limits=ResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                ),
                 no_data_ingestion_state=True,
                 fetch_datasets=True,
                 scenario_data_download_transform=True,
@@ -1210,6 +1230,16 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                     "tags_example",
                 ],
                 compute_size="compute_size_example",
+                run_sizing=RunTemplateResourceSizing(
+                    requests=ResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                    limits=ResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                ),
                 no_data_ingestion_state=True,
                 fetch_datasets=True,
                 scenario_data_download_transform=True,
@@ -1335,6 +1365,16 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             "tags_example",
         ],
         compute_size="compute_size_example",
+        run_sizing=RunTemplateResourceSizing(
+            requests=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+            limits=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+        ),
         no_data_ingestion_state=True,
         fetch_datasets=True,
         scenario_data_download_transform=True,
