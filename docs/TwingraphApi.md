@@ -452,7 +452,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_entities**
-> delete_entities(organization_id, graph_id, model_type, request_body)
+> delete_entities(organization_id, graph_id, model_type, ids)
 
 
 
@@ -491,13 +491,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     graph_id = "graph_id_example" # str | the Graph Identifier
     model_type = "node" # str | the entity model type
-    request_body = [
-        "request_body_example",
+    ids = [
+        "ids_example",
     ] # [str] | the entities to delete
 
     # example passing only required values which don't have defaults set
     try:
-        api_instance.delete_entities(organization_id, graph_id, model_type, request_body)
+        api_instance.delete_entities(organization_id, graph_id, model_type, ids)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->delete_entities: %s\n" % e)
 ```
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **graph_id** | **str**| the Graph Identifier |
  **model_type** | **str**| the entity model type |
- **request_body** | **[str]**| the entities to delete |
+ **ids** | **[str]**| the entities to delete |
 
 ### Return type
 
@@ -522,7 +522,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 
@@ -689,7 +689,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_entities**
-> [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] get_entities(organization_id, graph_id, model_type, request_body)
+> [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] get_entities(organization_id, graph_id, model_type, ids)
 
 
 
@@ -728,13 +728,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     graph_id = "graph_id_example" # str | the Graph Identifier
     model_type = "node" # str | the entity model type
-    request_body = [
-        "request_body_example",
+    ids = [
+        "ids_example",
     ] # [str] | the entities to get
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.get_entities(organization_id, graph_id, model_type, request_body)
+        api_response = api_instance.get_entities(organization_id, graph_id, model_type, ids)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->get_entities: %s\n" % e)
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **graph_id** | **str**| the Graph Identifier |
  **model_type** | **str**| the entity model type |
- **request_body** | **[str]**| the entities to get |
+ **ids** | **[str]**| the entities to get |
 
 ### Return type
 
@@ -760,7 +760,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

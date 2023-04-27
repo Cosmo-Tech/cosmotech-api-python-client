@@ -384,13 +384,13 @@ class TwingraphApi(object):
                     'organization_id',
                     'graph_id',
                     'model_type',
-                    'request_body',
+                    'ids',
                 ],
                 'required': [
                     'organization_id',
                     'graph_id',
                     'model_type',
-                    'request_body',
+                    'ids',
                 ],
                 'nullable': [
                 ],
@@ -417,28 +417,28 @@ class TwingraphApi(object):
                         (str,),
                     'model_type':
                         (str,),
-                    'request_body':
+                    'ids':
                         ([str],),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'graph_id': 'graph_id',
                     'model_type': 'modelType',
+                    'ids': 'ids',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'graph_id': 'path',
                     'model_type': 'path',
-                    'request_body': 'body',
+                    'ids': 'query',
                 },
                 'collection_format_map': {
+                    'ids': 'multi',
                 }
             },
             headers_map={
                 'accept': [],
-                'content_type': [
-                    'application/json'
-                ]
+                'content_type': [],
             },
             api_client=api_client
         )
@@ -566,13 +566,13 @@ class TwingraphApi(object):
                     'organization_id',
                     'graph_id',
                     'model_type',
-                    'request_body',
+                    'ids',
                 ],
                 'required': [
                     'organization_id',
                     'graph_id',
                     'model_type',
-                    'request_body',
+                    'ids',
                 ],
                 'nullable': [
                 ],
@@ -599,30 +599,30 @@ class TwingraphApi(object):
                         (str,),
                     'model_type':
                         (str,),
-                    'request_body':
+                    'ids':
                         ([str],),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'graph_id': 'graph_id',
                     'model_type': 'modelType',
+                    'ids': 'ids',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'graph_id': 'path',
                     'model_type': 'path',
-                    'request_body': 'body',
+                    'ids': 'query',
                 },
                 'collection_format_map': {
+                    'ids': 'multi',
                 }
             },
             headers_map={
                 'accept': [
                     'application/json'
                 ],
-                'content_type': [
-                    'application/json'
-                ]
+                'content_type': [],
             },
             api_client=api_client
         )
@@ -1442,7 +1442,7 @@ class TwingraphApi(object):
         organization_id,
         graph_id,
         model_type,
-        request_body,
+        ids,
         **kwargs
     ):
         """delete_entities  # noqa: E501
@@ -1451,14 +1451,14 @@ class TwingraphApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_entities(organization_id, graph_id, model_type, request_body, async_req=True)
+        >>> thread = api.delete_entities(organization_id, graph_id, model_type, ids, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             graph_id (str): the Graph Identifier
             model_type (str): the entity model type
-            request_body ([str]): the entities to delete
+            ids ([str]): the entities to delete
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -1523,8 +1523,8 @@ class TwingraphApi(object):
             graph_id
         kwargs['model_type'] = \
             model_type
-        kwargs['request_body'] = \
-            request_body
+        kwargs['ids'] = \
+            ids
         return self.delete_entities_endpoint.call_with_http_info(**kwargs)
 
     def download_graph(
@@ -1692,7 +1692,7 @@ class TwingraphApi(object):
         organization_id,
         graph_id,
         model_type,
-        request_body,
+        ids,
         **kwargs
     ):
         """get_entities  # noqa: E501
@@ -1701,14 +1701,14 @@ class TwingraphApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_entities(organization_id, graph_id, model_type, request_body, async_req=True)
+        >>> thread = api.get_entities(organization_id, graph_id, model_type, ids, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             graph_id (str): the Graph Identifier
             model_type (str): the entity model type
-            request_body ([str]): the entities to get
+            ids ([str]): the entities to get
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -1773,8 +1773,8 @@ class TwingraphApi(object):
             graph_id
         kwargs['model_type'] = \
             model_type
-        kwargs['request_body'] = \
-            request_body
+        kwargs['ids'] = \
+            ids
         return self.get_entities_endpoint.call_with_http_info(**kwargs)
 
     def get_graph_meta_data(
