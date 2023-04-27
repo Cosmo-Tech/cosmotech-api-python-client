@@ -87,6 +87,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_import_solution(self):
+        """Test case for import_solution
+
+        Import a solution  # noqa: E501
+        """
+        pass
+
     def test_remove_all_run_templates(self):
         """Test case for remove_all_run_templates
 

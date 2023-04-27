@@ -94,6 +94,13 @@ class TestScenariorunApi(unittest.TestCase):
         """
         pass
 
+    def test_import_scenario_run(self):
+        """Test case for import_scenario_run
+
+        import a ScenarioRun for the Scenario  # noqa: E501
+        """
+        pass
+
     def test_run_scenario(self):
         """Test case for run_scenario
 

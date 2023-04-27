@@ -122,6 +122,13 @@ class TestWorkspaceApi(unittest.TestCase):
         """
         pass
 
+    def test_import_workspace(self):
+        """Test case for import_workspace
+
+        Import a workspace  # noqa: E501
+        """
+        pass
+
     def test_remove_workspace_access_control(self):
         """Test case for remove_workspace_access_control
 

@@ -24,14 +24,56 @@ class TestTwingraphApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_batch_query(self):
+        """Test case for batch_query
+
+        """
+        pass
+
+    def test_batch_upload_update(self):
+        """Test case for batch_upload_update
+
+        """
+        pass
+
+    def test_create_entities(self):
+        """Test case for create_entities
+
+        """
+        pass
+
+    def test_create_graph(self):
+        """Test case for create_graph
+
+        """
+        pass
+
     def test_delete(self):
         """Test case for delete
 
         """
         pass
 
+    def test_delete_entities(self):
+        """Test case for delete_entities
+
+        """
+        pass
+
+    def test_download_graph(self):
+        """Test case for download_graph
+
+        """
+        pass
+
     def test_find_all_twingraphs(self):
         """Test case for find_all_twingraphs
+
+        """
+        pass
+
+    def test_get_entities(self):
+        """Test case for get_entities
 
         """
         pass
@@ -56,6 +98,18 @@ class TestTwingraphApi(unittest.TestCase):
 
     def test_query(self):
         """Test case for query
+
+        """
+        pass
+
+    def test_update_entities(self):
+        """Test case for update_entities
+
+        """
+        pass
+
+    def test_update_graph_meta_data(self):
+        """Test case for update_graph_meta_data
 
         """
         pass

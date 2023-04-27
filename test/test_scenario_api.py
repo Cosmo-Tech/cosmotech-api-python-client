@@ -143,6 +143,13 @@ class TestScenarioApi(unittest.TestCase):
         """
         pass
 
+    def test_import_scenario(self):
+        """Test case for import_scenario
+
+        Import Scenario  # noqa: E501
+        """
+        pass
+
     def test_remove_all_scenario_parameter_values(self):
         """Test case for remove_all_scenario_parameter_values
 

@@ -80,6 +80,13 @@ class TestOrganizationApi(unittest.TestCase):
         """
         pass
 
+    def test_import_organization(self):
+        """Test case for import_organization
+
+        Import an organization  # noqa: E501
+        """
+        pass
+
     def test_register_organization(self):
         """Test case for register_organization
 

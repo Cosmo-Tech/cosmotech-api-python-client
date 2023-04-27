@@ -66,6 +66,13 @@ class TestDatasetApi(unittest.TestCase):
         """
         pass
 
+    def test_import_dataset(self):
+        """Test case for import_dataset
+
+        Import a new Dataset  # noqa: E501
+        """
+        pass
+
     def test_remove_all_dataset_compatibility_elements(self):
         """Test case for remove_all_dataset_compatibility_elements
 
