@@ -59,11 +59,7 @@ from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRu
 from cosmotech_api.model.scenario_security import ScenarioSecurity
 from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
 from cosmotech_api.model.solution import Solution
-from cosmotech_api.model.source_info import SourceInfo
 from cosmotech_api.model.translated_labels import TranslatedLabels
-from cosmotech_api.model.twin_graph_import import TwinGraphImport
-from cosmotech_api.model.twin_graph_import_info import TwinGraphImportInfo
-from cosmotech_api.model.twin_graph_query import TwinGraphQuery
 from cosmotech_api.model.user import User
 from cosmotech_api.model.user_organization import UserOrganization
 from cosmotech_api.model.user_workspace import UserWorkspace
@@ -73,7 +69,6 @@ from cosmotech_api.model.workspace import Workspace
 from cosmotech_api.model.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.model.workspace_file import WorkspaceFile
 from cosmotech_api.model.workspace_role import WorkspaceRole
-from cosmotech_api.model.workspace_secret import WorkspaceSecret
 from cosmotech_api.model.workspace_security import WorkspaceSecurity
 from cosmotech_api.model.workspace_solution import WorkspaceSolution
 from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
