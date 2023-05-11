@@ -4,27 +4,27 @@ All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**batch_query**](TwingraphApi.md#batch_query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch-query | 
-[**batch_upload_update**](TwingraphApi.md#batch_upload_update) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch | 
-[**create_entities**](TwingraphApi.md#create_entities) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | 
-[**create_graph**](TwingraphApi.md#create_graph) | **POST** /organizations/{organization_id}/twingraph/{graph_id} | 
-[**delete**](TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id} | 
-[**delete_entities**](TwingraphApi.md#delete_entities) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | 
-[**download_graph**](TwingraphApi.md#download_graph) | **GET** /organizations/{organization_id}/twingraph/bulk-query/download/{hash} | 
-[**find_all_twingraphs**](TwingraphApi.md#find_all_twingraphs) | **GET** /organizations/{organization_id}/twingraphs | 
-[**get_entities**](TwingraphApi.md#get_entities) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | 
-[**get_graph_meta_data**](TwingraphApi.md#get_graph_meta_data) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/metadata | 
-[**import_graph**](TwingraphApi.md#import_graph) | **POST** /organizations/{organization_id}/twingraph/import | 
-[**job_status**](TwingraphApi.md#job_status) | **GET** /organizations/{organization_id}/job/{job_id}/status | 
-[**query**](TwingraphApi.md#query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/query | 
-[**update_entities**](TwingraphApi.md#update_entities) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | 
-[**update_graph_meta_data**](TwingraphApi.md#update_graph_meta_data) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/metadata | 
+[**batch_query**](TwingraphApi.md#batch_query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
+[**batch_upload_update**](TwingraphApi.md#batch_upload_update) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch | Async batch update by loading a CSV file on a graph instance 
+[**create_entities**](TwingraphApi.md#create_entities) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Create new entities in a graph instance
+[**create_graph**](TwingraphApi.md#create_graph) | **POST** /organizations/{organization_id}/twingraph/{graph_id} | Create a new graph
+[**delete**](TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id} | Launch a mass delete job
+[**delete_entities**](TwingraphApi.md#delete_entities) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Delete entities in a graph instance
+[**download_graph**](TwingraphApi.md#download_graph) | **GET** /organizations/{organization_id}/twingraph/bulk-query/download/{hash} | Download a graph compressed in a zip file
+[**find_all_twingraphs**](TwingraphApi.md#find_all_twingraphs) | **GET** /organizations/{organization_id}/twingraphs | Return the list of all graphs stored in the organization
+[**get_entities**](TwingraphApi.md#get_entities) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Get entities in a graph instance
+[**get_graph_meta_data**](TwingraphApi.md#get_graph_meta_data) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/metadata | Return the metaData of the specified graph
+[**import_graph**](TwingraphApi.md#import_graph) | **POST** /organizations/{organization_id}/twingraph/import | Import a new version of a twin graph
+[**job_status**](TwingraphApi.md#job_status) | **GET** /organizations/{organization_id}/job/{job_id}/status | Get the status of a job
+[**query**](TwingraphApi.md#query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/query | Run a query on a graph instance
+[**update_entities**](TwingraphApi.md#update_entities) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Update entities in a graph instance
+[**update_graph_meta_data**](TwingraphApi.md#update_graph_meta_data) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/metadata | Update the metaData of the specified graph
 
 
 # **batch_query**
 > TwinGraphHash batch_query(organization_id, graph_id, twin_graph_query)
 
-
+Run a query on a graph instance and return the result as a zip file in async mode
 
 Run a query on a graph instance and return the result as a zip file in async mode
 
@@ -69,6 +69,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Run a query on a graph instance and return the result as a zip file in async mode
         api_response = api_instance.batch_query(organization_id, graph_id, twin_graph_query)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -109,7 +110,7 @@ Name | Type | Description  | Notes
 # **batch_upload_update**
 > TwinGraphBatchResult batch_upload_update(organization_id, graph_id, twin_graph_query, body)
 
-
+Async batch update by loading a CSV file on a graph instance 
 
 Async batch update by loading a CSV file on a graph instance 
 
@@ -158,6 +159,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Async batch update by loading a CSV file on a graph instance 
         api_response = api_instance.batch_upload_update(organization_id, graph_id, twin_graph_query, body)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -200,7 +202,7 @@ Name | Type | Description  | Notes
 # **create_entities**
 > [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] create_entities(organization_id, graph_id, model_type, graph_properties)
 
-
+Create new entities in a graph instance
 
 create new entities in a graph instance
 
@@ -250,6 +252,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Create new entities in a graph instance
         api_response = api_instance.create_entities(organization_id, graph_id, model_type, graph_properties)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -291,7 +294,7 @@ Name | Type | Description  | Notes
 # **create_graph**
 > create_graph(organization_id, graph_id)
 
-
+Create a new graph
 
 Create a new graph
 
@@ -331,6 +334,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Create a new graph
         api_instance.create_graph(organization_id, graph_id)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->create_graph: %s\n" % e)
@@ -338,6 +342,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
+        # Create a new graph
         api_instance.create_graph(organization_id, graph_id, body=body)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->create_graph: %s\n" % e)
@@ -377,7 +382,7 @@ void (empty response body)
 # **delete**
 > delete(organization_id, graph_id)
 
-
+Launch a mass delete job
 
 Launch a mass delete job
 
@@ -416,6 +421,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Launch a mass delete job
         api_instance.delete(organization_id, graph_id)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->delete: %s\n" % e)
@@ -454,7 +460,7 @@ void (empty response body)
 # **delete_entities**
 > delete_entities(organization_id, graph_id, model_type, ids)
 
-
+Delete entities in a graph instance
 
 delete entities in a graph instance
 
@@ -497,6 +503,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Delete entities in a graph instance
         api_instance.delete_entities(organization_id, graph_id, model_type, ids)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->delete_entities: %s\n" % e)
@@ -537,7 +544,7 @@ void (empty response body)
 # **download_graph**
 > file_type download_graph(organization_id, hash)
 
-
+Download a graph compressed in a zip file
 
 Download a graph compressed in a zip file
 
@@ -576,6 +583,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Download a graph compressed in a zip file
         api_response = api_instance.download_graph(organization_id, hash)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -615,7 +623,7 @@ Name | Type | Description  | Notes
 # **find_all_twingraphs**
 > [str] find_all_twingraphs(organization_id)
 
-
+Return the list of all graphs stored in the organization
 
 Return the list of all graphs stored in the organization
 
@@ -653,6 +661,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Return the list of all graphs stored in the organization
         api_response = api_instance.find_all_twingraphs(organization_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -691,7 +700,7 @@ Name | Type | Description  | Notes
 # **get_entities**
 > [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] get_entities(organization_id, graph_id, model_type, ids)
 
-
+Get entities in a graph instance
 
 get entities in a graph instance
 
@@ -734,6 +743,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Get entities in a graph instance
         api_response = api_instance.get_entities(organization_id, graph_id, model_type, ids)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -775,7 +785,7 @@ Name | Type | Description  | Notes
 # **get_graph_meta_data**
 > {str: (bool, date, datetime, dict, float, int, list, str, none_type)} get_graph_meta_data(organization_id, graph_id)
 
-
+Return the metaData of the specified graph
 
 Return the metaData of the specified graph
 
@@ -814,6 +824,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Return the metaData of the specified graph
         api_response = api_instance.get_graph_meta_data(organization_id, graph_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -853,7 +864,7 @@ Name | Type | Description  | Notes
 # **import_graph**
 > TwinGraphImportInfo import_graph(organization_id, twin_graph_import)
 
-
+Import a new version of a twin graph
 
 Import a new version of a twin graph
 
@@ -903,6 +914,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Import a new version of a twin graph
         api_response = api_instance.import_graph(organization_id, twin_graph_import)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -942,7 +954,7 @@ Name | Type | Description  | Notes
 # **job_status**
 > str job_status(organization_id, job_id)
 
-
+Get the status of a job
 
 Get the status of a job
 
@@ -981,6 +993,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Get the status of a job
         api_response = api_instance.job_status(organization_id, job_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1020,7 +1033,7 @@ Name | Type | Description  | Notes
 # **query**
 > str query(organization_id, graph_id, twin_graph_query)
 
-
+Run a query on a graph instance
 
 Run a query on a graph instance
 
@@ -1064,6 +1077,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Run a query on a graph instance
         api_response = api_instance.query(organization_id, graph_id, twin_graph_query)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1104,7 +1118,7 @@ Name | Type | Description  | Notes
 # **update_entities**
 > [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] update_entities(organization_id, graph_id, model_type, graph_properties)
 
-
+Update entities in a graph instance
 
 update entities in a graph instance
 
@@ -1154,6 +1168,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Update entities in a graph instance
         api_response = api_instance.update_entities(organization_id, graph_id, model_type, graph_properties)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1195,7 +1210,7 @@ Name | Type | Description  | Notes
 # **update_graph_meta_data**
 > {str: (bool, date, datetime, dict, float, int, list, str, none_type)} update_graph_meta_data(organization_id, graph_id, request_body)
 
-
+Update the metaData of the specified graph
 
 Update the metaData of the specified graph
 
@@ -1237,6 +1252,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
+        # Update the metaData of the specified graph
         api_response = api_instance.update_graph_meta_data(organization_id, graph_id, request_body)
         pprint(api_response)
     except cosmotech_api.ApiException as e:

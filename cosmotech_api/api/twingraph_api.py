@@ -1013,7 +1013,7 @@ class TwingraphApi(object):
         twin_graph_query,
         **kwargs
     ):
-        """batch_query  # noqa: E501
+        """Run a query on a graph instance and return the result as a zip file in async mode  # noqa: E501
 
         Run a query on a graph instance and return the result as a zip file in async mode  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1100,7 +1100,7 @@ class TwingraphApi(object):
         body,
         **kwargs
     ):
-        """batch_upload_update  # noqa: E501
+        """Async batch update by loading a CSV file on a graph instance   # noqa: E501
 
         Async batch update by loading a CSV file on a graph instance   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1190,7 +1190,7 @@ class TwingraphApi(object):
         graph_properties,
         **kwargs
     ):
-        """create_entities  # noqa: E501
+        """Create new entities in a graph instance  # noqa: E501
 
         create new entities in a graph instance  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1278,7 +1278,7 @@ class TwingraphApi(object):
         graph_id,
         **kwargs
     ):
-        """create_graph  # noqa: E501
+        """Create a new graph  # noqa: E501
 
         Create a new graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1361,7 +1361,7 @@ class TwingraphApi(object):
         graph_id,
         **kwargs
     ):
-        """delete  # noqa: E501
+        """Launch a mass delete job  # noqa: E501
 
         Launch a mass delete job  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1445,7 +1445,7 @@ class TwingraphApi(object):
         ids,
         **kwargs
     ):
-        """delete_entities  # noqa: E501
+        """Delete entities in a graph instance  # noqa: E501
 
         delete entities in a graph instance  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1533,7 +1533,7 @@ class TwingraphApi(object):
         hash,
         **kwargs
     ):
-        """download_graph  # noqa: E501
+        """Download a graph compressed in a zip file  # noqa: E501
 
         Download a graph compressed in a zip file  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1614,7 +1614,7 @@ class TwingraphApi(object):
         organization_id,
         **kwargs
     ):
-        """find_all_twingraphs  # noqa: E501
+        """Return the list of all graphs stored in the organization  # noqa: E501
 
         Return the list of all graphs stored in the organization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1695,7 +1695,7 @@ class TwingraphApi(object):
         ids,
         **kwargs
     ):
-        """get_entities  # noqa: E501
+        """Get entities in a graph instance  # noqa: E501
 
         get entities in a graph instance  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1783,7 +1783,7 @@ class TwingraphApi(object):
         graph_id,
         **kwargs
     ):
-        """get_graph_meta_data  # noqa: E501
+        """Return the metaData of the specified graph  # noqa: E501
 
         Return the metaData of the specified graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1865,7 +1865,7 @@ class TwingraphApi(object):
         twin_graph_import,
         **kwargs
     ):
-        """import_graph  # noqa: E501
+        """Import a new version of a twin graph  # noqa: E501
 
         Import a new version of a twin graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1947,7 +1947,7 @@ class TwingraphApi(object):
         job_id,
         **kwargs
     ):
-        """job_status  # noqa: E501
+        """Get the status of a job  # noqa: E501
 
         Get the status of a job  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2030,7 +2030,7 @@ class TwingraphApi(object):
         twin_graph_query,
         **kwargs
     ):
-        """query  # noqa: E501
+        """Run a query on a graph instance  # noqa: E501
 
         Run a query on a graph instance  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2117,7 +2117,7 @@ class TwingraphApi(object):
         graph_properties,
         **kwargs
     ):
-        """update_entities  # noqa: E501
+        """Update entities in a graph instance  # noqa: E501
 
         update entities in a graph instance  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2206,7 +2206,7 @@ class TwingraphApi(object):
         request_body,
         **kwargs
     ):
-        """update_graph_meta_data  # noqa: E501
+        """Update the metaData of the specified graph  # noqa: E501
 
         Update the metaData of the specified graph  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
