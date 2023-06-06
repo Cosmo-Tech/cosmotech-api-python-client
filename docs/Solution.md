@@ -6,7 +6,6 @@ a version of a Solution
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Solution version unique identifier | [optional] [readonly] 
-**organization_id** | **str** | the Organization unique identifier | [optional] [readonly] 
 **key** | **str** | the Solution key which group Solution versions | [optional] 
 **name** | **str** | the Solution name | [optional] 
 **description** | **str** | the Solution description | [optional] 
