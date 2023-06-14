@@ -55,7 +55,7 @@ class TestTwingraphApi(unittest.TestCase):
     def test_delete(self):
         """Test case for delete
 
-        Launch a mass delete job  # noqa: E501
+        Delete all versions of a graph and his metadatas  # noqa: E501
         """
         pass
 

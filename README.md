@@ -182,7 +182,7 @@ Class | Method | HTTP request | Description
 *TwingraphApi* | [**batch_upload_update**](docs/TwingraphApi.md#batch_upload_update) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch | Async batch update by loading a CSV file on a graph instance 
 *TwingraphApi* | [**create_entities**](docs/TwingraphApi.md#create_entities) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Create new entities in a graph instance
 *TwingraphApi* | [**create_graph**](docs/TwingraphApi.md#create_graph) | **POST** /organizations/{organization_id}/twingraph/{graph_id} | Create a new graph
-*TwingraphApi* | [**delete**](docs/TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id} | Launch a mass delete job
+*TwingraphApi* | [**delete**](docs/TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id} | Delete all versions of a graph and his metadatas
 *TwingraphApi* | [**delete_entities**](docs/TwingraphApi.md#delete_entities) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Delete entities in a graph instance
 *TwingraphApi* | [**download_graph**](docs/TwingraphApi.md#download_graph) | **GET** /organizations/{organization_id}/twingraph/bulk-query/download/{hash} | Download a graph compressed in a zip file
 *TwingraphApi* | [**find_all_twingraphs**](docs/TwingraphApi.md#find_all_twingraphs) | **GET** /organizations/{organization_id}/twingraphs | Return the list of all graphs stored in the organization

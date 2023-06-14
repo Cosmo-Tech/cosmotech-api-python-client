@@ -178,7 +178,7 @@ class TwingraphApi(object):
         )
         self.create_entities_endpoint = _Endpoint(
             settings={
-                'response_type': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),
+                'response_type': (str,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -552,7 +552,7 @@ class TwingraphApi(object):
         )
         self.get_entities_endpoint = _Endpoint(
             settings={
-                'response_type': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),
+                'response_type': (str,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -867,7 +867,7 @@ class TwingraphApi(object):
         )
         self.update_entities_endpoint = _Endpoint(
             settings={
-                'response_type': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),
+                'response_type': (str,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -1234,7 +1234,7 @@ class TwingraphApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]
+            str
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1280,7 +1280,7 @@ class TwingraphApi(object):
     ):
         """Create a new graph  # noqa: E501
 
-        Create a new graph  # noqa: E501
+        To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'Id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * Id  those colomns represent * The source of the edge * The target of the edge * The Id of the edge  All following columns content are up to you.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1361,9 +1361,9 @@ class TwingraphApi(object):
         graph_id,
         **kwargs
     ):
-        """Launch a mass delete job  # noqa: E501
+        """Delete all versions of a graph and his metadatas  # noqa: E501
 
-        Launch a mass delete job  # noqa: E501
+        Delete all versions of a graph and his metadatas  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1739,7 +1739,7 @@ class TwingraphApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]
+            str
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -2161,7 +2161,7 @@ class TwingraphApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]
+            str
                 If the method is called asynchronously, returns the request
                 thread.
         """
