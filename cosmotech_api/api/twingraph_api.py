@@ -182,7 +182,7 @@ class TwingraphApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/{modelType}',
+                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/entity/{type}',
                 'operation_id': 'create_entities',
                 'http_method': 'POST',
                 'servers': None,
@@ -191,19 +191,19 @@ class TwingraphApi(object):
                 'all': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'graph_properties',
                 ],
                 'required': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'graph_properties',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'model_type',
+                    'type',
                 ],
                 'validation': [
                 ]
@@ -212,7 +212,7 @@ class TwingraphApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('model_type',): {
+                    ('type',): {
 
                         "NODE": "node",
                         "RELATIONSHIP": "relationship"
@@ -223,7 +223,7 @@ class TwingraphApi(object):
                         (str,),
                     'graph_id':
                         (str,),
-                    'model_type':
+                    'type':
                         (str,),
                     'graph_properties':
                         ([GraphProperties],),
@@ -231,12 +231,12 @@ class TwingraphApi(object):
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'graph_id': 'graph_id',
-                    'model_type': 'modelType',
+                    'type': 'type',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'graph_id': 'path',
-                    'model_type': 'path',
+                    'type': 'path',
                     'graph_properties': 'body',
                 },
                 'collection_format_map': {
@@ -374,7 +374,7 @@ class TwingraphApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/{modelType}',
+                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/entity/{type}',
                 'operation_id': 'delete_entities',
                 'http_method': 'DELETE',
                 'servers': None,
@@ -383,19 +383,19 @@ class TwingraphApi(object):
                 'all': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'ids',
                 ],
                 'required': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'ids',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'model_type',
+                    'type',
                 ],
                 'validation': [
                 ]
@@ -404,7 +404,7 @@ class TwingraphApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('model_type',): {
+                    ('type',): {
 
                         "NODE": "node",
                         "RELATIONSHIP": "relationship"
@@ -415,7 +415,7 @@ class TwingraphApi(object):
                         (str,),
                     'graph_id':
                         (str,),
-                    'model_type':
+                    'type':
                         (str,),
                     'ids':
                         ([str],),
@@ -423,13 +423,13 @@ class TwingraphApi(object):
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'graph_id': 'graph_id',
-                    'model_type': 'modelType',
+                    'type': 'type',
                     'ids': 'ids',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'graph_id': 'path',
-                    'model_type': 'path',
+                    'type': 'path',
                     'ids': 'query',
                 },
                 'collection_format_map': {
@@ -448,7 +448,7 @@ class TwingraphApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/twingraph/bulk-query/download/{hash}',
+                'endpoint_path': '/organizations/{organization_id}/twingraph/download/{hash}',
                 'operation_id': 'download_graph',
                 'http_method': 'GET',
                 'servers': None,
@@ -556,7 +556,7 @@ class TwingraphApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/{modelType}',
+                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/entity/{type}',
                 'operation_id': 'get_entities',
                 'http_method': 'GET',
                 'servers': None,
@@ -565,19 +565,19 @@ class TwingraphApi(object):
                 'all': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'ids',
                 ],
                 'required': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'ids',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'model_type',
+                    'type',
                 ],
                 'validation': [
                 ]
@@ -586,7 +586,7 @@ class TwingraphApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('model_type',): {
+                    ('type',): {
 
                         "NODE": "node",
                         "RELATIONSHIP": "relationship"
@@ -597,7 +597,7 @@ class TwingraphApi(object):
                         (str,),
                     'graph_id':
                         (str,),
-                    'model_type':
+                    'type':
                         (str,),
                     'ids':
                         ([str],),
@@ -605,13 +605,13 @@ class TwingraphApi(object):
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'graph_id': 'graph_id',
-                    'model_type': 'modelType',
+                    'type': 'type',
                     'ids': 'ids',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'graph_id': 'path',
-                    'model_type': 'path',
+                    'type': 'path',
                     'ids': 'query',
                 },
                 'collection_format_map': {
@@ -871,7 +871,7 @@ class TwingraphApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/{modelType}',
+                'endpoint_path': '/organizations/{organization_id}/twingraph/{graph_id}/entity/{type}',
                 'operation_id': 'update_entities',
                 'http_method': 'PATCH',
                 'servers': None,
@@ -880,19 +880,19 @@ class TwingraphApi(object):
                 'all': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'graph_properties',
                 ],
                 'required': [
                     'organization_id',
                     'graph_id',
-                    'model_type',
+                    'type',
                     'graph_properties',
                 ],
                 'nullable': [
                 ],
                 'enum': [
-                    'model_type',
+                    'type',
                 ],
                 'validation': [
                 ]
@@ -901,7 +901,7 @@ class TwingraphApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('model_type',): {
+                    ('type',): {
 
                         "NODE": "node",
                         "RELATIONSHIP": "relationship"
@@ -912,7 +912,7 @@ class TwingraphApi(object):
                         (str,),
                     'graph_id':
                         (str,),
-                    'model_type':
+                    'type':
                         (str,),
                     'graph_properties':
                         ([GraphProperties],),
@@ -920,12 +920,12 @@ class TwingraphApi(object):
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'graph_id': 'graph_id',
-                    'model_type': 'modelType',
+                    'type': 'type',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'graph_id': 'path',
-                    'model_type': 'path',
+                    'type': 'path',
                     'graph_properties': 'body',
                 },
                 'collection_format_map': {
@@ -1186,7 +1186,7 @@ class TwingraphApi(object):
         self,
         organization_id,
         graph_id,
-        model_type,
+        type,
         graph_properties,
         **kwargs
     ):
@@ -1196,13 +1196,13 @@ class TwingraphApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_entities(organization_id, graph_id, model_type, graph_properties, async_req=True)
+        >>> thread = api.create_entities(organization_id, graph_id, type, graph_properties, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             graph_id (str): the Graph Identifier
-            model_type (str): the entity model type
+            type (str): the entity model type
             graph_properties ([GraphProperties]): the entities to create
 
         Keyword Args:
@@ -1266,8 +1266,8 @@ class TwingraphApi(object):
             organization_id
         kwargs['graph_id'] = \
             graph_id
-        kwargs['model_type'] = \
-            model_type
+        kwargs['type'] = \
+            type
         kwargs['graph_properties'] = \
             graph_properties
         return self.create_entities_endpoint.call_with_http_info(**kwargs)
@@ -1441,7 +1441,7 @@ class TwingraphApi(object):
         self,
         organization_id,
         graph_id,
-        model_type,
+        type,
         ids,
         **kwargs
     ):
@@ -1451,13 +1451,13 @@ class TwingraphApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_entities(organization_id, graph_id, model_type, ids, async_req=True)
+        >>> thread = api.delete_entities(organization_id, graph_id, type, ids, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             graph_id (str): the Graph Identifier
-            model_type (str): the entity model type
+            type (str): the entity model type
             ids ([str]): the entities to delete
 
         Keyword Args:
@@ -1521,8 +1521,8 @@ class TwingraphApi(object):
             organization_id
         kwargs['graph_id'] = \
             graph_id
-        kwargs['model_type'] = \
-            model_type
+        kwargs['type'] = \
+            type
         kwargs['ids'] = \
             ids
         return self.delete_entities_endpoint.call_with_http_info(**kwargs)
@@ -1691,7 +1691,7 @@ class TwingraphApi(object):
         self,
         organization_id,
         graph_id,
-        model_type,
+        type,
         ids,
         **kwargs
     ):
@@ -1701,13 +1701,13 @@ class TwingraphApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_entities(organization_id, graph_id, model_type, ids, async_req=True)
+        >>> thread = api.get_entities(organization_id, graph_id, type, ids, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             graph_id (str): the Graph Identifier
-            model_type (str): the entity model type
+            type (str): the entity model type
             ids ([str]): the entities to get
 
         Keyword Args:
@@ -1771,8 +1771,8 @@ class TwingraphApi(object):
             organization_id
         kwargs['graph_id'] = \
             graph_id
-        kwargs['model_type'] = \
-            model_type
+        kwargs['type'] = \
+            type
         kwargs['ids'] = \
             ids
         return self.get_entities_endpoint.call_with_http_info(**kwargs)
@@ -2113,7 +2113,7 @@ class TwingraphApi(object):
         self,
         organization_id,
         graph_id,
-        model_type,
+        type,
         graph_properties,
         **kwargs
     ):
@@ -2123,13 +2123,13 @@ class TwingraphApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_entities(organization_id, graph_id, model_type, graph_properties, async_req=True)
+        >>> thread = api.update_entities(organization_id, graph_id, type, graph_properties, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             graph_id (str): the Graph Identifier
-            model_type (str): the entity model type
+            type (str): the entity model type
             graph_properties ([GraphProperties]): the entities to update
 
         Keyword Args:
@@ -2193,8 +2193,8 @@ class TwingraphApi(object):
             organization_id
         kwargs['graph_id'] = \
             graph_id
-        kwargs['model_type'] = \
-            model_type
+        kwargs['type'] = \
+            type
         kwargs['graph_properties'] = \
             graph_properties
         return self.update_entities_endpoint.call_with_http_info(**kwargs)

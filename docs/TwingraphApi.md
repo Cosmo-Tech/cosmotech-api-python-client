@@ -6,18 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**batch_query**](TwingraphApi.md#batch_query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
 [**batch_upload_update**](TwingraphApi.md#batch_upload_update) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch | Async batch update by loading a CSV file on a graph instance 
-[**create_entities**](TwingraphApi.md#create_entities) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Create new entities in a graph instance
+[**create_entities**](TwingraphApi.md#create_entities) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/entity/{type} | Create new entities in a graph instance
 [**create_graph**](TwingraphApi.md#create_graph) | **POST** /organizations/{organization_id}/twingraph/{graph_id} | Create a new graph
 [**delete**](TwingraphApi.md#delete) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id} | Delete all versions of a graph and his metadatas
-[**delete_entities**](TwingraphApi.md#delete_entities) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Delete entities in a graph instance
-[**download_graph**](TwingraphApi.md#download_graph) | **GET** /organizations/{organization_id}/twingraph/bulk-query/download/{hash} | Download a graph compressed in a zip file
+[**delete_entities**](TwingraphApi.md#delete_entities) | **DELETE** /organizations/{organization_id}/twingraph/{graph_id}/entity/{type} | Delete entities in a graph instance
+[**download_graph**](TwingraphApi.md#download_graph) | **GET** /organizations/{organization_id}/twingraph/download/{hash} | Download a graph compressed in a zip file
 [**find_all_twingraphs**](TwingraphApi.md#find_all_twingraphs) | **GET** /organizations/{organization_id}/twingraphs | Return the list of all graphs stored in the organization
-[**get_entities**](TwingraphApi.md#get_entities) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Get entities in a graph instance
+[**get_entities**](TwingraphApi.md#get_entities) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/entity/{type} | Get entities in a graph instance
 [**get_graph_meta_data**](TwingraphApi.md#get_graph_meta_data) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/metadata | Return the metaData of the specified graph
 [**import_graph**](TwingraphApi.md#import_graph) | **POST** /organizations/{organization_id}/twingraph/import | Import a new version of a twin graph
 [**job_status**](TwingraphApi.md#job_status) | **GET** /organizations/{organization_id}/job/{job_id}/status | Get the status of a job
 [**query**](TwingraphApi.md#query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/query | Run a query on a graph instance
-[**update_entities**](TwingraphApi.md#update_entities) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/{modelType} | Update entities in a graph instance
+[**update_entities**](TwingraphApi.md#update_entities) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/entity/{type} | Update entities in a graph instance
 [**update_graph_meta_data**](TwingraphApi.md#update_graph_meta_data) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/metadata | Update the metaData of the specified graph
 
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_entities**
-> str create_entities(organization_id, graph_id, model_type, graph_properties)
+> str create_entities(organization_id, graph_id, type, graph_properties)
 
 Create new entities in a graph instance
 
@@ -239,7 +239,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     graph_id = "graph_id_example" # str | the Graph Identifier
-    model_type = "node" # str | the entity model type
+    type = "node" # str | the entity model type
     graph_properties = [
         GraphProperties(
             type="type_example",
@@ -253,7 +253,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Create new entities in a graph instance
-        api_response = api_instance.create_entities(organization_id, graph_id, model_type, graph_properties)
+        api_response = api_instance.create_entities(organization_id, graph_id, type, graph_properties)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->create_entities: %s\n" % e)
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **graph_id** | **str**| the Graph Identifier |
- **model_type** | **str**| the entity model type |
+ **type** | **str**| the entity model type |
  **graph_properties** | [**[GraphProperties]**](GraphProperties.md)| the entities to create |
 
 ### Return type
@@ -458,7 +458,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_entities**
-> delete_entities(organization_id, graph_id, model_type, ids)
+> delete_entities(organization_id, graph_id, type, ids)
 
 Delete entities in a graph instance
 
@@ -496,7 +496,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     graph_id = "graph_id_example" # str | the Graph Identifier
-    model_type = "node" # str | the entity model type
+    type = "node" # str | the entity model type
     ids = [
         "ids_example",
     ] # [str] | the entities to delete
@@ -504,7 +504,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Delete entities in a graph instance
-        api_instance.delete_entities(organization_id, graph_id, model_type, ids)
+        api_instance.delete_entities(organization_id, graph_id, type, ids)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->delete_entities: %s\n" % e)
 ```
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **graph_id** | **str**| the Graph Identifier |
- **model_type** | **str**| the entity model type |
+ **type** | **str**| the entity model type |
  **ids** | **[str]**| the entities to delete |
 
 ### Return type
@@ -698,7 +698,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_entities**
-> str get_entities(organization_id, graph_id, model_type, ids)
+> str get_entities(organization_id, graph_id, type, ids)
 
 Get entities in a graph instance
 
@@ -736,7 +736,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     graph_id = "graph_id_example" # str | the Graph Identifier
-    model_type = "node" # str | the entity model type
+    type = "node" # str | the entity model type
     ids = [
         "ids_example",
     ] # [str] | the entities to get
@@ -744,7 +744,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Get entities in a graph instance
-        api_response = api_instance.get_entities(organization_id, graph_id, model_type, ids)
+        api_response = api_instance.get_entities(organization_id, graph_id, type, ids)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->get_entities: %s\n" % e)
@@ -757,7 +757,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **graph_id** | **str**| the Graph Identifier |
- **model_type** | **str**| the entity model type |
+ **type** | **str**| the entity model type |
  **ids** | **[str]**| the entities to get |
 
 ### Return type
@@ -1116,7 +1116,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_entities**
-> str update_entities(organization_id, graph_id, model_type, graph_properties)
+> str update_entities(organization_id, graph_id, type, graph_properties)
 
 Update entities in a graph instance
 
@@ -1155,7 +1155,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = twingraph_api.TwingraphApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     graph_id = "graph_id_example" # str | the Graph Identifier
-    model_type = "node" # str | the entity model type
+    type = "node" # str | the entity model type
     graph_properties = [
         GraphProperties(
             type="type_example",
@@ -1169,7 +1169,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update entities in a graph instance
-        api_response = api_instance.update_entities(organization_id, graph_id, model_type, graph_properties)
+        api_response = api_instance.update_entities(organization_id, graph_id, type, graph_properties)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->update_entities: %s\n" % e)
@@ -1182,7 +1182,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **graph_id** | **str**| the Graph Identifier |
- **model_type** | **str**| the entity model type |
+ **type** | **str**| the entity model type |
  **graph_properties** | [**[GraphProperties]**](GraphProperties.md)| the entities to update |
 
 ### Return type
