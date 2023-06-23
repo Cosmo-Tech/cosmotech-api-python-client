@@ -1,6 +1,6 @@
 # DatasetConnector
 
-the Connector setup bound to a Dataset
+a Connector setup
 
 ## Properties
 Name | Type | Description | Notes
