@@ -13,11 +13,11 @@ import sys
 import unittest
 
 import cosmotech_api
-from cosmotech_api.model.validator import Validator
+from cosmotech_api.model.scenario_run_resource_requested import ScenarioRunResourceRequested
 
 
-class TestValidator(unittest.TestCase):
-    """Validator unit test stubs"""
+class TestScenarioRunResourceRequested(unittest.TestCase):
+    """ScenarioRunResourceRequested unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,10 +25,10 @@ class TestValidator(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testValidator(self):
-        """Test Validator"""
+    def testScenarioRunResourceRequested(self):
+        """Test ScenarioRunResourceRequested"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = Validator()  # noqa: E501
+        # model = ScenarioRunResourceRequested()  # noqa: E501
         pass
 
 
