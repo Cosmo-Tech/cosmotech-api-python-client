@@ -390,7 +390,6 @@ class ScenarioApi(object):
                     'organization_id',
                     'workspace_id',
                     'scenario_id',
-                    'wait_relationship_propagation',
                 ],
                 'required': [
                     'organization_id',
@@ -416,20 +415,16 @@ class ScenarioApi(object):
                         (str,),
                     'scenario_id':
                         (str,),
-                    'wait_relationship_propagation':
-                        (bool,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'workspace_id': 'workspace_id',
                     'scenario_id': 'scenario_id',
-                    'wait_relationship_propagation': 'wait_relationship_propagation',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'workspace_id': 'path',
                     'scenario_id': 'path',
-                    'wait_relationship_propagation': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -2018,7 +2013,6 @@ class ScenarioApi(object):
             scenario_id (str): the Scenario identifier
 
         Keyword Args:
-            wait_relationship_propagation (bool): whether to wait until child scenarios are effectively updated. [optional] if omitted the server will use the default value of False
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
