@@ -517,11 +517,20 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace_id = "workspace_id_example" # str | the Workspace identifier
     scenario_id = "scenario_id_example" # str | the Scenario identifier
+    wait_relationship_propagation = False # bool | whether to wait until child scenarios are effectively updated (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
         # Delete a scenario
         api_instance.delete_scenario(organization_id, workspace_id, scenario_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenarioApi->delete_scenario: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Delete a scenario
+        api_instance.delete_scenario(organization_id, workspace_id, scenario_id, wait_relationship_propagation=wait_relationship_propagation)
     except cosmotech_api.ApiException as e:
         print("Exception when calling ScenarioApi->delete_scenario: %s\n" % e)
 ```
@@ -534,6 +543,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
  **scenario_id** | **str**| the Scenario identifier |
+ **wait_relationship_propagation** | **bool**| whether to wait until child scenarios are effectively updated | [optional] if omitted the server will use the default value of False
 
 ### Return type
 

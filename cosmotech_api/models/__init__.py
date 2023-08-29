@@ -51,7 +51,6 @@ from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 from cosmotech_api.model.scenario_run_container_artifact import ScenarioRunContainerArtifact
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
-from cosmotech_api.model.scenario_run_resource_requested import ScenarioRunResourceRequested
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
 from cosmotech_api.model.scenario_run_state import ScenarioRunState
