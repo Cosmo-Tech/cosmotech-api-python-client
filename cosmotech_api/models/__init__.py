@@ -31,6 +31,7 @@ from cosmotech_api.model.organization_services import OrganizationServices
 from cosmotech_api.model.resource_size_info import ResourceSizeInfo
 from cosmotech_api.model.run_template import RunTemplate
 from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
+from cosmotech_api.model.run_template_orchestrator import RunTemplateOrchestrator
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
