@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | the Workspace name | 
 **solution** | [**WorkspaceSolution**](WorkspaceSolution.md) |  | 
 **id** | **str** | the Workspace version unique identifier | [optional] [readonly] 
+**organization_id** | **str** | the Organization unique identifier | [optional] [readonly] 
 **description** | **str** | the Workspace description | [optional] 
 **version** | **str** | the Workspace version MAJOR.MINOR.PATCH. | [optional] 
 **tags** | **[str]** | the list of tags | [optional] 
