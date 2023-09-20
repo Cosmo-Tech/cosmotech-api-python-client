@@ -6,7 +6,7 @@ a ScenarioRun with only base properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the ScenarioRun | [optional] [readonly] 
-**state** | [**ScenarioRunState**](ScenarioRunState.md) |  | [optional] 
+**state** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **organization_id** | **str** | the Organization id | [optional] 
 **workflow_id** | **str** | the Cosmo Tech compute cluster Argo Workflow Id to search | [optional] 
 **csm_simulation_run** | **str** | the Cosmo Tech Simulation Run Id | [optional] [readonly] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **run_template_id** | **str** | the Solution Run Template id | [optional] [readonly] 
 **compute_size** | **str** | the compute size needed for this Analysis. Standard sizes are basic and highcpu. Default is basic | [optional] [readonly] 
 **sdk_version** | **str** | the MAJOR.MINOR version used to build the solution solution | [optional] 
+**created_at** | **str** | the ScenarioRun creation date | [optional] [readonly] 
 **no_data_ingestion_state** | **bool** | set to true if the run template does not use any Datawarehouse consumers (AMQP consumers for Azure) | [optional] 
 **dataset_list** | **[str]** | the list of Dataset Id associated to this Analysis | [optional] [readonly] 
 **parameters_values** | [**[RunTemplateParameterValue]**](RunTemplateParameterValue.md) | the list of Run Template parameters values | [optional] [readonly] 
