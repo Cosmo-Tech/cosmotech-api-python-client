@@ -21,6 +21,7 @@ from cosmotech_api.model.dataset_connector import DatasetConnector
 from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
 from cosmotech_api.model.dataset_search import DatasetSearch
 from cosmotech_api.model.delete_historical_data import DeleteHistoricalData
+from cosmotech_api.model.graph_properties import GraphProperties
 from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_access_control import OrganizationAccessControl
 from cosmotech_api.model.organization_role import OrganizationRole
@@ -30,6 +31,7 @@ from cosmotech_api.model.organization_services import OrganizationServices
 from cosmotech_api.model.resource_size_info import ResourceSizeInfo
 from cosmotech_api.model.run_template import RunTemplate
 from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
+from cosmotech_api.model.run_template_orchestrator import RunTemplateOrchestrator
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
@@ -50,6 +52,8 @@ from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
 from cosmotech_api.model.scenario_run_container_artifact import ScenarioRunContainerArtifact
 from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
 from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
+from cosmotech_api.model.scenario_run_resource_requested import ScenarioRunResourceRequested
+from cosmotech_api.model.scenario_run_result import ScenarioRunResult
 from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
 from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
 from cosmotech_api.model.scenario_run_state import ScenarioRunState
@@ -61,12 +65,11 @@ from cosmotech_api.model.scenario_validation_status import ScenarioValidationSta
 from cosmotech_api.model.solution import Solution
 from cosmotech_api.model.source_info import SourceInfo
 from cosmotech_api.model.translated_labels import TranslatedLabels
+from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult
+from cosmotech_api.model.twin_graph_hash import TwinGraphHash
 from cosmotech_api.model.twin_graph_import import TwinGraphImport
 from cosmotech_api.model.twin_graph_import_info import TwinGraphImportInfo
 from cosmotech_api.model.twin_graph_query import TwinGraphQuery
-from cosmotech_api.model.user import User
-from cosmotech_api.model.user_organization import UserOrganization
-from cosmotech_api.model.user_workspace import UserWorkspace
 from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun
 from cosmotech_api.model.workspace import Workspace
