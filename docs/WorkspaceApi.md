@@ -18,7 +18,6 @@ Method | HTTP request | Description
 [**get_workspace_permissions**](WorkspaceApi.md#get_workspace_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role} | Get the Workspace permission by given role
 [**get_workspace_security**](WorkspaceApi.md#get_workspace_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security | Get the Workspace security information
 [**get_workspace_security_users**](WorkspaceApi.md#get_workspace_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/users | Get the Workspace security users list
-[**import_workspace**](WorkspaceApi.md#import_workspace) | **POST** /organizations/{organization_id}/workspaces/import | Import a workspace
 [**remove_workspace_access_control**](WorkspaceApi.md#remove_workspace_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Remove the specified access from the given Organization Workspace
 [**set_workspace_default_security**](WorkspaceApi.md#set_workspace_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/default | Set the Workspace default security
 [**update_workspace**](WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
@@ -730,22 +729,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workspace_api.WorkspaceApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
-    page = 1 # int | page number to query (optional)
-    size = 1 # int | amount of result by page (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # List all Workspaces
         api_response = api_instance.find_all_workspaces(organization_id)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling WorkspaceApi->find_all_workspaces: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # List all Workspaces
-        api_response = api_instance.find_all_workspaces(organization_id, page=page, size=size)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling WorkspaceApi->find_all_workspaces: %s\n" % e)
@@ -757,8 +745,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
- **page** | **int**| page number to query | [optional]
- **size** | **int**| amount of result by page | [optional]
 
 ### Return type
 
@@ -1175,112 +1161,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The Workspace security users list |  -  |
 **404** | the Workspace or the User specified is unknown or you don&#39;t have access to them |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **import_workspace**
-> Workspace import_workspace(organization_id, workspace)
-
-Import a workspace
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace = Workspace(
-        key="key_example",
-        name="name_example",
-        description="description_example",
-        version="version_example",
-        tags=[
-            "tags_example",
-        ],
-        solution=WorkspaceSolution(
-            solution_id="solution_id_example",
-            run_template_filter=[
-                "run_template_filter_example",
-            ],
-            default_run_template_dataset={},
-        ),
-        web_app=WorkspaceWebApp(
-            url="url_example",
-            iframes={},
-            options={},
-        ),
-        send_input_to_data_warehouse=True,
-        use_dedicated_event_hub_namespace=False,
-        dedicated_event_hub_sas_key_name="dedicated_event_hub_sas_key_name_example",
-        dedicated_event_hub_authentication_strategy="dedicated_event_hub_authentication_strategy_example",
-        send_scenario_run_to_event_hub=True,
-        send_scenario_metadata_to_event_hub=False,
-        security=None,
-    ) # Workspace | the Workspace to import
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Import a workspace
-        api_response = api_instance.import_workspace(organization_id, workspace)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling WorkspaceApi->import_workspace: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace** | [**Workspace**](Workspace.md)| the Workspace to import |
-
-### Return type
-
-[**Workspace**](Workspace.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | the workspace details |  -  |
-**400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
