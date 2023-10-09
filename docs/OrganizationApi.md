@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**get_organization_permissions**](OrganizationApi.md#get_organization_permissions) | **GET** /organizations/{organization_id}/permissions/{role} | Get the Organization permissions by given role
 [**get_organization_security**](OrganizationApi.md#get_organization_security) | **GET** /organizations/{organization_id}/security | Get the Organization security information
 [**get_organization_security_users**](OrganizationApi.md#get_organization_security_users) | **GET** /organizations/{organization_id}/security/users | Get the Organization security users list
-[**import_organization**](OrganizationApi.md#import_organization) | **POST** /organizations/import | Import an organization
 [**register_organization**](OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
 [**remove_organization_access_control**](OrganizationApi.md#remove_organization_access_control) | **DELETE** /organizations/{organization_id}/security/access/{identity_id} | Remove the specified access from the given Organization
 [**set_organization_default_security**](OrganizationApi.md#set_organization_default_security) | **POST** /organizations/{organization_id}/security/default | Set the Organization default security
@@ -640,103 +639,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The Organization security users list |  -  |
 **404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **import_organization**
-> Organization import_organization(organization)
-
-Import an organization
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization = Organization(
-        name="name_example",
-        services=OrganizationServices(
-            tenant_credentials={},
-            storage=OrganizationService(
-                cloud_service="cloud_service_example",
-                base_uri="base_uri_example",
-                platform_service="platform_service_example",
-                resource_uri="resource_uri_example",
-                credentials={},
-            ),
-            solutions_container_registry=OrganizationService(
-                cloud_service="cloud_service_example",
-                base_uri="base_uri_example",
-                platform_service="platform_service_example",
-                resource_uri="resource_uri_example",
-                credentials={},
-            ),
-        ),
-        security=None,
-    ) # Organization | the Organization to import
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Import an organization
-        api_response = api_instance.import_organization(organization)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->import_organization: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | [**Organization**](Organization.md)| the Organization to import |
-
-### Return type
-
-[**Organization**](Organization.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | the Organization details |  -  |
-**400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
