@@ -53,8 +53,8 @@ class RunTemplateOrchestrator(ModelSimple):
 
     allowed_values = {
         ('value',): {
-            'ARGO-WORKFLOW': "argo-workflow",
-            'CSM-ORC': "csm-orc",
+            'ARGOWORKFLOW': "argoWorkflow",
+            'CSMORC': "csmOrc",
         },
     }
 
@@ -106,10 +106,10 @@ class RunTemplateOrchestrator(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): the Orchestrator to use for the Run Template., must be one of ["argo-workflow", "csm-orc", ]  # noqa: E501
+            args[0] (str): the Orchestrator to use for the Run Template., must be one of ["argoWorkflow", "csmOrc", ]  # noqa: E501
 
         Keyword Args:
-            value (str): the Orchestrator to use for the Run Template., must be one of ["argo-workflow", "csm-orc", ]  # noqa: E501
+            value (str): the Orchestrator to use for the Run Template., must be one of ["argoWorkflow", "csmOrc", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -196,10 +196,10 @@ class RunTemplateOrchestrator(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): the Orchestrator to use for the Run Template., must be one of ["argo-workflow", "csm-orc", ]  # noqa: E501
+            args[0] (str): the Orchestrator to use for the Run Template., must be one of ["argoWorkflow", "csmOrc", ]  # noqa: E501
 
         Keyword Args:
-            value (str): the Orchestrator to use for the Run Template., must be one of ["argo-workflow", "csm-orc", ]  # noqa: E501
+            value (str): the Orchestrator to use for the Run Template., must be one of ["argoWorkflow", "csmOrc", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

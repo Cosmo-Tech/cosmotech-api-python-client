@@ -295,7 +295,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             git_repository_url="git_repository_url_example",
             git_branch_name="git_branch_name_example",
             run_template_source_dir="run_template_source_dir_example",
-            orchestrator_type=RunTemplateOrchestrator("argo-workflow"),
+            orchestrator_type=RunTemplateOrchestrator("argoWorkflow"),
             execution_timeout=1,
             delete_historical_data=DeleteHistoricalData(
                 enable=True,
@@ -469,7 +469,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_repository_url="git_repository_url_example",
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
-                orchestrator_type=RunTemplateOrchestrator("argo-workflow"),
+                orchestrator_type=RunTemplateOrchestrator("argoWorkflow"),
                 execution_timeout=1,
                 delete_historical_data=DeleteHistoricalData(
                     enable=True,
@@ -1049,7 +1049,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_repository_url="git_repository_url_example",
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
-                orchestrator_type=RunTemplateOrchestrator("argo-workflow"),
+                orchestrator_type=RunTemplateOrchestrator("argoWorkflow"),
                 execution_timeout=1,
                 delete_historical_data=DeleteHistoricalData(
                     enable=True,
@@ -1454,7 +1454,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
                 git_repository_url="git_repository_url_example",
                 git_branch_name="git_branch_name_example",
                 run_template_source_dir="run_template_source_dir_example",
-                orchestrator_type=RunTemplateOrchestrator("argo-workflow"),
+                orchestrator_type=RunTemplateOrchestrator("argoWorkflow"),
                 execution_timeout=1,
                 delete_historical_data=DeleteHistoricalData(
                     enable=True,
@@ -1590,7 +1590,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         git_repository_url="git_repository_url_example",
         git_branch_name="git_branch_name_example",
         run_template_source_dir="run_template_source_dir_example",
-        orchestrator_type=RunTemplateOrchestrator("argo-workflow"),
+        orchestrator_type=RunTemplateOrchestrator("argoWorkflow"),
         execution_timeout=1,
         delete_historical_data=DeleteHistoricalData(
             enable=True,
