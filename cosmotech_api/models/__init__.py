@@ -63,6 +63,9 @@ from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRu
 from cosmotech_api.model.scenario_security import ScenarioSecurity
 from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
 from cosmotech_api.model.solution import Solution
+from cosmotech_api.model.solution_access_control import SolutionAccessControl
+from cosmotech_api.model.solution_role import SolutionRole
+from cosmotech_api.model.solution_security import SolutionSecurity
 from cosmotech_api.model.source_info import SourceInfo
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult

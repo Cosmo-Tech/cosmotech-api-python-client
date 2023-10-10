@@ -45,6 +45,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_add_solution_access_control(self):
+        """Test case for add_solution_access_control
+
+        Add a control access to the Solution  # noqa: E501
+        """
+        pass
+
     def test_create_solution(self):
         """Test case for create_solution
 
@@ -87,10 +94,17 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
-    def test_import_solution(self):
-        """Test case for import_solution
+    def test_get_solution_access_control(self):
+        """Test case for get_solution_access_control
 
-        Import a solution  # noqa: E501
+        Get a control access for the Solution  # noqa: E501
+        """
+        pass
+
+    def test_get_solution_security_users(self):
+        """Test case for get_solution_security_users
+
+        Get the Solution security users list  # noqa: E501
         """
         pass
 
@@ -115,10 +129,24 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_remove_solution_access_control(self):
+        """Test case for remove_solution_access_control
+
+        Remove the specified access from the given Organization Solution  # noqa: E501
+        """
+        pass
+
     def test_update_solution(self):
         """Test case for update_solution
 
         Update a solution  # noqa: E501
+        """
+        pass
+
+    def test_update_solution_access_control(self):
+        """Test case for update_solution_access_control
+
+        Update the specified access to User for a Solution  # noqa: E501
         """
         pass
 

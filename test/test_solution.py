@@ -16,9 +16,11 @@ import cosmotech_api
 from cosmotech_api.model.run_template import RunTemplate
 from cosmotech_api.model.run_template_parameter import RunTemplateParameter
 from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
+from cosmotech_api.model.solution_security import SolutionSecurity
 globals()['RunTemplate'] = RunTemplate
 globals()['RunTemplateParameter'] = RunTemplateParameter
 globals()['RunTemplateParameterGroup'] = RunTemplateParameterGroup
+globals()['SolutionSecurity'] = SolutionSecurity
 from cosmotech_api.model.solution import Solution
 
 

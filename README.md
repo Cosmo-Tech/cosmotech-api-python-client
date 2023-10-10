@@ -165,17 +165,21 @@ Class | Method | HTTP request | Description
 *SolutionApi* | [**add_or_replace_parameter_groups**](docs/SolutionApi.md#add_or_replace_parameter_groups) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Add Parameter Groups. Any item with the same ID will be overwritten
 *SolutionApi* | [**add_or_replace_parameters**](docs/SolutionApi.md#add_or_replace_parameters) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameters | Add Parameters. Any item with the same ID will be overwritten
 *SolutionApi* | [**add_or_replace_run_templates**](docs/SolutionApi.md#add_or_replace_run_templates) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Add Run Templates. Any item with the same ID will be overwritten
+*SolutionApi* | [**add_solution_access_control**](docs/SolutionApi.md#add_solution_access_control) | **POST** /organizations/{organization_id}/solutions/{solution_id}/security/access | Add a control access to the Solution
 *SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 *SolutionApi* | [**delete_solution_run_template**](docs/SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Remove the specified Solution Run Template
 *SolutionApi* | [**download_run_template_handler**](docs/SolutionApi.md#download_run_template_handler) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/download | Download a Run Template step handler zip file
 *SolutionApi* | [**find_all_solutions**](docs/SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 *SolutionApi* | [**find_solution_by_id**](docs/SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
-*SolutionApi* | [**import_solution**](docs/SolutionApi.md#import_solution) | **POST** /organizations/{organization_id}/solutions/import | Import a solution
+*SolutionApi* | [**get_solution_access_control**](docs/SolutionApi.md#get_solution_access_control) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Get a control access for the Solution
+*SolutionApi* | [**get_solution_security_users**](docs/SolutionApi.md#get_solution_security_users) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/users | Get the Solution security users list
 *SolutionApi* | [**remove_all_run_templates**](docs/SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified
 *SolutionApi* | [**remove_all_solution_parameter_groups**](docs/SolutionApi.md#remove_all_solution_parameter_groups) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Remove all Parameter Groups from the Solution specified
 *SolutionApi* | [**remove_all_solution_parameters**](docs/SolutionApi.md#remove_all_solution_parameters) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters | Remove all Parameters from the Solution specified
+*SolutionApi* | [**remove_solution_access_control**](docs/SolutionApi.md#remove_solution_access_control) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Remove the specified access from the given Organization Solution
 *SolutionApi* | [**update_solution**](docs/SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
+*SolutionApi* | [**update_solution_access_control**](docs/SolutionApi.md#update_solution_access_control) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Update the specified access to User for a Solution
 *SolutionApi* | [**update_solution_run_template**](docs/SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update the specified Solution Run Template
 *SolutionApi* | [**upload_run_template_handler**](docs/SolutionApi.md#upload_run_template_handler) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/upload | Upload a Run Template step handler zip file
 *TwingraphApi* | [**batch_query**](docs/TwingraphApi.md#batch_query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
@@ -279,6 +283,9 @@ Class | Method | HTTP request | Description
  - [ScenarioSecurity](docs/ScenarioSecurity.md)
  - [ScenarioValidationStatus](docs/ScenarioValidationStatus.md)
  - [Solution](docs/Solution.md)
+ - [SolutionAccessControl](docs/SolutionAccessControl.md)
+ - [SolutionRole](docs/SolutionRole.md)
+ - [SolutionSecurity](docs/SolutionSecurity.md)
  - [SourceInfo](docs/SourceInfo.md)
  - [TranslatedLabels](docs/TranslatedLabels.md)
  - [TwinGraphBatchResult](docs/TwinGraphBatchResult.md)
