@@ -78,8 +78,6 @@ from cosmotech_api.model.sub_dataset_graph_query import SubDatasetGraphQuery
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult
 from cosmotech_api.model.twin_graph_hash import TwinGraphHash
-from cosmotech_api.model.twin_graph_import import TwinGraphImport
-from cosmotech_api.model.twin_graph_import_info import TwinGraphImportInfo
 from cosmotech_api.model.twin_graph_query import TwinGraphQuery
 from cosmotech_api.model.validator import Validator
 from cosmotech_api.model.validator_run import ValidatorRun

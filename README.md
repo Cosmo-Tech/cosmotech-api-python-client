@@ -94,7 +94,6 @@ Class | Method | HTTP request | Description
 *ConnectorApi* | [**find_all_connectors**](docs/ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
 *ConnectorApi* | [**find_connector_by_id**](docs/ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of a connector
 *ConnectorApi* | [**find_connector_by_name**](docs/ConnectorApi.md#find_connector_by_name) | **GET** /connectors/name/{connector_name} | Get the details of a connector
-*ConnectorApi* | [**import_connector**](docs/ConnectorApi.md#import_connector) | **POST** /connectors/import | Import existing connector
 *ConnectorApi* | [**register_connector**](docs/ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
 *ConnectorApi* | [**unregister_connector**](docs/ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister a connector
 *DatasetApi* | [**add_dataset_access_control**](docs/DatasetApi.md#add_dataset_access_control) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/security/access | Add a control access to the Dataset
@@ -208,7 +207,6 @@ Class | Method | HTTP request | Description
 *TwingraphApi* | [**find_all_twingraphs**](docs/TwingraphApi.md#find_all_twingraphs) | **GET** /organizations/{organization_id}/twingraphs | Return the list of all graphs stored in the organization
 *TwingraphApi* | [**get_entities**](docs/TwingraphApi.md#get_entities) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/entity/{type} | Get entities in a graph instance
 *TwingraphApi* | [**get_graph_meta_data**](docs/TwingraphApi.md#get_graph_meta_data) | **GET** /organizations/{organization_id}/twingraph/{graph_id}/metadata | Return the metaData of the specified graph
-*TwingraphApi* | [**import_graph**](docs/TwingraphApi.md#import_graph) | **POST** /organizations/{organization_id}/twingraph/import | Import a new version of a twin graph
 *TwingraphApi* | [**job_status**](docs/TwingraphApi.md#job_status) | **GET** /organizations/{organization_id}/job/{job_id}/status | Get the status of a job
 *TwingraphApi* | [**query**](docs/TwingraphApi.md#query) | **POST** /organizations/{organization_id}/twingraph/{graph_id}/query | Run a query on a graph instance
 *TwingraphApi* | [**update_entities**](docs/TwingraphApi.md#update_entities) | **PATCH** /organizations/{organization_id}/twingraph/{graph_id}/entity/{type} | Update entities in a graph instance
@@ -314,8 +312,6 @@ Class | Method | HTTP request | Description
  - [TranslatedLabels](docs/TranslatedLabels.md)
  - [TwinGraphBatchResult](docs/TwinGraphBatchResult.md)
  - [TwinGraphHash](docs/TwinGraphHash.md)
- - [TwinGraphImport](docs/TwinGraphImport.md)
- - [TwinGraphImportInfo](docs/TwinGraphImportInfo.md)
  - [TwinGraphQuery](docs/TwinGraphQuery.md)
  - [Validator](docs/Validator.md)
  - [ValidatorRun](docs/ValidatorRun.md)

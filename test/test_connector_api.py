@@ -45,13 +45,6 @@ class TestConnectorApi(unittest.TestCase):
         """
         pass
 
-    def test_import_connector(self):
-        """Test case for import_connector
-
-        Import existing connector  # noqa: E501
-        """
-        pass
-
     def test_register_connector(self):
         """Test case for register_connector
 

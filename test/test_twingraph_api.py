@@ -94,13 +94,6 @@ class TestTwingraphApi(unittest.TestCase):
         """
         pass
 
-    def test_import_graph(self):
-        """Test case for import_graph
-
-        Import a new version of a twin graph  # noqa: E501
-        """
-        pass
-
     def test_job_status(self):
         """Test case for job_status
 
