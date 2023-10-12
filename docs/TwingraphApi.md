@@ -906,7 +906,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             name="name_example",
             location="location_example",
             path="path_example",
-            type="ADT",
         ),
         graph_id="graph_id_example",
         version="version_example",

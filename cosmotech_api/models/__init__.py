@@ -16,10 +16,17 @@ from cosmotech_api.model.connector_parameter_group import ConnectorParameterGrou
 from cosmotech_api.model.container_resource_size_info import ContainerResourceSizeInfo
 from cosmotech_api.model.container_resource_sizing import ContainerResourceSizing
 from cosmotech_api.model.dataset import Dataset
+from cosmotech_api.model.dataset_access_control import DatasetAccessControl
 from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.model.dataset_connector import DatasetConnector
 from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
+from cosmotech_api.model.dataset_role import DatasetRole
 from cosmotech_api.model.dataset_search import DatasetSearch
+from cosmotech_api.model.dataset_security import DatasetSecurity
+from cosmotech_api.model.dataset_source_type import DatasetSourceType
+from cosmotech_api.model.dataset_twin_graph_hash import DatasetTwinGraphHash
+from cosmotech_api.model.dataset_twin_graph_info import DatasetTwinGraphInfo
+from cosmotech_api.model.dataset_twin_graph_query import DatasetTwinGraphQuery
 from cosmotech_api.model.delete_historical_data import DeleteHistoricalData
 from cosmotech_api.model.graph_properties import GraphProperties
 from cosmotech_api.model.organization import Organization
@@ -67,6 +74,7 @@ from cosmotech_api.model.solution_access_control import SolutionAccessControl
 from cosmotech_api.model.solution_role import SolutionRole
 from cosmotech_api.model.solution_security import SolutionSecurity
 from cosmotech_api.model.source_info import SourceInfo
+from cosmotech_api.model.sub_dataset_graph_query import SubDatasetGraphQuery
 from cosmotech_api.model.translated_labels import TranslatedLabels
 from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult
 from cosmotech_api.model.twin_graph_hash import TwinGraphHash
