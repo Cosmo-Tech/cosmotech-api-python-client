@@ -6,30 +6,30 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_dataset_access_control**](DatasetApi.md#add_dataset_access_control) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/security/access | Add a control access to the Dataset
 [**add_or_replace_dataset_compatibility_elements**](DatasetApi.md#add_or_replace_dataset_compatibility_elements) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Add Dataset Compatibility elements.
-[**copy_dataset**](DatasetApi.md#copy_dataset) | **POST** /organizations/{organization_id}/datasets/copy | Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.
+[**copy_dataset**](DatasetApi.md#copy_dataset) | **POST** /organizations/{organization_id}/datasets/copy | Copy a Dataset to another Dataset.
 [**create_dataset**](DatasetApi.md#create_dataset) | **POST** /organizations/{organization_id}/datasets | Create a new Dataset
-[**create_sub_dataset**](DatasetApi.md#create_sub_dataset) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/subdataset | Run a query on a dataset
+[**create_sub_dataset**](DatasetApi.md#create_sub_dataset) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/subdataset | Create a sub-dataset from the dataset in parameter
 [**create_twingraph_entities**](DatasetApi.md#create_twingraph_entities) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Create new entities in a graph instance
 [**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id} | Delete a dataset
 [**delete_twingraph_entities**](DatasetApi.md#delete_twingraph_entities) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Delete entities in a graph instance
-[**download_twingraph**](DatasetApi.md#download_twingraph) | **GET** /organizations/{organization_id}/datasets/twingraph/download/{hash} | Download a graph compressed in a zip file
+[**download_twingraph**](DatasetApi.md#download_twingraph) | **GET** /organizations/{organization_id}/datasets/twingraph/download/{hash} | Download a graph as a zip file
 [**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
 [**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a Dataset
 [**get_dataset_access_control**](DatasetApi.md#get_dataset_access_control) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Get a control access for the Dataset
 [**get_dataset_security_users**](DatasetApi.md#get_dataset_security_users) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/users | Get the Dataset security users list
-[**get_dataset_twingraph_status**](DatasetApi.md#get_dataset_twingraph_status) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/job/{job_id}/status | Get the status of twingraph import
+[**get_dataset_twingraph_status**](DatasetApi.md#get_dataset_twingraph_status) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/job/{job_id}/status | Get the dataset&#39;s refresh job status
 [**get_twingraph_entities**](DatasetApi.md#get_twingraph_entities) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Get entities in a graph instance
-[**refresh_dataset**](DatasetApi.md#refresh_dataset) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/refresh | Refresh dataset
+[**refresh_dataset**](DatasetApi.md#refresh_dataset) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/refresh | Refresh data on dataset from dataset&#39;s source
 [**remove_all_dataset_compatibility_elements**](DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
 [**remove_dataset_access_control**](DatasetApi.md#remove_dataset_access_control) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Remove the specified access from the given Dataset
-[**search_datasets**](DatasetApi.md#search_datasets) | **POST** /organizations/{organization_id}/datasets/search | Search Datasets
+[**search_datasets**](DatasetApi.md#search_datasets) | **POST** /organizations/{organization_id}/datasets/search | Search Datasets by tags
 [**twingraph_batch_query**](DatasetApi.md#twingraph_batch_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
 [**twingraph_batch_update**](DatasetApi.md#twingraph_batch_update) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch | Async batch update by loading a CSV file on a graph instance 
-[**twingraph_query**](DatasetApi.md#twingraph_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/twingraph | Run a query on a graph instance and return the result as a json
+[**twingraph_query**](DatasetApi.md#twingraph_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/twingraph | Return the result of a query made on the graph instance as a json
 [**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
 [**update_dataset_access_control**](DatasetApi.md#update_dataset_access_control) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Update the specified access to User for a Dataset
 [**update_twingraph_entities**](DatasetApi.md#update_twingraph_entities) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Update entities in a graph instance
-[**upload_twingraph**](DatasetApi.md#upload_twingraph) | **POST** /organizations/{organization_id}/datasets/{dataset_id} | Upload Twingraph with ZIP File
+[**upload_twingraph**](DatasetApi.md#upload_twingraph) | **POST** /organizations/{organization_id}/datasets/{dataset_id} | Upload data from zip file to dataset&#39;s twingraph
 
 
 # **add_dataset_access_control**
@@ -207,7 +207,9 @@ Name | Type | Description  | Notes
 # **copy_dataset**
 > DatasetCopyParameters copy_dataset(organization_id, dataset_copy_parameters)
 
-Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.
+Copy a Dataset to another Dataset.
+
+Not implemented!
 
 ### Example
 
@@ -249,7 +251,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Copy a Dataset to another Dataset. Source must have a read capable connector and Target a write capable connector.
+        # Copy a Dataset to another Dataset.
         api_response = api_instance.copy_dataset(organization_id, dataset_copy_parameters)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -409,9 +411,9 @@ Name | Type | Description  | Notes
 # **create_sub_dataset**
 > Dataset create_sub_dataset(organization_id, dataset_id, sub_dataset_graph_query)
 
-Run a query on a dataset
+Create a sub-dataset from the dataset in parameter
 
-Run a query on a dataset
+Create a copy of the dataset using the results of the list of queries given in parameter.
 
 ### Example
 
@@ -454,11 +456,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             "queries_example",
         ],
         main=True,
-    ) # SubDatasetGraphQuery | the query to run
+    ) # SubDatasetGraphQuery | the Cypher query to filter
 
     # example passing only required values which don't have defaults set
     try:
-        # Run a query on a dataset
+        # Create a sub-dataset from the dataset in parameter
         api_response = api_instance.create_sub_dataset(organization_id, dataset_id, sub_dataset_graph_query)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -472,7 +474,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **dataset_id** | **str**| the Dataset identifier |
- **sub_dataset_graph_query** | [**SubDatasetGraphQuery**](SubDatasetGraphQuery.md)| the query to run |
+ **sub_dataset_graph_query** | [**SubDatasetGraphQuery**](SubDatasetGraphQuery.md)| the Cypher query to filter |
 
 ### Return type
 
@@ -752,9 +754,9 @@ void (empty response body)
 # **download_twingraph**
 > file_type download_twingraph(organization_id, hash)
 
-Download a graph compressed in a zip file
+Download a graph as a zip file
 
-Download a graph compressed in a zip file
+Download the compressed graph reference by the hash in a zip file
 
 ### Example
 
@@ -791,7 +793,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Download a graph compressed in a zip file
+        # Download a graph as a zip file
         api_response = api_instance.download_twingraph(organization_id, hash)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1158,9 +1160,9 @@ Name | Type | Description  | Notes
 # **get_dataset_twingraph_status**
 > str get_dataset_twingraph_status(organization_id, dataset_id, job_id)
 
-Get the status of twingraph import
+Get the dataset's refresh job status
 
-Get the status of a twingraph import
+Get the status of the import workflow lauch on the dataset's refresh.
 
 ### Example
 
@@ -1198,7 +1200,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get the status of twingraph import
+        # Get the dataset's refresh job status
         api_response = api_instance.get_dataset_twingraph_status(organization_id, dataset_id, job_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1324,9 +1326,9 @@ Name | Type | Description  | Notes
 # **refresh_dataset**
 > DatasetTwinGraphInfo refresh_dataset(organization_id, dataset_id)
 
-Refresh dataset
+Refresh data on dataset from dataset's source
 
-Refresh ADT, Storage dataset
+Lauch a import from source (ADT or Azure Storage). This replace currently stored data with just extracted data from source.
 
 ### Example
 
@@ -1364,7 +1366,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Refresh dataset
+        # Refresh data on dataset from dataset's source
         api_response = api_instance.refresh_dataset(organization_id, dataset_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1560,7 +1562,7 @@ void (empty response body)
 # **search_datasets**
 > [Dataset] search_datasets(organization_id, dataset_search)
 
-Search Datasets
+Search Datasets by tags
 
 ### Example
 
@@ -1605,7 +1607,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Search Datasets
+        # Search Datasets by tags
         api_response = api_instance.search_datasets(organization_id, dataset_search)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1614,7 +1616,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Search Datasets
+        # Search Datasets by tags
         api_response = api_instance.search_datasets(organization_id, dataset_search, page=page, size=size)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -1832,7 +1834,7 @@ Name | Type | Description  | Notes
 # **twingraph_query**
 > str twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
 
-Run a query on a graph instance and return the result as a json
+Return the result of a query made on the graph instance as a json
 
 Run a query on a graph instance and return the result as a json
 
@@ -1875,7 +1877,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Run a query on a graph instance and return the result as a json
+        # Return the result of a query made on the graph instance as a json
         api_response = api_instance.twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
@@ -2215,9 +2217,9 @@ Name | Type | Description  | Notes
 # **upload_twingraph**
 > upload_twingraph(organization_id, dataset_id, body)
 
-Upload Twingraph with ZIP File
+Upload data from zip file to dataset's twingraph
 
-Upload Twingraph ZIP
+To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * id  those colomns represent * The source of the edge * The target of the edge * The id of the edge  All following columns content are up to you. 
 
 ### Example
 
@@ -2255,7 +2257,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Upload Twingraph with ZIP File
+        # Upload data from zip file to dataset's twingraph
         api_instance.upload_twingraph(organization_id, dataset_id, body)
     except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->upload_twingraph: %s\n" % e)
