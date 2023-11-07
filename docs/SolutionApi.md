@@ -15,11 +15,13 @@ Method | HTTP request | Description
 [**find_all_solutions**](SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 [**find_solution_by_id**](SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 [**get_solution_access_control**](SolutionApi.md#get_solution_access_control) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Get a control access for the Solution
+[**get_solution_security**](SolutionApi.md#get_solution_security) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security | Get the Solution security information
 [**get_solution_security_users**](SolutionApi.md#get_solution_security_users) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/users | Get the Solution security users list
 [**remove_all_run_templates**](SolutionApi.md#remove_all_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Remove all Run Templates from the Solution specified
 [**remove_all_solution_parameter_groups**](SolutionApi.md#remove_all_solution_parameter_groups) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Remove all Parameter Groups from the Solution specified
 [**remove_all_solution_parameters**](SolutionApi.md#remove_all_solution_parameters) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters | Remove all Parameters from the Solution specified
 [**remove_solution_access_control**](SolutionApi.md#remove_solution_access_control) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Remove the specified access from the given Organization Solution
+[**set_solution_default_security**](SolutionApi.md#set_solution_default_security) | **POST** /organizations/{organization_id}/solutions/{solution_id}/security/default | Set the Solution default security
 [**update_solution**](SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
 [**update_solution_access_control**](SolutionApi.md#update_solution_access_control) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Update the specified access to User for a Solution
 [**update_solution_run_template**](SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update the specified Solution Run Template
@@ -1097,6 +1099,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_solution_security**
+> SolutionSecurity get_solution_security(organization_id, solution_id)
+
+Get the Solution security information
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.solution_security import SolutionSecurity
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get the Solution security information
+        api_response = api_instance.get_solution_security(organization_id, solution_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->get_solution_security: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+
+### Return type
+
+[**SolutionSecurity**](SolutionSecurity.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Solution security |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_solution_security_users**
 > [str] get_solution_security_users(organization_id, solution_id)
 
@@ -1482,6 +1563,90 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
 **404** | The Solution or the user specified is unknown or you don&#39;t have access to them |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_solution_default_security**
+> SolutionSecurity set_solution_default_security(organization_id, solution_id, solution_role)
+
+Set the Solution default security
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import solution_api
+from cosmotech_api.model.solution_role import SolutionRole
+from cosmotech_api.model.solution_security import SolutionSecurity
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solution_api.SolutionApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    solution_id = "solution_id_example" # str | the Solution identifier
+    solution_role = SolutionRole(
+        role="role_example",
+    ) # SolutionRole | the new Solution default security.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Set the Solution default security
+        api_response = api_instance.set_solution_default_security(organization_id, solution_id, solution_role)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling SolutionApi->set_solution_default_security: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **solution_id** | **str**| the Solution identifier |
+ **solution_role** | [**SolutionRole**](SolutionRole.md)| the new Solution default security. |
+
+### Return type
+
+[**SolutionSecurity**](SolutionSecurity.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | The Solution default visibility |  -  |
+**404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

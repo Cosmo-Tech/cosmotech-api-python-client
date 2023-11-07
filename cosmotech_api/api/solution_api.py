@@ -29,6 +29,7 @@ from cosmotech_api.model.run_template_parameter_group import RunTemplateParamete
 from cosmotech_api.model.solution import Solution
 from cosmotech_api.model.solution_access_control import SolutionAccessControl
 from cosmotech_api.model.solution_role import SolutionRole
+from cosmotech_api.model.solution_security import SolutionSecurity
 
 
 class SolutionApi(object):
@@ -724,6 +725,63 @@ class SolutionApi(object):
             },
             api_client=api_client
         )
+        self.get_solution_security_endpoint = _Endpoint(
+            settings={
+                'response_type': (SolutionSecurity,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/solutions/{solution_id}/security',
+                'operation_id': 'get_solution_security',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'solution_id',
+                ],
+                'required': [
+                    'organization_id',
+                    'solution_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'solution_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'solution_id': 'solution_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'solution_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_solution_security_users_endpoint = _Endpoint(
             settings={
                 'response_type': ([str],),
@@ -1004,6 +1062,71 @@ class SolutionApi(object):
             headers_map={
                 'accept': [],
                 'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.set_solution_default_security_endpoint = _Endpoint(
+            settings={
+                'response_type': (SolutionSecurity,),
+                'auth': [
+                    'oAuth2AuthCode'
+                ],
+                'endpoint_path': '/organizations/{organization_id}/solutions/{solution_id}/security/default',
+                'operation_id': 'set_solution_default_security',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'organization_id',
+                    'solution_id',
+                    'solution_role',
+                ],
+                'required': [
+                    'organization_id',
+                    'solution_id',
+                    'solution_role',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'organization_id':
+                        (str,),
+                    'solution_id':
+                        (str,),
+                    'solution_role':
+                        (SolutionRole,),
+                },
+                'attribute_map': {
+                    'organization_id': 'organization_id',
+                    'solution_id': 'solution_id',
+                },
+                'location_map': {
+                    'organization_id': 'path',
+                    'solution_id': 'path',
+                    'solution_role': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json',
+                    'application/yaml'
+                ]
             },
             api_client=api_client
         )
@@ -2214,6 +2337,87 @@ class SolutionApi(object):
             identity_id
         return self.get_solution_access_control_endpoint.call_with_http_info(**kwargs)
 
+    def get_solution_security(
+        self,
+        organization_id,
+        solution_id,
+        **kwargs
+    ):
+        """Get the Solution security information  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_solution_security(organization_id, solution_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            solution_id (str): the Solution identifier
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SolutionSecurity
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['solution_id'] = \
+            solution_id
+        return self.get_solution_security_endpoint.call_with_http_info(**kwargs)
+
     def get_solution_security_users(
         self,
         organization_id,
@@ -2622,6 +2826,91 @@ class SolutionApi(object):
         kwargs['identity_id'] = \
             identity_id
         return self.remove_solution_access_control_endpoint.call_with_http_info(**kwargs)
+
+    def set_solution_default_security(
+        self,
+        organization_id,
+        solution_id,
+        solution_role,
+        **kwargs
+    ):
+        """Set the Solution default security  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.set_solution_default_security(organization_id, solution_id, solution_role, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            organization_id (str): the Organization identifier
+            solution_id (str): the Solution identifier
+            solution_role (SolutionRole): the new Solution default security.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SolutionSecurity
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['organization_id'] = \
+            organization_id
+        kwargs['solution_id'] = \
+            solution_id
+        kwargs['solution_role'] = \
+            solution_role
+        return self.set_solution_default_security_endpoint.call_with_http_info(**kwargs)
 
     def update_solution(
         self,

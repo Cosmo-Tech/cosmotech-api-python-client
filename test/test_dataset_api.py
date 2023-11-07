@@ -108,6 +108,13 @@ class TestDatasetApi(unittest.TestCase):
         """
         pass
 
+    def test_get_dataset_security(self):
+        """Test case for get_dataset_security
+
+        Get the Dataset security information  # noqa: E501
+        """
+        pass
+
     def test_get_dataset_security_users(self):
         """Test case for get_dataset_security_users
 
@@ -154,6 +161,13 @@ class TestDatasetApi(unittest.TestCase):
         """Test case for search_datasets
 
         Search Datasets by tags  # noqa: E501
+        """
+        pass
+
+    def test_set_dataset_default_security(self):
+        """Test case for set_dataset_default_security
+
+        Set the Dataset default security  # noqa: E501
         """
         pass
 

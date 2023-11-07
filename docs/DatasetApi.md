@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**find_all_datasets**](DatasetApi.md#find_all_datasets) | **GET** /organizations/{organization_id}/datasets | List all Datasets
 [**find_dataset_by_id**](DatasetApi.md#find_dataset_by_id) | **GET** /organizations/{organization_id}/datasets/{dataset_id} | Get the details of a Dataset
 [**get_dataset_access_control**](DatasetApi.md#get_dataset_access_control) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Get a control access for the Dataset
+[**get_dataset_security**](DatasetApi.md#get_dataset_security) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security | Get the Dataset security information
 [**get_dataset_security_users**](DatasetApi.md#get_dataset_security_users) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/users | Get the Dataset security users list
 [**get_dataset_twingraph_status**](DatasetApi.md#get_dataset_twingraph_status) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/job/{job_id}/status | Get the dataset&#39;s refresh job status
 [**get_twingraph_entities**](DatasetApi.md#get_twingraph_entities) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Get entities in a graph instance
@@ -23,6 +24,7 @@ Method | HTTP request | Description
 [**remove_all_dataset_compatibility_elements**](DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
 [**remove_dataset_access_control**](DatasetApi.md#remove_dataset_access_control) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Remove the specified access from the given Dataset
 [**search_datasets**](DatasetApi.md#search_datasets) | **POST** /organizations/{organization_id}/datasets/search | Search Datasets by tags
+[**set_dataset_default_security**](DatasetApi.md#set_dataset_default_security) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/security/default | Set the Dataset default security
 [**twingraph_batch_query**](DatasetApi.md#twingraph_batch_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
 [**twingraph_batch_update**](DatasetApi.md#twingraph_batch_update) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch | Async batch update by loading a CSV file on a graph instance 
 [**twingraph_query**](DatasetApi.md#twingraph_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/twingraph | Return the result of a query made on the graph instance as a json
@@ -1079,6 +1081,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_dataset_security**
+> DatasetSecurity get_dataset_security(organization_id, dataset_id)
+
+Get the Dataset security information
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_security import DatasetSecurity
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get the Dataset security information
+        api_response = api_instance.get_dataset_security(organization_id, dataset_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->get_dataset_security: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+
+### Return type
+
+[**DatasetSecurity**](DatasetSecurity.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Dataset security |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_dataset_security_users**
 > [str] get_dataset_security_users(organization_id, dataset_id)
 
@@ -1652,6 +1733,90 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the list of Datasets |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_dataset_default_security**
+> DatasetSecurity set_dataset_default_security(organization_id, dataset_id, dataset_role)
+
+Set the Dataset default security
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_role import DatasetRole
+from cosmotech_api.model.dataset_security import DatasetSecurity
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset_role = DatasetRole(
+        role="role_example",
+    ) # DatasetRole | the new Dataset default security.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Set the Dataset default security
+        api_response = api_instance.set_dataset_default_security(organization_id, dataset_id, dataset_role)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->set_dataset_default_security: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset_role** | [**DatasetRole**](DatasetRole.md)| the new Dataset default security. |
+
+### Return type
+
+[**DatasetSecurity**](DatasetSecurity.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | The Dataset default visibility |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

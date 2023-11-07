@@ -101,6 +101,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_get_solution_security(self):
+        """Test case for get_solution_security
+
+        Get the Solution security information  # noqa: E501
+        """
+        pass
+
     def test_get_solution_security_users(self):
         """Test case for get_solution_security_users
 
@@ -133,6 +140,13 @@ class TestSolutionApi(unittest.TestCase):
         """Test case for remove_solution_access_control
 
         Remove the specified access from the given Organization Solution  # noqa: E501
+        """
+        pass
+
+    def test_set_solution_default_security(self):
+        """Test case for set_solution_default_security
+
+        Set the Solution default security  # noqa: E501
         """
         pass
 
