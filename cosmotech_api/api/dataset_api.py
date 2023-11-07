@@ -922,7 +922,7 @@ class DatasetApi(object):
                 'auth': [
                     'oAuth2AuthCode'
                 ],
-                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}/job/{job_id}/status',
+                'endpoint_path': '/organizations/{organization_id}/datasets/{dataset_id}/status',
                 'operation_id': 'get_dataset_twingraph_status',
                 'http_method': 'GET',
                 'servers': None,
@@ -931,12 +931,10 @@ class DatasetApi(object):
                 'all': [
                     'organization_id',
                     'dataset_id',
-                    'job_id',
                 ],
                 'required': [
                     'organization_id',
                     'dataset_id',
-                    'job_id',
                 ],
                 'nullable': [
                 ],
@@ -955,18 +953,14 @@ class DatasetApi(object):
                         (str,),
                     'dataset_id':
                         (str,),
-                    'job_id':
-                        (str,),
                 },
                 'attribute_map': {
                     'organization_id': 'organization_id',
                     'dataset_id': 'dataset_id',
-                    'job_id': 'job_id',
                 },
                 'location_map': {
                     'organization_id': 'path',
                     'dataset_id': 'path',
-                    'job_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -3009,7 +3003,6 @@ class DatasetApi(object):
         self,
         organization_id,
         dataset_id,
-        job_id,
         **kwargs
     ):
         """Get the dataset's refresh job status  # noqa: E501
@@ -3018,13 +3011,12 @@ class DatasetApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_dataset_twingraph_status(organization_id, dataset_id, job_id, async_req=True)
+        >>> thread = api.get_dataset_twingraph_status(organization_id, dataset_id, async_req=True)
         >>> result = thread.get()
 
         Args:
             organization_id (str): the Organization identifier
             dataset_id (str): the dataset identifier
-            job_id (str): the job identifier
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -3087,8 +3079,6 @@ class DatasetApi(object):
             organization_id
         kwargs['dataset_id'] = \
             dataset_id
-        kwargs['job_id'] = \
-            job_id
         return self.get_dataset_twingraph_status_endpoint.call_with_http_info(**kwargs)
 
     def get_twingraph_entities(

@@ -85,6 +85,7 @@ class SourceInfo(ModelNormal):
             'location': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'path': (str,),  # noqa: E501
+            'job_id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -96,6 +97,7 @@ class SourceInfo(ModelNormal):
         'location': 'location',  # noqa: E501
         'name': 'name',  # noqa: E501
         'path': 'path',  # noqa: E501
+        'job_id': 'jobId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -144,6 +146,7 @@ class SourceInfo(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): the source name containing the files to import. [optional]  # noqa: E501
             path (str): the source location containing the files to import. [optional]  # noqa: E501
+            job_id (str): indicate the last import jobId. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -231,6 +234,7 @@ class SourceInfo(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): the source name containing the files to import. [optional]  # noqa: E501
             path (str): the source location containing the files to import. [optional]  # noqa: E501
+            job_id (str): indicate the last import jobId. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

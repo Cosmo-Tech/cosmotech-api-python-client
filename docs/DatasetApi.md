@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**get_dataset_access_control**](DatasetApi.md#get_dataset_access_control) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Get a control access for the Dataset
 [**get_dataset_security**](DatasetApi.md#get_dataset_security) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security | Get the Dataset security information
 [**get_dataset_security_users**](DatasetApi.md#get_dataset_security_users) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/users | Get the Dataset security users list
-[**get_dataset_twingraph_status**](DatasetApi.md#get_dataset_twingraph_status) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/job/{job_id}/status | Get the dataset&#39;s refresh job status
+[**get_dataset_twingraph_status**](DatasetApi.md#get_dataset_twingraph_status) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/status | Get the dataset&#39;s refresh job status
 [**get_twingraph_entities**](DatasetApi.md#get_twingraph_entities) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Get entities in a graph instance
 [**refresh_dataset**](DatasetApi.md#refresh_dataset) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/refresh | Refresh data on dataset from dataset&#39;s source
 [**remove_all_dataset_compatibility_elements**](DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
@@ -340,6 +340,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             name="name_example",
             location="location_example",
             path="path_example",
+            job_id="job_id_example",
         ),
         status="DRAFT",
         queries=[
@@ -1239,7 +1240,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dataset_twingraph_status**
-> str get_dataset_twingraph_status(organization_id, dataset_id, job_id)
+> str get_dataset_twingraph_status(organization_id, dataset_id)
 
 Get the dataset's refresh job status
 
@@ -1277,12 +1278,11 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = dataset_api.DatasetApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     dataset_id = "dataset_id_example" # str | the dataset identifier
-    job_id = "job_id_example" # str | the job identifier
 
     # example passing only required values which don't have defaults set
     try:
         # Get the dataset's refresh job status
-        api_response = api_instance.get_dataset_twingraph_status(organization_id, dataset_id, job_id)
+        api_response = api_instance.get_dataset_twingraph_status(organization_id, dataset_id)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->get_dataset_twingraph_status: %s\n" % e)
@@ -1295,7 +1295,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **dataset_id** | **str**| the dataset identifier |
- **job_id** | **str**| the job identifier |
 
 ### Return type
 
@@ -2129,6 +2128,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             name="name_example",
             location="location_example",
             path="path_example",
+            job_id="job_id_example",
         ),
         status="DRAFT",
         queries=[
