@@ -2475,7 +2475,7 @@ class WorkspaceApi(object):
         Args:
             organization_id (str): the Organization identifier
             workspace_id (str): the Workspace identifier
-            workspace_role (WorkspaceRole): the new Workspace default security.
+            workspace_role (WorkspaceRole): This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status

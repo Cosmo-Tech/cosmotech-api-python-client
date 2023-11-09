@@ -3520,7 +3520,7 @@ class DatasetApi(object):
         Args:
             organization_id (str): the Organization identifier
             dataset_id (str): the Dataset identifier
-            dataset_role (DatasetRole): the new Dataset default security.
+            dataset_role (DatasetRole): This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status

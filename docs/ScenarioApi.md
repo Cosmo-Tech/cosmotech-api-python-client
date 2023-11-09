@@ -1672,7 +1672,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     scenario_id = "scenario_id_example" # str | the Scenario identifier
     scenario_role = ScenarioRole(
         role="role_example",
-    ) # ScenarioRole | the new Scenario default security.
+    ) # ScenarioRole | This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario.
 
     # example passing only required values which don't have defaults set
     try:
@@ -1691,7 +1691,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
  **scenario_id** | **str**| the Scenario identifier |
- **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| the new Scenario default security. |
+ **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario. |
 
 ### Return type
 

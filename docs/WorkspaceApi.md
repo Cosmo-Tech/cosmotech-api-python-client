@@ -1297,7 +1297,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     workspace_id = "workspace_id_example" # str | the Workspace identifier
     workspace_role = WorkspaceRole(
         role="role_example",
-    ) # WorkspaceRole | the new Workspace default security.
+    ) # WorkspaceRole | This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.
 
     # example passing only required values which don't have defaults set
     try:
@@ -1315,7 +1315,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
- **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| the new Workspace default security. |
+ **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. |
 
 ### Return type
 

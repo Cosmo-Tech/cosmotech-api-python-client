@@ -3156,7 +3156,7 @@ class ScenarioApi(object):
             organization_id (str): the Organization identifier
             workspace_id (str): the Workspace identifier
             scenario_id (str): the Scenario identifier
-            scenario_role (ScenarioRole): the new Scenario default security.
+            scenario_role (ScenarioRole): This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario.
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status

@@ -2845,7 +2845,7 @@ class SolutionApi(object):
         Args:
             organization_id (str): the Organization identifier
             solution_id (str): the Solution identifier
-            solution_role (SolutionRole): the new Solution default security.
+            solution_role (SolutionRole): This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status

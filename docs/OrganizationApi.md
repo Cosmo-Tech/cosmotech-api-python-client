@@ -856,7 +856,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     organization_role = OrganizationRole(
         role="role_example",
-    ) # OrganizationRole | the new Organization default security.
+    ) # OrganizationRole | This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.
 
     # example passing only required values which don't have defaults set
     try:
@@ -873,7 +873,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
- **organization_role** | [**OrganizationRole**](OrganizationRole.md)| the new Organization default security. |
+ **organization_role** | [**OrganizationRole**](OrganizationRole.md)| This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. |
 
 ### Return type
 

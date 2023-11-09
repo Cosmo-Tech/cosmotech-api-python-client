@@ -1776,7 +1776,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     dataset_id = "dataset_id_example" # str | the Dataset identifier
     dataset_role = DatasetRole(
         role="role_example",
-    ) # DatasetRole | the new Dataset default security.
+    ) # DatasetRole | This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.
 
     # example passing only required values which don't have defaults set
     try:
@@ -1794,7 +1794,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **dataset_id** | **str**| the Dataset identifier |
- **dataset_role** | [**DatasetRole**](DatasetRole.md)| the new Dataset default security. |
+ **dataset_role** | [**DatasetRole**](DatasetRole.md)| This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. |
 
 ### Return type
 

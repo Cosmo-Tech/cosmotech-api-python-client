@@ -1775,7 +1775,7 @@ class OrganizationApi(object):
 
         Args:
             organization_id (str): the Organization identifier
-            organization_role (OrganizationRole): the new Organization default security.
+            organization_role (OrganizationRole): This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status

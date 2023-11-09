@@ -1607,7 +1607,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     solution_id = "solution_id_example" # str | the Solution identifier
     solution_role = SolutionRole(
         role="role_example",
-    ) # SolutionRole | the new Solution default security.
+    ) # SolutionRole | This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.
 
     # example passing only required values which don't have defaults set
     try:
@@ -1625,7 +1625,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **solution_id** | **str**| the Solution identifier |
- **solution_role** | [**SolutionRole**](SolutionRole.md)| the new Solution default security. |
+ **solution_role** | [**SolutionRole**](SolutionRole.md)| This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. |
 
 ### Return type
 
