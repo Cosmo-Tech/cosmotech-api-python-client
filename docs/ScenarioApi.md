@@ -1788,7 +1788,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         root_last_run=None,
         validation_status=None,
         security=None,
-    ) # Scenario | the new Scenario details.
+    ) # Scenario | the new Scenario details. This endpoint can't be used to update security
 
     # example passing only required values which don't have defaults set
     try:
@@ -1807,7 +1807,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
  **scenario_id** | **str**| the Scenario identifier |
- **scenario** | [**Scenario**](Scenario.md)| the new Scenario details. |
+ **scenario** | [**Scenario**](Scenario.md)| the new Scenario details. This endpoint can&#39;t be used to update security |
 
 ### Return type
 

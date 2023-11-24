@@ -1405,7 +1405,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         send_scenario_run_to_event_hub=True,
         send_scenario_metadata_to_event_hub=False,
         security=None,
-    ) # Workspace | The new Workspace details.
+    ) # Workspace | The new Workspace details. This endpoint can't be used to update security
 
     # example passing only required values which don't have defaults set
     try:
@@ -1423,7 +1423,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **workspace_id** | **str**| the Workspace identifier |
- **workspace** | [**Workspace**](Workspace.md)| The new Workspace details. |
+ **workspace** | [**Workspace**](Workspace.md)| The new Workspace details. This endpoint can&#39;t be used to update security |
 
 ### Return type
 

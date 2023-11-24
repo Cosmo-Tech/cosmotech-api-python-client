@@ -2157,7 +2157,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             ),
         ],
         security=None,
-    ) # Dataset | the new Dataset details.
+    ) # Dataset | the new Dataset details. This endpoint can't be used to update security
 
     # example passing only required values which don't have defaults set
     try:
@@ -2175,7 +2175,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **dataset_id** | **str**| the Dataset identifier |
- **dataset** | [**Dataset**](Dataset.md)| the new Dataset details. |
+ **dataset** | [**Dataset**](Dataset.md)| the new Dataset details. This endpoint can&#39;t be used to update security |
 
 ### Return type
 

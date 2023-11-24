@@ -1783,7 +1783,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             ),
         ],
         security=None,
-    ) # Solution | the new Solution details.
+    ) # Solution | the new Solution details. This endpoint can't be used to update security
 
     # example passing only required values which don't have defaults set
     try:
@@ -1801,7 +1801,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier |
  **solution_id** | **str**| the Solution identifier |
- **solution** | [**Solution**](Solution.md)| the new Solution details. |
+ **solution** | [**Solution**](Solution.md)| the new Solution details. This endpoint can&#39;t be used to update security |
 
 ### Return type
 
