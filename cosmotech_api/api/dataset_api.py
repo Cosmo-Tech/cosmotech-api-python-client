@@ -3179,7 +3179,7 @@ class DatasetApi(object):
     ):
         """Refresh data on dataset from dataset's source  # noqa: E501
 
-        Lauch a import from source (ADT or Azure Storage). This replace currently stored data with just extracted data from source.  # noqa: E501
+        Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin       Azure storage      Local File (import a new file)  During refresh, datas are overwritten   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

@@ -1408,7 +1408,7 @@ Name | Type | Description  | Notes
 
 Refresh data on dataset from dataset's source
 
-Lauch a import from source (ADT or Azure Storage). This replace currently stored data with just extracted data from source.
+Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin       Azure storage      Local File (import a new file)  During refresh, datas are overwritten 
 
 ### Example
 
