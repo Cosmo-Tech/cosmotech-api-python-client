@@ -260,6 +260,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         RunTemplate(
             id="id_example",
             name="name_example",
+            labels=TranslatedLabels(
+                key="key_example",
+            ),
             description="description_example",
             csm_simulation="csm_simulation_example",
             tags=[
@@ -518,6 +521,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             RunTemplate(
                 id="id_example",
                 name="name_example",
+                labels=TranslatedLabels(
+                    key="key_example",
+                ),
                 description="description_example",
                 csm_simulation="csm_simulation_example",
                 tags=[
@@ -1732,6 +1738,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
             RunTemplate(
                 id="id_example",
                 name="name_example",
+                labels=TranslatedLabels(
+                    key="key_example",
+                ),
                 description="description_example",
                 csm_simulation="csm_simulation_example",
                 tags=[
@@ -1955,6 +1964,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     run_template = RunTemplate(
         id="id_example",
         name="name_example",
+        labels=TranslatedLabels(
+            key="key_example",
+        ),
         description="description_example",
         csm_simulation="csm_simulation_example",
         tags=[
