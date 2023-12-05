@@ -106,6 +106,7 @@ class Dataset(ModelNormal):
             'name': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'owner_id': (str,),  # noqa: E501
+            'owner_name': (str,),  # noqa: E501
             'organization_id': (str,),  # noqa: E501
             'parent_id': (str,),  # noqa: E501
             'twingraph_id': (str,),  # noqa: E501
@@ -134,6 +135,7 @@ class Dataset(ModelNormal):
         'name': 'name',  # noqa: E501
         'description': 'description',  # noqa: E501
         'owner_id': 'ownerId',  # noqa: E501
+        'owner_name': 'ownerName',  # noqa: E501
         'organization_id': 'organizationId',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
         'twingraph_id': 'twingraphId',  # noqa: E501
@@ -155,6 +157,7 @@ class Dataset(ModelNormal):
     read_only_vars = {
         'id',  # noqa: E501
         'owner_id',  # noqa: E501
+        'owner_name',  # noqa: E501
         'organization_id',  # noqa: E501
         'creation_date',  # noqa: E501
         'refresh_date',  # noqa: E501
@@ -202,6 +205,7 @@ class Dataset(ModelNormal):
             name (str): the Dataset name. [optional]  # noqa: E501
             description (str): the Dataset description. [optional]  # noqa: E501
             owner_id (str): the User id which own this Dataset. [optional]  # noqa: E501
+            owner_name (str): the name of the owner. [optional]  # noqa: E501
             organization_id (str): the Organization Id related to this Dataset. [optional]  # noqa: E501
             parent_id (str): the Dataset id which is the parent of this Dataset. [optional]  # noqa: E501
             twingraph_id (str): the twin graph id. [optional]  # noqa: E501
@@ -303,6 +307,7 @@ class Dataset(ModelNormal):
             name (str): the Dataset name. [optional]  # noqa: E501
             description (str): the Dataset description. [optional]  # noqa: E501
             owner_id (str): the User id which own this Dataset. [optional]  # noqa: E501
+            owner_name (str): the name of the owner. [optional]  # noqa: E501
             organization_id (str): the Organization Id related to this Dataset. [optional]  # noqa: E501
             parent_id (str): the Dataset id which is the parent of this Dataset. [optional]  # noqa: E501
             twingraph_id (str): the twin graph id. [optional]  # noqa: E501
