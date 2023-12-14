@@ -28,6 +28,8 @@ from cosmotech_api.model.dataset_twin_graph_hash import DatasetTwinGraphHash
 from cosmotech_api.model.dataset_twin_graph_info import DatasetTwinGraphInfo
 from cosmotech_api.model.dataset_twin_graph_query import DatasetTwinGraphQuery
 from cosmotech_api.model.delete_historical_data import DeleteHistoricalData
+from cosmotech_api.model.file_upload_metadata import FileUploadMetadata
+from cosmotech_api.model.file_upload_validation import FileUploadValidation
 from cosmotech_api.model.graph_properties import GraphProperties
 from cosmotech_api.model.organization import Organization
 from cosmotech_api.model.organization_access_control import OrganizationAccessControl

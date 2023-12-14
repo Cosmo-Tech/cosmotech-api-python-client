@@ -2462,7 +2462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_twingraph**
-> upload_twingraph(organization_id, dataset_id, body)
+> FileUploadValidation upload_twingraph(organization_id, dataset_id, body)
 
 Upload data from zip file to dataset's twingraph
 
@@ -2476,6 +2476,7 @@ To create a new graph from flat files,  you need to create a Zip file. This Zip 
 import time
 import cosmotech_api
 from cosmotech_api.api import dataset_api
+from cosmotech_api.model.file_upload_validation import FileUploadValidation
 from pprint import pprint
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -2505,7 +2506,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Upload data from zip file to dataset's twingraph
-        api_instance.upload_twingraph(organization_id, dataset_id, body)
+        api_response = api_instance.upload_twingraph(organization_id, dataset_id, body)
+        pprint(api_response)
     except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->upload_twingraph: %s\n" % e)
 ```
@@ -2521,7 +2523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**FileUploadValidation**](FileUploadValidation.md)
 
 ### Authorization
 
@@ -2530,14 +2532,14 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/octet-stream
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Twingraph file upload started |  -  |
+**202** | File uploaded successfully. Processing... |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
