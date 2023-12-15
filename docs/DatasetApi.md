@@ -1246,7 +1246,7 @@ Name | Type | Description  | Notes
 
 Get the dataset's refresh job status
 
-Get the status of the import workflow lauch on the dataset's refresh.
+Get the status of the import workflow lauch on the dataset's refresh. This endpoint needs to be called to update a dataset IngestionStatus or TwincacheStatus
 
 ### Example
 
