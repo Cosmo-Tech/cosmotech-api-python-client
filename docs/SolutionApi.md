@@ -775,7 +775,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_run_template_handler**
-> file_type download_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
+> str download_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
 
 Download a Run Template step handler zip file
 
@@ -836,7 +836,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file_type**
+**str**
 
 ### Authorization
 
@@ -852,7 +852,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the run template handle file as a resource |  -  |
+**200** | the run template handle file as a resource |  * Content-Disposition - Run Template step handler zip file <br>  |
 **404** | the Run Template Handler file specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

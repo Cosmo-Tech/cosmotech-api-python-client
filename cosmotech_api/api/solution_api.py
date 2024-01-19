@@ -477,7 +477,7 @@ class SolutionApi(object):
         )
         self.download_run_template_handler_endpoint = _Endpoint(
             settings={
-                'response_type': (file_type,),
+                'response_type': (str,),
                 'auth': [
                     'oAuth2AuthCode'
                 ],
@@ -2054,7 +2054,7 @@ class SolutionApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            file_type
+            str
                 If the method is called asynchronously, returns the request
                 thread.
         """
