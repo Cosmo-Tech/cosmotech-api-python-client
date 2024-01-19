@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**get_dataset_security_users**](DatasetApi.md#get_dataset_security_users) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/security/users | Get the Dataset security users list
 [**get_dataset_twingraph_status**](DatasetApi.md#get_dataset_twingraph_status) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/status | Get the dataset&#39;s refresh job status
 [**get_twingraph_entities**](DatasetApi.md#get_twingraph_entities) | **GET** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Get entities in a graph instance
+[**link_workspace**](DatasetApi.md#link_workspace) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/link | 
 [**refresh_dataset**](DatasetApi.md#refresh_dataset) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/refresh | Refresh data on dataset from dataset&#39;s source
 [**remove_all_dataset_compatibility_elements**](DatasetApi.md#remove_all_dataset_compatibility_elements) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/compatibility | Remove all Dataset Compatibility elements from the Dataset specified
 [**remove_dataset_access_control**](DatasetApi.md#remove_dataset_access_control) | **DELETE** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Remove the specified access from the given Dataset
@@ -29,6 +30,7 @@ Method | HTTP request | Description
 [**twingraph_batch_query**](DatasetApi.md#twingraph_batch_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
 [**twingraph_batch_update**](DatasetApi.md#twingraph_batch_update) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch | Async batch update by loading a CSV file on a graph instance 
 [**twingraph_query**](DatasetApi.md#twingraph_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/twingraph | Return the result of a query made on the graph instance as a json
+[**unlink_workspace**](DatasetApi.md#unlink_workspace) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/unlink | 
 [**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
 [**update_dataset_access_control**](DatasetApi.md#update_dataset_access_control) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Update the specified access to User for a Dataset
 [**update_twingraph_entities**](DatasetApi.md#update_twingraph_entities) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Update entities in a graph instance
@@ -334,6 +336,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         name="name_example",
         description="description_example",
         parent_id="parent_id_example",
+        linked_workspace_id_list=[
+            "linked_workspace_id_list_example",
+        ],
         twingraph_id="twingraph_id_example",
         main=True,
         source_type=DatasetSourceType("ADT"),
@@ -1405,6 +1410,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **link_workspace**
+> Dataset link_workspace(organization_id, dataset_id, workspace_id)
+
+
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    workspace_id = "workspaceId_example" # str | workspace id to be linked to
+
+    # example passing only required values which don't have defaults set
+    try:
+        api_response = api_instance.link_workspace(organization_id, dataset_id, workspace_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->link_workspace: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **workspace_id** | **str**| workspace id to be linked to |
+
+### Return type
+
+[**Dataset**](Dataset.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the dataset details |  -  |
+**400** | Bad request |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **refresh_dataset**
 > DatasetTwinGraphInfo refresh_dataset(organization_id, dataset_id)
 
@@ -2160,6 +2246,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **unlink_workspace**
+> Dataset unlink_workspace(organization_id, dataset_id, workspace_id)
+
+
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    workspace_id = "workspaceId_example" # str | workspace id to be linked to
+
+    # example passing only required values which don't have defaults set
+    try:
+        api_response = api_instance.unlink_workspace(organization_id, dataset_id, workspace_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->unlink_workspace: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **workspace_id** | **str**| workspace id to be linked to |
+
+### Return type
+
+[**Dataset**](Dataset.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the dataset details |  -  |
+**400** | Bad request |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_dataset**
 > Dataset update_dataset(organization_id, dataset_id, dataset)
 
@@ -2202,6 +2369,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         name="name_example",
         description="description_example",
         parent_id="parent_id_example",
+        linked_workspace_id_list=[
+            "linked_workspace_id_list_example",
+        ],
         twingraph_id="twingraph_id_example",
         main=True,
         source_type=DatasetSourceType("ADT"),

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **owner_name** | **str** | the name of the owner | [optional] [readonly] 
 **organization_id** | **str** | the Organization Id related to this Dataset | [optional] [readonly] 
 **parent_id** | **str** | the Dataset id which is the parent of this Dataset | [optional] 
+**linked_workspace_id_list** | **[str]** | list of workspace linked to this dataset | [optional] 
 **twingraph_id** | **str** | the twin graph id | [optional] 
 **main** | **bool** | is this the main dataset | [optional] 
 **creation_date** | **int** | the Dataset creation date | [optional] [readonly] 

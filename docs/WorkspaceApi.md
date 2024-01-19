@@ -18,8 +18,10 @@ Method | HTTP request | Description
 [**get_workspace_permissions**](WorkspaceApi.md#get_workspace_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role} | Get the Workspace permission by given role
 [**get_workspace_security**](WorkspaceApi.md#get_workspace_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security | Get the Workspace security information
 [**get_workspace_security_users**](WorkspaceApi.md#get_workspace_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/users | Get the Workspace security users list
+[**link_dataset**](WorkspaceApi.md#link_dataset) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/link | 
 [**remove_workspace_access_control**](WorkspaceApi.md#remove_workspace_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Remove the specified access from the given Organization Workspace
 [**set_workspace_default_security**](WorkspaceApi.md#set_workspace_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/default | Set the Workspace default security
+[**unlink_dataset**](WorkspaceApi.md#unlink_dataset) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/unlink | 
 [**update_workspace**](WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
 [**update_workspace_access_control**](WorkspaceApi.md#update_workspace_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Update the specified access to User for a Workspace
 [**upload_workspace_file**](WorkspaceApi.md#upload_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
@@ -229,10 +231,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = workspace_api.WorkspaceApi(api_client)
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace = Workspace(
-        key="key_example",
-        name="name_example",
+        key="MyKey",
+        name="FranceOffice",
         description="description_example",
-        version="version_example",
+        linked_dataset_id_list=[
+            "linked_dataset_id_list_example",
+        ],
+        version="1.0.0",
         tags=[
             "tags_example",
         ],
@@ -254,6 +259,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         dedicated_event_hub_authentication_strategy="dedicated_event_hub_authentication_strategy_example",
         send_scenario_run_to_event_hub=True,
         send_scenario_metadata_to_event_hub=False,
+        dataset_copy=True,
         security=None,
     ) # Workspace | the Workspace to create
 
@@ -1177,6 +1183,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **link_dataset**
+> Workspace link_dataset(organization_id, workspace_id, dataset_id)
+
+
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import workspace_api
+from cosmotech_api.model.workspace import Workspace
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = workspace_api.WorkspaceApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    dataset_id = "datasetId_example" # str | dataset id to be linked to
+
+    # example passing only required values which don't have defaults set
+    try:
+        api_response = api_instance.link_dataset(organization_id, workspace_id, dataset_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling WorkspaceApi->link_dataset: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **dataset_id** | **str**| dataset id to be linked to |
+
+### Return type
+
+[**Workspace**](Workspace.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the workspace details |  -  |
+**400** | Bad request |  -  |
+**404** | the workspace specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **remove_workspace_access_control**
 > remove_workspace_access_control(organization_id, workspace_id, identity_id)
 
@@ -1340,6 +1427,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **unlink_dataset**
+> Workspace unlink_dataset(organization_id, workspace_id, dataset_id)
+
+
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import workspace_api
+from cosmotech_api.model.workspace import Workspace
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = workspace_api.WorkspaceApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    dataset_id = "datasetId_example" # str | dataset id to be linked to
+
+    # example passing only required values which don't have defaults set
+    try:
+        api_response = api_instance.unlink_dataset(organization_id, workspace_id, dataset_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling WorkspaceApi->unlink_dataset: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **dataset_id** | **str**| dataset id to be linked to |
+
+### Return type
+
+[**Workspace**](Workspace.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the workspace details |  -  |
+**400** | Bad request |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_workspace**
 > Workspace update_workspace(organization_id, workspace_id, workspace)
 
@@ -1379,10 +1547,13 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = "organization_id_example" # str | the Organization identifier
     workspace_id = "workspace_id_example" # str | the Workspace identifier
     workspace = Workspace(
-        key="key_example",
-        name="name_example",
+        key="MyKey",
+        name="FranceOffice",
         description="description_example",
-        version="version_example",
+        linked_dataset_id_list=[
+            "linked_dataset_id_list_example",
+        ],
+        version="1.0.0",
         tags=[
             "tags_example",
         ],
@@ -1404,6 +1575,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
         dedicated_event_hub_authentication_strategy="dedicated_event_hub_authentication_strategy_example",
         send_scenario_run_to_event_hub=True,
         send_scenario_metadata_to_event_hub=False,
+        dataset_copy=True,
         security=None,
     ) # Workspace | The new Workspace details. This endpoint can't be used to update security
 
