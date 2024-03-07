@@ -1,6 +1,6 @@
 # RunTemplateParameterValue
 
-the value of Analysis parameter for a Scenario for this ScenarioRun
+the value of Analysis parameter for a Runner for this Run
 
 ## Properties
 Name | Type | Description | Notes
