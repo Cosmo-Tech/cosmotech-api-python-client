@@ -1,79 +1,124 @@
+# coding: utf-8
+
 # flake8: noqa
+"""
+    Cosmo Tech Platform API
 
-# import all models into this package
-# if you have many models here with many references from one model to another this may
-# raise a RecursionError
-# to avoid this, import only the models that you directly need like:
-# from from cosmotech_api.model.pet import Pet
-# or import this package, but before doing it, use:
-# import sys
-# sys.setrecursionlimit(n)
+    Cosmo Tech Platform API
 
-from cosmotech_api.model.component_role_permissions import ComponentRolePermissions
-from cosmotech_api.model.connector import Connector
-from cosmotech_api.model.connector_parameter import ConnectorParameter
-from cosmotech_api.model.connector_parameter_group import ConnectorParameterGroup
-from cosmotech_api.model.container_resource_size_info import ContainerResourceSizeInfo
-from cosmotech_api.model.container_resource_sizing import ContainerResourceSizing
-from cosmotech_api.model.dataset import Dataset
-from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
-from cosmotech_api.model.dataset_connector import DatasetConnector
-from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
-from cosmotech_api.model.dataset_search import DatasetSearch
-from cosmotech_api.model.delete_historical_data import DeleteHistoricalData
-from cosmotech_api.model.graph_properties import GraphProperties
-from cosmotech_api.model.organization import Organization
-from cosmotech_api.model.organization_access_control import OrganizationAccessControl
-from cosmotech_api.model.organization_role import OrganizationRole
-from cosmotech_api.model.organization_security import OrganizationSecurity
-from cosmotech_api.model.organization_service import OrganizationService
-from cosmotech_api.model.organization_services import OrganizationServices
-from cosmotech_api.model.resource_size_info import ResourceSizeInfo
-from cosmotech_api.model.run_template import RunTemplate
-from cosmotech_api.model.run_template_handler_id import RunTemplateHandlerId
-from cosmotech_api.model.run_template_parameter import RunTemplateParameter
-from cosmotech_api.model.run_template_parameter_group import RunTemplateParameterGroup
-from cosmotech_api.model.run_template_parameter_value import RunTemplateParameterValue
-from cosmotech_api.model.run_template_resource_sizing import RunTemplateResourceSizing
-from cosmotech_api.model.run_template_step_source import RunTemplateStepSource
-from cosmotech_api.model.scenario import Scenario
-from cosmotech_api.model.scenario_access_control import ScenarioAccessControl
-from cosmotech_api.model.scenario_changed_parameter_value import ScenarioChangedParameterValue
-from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
-from cosmotech_api.model.scenario_data_download_info import ScenarioDataDownloadInfo
-from cosmotech_api.model.scenario_data_download_job import ScenarioDataDownloadJob
-from cosmotech_api.model.scenario_job_state import ScenarioJobState
-from cosmotech_api.model.scenario_last_run import ScenarioLastRun
-from cosmotech_api.model.scenario_resource_sizing import ScenarioResourceSizing
-from cosmotech_api.model.scenario_role import ScenarioRole
-from cosmotech_api.model.scenario_run import ScenarioRun
-from cosmotech_api.model.scenario_run_container import ScenarioRunContainer
-from cosmotech_api.model.scenario_run_container_artifact import ScenarioRunContainerArtifact
-from cosmotech_api.model.scenario_run_container_logs import ScenarioRunContainerLogs
-from cosmotech_api.model.scenario_run_logs import ScenarioRunLogs
-from cosmotech_api.model.scenario_run_search import ScenarioRunSearch
-from cosmotech_api.model.scenario_run_start_containers import ScenarioRunStartContainers
-from cosmotech_api.model.scenario_run_state import ScenarioRunState
-from cosmotech_api.model.scenario_run_status import ScenarioRunStatus
-from cosmotech_api.model.scenario_run_status_node import ScenarioRunStatusNode
-from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
-from cosmotech_api.model.scenario_security import ScenarioSecurity
-from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
-from cosmotech_api.model.solution import Solution
-from cosmotech_api.model.source_info import SourceInfo
-from cosmotech_api.model.translated_labels import TranslatedLabels
-from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult
-from cosmotech_api.model.twin_graph_hash import TwinGraphHash
-from cosmotech_api.model.twin_graph_import import TwinGraphImport
-from cosmotech_api.model.twin_graph_import_info import TwinGraphImportInfo
-from cosmotech_api.model.twin_graph_query import TwinGraphQuery
-from cosmotech_api.model.validator import Validator
-from cosmotech_api.model.validator_run import ValidatorRun
-from cosmotech_api.model.workspace import Workspace
-from cosmotech_api.model.workspace_access_control import WorkspaceAccessControl
-from cosmotech_api.model.workspace_file import WorkspaceFile
-from cosmotech_api.model.workspace_role import WorkspaceRole
-from cosmotech_api.model.workspace_secret import WorkspaceSecret
-from cosmotech_api.model.workspace_security import WorkspaceSecurity
-from cosmotech_api.model.workspace_solution import WorkspaceSolution
-from cosmotech_api.model.workspace_web_app import WorkspaceWebApp
+    The version of the OpenAPI document: 3.1.1-SNAPSHOT
+    Contact: platform@cosmotech.com
+    Generated by OpenAPI Generator (https://openapi-generator.tech)
+
+    Do not edit the class manually.
+"""  # noqa: E501
+
+
+# import models into model package
+from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
+from cosmotech_api.models.connector import Connector
+from cosmotech_api.models.connector_parameter import ConnectorParameter
+from cosmotech_api.models.connector_parameter_group import ConnectorParameterGroup
+from cosmotech_api.models.container_resource_size_info import ContainerResourceSizeInfo
+from cosmotech_api.models.container_resource_sizing import ContainerResourceSizing
+from cosmotech_api.models.dataset import Dataset
+from cosmotech_api.models.dataset_access_control import DatasetAccessControl
+from cosmotech_api.models.dataset_compatibility import DatasetCompatibility
+from cosmotech_api.models.dataset_connector import DatasetConnector
+from cosmotech_api.models.dataset_copy_parameters import DatasetCopyParameters
+from cosmotech_api.models.dataset_role import DatasetRole
+from cosmotech_api.models.dataset_search import DatasetSearch
+from cosmotech_api.models.dataset_security import DatasetSecurity
+from cosmotech_api.models.dataset_source_type import DatasetSourceType
+from cosmotech_api.models.dataset_twin_graph_hash import DatasetTwinGraphHash
+from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
+from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
+from cosmotech_api.models.delete_historical_data import DeleteHistoricalData
+from cosmotech_api.models.file_upload_metadata import FileUploadMetadata
+from cosmotech_api.models.file_upload_validation import FileUploadValidation
+from cosmotech_api.models.graph_properties import GraphProperties
+from cosmotech_api.models.organization import Organization
+from cosmotech_api.models.organization_access_control import OrganizationAccessControl
+from cosmotech_api.models.organization_role import OrganizationRole
+from cosmotech_api.models.organization_security import OrganizationSecurity
+from cosmotech_api.models.organization_service import OrganizationService
+from cosmotech_api.models.organization_services import OrganizationServices
+from cosmotech_api.models.resource_size_info import ResourceSizeInfo
+from cosmotech_api.models.run import Run
+from cosmotech_api.models.run_container import RunContainer
+from cosmotech_api.models.run_container_artifact import RunContainerArtifact
+from cosmotech_api.models.run_container_logs import RunContainerLogs
+from cosmotech_api.models.run_logs import RunLogs
+from cosmotech_api.models.run_resource_requested import RunResourceRequested
+from cosmotech_api.models.run_search import RunSearch
+from cosmotech_api.models.run_start_containers import RunStartContainers
+from cosmotech_api.models.run_state import RunState
+from cosmotech_api.models.run_status import RunStatus
+from cosmotech_api.models.run_status_node import RunStatusNode
+from cosmotech_api.models.run_template import RunTemplate
+from cosmotech_api.models.run_template_handler_id import RunTemplateHandlerId
+from cosmotech_api.models.run_template_orchestrator import RunTemplateOrchestrator
+from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
+from cosmotech_api.models.run_template_parameter_value import RunTemplateParameterValue
+from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
+from cosmotech_api.models.run_template_step_source import RunTemplateStepSource
+from cosmotech_api.models.runner import Runner
+from cosmotech_api.models.runner_access_control import RunnerAccessControl
+from cosmotech_api.models.runner_changed_parameter_value import RunnerChangedParameterValue
+from cosmotech_api.models.runner_comparison_result import RunnerComparisonResult
+from cosmotech_api.models.runner_data_download_info import RunnerDataDownloadInfo
+from cosmotech_api.models.runner_data_download_job import RunnerDataDownloadJob
+from cosmotech_api.models.runner_job_state import RunnerJobState
+from cosmotech_api.models.runner_last_run import RunnerLastRun
+from cosmotech_api.models.runner_parent_last_run import RunnerParentLastRun
+from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
+from cosmotech_api.models.runner_role import RunnerRole
+from cosmotech_api.models.runner_root_last_run import RunnerRootLastRun
+from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
+from cosmotech_api.models.runner_security import RunnerSecurity
+from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.models.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.models.scenario_changed_parameter_value import ScenarioChangedParameterValue
+from cosmotech_api.models.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.models.scenario_data_download_info import ScenarioDataDownloadInfo
+from cosmotech_api.models.scenario_data_download_job import ScenarioDataDownloadJob
+from cosmotech_api.models.scenario_job_state import ScenarioJobState
+from cosmotech_api.models.scenario_last_run import ScenarioLastRun
+from cosmotech_api.models.scenario_resource_sizing import ScenarioResourceSizing
+from cosmotech_api.models.scenario_role import ScenarioRole
+from cosmotech_api.models.scenario_run import ScenarioRun
+from cosmotech_api.models.scenario_run_container import ScenarioRunContainer
+from cosmotech_api.models.scenario_run_container_artifact import ScenarioRunContainerArtifact
+from cosmotech_api.models.scenario_run_container_logs import ScenarioRunContainerLogs
+from cosmotech_api.models.scenario_run_logs import ScenarioRunLogs
+from cosmotech_api.models.scenario_run_resource_requested import ScenarioRunResourceRequested
+from cosmotech_api.models.scenario_run_result import ScenarioRunResult
+from cosmotech_api.models.scenario_run_search import ScenarioRunSearch
+from cosmotech_api.models.scenario_run_start_containers import ScenarioRunStartContainers
+from cosmotech_api.models.scenario_run_state import ScenarioRunState
+from cosmotech_api.models.scenario_run_status import ScenarioRunStatus
+from cosmotech_api.models.scenario_run_status_node import ScenarioRunStatusNode
+from cosmotech_api.models.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
+from cosmotech_api.models.scenario_security import ScenarioSecurity
+from cosmotech_api.models.scenario_validation_status import ScenarioValidationStatus
+from cosmotech_api.models.solution import Solution
+from cosmotech_api.models.solution_access_control import SolutionAccessControl
+from cosmotech_api.models.solution_role import SolutionRole
+from cosmotech_api.models.solution_security import SolutionSecurity
+from cosmotech_api.models.source_info import SourceInfo
+from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
+from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
+from cosmotech_api.models.twin_graph_hash import TwinGraphHash
+from cosmotech_api.models.twin_graph_query import TwinGraphQuery
+from cosmotech_api.models.validator import Validator
+from cosmotech_api.models.validator_run import ValidatorRun
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_file import WorkspaceFile
+from cosmotech_api.models.workspace_role import WorkspaceRole
+from cosmotech_api.models.workspace_secret import WorkspaceSecret
+from cosmotech_api.models.workspace_security import WorkspaceSecurity
+from cosmotech_api.models.workspace_solution import WorkspaceSolution
+from cosmotech_api.models.workspace_web_app import WorkspaceWebApp

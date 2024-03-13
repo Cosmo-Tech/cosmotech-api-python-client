@@ -18,9 +18,10 @@ Method | HTTP request | Description
 [**get_workspace_permissions**](WorkspaceApi.md#get_workspace_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role} | Get the Workspace permission by given role
 [**get_workspace_security**](WorkspaceApi.md#get_workspace_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security | Get the Workspace security information
 [**get_workspace_security_users**](WorkspaceApi.md#get_workspace_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/users | Get the Workspace security users list
-[**import_workspace**](WorkspaceApi.md#import_workspace) | **POST** /organizations/{organization_id}/workspaces/import | Import a workspace
+[**link_dataset**](WorkspaceApi.md#link_dataset) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/link | 
 [**remove_workspace_access_control**](WorkspaceApi.md#remove_workspace_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Remove the specified access from the given Organization Workspace
 [**set_workspace_default_security**](WorkspaceApi.md#set_workspace_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/default | Set the Workspace default security
+[**unlink_dataset**](WorkspaceApi.md#unlink_dataset) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/unlink | 
 [**update_workspace**](WorkspaceApi.md#update_workspace) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id} | Update a workspace
 [**update_workspace_access_control**](WorkspaceApi.md#update_workspace_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Update the specified access to User for a Workspace
 [**upload_workspace_file**](WorkspaceApi.md#upload_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
@@ -36,11 +37,11 @@ Add a control access to the Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -52,40 +53,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    workspace_access_control = WorkspaceAccessControl(
-        id="id_example",
-        role="role_example",
-    ) # WorkspaceAccessControl | the new Workspace security access to add.
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    workspace_access_control = cosmotech_api.WorkspaceAccessControl() # WorkspaceAccessControl | the new Workspace security access to add.
 
-    # example passing only required values which don't have defaults set
     try:
         # Add a control access to the Workspace
         api_response = api_instance.add_workspace_access_control(organization_id, workspace_id, workspace_access_control)
+        print("The response of WorkspaceApi->add_workspace_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->add_workspace_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **workspace_access_control** | [**WorkspaceAccessControl**](WorkspaceAccessControl.md)| the new Workspace security access to add. |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **workspace_access_control** | [**WorkspaceAccessControl**](WorkspaceAccessControl.md)| the new Workspace security access to add. | 
 
 ### Return type
 
@@ -99,7 +95,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -120,11 +115,11 @@ Create a secret for the Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_secret import WorkspaceSecret
+from cosmotech_api.models.workspace_secret import WorkspaceSecret
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -136,38 +131,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    workspace_secret = WorkspaceSecret(
-        dedicated_event_hub_key="dedicated_event_hub_key_example",
-    ) # WorkspaceSecret | the definition of the secret
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    workspace_secret = cosmotech_api.WorkspaceSecret() # WorkspaceSecret | the definition of the secret
 
-    # example passing only required values which don't have defaults set
     try:
         # Create a secret for the Workspace
         api_instance.create_secret(organization_id, workspace_id, workspace_secret)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->create_secret: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **workspace_secret** | [**WorkspaceSecret**](WorkspaceSecret.md)| the definition of the secret |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **workspace_secret** | [**WorkspaceSecret**](WorkspaceSecret.md)| the definition of the secret | 
 
 ### Return type
 
@@ -181,7 +171,6 @@ void (empty response body)
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -202,11 +191,11 @@ Create a new workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -218,62 +207,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace = Workspace(
-        key="key_example",
-        name="name_example",
-        description="description_example",
-        version="version_example",
-        tags=[
-            "tags_example",
-        ],
-        solution=WorkspaceSolution(
-            solution_id="solution_id_example",
-            run_template_filter=[
-                "run_template_filter_example",
-            ],
-            default_run_template_dataset={},
-        ),
-        web_app=WorkspaceWebApp(
-            url="url_example",
-            iframes={},
-            options={},
-        ),
-        send_input_to_data_warehouse=True,
-        use_dedicated_event_hub_namespace=False,
-        dedicated_event_hub_sas_key_name="dedicated_event_hub_sas_key_name_example",
-        dedicated_event_hub_authentication_strategy="dedicated_event_hub_authentication_strategy_example",
-        send_scenario_run_to_event_hub=True,
-        send_scenario_metadata_to_event_hub=False,
-        security=None,
-    ) # Workspace | the Workspace to create
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace = cosmotech_api.Workspace() # Workspace | the Workspace to create
 
-    # example passing only required values which don't have defaults set
     try:
         # Create a new workspace
         api_response = api_instance.create_workspace(organization_id, workspace)
+        print("The response of WorkspaceApi->create_workspace:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->create_workspace: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace** | [**Workspace**](Workspace.md)| the Workspace to create |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace** | [**Workspace**](Workspace.md)| the Workspace to create | 
 
 ### Return type
 
@@ -287,7 +247,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -308,10 +267,10 @@ Delete all Workspace files
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -323,34 +282,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete all Workspace files
         api_instance.delete_all_workspace_files(organization_id, workspace_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->delete_all_workspace_files: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
@@ -364,7 +320,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -385,11 +340,11 @@ Delete a workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -401,35 +356,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete a workspace
         api_response = api_instance.delete_workspace(organization_id, workspace_id)
+        print("The response of WorkspaceApi->delete_workspace:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->delete_workspace: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
@@ -443,7 +396,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -465,10 +417,10 @@ Delete a workspace file
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -480,36 +432,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    file_name = "file_name_example" # str | the file name
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    file_name = 'file_name_example' # str | the file name
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete a workspace file
         api_instance.delete_workspace_file(organization_id, workspace_id, file_name)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->delete_workspace_file: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **file_name** | **str**| the file name |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **file_name** | **str**| the file name | 
 
 ### Return type
 
@@ -524,7 +473,6 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -535,7 +483,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_workspace_file**
-> file_type download_workspace_file(organization_id, workspace_id, file_name)
+> bytearray download_workspace_file(organization_id, workspace_id, file_name)
 
 Download the Workspace File specified
 
@@ -544,10 +492,10 @@ Download the Workspace File specified
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -559,41 +507,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    file_name = "file_name_example" # str | the file name
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    file_name = 'file_name_example' # str | the file name
 
-    # example passing only required values which don't have defaults set
     try:
         # Download the Workspace File specified
         api_response = api_instance.download_workspace_file(organization_id, workspace_id, file_name)
+        print("The response of WorkspaceApi->download_workspace_file:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->download_workspace_file: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **file_name** | **str**| the file name |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **file_name** | **str**| the file name | 
 
 ### Return type
 
-**file_type**
+**bytearray**
 
 ### Authorization
 
@@ -603,7 +549,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/octet-stream
-
 
 ### HTTP response details
 
@@ -615,7 +560,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_workspace_files**
-> [WorkspaceFile] find_all_workspace_files(organization_id, workspace_id)
+> List[WorkspaceFile] find_all_workspace_files(organization_id, workspace_id)
 
 List all Workspace files
 
@@ -624,11 +569,11 @@ List all Workspace files
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_file import WorkspaceFile
+from cosmotech_api.models.workspace_file import WorkspaceFile
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -640,39 +585,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # List all Workspace files
         api_response = api_instance.find_all_workspace_files(organization_id, workspace_id)
+        print("The response of WorkspaceApi->find_all_workspace_files:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->find_all_workspace_files: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
-[**[WorkspaceFile]**](WorkspaceFile.md)
+[**List[WorkspaceFile]**](WorkspaceFile.md)
 
 ### Authorization
 
@@ -682,7 +625,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -694,7 +636,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_workspaces**
-> [Workspace] find_all_workspaces(organization_id)
+> List[Workspace] find_all_workspaces(organization_id, page=page, size=size)
 
 List all Workspaces
 
@@ -703,11 +645,11 @@ List all Workspaces
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -719,50 +661,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    page = 1 # int | page number to query (optional)
-    size = 1 # int | amount of result by page (optional)
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    page = 56 # int | page number to query (optional)
+    size = 56 # int | amount of result by page (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # List all Workspaces
-        api_response = api_instance.find_all_workspaces(organization_id)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling WorkspaceApi->find_all_workspaces: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List all Workspaces
         api_response = api_instance.find_all_workspaces(organization_id, page=page, size=size)
+        print("The response of WorkspaceApi->find_all_workspaces:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->find_all_workspaces: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **page** | **int**| page number to query | [optional]
- **size** | **int**| amount of result by page | [optional]
+ **organization_id** | **str**| the Organization identifier | 
+ **page** | **int**| page number to query | [optional] 
+ **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
 
-[**[Workspace]**](Workspace.md)
+[**List[Workspace]**](Workspace.md)
 
 ### Authorization
 
@@ -772,7 +703,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -792,11 +722,11 @@ Get the details of an workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -808,35 +738,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the details of an workspace
         api_response = api_instance.find_workspace_by_id(organization_id, workspace_id)
+        print("The response of WorkspaceApi->find_workspace_by_id:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->find_workspace_by_id: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
@@ -850,7 +778,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -871,11 +798,11 @@ Get a control access for the Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -887,37 +814,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    identity_id = "identity_id_example" # str | the User identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    identity_id = 'identity_id_example' # str | the User identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get a control access for the Workspace
         api_response = api_instance.get_workspace_access_control(organization_id, workspace_id, identity_id)
+        print("The response of WorkspaceApi->get_workspace_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **identity_id** | **str**| the User identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **identity_id** | **str**| the User identifier | 
 
 ### Return type
 
@@ -932,7 +857,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -943,7 +867,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspace_permissions**
-> [str] get_workspace_permissions(organization_id, workspace_id, role)
+> List[str] get_workspace_permissions(organization_id, workspace_id, role)
 
 Get the Workspace permission by given role
 
@@ -952,10 +876,10 @@ Get the Workspace permission by given role
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -967,41 +891,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    role = "role_example" # str | the Role
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    role = 'role_example' # str | the Role
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Workspace permission by given role
         api_response = api_instance.get_workspace_permissions(organization_id, workspace_id, role)
+        print("The response of WorkspaceApi->get_workspace_permissions:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_permissions: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **role** | **str**| the Role |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **role** | **str**| the Role | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -1011,7 +933,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1031,11 +952,11 @@ Get the Workspace security information
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_security import WorkspaceSecurity
+from cosmotech_api.models.workspace_security import WorkspaceSecurity
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1047,35 +968,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Workspace security information
         api_response = api_instance.get_workspace_security(organization_id, workspace_id)
+        print("The response of WorkspaceApi->get_workspace_security:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_security: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
@@ -1090,7 +1009,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1101,7 +1019,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspace_security_users**
-> [str] get_workspace_security_users(organization_id, workspace_id)
+> List[str] get_workspace_security_users(organization_id, workspace_id)
 
 Get the Workspace security users list
 
@@ -1110,10 +1028,10 @@ Get the Workspace security users list
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1125,39 +1043,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Workspace security users list
         api_response = api_instance.get_workspace_security_users(organization_id, workspace_id)
+        print("The response of WorkspaceApi->get_workspace_security_users:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_security_users: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -1168,7 +1084,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1178,21 +1093,21 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_workspace**
-> Workspace import_workspace(organization_id, workspace)
+# **link_dataset**
+> Workspace link_dataset(organization_id, workspace_id, dataset_id)
 
-Import a workspace
+
 
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1204,62 +1119,34 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace = Workspace(
-        key="key_example",
-        name="name_example",
-        description="description_example",
-        version="version_example",
-        tags=[
-            "tags_example",
-        ],
-        solution=WorkspaceSolution(
-            solution_id="solution_id_example",
-            run_template_filter=[
-                "run_template_filter_example",
-            ],
-            default_run_template_dataset={},
-        ),
-        web_app=WorkspaceWebApp(
-            url="url_example",
-            iframes={},
-            options={},
-        ),
-        send_input_to_data_warehouse=True,
-        use_dedicated_event_hub_namespace=False,
-        dedicated_event_hub_sas_key_name="dedicated_event_hub_sas_key_name_example",
-        dedicated_event_hub_authentication_strategy="dedicated_event_hub_authentication_strategy_example",
-        send_scenario_run_to_event_hub=True,
-        send_scenario_metadata_to_event_hub=False,
-        security=None,
-    ) # Workspace | the Workspace to import
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    dataset_id = 'dataset_id_example' # str | dataset id to be linked to
 
-    # example passing only required values which don't have defaults set
     try:
-        # Import a workspace
-        api_response = api_instance.import_workspace(organization_id, workspace)
+        api_response = api_instance.link_dataset(organization_id, workspace_id, dataset_id)
+        print("The response of WorkspaceApi->link_dataset:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling WorkspaceApi->import_workspace: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling WorkspaceApi->link_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace** | [**Workspace**](Workspace.md)| the Workspace to import |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **dataset_id** | **str**| dataset id to be linked to | 
 
 ### Return type
 
@@ -1271,16 +1158,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/yaml
+ - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the workspace details |  -  |
+**200** | the workspace details |  -  |
 **400** | Bad request |  -  |
+**404** | the workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1294,10 +1181,10 @@ Remove the specified access from the given Organization Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1309,36 +1196,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    identity_id = "identity_id_example" # str | the User identifier
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    identity_id = 'identity_id_example' # str | the User identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Remove the specified access from the given Organization Workspace
         api_instance.remove_workspace_access_control(organization_id, workspace_id, identity_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->remove_workspace_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **identity_id** | **str**| the User identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **identity_id** | **str**| the User identifier | 
 
 ### Return type
 
@@ -1352,7 +1236,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -1373,12 +1256,12 @@ Set the Workspace default security
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_role import WorkspaceRole
-from cosmotech_api.model.workspace_security import WorkspaceSecurity
+from cosmotech_api.models.workspace_role import WorkspaceRole
+from cosmotech_api.models.workspace_security import WorkspaceSecurity
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1390,39 +1273,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    workspace_role = WorkspaceRole(
-        role="role_example",
-    ) # WorkspaceRole | the new Workspace default security.
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    workspace_role = cosmotech_api.WorkspaceRole() # WorkspaceRole | This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.
 
-    # example passing only required values which don't have defaults set
     try:
         # Set the Workspace default security
         api_response = api_instance.set_workspace_default_security(organization_id, workspace_id, workspace_role)
+        print("The response of WorkspaceApi->set_workspace_default_security:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->set_workspace_default_security: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| the new Workspace default security. |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. | 
 
 ### Return type
 
@@ -1437,13 +1316,90 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The Workspace default visibility |  -  |
 **404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unlink_dataset**
+> Workspace unlink_dataset(organization_id, workspace_id, dataset_id)
+
+
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    dataset_id = 'dataset_id_example' # str | dataset id to be linked to
+
+    try:
+        api_response = api_instance.unlink_dataset(organization_id, workspace_id, dataset_id)
+        print("The response of WorkspaceApi->unlink_dataset:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WorkspaceApi->unlink_dataset: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **dataset_id** | **str**| dataset id to be linked to | 
+
+### Return type
+
+[**Workspace**](Workspace.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the workspace details |  -  |
+**400** | Bad request |  -  |
+**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1457,11 +1413,11 @@ Update a workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace import Workspace
+from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1473,64 +1429,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    workspace = Workspace(
-        key="key_example",
-        name="name_example",
-        description="description_example",
-        version="version_example",
-        tags=[
-            "tags_example",
-        ],
-        solution=WorkspaceSolution(
-            solution_id="solution_id_example",
-            run_template_filter=[
-                "run_template_filter_example",
-            ],
-            default_run_template_dataset={},
-        ),
-        web_app=WorkspaceWebApp(
-            url="url_example",
-            iframes={},
-            options={},
-        ),
-        send_input_to_data_warehouse=True,
-        use_dedicated_event_hub_namespace=False,
-        dedicated_event_hub_sas_key_name="dedicated_event_hub_sas_key_name_example",
-        dedicated_event_hub_authentication_strategy="dedicated_event_hub_authentication_strategy_example",
-        send_scenario_run_to_event_hub=True,
-        send_scenario_metadata_to_event_hub=False,
-        security=None,
-    ) # Workspace | The new Workspace details.
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    workspace = cosmotech_api.Workspace() # Workspace | The new Workspace details. This endpoint can't be used to update security
 
-    # example passing only required values which don't have defaults set
     try:
         # Update a workspace
         api_response = api_instance.update_workspace(organization_id, workspace_id, workspace)
+        print("The response of WorkspaceApi->update_workspace:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->update_workspace: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **workspace** | [**Workspace**](Workspace.md)| The new Workspace details. |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **workspace** | [**Workspace**](Workspace.md)| The new Workspace details. This endpoint can&#39;t be used to update security | 
 
 ### Return type
 
@@ -1544,7 +1471,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1566,12 +1492,12 @@ Update the specified access to User for a Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_role import WorkspaceRole
-from cosmotech_api.model.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_role import WorkspaceRole
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1583,41 +1509,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    identity_id = "identity_id_example" # str | the User identifier
-    workspace_role = WorkspaceRole(
-        role="role_example",
-    ) # WorkspaceRole | The new Workspace Access Control
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    identity_id = 'identity_id_example' # str | the User identifier
+    workspace_role = cosmotech_api.WorkspaceRole() # WorkspaceRole | The new Workspace Access Control
 
-    # example passing only required values which don't have defaults set
     try:
         # Update the specified access to User for a Workspace
         api_response = api_instance.update_workspace_access_control(organization_id, workspace_id, identity_id, workspace_role)
+        print("The response of WorkspaceApi->update_workspace_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->update_workspace_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **identity_id** | **str**| the User identifier |
- **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| The new Workspace Access Control |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **identity_id** | **str**| the User identifier | 
+ **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| The new Workspace Access Control | 
 
 ### Return type
 
@@ -1632,7 +1554,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1643,7 +1564,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_workspace_file**
-> WorkspaceFile upload_workspace_file(organization_id, workspace_id, file)
+> WorkspaceFile upload_workspace_file(organization_id, workspace_id, file, overwrite=overwrite, destination=destination)
 
 Upload a file for the Workspace
 
@@ -1652,11 +1573,11 @@ Upload a file for the Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import workspace_api
-from cosmotech_api.model.workspace_file import WorkspaceFile
+from cosmotech_api.models.workspace_file import WorkspaceFile
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1668,50 +1589,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workspace_api.WorkspaceApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    file = open('/path/to/file', 'rb') # file_type | 
-    overwrite = False # bool |  (optional) if omitted the server will use the default value of False
-    destination = "path/to/a/directory/" # str | Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location.  (optional)
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    file = None # bytearray | 
+    overwrite = False # bool |  (optional) (default to False)
+    destination = 'destination_example' # str | Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location.  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Upload a file for the Workspace
-        api_response = api_instance.upload_workspace_file(organization_id, workspace_id, file)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling WorkspaceApi->upload_workspace_file: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Upload a file for the Workspace
         api_response = api_instance.upload_workspace_file(organization_id, workspace_id, file, overwrite=overwrite, destination=destination)
+        print("The response of WorkspaceApi->upload_workspace_file:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling WorkspaceApi->upload_workspace_file: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **file** | **file_type**|  |
- **overwrite** | **bool**|  | [optional] if omitted the server will use the default value of False
- **destination** | **str**| Destination path. Must end with a &#39;/&#39; if specifying a folder. Note that paths may or may not start with a &#39;/&#39;, but they are always treated as relative to the Workspace root location.  | [optional]
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **file** | **bytearray**|  | 
+ **overwrite** | **bool**|  | [optional] [default to False]
+ **destination** | **str**| Destination path. Must end with a &#39;/&#39; if specifying a folder. Note that paths may or may not start with a &#39;/&#39;, but they are always treated as relative to the Workspace root location.  | [optional] 
 
 ### Return type
 
@@ -1725,7 +1635,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
-
 
 ### HTTP response details
 
