@@ -18,11 +18,11 @@ Get a ScenarioRunResult in the Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.scenario_run_result import ScenarioRunResult
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import scenariorunresult_api
+from cosmotech_api.model.scenario_run_result import ScenarioRunResult
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -34,39 +34,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.ScenariorunresultApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    scenario_id = 'scenario_id_example' # str | the Scenario identifier
-    scenariorun_id = 'scenariorun_id_example' # str | the ScenarioRun identifier
-    probe_id = 'probe_id_example' # str | the Probe identifier
+    api_instance = scenariorunresult_api.ScenariorunresultApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    scenariorun_id = "scenariorun_id_example" # str | the ScenarioRun identifier
+    probe_id = "probe_id_example" # str | the Probe identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get a ScenarioRunResult in the Organization
         api_response = api_instance.get_scenario_run_result(organization_id, workspace_id, scenario_id, scenariorun_id, probe_id)
-        print("The response of ScenariorunresultApi->get_scenario_run_result:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling ScenariorunresultApi->get_scenario_run_result: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **scenario_id** | **str**| the Scenario identifier | 
- **scenariorun_id** | **str**| the ScenarioRun identifier | 
- **probe_id** | **str**| the Probe identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **scenariorun_id** | **str**| the ScenarioRun identifier |
+ **probe_id** | **str**| the Probe identifier |
 
 ### Return type
 
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -100,11 +103,11 @@ Create a new ScenarioRunResult in the Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.scenario_run_result import ScenarioRunResult
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import scenariorunresult_api
+from cosmotech_api.model.scenario_run_result import ScenarioRunResult
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -116,41 +119,45 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.ScenariorunresultApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    scenario_id = 'scenario_id_example' # str | the Scenario identifier
-    scenariorun_id = 'scenariorun_id_example' # str | the ScenarioRun identifier
-    probe_id = 'probe_id_example' # str | the Probe identifier
-    request_body = {'key': 'request_body_example'} # Dict[str, str] | the ScenarioRunResult to register
+    api_instance = scenariorunresult_api.ScenariorunresultApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    scenariorun_id = "scenariorun_id_example" # str | the ScenarioRun identifier
+    probe_id = "probe_id_example" # str | the Probe identifier
+    request_body = {
+        "key": "key_example",
+    } # {str: (str,)} | the ScenarioRunResult to register
 
+    # example passing only required values which don't have defaults set
     try:
         # Create a new ScenarioRunResult in the Organization
         api_response = api_instance.send_scenario_run_result(organization_id, workspace_id, scenario_id, scenariorun_id, probe_id, request_body)
-        print("The response of ScenariorunresultApi->send_scenario_run_result:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling ScenariorunresultApi->send_scenario_run_result: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **scenario_id** | **str**| the Scenario identifier | 
- **scenariorun_id** | **str**| the ScenarioRun identifier | 
- **probe_id** | **str**| the Probe identifier | 
- **request_body** | [**Dict[str, str]**](str.md)| the ScenarioRunResult to register | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **scenariorun_id** | **str**| the ScenarioRun identifier |
+ **probe_id** | **str**| the Probe identifier |
+ **request_body** | **{str: (str,)}**| the ScenarioRunResult to register |
 
 ### Return type
 
@@ -164,6 +171,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
