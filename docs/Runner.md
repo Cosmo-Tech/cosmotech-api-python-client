@@ -3,13 +3,12 @@
 a Runner with base information
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Runner unique identifier | [optional] [readonly] 
 **name** | **str** | the Runner name | [optional] 
 **description** | **str** | the Runner description | [optional] 
-**tags** | **List[str]** | the list of tags | [optional] 
+**tags** | **[str]** | the list of tags | [optional] 
 **parent_id** | **str** | the Runner parent id | [optional] 
 **owner_id** | **str** | the user id which own this Runner | [optional] [readonly] 
 **root_id** | **str** | the runner root id | [optional] [readonly] 
@@ -23,32 +22,16 @@ Name | Type | Description | Notes
 **owner_name** | **str** | the name of the owner | [optional] [readonly] 
 **solution_name** | **str** | the Solution name | [optional] [readonly] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] [readonly] 
-**dataset_list** | **List[str]** | the list of Dataset Id associated to this Runner Run Template | [optional] 
+**dataset_list** | **[str]** | the list of Dataset Id associated to this Runner Run Template | [optional] 
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
-**parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] 
-**last_run** | [**RunnerLastRun**](RunnerLastRun.md) |  | [optional] 
-**parent_last_run** | [**RunnerParentLastRun**](RunnerParentLastRun.md) |  | [optional] 
-**root_last_run** | [**RunnerRootLastRun**](RunnerRootLastRun.md) |  | [optional] 
-**validation_status** | [**RunnerValidationStatus**](RunnerValidationStatus.md) |  | [optional] 
-**security** | [**RunnerSecurity**](RunnerSecurity.md) |  | [optional] 
+**parameters_values** | [**[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] 
+**last_run** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**parent_last_run** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**root_last_run** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**validation_status** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**security** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-## Example
-
-```python
-from cosmotech_api.models.runner import Runner
-
-# TODO update the JSON string below
-json = "{}"
-# create an instance of Runner from a JSON string
-runner_instance = Runner.from_json(json)
-# print the JSON string representation of the object
-print Runner.to_json()
-
-# convert the object into a dict
-runner_dict = runner_instance.to_dict()
-# create an instance of Runner from a dict
-runner_form_dict = runner.from_dict(runner_dict)
-```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

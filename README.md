@@ -10,7 +10,7 @@ For more information, please visit [https://github.com/Cosmo-Tech/cosmotech-api]
 
 ## Requirements.
 
-Python 3.7+
+Python >=3.6
 
 ## Installation & Usage
 ### pip install
@@ -41,20 +41,17 @@ Then import the package:
 import cosmotech_api
 ```
 
-### Tests
-
-Execute `pytest` to run the tests.
-
 ## Getting Started
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
 
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
 from pprint import pprint
-
+from cosmotech_api.api import connector_api
+from cosmotech_api.model.connector import Connector
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -66,24 +63,26 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.ConnectorApi(api_client)
-    page = 56 # int | page number to query (optional)
-    size = 56 # int | amount of result by page (optional)
+    api_instance = connector_api.ConnectorApi(api_client)
+    page = 1 # int | page number to query (optional)
+size = 1 # int | amount of result by page (optional)
 
     try:
         # List all Connectors
         api_response = api_instance.find_all_connectors(page=page, size=size)
-        print("The response of ConnectorApi->find_all_connectors:\n")
         pprint(api_response)
-    except ApiException as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling ConnectorApi->find_all_connectors: %s\n" % e)
-
 ```
 
 ## Documentation for API Endpoints
@@ -329,10 +328,8 @@ Class | Method | HTTP request | Description
  - [RunnerDataDownloadJob](docs/RunnerDataDownloadJob.md)
  - [RunnerJobState](docs/RunnerJobState.md)
  - [RunnerLastRun](docs/RunnerLastRun.md)
- - [RunnerParentLastRun](docs/RunnerParentLastRun.md)
  - [RunnerResourceSizing](docs/RunnerResourceSizing.md)
  - [RunnerRole](docs/RunnerRole.md)
- - [RunnerRootLastRun](docs/RunnerRootLastRun.md)
  - [RunnerRunTemplateParameterValue](docs/RunnerRunTemplateParameterValue.md)
  - [RunnerSecurity](docs/RunnerSecurity.md)
  - [RunnerValidationStatus](docs/RunnerValidationStatus.md)
@@ -367,6 +364,7 @@ Class | Method | HTTP request | Description
  - [SolutionSecurity](docs/SolutionSecurity.md)
  - [SourceInfo](docs/SourceInfo.md)
  - [SubDatasetGraphQuery](docs/SubDatasetGraphQuery.md)
+ - [TranslatedLabels](docs/TranslatedLabels.md)
  - [TwinGraphBatchResult](docs/TwinGraphBatchResult.md)
  - [TwinGraphHash](docs/TwinGraphHash.md)
  - [TwinGraphQuery](docs/TwinGraphQuery.md)
@@ -382,13 +380,10 @@ Class | Method | HTTP request | Description
  - [WorkspaceWebApp](docs/WorkspaceWebApp.md)
 
 
-<a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
 
-Authentication schemes defined for the API:
-<a id="oAuth2AuthCode"></a>
-### oAuth2AuthCode
+## oAuth2AuthCode
 
 - **Type**: OAuth
 - **Flow**: implicit
@@ -401,4 +396,23 @@ Authentication schemes defined for the API:
 
 platform@cosmotech.com
 
+
+## Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in cosmotech_api.apis and cosmotech_api.models may fail with a
+RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1:
+Use specific imports for apis and models like:
+- `from cosmotech_api.api.default_api import DefaultApi`
+- `from cosmotech_api.model.pet import Pet`
+
+Solution 2:
+Before importing the package, adjust the maximum recursion limit as shown below:
+```
+import sys
+sys.setrecursionlimit(1500)
+import cosmotech_api
+from cosmotech_api.apis import *
+from cosmotech_api.models import *
+```
 

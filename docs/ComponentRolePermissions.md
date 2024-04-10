@@ -3,29 +3,12 @@
 a RBAC by component
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **component** | **str** |  | [optional] 
-**roles** | **Dict[str, List[str]]** |  | [optional] 
+**roles** | **{str: ([str],)}** |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-## Example
-
-```python
-from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
-
-# TODO update the JSON string below
-json = "{}"
-# create an instance of ComponentRolePermissions from a JSON string
-component_role_permissions_instance = ComponentRolePermissions.from_json(json)
-# print the JSON string representation of the object
-print ComponentRolePermissions.to_json()
-
-# convert the object into a dict
-component_role_permissions_dict = component_role_permissions_instance.to_dict()
-# create an instance of ComponentRolePermissions from a dict
-component_role_permissions_form_dict = component_role_permissions.from_dict(component_role_permissions_dict)
-```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
