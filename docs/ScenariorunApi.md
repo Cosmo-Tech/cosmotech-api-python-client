@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_scenario_run_status**](ScenariorunApi.md#get_scenario_run_status) | **GET** /organizations/{organization_id}/scenarioruns/{scenariorun_id}/status | get the status for the ScenarioRun
 [**get_scenario_runs**](ScenariorunApi.md#get_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/scenarioruns | get the list of ScenarioRuns for the Scenario
 [**get_workspace_scenario_runs**](ScenariorunApi.md#get_workspace_scenario_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/scenarioruns | get the list of ScenarioRuns for the Workspace
+[**import_scenario_run**](ScenariorunApi.md#import_scenario_run) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/run/import | import a ScenarioRun for the Scenario
 [**run_scenario**](ScenariorunApi.md#run_scenario) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/run | run a ScenarioRun for the Scenario
 [**search_scenario_runs**](ScenariorunApi.md#search_scenario_runs) | **POST** /organizations/{organization_id}/scenarioruns/search | Search ScenarioRuns
 [**start_scenario_run_containers**](ScenariorunApi.md#start_scenario_run_containers) | **POST** /organizations/{organization_id}/scenarioruns/startcontainers | Start a new scenariorun with raw containers definition
@@ -857,6 +858,132 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the scenariorun details list |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **import_scenario_run**
+> ScenarioRun import_scenario_run(organization_id, workspace_id, scenario_id, scenario_run)
+
+import a ScenarioRun for the Scenario
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import time
+import cosmotech_api
+from cosmotech_api.api import scenariorun_api
+from cosmotech_api.model.scenario_run import ScenarioRun
+from pprint import pprint
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = scenariorun_api.ScenariorunApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    scenario_run = ScenarioRun(
+        state=None,
+        organization_id="organization_id_example",
+        workflow_id="workflow_id_example",
+        generate_name="generate_name_example",
+        workflow_name="workflow_name_example",
+        sdk_version="sdk_version_example",
+        no_data_ingestion_state=True,
+        containers=[
+            ScenarioRunContainer(
+                name="name_example",
+                labels={
+                    "key": "key_example",
+                },
+                env_vars={
+                    "key": "key_example",
+                },
+                image="image_example",
+                entrypoint="entrypoint_example",
+                run_args=[
+                    "run_args_example",
+                ],
+                dependencies=[
+                    "dependencies_example",
+                ],
+                node_label="node_label_example",
+                run_sizing=ContainerResourceSizing(
+                    requests=ContainerResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                    limits=ContainerResourceSizeInfo(
+                        cpu="cpu_example",
+                        memory="memory_example",
+                    ),
+                ),
+                artifacts=[
+                    ScenarioRunContainerArtifact(
+                        name="name_example",
+                        path="path_example",
+                    ),
+                ],
+            ),
+        ],
+    ) # ScenarioRun | the ScenarioRun to import
+
+    # example passing only required values which don't have defaults set
+    try:
+        # import a ScenarioRun for the Scenario
+        api_response = api_instance.import_scenario_run(organization_id, workspace_id, scenario_id, scenario_run)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling ScenariorunApi->import_scenario_run: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **scenario_id** | **str**| the Scenario identifier |
+ **scenario_run** | [**ScenarioRun**](ScenarioRun.md)| the ScenarioRun to import |
+
+### Return type
+
+[**ScenarioRun**](ScenarioRun.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the scenariorun details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
