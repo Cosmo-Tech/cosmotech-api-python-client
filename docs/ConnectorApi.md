@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**find_all_connectors**](ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
 [**find_connector_by_id**](ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of a connector
-[**import_connector**](ConnectorApi.md#import_connector) | **POST** /connectors/import | Import existing connector
+[**find_connector_by_name**](ConnectorApi.md#find_connector_by_name) | **GET** /connectors/name/{connector_name} | Get the details of a connector
 [**register_connector**](ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
 [**unregister_connector**](ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister a connector
 
@@ -167,10 +167,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_connector**
-> Connector import_connector(connector)
+# **find_connector_by_name**
+> Connector find_connector_by_name(connector_name)
 
-Import existing connector
+Get the details of a connector
 
 ### Example
 
@@ -203,48 +203,15 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = connector_api.ConnectorApi(api_client)
-    connector = Connector(
-        key="key_example",
-        name="name_example",
-        description="description_example",
-        repository="repository_example",
-        version="version_example",
-        tags=[
-            "tags_example",
-        ],
-        url="url_example",
-        azure_managed_identity=True,
-        azure_authentication_with_customer_app_registration=True,
-        io_types=[
-            "read",
-        ],
-        parameter_groups=[
-            ConnectorParameterGroup(
-                id="id_example",
-                label="label_example",
-                parameters=[
-                    ConnectorParameter(
-                        id="id_example",
-                        label="label_example",
-                        value_type="value_type_example",
-                        options=[
-                            "options_example",
-                        ],
-                        default="default_example",
-                        env_var="env_var_example",
-                    ),
-                ],
-            ),
-        ],
-    ) # Connector | the Connector to import
+    connector_name = "connector_name_example" # str | the Connector name
 
     # example passing only required values which don't have defaults set
     try:
-        # Import existing connector
-        api_response = api_instance.import_connector(connector)
+        # Get the details of a connector
+        api_response = api_instance.find_connector_by_name(connector_name)
         pprint(api_response)
     except cosmotech_api.ApiException as e:
-        print("Exception when calling ConnectorApi->import_connector: %s\n" % e)
+        print("Exception when calling ConnectorApi->find_connector_by_name: %s\n" % e)
 ```
 
 
@@ -252,7 +219,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | [**Connector**](Connector.md)| the Connector to import |
+ **connector_name** | **str**| the Connector name |
 
 ### Return type
 
@@ -264,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -272,8 +239,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the connector details |  -  |
-**400** | Bad request |  -  |
+**200** | the Connector details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
