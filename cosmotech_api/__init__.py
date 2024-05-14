@@ -25,10 +25,8 @@ from cosmotech_api.api.run_api import RunApi
 from cosmotech_api.api.runner_api import RunnerApi
 from cosmotech_api.api.scenario_api import ScenarioApi
 from cosmotech_api.api.scenariorun_api import ScenariorunApi
-from cosmotech_api.api.scenariorunresult_api import ScenariorunresultApi
 from cosmotech_api.api.solution_api import SolutionApi
 from cosmotech_api.api.twingraph_api import TwingraphApi
-from cosmotech_api.api.validator_api import ValidatorApi
 from cosmotech_api.api.workspace_api import WorkspaceApi
 
 # import ApiClient
@@ -71,11 +69,14 @@ from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity
 from cosmotech_api.models.organization_service import OrganizationService
 from cosmotech_api.models.organization_services import OrganizationServices
+from cosmotech_api.models.query_result import QueryResult
 from cosmotech_api.models.resource_size_info import ResourceSizeInfo
 from cosmotech_api.models.run import Run
 from cosmotech_api.models.run_container import RunContainer
 from cosmotech_api.models.run_container_artifact import RunContainerArtifact
 from cosmotech_api.models.run_container_logs import RunContainerLogs
+from cosmotech_api.models.run_data import RunData
+from cosmotech_api.models.run_data_query import RunDataQuery
 from cosmotech_api.models.run_logs import RunLogs
 from cosmotech_api.models.run_resource_requested import RunResourceRequested
 from cosmotech_api.models.run_search import RunSearch
@@ -122,7 +123,6 @@ from cosmotech_api.models.scenario_run_container_artifact import ScenarioRunCont
 from cosmotech_api.models.scenario_run_container_logs import ScenarioRunContainerLogs
 from cosmotech_api.models.scenario_run_logs import ScenarioRunLogs
 from cosmotech_api.models.scenario_run_resource_requested import ScenarioRunResourceRequested
-from cosmotech_api.models.scenario_run_result import ScenarioRunResult
 from cosmotech_api.models.scenario_run_search import ScenarioRunSearch
 from cosmotech_api.models.scenario_run_start_containers import ScenarioRunStartContainers
 from cosmotech_api.models.scenario_run_state import ScenarioRunState
@@ -131,6 +131,7 @@ from cosmotech_api.models.scenario_run_status_node import ScenarioRunStatusNode
 from cosmotech_api.models.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
 from cosmotech_api.models.scenario_security import ScenarioSecurity
 from cosmotech_api.models.scenario_validation_status import ScenarioValidationStatus
+from cosmotech_api.models.send_run_data_request import SendRunDataRequest
 from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
 from cosmotech_api.models.solution_role import SolutionRole

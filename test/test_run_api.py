@@ -62,6 +62,20 @@ class TestRunApi(unittest.TestCase):
         """
         pass
 
+    def test_query_run_data(self) -> None:
+        """Test case for query_run_data
+
+        query the run data
+        """
+        pass
+
+    def test_send_run_data(self) -> None:
+        """Test case for send_run_data
+
+        Send data associated to a run
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

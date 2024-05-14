@@ -68,7 +68,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ScenarioRunTemplateParameterValue]:
-        """Add (or replace) Parameter Values for the Scenario specified
+        """(Deprecated) Add (or replace) Parameter Values for the Scenario specified
 
 
         :param organization_id: the Organization identifier (required)
@@ -100,6 +100,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues is deprecated.", DeprecationWarning)
 
         _param = self._add_or_replace_scenario_parameter_values_serialize(
             organization_id=organization_id,
@@ -148,7 +149,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ScenarioRunTemplateParameterValue]]:
-        """Add (or replace) Parameter Values for the Scenario specified
+        """(Deprecated) Add (or replace) Parameter Values for the Scenario specified
 
 
         :param organization_id: the Organization identifier (required)
@@ -180,6 +181,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues is deprecated.", DeprecationWarning)
 
         _param = self._add_or_replace_scenario_parameter_values_serialize(
             organization_id=organization_id,
@@ -228,7 +230,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add (or replace) Parameter Values for the Scenario specified
+        """(Deprecated) Add (or replace) Parameter Values for the Scenario specified
 
 
         :param organization_id: the Organization identifier (required)
@@ -260,6 +262,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues is deprecated.", DeprecationWarning)
 
         _param = self._add_or_replace_scenario_parameter_values_serialize(
             organization_id=organization_id,
@@ -388,7 +391,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioAccessControl:
-        """Add a control access to the Scenario
+        """(Deprecated) Add a control access to the Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -420,6 +423,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access is deprecated.", DeprecationWarning)
 
         _param = self._add_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -467,7 +471,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioAccessControl]:
-        """Add a control access to the Scenario
+        """(Deprecated) Add a control access to the Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -499,6 +503,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access is deprecated.", DeprecationWarning)
 
         _param = self._add_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -546,7 +551,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add a control access to the Scenario
+        """(Deprecated) Add a control access to the Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -578,6 +583,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access is deprecated.", DeprecationWarning)
 
         _param = self._add_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -705,7 +711,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioComparisonResult:
-        """Compare the Scenario with another one and returns the difference for parameters values
+        """(Deprecated) Compare the Scenario with another one and returns the difference for parameters values
 
 
         :param organization_id: the Organization identifier (required)
@@ -737,6 +743,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._compare_scenarios_serialize(
             organization_id=organization_id,
@@ -784,7 +791,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioComparisonResult]:
-        """Compare the Scenario with another one and returns the difference for parameters values
+        """(Deprecated) Compare the Scenario with another one and returns the difference for parameters values
 
 
         :param organization_id: the Organization identifier (required)
@@ -816,6 +823,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._compare_scenarios_serialize(
             organization_id=organization_id,
@@ -863,7 +871,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Compare the Scenario with another one and returns the difference for parameters values
+        """(Deprecated) Compare the Scenario with another one and returns the difference for parameters values
 
 
         :param organization_id: the Organization identifier (required)
@@ -895,6 +903,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/compare/{compared_scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._compare_scenarios_serialize(
             organization_id=organization_id,
@@ -1007,7 +1016,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Scenario:
-        """Create a new Scenario
+        """(Deprecated) Create a new Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -1037,6 +1046,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._create_scenario_serialize(
             organization_id=organization_id,
@@ -1082,7 +1092,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Scenario]:
-        """Create a new Scenario
+        """(Deprecated) Create a new Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -1112,6 +1122,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._create_scenario_serialize(
             organization_id=organization_id,
@@ -1157,7 +1168,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new Scenario
+        """(Deprecated) Create a new Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -1187,6 +1198,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._create_scenario_serialize(
             organization_id=organization_id,
@@ -1308,7 +1320,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete all Scenarios of the Workspace
+        """(Deprecated) Delete all Scenarios of the Workspace
 
 
         :param organization_id: the Organization identifier (required)
@@ -1336,6 +1348,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._delete_all_scenarios_serialize(
             organization_id=organization_id,
@@ -1379,7 +1392,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete all Scenarios of the Workspace
+        """(Deprecated) Delete all Scenarios of the Workspace
 
 
         :param organization_id: the Organization identifier (required)
@@ -1407,6 +1420,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._delete_all_scenarios_serialize(
             organization_id=organization_id,
@@ -1450,7 +1464,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete all Scenarios of the Workspace
+        """(Deprecated) Delete all Scenarios of the Workspace
 
 
         :param organization_id: the Organization identifier (required)
@@ -1478,6 +1492,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._delete_all_scenarios_serialize(
             organization_id=organization_id,
@@ -1576,7 +1591,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a scenario
+        """(Deprecated) Delete a scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -1606,6 +1621,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_scenario_serialize(
             organization_id=organization_id,
@@ -1651,7 +1667,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a scenario
+        """(Deprecated) Delete a scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -1681,6 +1697,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_scenario_serialize(
             organization_id=organization_id,
@@ -1726,7 +1743,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a scenario
+        """(Deprecated) Delete a scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -1756,6 +1773,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_scenario_serialize(
             organization_id=organization_id,
@@ -1858,7 +1876,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioDataDownloadJob:
-        """Download Scenario data
+        """(Deprecated) Download Scenario data
 
 
         :param organization_id: the Organization identifier (required)
@@ -1888,6 +1906,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads is deprecated.", DeprecationWarning)
 
         _param = self._download_scenario_data_serialize(
             organization_id=organization_id,
@@ -1933,7 +1952,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioDataDownloadJob]:
-        """Download Scenario data
+        """(Deprecated) Download Scenario data
 
 
         :param organization_id: the Organization identifier (required)
@@ -1963,6 +1982,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads is deprecated.", DeprecationWarning)
 
         _param = self._download_scenario_data_serialize(
             organization_id=organization_id,
@@ -2008,7 +2028,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download Scenario data
+        """(Deprecated) Download Scenario data
 
 
         :param organization_id: the Organization identifier (required)
@@ -2038,6 +2058,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads is deprecated.", DeprecationWarning)
 
         _param = self._download_scenario_data_serialize(
             organization_id=organization_id,
@@ -2147,7 +2168,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Scenario]:
-        """List all Scenarios
+        """(Deprecated) List all Scenarios
 
 
         :param organization_id: the Organization identifier (required)
@@ -2179,6 +2200,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._find_all_scenarios_serialize(
             organization_id=organization_id,
@@ -2225,7 +2247,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Scenario]]:
-        """List all Scenarios
+        """(Deprecated) List all Scenarios
 
 
         :param organization_id: the Organization identifier (required)
@@ -2257,6 +2279,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._find_all_scenarios_serialize(
             organization_id=organization_id,
@@ -2303,7 +2326,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List all Scenarios
+        """(Deprecated) List all Scenarios
 
 
         :param organization_id: the Organization identifier (required)
@@ -2335,6 +2358,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios is deprecated.", DeprecationWarning)
 
         _param = self._find_all_scenarios_serialize(
             organization_id=organization_id,
@@ -2452,7 +2476,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Scenario]:
-        """List all Scenarios by validation status
+        """(Deprecated) List all Scenarios by validation status
 
 
         :param organization_id: the Organization identifier (required)
@@ -2486,6 +2510,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/{validationStatus} is deprecated.", DeprecationWarning)
 
         _param = self._find_all_scenarios_by_validation_status_serialize(
             organization_id=organization_id,
@@ -2534,7 +2559,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Scenario]]:
-        """List all Scenarios by validation status
+        """(Deprecated) List all Scenarios by validation status
 
 
         :param organization_id: the Organization identifier (required)
@@ -2568,6 +2593,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/{validationStatus} is deprecated.", DeprecationWarning)
 
         _param = self._find_all_scenarios_by_validation_status_serialize(
             organization_id=organization_id,
@@ -2616,7 +2642,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List all Scenarios by validation status
+        """(Deprecated) List all Scenarios by validation status
 
 
         :param organization_id: the Organization identifier (required)
@@ -2650,6 +2676,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/{validationStatus} is deprecated.", DeprecationWarning)
 
         _param = self._find_all_scenarios_by_validation_status_serialize(
             organization_id=organization_id,
@@ -2769,7 +2796,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Scenario:
-        """Get the details of an scenario
+        """(Deprecated) Get the details of an scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -2799,6 +2826,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._find_scenario_by_id_serialize(
             organization_id=organization_id,
@@ -2844,7 +2872,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Scenario]:
-        """Get the details of an scenario
+        """(Deprecated) Get the details of an scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -2874,6 +2902,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._find_scenario_by_id_serialize(
             organization_id=organization_id,
@@ -2919,7 +2948,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the details of an scenario
+        """(Deprecated) Get the details of an scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -2949,6 +2978,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._find_scenario_by_id_serialize(
             organization_id=organization_id,
@@ -3058,7 +3088,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioAccessControl:
-        """Get a control access for the Scenario
+        """(Deprecated) Get a control access for the Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -3090,6 +3120,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -3137,7 +3168,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioAccessControl]:
-        """Get a control access for the Scenario
+        """(Deprecated) Get a control access for the Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -3169,6 +3200,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -3216,7 +3248,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a control access for the Scenario
+        """(Deprecated) Get a control access for the Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -3248,6 +3280,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -3361,7 +3394,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioDataDownloadInfo:
-        """Get Scenario data download URL
+        """(Deprecated) Get Scenario data download URL
 
 
         :param organization_id: the Organization identifier (required)
@@ -3393,6 +3426,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads/{download_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_data_download_job_info_serialize(
             organization_id=organization_id,
@@ -3440,7 +3474,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioDataDownloadInfo]:
-        """Get Scenario data download URL
+        """(Deprecated) Get Scenario data download URL
 
 
         :param organization_id: the Organization identifier (required)
@@ -3472,6 +3506,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads/{download_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_data_download_job_info_serialize(
             organization_id=organization_id,
@@ -3519,7 +3554,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Scenario data download URL
+        """(Deprecated) Get Scenario data download URL
 
 
         :param organization_id: the Organization identifier (required)
@@ -3551,6 +3586,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/downloads/{download_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_data_download_job_info_serialize(
             organization_id=organization_id,
@@ -3664,7 +3700,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[str]:
-        """Get the Scenario permission by given role
+        """(Deprecated) Get the Scenario permission by given role
 
 
         :param organization_id: the Organization identifier (required)
@@ -3696,6 +3732,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/permissions/{role} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_permissions_serialize(
             organization_id=organization_id,
@@ -3742,7 +3779,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[str]]:
-        """Get the Scenario permission by given role
+        """(Deprecated) Get the Scenario permission by given role
 
 
         :param organization_id: the Organization identifier (required)
@@ -3774,6 +3811,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/permissions/{role} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_permissions_serialize(
             organization_id=organization_id,
@@ -3820,7 +3858,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Scenario permission by given role
+        """(Deprecated) Get the Scenario permission by given role
 
 
         :param organization_id: the Organization identifier (required)
@@ -3852,6 +3890,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/permissions/{role} is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_permissions_serialize(
             organization_id=organization_id,
@@ -3963,7 +4002,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioSecurity:
-        """Get the Scenario security information
+        """(Deprecated) Get the Scenario security information
 
 
         :param organization_id: the Organization identifier (required)
@@ -3993,6 +4032,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_security_serialize(
             organization_id=organization_id,
@@ -4038,7 +4078,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioSecurity]:
-        """Get the Scenario security information
+        """(Deprecated) Get the Scenario security information
 
 
         :param organization_id: the Organization identifier (required)
@@ -4068,6 +4108,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_security_serialize(
             organization_id=organization_id,
@@ -4113,7 +4154,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Scenario security information
+        """(Deprecated) Get the Scenario security information
 
 
         :param organization_id: the Organization identifier (required)
@@ -4143,6 +4184,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_security_serialize(
             organization_id=organization_id,
@@ -4251,7 +4293,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[str]:
-        """Get the Scenario security users list
+        """(Deprecated) Get the Scenario security users list
 
 
         :param organization_id: the Organization identifier (required)
@@ -4281,6 +4323,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/users is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_security_users_serialize(
             organization_id=organization_id,
@@ -4326,7 +4369,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[str]]:
-        """Get the Scenario security users list
+        """(Deprecated) Get the Scenario security users list
 
 
         :param organization_id: the Organization identifier (required)
@@ -4356,6 +4399,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/users is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_security_users_serialize(
             organization_id=organization_id,
@@ -4401,7 +4445,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Scenario security users list
+        """(Deprecated) Get the Scenario security users list
 
 
         :param organization_id: the Organization identifier (required)
@@ -4431,6 +4475,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/users is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_security_users_serialize(
             organization_id=organization_id,
@@ -4539,7 +4584,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioValidationStatus:
-        """Get the validation status of an scenario
+        """(Deprecated) Get the validation status of an scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -4569,6 +4614,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/ValidationStatus is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_validation_status_by_id_serialize(
             organization_id=organization_id,
@@ -4613,7 +4659,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioValidationStatus]:
-        """Get the validation status of an scenario
+        """(Deprecated) Get the validation status of an scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -4643,6 +4689,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/ValidationStatus is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_validation_status_by_id_serialize(
             organization_id=organization_id,
@@ -4687,7 +4734,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the validation status of an scenario
+        """(Deprecated) Get the validation status of an scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -4717,6 +4764,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/ValidationStatus is deprecated.", DeprecationWarning)
 
         _param = self._get_scenario_validation_status_by_id_serialize(
             organization_id=organization_id,
@@ -4823,7 +4871,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Scenario]:
-        """Get the Scenarios Tree
+        """(Deprecated) Get the Scenarios Tree
 
 
         :param organization_id: the Organization identifier (required)
@@ -4851,6 +4899,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree is deprecated.", DeprecationWarning)
 
         _param = self._get_scenarios_tree_serialize(
             organization_id=organization_id,
@@ -4893,7 +4942,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Scenario]]:
-        """Get the Scenarios Tree
+        """(Deprecated) Get the Scenarios Tree
 
 
         :param organization_id: the Organization identifier (required)
@@ -4921,6 +4970,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree is deprecated.", DeprecationWarning)
 
         _param = self._get_scenarios_tree_serialize(
             organization_id=organization_id,
@@ -4963,7 +5013,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Scenarios Tree
+        """(Deprecated) Get the Scenarios Tree
 
 
         :param organization_id: the Organization identifier (required)
@@ -4991,6 +5041,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/tree is deprecated.", DeprecationWarning)
 
         _param = self._get_scenarios_tree_serialize(
             organization_id=organization_id,
@@ -5094,7 +5145,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Remove all Parameter Values from the Scenario specified
+        """(Deprecated) Remove all Parameter Values from the Scenario specified
 
 
         :param organization_id: the Organization identifier (required)
@@ -5124,6 +5175,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues is deprecated.", DeprecationWarning)
 
         _param = self._remove_all_scenario_parameter_values_serialize(
             organization_id=organization_id,
@@ -5169,7 +5221,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Remove all Parameter Values from the Scenario specified
+        """(Deprecated) Remove all Parameter Values from the Scenario specified
 
 
         :param organization_id: the Organization identifier (required)
@@ -5199,6 +5251,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues is deprecated.", DeprecationWarning)
 
         _param = self._remove_all_scenario_parameter_values_serialize(
             organization_id=organization_id,
@@ -5244,7 +5297,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove all Parameter Values from the Scenario specified
+        """(Deprecated) Remove all Parameter Values from the Scenario specified
 
 
         :param organization_id: the Organization identifier (required)
@@ -5274,6 +5327,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/parameterValues is deprecated.", DeprecationWarning)
 
         _param = self._remove_all_scenario_parameter_values_serialize(
             organization_id=organization_id,
@@ -5377,7 +5431,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Remove the specified access from the given Organization Scenario
+        """(Deprecated) Remove the specified access from the given Organization Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -5409,6 +5463,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._remove_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -5456,7 +5511,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Remove the specified access from the given Organization Scenario
+        """(Deprecated) Remove the specified access from the given Organization Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -5488,6 +5543,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._remove_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -5535,7 +5591,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove the specified access from the given Organization Scenario
+        """(Deprecated) Remove the specified access from the given Organization Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -5567,6 +5623,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._remove_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -5674,7 +5731,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioSecurity:
-        """Set the Scenario default security
+        """(Deprecated) Set the Scenario default security
 
 
         :param organization_id: the Organization identifier (required)
@@ -5706,6 +5763,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/default is deprecated.", DeprecationWarning)
 
         _param = self._set_scenario_default_security_serialize(
             organization_id=organization_id,
@@ -5753,7 +5811,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioSecurity]:
-        """Set the Scenario default security
+        """(Deprecated) Set the Scenario default security
 
 
         :param organization_id: the Organization identifier (required)
@@ -5785,6 +5843,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/default is deprecated.", DeprecationWarning)
 
         _param = self._set_scenario_default_security_serialize(
             organization_id=organization_id,
@@ -5832,7 +5891,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set the Scenario default security
+        """(Deprecated) Set the Scenario default security
 
 
         :param organization_id: the Organization identifier (required)
@@ -5864,6 +5923,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/default is deprecated.", DeprecationWarning)
 
         _param = self._set_scenario_default_security_serialize(
             organization_id=organization_id,
@@ -5991,7 +6051,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Scenario:
-        """Update a scenario
+        """(Deprecated) Update a scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -6023,6 +6083,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_scenario_serialize(
             organization_id=organization_id,
@@ -6071,7 +6132,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Scenario]:
-        """Update a scenario
+        """(Deprecated) Update a scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -6103,6 +6164,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_scenario_serialize(
             organization_id=organization_id,
@@ -6151,7 +6213,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a scenario
+        """(Deprecated) Update a scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -6183,6 +6245,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_scenario_serialize(
             organization_id=organization_id,
@@ -6312,7 +6375,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScenarioAccessControl:
-        """Update the specified access to User for a Scenario
+        """(Deprecated) Update the specified access to User for a Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -6346,6 +6409,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -6395,7 +6459,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScenarioAccessControl]:
-        """Update the specified access to User for a Scenario
+        """(Deprecated) Update the specified access to User for a Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -6429,6 +6493,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_scenario_access_control_serialize(
             organization_id=organization_id,
@@ -6478,7 +6543,7 @@ class ScenarioApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update the specified access to User for a Scenario
+        """(Deprecated) Update the specified access to User for a Scenario
 
 
         :param organization_id: the Organization identifier (required)
@@ -6512,6 +6577,7 @@ class ScenarioApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /organizations/{organization_id}/workspaces/{workspace_id}/scenarios/{scenario_id}/security/access/{identity_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_scenario_access_control_serialize(
             organization_id=organization_id,
