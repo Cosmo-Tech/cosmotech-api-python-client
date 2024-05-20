@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **run_template_id** | **str** | the Solution Analysis Id to search | [optional] 
 **workspace_id** | **str** | the Workspace Id to search | [optional] 
 **runner_id** | **str** | the Runner Id to search | [optional] 
-**state** | **str** | the state to search | [optional] 
+**state** | [**RunSearchState**](RunSearchState.md) |  | [optional] 
 **workflow_id** | **str** | the Cosmo Tech compute cluster Argo Workflow Id to search | [optional] 
 **workflow_name** | **str** | the Cosmo Tech compute cluster Argo Workflow Name | [optional] 
 **owner_id** | **str** | the owner Id to search | [optional] 
