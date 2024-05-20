@@ -125,27 +125,6 @@ class TestOrganizationApi(unittest.TestCase):
         """
         pass
 
-    def test_update_solutions_container_registry_by_organization_id(self) -> None:
-        """Test case for update_solutions_container_registry_by_organization_id
-
-        Update the solutions container registry configuration for the Organization specified
-        """
-        pass
-
-    def test_update_storage_by_organization_id(self) -> None:
-        """Test case for update_storage_by_organization_id
-
-        Update storage configuration for the Organization specified
-        """
-        pass
-
-    def test_update_tenant_credentials_by_organization_id(self) -> None:
-        """Test case for update_tenant_credentials_by_organization_id
-
-        Update tenant credentials for the Organization specified
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

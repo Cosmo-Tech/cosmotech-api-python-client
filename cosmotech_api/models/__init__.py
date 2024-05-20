@@ -43,8 +43,6 @@ from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl
 from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity
-from cosmotech_api.models.organization_service import OrganizationService
-from cosmotech_api.models.organization_services import OrganizationServices
 from cosmotech_api.models.query_result import QueryResult
 from cosmotech_api.models.resource_size_info import ResourceSizeInfo
 from cosmotech_api.models.run import Run
