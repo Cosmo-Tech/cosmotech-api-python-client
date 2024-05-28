@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **find_all_connectors**
-> [Connector] find_all_connectors()
+> List[Connector] find_all_connectors(page=page, size=size)
 
 List all Connectors
 
@@ -21,11 +21,11 @@ List all Connectors
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import connector_api
-from cosmotech_api.model.connector import Connector
+from cosmotech_api.models.connector import Connector
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -37,40 +37,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = connector_api.ConnectorApi(api_client)
-    page = 1 # int | page number to query (optional)
-    size = 1 # int | amount of result by page (optional)
+    api_instance = cosmotech_api.ConnectorApi(api_client)
+    page = 56 # int | page number to query (optional)
+    size = 56 # int | amount of result by page (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List all Connectors
         api_response = api_instance.find_all_connectors(page=page, size=size)
+        print("The response of ConnectorApi->find_all_connectors:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ConnectorApi->find_all_connectors: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| page number to query | [optional]
- **size** | **int**| amount of result by page | [optional]
+ **page** | **int**| page number to query | [optional] 
+ **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
 
-[**[Connector]**](Connector.md)
+[**List[Connector]**](Connector.md)
 
 ### Authorization
 
@@ -80,7 +77,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -100,11 +96,11 @@ Get the details of a connector
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import connector_api
-from cosmotech_api.model.connector import Connector
+from cosmotech_api.models.connector import Connector
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -116,33 +112,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = connector_api.ConnectorApi(api_client)
-    connector_id = "connector_id_example" # str | the Connector identifier
+    api_instance = cosmotech_api.ConnectorApi(api_client)
+    connector_id = 'connector_id_example' # str | the Connector identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the details of a connector
         api_response = api_instance.find_connector_by_id(connector_id)
+        print("The response of ConnectorApi->find_connector_by_id:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ConnectorApi->find_connector_by_id: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector_id** | **str**| the Connector identifier |
+ **connector_id** | **str**| the Connector identifier | 
 
 ### Return type
 
@@ -156,7 +150,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -177,11 +170,11 @@ Get the details of a connector
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import connector_api
-from cosmotech_api.model.connector import Connector
+from cosmotech_api.models.connector import Connector
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -193,33 +186,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = connector_api.ConnectorApi(api_client)
-    connector_name = "connector_name_example" # str | the Connector name
+    api_instance = cosmotech_api.ConnectorApi(api_client)
+    connector_name = 'connector_name_example' # str | the Connector name
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the details of a connector
         api_response = api_instance.find_connector_by_name(connector_name)
+        print("The response of ConnectorApi->find_connector_by_name:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ConnectorApi->find_connector_by_name: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector_name** | **str**| the Connector name |
+ **connector_name** | **str**| the Connector name | 
 
 ### Return type
 
@@ -233,7 +224,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -253,11 +243,11 @@ Register a new connector
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import connector_api
-from cosmotech_api.model.connector import Connector
+from cosmotech_api.models.connector import Connector
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -269,66 +259,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = connector_api.ConnectorApi(api_client)
-    connector = Connector(
-        key="key_example",
-        name="name_example",
-        description="description_example",
-        repository="repository_example",
-        version="version_example",
-        tags=[
-            "tags_example",
-        ],
-        url="url_example",
-        azure_managed_identity=True,
-        azure_authentication_with_customer_app_registration=True,
-        io_types=[
-            "read",
-        ],
-        parameter_groups=[
-            ConnectorParameterGroup(
-                id="id_example",
-                label="label_example",
-                parameters=[
-                    ConnectorParameter(
-                        id="id_example",
-                        label="label_example",
-                        value_type="value_type_example",
-                        options=[
-                            "options_example",
-                        ],
-                        default="default_example",
-                        env_var="env_var_example",
-                    ),
-                ],
-            ),
-        ],
-    ) # Connector | the Connector to register
+    api_instance = cosmotech_api.ConnectorApi(api_client)
+    connector = cosmotech_api.Connector() # Connector | the Connector to register
 
-    # example passing only required values which don't have defaults set
     try:
         # Register a new connector
         api_response = api_instance.register_connector(connector)
+        print("The response of ConnectorApi->register_connector:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ConnectorApi->register_connector: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | [**Connector**](Connector.md)| the Connector to register |
+ **connector** | [**Connector**](Connector.md)| the Connector to register | 
 
 ### Return type
 
@@ -342,7 +297,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -363,10 +317,10 @@ Unregister a connector
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import connector_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -378,32 +332,29 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = connector_api.ConnectorApi(api_client)
-    connector_id = "connector_id_example" # str | the Connector identifier
+    api_instance = cosmotech_api.ConnectorApi(api_client)
+    connector_id = 'connector_id_example' # str | the Connector identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Unregister a connector
         api_instance.unregister_connector(connector_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ConnectorApi->unregister_connector: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector_id** | **str**| the Connector identifier |
+ **connector_id** | **str**| the Connector identifier | 
 
 ### Return type
 
@@ -417,7 +368,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
