@@ -31,11 +31,11 @@ Add a control access to the Runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner_access_control import RunnerAccessControl
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner_access_control import RunnerAccessControl
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -47,37 +47,42 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    runner_access_control = cosmotech_api.RunnerAccessControl() # RunnerAccessControl | the new Runner security access to add.
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    runner_access_control = RunnerAccessControl(
+        id="id_example",
+        role="role_example",
+    ) # RunnerAccessControl | the new Runner security access to add.
 
+    # example passing only required values which don't have defaults set
     try:
         # Add a control access to the Runner
         api_response = api_instance.add_runner_access_control(organization_id, workspace_id, runner_id, runner_access_control)
-        print("The response of RunnerApi->add_runner_access_control:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->add_runner_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **runner_access_control** | [**RunnerAccessControl**](RunnerAccessControl.md)| the new Runner security access to add. | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **runner_access_control** | [**RunnerAccessControl**](RunnerAccessControl.md)| the new Runner security access to add. |
 
 ### Return type
 
@@ -91,6 +96,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -111,11 +117,11 @@ Create a new Runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner import Runner
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner import Runner
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -127,35 +133,68 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner = cosmotech_api.Runner() # Runner | the Runner to create
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner = Runner(
+        name="name_example",
+        description="description_example",
+        tags=[
+            "tags_example",
+        ],
+        parent_id="parent_id_example",
+        run_template_id="run_template_id_example",
+        dataset_list=[
+            "dataset_list_example",
+        ],
+        run_sizing=RunnerResourceSizing(
+            requests=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+            limits=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+        ),
+        parameters_values=[
+            RunnerRunTemplateParameterValue(
+                parameter_id="parameter_id_example",
+                value="value_example",
+                is_inherited=True,
+            ),
+        ],
+        last_run_id="last_run_id_example",
+        validation_status=None,
+        security=None,
+    ) # Runner | the Runner to create
 
+    # example passing only required values which don't have defaults set
     try:
         # Create a new Runner
         api_response = api_instance.create_runner(organization_id, workspace_id, runner)
-        print("The response of RunnerApi->create_runner:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->create_runner: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner** | [**Runner**](Runner.md)| the Runner to create | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner** | [**Runner**](Runner.md)| the Runner to create |
 
 ### Return type
 
@@ -169,6 +208,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -189,10 +229,10 @@ Delete a runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -204,33 +244,36 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Delete a runner
         api_instance.delete_runner(organization_id, workspace_id, runner_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->delete_runner: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
 
 ### Return type
 
@@ -244,6 +287,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -264,11 +308,11 @@ Get the details of an runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner import Runner
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner import Runner
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -280,35 +324,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the details of an runner
         api_response = api_instance.get_runner(organization_id, workspace_id, runner_id)
-        print("The response of RunnerApi->get_runner:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->get_runner: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
 
 ### Return type
 
@@ -322,6 +368,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -342,11 +389,11 @@ Get a control access for the Runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner_access_control import RunnerAccessControl
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner_access_control import RunnerAccessControl
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -358,37 +405,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    identity_id = "identity_id_example" # str | the User identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get a control access for the Runner
         api_response = api_instance.get_runner_access_control(organization_id, workspace_id, runner_id, identity_id)
-        print("The response of RunnerApi->get_runner_access_control:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->get_runner_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **identity_id** | **str**| the User identifier |
 
 ### Return type
 
@@ -403,6 +452,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -413,7 +463,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_runner_permissions**
-> List[str] get_runner_permissions(organization_id, workspace_id, runner_id, role)
+> [str] get_runner_permissions(organization_id, workspace_id, runner_id, role)
 
 Get the Runner permission by given role
 
@@ -422,10 +472,10 @@ Get the Runner permission by given role
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -437,41 +487,43 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    role = 'role_example' # str | the Role
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    role = "role_example" # str | the Role
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the Runner permission by given role
         api_response = api_instance.get_runner_permissions(organization_id, workspace_id, runner_id, role)
-        print("The response of RunnerApi->get_runner_permissions:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->get_runner_permissions: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **role** | **str**| the Role | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **role** | **str**| the Role |
 
 ### Return type
 
-**List[str]**
+**[str]**
 
 ### Authorization
 
@@ -481,6 +533,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -500,11 +553,11 @@ Get the Runner security information
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner_security import RunnerSecurity
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner_security import RunnerSecurity
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -516,35 +569,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the Runner security information
         api_response = api_instance.get_runner_security(organization_id, workspace_id, runner_id)
-        print("The response of RunnerApi->get_runner_security:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->get_runner_security: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
 
 ### Return type
 
@@ -559,6 +614,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -569,7 +625,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_runner_security_users**
-> List[str] get_runner_security_users(organization_id, workspace_id, runner_id)
+> [str] get_runner_security_users(organization_id, workspace_id, runner_id)
 
 Get the Runner security users list
 
@@ -578,10 +634,10 @@ Get the Runner security users list
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -593,39 +649,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the Runner security users list
         api_response = api_instance.get_runner_security_users(organization_id, workspace_id, runner_id)
-        print("The response of RunnerApi->get_runner_security_users:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->get_runner_security_users: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
 
 ### Return type
 
-**List[str]**
+**[str]**
 
 ### Authorization
 
@@ -635,6 +693,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -646,7 +705,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_runners**
-> List[Runner] list_runners(organization_id, workspace_id, page=page, size=size)
+> [Runner] list_runners(organization_id, workspace_id)
 
 List all Runners
 
@@ -655,11 +714,11 @@ List all Runners
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner import Runner
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner import Runner
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -671,41 +730,52 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    page = 56 # int | page number to query (optional)
-    size = 56 # int | amount of result by page (optional)
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    page = 1 # int | page number to query (optional)
+    size = 1 # int | amount of result by page (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # List all Runners
+        api_response = api_instance.list_runners(organization_id, workspace_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling RunnerApi->list_runners: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # List all Runners
         api_response = api_instance.list_runners(organization_id, workspace_id, page=page, size=size)
-        print("The response of RunnerApi->list_runners:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->list_runners: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **page** | **int**| page number to query | [optional] 
- **size** | **int**| amount of result by page | [optional] 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **page** | **int**| page number to query | [optional]
+ **size** | **int**| amount of result by page | [optional]
 
 ### Return type
 
-[**List[Runner]**](Runner.md)
+[**[Runner]**](Runner.md)
 
 ### Authorization
 
@@ -715,6 +785,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -734,10 +805,10 @@ Remove the specified access from the given Organization Runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -749,35 +820,38 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    identity_id = "identity_id_example" # str | the User identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Remove the specified access from the given Organization Runner
         api_instance.remove_runner_access_control(organization_id, workspace_id, runner_id, identity_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->remove_runner_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **identity_id** | **str**| the User identifier |
 
 ### Return type
 
@@ -791,6 +865,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -811,12 +886,12 @@ Set the Runner default security
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner_role import RunnerRole
-from cosmotech_api.models.runner_security import RunnerSecurity
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner_security import RunnerSecurity
+from cosmotech_api.model.runner_role import RunnerRole
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -828,37 +903,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    runner_role = cosmotech_api.RunnerRole() # RunnerRole | This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    runner_role = RunnerRole(
+        role="role_example",
+    ) # RunnerRole | This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.
 
+    # example passing only required values which don't have defaults set
     try:
         # Set the Runner default security
         api_response = api_instance.set_runner_default_security(organization_id, workspace_id, runner_id, runner_role)
-        print("The response of RunnerApi->set_runner_default_security:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->set_runner_default_security: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **runner_role** | [**RunnerRole**](RunnerRole.md)| This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **runner_role** | [**RunnerRole**](RunnerRole.md)| This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. |
 
 ### Return type
 
@@ -872,6 +951,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -892,10 +972,10 @@ Start a run with runner parameters
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -907,35 +987,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Start a run with runner parameters
         api_response = api_instance.start_run(organization_id, workspace_id, runner_id)
-        print("The response of RunnerApi->start_run:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->start_run: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
 
 ### Return type
 
@@ -949,6 +1031,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -969,10 +1052,10 @@ Stop the last run
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -984,33 +1067,36 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Stop the last run
         api_instance.stop_run(organization_id, workspace_id, runner_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->stop_run: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
 
 ### Return type
 
@@ -1024,6 +1110,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -1044,11 +1131,11 @@ Update a runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner import Runner
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner import Runner
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1060,37 +1147,70 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    runner = cosmotech_api.Runner() # Runner | the new Runner details. This endpoint can't be used to update security
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    runner = Runner(
+        name="name_example",
+        description="description_example",
+        tags=[
+            "tags_example",
+        ],
+        parent_id="parent_id_example",
+        run_template_id="run_template_id_example",
+        dataset_list=[
+            "dataset_list_example",
+        ],
+        run_sizing=RunnerResourceSizing(
+            requests=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+            limits=ResourceSizeInfo(
+                cpu="cpu_example",
+                memory="memory_example",
+            ),
+        ),
+        parameters_values=[
+            RunnerRunTemplateParameterValue(
+                parameter_id="parameter_id_example",
+                value="value_example",
+                is_inherited=True,
+            ),
+        ],
+        last_run_id="last_run_id_example",
+        validation_status=None,
+        security=None,
+    ) # Runner | the new Runner details. This endpoint can't be used to update security
 
+    # example passing only required values which don't have defaults set
     try:
         # Update a runner
         api_response = api_instance.update_runner(organization_id, workspace_id, runner_id, runner)
-        print("The response of RunnerApi->update_runner:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->update_runner: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **runner** | [**Runner**](Runner.md)| the new Runner details. This endpoint can&#39;t be used to update security | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **runner** | [**Runner**](Runner.md)| the new Runner details. This endpoint can&#39;t be used to update security |
 
 ### Return type
 
@@ -1104,6 +1224,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1125,12 +1246,12 @@ Update the specified access to User for a Runner
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.runner_access_control import RunnerAccessControl
-from cosmotech_api.models.runner_role import RunnerRole
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import runner_api
+from cosmotech_api.model.runner_role import RunnerRole
+from cosmotech_api.model.runner_access_control import RunnerAccessControl
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1142,39 +1263,43 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.RunnerApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    identity_id = 'identity_id_example' # str | the User identifier
-    runner_role = cosmotech_api.RunnerRole() # RunnerRole | The new Runner Access Control
+    api_instance = runner_api.RunnerApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    runner_id = "runner_id_example" # str | the Runner identifier
+    identity_id = "identity_id_example" # str | the User identifier
+    runner_role = RunnerRole(
+        role="role_example",
+    ) # RunnerRole | The new Runner Access Control
 
+    # example passing only required values which don't have defaults set
     try:
         # Update the specified access to User for a Runner
         api_response = api_instance.update_runner_access_control(organization_id, workspace_id, runner_id, identity_id, runner_role)
-        print("The response of RunnerApi->update_runner_access_control:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling RunnerApi->update_runner_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **identity_id** | **str**| the User identifier | 
- **runner_role** | [**RunnerRole**](RunnerRole.md)| The new Runner Access Control | 
+ **organization_id** | **str**| the Organization identifier |
+ **workspace_id** | **str**| the Workspace identifier |
+ **runner_id** | **str**| the Runner identifier |
+ **identity_id** | **str**| the User identifier |
+ **runner_role** | [**RunnerRole**](RunnerRole.md)| The new Runner Access Control |
 
 ### Return type
 
@@ -1188,6 +1313,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
