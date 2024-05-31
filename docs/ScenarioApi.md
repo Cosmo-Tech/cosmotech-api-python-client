@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **add_or_replace_scenario_parameter_values**
-> [ScenarioRunTemplateParameterValue] add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value)
+> List[ScenarioRunTemplateParameterValue] add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value)
 
 Add (or replace) Parameter Values for the Scenario specified
 
@@ -38,11 +38,11 @@ Add (or replace) Parameter Values for the Scenario specified
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
+from cosmotech_api.models.scenario_run_template_parameter_value import ScenarioRunTemplateParameterValue
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -54,49 +54,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    scenario_run_template_parameter_value = [
-        ScenarioRunTemplateParameterValue(
-            parameter_id="parameter_id_example",
-            value="value_example",
-            is_inherited=True,
-        ),
-    ] # [ScenarioRunTemplateParameterValue] | the Parameter Value to add. Any Parameter Value with the same ID is overwritten
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    scenario_run_template_parameter_value = [cosmotech_api.ScenarioRunTemplateParameterValue()] # List[ScenarioRunTemplateParameterValue] | the Parameter Value to add. Any Parameter Value with the same ID is overwritten
 
-    # example passing only required values which don't have defaults set
     try:
         # Add (or replace) Parameter Values for the Scenario specified
         api_response = api_instance.add_or_replace_scenario_parameter_values(organization_id, workspace_id, scenario_id, scenario_run_template_parameter_value)
+        print("The response of ScenarioApi->add_or_replace_scenario_parameter_values:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->add_or_replace_scenario_parameter_values: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **scenario_run_template_parameter_value** | [**[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md)| the Parameter Value to add. Any Parameter Value with the same ID is overwritten |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **scenario_run_template_parameter_value** | [**List[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md)| the Parameter Value to add. Any Parameter Value with the same ID is overwritten | 
 
 ### Return type
 
-[**[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md)
+[**List[ScenarioRunTemplateParameterValue]**](ScenarioRunTemplateParameterValue.md)
 
 ### Authorization
 
@@ -106,7 +98,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -128,11 +119,11 @@ Add a control access to the Scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.models.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -144,42 +135,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    scenario_access_control = ScenarioAccessControl(
-        id="id_example",
-        role="role_example",
-    ) # ScenarioAccessControl | the new Scenario security access to add.
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    scenario_access_control = cosmotech_api.ScenarioAccessControl() # ScenarioAccessControl | the new Scenario security access to add.
 
-    # example passing only required values which don't have defaults set
     try:
         # Add a control access to the Scenario
         api_response = api_instance.add_scenario_access_control(organization_id, workspace_id, scenario_id, scenario_access_control)
+        print("The response of ScenarioApi->add_scenario_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->add_scenario_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **scenario_access_control** | [**ScenarioAccessControl**](ScenarioAccessControl.md)| the new Scenario security access to add. |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **scenario_access_control** | [**ScenarioAccessControl**](ScenarioAccessControl.md)| the new Scenario security access to add. | 
 
 ### Return type
 
@@ -193,7 +179,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -214,11 +199,11 @@ Compare the Scenario with another one and returns the difference for parameters 
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.models.scenario_comparison_result import ScenarioComparisonResult
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -230,39 +215,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    compared_scenario_id = "compared_scenario_id_example" # str | the Scenario identifier to compare to
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    compared_scenario_id = 'compared_scenario_id_example' # str | the Scenario identifier to compare to
 
-    # example passing only required values which don't have defaults set
     try:
         # Compare the Scenario with another one and returns the difference for parameters values
         api_response = api_instance.compare_scenarios(organization_id, workspace_id, scenario_id, compared_scenario_id)
+        print("The response of ScenarioApi->compare_scenarios:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->compare_scenarios: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **compared_scenario_id** | **str**| the Scenario identifier to compare to |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **compared_scenario_id** | **str**| the Scenario identifier to compare to | 
 
 ### Return type
 
@@ -276,7 +259,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -297,11 +279,11 @@ Create a new Scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -313,70 +295,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario = Scenario(
-        name="name_example",
-        description="description_example",
-        tags=[
-            "tags_example",
-        ],
-        parent_id="parent_id_example",
-        run_template_id="run_template_id_example",
-        dataset_list=[
-            "dataset_list_example",
-        ],
-        run_sizing=ScenarioResourceSizing(
-            requests=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-            limits=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-        ),
-        parameters_values=[
-            ScenarioRunTemplateParameterValue(
-                parameter_id="parameter_id_example",
-                value="value_example",
-                is_inherited=True,
-            ),
-        ],
-        last_run=None,
-        parent_last_run=None,
-        root_last_run=None,
-        validation_status=None,
-        security=None,
-    ) # Scenario | the Scenario to create
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario = cosmotech_api.Scenario() # Scenario | the Scenario to create
 
-    # example passing only required values which don't have defaults set
     try:
         # Create a new Scenario
         api_response = api_instance.create_scenario(organization_id, workspace_id, scenario)
+        print("The response of ScenarioApi->create_scenario:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->create_scenario: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario** | [**Scenario**](Scenario.md)| the Scenario to create |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario** | [**Scenario**](Scenario.md)| the Scenario to create | 
 
 ### Return type
 
@@ -390,7 +337,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -411,10 +357,10 @@ Delete all Scenarios of the Workspace
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -426,34 +372,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete all Scenarios of the Workspace
         api_instance.delete_all_scenarios(organization_id, workspace_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->delete_all_scenarios: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
@@ -467,7 +410,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -488,10 +430,10 @@ Delete a scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -503,36 +445,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete a scenario
         api_instance.delete_scenario(organization_id, workspace_id, scenario_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->delete_scenario: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
@@ -546,7 +485,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -567,11 +505,11 @@ Download Scenario data
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_data_download_job import ScenarioDataDownloadJob
+from cosmotech_api.models.scenario_data_download_job import ScenarioDataDownloadJob
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -583,37 +521,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Download Scenario data
         api_response = api_instance.download_scenario_data(organization_id, workspace_id, scenario_id)
+        print("The response of ScenarioApi->download_scenario_data:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->download_scenario_data: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
@@ -628,7 +564,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -639,7 +574,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_scenarios**
-> [Scenario] find_all_scenarios(organization_id, workspace_id)
+> List[Scenario] find_all_scenarios(organization_id, workspace_id, page=page, size=size)
 
 List all Scenarios
 
@@ -648,11 +583,11 @@ List all Scenarios
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -664,52 +599,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    page = 1 # int | page number to query (optional)
-    size = 1 # int | amount of result by page (optional)
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    page = 56 # int | page number to query (optional)
+    size = 56 # int | amount of result by page (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # List all Scenarios
-        api_response = api_instance.find_all_scenarios(organization_id, workspace_id)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling ScenarioApi->find_all_scenarios: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List all Scenarios
         api_response = api_instance.find_all_scenarios(organization_id, workspace_id, page=page, size=size)
+        print("The response of ScenarioApi->find_all_scenarios:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->find_all_scenarios: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **page** | **int**| page number to query | [optional]
- **size** | **int**| amount of result by page | [optional]
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **page** | **int**| page number to query | [optional] 
+ **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
 
-[**[Scenario]**](Scenario.md)
+[**List[Scenario]**](Scenario.md)
 
 ### Authorization
 
@@ -719,7 +643,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -730,7 +653,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_scenarios_by_validation_status**
-> [Scenario] find_all_scenarios_by_validation_status(organization_id, workspace_id, validation_status)
+> List[Scenario] find_all_scenarios_by_validation_status(organization_id, workspace_id, validation_status, page=page, size=size)
 
 List all Scenarios by validation status
 
@@ -739,12 +662,12 @@ List all Scenarios by validation status
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
-from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.models.scenario_validation_status import ScenarioValidationStatus
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -756,54 +679,43 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    validation_status = ScenarioValidationStatus("Draft") # ScenarioValidationStatus | the Scenario Validation Status
-    page = 1 # int | page number to query (optional)
-    size = 1 # int | amount of result by page (optional)
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    validation_status = cosmotech_api.ScenarioValidationStatus() # ScenarioValidationStatus | the Scenario Validation Status
+    page = 56 # int | page number to query (optional)
+    size = 56 # int | amount of result by page (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # List all Scenarios by validation status
-        api_response = api_instance.find_all_scenarios_by_validation_status(organization_id, workspace_id, validation_status)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling ScenarioApi->find_all_scenarios_by_validation_status: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List all Scenarios by validation status
         api_response = api_instance.find_all_scenarios_by_validation_status(organization_id, workspace_id, validation_status, page=page, size=size)
+        print("The response of ScenarioApi->find_all_scenarios_by_validation_status:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->find_all_scenarios_by_validation_status: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **validation_status** | **ScenarioValidationStatus**| the Scenario Validation Status |
- **page** | **int**| page number to query | [optional]
- **size** | **int**| amount of result by page | [optional]
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **validation_status** | [**ScenarioValidationStatus**](.md)| the Scenario Validation Status | 
+ **page** | **int**| page number to query | [optional] 
+ **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
 
-[**[Scenario]**](Scenario.md)
+[**List[Scenario]**](Scenario.md)
 
 ### Authorization
 
@@ -813,7 +725,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -833,11 +744,11 @@ Get the details of an scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -849,37 +760,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the details of an scenario
         api_response = api_instance.find_scenario_by_id(organization_id, workspace_id, scenario_id)
+        print("The response of ScenarioApi->find_scenario_by_id:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->find_scenario_by_id: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
@@ -893,7 +802,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -914,11 +822,11 @@ Get a control access for the Scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.models.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -930,39 +838,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    identity_id = "identity_id_example" # str | the User identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    identity_id = 'identity_id_example' # str | the User identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get a control access for the Scenario
         api_response = api_instance.get_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id)
+        print("The response of ScenarioApi->get_scenario_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenario_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **identity_id** | **str**| the User identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **identity_id** | **str**| the User identifier | 
 
 ### Return type
 
@@ -976,7 +882,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -997,11 +902,11 @@ Get Scenario data download URL
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_data_download_info import ScenarioDataDownloadInfo
+from cosmotech_api.models.scenario_data_download_info import ScenarioDataDownloadInfo
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1013,39 +918,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    download_id = "download_id_example" # str | the Scenario Download identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    download_id = 'download_id_example' # str | the Scenario Download identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get Scenario data download URL
         api_response = api_instance.get_scenario_data_download_job_info(organization_id, workspace_id, scenario_id, download_id)
+        print("The response of ScenarioApi->get_scenario_data_download_job_info:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenario_data_download_job_info: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **download_id** | **str**| the Scenario Download identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **download_id** | **str**| the Scenario Download identifier | 
 
 ### Return type
 
@@ -1060,7 +963,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1071,7 +973,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_scenario_permissions**
-> [str] get_scenario_permissions(organization_id, workspace_id, scenario_id, role)
+> List[str] get_scenario_permissions(organization_id, workspace_id, scenario_id, role)
 
 Get the Scenario permission by given role
 
@@ -1080,10 +982,10 @@ Get the Scenario permission by given role
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1095,43 +997,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    role = "role_example" # str | the Role
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    role = 'role_example' # str | the Role
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Scenario permission by given role
         api_response = api_instance.get_scenario_permissions(organization_id, workspace_id, scenario_id, role)
+        print("The response of ScenarioApi->get_scenario_permissions:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenario_permissions: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **role** | **str**| the Role |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **role** | **str**| the Role | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -1141,7 +1041,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1161,11 +1060,11 @@ Get the Scenario security information
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_security import ScenarioSecurity
+from cosmotech_api.models.scenario_security import ScenarioSecurity
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1177,37 +1076,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Scenario security information
         api_response = api_instance.get_scenario_security(organization_id, workspace_id, scenario_id)
+        print("The response of ScenarioApi->get_scenario_security:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenario_security: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
@@ -1222,7 +1119,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1233,7 +1129,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_scenario_security_users**
-> [str] get_scenario_security_users(organization_id, workspace_id, scenario_id)
+> List[str] get_scenario_security_users(organization_id, workspace_id, scenario_id)
 
 Get the Scenario security users list
 
@@ -1242,10 +1138,10 @@ Get the Scenario security users list
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1257,41 +1153,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Scenario security users list
         api_response = api_instance.get_scenario_security_users(organization_id, workspace_id, scenario_id)
+        print("The response of ScenarioApi->get_scenario_security_users:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenario_security_users: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -1301,7 +1195,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1322,11 +1215,11 @@ Get the validation status of an scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_validation_status import ScenarioValidationStatus
+from cosmotech_api.models.scenario_validation_status import ScenarioValidationStatus
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1338,37 +1231,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the validation status of an scenario
         api_response = api_instance.get_scenario_validation_status_by_id(organization_id, workspace_id, scenario_id)
+        print("The response of ScenarioApi->get_scenario_validation_status_by_id:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenario_validation_status_by_id: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
@@ -1383,7 +1274,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1393,7 +1283,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_scenarios_tree**
-> [Scenario] get_scenarios_tree(organization_id, workspace_id)
+> List[Scenario] get_scenarios_tree(organization_id, workspace_id)
 
 Get the Scenarios Tree
 
@@ -1402,11 +1292,11 @@ Get the Scenarios Tree
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1418,39 +1308,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Scenarios Tree
         api_response = api_instance.get_scenarios_tree(organization_id, workspace_id)
+        print("The response of ScenarioApi->get_scenarios_tree:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->get_scenarios_tree: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
 
 ### Return type
 
-[**[Scenario]**](Scenario.md)
+[**List[Scenario]**](Scenario.md)
 
 ### Authorization
 
@@ -1460,7 +1348,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1480,10 +1367,10 @@ Remove all Parameter Values from the Scenario specified
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1495,36 +1382,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Remove all Parameter Values from the Scenario specified
         api_instance.remove_all_scenario_parameter_values(organization_id, workspace_id, scenario_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->remove_all_scenario_parameter_values: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
 
 ### Return type
 
@@ -1538,7 +1422,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -1559,10 +1442,10 @@ Remove the specified access from the given Organization Scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1574,38 +1457,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    identity_id = "identity_id_example" # str | the User identifier
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    identity_id = 'identity_id_example' # str | the User identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Remove the specified access from the given Organization Scenario
         api_instance.remove_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->remove_scenario_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **identity_id** | **str**| the User identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **identity_id** | **str**| the User identifier | 
 
 ### Return type
 
@@ -1619,7 +1499,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -1640,12 +1519,12 @@ Set the Scenario default security
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_role import ScenarioRole
-from cosmotech_api.model.scenario_security import ScenarioSecurity
+from cosmotech_api.models.scenario_role import ScenarioRole
+from cosmotech_api.models.scenario_security import ScenarioSecurity
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1657,41 +1536,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    scenario_role = ScenarioRole(
-        role="role_example",
-    ) # ScenarioRole | This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario.
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    scenario_role = cosmotech_api.ScenarioRole() # ScenarioRole | This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario.
 
-    # example passing only required values which don't have defaults set
     try:
         # Set the Scenario default security
         api_response = api_instance.set_scenario_default_security(organization_id, workspace_id, scenario_id, scenario_role)
+        print("The response of ScenarioApi->set_scenario_default_security:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->set_scenario_default_security: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario. |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| This change the scenario default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the scenario. | 
 
 ### Return type
 
@@ -1705,7 +1580,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1726,11 +1600,11 @@ Update a scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario import Scenario
+from cosmotech_api.models.scenario import Scenario
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1742,72 +1616,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    scenario = Scenario(
-        name="name_example",
-        description="description_example",
-        tags=[
-            "tags_example",
-        ],
-        parent_id="parent_id_example",
-        run_template_id="run_template_id_example",
-        dataset_list=[
-            "dataset_list_example",
-        ],
-        run_sizing=ScenarioResourceSizing(
-            requests=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-            limits=ResourceSizeInfo(
-                cpu="cpu_example",
-                memory="memory_example",
-            ),
-        ),
-        parameters_values=[
-            ScenarioRunTemplateParameterValue(
-                parameter_id="parameter_id_example",
-                value="value_example",
-                is_inherited=True,
-            ),
-        ],
-        last_run=None,
-        parent_last_run=None,
-        root_last_run=None,
-        validation_status=None,
-        security=None,
-    ) # Scenario | the new Scenario details. This endpoint can't be used to update security
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    scenario = cosmotech_api.Scenario() # Scenario | the new Scenario details. This endpoint can't be used to update security
 
-    # example passing only required values which don't have defaults set
     try:
         # Update a scenario
         api_response = api_instance.update_scenario(organization_id, workspace_id, scenario_id, scenario)
+        print("The response of ScenarioApi->update_scenario:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->update_scenario: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **scenario** | [**Scenario**](Scenario.md)| the new Scenario details. This endpoint can&#39;t be used to update security |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **scenario** | [**Scenario**](Scenario.md)| the new Scenario details. This endpoint can&#39;t be used to update security | 
 
 ### Return type
 
@@ -1821,7 +1660,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1843,12 +1681,12 @@ Update the specified access to User for a Scenario
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import scenario_api
-from cosmotech_api.model.scenario_role import ScenarioRole
-from cosmotech_api.model.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.models.scenario_access_control import ScenarioAccessControl
+from cosmotech_api.models.scenario_role import ScenarioRole
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1860,43 +1698,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = scenario_api.ScenarioApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    workspace_id = "workspace_id_example" # str | the Workspace identifier
-    scenario_id = "scenario_id_example" # str | the Scenario identifier
-    identity_id = "identity_id_example" # str | the User identifier
-    scenario_role = ScenarioRole(
-        role="role_example",
-    ) # ScenarioRole | The new Scenario Access Control
+    api_instance = cosmotech_api.ScenarioApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    scenario_id = 'scenario_id_example' # str | the Scenario identifier
+    identity_id = 'identity_id_example' # str | the User identifier
+    scenario_role = cosmotech_api.ScenarioRole() # ScenarioRole | The new Scenario Access Control
 
-    # example passing only required values which don't have defaults set
     try:
         # Update the specified access to User for a Scenario
         api_response = api_instance.update_scenario_access_control(organization_id, workspace_id, scenario_id, identity_id, scenario_role)
+        print("The response of ScenarioApi->update_scenario_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling ScenarioApi->update_scenario_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **workspace_id** | **str**| the Workspace identifier |
- **scenario_id** | **str**| the Scenario identifier |
- **identity_id** | **str**| the User identifier |
- **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| The new Scenario Access Control |
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **scenario_id** | **str**| the Scenario identifier | 
+ **identity_id** | **str**| the User identifier | 
+ **scenario_role** | [**ScenarioRole**](ScenarioRole.md)| The new Scenario Access Control | 
 
 ### Return type
 
@@ -1910,7 +1744,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 

@@ -3,13 +3,30 @@
 the value of Analysis parameter for a Runner for this Run
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **parameter_id** | **str** | the parameter Id | 
-**value** | **str** | the parameter value | 
 **var_type** | **str** | the parameter value type | [optional] [readonly] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**value** | **str** | the parameter value | 
 
+## Example
+
+```python
+from cosmotech_api.models.run_template_parameter_value import RunTemplateParameterValue
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of RunTemplateParameterValue from a JSON string
+run_template_parameter_value_instance = RunTemplateParameterValue.from_json(json)
+# print the JSON string representation of the object
+print RunTemplateParameterValue.to_json()
+
+# convert the object into a dict
+run_template_parameter_value_dict = run_template_parameter_value_instance.to_dict()
+# create an instance of RunTemplateParameterValue from a dict
+run_template_parameter_value_form_dict = run_template_parameter_value.from_dict(run_template_parameter_value_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

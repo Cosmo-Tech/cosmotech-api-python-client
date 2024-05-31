@@ -18,9 +18,6 @@ Method | HTTP request | Description
 [**unregister_organization**](OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
 [**update_organization**](OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an Organization
 [**update_organization_access_control**](OrganizationApi.md#update_organization_access_control) | **PATCH** /organizations/{organization_id}/security/access/{identity_id} | Update the specified access to User for an Organization
-[**update_solutions_container_registry_by_organization_id**](OrganizationApi.md#update_solutions_container_registry_by_organization_id) | **PATCH** /organizations/{organization_id}/services/solutionsContainerRegistry | Update the solutions container registry configuration for the Organization specified
-[**update_storage_by_organization_id**](OrganizationApi.md#update_storage_by_organization_id) | **PATCH** /organizations/{organization_id}/services/storage | Update storage configuration for the Organization specified
-[**update_tenant_credentials_by_organization_id**](OrganizationApi.md#update_tenant_credentials_by_organization_id) | **PATCH** /organizations/{organization_id}/services/tenantCredentials | Update tenant credentials for the Organization specified
 
 
 # **add_organization_access_control**
@@ -33,11 +30,11 @@ Add a control access to the Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_access_control import OrganizationAccessControl
+from cosmotech_api.models.organization_access_control import OrganizationAccessControl
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -49,38 +46,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    organization_access_control = OrganizationAccessControl(
-        id="id_example",
-        role="role_example",
-    ) # OrganizationAccessControl | the new Organization security access to add.
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_access_control = cosmotech_api.OrganizationAccessControl() # OrganizationAccessControl | the new Organization security access to add.
 
-    # example passing only required values which don't have defaults set
     try:
         # Add a control access to the Organization
         api_response = api_instance.add_organization_access_control(organization_id, organization_access_control)
+        print("The response of OrganizationApi->add_organization_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->add_organization_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **organization_access_control** | [**OrganizationAccessControl**](OrganizationAccessControl.md)| the new Organization security access to add. |
+ **organization_id** | **str**| the Organization identifier | 
+ **organization_access_control** | [**OrganizationAccessControl**](OrganizationAccessControl.md)| the new Organization security access to add. | 
 
 ### Return type
 
@@ -95,7 +87,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -106,7 +97,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_organizations**
-> [Organization] find_all_organizations()
+> List[Organization] find_all_organizations(page=page, size=size)
 
 List all Organizations
 
@@ -115,11 +106,11 @@ List all Organizations
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.models.organization import Organization
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -131,40 +122,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    page = 1 # int | page number to query (optional)
-    size = 1 # int | amount of result by page (optional)
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    page = 56 # int | page number to query (optional)
+    size = 56 # int | amount of result by page (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List all Organizations
         api_response = api_instance.find_all_organizations(page=page, size=size)
+        print("The response of OrganizationApi->find_all_organizations:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->find_all_organizations: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| page number to query | [optional]
- **size** | **int**| amount of result by page | [optional]
+ **page** | **int**| page number to query | [optional] 
+ **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
 
-[**[Organization]**](Organization.md)
+[**List[Organization]**](Organization.md)
 
 ### Authorization
 
@@ -174,7 +162,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -194,11 +181,11 @@ Get the details of an Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.models.organization import Organization
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -210,33 +197,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the details of an Organization
         api_response = api_instance.find_organization_by_id(organization_id)
+        print("The response of OrganizationApi->find_organization_by_id:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->find_organization_by_id: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
+ **organization_id** | **str**| the Organization identifier | 
 
 ### Return type
 
@@ -251,7 +236,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -262,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_all_permissions**
-> [ComponentRolePermissions] get_all_permissions()
+> List[ComponentRolePermissions] get_all_permissions()
 
 Get all permissions per components
 
@@ -271,11 +255,11 @@ Get all permissions per components
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.component_role_permissions import ComponentRolePermissions
+from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -287,33 +271,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
+    api_instance = cosmotech_api.OrganizationApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Get all permissions per components
         api_response = api_instance.get_all_permissions()
+        print("The response of OrganizationApi->get_all_permissions:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->get_all_permissions: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[ComponentRolePermissions]**](ComponentRolePermissions.md)
+[**List[ComponentRolePermissions]**](ComponentRolePermissions.md)
 
 ### Authorization
 
@@ -323,7 +305,6 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -343,11 +324,11 @@ Get a control access for the Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_access_control import OrganizationAccessControl
+from cosmotech_api.models.organization_access_control import OrganizationAccessControl
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -359,35 +340,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    identity_id = "identity_id_example" # str | the User identifier
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    identity_id = 'identity_id_example' # str | the User identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get a control access for the Organization
         api_response = api_instance.get_organization_access_control(organization_id, identity_id)
+        print("The response of OrganizationApi->get_organization_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **identity_id** | **str**| the User identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **identity_id** | **str**| the User identifier | 
 
 ### Return type
 
@@ -402,7 +381,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -413,7 +391,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_organization_permissions**
-> [str] get_organization_permissions(organization_id, role)
+> List[str] get_organization_permissions(organization_id, role)
 
 Get the Organization permissions by given role
 
@@ -422,10 +400,10 @@ Get the Organization permissions by given role
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -437,39 +415,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    role = "role_example" # str | the Role
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    role = 'role_example' # str | the Role
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Organization permissions by given role
         api_response = api_instance.get_organization_permissions(organization_id, role)
+        print("The response of OrganizationApi->get_organization_permissions:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_permissions: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **role** | **str**| the Role |
+ **organization_id** | **str**| the Organization identifier | 
+ **role** | **str**| the Role | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -479,7 +455,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -499,11 +474,11 @@ Get the Organization security information
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_security import OrganizationSecurity
+from cosmotech_api.models.organization_security import OrganizationSecurity
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -515,33 +490,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Organization security information
         api_response = api_instance.get_organization_security(organization_id)
+        print("The response of OrganizationApi->get_organization_security:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_security: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
+ **organization_id** | **str**| the Organization identifier | 
 
 ### Return type
 
@@ -556,7 +529,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -567,7 +539,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_organization_security_users**
-> [str] get_organization_security_users(organization_id)
+> List[str] get_organization_security_users(organization_id)
 
 Get the Organization security users list
 
@@ -576,10 +548,10 @@ Get the Organization security users list
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -591,37 +563,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | The Organization identifier
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | The Organization identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Get the Organization security users list
         api_response = api_instance.get_organization_security_users(organization_id)
+        print("The response of OrganizationApi->get_organization_security_users:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_security_users: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| The Organization identifier |
+ **organization_id** | **str**| The Organization identifier | 
 
 ### Return type
 
-**[str]**
+**List[str]**
 
 ### Authorization
 
@@ -631,7 +601,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -652,11 +621,11 @@ Register a new organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.models.organization import Organization
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -668,53 +637,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization = Organization(
-        name="name_example",
-        services=OrganizationServices(
-            tenant_credentials={},
-            storage=OrganizationService(
-                cloud_service="cloud_service_example",
-                base_uri="base_uri_example",
-                platform_service="platform_service_example",
-                resource_uri="resource_uri_example",
-                credentials={},
-            ),
-            solutions_container_registry=OrganizationService(
-                cloud_service="cloud_service_example",
-                base_uri="base_uri_example",
-                platform_service="platform_service_example",
-                resource_uri="resource_uri_example",
-                credentials={},
-            ),
-        ),
-        security=None,
-    ) # Organization | the Organization to register
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization = cosmotech_api.Organization() # Organization | the Organization to register
 
-    # example passing only required values which don't have defaults set
     try:
         # Register a new organization
         api_response = api_instance.register_organization(organization)
+        print("The response of OrganizationApi->register_organization:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->register_organization: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization** | [**Organization**](Organization.md)| the Organization to register |
+ **organization** | [**Organization**](Organization.md)| the Organization to register | 
 
 ### Return type
 
@@ -728,7 +675,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -749,10 +695,10 @@ Remove the specified access from the given Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -764,34 +710,31 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    identity_id = "identity_id_example" # str | the User identifier
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    identity_id = 'identity_id_example' # str | the User identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Remove the specified access from the given Organization
         api_instance.remove_organization_access_control(organization_id, identity_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->remove_organization_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **identity_id** | **str**| the User identifier |
+ **organization_id** | **str**| the Organization identifier | 
+ **identity_id** | **str**| the User identifier | 
 
 ### Return type
 
@@ -805,7 +748,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -826,12 +768,12 @@ Set the Organization default security
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_role import OrganizationRole
-from cosmotech_api.model.organization_security import OrganizationSecurity
+from cosmotech_api.models.organization_role import OrganizationRole
+from cosmotech_api.models.organization_security import OrganizationSecurity
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -843,37 +785,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    organization_role = OrganizationRole(
-        role="role_example",
-    ) # OrganizationRole | This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_role = cosmotech_api.OrganizationRole() # OrganizationRole | This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.
 
-    # example passing only required values which don't have defaults set
     try:
         # Set the Organization default security
         api_response = api_instance.set_organization_default_security(organization_id, organization_role)
+        print("The response of OrganizationApi->set_organization_default_security:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->set_organization_default_security: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **organization_role** | [**OrganizationRole**](OrganizationRole.md)| This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. |
+ **organization_id** | **str**| the Organization identifier | 
+ **organization_role** | [**OrganizationRole**](OrganizationRole.md)| This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. | 
 
 ### Return type
 
@@ -887,7 +825,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -908,10 +845,10 @@ Unregister an organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -923,32 +860,29 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
 
-    # example passing only required values which don't have defaults set
     try:
         # Unregister an organization
         api_instance.unregister_organization(organization_id)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->unregister_organization: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
+ **organization_id** | **str**| the Organization identifier | 
 
 ### Return type
 
@@ -962,7 +896,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
@@ -983,11 +916,11 @@ Update an Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization import Organization
+from cosmotech_api.models.organization import Organization
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -999,55 +932,33 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    organization = Organization(
-        name="name_example",
-        services=OrganizationServices(
-            tenant_credentials={},
-            storage=OrganizationService(
-                cloud_service="cloud_service_example",
-                base_uri="base_uri_example",
-                platform_service="platform_service_example",
-                resource_uri="resource_uri_example",
-                credentials={},
-            ),
-            solutions_container_registry=OrganizationService(
-                cloud_service="cloud_service_example",
-                base_uri="base_uri_example",
-                platform_service="platform_service_example",
-                resource_uri="resource_uri_example",
-                credentials={},
-            ),
-        ),
-        security=None,
-    ) # Organization | the new Organization details. This endpoint can't be used to update security
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization = {"name":"CosmoTech Digital Twins Engine"} # Organization | the new Organization details. This endpoint can't be used to update security
 
-    # example passing only required values which don't have defaults set
     try:
         # Update an Organization
         api_response = api_instance.update_organization(organization_id, organization)
+        print("The response of OrganizationApi->update_organization:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->update_organization: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **organization** | [**Organization**](Organization.md)| the new Organization details. This endpoint can&#39;t be used to update security |
+ **organization_id** | **str**| the Organization identifier | 
+ **organization** | [**Organization**](Organization.md)| the new Organization details. This endpoint can&#39;t be used to update security | 
 
 ### Return type
 
@@ -1061,7 +972,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1083,12 +993,12 @@ Update the specified access to User for an Organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
-import time
 import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_access_control import OrganizationAccessControl
-from cosmotech_api.model.organization_role import OrganizationRole
+from cosmotech_api.models.organization_access_control import OrganizationAccessControl
+from cosmotech_api.models.organization_role import OrganizationRole
+from cosmotech_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1100,39 +1010,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    identity_id = "identity_id_example" # str | the User identifier
-    organization_role = OrganizationRole(
-        role="role_example",
-    ) # OrganizationRole | The new Organization Access Control
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    identity_id = 'identity_id_example' # str | the User identifier
+    organization_role = cosmotech_api.OrganizationRole() # OrganizationRole | The new Organization Access Control
 
-    # example passing only required values which don't have defaults set
     try:
         # Update the specified access to User for an Organization
         api_response = api_instance.update_organization_access_control(organization_id, identity_id, organization_role)
+        print("The response of OrganizationApi->update_organization_access_control:\n")
         pprint(api_response)
-    except cosmotech_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling OrganizationApi->update_organization_access_control: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **identity_id** | **str**| the User identifier |
- **organization_role** | [**OrganizationRole**](OrganizationRole.md)| The new Organization Access Control |
+ **organization_id** | **str**| the Organization identifier | 
+ **identity_id** | **str**| the User identifier | 
+ **organization_role** | [**OrganizationRole**](OrganizationRole.md)| The new Organization Access Control | 
 
 ### Return type
 
@@ -1147,261 +1053,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The Organization access |  -  |
 **404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_solutions_container_registry_by_organization_id**
-> OrganizationService update_solutions_container_registry_by_organization_id(organization_id, organization_service)
-
-Update the solutions container registry configuration for the Organization specified
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_service import OrganizationService
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    organization_service = OrganizationService(
-        cloud_service="cloud_service_example",
-        base_uri="base_uri_example",
-        platform_service="platform_service_example",
-        resource_uri="resource_uri_example",
-        credentials={},
-    ) # OrganizationService | the new solutions container registry configuration to use
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Update the solutions container registry configuration for the Organization specified
-        api_response = api_instance.update_solutions_container_registry_by_organization_id(organization_id, organization_service)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->update_solutions_container_registry_by_organization_id: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **organization_service** | [**OrganizationService**](OrganizationService.md)| the new solutions container registry configuration to use |
-
-### Return type
-
-[**OrganizationService**](OrganizationService.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the Organization solutions container registry configuration |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_storage_by_organization_id**
-> OrganizationService update_storage_by_organization_id(organization_id, organization_service)
-
-Update storage configuration for the Organization specified
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from cosmotech_api.model.organization_service import OrganizationService
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    organization_service = OrganizationService(
-        cloud_service="cloud_service_example",
-        base_uri="base_uri_example",
-        platform_service="platform_service_example",
-        resource_uri="resource_uri_example",
-        credentials={},
-    ) # OrganizationService | the new Storage configuration to use
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Update storage configuration for the Organization specified
-        api_response = api_instance.update_storage_by_organization_id(organization_id, organization_service)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->update_storage_by_organization_id: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **organization_service** | [**OrganizationService**](OrganizationService.md)| the new Storage configuration to use |
-
-### Return type
-
-[**OrganizationService**](OrganizationService.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the Organization Storage configuration |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_tenant_credentials_by_organization_id**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} update_tenant_credentials_by_organization_id(organization_id, request_body)
-
-Update tenant credentials for the Organization specified
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import time
-import cosmotech_api
-from cosmotech_api.api import organization_api
-from pprint import pprint
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: oAuth2AuthCode
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = organization_api.OrganizationApi(api_client)
-    organization_id = "organization_id_example" # str | the Organization identifier
-    request_body = {} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} | the new Tenant Credentials to use
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Update tenant credentials for the Organization specified
-        api_response = api_instance.update_tenant_credentials_by_organization_id(organization_id, request_body)
-        pprint(api_response)
-    except cosmotech_api.ApiException as e:
-        print("Exception when calling OrganizationApi->update_tenant_credentials_by_organization_id: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier |
- **request_body** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**| the new Tenant Credentials to use |
-
-### Return type
-
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the Organization Tenant Credentials |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

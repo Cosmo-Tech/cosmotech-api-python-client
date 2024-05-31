@@ -3,14 +3,15 @@
 a Solution Run Template
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Solution Run Template id | 
 **name** | **str** | the Run Template name | [optional] 
-**labels** | [**TranslatedLabels**](TranslatedLabels.md) |  | [optional] 
+**labels** | **Dict[str, str]** | a translated label with key as ISO 639-1 code | [optional] 
 **description** | **str** | the Run Template description | [optional] 
 **csm_simulation** | **str** | the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined | [optional] 
-**tags** | **[str]** | the list of Run Template tags | [optional] 
+**tags** | **List[str]** | the list of Run Template tags | [optional] 
 **compute_size** | **str** | the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic | [optional] 
 **run_sizing** | [**RunTemplateResourceSizing**](RunTemplateResourceSizing.md) |  | [optional] 
 **no_data_ingestion_state** | **bool** | set to true if the run template does not want to check data ingestion state (no probes or not control plane) | [optional] 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 **run_source** | [**RunTemplateStepSource**](RunTemplateStepSource.md) |  | [optional] 
 **post_run_source** | [**RunTemplateStepSource**](RunTemplateStepSource.md) |  | [optional] 
 **scenariodata_transform_source** | [**RunTemplateStepSource**](RunTemplateStepSource.md) |  | [optional] 
-**parameter_groups** | **[str]** | the ordered list of parameters groups for the Run Template | [optional] 
+**parameter_groups** | **List[str]** | the ordered list of parameters groups for the Run Template | [optional] 
 **stack_steps** | **bool** | whether or not to stack adjacent scenario run steps in one container run which will chain steps | [optional] 
 **git_repository_url** | **str** | an optional URL to the git repository | [optional] 
 **git_branch_name** | **str** | an optional git branch name | [optional] 
@@ -39,8 +40,24 @@ Name | Type | Description | Notes
 **orchestrator_type** | [**RunTemplateOrchestrator**](RunTemplateOrchestrator.md) |  | [optional] 
 **execution_timeout** | **int** | an optional duration in seconds in which a workflow is allowed to run | [optional] 
 **delete_historical_data** | [**DeleteHistoricalData**](DeleteHistoricalData.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from cosmotech_api.models.run_template import RunTemplate
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of RunTemplate from a JSON string
+run_template_instance = RunTemplate.from_json(json)
+# print the JSON string representation of the object
+print RunTemplate.to_json()
+
+# convert the object into a dict
+run_template_dict = run_template_instance.to_dict()
+# create an instance of RunTemplate from a dict
+run_template_form_dict = run_template.from_dict(run_template_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
