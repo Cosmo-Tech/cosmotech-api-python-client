@@ -76,13 +76,6 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
-    def test_download_run_template_handler(self) -> None:
-        """Test case for download_run_template_handler
-
-        Download a Run Template step handler zip file
-        """
-        pass
-
     def test_find_all_solutions(self) -> None:
         """Test case for find_all_solutions
 
@@ -171,13 +164,6 @@ class TestSolutionApi(unittest.TestCase):
         """Test case for update_solution_run_template
 
         Update the specified Solution Run Template
-        """
-        pass
-
-    def test_upload_run_template_handler(self) -> None:
-        """Test case for upload_run_template_handler
-
-        Upload a Run Template step handler zip file
         """
         pass
 

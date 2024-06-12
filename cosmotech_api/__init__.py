@@ -83,7 +83,6 @@ from cosmotech_api.models.run_state import RunState
 from cosmotech_api.models.run_status import RunStatus
 from cosmotech_api.models.run_status_node import RunStatusNode
 from cosmotech_api.models.run_template import RunTemplate
-from cosmotech_api.models.run_template_handler_id import RunTemplateHandlerId
 from cosmotech_api.models.run_template_orchestrator import RunTemplateOrchestrator
 from cosmotech_api.models.run_template_parameter import RunTemplateParameter
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
