@@ -1980,7 +1980,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **twingraph_query**
-> str twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
+> List[object] twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
 
 Return the result of a query made on the graph instance as a json
 
@@ -2039,7 +2039,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+**List[object]**
 
 ### Authorization
 
