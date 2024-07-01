@@ -47,8 +47,6 @@ class TestConnector(unittest.TestCase):
                     ],
                 owner_id = '',
                 url = '',
-                azure_managed_identity = True,
-                azure_authentication_with_customer_app_registration = True,
                 io_types = [
                     'read'
                     ],

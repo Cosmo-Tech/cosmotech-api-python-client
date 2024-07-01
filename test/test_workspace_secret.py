@@ -36,10 +36,13 @@ class TestWorkspaceSecret(unittest.TestCase):
         model = WorkspaceSecret()
         if include_optional:
             return WorkspaceSecret(
-                dedicated_event_hub_key = ''
+                name = '',
+                value = ''
             )
         else:
             return WorkspaceSecret(
+                name = '',
+                value = '',
         )
         """
 
