@@ -94,7 +94,6 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ConnectorApi* | [**find_all_connectors**](docs/ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
 *ConnectorApi* | [**find_connector_by_id**](docs/ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of a connector
-*ConnectorApi* | [**find_connector_by_name**](docs/ConnectorApi.md#find_connector_by_name) | **GET** /connectors/name/{connector_name} | Get the details of a connector
 *ConnectorApi* | [**register_connector**](docs/ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
 *ConnectorApi* | [**unregister_connector**](docs/ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister a connector
 *DatasetApi* | [**add_dataset_access_control**](docs/DatasetApi.md#add_dataset_access_control) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/security/access | Add a control access to the Dataset

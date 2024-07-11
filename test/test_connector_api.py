@@ -41,13 +41,6 @@ class TestConnectorApi(unittest.TestCase):
         """
         pass
 
-    def test_find_connector_by_name(self) -> None:
-        """Test case for find_connector_by_name
-
-        Get the details of a connector
-        """
-        pass
-
     def test_register_connector(self) -> None:
         """Test case for register_connector
 
