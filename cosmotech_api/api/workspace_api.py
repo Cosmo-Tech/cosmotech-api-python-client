@@ -1214,7 +1214,7 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workspace:
+    ) -> None:
         """Delete a workspace
 
 
@@ -1254,7 +1254,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
+            '204': None,
             '400': None,
             '404': None,
         }
@@ -1286,7 +1286,7 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workspace]:
+    ) -> ApiResponse[None]:
         """Delete a workspace
 
 
@@ -1326,7 +1326,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
+            '204': None,
             '400': None,
             '404': None,
         }
@@ -1398,7 +1398,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
+            '204': None,
             '400': None,
             '404': None,
         }
@@ -1442,12 +1442,6 @@ class WorkspaceApi:
         # process the body parameter
 
 
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json'
-            ]
-        )
 
 
         # authentication setting

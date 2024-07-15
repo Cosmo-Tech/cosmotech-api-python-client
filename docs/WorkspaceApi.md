@@ -331,7 +331,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_workspace**
-> Workspace delete_workspace(organization_id, workspace_id)
+> delete_workspace(organization_id, workspace_id)
 
 Delete a workspace
 
@@ -341,7 +341,6 @@ Delete a workspace
 
 ```python
 import cosmotech_api
-from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
@@ -367,9 +366,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
     try:
         # Delete a workspace
-        api_response = api_instance.delete_workspace(organization_id, workspace_id)
-        print("The response of WorkspaceApi->delete_workspace:\n")
-        pprint(api_response)
+        api_instance.delete_workspace(organization_id, workspace_id)
     except Exception as e:
         print("Exception when calling WorkspaceApi->delete_workspace: %s\n" % e)
 ```
@@ -386,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workspace**](Workspace.md)
+void (empty response body)
 
 ### Authorization
 
@@ -395,13 +392,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the workspace details |  -  |
+**204** | the workspace details |  -  |
 **400** | Bad request |  -  |
 **404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
