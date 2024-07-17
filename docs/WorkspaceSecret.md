@@ -6,7 +6,8 @@ the secret definition
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dedicated_event_hub_key** | **str** | the dedicated event hub shared access key | [optional] 
+**name** | **str** | the secret name | 
+**value** | **str** | the secret value | 
 
 ## Example
 

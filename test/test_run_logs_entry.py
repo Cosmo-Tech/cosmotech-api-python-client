@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.dataset_compatibility import DatasetCompatibility
+from cosmotech_api.models.run_logs_entry import RunLogsEntry
 
-class TestDatasetCompatibility(unittest.TestCase):
-    """DatasetCompatibility unit test stubs"""
+class TestRunLogsEntry(unittest.TestCase):
+    """RunLogsEntry unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,26 @@ class TestDatasetCompatibility(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> DatasetCompatibility:
-        """Test DatasetCompatibility
+    def make_instance(self, include_optional) -> RunLogsEntry:
+        """Test RunLogsEntry
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DatasetCompatibility`
+        # uncomment below to create an instance of `RunLogsEntry`
         """
-        model = DatasetCompatibility()
+        model = RunLogsEntry()
         if include_optional:
-            return DatasetCompatibility(
-                solution_key = '',
-                minimum_version = '',
-                maximum_version = ''
+            return RunLogsEntry(
+                line = ''
             )
         else:
-            return DatasetCompatibility(
-                solution_key = '',
+            return RunLogsEntry(
+                line = '',
         )
         """
 
-    def testDatasetCompatibility(self):
-        """Test DatasetCompatibility"""
+    def testRunLogsEntry(self):
+        """Test RunLogsEntry"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

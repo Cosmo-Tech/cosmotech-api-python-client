@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**create_solution**](SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Register a new solution
 [**delete_solution**](SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 [**delete_solution_run_template**](SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Remove the specified Solution Run Template
-[**download_run_template_handler**](SolutionApi.md#download_run_template_handler) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/download | Download a Run Template step handler zip file
 [**find_all_solutions**](SolutionApi.md#find_all_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 [**find_solution_by_id**](SolutionApi.md#find_solution_by_id) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 [**get_solution_access_control**](SolutionApi.md#get_solution_access_control) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Get a control access for the Solution
@@ -25,7 +24,6 @@ Method | HTTP request | Description
 [**update_solution**](SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
 [**update_solution_access_control**](SolutionApi.md#update_solution_access_control) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Update the specified access to User for a Solution
 [**update_solution_run_template**](SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update the specified Solution Run Template
-[**upload_run_template_handler**](SolutionApi.md#upload_run_template_handler) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runtemplates/{run_template_id}/handlers/{handler_id}/upload | Upload a Run Template step handler zip file
 
 
 # **add_or_replace_parameter_groups**
@@ -564,86 +562,6 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | the operation succeeded |  -  |
 **404** | the Solution specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **download_run_template_handler**
-> bytearray download_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
-
-Download a Run Template step handler zip file
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.models.run_template_handler_id import RunTemplateHandlerId
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    run_template_id = 'run_template_id_example' # str | the Run Template identifier
-    handler_id = cosmotech_api.RunTemplateHandlerId() # RunTemplateHandlerId | the Handler identifier
-
-    try:
-        # Download a Run Template step handler zip file
-        api_response = api_instance.download_run_template_handler(organization_id, solution_id, run_template_id, handler_id)
-        print("The response of SolutionApi->download_run_template_handler:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling SolutionApi->download_run_template_handler: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **run_template_id** | **str**| the Run Template identifier | 
- **handler_id** | [**RunTemplateHandlerId**](.md)| the Handler identifier | 
-
-### Return type
-
-**bytearray**
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the run template handle file as a resource |  * Content-Disposition - Run Template step handler zip file <br>  |
-**404** | the Run Template Handler file specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1640,88 +1558,6 @@ Name | Type | Description  | Notes
 **200** | the Parameters |  -  |
 **400** | Bad request |  -  |
 **404** | the Solution or Run Template specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **upload_run_template_handler**
-> upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body, overwrite=overwrite)
-
-Upload a Run Template step handler zip file
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.models.run_template_handler_id import RunTemplateHandlerId
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    run_template_id = 'run_template_id_example' # str | the Run Template identifier
-    handler_id = cosmotech_api.RunTemplateHandlerId() # RunTemplateHandlerId | the Handler identifier
-    body = None # bytearray | 
-    overwrite = False # bool | whether to overwrite any existing handler resource (optional) (default to False)
-
-    try:
-        # Upload a Run Template step handler zip file
-        api_instance.upload_run_template_handler(organization_id, solution_id, run_template_id, handler_id, body, overwrite=overwrite)
-    except Exception as e:
-        print("Exception when calling SolutionApi->upload_run_template_handler: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **run_template_id** | **str**| the Run Template identifier | 
- **handler_id** | [**RunTemplateHandlerId**](.md)| the Handler identifier | 
- **body** | **bytearray**|  | 
- **overwrite** | **bool**| whether to overwrite any existing handler resource | [optional] [default to False]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/octet-stream
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | zip file uploaded |  -  |
-**400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
