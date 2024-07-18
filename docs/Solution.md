@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **tags** | **List[str]** | the list of tags | [optional] 
 **parameters** | [**List[RunTemplateParameter]**](RunTemplateParameter.md) | the list of Run Template Parameters | [optional] 
 **parameter_groups** | [**List[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md) | the list of parameters groups for the Run Templates | [optional] 
-**run_templates** | [**List[RunTemplate]**](RunTemplate.md) | list of Run Template | [optional] 
+**run_templates** | [**List[RunTemplate]**](RunTemplate.md) | list of Run Template | [default to []]
 **security** | [**SolutionSecurity**](SolutionSecurity.md) |  | [optional] 
 
 ## Example
