@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **id** | **str** | the Organization unique identifier | [optional] [readonly] 
 **name** | **str** | the Organization name | [optional] 
 **owner_id** | **str** | the Owner User Id | [optional] [readonly] 
-**services** | [**OrganizationServices**](OrganizationServices.md) |  | [optional] 
 **security** | [**OrganizationSecurity**](OrganizationSecurity.md) |  | [optional] 
 
 ## Example
