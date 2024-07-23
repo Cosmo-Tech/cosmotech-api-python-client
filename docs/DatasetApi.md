@@ -44,6 +44,7 @@ Add a control access to the Dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -57,6 +58,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -92,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -115,6 +122,7 @@ Add Dataset Compatibility elements.
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -128,6 +136,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -163,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -189,6 +203,7 @@ Not implemented!
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -202,6 +217,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -235,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -259,6 +280,7 @@ Create a new Dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -272,6 +294,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -305,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -330,6 +358,7 @@ Create a copy of the dataset using the results of the list of queries given in p
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -344,6 +373,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -379,7 +414,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -403,6 +438,7 @@ create new entities in a graph instance
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -416,6 +452,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -453,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -475,6 +517,7 @@ Delete a dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -487,6 +530,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -518,7 +567,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -543,6 +592,7 @@ delete entities in a graph instance
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -555,6 +605,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -590,7 +646,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -614,6 +670,7 @@ Download the compressed graph reference by the hash in a zip file
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -626,6 +683,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -659,7 +722,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -681,6 +744,7 @@ List all Datasets
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -694,6 +758,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -729,7 +799,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -751,6 +821,7 @@ Get the details of a Dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -764,6 +835,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -797,7 +874,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -820,6 +897,7 @@ Get a control access for the Dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -833,6 +911,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -868,7 +952,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -891,6 +975,7 @@ Get the Dataset security information
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -904,6 +989,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -937,7 +1028,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -960,6 +1051,7 @@ Get the Dataset security users list
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -972,6 +1064,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1005,7 +1103,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1030,6 +1128,7 @@ Get the status of the import workflow lauch on the dataset's refresh. This endpo
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1042,6 +1141,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1075,7 +1180,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1099,6 +1204,7 @@ get entities in a graph instance
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1111,6 +1217,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1148,7 +1260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1170,6 +1282,7 @@ No authorization required
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1183,6 +1296,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1217,7 +1336,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1243,6 +1362,7 @@ Refresh dataset from parent source. At date, sources can be:      dataset (refre
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1256,6 +1376,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1289,7 +1415,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1311,6 +1437,7 @@ Remove all Dataset Compatibility elements from the Dataset specified
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1323,6 +1450,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1354,7 +1487,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1377,6 +1510,7 @@ Remove the specified access from the given Dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1389,6 +1523,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1422,7 +1562,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1447,6 +1587,7 @@ Rollback the twingraph on a dataset after a failed refresh
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1459,6 +1600,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1492,7 +1639,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1514,6 +1661,7 @@ Search Datasets by tags
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1528,6 +1676,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1565,7 +1719,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1587,6 +1741,7 @@ Set the Dataset default security
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1601,6 +1756,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1636,7 +1797,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1661,6 +1822,7 @@ Run a query on a graph instance and return the result as a zip file in async mod
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1675,6 +1837,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1710,7 +1878,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1734,6 +1902,7 @@ Async batch update by loading a CSV file on a graph instance
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1748,6 +1917,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1788,7 +1963,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1813,6 +1988,7 @@ Run a query on a graph instance and return the result as a json
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1826,6 +2002,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1861,7 +2043,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1883,6 +2065,7 @@ No authorization required
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1896,6 +2079,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -1930,7 +2119,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -1954,6 +2143,7 @@ Update a dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -1967,6 +2157,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -2002,7 +2198,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -2026,6 +2222,7 @@ Update the specified access to User for a Dataset
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -2040,6 +2237,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -2077,7 +2280,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -2102,6 +2305,7 @@ update entities in a graph instance
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -2115,6 +2319,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -2152,7 +2362,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 
@@ -2176,6 +2386,7 @@ To create a new graph from flat files,  you need to create a Zip file. This Zip 
 
 ### Example
 
+* OAuth Authentication (oAuth2AuthCode):
 
 ```python
 import cosmotech_api
@@ -2189,6 +2400,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
@@ -2224,7 +2441,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
 
 ### HTTP request headers
 

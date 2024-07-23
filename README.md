@@ -61,6 +61,12 @@ configuration = cosmotech_api.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 
 # Enter a context with an instance of the API client
@@ -282,10 +288,9 @@ Authentication schemes defined for the API:
 ### oAuth2AuthCode
 
 - **Type**: OAuth
-- **Flow**: implicit
-- **Authorization URL**: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
-- **Scopes**: 
- - **http://dev.api.cosmotech.com/platform**: Platform scope
+- **Flow**: accessCode
+- **Authorization URL**: https://example.com/authorize
+- **Scopes**: N/A
 
 
 ## Author

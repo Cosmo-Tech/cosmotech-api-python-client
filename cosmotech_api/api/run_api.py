@@ -325,6 +325,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
@@ -627,6 +628,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
@@ -926,6 +928,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
@@ -1225,6 +1228,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
@@ -1543,6 +1547,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
@@ -1870,6 +1875,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
@@ -2200,6 +2206,7 @@ class RunApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'oAuth2AuthCode'
         ]
 
         return self.api_client.param_serialize(
