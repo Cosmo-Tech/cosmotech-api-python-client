@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_workspace_access_control**](WorkspaceApi.md#add_workspace_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/access | Add a control access to the Workspace
-[**create_secret**](WorkspaceApi.md#create_secret) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/secret | Create a secret for the Workspace
 [**create_workspace**](WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 [**delete_all_workspace_files**](WorkspaceApi.md#delete_all_workspace_files) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete all Workspace files
 [**delete_workspace**](WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
@@ -95,75 +94,6 @@ No authorization required
 |-------------|-------------|------------------|
 **201** | The Workspace access |  -  |
 **404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_secret**
-> create_secret(organization_id, workspace_id, workspace_secret)
-
-Create a secret for the Workspace
-
-### Example
-
-
-```python
-import cosmotech_api
-from cosmotech_api.models.workspace_secret import WorkspaceSecret
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    workspace_secret = cosmotech_api.WorkspaceSecret() # WorkspaceSecret | the definition of the secret
-
-    try:
-        # Create a secret for the Workspace
-        api_instance.create_secret(organization_id, workspace_id, workspace_secret)
-    except Exception as e:
-        print("Exception when calling WorkspaceApi->create_secret: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **workspace_secret** | [**WorkspaceSecret**](WorkspaceSecret.md)| the definition of the secret | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/yaml
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Request succeeded |  -  |
-**404** | the Workspace or the User specified is unknown or you don&#39;t have access to them |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

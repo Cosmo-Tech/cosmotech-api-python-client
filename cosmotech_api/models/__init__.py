@@ -82,7 +82,6 @@ from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.models.workspace_file import WorkspaceFile
 from cosmotech_api.models.workspace_role import WorkspaceRole
-from cosmotech_api.models.workspace_secret import WorkspaceSecret
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
 from cosmotech_api.models.workspace_web_app import WorkspaceWebApp

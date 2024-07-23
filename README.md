@@ -178,7 +178,6 @@ Class | Method | HTTP request | Description
 *SolutionApi* | [**update_solution_access_control**](docs/SolutionApi.md#update_solution_access_control) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Update the specified access to User for a Solution
 *SolutionApi* | [**update_solution_run_template**](docs/SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update the specified Solution Run Template
 *WorkspaceApi* | [**add_workspace_access_control**](docs/WorkspaceApi.md#add_workspace_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/access | Add a control access to the Workspace
-*WorkspaceApi* | [**create_secret**](docs/WorkspaceApi.md#create_secret) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/secret | Create a secret for the Workspace
 *WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 *WorkspaceApi* | [**delete_all_workspace_files**](docs/WorkspaceApi.md#delete_all_workspace_files) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete all Workspace files
 *WorkspaceApi* | [**delete_workspace**](docs/WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
@@ -269,7 +268,6 @@ Class | Method | HTTP request | Description
  - [WorkspaceAccessControl](docs/WorkspaceAccessControl.md)
  - [WorkspaceFile](docs/WorkspaceFile.md)
  - [WorkspaceRole](docs/WorkspaceRole.md)
- - [WorkspaceSecret](docs/WorkspaceSecret.md)
  - [WorkspaceSecurity](docs/WorkspaceSecurity.md)
  - [WorkspaceSolution](docs/WorkspaceSolution.md)
  - [WorkspaceWebApp](docs/WorkspaceWebApp.md)

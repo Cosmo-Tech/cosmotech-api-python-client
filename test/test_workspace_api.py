@@ -34,13 +34,6 @@ class TestWorkspaceApi(unittest.TestCase):
         """
         pass
 
-    def test_create_secret(self) -> None:
-        """Test case for create_secret
-
-        Create a secret for the Workspace
-        """
-        pass
-
     def test_create_workspace(self) -> None:
         """Test case for create_workspace
 
