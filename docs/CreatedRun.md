@@ -1,29 +1,29 @@
-# DatasetRole
+# CreatedRun
 
-the Dataset Role
+Newle created Run info
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role** | **str** | the Dataset Role | 
+**id** | **str** | Run id | 
 
 ## Example
 
 ```python
-from cosmotech_api.models.dataset_role import DatasetRole
+from cosmotech_api.models.created_run import CreatedRun
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of DatasetRole from a JSON string
-dataset_role_instance = DatasetRole.from_json(json)
+# create an instance of CreatedRun from a JSON string
+created_run_instance = CreatedRun.from_json(json)
 # print the JSON string representation of the object
-print DatasetRole.to_json()
+print CreatedRun.to_json()
 
 # convert the object into a dict
-dataset_role_dict = dataset_role_instance.to_dict()
-# create an instance of DatasetRole from a dict
-dataset_role_form_dict = dataset_role.from_dict(dataset_role_dict)
+created_run_dict = created_run_instance.to_dict()
+# create an instance of CreatedRun from a dict
+created_run_form_dict = created_run.from_dict(created_run_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
