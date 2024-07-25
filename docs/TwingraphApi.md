@@ -32,12 +32,12 @@ Run a query on a graph instance and return the result as a zip file in async mod
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.twin_graph_hash import TwinGraphHash
-from cosmotech_api.models.twin_graph_query import TwinGraphQuery
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
+from cosmotech_api.model.twin_graph_hash import TwinGraphHash
+from cosmotech_api.model.twin_graph_query import TwinGraphQuery
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -49,35 +49,40 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    twin_graph_query = cosmotech_api.TwinGraphQuery() # TwinGraphQuery | the query to run
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    twin_graph_query = TwinGraphQuery(
+        version="version_example",
+        query="query_example",
+    ) # TwinGraphQuery | the query to run
 
+    # example passing only required values which don't have defaults set
     try:
         # Run a query on a graph instance and return the result as a zip file in async mode
         api_response = api_instance.batch_query(organization_id, graph_id, twin_graph_query)
-        print("The response of TwingraphApi->batch_query:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->batch_query: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **twin_graph_query** | [**TwinGraphQuery**](TwinGraphQuery.md)| the query to run | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **twin_graph_query** | [**TwinGraphQuery**](TwinGraphQuery.md)| the query to run |
 
 ### Return type
 
@@ -91,6 +96,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -112,12 +118,12 @@ Async batch update by loading a CSV file on a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
-from cosmotech_api.models.twin_graph_query import TwinGraphQuery
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
+from cosmotech_api.model.twin_graph_query import TwinGraphQuery
+from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -129,40 +135,45 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    twin_graph_query = cosmotech_api.TwinGraphQuery() # TwinGraphQuery | 
-    body = id,name,rank
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    twin_graph_query = TwinGraphQuery(
+        version="version_example",
+        query="query_example",
+    ) # TwinGraphQuery | 
+    body = open('id,name,rank
 1,"John Doe",37
 2,"Joe Bloggs",14
- # bytearray | 
+', 'rb') # file_type | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Async batch update by loading a CSV file on a graph instance 
         api_response = api_instance.batch_upload_update(organization_id, graph_id, twin_graph_query, body)
-        print("The response of TwingraphApi->batch_upload_update:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->batch_upload_update: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **twin_graph_query** | [**TwinGraphQuery**](.md)|  | 
- **body** | **bytearray**|  | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **twin_graph_query** | **TwinGraphQuery**|  |
+ **body** | **file_type**|  |
 
 ### Return type
 
@@ -176,6 +187,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: text/csv, application/octet-stream
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -198,11 +210,11 @@ create new entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.graph_properties import GraphProperties
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
+from cosmotech_api.model.graph_properties import GraphProperties
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -214,37 +226,47 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    type = 'type_example' # str | the entity model type
-    graph_properties = [cosmotech_api.GraphProperties()] # List[GraphProperties] | the entities to create
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    type = "node" # str | the entity model type
+    graph_properties = [
+        GraphProperties(
+            type="type_example",
+            source="source_example",
+            target="target_example",
+            name="name_example",
+            params="params_example",
+        ),
+    ] # [GraphProperties] | the entities to create
 
+    # example passing only required values which don't have defaults set
     try:
         # Create new entities in a graph instance
         api_response = api_instance.create_entities(organization_id, graph_id, type, graph_properties)
-        print("The response of TwingraphApi->create_entities:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->create_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **type** | **str**| the entity model type | 
- **graph_properties** | [**List[GraphProperties]**](GraphProperties.md)| the entities to create | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **type** | **str**| the entity model type |
+ **graph_properties** | [**[GraphProperties]**](GraphProperties.md)| the entities to create |
 
 ### Return type
 
@@ -259,6 +281,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -268,7 +291,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_graph**
-> create_graph(organization_id, graph_id, body=body)
+> create_graph(organization_id, graph_id)
 
 Create a new graph
 
@@ -279,10 +302,10 @@ To create a new graph from flat files,  you need to create a Zip file. This Zip 
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -294,33 +317,44 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    body = None # bytearray |  (optional)
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    body = open('/path/to/file', 'rb') # file_type |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Create a new graph
+        api_instance.create_graph(organization_id, graph_id)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling TwingraphApi->create_graph: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Create a new graph
         api_instance.create_graph(organization_id, graph_id, body=body)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->create_graph: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **body** | **bytearray**|  | [optional] 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **body** | **file_type**|  | [optional]
 
 ### Return type
 
@@ -334,6 +368,7 @@ void (empty response body)
 
  - **Content-Type**: application/octet-stream
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -355,10 +390,10 @@ Delete all versions of a graph and his metadatas
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -370,31 +405,34 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Delete all versions of a graph and his metadatas
         api_instance.delete(organization_id, graph_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->delete: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
 
 ### Return type
 
@@ -408,6 +446,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -429,10 +468,10 @@ delete entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -444,35 +483,40 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    type = 'type_example' # str | the entity model type
-    ids = ['ids_example'] # List[str] | the entities to delete
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    type = "node" # str | the entity model type
+    ids = [
+        "ids_example",
+    ] # [str] | the entities to delete
 
+    # example passing only required values which don't have defaults set
     try:
         # Delete entities in a graph instance
         api_instance.delete_entities(organization_id, graph_id, type, ids)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->delete_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **type** | **str**| the entity model type | 
- **ids** | [**List[str]**](str.md)| the entities to delete | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **type** | **str**| the entity model type |
+ **ids** | **[str]**| the entities to delete |
 
 ### Return type
 
@@ -487,6 +531,7 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -496,7 +541,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_graph**
-> bytearray download_graph(organization_id, hash)
+> file_type download_graph(organization_id, hash)
 
 Download a graph compressed in a zip file
 
@@ -507,10 +552,10 @@ Download a graph compressed in a zip file
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -522,37 +567,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    hash = 'hash_example' # str | the Graph download identifier
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    hash = "hash_example" # str | the Graph download identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Download a graph compressed in a zip file
         api_response = api_instance.download_graph(organization_id, hash)
-        print("The response of TwingraphApi->download_graph:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->download_graph: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **hash** | **str**| the Graph download identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **hash** | **str**| the Graph download identifier |
 
 ### Return type
 
-**bytearray**
+**file_type**
 
 ### Authorization
 
@@ -563,6 +610,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/octet-stream
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -572,7 +620,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_twingraphs**
-> List[str] find_all_twingraphs(organization_id)
+> [str] find_all_twingraphs(organization_id)
 
 Return the list of all graphs stored in the organization
 
@@ -583,10 +631,10 @@ Return the list of all graphs stored in the organization
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -598,35 +646,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Return the list of all graphs stored in the organization
         api_response = api_instance.find_all_twingraphs(organization_id)
-        print("The response of TwingraphApi->find_all_twingraphs:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->find_all_twingraphs: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| the Organization identifier |
 
 ### Return type
 
-**List[str]**
+**[str]**
 
 ### Authorization
 
@@ -636,6 +686,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -657,10 +708,10 @@ get entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -672,37 +723,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    type = 'type_example' # str | the entity model type
-    ids = ['ids_example'] # List[str] | the entities to get
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    type = "node" # str | the entity model type
+    ids = [
+        "ids_example",
+    ] # [str] | the entities to get
 
+    # example passing only required values which don't have defaults set
     try:
         # Get entities in a graph instance
         api_response = api_instance.get_entities(organization_id, graph_id, type, ids)
-        print("The response of TwingraphApi->get_entities:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->get_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **type** | **str**| the entity model type | 
- **ids** | [**List[str]**](str.md)| the entities to get | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **type** | **str**| the entity model type |
+ **ids** | **[str]**| the entities to get |
 
 ### Return type
 
@@ -717,6 +772,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -726,7 +782,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_graph_meta_data**
-> object get_graph_meta_data(organization_id, graph_id)
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} get_graph_meta_data(organization_id, graph_id)
 
 Return the metaData of the specified graph
 
@@ -737,10 +793,10 @@ Return the metaData of the specified graph
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -752,37 +808,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Return the metaData of the specified graph
         api_response = api_instance.get_graph_meta_data(organization_id, graph_id)
-        print("The response of TwingraphApi->get_graph_meta_data:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->get_graph_meta_data: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
 
 ### Return type
 
-**object**
+**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
 
 ### Authorization
 
@@ -792,6 +850,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -813,10 +872,10 @@ Get the status of a job
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -828,33 +887,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    job_id = 'job_id_example' # str | the job identifier
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    job_id = "job_id_example" # str | the job identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the status of a job
         api_response = api_instance.job_status(organization_id, job_id)
-        print("The response of TwingraphApi->job_status:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->job_status: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **job_id** | **str**| the job identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **job_id** | **str**| the job identifier |
 
 ### Return type
 
@@ -868,6 +929,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/yaml, application/json
+
 
 ### HTTP response details
 
@@ -889,11 +951,11 @@ Run a query on a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.twin_graph_query import TwinGraphQuery
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
+from cosmotech_api.model.twin_graph_query import TwinGraphQuery
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -905,35 +967,40 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    twin_graph_query = cosmotech_api.TwinGraphQuery() # TwinGraphQuery | the query to run
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    twin_graph_query = TwinGraphQuery(
+        version="version_example",
+        query="query_example",
+    ) # TwinGraphQuery | the query to run
 
+    # example passing only required values which don't have defaults set
     try:
         # Run a query on a graph instance
         api_response = api_instance.query(organization_id, graph_id, twin_graph_query)
-        print("The response of TwingraphApi->query:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->query: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **twin_graph_query** | [**TwinGraphQuery**](TwinGraphQuery.md)| the query to run | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **twin_graph_query** | [**TwinGraphQuery**](TwinGraphQuery.md)| the query to run |
 
 ### Return type
 
@@ -947,6 +1014,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -968,11 +1036,11 @@ update entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.graph_properties import GraphProperties
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
+from cosmotech_api.model.graph_properties import GraphProperties
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -984,37 +1052,47 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    type = 'type_example' # str | the entity model type
-    graph_properties = [cosmotech_api.GraphProperties()] # List[GraphProperties] | the entities to update
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    type = "node" # str | the entity model type
+    graph_properties = [
+        GraphProperties(
+            type="type_example",
+            source="source_example",
+            target="target_example",
+            name="name_example",
+            params="params_example",
+        ),
+    ] # [GraphProperties] | the entities to update
 
+    # example passing only required values which don't have defaults set
     try:
         # Update entities in a graph instance
         api_response = api_instance.update_entities(organization_id, graph_id, type, graph_properties)
-        print("The response of TwingraphApi->update_entities:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->update_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **type** | **str**| the entity model type | 
- **graph_properties** | [**List[GraphProperties]**](GraphProperties.md)| the entities to update | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **type** | **str**| the entity model type |
+ **graph_properties** | [**[GraphProperties]**](GraphProperties.md)| the entities to update |
 
 ### Return type
 
@@ -1029,6 +1107,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1038,7 +1117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_graph_meta_data**
-> object update_graph_meta_data(organization_id, graph_id, request_body)
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} update_graph_meta_data(organization_id, graph_id, request_body)
 
 Update the metaData of the specified graph
 
@@ -1049,10 +1128,10 @@ Update the metaData of the specified graph
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import twingraph_api
 from pprint import pprint
-
 # Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
@@ -1064,39 +1143,43 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.TwingraphApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    graph_id = 'graph_id_example' # str | the Graph Identifier
-    request_body = {"graphName":"My Awesome Graph","graphRotation":"2"} # Dict[str, str] | the metaData to update
+    api_instance = twingraph_api.TwingraphApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    graph_id = "graph_id_example" # str | the Graph Identifier
+    request_body = {
+        "key": "key_example",
+    } # {str: (str,)} | the metaData to update
 
+    # example passing only required values which don't have defaults set
     try:
         # Update the metaData of the specified graph
         api_response = api_instance.update_graph_meta_data(organization_id, graph_id, request_body)
-        print("The response of TwingraphApi->update_graph_meta_data:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling TwingraphApi->update_graph_meta_data: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **graph_id** | **str**| the Graph Identifier | 
- **request_body** | [**Dict[str, str]**](str.md)| the metaData to update | 
+ **organization_id** | **str**| the Organization identifier |
+ **graph_id** | **str**| the Graph Identifier |
+ **request_body** | **{str: (str,)}**| the metaData to update |
 
 ### Return type
 
-**object**
+**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
 
 ### Authorization
 
@@ -1106,6 +1189,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 

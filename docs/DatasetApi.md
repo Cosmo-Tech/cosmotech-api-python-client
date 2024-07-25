@@ -1,6 +1,6 @@
 # cosmotech_api.DatasetApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -47,15 +47,15 @@ Add a control access to the Dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_access_control import DatasetAccessControl
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_access_control import DatasetAccessControl
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -63,35 +63,40 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    dataset_access_control = cosmotech_api.DatasetAccessControl() # DatasetAccessControl | the new Dataset security access to add.
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset_access_control = DatasetAccessControl(
+        id="id_example",
+        role="role_example",
+    ) # DatasetAccessControl | the new Dataset security access to add.
 
+    # example passing only required values which don't have defaults set
     try:
         # Add a control access to the Dataset
         api_response = api_instance.add_dataset_access_control(organization_id, dataset_id, dataset_access_control)
-        print("The response of DatasetApi->add_dataset_access_control:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->add_dataset_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **dataset_access_control** | [**DatasetAccessControl**](DatasetAccessControl.md)| the new Dataset security access to add. | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset_access_control** | [**DatasetAccessControl**](DatasetAccessControl.md)| the new Dataset security access to add. |
 
 ### Return type
 
@@ -106,6 +111,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -116,7 +122,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_or_replace_dataset_compatibility_elements**
-> List[DatasetCompatibility] add_or_replace_dataset_compatibility_elements(organization_id, dataset_id, dataset_compatibility)
+> [DatasetCompatibility] add_or_replace_dataset_compatibility_elements(organization_id, dataset_id, dataset_compatibility)
 
 Add Dataset Compatibility elements.
 
@@ -125,15 +131,15 @@ Add Dataset Compatibility elements.
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_compatibility import DatasetCompatibility
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_compatibility import DatasetCompatibility
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -141,39 +147,47 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    dataset_compatibility = [cosmotech_api.DatasetCompatibility()] # List[DatasetCompatibility] | the Dataset Compatibility elements
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset_compatibility = [
+        DatasetCompatibility(
+            solution_key="solution_key_example",
+            minimum_version="minimum_version_example",
+            maximum_version="maximum_version_example",
+        ),
+    ] # [DatasetCompatibility] | the Dataset Compatibility elements
 
+    # example passing only required values which don't have defaults set
     try:
         # Add Dataset Compatibility elements.
         api_response = api_instance.add_or_replace_dataset_compatibility_elements(organization_id, dataset_id, dataset_compatibility)
-        print("The response of DatasetApi->add_or_replace_dataset_compatibility_elements:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->add_or_replace_dataset_compatibility_elements: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **dataset_compatibility** | [**List[DatasetCompatibility]**](DatasetCompatibility.md)| the Dataset Compatibility elements | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset_compatibility** | [**[DatasetCompatibility]**](DatasetCompatibility.md)| the Dataset Compatibility elements |
 
 ### Return type
 
-[**List[DatasetCompatibility]**](DatasetCompatibility.md)
+[**[DatasetCompatibility]**](DatasetCompatibility.md)
 
 ### Authorization
 
@@ -183,6 +197,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -206,15 +221,15 @@ Not implemented!
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_copy_parameters import DatasetCopyParameters
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_copy_parameters import DatasetCopyParameters
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -222,33 +237,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_copy_parameters = cosmotech_api.DatasetCopyParameters() # DatasetCopyParameters | the Dataset copy parameters
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_copy_parameters = DatasetCopyParameters(
+        source_id="source_id_example",
+        target_id="target_id_example",
+        options={},
+    ) # DatasetCopyParameters | the Dataset copy parameters
 
+    # example passing only required values which don't have defaults set
     try:
         # Copy a Dataset to another Dataset.
         api_response = api_instance.copy_dataset(organization_id, dataset_copy_parameters)
-        print("The response of DatasetApi->copy_dataset:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->copy_dataset: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_copy_parameters** | [**DatasetCopyParameters**](DatasetCopyParameters.md)| the Dataset copy parameters | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_copy_parameters** | [**DatasetCopyParameters**](DatasetCopyParameters.md)| the Dataset copy parameters |
 
 ### Return type
 
@@ -262,6 +283,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -283,15 +305,15 @@ Create a new Dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -299,33 +321,79 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset = cosmotech_api.Dataset() # Dataset | the Dataset to create
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset = Dataset(
+        name="name_example",
+        description="description_example",
+        parent_id="parent_id_example",
+        linked_workspace_id_list=[
+            "linked_workspace_id_list_example",
+        ],
+        twingraph_id="twingraph_id_example",
+        main=True,
+        source_type=DatasetSourceType("ADT"),
+        source=SourceInfo(
+            name="name_example",
+            location="location_example",
+            path="path_example",
+            job_id="job_id_example",
+        ),
+        ingestion_status="NONE",
+        twincache_status="EMPTY",
+        queries=[
+            "queries_example",
+        ],
+        tags=[
+            "tags_example",
+        ],
+        connector=DatasetConnector(
+            id="id_example",
+            name="name_example",
+            version="version_example",
+            parameters_values={
+                "key": "key_example",
+            },
+        ),
+        fragments_ids=[
+            "fragments_ids_example",
+        ],
+        validator_id="validator_id_example",
+        compatibility=[
+            DatasetCompatibility(
+                solution_key="solution_key_example",
+                minimum_version="minimum_version_example",
+                maximum_version="maximum_version_example",
+            ),
+        ],
+        security=None,
+    ) # Dataset | the Dataset to create
 
+    # example passing only required values which don't have defaults set
     try:
         # Create a new Dataset
         api_response = api_instance.create_dataset(organization_id, dataset)
-        print("The response of DatasetApi->create_dataset:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->create_dataset: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset** | [**Dataset**](Dataset.md)| the Dataset to create | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset** | [**Dataset**](Dataset.md)| the Dataset to create |
 
 ### Return type
 
@@ -339,6 +407,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -361,16 +430,16 @@ Create a copy of the dataset using the results of the list of queries given in p
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.sub_dataset_graph_query import SubDatasetGraphQuery
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -378,35 +447,44 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    sub_dataset_graph_query = cosmotech_api.SubDatasetGraphQuery() # SubDatasetGraphQuery | the Cypher query to filter
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    sub_dataset_graph_query = SubDatasetGraphQuery(
+        name="name_example",
+        description="description_example",
+        queries=[
+            "queries_example",
+        ],
+        main=True,
+    ) # SubDatasetGraphQuery | the Cypher query to filter
 
+    # example passing only required values which don't have defaults set
     try:
         # Create a sub-dataset from the dataset in parameter
         api_response = api_instance.create_sub_dataset(organization_id, dataset_id, sub_dataset_graph_query)
-        print("The response of DatasetApi->create_sub_dataset:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->create_sub_dataset: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **sub_dataset_graph_query** | [**SubDatasetGraphQuery**](SubDatasetGraphQuery.md)| the Cypher query to filter | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **sub_dataset_graph_query** | [**SubDatasetGraphQuery**](SubDatasetGraphQuery.md)| the Cypher query to filter |
 
 ### Return type
 
@@ -420,6 +498,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -441,15 +520,15 @@ create new entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.graph_properties import GraphProperties
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.graph_properties import GraphProperties
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -457,37 +536,47 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset Identifier
-    type = 'type_example' # str | the entity model type
-    graph_properties = [cosmotech_api.GraphProperties()] # List[GraphProperties] | the entities to create
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset Identifier
+    type = "node" # str | the entity model type
+    graph_properties = [
+        GraphProperties(
+            type="type_example",
+            source="source_example",
+            target="target_example",
+            name="name_example",
+            params="params_example",
+        ),
+    ] # [GraphProperties] | the entities to create
 
+    # example passing only required values which don't have defaults set
     try:
         # Create new entities in a graph instance
         api_response = api_instance.create_twingraph_entities(organization_id, dataset_id, type, graph_properties)
-        print("The response of DatasetApi->create_twingraph_entities:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->create_twingraph_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset Identifier | 
- **type** | **str**| the entity model type | 
- **graph_properties** | [**List[GraphProperties]**](GraphProperties.md)| the entities to create | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset Identifier |
+ **type** | **str**| the entity model type |
+ **graph_properties** | [**[GraphProperties]**](GraphProperties.md)| the entities to create |
 
 ### Return type
 
@@ -501,6 +590,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -520,14 +610,14 @@ Delete a dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -535,31 +625,34 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Delete a dataset
         api_instance.delete_dataset(organization_id, dataset_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->delete_dataset: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
@@ -573,6 +666,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -595,14 +689,14 @@ delete entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -610,35 +704,40 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset Identifier
-    type = 'type_example' # str | the entity model type
-    ids = ['ids_example'] # List[str] | the entities to delete
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset Identifier
+    type = "node" # str | the entity model type
+    ids = [
+        "ids_example",
+    ] # [str] | the entities to delete
 
+    # example passing only required values which don't have defaults set
     try:
         # Delete entities in a graph instance
         api_instance.delete_twingraph_entities(organization_id, dataset_id, type, ids)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->delete_twingraph_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset Identifier | 
- **type** | **str**| the entity model type | 
- **ids** | [**List[str]**](str.md)| the entities to delete | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset Identifier |
+ **type** | **str**| the entity model type |
+ **ids** | **[str]**| the entities to delete |
 
 ### Return type
 
@@ -653,16 +752,17 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Successful response |  -  |
+**200** | Successful response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_twingraph**
-> bytearray download_twingraph(organization_id, hash)
+> file_type download_twingraph(organization_id, hash)
 
 Download a graph as a zip file
 
@@ -673,14 +773,14 @@ Download the compressed graph reference by the hash in a zip file
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -688,37 +788,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    hash = 'hash_example' # str | the Graph download identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    hash = "hash_example" # str | the Graph download identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Download a graph as a zip file
         api_response = api_instance.download_twingraph(organization_id, hash)
-        print("The response of DatasetApi->download_twingraph:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->download_twingraph: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **hash** | **str**| the Graph download identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **hash** | **str**| the Graph download identifier |
 
 ### Return type
 
-**bytearray**
+**file_type**
 
 ### Authorization
 
@@ -729,6 +831,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/octet-stream
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -738,7 +841,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_all_datasets**
-> List[Dataset] find_all_datasets(organization_id, page=page, size=size)
+> [Dataset] find_all_datasets(organization_id)
 
 List all Datasets
 
@@ -747,15 +850,15 @@ List all Datasets
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -763,39 +866,50 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    page = 56 # int | page number to query (optional)
-    size = 56 # int | amount of result by page (optional)
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    page = 1 # int | page number to query (optional)
+    size = 1 # int | amount of result by page (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # List all Datasets
+        api_response = api_instance.find_all_datasets(organization_id)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->find_all_datasets: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # List all Datasets
         api_response = api_instance.find_all_datasets(organization_id, page=page, size=size)
-        print("The response of DatasetApi->find_all_datasets:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->find_all_datasets: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **page** | **int**| page number to query | [optional] 
- **size** | **int**| amount of result by page | [optional] 
+ **organization_id** | **str**| the Organization identifier |
+ **page** | **int**| page number to query | [optional]
+ **size** | **int**| amount of result by page | [optional]
 
 ### Return type
 
-[**List[Dataset]**](Dataset.md)
+[**[Dataset]**](Dataset.md)
 
 ### Authorization
 
@@ -805,6 +919,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -824,15 +939,15 @@ Get the details of a Dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -840,33 +955,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the details of a Dataset
         api_response = api_instance.find_dataset_by_id(organization_id, dataset_id)
-        print("The response of DatasetApi->find_dataset_by_id:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->find_dataset_by_id: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
@@ -880,6 +997,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -900,15 +1018,15 @@ Get a control access for the Dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_access_control import DatasetAccessControl
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_access_control import DatasetAccessControl
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -916,35 +1034,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    identity_id = "identity_id_example" # str | the User identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get a control access for the Dataset
         api_response = api_instance.get_dataset_access_control(organization_id, dataset_id, identity_id)
-        print("The response of DatasetApi->get_dataset_access_control:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->get_dataset_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **identity_id** | **str**| the User identifier |
 
 ### Return type
 
@@ -958,6 +1078,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -978,15 +1099,15 @@ Get the Dataset security information
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_security import DatasetSecurity
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_security import DatasetSecurity
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -994,33 +1115,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the Dataset security information
         api_response = api_instance.get_dataset_security(organization_id, dataset_id)
-        print("The response of DatasetApi->get_dataset_security:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->get_dataset_security: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
@@ -1035,6 +1158,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1045,7 +1169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dataset_security_users**
-> List[str] get_dataset_security_users(organization_id, dataset_id)
+> [str] get_dataset_security_users(organization_id, dataset_id)
 
 Get the Dataset security users list
 
@@ -1054,14 +1178,14 @@ Get the Dataset security users list
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1069,37 +1193,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the Dataset security users list
         api_response = api_instance.get_dataset_security_users(organization_id, dataset_id)
-        print("The response of DatasetApi->get_dataset_security_users:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->get_dataset_security_users: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
-**List[str]**
+**[str]**
 
 ### Authorization
 
@@ -1109,6 +1235,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1131,14 +1258,14 @@ Get the status of the import workflow lauch on the dataset's refresh. This endpo
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1146,33 +1273,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get the dataset's refresh job status
         api_response = api_instance.get_dataset_twingraph_status(organization_id, dataset_id)
-        print("The response of DatasetApi->get_dataset_twingraph_status:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->get_dataset_twingraph_status: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the dataset identifier |
 
 ### Return type
 
@@ -1186,6 +1315,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/yaml, application/json
+
 
 ### HTTP response details
 
@@ -1207,14 +1337,14 @@ get entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1222,37 +1352,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset Identifier
-    type = 'type_example' # str | the entity model type
-    ids = ['ids_example'] # List[str] | the entities to get
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset Identifier
+    type = "node" # str | the entity model type
+    ids = [
+        "ids_example",
+    ] # [str] | the entities to get
 
+    # example passing only required values which don't have defaults set
     try:
         # Get entities in a graph instance
         api_response = api_instance.get_twingraph_entities(organization_id, dataset_id, type, ids)
-        print("The response of DatasetApi->get_twingraph_entities:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->get_twingraph_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset Identifier | 
- **type** | **str**| the entity model type | 
- **ids** | [**List[str]**](str.md)| the entities to get | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset Identifier |
+ **type** | **str**| the entity model type |
+ **ids** | **[str]**| the entities to get |
 
 ### Return type
 
@@ -1266,6 +1400,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1285,15 +1420,15 @@ Name | Type | Description  | Notes
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1301,34 +1436,36 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    workspace_id = 'workspace_id_example' # str | workspace id to be linked to
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    workspace_id = "workspaceId_example" # str | workspace id to be linked to
 
+    # example passing only required values which don't have defaults set
     try:
         api_response = api_instance.link_workspace(organization_id, dataset_id, workspace_id)
-        print("The response of DatasetApi->link_workspace:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->link_workspace: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **workspace_id** | **str**| workspace id to be linked to | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **workspace_id** | **str**| workspace id to be linked to |
 
 ### Return type
 
@@ -1342,6 +1479,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1358,22 +1496,22 @@ Name | Type | Description  | Notes
 
 Refresh data on dataset from dataset's source
 
-Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin      Azure storage      Local File (import a new file)  During refresh, datas are overwritten 
+Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin       Azure storage      Local File (import a new file)  During refresh, datas are overwritten 
 
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_twin_graph_info import DatasetTwinGraphInfo
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1381,33 +1519,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Refresh data on dataset from dataset's source
         api_response = api_instance.refresh_dataset(organization_id, dataset_id)
-        print("The response of DatasetApi->refresh_dataset:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->refresh_dataset: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
@@ -1421,6 +1561,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1440,14 +1581,14 @@ Remove all Dataset Compatibility elements from the Dataset specified
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1455,31 +1596,34 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Remove all Dataset Compatibility elements from the Dataset specified
         api_instance.remove_all_dataset_compatibility_elements(organization_id, dataset_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->remove_all_dataset_compatibility_elements: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
@@ -1493,6 +1637,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -1513,14 +1658,14 @@ Remove the specified access from the given Dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1528,33 +1673,36 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    identity_id = "identity_id_example" # str | the User identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Remove the specified access from the given Dataset
         api_instance.remove_dataset_access_control(organization_id, dataset_id, identity_id)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->remove_dataset_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **identity_id** | **str**| the User identifier |
 
 ### Return type
 
@@ -1568,6 +1716,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 
@@ -1590,14 +1739,14 @@ Rollback the twingraph on a dataset after a failed refresh
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1605,33 +1754,35 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Rollback the dataset after a failed refresh
         api_response = api_instance.rollback_refresh(organization_id, dataset_id)
-        print("The response of DatasetApi->rollback_refresh:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->rollback_refresh: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
 
 ### Return type
 
@@ -1646,6 +1797,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1655,7 +1807,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_datasets**
-> List[Dataset] search_datasets(organization_id, dataset_search, page=page, size=size)
+> [Dataset] search_datasets(organization_id, dataset_search)
 
 Search Datasets by tags
 
@@ -1664,16 +1816,16 @@ Search Datasets by tags
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.models.dataset_search import DatasetSearch
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
+from cosmotech_api.model.dataset_search import DatasetSearch
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1681,41 +1833,56 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_search = cosmotech_api.DatasetSearch() # DatasetSearch | the Dataset search parameters
-    page = 56 # int | page number to query (optional)
-    size = 56 # int | amount of result by page (optional)
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_search = DatasetSearch(
+        dataset_tags=[
+            "dataset_tags_example",
+        ],
+    ) # DatasetSearch | the Dataset search parameters
+    page = 1 # int | page number to query (optional)
+    size = 1 # int | amount of result by page (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Search Datasets by tags
+        api_response = api_instance.search_datasets(organization_id, dataset_search)
+        pprint(api_response)
+    except cosmotech_api.ApiException as e:
+        print("Exception when calling DatasetApi->search_datasets: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Search Datasets by tags
         api_response = api_instance.search_datasets(organization_id, dataset_search, page=page, size=size)
-        print("The response of DatasetApi->search_datasets:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->search_datasets: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_search** | [**DatasetSearch**](DatasetSearch.md)| the Dataset search parameters | 
- **page** | **int**| page number to query | [optional] 
- **size** | **int**| amount of result by page | [optional] 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_search** | [**DatasetSearch**](DatasetSearch.md)| the Dataset search parameters |
+ **page** | **int**| page number to query | [optional]
+ **size** | **int**| amount of result by page | [optional]
 
 ### Return type
 
-[**List[Dataset]**](Dataset.md)
+[**[Dataset]**](Dataset.md)
 
 ### Authorization
 
@@ -1725,6 +1892,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1744,16 +1912,16 @@ Set the Dataset default security
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_role import DatasetRole
-from cosmotech_api.models.dataset_security import DatasetSecurity
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_role import DatasetRole
+from cosmotech_api.model.dataset_security import DatasetSecurity
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1761,35 +1929,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    dataset_role = cosmotech_api.DatasetRole() # DatasetRole | This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset_role = DatasetRole(
+        role="role_example",
+    ) # DatasetRole | This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.
 
+    # example passing only required values which don't have defaults set
     try:
         # Set the Dataset default security
         api_response = api_instance.set_dataset_default_security(organization_id, dataset_id, dataset_role)
-        print("The response of DatasetApi->set_dataset_default_security:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->set_dataset_default_security: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **dataset_role** | [**DatasetRole**](DatasetRole.md)| This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset_role** | [**DatasetRole**](DatasetRole.md)| This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. |
 
 ### Return type
 
@@ -1803,6 +1975,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1825,16 +1998,16 @@ Run a query on a graph instance and return the result as a zip file in async mod
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_twin_graph_hash import DatasetTwinGraphHash
-from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_twin_graph_hash import DatasetTwinGraphHash
+from cosmotech_api.model.dataset_twin_graph_query import DatasetTwinGraphQuery
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1842,35 +2015,39 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Graph Identifier
-    dataset_twin_graph_query = cosmotech_api.DatasetTwinGraphQuery() # DatasetTwinGraphQuery | the query to run
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Graph Identifier
+    dataset_twin_graph_query = DatasetTwinGraphQuery(
+        query="query_example",
+    ) # DatasetTwinGraphQuery | the query to run
 
+    # example passing only required values which don't have defaults set
     try:
         # Run a query on a graph instance and return the result as a zip file in async mode
         api_response = api_instance.twingraph_batch_query(organization_id, dataset_id, dataset_twin_graph_query)
-        print("The response of DatasetApi->twingraph_batch_query:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->twingraph_batch_query: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Graph Identifier | 
- **dataset_twin_graph_query** | [**DatasetTwinGraphQuery**](DatasetTwinGraphQuery.md)| the query to run | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Graph Identifier |
+ **dataset_twin_graph_query** | [**DatasetTwinGraphQuery**](DatasetTwinGraphQuery.md)| the query to run |
 
 ### Return type
 
@@ -1884,6 +2061,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -1905,16 +2083,16 @@ Async batch update by loading a CSV file on a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
-from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_twin_graph_query import DatasetTwinGraphQuery
+from cosmotech_api.model.twin_graph_batch_result import TwinGraphBatchResult
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1922,40 +2100,44 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset Identifier
-    twin_graph_query = cosmotech_api.DatasetTwinGraphQuery() # DatasetTwinGraphQuery | 
-    body = id,name,rank
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset Identifier
+    twin_graph_query = DatasetTwinGraphQuery(
+        query="query_example",
+    ) # DatasetTwinGraphQuery | 
+    body = open('id,name,rank
 1,"John Doe",37
 2,"Joe Bloggs",14
- # bytearray | 
+', 'rb') # file_type | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Async batch update by loading a CSV file on a graph instance 
         api_response = api_instance.twingraph_batch_update(organization_id, dataset_id, twin_graph_query, body)
-        print("The response of DatasetApi->twingraph_batch_update:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->twingraph_batch_update: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset Identifier | 
- **twin_graph_query** | [**DatasetTwinGraphQuery**](.md)|  | 
- **body** | **bytearray**|  | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset Identifier |
+ **twin_graph_query** | **DatasetTwinGraphQuery**|  |
+ **body** | **file_type**|  |
 
 ### Return type
 
@@ -1970,6 +2152,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: text/csv, application/octet-stream
  - **Accept**: application/json
 
+
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -1980,7 +2163,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **twingraph_query**
-> List[object] twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
+> str twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
 
 Return the result of a query made on the graph instance as a json
 
@@ -1991,15 +2174,15 @@ Run a query on a graph instance and return the result as a json
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_twin_graph_query import DatasetTwinGraphQuery
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2007,39 +2190,43 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    dataset_twin_graph_query = cosmotech_api.DatasetTwinGraphQuery() # DatasetTwinGraphQuery | the query to run
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset_twin_graph_query = DatasetTwinGraphQuery(
+        query="query_example",
+    ) # DatasetTwinGraphQuery | the query to run
 
+    # example passing only required values which don't have defaults set
     try:
         # Return the result of a query made on the graph instance as a json
         api_response = api_instance.twingraph_query(organization_id, dataset_id, dataset_twin_graph_query)
-        print("The response of DatasetApi->twingraph_query:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->twingraph_query: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **dataset_twin_graph_query** | [**DatasetTwinGraphQuery**](DatasetTwinGraphQuery.md)| the query to run | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset_twin_graph_query** | [**DatasetTwinGraphQuery**](DatasetTwinGraphQuery.md)| the query to run |
 
 ### Return type
 
-**List[object]**
+**str**
 
 ### Authorization
 
@@ -2049,6 +2236,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -2068,15 +2256,15 @@ Name | Type | Description  | Notes
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2084,34 +2272,36 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    workspace_id = 'workspace_id_example' # str | workspace id to be linked to
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    workspace_id = "workspaceId_example" # str | workspace id to be linked to
 
+    # example passing only required values which don't have defaults set
     try:
         api_response = api_instance.unlink_workspace(organization_id, dataset_id, workspace_id)
-        print("The response of DatasetApi->unlink_workspace:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->unlink_workspace: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **workspace_id** | **str**| workspace id to be linked to | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **workspace_id** | **str**| workspace id to be linked to |
 
 ### Return type
 
@@ -2125,6 +2315,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -2146,15 +2337,15 @@ Update a dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset import Dataset
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset import Dataset
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2162,35 +2353,81 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    dataset = cosmotech_api.Dataset() # Dataset | the new Dataset details. This endpoint can't be used to update security
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    dataset = Dataset(
+        name="name_example",
+        description="description_example",
+        parent_id="parent_id_example",
+        linked_workspace_id_list=[
+            "linked_workspace_id_list_example",
+        ],
+        twingraph_id="twingraph_id_example",
+        main=True,
+        source_type=DatasetSourceType("ADT"),
+        source=SourceInfo(
+            name="name_example",
+            location="location_example",
+            path="path_example",
+            job_id="job_id_example",
+        ),
+        ingestion_status="NONE",
+        twincache_status="EMPTY",
+        queries=[
+            "queries_example",
+        ],
+        tags=[
+            "tags_example",
+        ],
+        connector=DatasetConnector(
+            id="id_example",
+            name="name_example",
+            version="version_example",
+            parameters_values={
+                "key": "key_example",
+            },
+        ),
+        fragments_ids=[
+            "fragments_ids_example",
+        ],
+        validator_id="validator_id_example",
+        compatibility=[
+            DatasetCompatibility(
+                solution_key="solution_key_example",
+                minimum_version="minimum_version_example",
+                maximum_version="maximum_version_example",
+            ),
+        ],
+        security=None,
+    ) # Dataset | the new Dataset details. This endpoint can't be used to update security
 
+    # example passing only required values which don't have defaults set
     try:
         # Update a dataset
         api_response = api_instance.update_dataset(organization_id, dataset_id, dataset)
-        print("The response of DatasetApi->update_dataset:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->update_dataset: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **dataset** | [**Dataset**](Dataset.md)| the new Dataset details. This endpoint can&#39;t be used to update security | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **dataset** | [**Dataset**](Dataset.md)| the new Dataset details. This endpoint can&#39;t be used to update security |
 
 ### Return type
 
@@ -2204,6 +2441,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -2225,16 +2463,16 @@ Update the specified access to User for a Dataset
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.dataset_access_control import DatasetAccessControl
-from cosmotech_api.models.dataset_role import DatasetRole
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.dataset_role import DatasetRole
+from cosmotech_api.model.dataset_access_control import DatasetAccessControl
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2242,37 +2480,41 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    identity_id = 'identity_id_example' # str | the User identifier
-    dataset_role = cosmotech_api.DatasetRole() # DatasetRole | The new Dataset Access Control
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    identity_id = "identity_id_example" # str | the User identifier
+    dataset_role = DatasetRole(
+        role="role_example",
+    ) # DatasetRole | The new Dataset Access Control
 
+    # example passing only required values which don't have defaults set
     try:
         # Update the specified access to User for a Dataset
         api_response = api_instance.update_dataset_access_control(organization_id, dataset_id, identity_id, dataset_role)
-        print("The response of DatasetApi->update_dataset_access_control:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->update_dataset_access_control: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **identity_id** | **str**| the User identifier | 
- **dataset_role** | [**DatasetRole**](DatasetRole.md)| The new Dataset Access Control | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **identity_id** | **str**| the User identifier |
+ **dataset_role** | [**DatasetRole**](DatasetRole.md)| The new Dataset Access Control |
 
 ### Return type
 
@@ -2286,6 +2528,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -2308,15 +2551,15 @@ update entities in a graph instance
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.graph_properties import GraphProperties
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.graph_properties import GraphProperties
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2324,37 +2567,47 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset Identifier
-    type = 'type_example' # str | the entity model type
-    graph_properties = [cosmotech_api.GraphProperties()] # List[GraphProperties] | the entities to update
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset Identifier
+    type = "node" # str | the entity model type
+    graph_properties = [
+        GraphProperties(
+            type="type_example",
+            source="source_example",
+            target="target_example",
+            name="name_example",
+            params="params_example",
+        ),
+    ] # [GraphProperties] | the entities to update
 
+    # example passing only required values which don't have defaults set
     try:
         # Update entities in a graph instance
         api_response = api_instance.update_twingraph_entities(organization_id, dataset_id, type, graph_properties)
-        print("The response of DatasetApi->update_twingraph_entities:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->update_twingraph_entities: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset Identifier | 
- **type** | **str**| the entity model type | 
- **graph_properties** | [**List[GraphProperties]**](GraphProperties.md)| the entities to update | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset Identifier |
+ **type** | **str**| the entity model type |
+ **graph_properties** | [**[GraphProperties]**](GraphProperties.md)| the entities to update |
 
 ### Return type
 
@@ -2368,6 +2621,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 
@@ -2389,15 +2643,15 @@ To create a new graph from flat files,  you need to create a Zip file. This Zip 
 * OAuth Authentication (oAuth2AuthCode):
 
 ```python
+import time
 import cosmotech_api
-from cosmotech_api.models.file_upload_validation import FileUploadValidation
-from cosmotech_api.rest import ApiException
+from cosmotech_api.api import dataset_api
+from cosmotech_api.model.file_upload_validation import FileUploadValidation
 from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2405,35 +2659,37 @@ configuration = cosmotech_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure OAuth2 access token for authorization: oAuth2AuthCode
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cosmotech_api.DatasetApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    body = None # bytearray | 
+    api_instance = dataset_api.DatasetApi(api_client)
+    organization_id = "organization_id_example" # str | the Organization identifier
+    dataset_id = "dataset_id_example" # str | the Dataset identifier
+    body = open('/path/to/file', 'rb') # file_type | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Upload data from zip file to dataset's twingraph
         api_response = api_instance.upload_twingraph(organization_id, dataset_id, body)
-        print("The response of DatasetApi->upload_twingraph:\n")
         pprint(api_response)
-    except Exception as e:
+    except cosmotech_api.ApiException as e:
         print("Exception when calling DatasetApi->upload_twingraph: %s\n" % e)
 ```
 
 
-
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **dataset_id** | **str**| the Dataset identifier | 
- **body** | **bytearray**|  | 
+ **organization_id** | **str**| the Organization identifier |
+ **dataset_id** | **str**| the Dataset identifier |
+ **body** | **file_type**|  |
 
 ### Return type
 
@@ -2447,6 +2703,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/octet-stream
  - **Accept**: application/json
+
 
 ### HTTP response details
 
