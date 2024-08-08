@@ -679,7 +679,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = cosmotech_api.RunnerApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    page = 56 # int | page number to query (optional)
+    page = 56 # int | page number to query (first page is at index 0) (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier | 
  **workspace_id** | **str**| the Workspace identifier | 
- **page** | **int**| page number to query | [optional] 
+ **page** | **int**| page number to query (first page is at index 0) | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type

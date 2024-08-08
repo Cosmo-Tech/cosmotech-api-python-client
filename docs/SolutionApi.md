@@ -598,7 +598,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
-    page = 56 # int | page number to query (optional)
+    page = 56 # int | page number to query (first page is at index 0) (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -618,7 +618,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier | 
- **page** | **int**| page number to query | [optional] 
+ **page** | **int**| page number to query (first page is at index 0) | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
