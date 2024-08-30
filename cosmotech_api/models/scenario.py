@@ -130,7 +130,7 @@ class Scenario(BaseModel):
             for _item in self.parameters_values:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['parametersValues'] = _items
+            _items[-1]['varType'] = _item.var_type
         # override the default output from pydantic by calling `to_dict()` of last_run
         if self.last_run:
             _dict['lastRun'] = self.last_run.to_dict()
