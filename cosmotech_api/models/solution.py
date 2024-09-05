@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from cosmotech_api.models.run_template import RunTemplate
 from cosmotech_api.models.run_template_parameter import RunTemplateParameter
@@ -50,11 +50,11 @@ class Solution(BaseModel):
     security: Optional[SolutionSecurity] = None
     __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "ownerId", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -98,23 +98,23 @@ class Solution(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in parameters (list)
         _items = []
         if self.parameters:
-            for _item in self.parameters:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_parameters in self.parameters:
+                if _item_parameters:
+                    _items.append(_item_parameters.to_dict())
             _dict['parameters'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in parameter_groups (list)
         _items = []
         if self.parameter_groups:
-            for _item in self.parameter_groups:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_parameter_groups in self.parameter_groups:
+                if _item_parameter_groups:
+                    _items.append(_item_parameter_groups.to_dict())
             _dict['parameterGroups'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in run_templates (list)
         _items = []
         if self.run_templates:
-            for _item in self.run_templates:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_run_templates in self.run_templates:
+                if _item_run_templates:
+                    _items.append(_item_run_templates.to_dict())
             _dict['runTemplates'] = _items
         # override the default output from pydantic by calling `to_dict()` of security
         if self.security:

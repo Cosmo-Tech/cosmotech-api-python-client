@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of RunContainer from a JSON string
 run_container_instance = RunContainer.from_json(json)
 # print the JSON string representation of the object
-print RunContainer.to_json()
+print(RunContainer.to_json())
 
 # convert the object into a dict
 run_container_dict = run_container_instance.to_dict()
 # create an instance of RunContainer from a dict
-run_container_form_dict = run_container.from_dict(run_container_dict)
+run_container_from_dict = RunContainer.from_dict(run_container_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

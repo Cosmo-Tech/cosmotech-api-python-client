@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from cosmotech_api.models.run_logs_entry import RunLogsEntry
 from typing import Optional, Set
@@ -32,11 +32,11 @@ class RunLogs(BaseModel):
     logs: List[RunLogsEntry] = Field(description="run log entries in chronological order")
     __properties: ClassVar[List[str]] = ["runId", "logs"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -78,9 +78,9 @@ class RunLogs(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in logs (list)
         _items = []
         if self.logs:
-            for _item in self.logs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_logs in self.logs:
+                if _item_logs:
+                    _items.append(_item_logs.to_dict())
             _dict['logs'] = _items
         return _dict
 
