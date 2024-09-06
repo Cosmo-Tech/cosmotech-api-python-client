@@ -2,11 +2,10 @@
 
 the twincache data status
 
-## Enum
+## Properties
 
-* `EMPTY` (value: `'EMPTY'`)
-
-* `FULL` (value: `'FULL'`)
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

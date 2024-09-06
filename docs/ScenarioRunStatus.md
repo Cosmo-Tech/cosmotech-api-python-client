@@ -3,6 +3,7 @@
 a ScenarioRun status
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the ScenarioRun id | [optional] 
@@ -15,10 +16,26 @@ Name | Type | Description | Notes
 **progress** | **str** | progress to completion | [optional] 
 **message** | **str** | a  human readable message indicating details about why the workflow is in this condition | [optional] 
 **estimated_duration** | **int** | estimatedDuration in seconds | [optional] 
-**nodes** | [**[ScenarioRunStatusNode]**](ScenarioRunStatusNode.md) | status of ScenarioRun nodes | [optional] 
+**nodes** | [**List[ScenarioRunStatusNode]**](ScenarioRunStatusNode.md) | status of ScenarioRun nodes | [optional] 
 **state** | [**ScenarioRunState**](ScenarioRunState.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from cosmotech_api.models.scenario_run_status import ScenarioRunStatus
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ScenarioRunStatus from a JSON string
+scenario_run_status_instance = ScenarioRunStatus.from_json(json)
+# print the JSON string representation of the object
+print ScenarioRunStatus.to_json()
+
+# convert the object into a dict
+scenario_run_status_dict = scenario_run_status_instance.to_dict()
+# create an instance of ScenarioRunStatus from a dict
+scenario_run_status_form_dict = scenario_run_status.from_dict(scenario_run_status_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

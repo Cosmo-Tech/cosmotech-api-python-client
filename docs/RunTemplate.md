@@ -51,12 +51,12 @@ json = "{}"
 # create an instance of RunTemplate from a JSON string
 run_template_instance = RunTemplate.from_json(json)
 # print the JSON string representation of the object
-print(RunTemplate.to_json())
+print RunTemplate.to_json()
 
 # convert the object into a dict
 run_template_dict = run_template_instance.to_dict()
 # create an instance of RunTemplate from a dict
-run_template_from_dict = RunTemplate.from_dict(run_template_dict)
+run_template_form_dict = run_template.from_dict(run_template_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
