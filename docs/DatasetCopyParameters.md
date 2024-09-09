@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of DatasetCopyParameters from a JSON string
 dataset_copy_parameters_instance = DatasetCopyParameters.from_json(json)
 # print the JSON string representation of the object
-print DatasetCopyParameters.to_json()
+print(DatasetCopyParameters.to_json())
 
 # convert the object into a dict
 dataset_copy_parameters_dict = dataset_copy_parameters_instance.to_dict()
 # create an instance of DatasetCopyParameters from a dict
-dataset_copy_parameters_form_dict = dataset_copy_parameters.from_dict(dataset_copy_parameters_dict)
+dataset_copy_parameters_from_dict = DatasetCopyParameters.from_dict(dataset_copy_parameters_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

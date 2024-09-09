@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of RunnerAccessControl from a JSON string
 runner_access_control_instance = RunnerAccessControl.from_json(json)
 # print the JSON string representation of the object
-print RunnerAccessControl.to_json()
+print(RunnerAccessControl.to_json())
 
 # convert the object into a dict
 runner_access_control_dict = runner_access_control_instance.to_dict()
 # create an instance of RunnerAccessControl from a dict
-runner_access_control_form_dict = runner_access_control.from_dict(runner_access_control_dict)
+runner_access_control_from_dict = RunnerAccessControl.from_dict(runner_access_control_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
