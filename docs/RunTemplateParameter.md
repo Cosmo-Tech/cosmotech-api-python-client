@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of RunTemplateParameter from a JSON string
 run_template_parameter_instance = RunTemplateParameter.from_json(json)
 # print the JSON string representation of the object
-print(RunTemplateParameter.to_json())
+print RunTemplateParameter.to_json()
 
 # convert the object into a dict
 run_template_parameter_dict = run_template_parameter_instance.to_dict()
 # create an instance of RunTemplateParameter from a dict
-run_template_parameter_from_dict = RunTemplateParameter.from_dict(run_template_parameter_dict)
+run_template_parameter_form_dict = run_template_parameter.from_dict(run_template_parameter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
