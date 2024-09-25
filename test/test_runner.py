@@ -83,9 +83,6 @@ class TestRunner(unittest.TestCase):
             )
         else:
             return Runner(
-                dataset_list = [
-                    ''
-                    ],
         )
         """
 
