@@ -1,6 +1,6 @@
 # cosmotech_api.OrganizationApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,6 +18,9 @@ Method | HTTP request | Description
 [**unregister_organization**](OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
 [**update_organization**](OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an Organization
 [**update_organization_access_control**](OrganizationApi.md#update_organization_access_control) | **PATCH** /organizations/{organization_id}/security/access/{identity_id} | Update the specified access to User for an Organization
+[**update_solutions_container_registry_by_organization_id**](OrganizationApi.md#update_solutions_container_registry_by_organization_id) | **PATCH** /organizations/{organization_id}/services/solutionsContainerRegistry | Update the solutions container registry configuration for the Organization specified
+[**update_storage_by_organization_id**](OrganizationApi.md#update_storage_by_organization_id) | **PATCH** /organizations/{organization_id}/services/storage | Update storage configuration for the Organization specified
+[**update_tenant_credentials_by_organization_id**](OrganizationApi.md#update_tenant_credentials_by_organization_id) | **PATCH** /organizations/{organization_id}/services/tenantCredentials | Update tenant credentials for the Organization specified
 
 
 # **add_organization_access_control**
@@ -35,10 +38,10 @@ from cosmotech_api.models.organization_access_control import OrganizationAccessC
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -111,10 +114,10 @@ from cosmotech_api.models.organization import Organization
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -128,7 +131,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    page = 56 # int | page number to query (first page is at index 0) (optional)
+    page = 56 # int | page number to query (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -147,7 +150,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| page number to query (first page is at index 0) | [optional] 
+ **page** | **int**| page number to query | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
@@ -186,10 +189,10 @@ from cosmotech_api.models.organization import Organization
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -260,10 +263,10 @@ from cosmotech_api.models.component_role_permissions import ComponentRolePermiss
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -310,7 +313,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The security permission list |  -  |
+**200** | The Scenarios security permission list |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -329,10 +332,10 @@ from cosmotech_api.models.organization_access_control import OrganizationAccessC
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -404,10 +407,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -479,10 +482,10 @@ from cosmotech_api.models.organization_security import OrganizationSecurity
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -552,10 +555,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -626,10 +629,10 @@ from cosmotech_api.models.organization import Organization
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -699,10 +702,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -774,10 +777,10 @@ from cosmotech_api.models.organization_security import OrganizationSecurity
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -849,10 +852,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -921,10 +924,10 @@ from cosmotech_api.models.organization import Organization
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -999,10 +1002,10 @@ from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1059,6 +1062,233 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The Organization access |  -  |
 **404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_solutions_container_registry_by_organization_id**
+> OrganizationService update_solutions_container_registry_by_organization_id(organization_id, organization_service)
+
+Update the solutions container registry configuration for the Organization specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.organization_service import OrganizationService
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_service = {"baseUri":"mysolutiontwinengines.azurecr.io"} # OrganizationService | the new solutions container registry configuration to use
+
+    try:
+        # Update the solutions container registry configuration for the Organization specified
+        api_response = api_instance.update_solutions_container_registry_by_organization_id(organization_id, organization_service)
+        print("The response of OrganizationApi->update_solutions_container_registry_by_organization_id:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrganizationApi->update_solutions_container_registry_by_organization_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **organization_service** | [**OrganizationService**](OrganizationService.md)| the new solutions container registry configuration to use | 
+
+### Return type
+
+[**OrganizationService**](OrganizationService.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Organization solutions container registry configuration |  -  |
+**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_storage_by_organization_id**
+> OrganizationService update_storage_by_organization_id(organization_id, organization_service)
+
+Update storage configuration for the Organization specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.organization_service import OrganizationService
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_service = {"baseUri":"https://csmphoenixcontainer.blob.core.windows.net"} # OrganizationService | the new Storage configuration to use
+
+    try:
+        # Update storage configuration for the Organization specified
+        api_response = api_instance.update_storage_by_organization_id(organization_id, organization_service)
+        print("The response of OrganizationApi->update_storage_by_organization_id:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrganizationApi->update_storage_by_organization_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **organization_service** | [**OrganizationService**](OrganizationService.md)| the new Storage configuration to use | 
+
+### Return type
+
+[**OrganizationService**](OrganizationService.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Organization Storage configuration |  -  |
+**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_tenant_credentials_by_organization_id**
+> Dict[str, object] update_tenant_credentials_by_organization_id(organization_id, request_body)
+
+Update tenant credentials for the Organization specified
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "https://dev.api.cosmotech.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    request_body = {"azureTenantId":"<my_azure_tenant_id>","azureClientId":"<my_azure_client_id>","azureClientSecret":"<my_azure_client_secret>"} # Dict[str, object] | the new Tenant Credentials to use
+
+    try:
+        # Update tenant credentials for the Organization specified
+        api_response = api_instance.update_tenant_credentials_by_organization_id(organization_id, request_body)
+        print("The response of OrganizationApi->update_tenant_credentials_by_organization_id:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrganizationApi->update_tenant_credentials_by_organization_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **request_body** | [**Dict[str, object]**](object.md)| the new Tenant Credentials to use | 
+
+### Return type
+
+**Dict[str, object]**
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Organization Tenant Credentials |  -  |
+**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
