@@ -2,19 +2,10 @@
 
 the Dataset Source Type
 
-## Enum
-
-* `ADT` (value: `'ADT'`)
-
-* `AZURESTORAGE` (value: `'AzureStorage'`)
-
-* `FILE` (value: `'File'`)
-
-* `NONE` (value: `'None'`)
-
-* `TWINCACHE` (value: `'Twincache'`)
-
-* `ETL` (value: `'ETL'`)
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**value** | **str** | the Dataset Source Type |  must be one of ["ADT", "AzureStorage", "File", "None", "Twincache", "ETL", ]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
