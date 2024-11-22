@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of GraphProperties from a JSON string
 graph_properties_instance = GraphProperties.from_json(json)
 # print the JSON string representation of the object
-print GraphProperties.to_json()
+print(GraphProperties.to_json())
 
 # convert the object into a dict
 graph_properties_dict = graph_properties_instance.to_dict()
 # create an instance of GraphProperties from a dict
-graph_properties_form_dict = graph_properties.from_dict(graph_properties_dict)
+graph_properties_from_dict = GraphProperties.from_dict(graph_properties_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
