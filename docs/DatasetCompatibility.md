@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of DatasetCompatibility from a JSON string
 dataset_compatibility_instance = DatasetCompatibility.from_json(json)
 # print the JSON string representation of the object
-print(DatasetCompatibility.to_json())
+print DatasetCompatibility.to_json()
 
 # convert the object into a dict
 dataset_compatibility_dict = dataset_compatibility_instance.to_dict()
 # create an instance of DatasetCompatibility from a dict
-dataset_compatibility_from_dict = DatasetCompatibility.from_dict(dataset_compatibility_dict)
+dataset_compatibility_form_dict = dataset_compatibility.from_dict(dataset_compatibility_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
