@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 Create a sub-dataset from the dataset in parameter
 
-Create a copy of the dataset using the results of the list of queries given in parameter.
+Create a copy of the dataset using the results of the list of queries given in parameter. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 Create new entities in a graph instance
 
-create new entities in a graph instance
+Create new entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -588,7 +588,7 @@ void (empty response body)
 
 Delete entities in a graph instance
 
-delete entities in a graph instance
+Delete entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -666,7 +666,7 @@ void (empty response body)
 
 Download a graph as a zip file
 
-Download the compressed graph reference by the hash in a zip file
+Download the compressed graph reference by the hash in a zip file Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1200,7 +1200,7 @@ Name | Type | Description  | Notes
 
 Get entities in a graph instance
 
-get entities in a graph instance
+Get entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1358,7 +1358,7 @@ Name | Type | Description  | Notes
 
 Refresh data on dataset from dataset's source
 
-Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin       Azure storage      Local File (import a new file)  During refresh, datas are overwritten 
+Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin       Azure storage      Local File (import a new file)  During refresh, datas are overwritten Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1583,7 +1583,7 @@ void (empty response body)
 
 Rollback the dataset after a failed refresh
 
-Rollback the twingraph on a dataset after a failed refresh
+Rollback the twingraph on a dataset after a failed refresh Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1818,7 +1818,7 @@ Name | Type | Description  | Notes
 
 Run a query on a graph instance and return the result as a zip file in async mode
 
-Run a query on a graph instance and return the result as a zip file in async mode
+Run a query on a graph instance and return the result as a zip file in async mode Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1898,7 +1898,7 @@ Name | Type | Description  | Notes
 
 Async batch update by loading a CSV file on a graph instance 
 
-Async batch update by loading a CSV file on a graph instance 
+Async batch update by loading a CSV file on a graph instance  Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1984,7 +1984,7 @@ Name | Type | Description  | Notes
 
 Return the result of a query made on the graph instance as a json
 
-Run a query on a graph instance and return the result as a json
+Run a query on a graph instance and return the result as a json Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -2333,7 +2333,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = 'organization_id_example' # str | the Organization identifier
     dataset_id = 'dataset_id_example' # str | the Dataset Identifier
     type = 'type_example' # str | the entity model type
-    graph_properties = [cosmotech_api.GraphProperties()] # List[GraphProperties] | the entities to update
+    graph_properties = [cosmotech_api.GraphProperties()] # List[GraphProperties] | The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
     try:
         # Update entities in a graph instance
@@ -2354,7 +2354,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier | 
  **dataset_id** | **str**| the Dataset Identifier | 
  **type** | **str**| the entity model type | 
- **graph_properties** | [**List[GraphProperties]**](GraphProperties.md)| the entities to update | 
+ **graph_properties** | [**List[GraphProperties]**](GraphProperties.md)| The entities to update Note: This endpoint is activated only if &#x60;csm.platform.twincache.useGraphModule&#x60; property is set to true  | 
 
 ### Return type
 
@@ -2382,7 +2382,7 @@ Name | Type | Description  | Notes
 
 Upload data from zip file to dataset's twingraph
 
-To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * id  those colomns represent * The source of the edge * The target of the edge * The id of the edge  All following columns content are up to you. 
+To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * id  those colomns represent * The source of the edge * The target of the edge * The id of the edge  All following columns content are up to you. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
