@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ComponentRolePermissions from a JSON string
 component_role_permissions_instance = ComponentRolePermissions.from_json(json)
 # print the JSON string representation of the object
-print ComponentRolePermissions.to_json()
+print(ComponentRolePermissions.to_json())
 
 # convert the object into a dict
 component_role_permissions_dict = component_role_permissions_instance.to_dict()
 # create an instance of ComponentRolePermissions from a dict
-component_role_permissions_form_dict = component_role_permissions.from_dict(component_role_permissions_dict)
+component_role_permissions_from_dict = ComponentRolePermissions.from_dict(component_role_permissions_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
