@@ -2,11 +2,10 @@
 
 the Orchestrator to use for the Run Template
 
-## Enum
+## Properties
 
-* `ARGOWORKFLOW` (value: `'argoWorkflow'`)
-
-* `CSMORC` (value: `'csmOrc'`)
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

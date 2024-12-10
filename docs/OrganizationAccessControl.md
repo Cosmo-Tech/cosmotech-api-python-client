@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of OrganizationAccessControl from a JSON string
 organization_access_control_instance = OrganizationAccessControl.from_json(json)
 # print the JSON string representation of the object
-print(OrganizationAccessControl.to_json())
+print OrganizationAccessControl.to_json()
 
 # convert the object into a dict
 organization_access_control_dict = organization_access_control_instance.to_dict()
 # create an instance of OrganizationAccessControl from a dict
-organization_access_control_from_dict = OrganizationAccessControl.from_dict(organization_access_control_dict)
+organization_access_control_form_dict = organization_access_control.from_dict(organization_access_control_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

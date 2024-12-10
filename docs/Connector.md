@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **tags** | **List[str]** | the list of tags | [optional] 
 **owner_id** | **str** | the user id which own this connector version | [optional] [readonly] 
 **url** | **str** | an optional URL link to connector page | [optional] 
+**azure_managed_identity** | **bool** | whether or not the connector uses Azure Managed Identity | [optional] 
+**azure_authentication_with_customer_app_registration** | **bool** | whether to authenticate against Azure using the app registration credentials provided by the customer | [optional] 
 **io_types** | [**List[IoTypesEnum]**](IoTypesEnum.md) |  | [optional] 
 **parameter_groups** | [**List[ConnectorParameterGroup]**](ConnectorParameterGroup.md) | the list of connector parameters groups | [optional] 
 
@@ -28,12 +30,12 @@ json = "{}"
 # create an instance of Connector from a JSON string
 connector_instance = Connector.from_json(json)
 # print the JSON string representation of the object
-print(Connector.to_json())
+print Connector.to_json()
 
 # convert the object into a dict
 connector_dict = connector_instance.to_dict()
 # create an instance of Connector from a dict
-connector_from_dict = Connector.from_dict(connector_dict)
+connector_form_dict = connector.from_dict(connector_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

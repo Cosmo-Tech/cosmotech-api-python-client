@@ -2,15 +2,10 @@
 
 the Run end-to-end state
 
-## Enum
+## Properties
 
-* `RUNNING` (value: `'Running'`)
-
-* `SUCCESSFUL` (value: `'Successful'`)
-
-* `FAILED` (value: `'Failed'`)
-
-* `UNKNOWN` (value: `'Unknown'`)
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

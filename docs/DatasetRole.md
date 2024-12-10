@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of DatasetRole from a JSON string
 dataset_role_instance = DatasetRole.from_json(json)
 # print the JSON string representation of the object
-print(DatasetRole.to_json())
+print DatasetRole.to_json()
 
 # convert the object into a dict
 dataset_role_dict = dataset_role_instance.to_dict()
 # create an instance of DatasetRole from a dict
-dataset_role_from_dict = DatasetRole.from_dict(dataset_role_dict)
+dataset_role_form_dict = dataset_role.from_dict(dataset_role_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
