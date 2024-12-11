@@ -2,10 +2,11 @@
 
 The read and write capabilities of connector
 
-## Properties
+## Enum
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+* `READ` (value: `'read'`)
+
+* `WRITE` (value: `'write'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -31,12 +31,12 @@ json = "{}"
 # create an instance of RunStatus from a JSON string
 run_status_instance = RunStatus.from_json(json)
 # print the JSON string representation of the object
-print RunStatus.to_json()
+print(RunStatus.to_json())
 
 # convert the object into a dict
 run_status_dict = run_status_instance.to_dict()
 # create an instance of RunStatus from a dict
-run_status_form_dict = run_status.from_dict(run_status_dict)
+run_status_from_dict = RunStatus.from_dict(run_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

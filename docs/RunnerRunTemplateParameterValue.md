@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of RunnerRunTemplateParameterValue from a JSON string
 runner_run_template_parameter_value_instance = RunnerRunTemplateParameterValue.from_json(json)
 # print the JSON string representation of the object
-print RunnerRunTemplateParameterValue.to_json()
+print(RunnerRunTemplateParameterValue.to_json())
 
 # convert the object into a dict
 runner_run_template_parameter_value_dict = runner_run_template_parameter_value_instance.to_dict()
 # create an instance of RunnerRunTemplateParameterValue from a dict
-runner_run_template_parameter_value_form_dict = runner_run_template_parameter_value.from_dict(runner_run_template_parameter_value_dict)
+runner_run_template_parameter_value_from_dict = RunnerRunTemplateParameterValue.from_dict(runner_run_template_parameter_value_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
