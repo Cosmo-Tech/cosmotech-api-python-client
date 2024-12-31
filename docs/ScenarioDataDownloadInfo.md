@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ScenarioDataDownloadInfo from a JSON string
 scenario_data_download_info_instance = ScenarioDataDownloadInfo.from_json(json)
 # print the JSON string representation of the object
-print ScenarioDataDownloadInfo.to_json()
+print(ScenarioDataDownloadInfo.to_json())
 
 # convert the object into a dict
 scenario_data_download_info_dict = scenario_data_download_info_instance.to_dict()
 # create an instance of ScenarioDataDownloadInfo from a dict
-scenario_data_download_info_form_dict = scenario_data_download_info.from_dict(scenario_data_download_info_dict)
+scenario_data_download_info_from_dict = ScenarioDataDownloadInfo.from_dict(scenario_data_download_info_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ScenarioResourceSizing from a JSON string
 scenario_resource_sizing_instance = ScenarioResourceSizing.from_json(json)
 # print the JSON string representation of the object
-print ScenarioResourceSizing.to_json()
+print(ScenarioResourceSizing.to_json())
 
 # convert the object into a dict
 scenario_resource_sizing_dict = scenario_resource_sizing_instance.to_dict()
 # create an instance of ScenarioResourceSizing from a dict
-scenario_resource_sizing_form_dict = scenario_resource_sizing.from_dict(scenario_resource_sizing_dict)
+scenario_resource_sizing_from_dict = ScenarioResourceSizing.from_dict(scenario_resource_sizing_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

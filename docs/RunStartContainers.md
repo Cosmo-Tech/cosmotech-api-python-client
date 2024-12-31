@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of RunStartContainers from a JSON string
 run_start_containers_instance = RunStartContainers.from_json(json)
 # print the JSON string representation of the object
-print RunStartContainers.to_json()
+print(RunStartContainers.to_json())
 
 # convert the object into a dict
 run_start_containers_dict = run_start_containers_instance.to_dict()
 # create an instance of RunStartContainers from a dict
-run_start_containers_form_dict = run_start_containers.from_dict(run_start_containers_dict)
+run_start_containers_from_dict = RunStartContainers.from_dict(run_start_containers_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

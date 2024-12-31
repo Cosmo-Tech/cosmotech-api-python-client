@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of ScenarioRunStatusNode from a JSON string
 scenario_run_status_node_instance = ScenarioRunStatusNode.from_json(json)
 # print the JSON string representation of the object
-print ScenarioRunStatusNode.to_json()
+print(ScenarioRunStatusNode.to_json())
 
 # convert the object into a dict
 scenario_run_status_node_dict = scenario_run_status_node_instance.to_dict()
 # create an instance of ScenarioRunStatusNode from a dict
-scenario_run_status_node_form_dict = scenario_run_status_node.from_dict(scenario_run_status_node_dict)
+scenario_run_status_node_from_dict = ScenarioRunStatusNode.from_dict(scenario_run_status_node_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

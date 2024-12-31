@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ScenarioRole from a JSON string
 scenario_role_instance = ScenarioRole.from_json(json)
 # print the JSON string representation of the object
-print ScenarioRole.to_json()
+print(ScenarioRole.to_json())
 
 # convert the object into a dict
 scenario_role_dict = scenario_role_instance.to_dict()
 # create an instance of ScenarioRole from a dict
-scenario_role_form_dict = scenario_role.from_dict(scenario_role_dict)
+scenario_role_from_dict = ScenarioRole.from_dict(scenario_role_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

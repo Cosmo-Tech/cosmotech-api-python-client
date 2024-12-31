@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ScenarioRunContainerArtifact from a JSON string
 scenario_run_container_artifact_instance = ScenarioRunContainerArtifact.from_json(json)
 # print the JSON string representation of the object
-print ScenarioRunContainerArtifact.to_json()
+print(ScenarioRunContainerArtifact.to_json())
 
 # convert the object into a dict
 scenario_run_container_artifact_dict = scenario_run_container_artifact_instance.to_dict()
 # create an instance of ScenarioRunContainerArtifact from a dict
-scenario_run_container_artifact_form_dict = scenario_run_container_artifact.from_dict(scenario_run_container_artifact_dict)
+scenario_run_container_artifact_from_dict = ScenarioRunContainerArtifact.from_dict(scenario_run_container_artifact_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

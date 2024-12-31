@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of ConnectorParameter from a JSON string
 connector_parameter_instance = ConnectorParameter.from_json(json)
 # print the JSON string representation of the object
-print ConnectorParameter.to_json()
+print(ConnectorParameter.to_json())
 
 # convert the object into a dict
 connector_parameter_dict = connector_parameter_instance.to_dict()
 # create an instance of ConnectorParameter from a dict
-connector_parameter_form_dict = connector_parameter.from_dict(connector_parameter_dict)
+connector_parameter_from_dict = ConnectorParameter.from_dict(connector_parameter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

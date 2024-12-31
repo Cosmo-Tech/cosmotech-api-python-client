@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of RunSearch from a JSON string
 run_search_instance = RunSearch.from_json(json)
 # print the JSON string representation of the object
-print RunSearch.to_json()
+print(RunSearch.to_json())
 
 # convert the object into a dict
 run_search_dict = run_search_instance.to_dict()
 # create an instance of RunSearch from a dict
-run_search_form_dict = run_search.from_dict(run_search_dict)
+run_search_from_dict = RunSearch.from_dict(run_search_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

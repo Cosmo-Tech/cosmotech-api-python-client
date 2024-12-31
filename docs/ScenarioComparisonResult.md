@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ScenarioComparisonResult from a JSON string
 scenario_comparison_result_instance = ScenarioComparisonResult.from_json(json)
 # print the JSON string representation of the object
-print ScenarioComparisonResult.to_json()
+print(ScenarioComparisonResult.to_json())
 
 # convert the object into a dict
 scenario_comparison_result_dict = scenario_comparison_result_instance.to_dict()
 # create an instance of ScenarioComparisonResult from a dict
-scenario_comparison_result_form_dict = scenario_comparison_result.from_dict(scenario_comparison_result_dict)
+scenario_comparison_result_from_dict = ScenarioComparisonResult.from_dict(scenario_comparison_result_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

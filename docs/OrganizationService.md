@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of OrganizationService from a JSON string
 organization_service_instance = OrganizationService.from_json(json)
 # print the JSON string representation of the object
-print OrganizationService.to_json()
+print(OrganizationService.to_json())
 
 # convert the object into a dict
 organization_service_dict = organization_service_instance.to_dict()
 # create an instance of OrganizationService from a dict
-organization_service_form_dict = organization_service.from_dict(organization_service_dict)
+organization_service_from_dict = OrganizationService.from_dict(organization_service_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

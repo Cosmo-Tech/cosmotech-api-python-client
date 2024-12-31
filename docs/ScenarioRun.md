@@ -40,12 +40,12 @@ json = "{}"
 # create an instance of ScenarioRun from a JSON string
 scenario_run_instance = ScenarioRun.from_json(json)
 # print the JSON string representation of the object
-print ScenarioRun.to_json()
+print(ScenarioRun.to_json())
 
 # convert the object into a dict
 scenario_run_dict = scenario_run_instance.to_dict()
 # create an instance of ScenarioRun from a dict
-scenario_run_form_dict = scenario_run.from_dict(scenario_run_dict)
+scenario_run_from_dict = ScenarioRun.from_dict(scenario_run_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

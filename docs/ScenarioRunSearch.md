@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of ScenarioRunSearch from a JSON string
 scenario_run_search_instance = ScenarioRunSearch.from_json(json)
 # print the JSON string representation of the object
-print ScenarioRunSearch.to_json()
+print(ScenarioRunSearch.to_json())
 
 # convert the object into a dict
 scenario_run_search_dict = scenario_run_search_instance.to_dict()
 # create an instance of ScenarioRunSearch from a dict
-scenario_run_search_form_dict = scenario_run_search.from_dict(scenario_run_search_dict)
+scenario_run_search_from_dict = ScenarioRunSearch.from_dict(scenario_run_search_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RunnerComparisonResult from a JSON string
 runner_comparison_result_instance = RunnerComparisonResult.from_json(json)
 # print the JSON string representation of the object
-print RunnerComparisonResult.to_json()
+print(RunnerComparisonResult.to_json())
 
 # convert the object into a dict
 runner_comparison_result_dict = runner_comparison_result_instance.to_dict()
 # create an instance of RunnerComparisonResult from a dict
-runner_comparison_result_form_dict = runner_comparison_result.from_dict(runner_comparison_result_dict)
+runner_comparison_result_from_dict = RunnerComparisonResult.from_dict(runner_comparison_result_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

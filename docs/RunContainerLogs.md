@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of RunContainerLogs from a JSON string
 run_container_logs_instance = RunContainerLogs.from_json(json)
 # print the JSON string representation of the object
-print RunContainerLogs.to_json()
+print(RunContainerLogs.to_json())
 
 # convert the object into a dict
 run_container_logs_dict = run_container_logs_instance.to_dict()
 # create an instance of RunContainerLogs from a dict
-run_container_logs_form_dict = run_container_logs.from_dict(run_container_logs_dict)
+run_container_logs_from_dict = RunContainerLogs.from_dict(run_container_logs_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

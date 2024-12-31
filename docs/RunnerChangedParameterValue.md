@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of RunnerChangedParameterValue from a JSON string
 runner_changed_parameter_value_instance = RunnerChangedParameterValue.from_json(json)
 # print the JSON string representation of the object
-print RunnerChangedParameterValue.to_json()
+print(RunnerChangedParameterValue.to_json())
 
 # convert the object into a dict
 runner_changed_parameter_value_dict = runner_changed_parameter_value_instance.to_dict()
 # create an instance of RunnerChangedParameterValue from a dict
-runner_changed_parameter_value_form_dict = runner_changed_parameter_value.from_dict(runner_changed_parameter_value_dict)
+runner_changed_parameter_value_from_dict = RunnerChangedParameterValue.from_dict(runner_changed_parameter_value_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
