@@ -1,13 +1,13 @@
 # RunLogs
 
-the run logs returned by all containers
+the output logs of a run
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**run_id** | **str** | the Run Id | [optional] [readonly] 
-**containers** | [**Dict[str, RunContainerLogs]**](RunContainerLogs.md) | the container map of logs | [optional] [readonly] 
+**run_id** | **str** | the Run Id | [readonly] 
+**logs** | [**List[RunLogsEntry]**](RunLogsEntry.md) | run log entries in chronological order | [readonly] 
 
 ## Example
 
