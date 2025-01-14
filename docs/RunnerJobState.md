@@ -2,10 +2,19 @@
 
 the Runner job state
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **str** | the Runner job state |  must be one of ["Created", "Running", "Successful", "Failed", "Unknown", "DataIngestionInProgress", ]
+## Enum
+
+* `CREATED` (value: `'Created'`)
+
+* `RUNNING` (value: `'Running'`)
+
+* `SUCCESSFUL` (value: `'Successful'`)
+
+* `FAILED` (value: `'Failed'`)
+
+* `UNKNOWN` (value: `'Unknown'`)
+
+* `DATAINGESTIONINPROGRESS` (value: `'DataIngestionInProgress'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

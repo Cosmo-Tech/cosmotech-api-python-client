@@ -7,6 +7,7 @@ Runner data download job info
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** | the Runner Data Download URL | [optional] [readonly] 
+**state** | [**RunnerJobState**](RunnerJobState.md) |  | [optional] 
 
 ## Example
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RunnerRootLastRun from a JSON string
 runner_root_last_run_instance = RunnerRootLastRun.from_json(json)
 # print the JSON string representation of the object
-print RunnerRootLastRun.to_json()
+print(RunnerRootLastRun.to_json())
 
 # convert the object into a dict
 runner_root_last_run_dict = runner_root_last_run_instance.to_dict()
 # create an instance of RunnerRootLastRun from a dict
-runner_root_last_run_form_dict = runner_root_last_run.from_dict(runner_root_last_run_dict)
+runner_root_last_run_from_dict = RunnerRootLastRun.from_dict(runner_root_last_run_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
