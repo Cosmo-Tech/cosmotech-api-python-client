@@ -13,7 +13,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
 from cosmotech_api.models.connector import Connector

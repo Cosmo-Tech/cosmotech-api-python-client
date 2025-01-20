@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
 from cosmotech_api.models.dataset_twin_graph_hash import DatasetTwinGraphHash

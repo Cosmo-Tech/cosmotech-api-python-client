@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
