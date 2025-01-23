@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class OrganizationSecurity(BaseModel):
     """
-    the Organization security information
+    Response object for organization security information
     """ # noqa: E501
     default: StrictStr = Field(description="the role by default")
     access_control_list: List[OrganizationAccessControl] = Field(description="the list which can access this Organization with detailed access control information", alias="accessControlList")

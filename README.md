@@ -127,20 +127,20 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**update_dataset_access_control**](docs/DatasetApi.md#update_dataset_access_control) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Update the specified access to User for a Dataset
 *DatasetApi* | [**update_twingraph_entities**](docs/DatasetApi.md#update_twingraph_entities) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Update entities in a graph instance
 *DatasetApi* | [**upload_twingraph**](docs/DatasetApi.md#upload_twingraph) | **POST** /organizations/{organization_id}/datasets/{dataset_id} | Upload data from zip file to dataset&#39;s twingraph
-*OrganizationApi* | [**add_organization_access_control**](docs/OrganizationApi.md#add_organization_access_control) | **POST** /organizations/{organization_id}/security/access | Add a control access to the Organization
-*OrganizationApi* | [**find_all_organizations**](docs/OrganizationApi.md#find_all_organizations) | **GET** /organizations | List all Organizations
-*OrganizationApi* | [**find_organization_by_id**](docs/OrganizationApi.md#find_organization_by_id) | **GET** /organizations/{organization_id} | Get the details of an Organization
-*OrganizationApi* | [**get_all_permissions**](docs/OrganizationApi.md#get_all_permissions) | **GET** /organizations/permissions | Get all permissions per components
+*OrganizationApi* | [**create_organization**](docs/OrganizationApi.md#create_organization) | **POST** /organizations | Create a new organization
+*OrganizationApi* | [**create_organization_access_control**](docs/OrganizationApi.md#create_organization_access_control) | **POST** /organizations/{organization_id}/security/access | Add a control access to the Organization
+*OrganizationApi* | [**delete_organization**](docs/OrganizationApi.md#delete_organization) | **DELETE** /organizations/{organization_id} | Delete an organization
+*OrganizationApi* | [**delete_organization_access_control**](docs/OrganizationApi.md#delete_organization_access_control) | **DELETE** /organizations/{organization_id}/security/access/{identity_id} | Remove the specified access from the given Organization
+*OrganizationApi* | [**get_organization**](docs/OrganizationApi.md#get_organization) | **GET** /organizations/{organization_id} | Get the details of an Organization
 *OrganizationApi* | [**get_organization_access_control**](docs/OrganizationApi.md#get_organization_access_control) | **GET** /organizations/{organization_id}/security/access/{identity_id} | Get a control access for the Organization
 *OrganizationApi* | [**get_organization_permissions**](docs/OrganizationApi.md#get_organization_permissions) | **GET** /organizations/{organization_id}/permissions/{role} | Get the Organization permissions by given role
 *OrganizationApi* | [**get_organization_security**](docs/OrganizationApi.md#get_organization_security) | **GET** /organizations/{organization_id}/security | Get the Organization security information
-*OrganizationApi* | [**get_organization_security_users**](docs/OrganizationApi.md#get_organization_security_users) | **GET** /organizations/{organization_id}/security/users | Get the Organization security users list
-*OrganizationApi* | [**register_organization**](docs/OrganizationApi.md#register_organization) | **POST** /organizations | Register a new organization
-*OrganizationApi* | [**remove_organization_access_control**](docs/OrganizationApi.md#remove_organization_access_control) | **DELETE** /organizations/{organization_id}/security/access/{identity_id} | Remove the specified access from the given Organization
-*OrganizationApi* | [**set_organization_default_security**](docs/OrganizationApi.md#set_organization_default_security) | **POST** /organizations/{organization_id}/security/default | Set the Organization default security
-*OrganizationApi* | [**unregister_organization**](docs/OrganizationApi.md#unregister_organization) | **DELETE** /organizations/{organization_id} | Unregister an organization
+*OrganizationApi* | [**list_organization_security_users**](docs/OrganizationApi.md#list_organization_security_users) | **GET** /organizations/{organization_id}/security/users | Get the Organization security users list
+*OrganizationApi* | [**list_organizations**](docs/OrganizationApi.md#list_organizations) | **GET** /organizations | List all Organizations
+*OrganizationApi* | [**list_permissions**](docs/OrganizationApi.md#list_permissions) | **GET** /organizations/permissions | Get all permissions per components
 *OrganizationApi* | [**update_organization**](docs/OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an Organization
 *OrganizationApi* | [**update_organization_access_control**](docs/OrganizationApi.md#update_organization_access_control) | **PATCH** /organizations/{organization_id}/security/access/{identity_id} | Update the specified access to User for an Organization
+*OrganizationApi* | [**update_organization_default_security**](docs/OrganizationApi.md#update_organization_default_security) | **POST** /organizations/{organization_id}/security/default | Update the Organization default security
 *RunApi* | [**delete_run**](docs/RunApi.md#delete_run) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id} | Delete a run
 *RunApi* | [**get_run**](docs/RunApi.md#get_run) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id} | Get the details of a run
 *RunApi* | [**get_run_logs**](docs/RunApi.md#get_run_logs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/logs | get the logs for the Run
@@ -234,8 +234,10 @@ Class | Method | HTTP request | Description
  - [IoTypesEnum](docs/IoTypesEnum.md)
  - [Organization](docs/Organization.md)
  - [OrganizationAccessControl](docs/OrganizationAccessControl.md)
+ - [OrganizationCreateRequest](docs/OrganizationCreateRequest.md)
  - [OrganizationRole](docs/OrganizationRole.md)
  - [OrganizationSecurity](docs/OrganizationSecurity.md)
+ - [OrganizationUpdateRequest](docs/OrganizationUpdateRequest.md)
  - [QueryResult](docs/QueryResult.md)
  - [ResourceSizeInfo](docs/ResourceSizeInfo.md)
  - [Run](docs/Run.md)

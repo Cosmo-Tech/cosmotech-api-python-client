@@ -41,8 +41,10 @@ from cosmotech_api.models.ingestion_status_enum import IngestionStatusEnum
 from cosmotech_api.models.io_types_enum import IoTypesEnum
 from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl
+from cosmotech_api.models.organization_create_request import OrganizationCreateRequest
 from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity
+from cosmotech_api.models.organization_update_request import OrganizationUpdateRequest
 from cosmotech_api.models.query_result import QueryResult
 from cosmotech_api.models.resource_size_info import ResourceSizeInfo
 from cosmotech_api.models.run import Run

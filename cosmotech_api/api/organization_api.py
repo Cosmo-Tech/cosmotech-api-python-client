@@ -22,8 +22,10 @@ from typing_extensions import Annotated
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
 from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl
+from cosmotech_api.models.organization_create_request import OrganizationCreateRequest
 from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity
+from cosmotech_api.models.organization_update_request import OrganizationUpdateRequest
 
 from cosmotech_api.api_client import ApiClient, RequestSerialized
 from cosmotech_api.api_response import ApiResponse
@@ -44,7 +46,277 @@ class OrganizationApi:
 
 
     @validate_call
-    def add_organization_access_control(
+    def create_organization(
+        self,
+        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="the Organization to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Organization:
+        """Create a new organization
+
+
+        :param organization_create_request: the Organization to create (required)
+        :type organization_create_request: OrganizationCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_organization_serialize(
+            organization_create_request=organization_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Organization",
+            '400': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_organization_with_http_info(
+        self,
+        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="the Organization to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Organization]:
+        """Create a new organization
+
+
+        :param organization_create_request: the Organization to create (required)
+        :type organization_create_request: OrganizationCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_organization_serialize(
+            organization_create_request=organization_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Organization",
+            '400': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_organization_without_preload_content(
+        self,
+        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="the Organization to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create a new organization
+
+
+        :param organization_create_request: the Organization to create (required)
+        :type organization_create_request: OrganizationCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_organization_serialize(
+            organization_create_request=organization_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Organization",
+            '400': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_organization_serialize(
+        self,
+        organization_create_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if organization_create_request is not None:
+            _body_params = organization_create_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_organization_access_control(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         organization_access_control: Annotated[OrganizationAccessControl, Field(description="the new Organization security access to add.")],
@@ -90,7 +362,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_organization_access_control_serialize(
+        _param = self._create_organization_access_control_serialize(
             organization_id=organization_id,
             organization_access_control=organization_access_control,
             _request_auth=_request_auth,
@@ -114,7 +386,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def add_organization_access_control_with_http_info(
+    def create_organization_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         organization_access_control: Annotated[OrganizationAccessControl, Field(description="the new Organization security access to add.")],
@@ -160,7 +432,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_organization_access_control_serialize(
+        _param = self._create_organization_access_control_serialize(
             organization_id=organization_id,
             organization_access_control=organization_access_control,
             _request_auth=_request_auth,
@@ -184,7 +456,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def add_organization_access_control_without_preload_content(
+    def create_organization_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         organization_access_control: Annotated[OrganizationAccessControl, Field(description="the new Organization security access to add.")],
@@ -230,7 +502,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_organization_access_control_serialize(
+        _param = self._create_organization_access_control_serialize(
             organization_id=organization_id,
             organization_access_control=organization_access_control,
             _request_auth=_request_auth,
@@ -249,7 +521,7 @@ class OrganizationApi:
         return response_data.response
 
 
-    def _add_organization_access_control_serialize(
+    def _create_organization_access_control_serialize(
         self,
         organization_id,
         organization_access_control,
@@ -329,10 +601,9 @@ class OrganizationApi:
 
 
     @validate_call
-    def find_all_organizations(
+    def delete_organization(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,14 +616,12 @@ class OrganizationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Organization]:
-        """List all Organizations
+    ) -> None:
+        """Delete an organization
 
 
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -375,9 +644,8 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_organizations_serialize(
-            page=page,
-            size=size,
+        _param = self._delete_organization_serialize(
+            organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -385,7 +653,8 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Organization]",
+            '204': None,
+            '404': None,
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -398,10 +667,9 @@ class OrganizationApi:
 
 
     @validate_call
-    def find_all_organizations_with_http_info(
+    def delete_organization_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -414,14 +682,12 @@ class OrganizationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Organization]]:
-        """List all Organizations
+    ) -> ApiResponse[None]:
+        """Delete an organization
 
 
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -444,9 +710,8 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_organizations_serialize(
-            page=page,
-            size=size,
+        _param = self._delete_organization_serialize(
+            organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -454,7 +719,8 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Organization]",
+            '204': None,
+            '404': None,
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -467,10 +733,9 @@ class OrganizationApi:
 
 
     @validate_call
-    def find_all_organizations_without_preload_content(
+    def delete_organization_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -484,13 +749,11 @@ class OrganizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List all Organizations
+        """Delete an organization
 
 
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -513,9 +776,8 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_organizations_serialize(
-            page=page,
-            size=size,
+        _param = self._delete_organization_serialize(
+            organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -523,7 +785,8 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Organization]",
+            '204': None,
+            '404': None,
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -531,10 +794,9 @@ class OrganizationApi:
         return response_data.response
 
 
-    def _find_all_organizations_serialize(
+    def _delete_organization_serialize(
         self,
-        page,
-        size,
+        organization_id,
         _request_auth,
         _content_type,
         _headers,
@@ -554,27 +816,14 @@ class OrganizationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if size is not None:
-            
-            _query_params.append(('size', size))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
 
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
 
 
         # authentication setting
@@ -583,8 +832,8 @@ class OrganizationApi:
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations',
+            method='DELETE',
+            resource_path='/organizations/{organization_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -601,7 +850,271 @@ class OrganizationApi:
 
 
     @validate_call
-    def find_organization_by_id(
+    def delete_organization_access_control(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Remove the specified access from the given Organization
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_organization_access_control_serialize(
+            organization_id=organization_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_organization_access_control_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Remove the specified access from the given Organization
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_organization_access_control_serialize(
+            organization_id=organization_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_organization_access_control_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Remove the specified access from the given Organization
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_organization_access_control_serialize(
+            organization_id=organization_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_organization_access_control_serialize(
+        self,
+        organization_id,
+        identity_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if identity_id is not None:
+            _path_params['identity_id'] = identity_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/security/access/{identity_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_organization(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         _request_timeout: Union[
@@ -644,7 +1157,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_organization_by_id_serialize(
+        _param = self._get_organization_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -667,7 +1180,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def find_organization_by_id_with_http_info(
+    def get_organization_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         _request_timeout: Union[
@@ -710,7 +1223,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_organization_by_id_serialize(
+        _param = self._get_organization_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -733,7 +1246,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def find_organization_by_id_without_preload_content(
+    def get_organization_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         _request_timeout: Union[
@@ -776,7 +1289,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_organization_by_id_serialize(
+        _param = self._get_organization_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -794,7 +1307,7 @@ class OrganizationApi:
         return response_data.response
 
 
-    def _find_organization_by_id_serialize(
+    def _get_organization_serialize(
         self,
         organization_id,
         _request_auth,
@@ -841,244 +1354,6 @@ class OrganizationApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_all_permissions(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[ComponentRolePermissions]:
-        """Get all permissions per components
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_all_permissions_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ComponentRolePermissions]",
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_all_permissions_with_http_info(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[ComponentRolePermissions]]:
-        """Get all permissions per components
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_all_permissions_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ComponentRolePermissions]",
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_all_permissions_without_preload_content(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get all permissions per components
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_all_permissions_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ComponentRolePermissions]",
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_all_permissions_serialize(
-        self,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/permissions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1890,7 +2165,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def get_organization_security_users(
+    def list_organization_security_users(
         self,
         organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
@@ -1933,7 +2208,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_organization_security_users_serialize(
+        _param = self._list_organization_security_users_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1956,7 +2231,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def get_organization_security_users_with_http_info(
+    def list_organization_security_users_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
@@ -1999,7 +2274,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_organization_security_users_serialize(
+        _param = self._list_organization_security_users_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2022,7 +2297,7 @@ class OrganizationApi:
 
 
     @validate_call
-    def get_organization_security_users_without_preload_content(
+    def list_organization_security_users_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
@@ -2065,7 +2340,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_organization_security_users_serialize(
+        _param = self._list_organization_security_users_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2083,7 +2358,7 @@ class OrganizationApi:
         return response_data.response
 
 
-    def _get_organization_security_users_serialize(
+    def _list_organization_security_users_serialize(
         self,
         organization_id,
         _request_auth,
@@ -2146,9 +2421,10 @@ class OrganizationApi:
 
 
     @validate_call
-    def register_organization(
+    def list_organizations(
         self,
-        organization: Annotated[Organization, Field(description="the Organization to register")],
+        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2161,12 +2437,14 @@ class OrganizationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Organization:
-        """Register a new organization
+    ) -> List[Organization]:
+        """List all Organizations
 
 
-        :param organization: the Organization to register (required)
-        :type organization: Organization
+        :param page: page number to query (first page is at index 0)
+        :type page: int
+        :param size: amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2189,8 +2467,9 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._register_organization_serialize(
-            organization=organization,
+        _param = self._list_organizations_serialize(
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2198,8 +2477,7 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Organization",
-            '400': None,
+            '200': "List[Organization]",
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -2212,9 +2490,10 @@ class OrganizationApi:
 
 
     @validate_call
-    def register_organization_with_http_info(
+    def list_organizations_with_http_info(
         self,
-        organization: Annotated[Organization, Field(description="the Organization to register")],
+        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2227,12 +2506,14 @@ class OrganizationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Organization]:
-        """Register a new organization
+    ) -> ApiResponse[List[Organization]]:
+        """List all Organizations
 
 
-        :param organization: the Organization to register (required)
-        :type organization: Organization
+        :param page: page number to query (first page is at index 0)
+        :type page: int
+        :param size: amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2255,8 +2536,9 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._register_organization_serialize(
-            organization=organization,
+        _param = self._list_organizations_serialize(
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2264,8 +2546,7 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Organization",
-            '400': None,
+            '200': "List[Organization]",
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -2278,9 +2559,10 @@ class OrganizationApi:
 
 
     @validate_call
-    def register_organization_without_preload_content(
+    def list_organizations_without_preload_content(
         self,
-        organization: Annotated[Organization, Field(description="the Organization to register")],
+        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2294,11 +2576,13 @@ class OrganizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Register a new organization
+        """List all Organizations
 
 
-        :param organization: the Organization to register (required)
-        :type organization: Organization
+        :param page: page number to query (first page is at index 0)
+        :type page: int
+        :param size: amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2321,8 +2605,9 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._register_organization_serialize(
-            organization=organization,
+        _param = self._list_organizations_serialize(
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2330,8 +2615,7 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Organization",
-            '400': None,
+            '200': "List[Organization]",
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -2339,9 +2623,10 @@ class OrganizationApi:
         return response_data.response
 
 
-    def _register_organization_serialize(
+    def _list_organizations_serialize(
         self,
-        organization,
+        page,
+        size,
         _request_auth,
         _content_type,
         _headers,
@@ -2362,11 +2647,17 @@ class OrganizationApi:
 
         # process the path parameters
         # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if size is not None:
+            
+            _query_params.append(('size', size))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if organization is not None:
-            _body_params = organization
 
 
         # set the HTTP header `Accept`
@@ -2377,20 +2668,6 @@ class OrganizationApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -2398,7 +2675,7 @@ class OrganizationApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
+            method='GET',
             resource_path='/organizations',
             path_params=_path_params,
             query_params=_query_params,
@@ -2416,10 +2693,8 @@ class OrganizationApi:
 
 
     @validate_call
-    def remove_organization_access_control(
+    def list_permissions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2432,14 +2707,10 @@ class OrganizationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove the specified access from the given Organization
+    ) -> List[ComponentRolePermissions]:
+        """Get all permissions per components
 
 
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2462,9 +2733,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_organization_access_control_serialize(
-            organization_id=organization_id,
-            identity_id=identity_id,
+        _param = self._list_permissions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2472,8 +2741,7 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
+            '200': "List[ComponentRolePermissions]",
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -2486,10 +2754,8 @@ class OrganizationApi:
 
 
     @validate_call
-    def remove_organization_access_control_with_http_info(
+    def list_permissions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2502,14 +2768,10 @@ class OrganizationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove the specified access from the given Organization
+    ) -> ApiResponse[List[ComponentRolePermissions]]:
+        """Get all permissions per components
 
 
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2532,9 +2794,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_organization_access_control_serialize(
-            organization_id=organization_id,
-            identity_id=identity_id,
+        _param = self._list_permissions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2542,8 +2802,7 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
+            '200': "List[ComponentRolePermissions]",
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -2556,10 +2815,8 @@ class OrganizationApi:
 
 
     @validate_call
-    def remove_organization_access_control_without_preload_content(
+    def list_permissions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2573,13 +2830,9 @@ class OrganizationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove the specified access from the given Organization
+        """Get all permissions per components
 
 
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2602,9 +2855,7 @@ class OrganizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_organization_access_control_serialize(
-            organization_id=organization_id,
-            identity_id=identity_id,
+        _param = self._list_permissions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2612,8 +2863,7 @@ class OrganizationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
+            '200': "List[ComponentRolePermissions]",
         }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
@@ -2621,10 +2871,8 @@ class OrganizationApi:
         return response_data.response
 
 
-    def _remove_organization_access_control_serialize(
+    def _list_permissions_serialize(
         self,
-        organization_id,
-        identity_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2644,278 +2892,10 @@ class OrganizationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if identity_id is not None:
-            _path_params['identity_id'] = identity_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/security/access/{identity_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def set_organization_default_security(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrganizationSecurity:
-        """Set the Organization default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
-        :type organization_role: OrganizationRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_organization_default_security_serialize(
-            organization_id=organization_id,
-            organization_role=organization_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "OrganizationSecurity",
-            '404': None,
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def set_organization_default_security_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrganizationSecurity]:
-        """Set the Organization default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
-        :type organization_role: OrganizationRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_organization_default_security_serialize(
-            organization_id=organization_id,
-            organization_role=organization_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "OrganizationSecurity",
-            '404': None,
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def set_organization_default_security_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Set the Organization default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
-        :type organization_role: OrganizationRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_organization_default_security_serialize(
-            organization_id=organization_id,
-            organization_role=organization_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "OrganizationSecurity",
-            '404': None,
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _set_organization_default_security_serialize(
-        self,
-        organization_id,
-        organization_role,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if organization_role is not None:
-            _body_params = organization_role
 
 
         # set the HTTP header `Accept`
@@ -2926,20 +2906,6 @@ class OrganizationApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -2947,257 +2913,8 @@ class OrganizationApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/security/default',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def unregister_organization(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Unregister an organization
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unregister_organization_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def unregister_organization_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Unregister an organization
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unregister_organization_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def unregister_organization_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Unregister an organization
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unregister_organization_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _unregister_organization_serialize(
-        self,
-        organization_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}',
+            method='GET',
+            resource_path='/organizations/permissions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3217,7 +2934,7 @@ class OrganizationApi:
     def update_organization(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization: Annotated[Organization, Field(description="the new Organization details. This endpoint can't be used to update security")],
+        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="the new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3236,8 +2953,8 @@ class OrganizationApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param organization: the new Organization details. This endpoint can't be used to update security (required)
-        :type organization: Organization
+        :param organization_update_request: the new Organization details. This endpoint can't be used to update security (required)
+        :type organization_update_request: OrganizationUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3262,7 +2979,7 @@ class OrganizationApi:
 
         _param = self._update_organization_serialize(
             organization_id=organization_id,
-            organization=organization,
+            organization_update_request=organization_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3288,7 +3005,7 @@ class OrganizationApi:
     def update_organization_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization: Annotated[Organization, Field(description="the new Organization details. This endpoint can't be used to update security")],
+        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="the new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3307,8 +3024,8 @@ class OrganizationApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param organization: the new Organization details. This endpoint can't be used to update security (required)
-        :type organization: Organization
+        :param organization_update_request: the new Organization details. This endpoint can't be used to update security (required)
+        :type organization_update_request: OrganizationUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3333,7 +3050,7 @@ class OrganizationApi:
 
         _param = self._update_organization_serialize(
             organization_id=organization_id,
-            organization=organization,
+            organization_update_request=organization_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3359,7 +3076,7 @@ class OrganizationApi:
     def update_organization_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization: Annotated[Organization, Field(description="the new Organization details. This endpoint can't be used to update security")],
+        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="the new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3378,8 +3095,8 @@ class OrganizationApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param organization: the new Organization details. This endpoint can't be used to update security (required)
-        :type organization: Organization
+        :param organization_update_request: the new Organization details. This endpoint can't be used to update security (required)
+        :type organization_update_request: OrganizationUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3404,7 +3121,7 @@ class OrganizationApi:
 
         _param = self._update_organization_serialize(
             organization_id=organization_id,
-            organization=organization,
+            organization_update_request=organization_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3425,7 +3142,7 @@ class OrganizationApi:
     def _update_organization_serialize(
         self,
         organization_id,
-        organization,
+        organization_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3451,8 +3168,8 @@ class OrganizationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if organization is not None:
-            _body_params = organization
+        if organization_update_request is not None:
+            _body_params = organization_update_request
 
 
         # set the HTTP header `Accept`
@@ -3785,6 +3502,291 @@ class OrganizationApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/organizations/{organization_id}/security/access/{identity_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_organization_default_security(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OrganizationSecurity:
+        """Update the Organization default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
+        :type organization_role: OrganizationRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_organization_default_security_serialize(
+            organization_id=organization_id,
+            organization_role=organization_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OrganizationSecurity",
+            '404': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_organization_default_security_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OrganizationSecurity]:
+        """Update the Organization default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
+        :type organization_role: OrganizationRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_organization_default_security_serialize(
+            organization_id=organization_id,
+            organization_role=organization_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OrganizationSecurity",
+            '404': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_organization_default_security_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update the Organization default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
+        :type organization_role: OrganizationRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_organization_default_security_serialize(
+            organization_id=organization_id,
+            organization_role=organization_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OrganizationSecurity",
+            '404': None,
+        }        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_organization_default_security_serialize(
+        self,
+        organization_id,
+        organization_role,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if organization_role is not None:
+            _body_params = organization_role
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/security/default',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

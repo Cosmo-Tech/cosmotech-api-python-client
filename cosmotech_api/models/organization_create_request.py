@@ -18,17 +18,18 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from cosmotech_api.models.organization_security import OrganizationSecurity
 from typing import Optional, Set
 from typing_extensions import Self
 
-class OrganizationAccessControl(BaseModel):
+class OrganizationCreateRequest(BaseModel):
     """
-    Response object for organization access control
+    Request object for creating a new organization
     """ # noqa: E501
-    id: StrictStr = Field(description="the identity id")
-    role: StrictStr = Field(description="a role")
-    __properties: ClassVar[List[str]] = ["id", "role"]
+    name: StrictStr = Field(description="the Organization name")
+    security: Optional[OrganizationSecurity] = None
+    __properties: ClassVar[List[str]] = ["name", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +49,7 @@ class OrganizationAccessControl(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of OrganizationAccessControl from a JSON string"""
+        """Create an instance of OrganizationCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,11 +70,14 @@ class OrganizationAccessControl(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of security
+        if self.security:
+            _dict['security'] = self.security.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of OrganizationAccessControl from a dict"""
+        """Create an instance of OrganizationCreateRequest from a dict"""
         if obj is None:
             return None
 
@@ -81,8 +85,8 @@ class OrganizationAccessControl(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "role": obj.get("role")
+            "name": obj.get("name"),
+            "security": OrganizationSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj
 
