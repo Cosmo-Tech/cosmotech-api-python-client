@@ -47,6 +47,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -62,6 +63,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->add_organization_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -121,6 +123,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -136,6 +139,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->find_all_organizations: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -194,6 +198,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -208,6 +213,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->find_organization_by_id: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -266,6 +272,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -279,6 +286,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->get_all_permissions: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -333,6 +341,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -348,6 +357,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -406,6 +416,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -421,6 +432,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_permissions: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -479,6 +491,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -493,6 +506,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_security: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -550,6 +564,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -564,6 +579,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->get_organization_security_users: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -622,6 +638,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -636,6 +653,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->register_organization: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -693,6 +711,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -706,6 +725,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->remove_organization_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -766,6 +786,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -781,6 +802,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->set_organization_default_security: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -839,6 +861,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -851,6 +874,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->unregister_organization: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -909,6 +933,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -924,6 +949,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->update_organization: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -985,6 +1011,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1001,6 +1028,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling OrganizationApi->update_organization_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters

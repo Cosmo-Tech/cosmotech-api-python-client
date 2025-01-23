@@ -64,6 +64,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -80,6 +81,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->add_dataset_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -140,6 +142,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -156,6 +159,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->add_or_replace_dataset_compatibility_elements: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -219,6 +223,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -234,6 +239,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->copy_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -294,6 +300,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -309,6 +316,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->create_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -371,6 +379,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -387,6 +396,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->create_sub_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -448,6 +458,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -465,6 +476,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->create_twingraph_entities: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -524,6 +536,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -537,6 +550,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->delete_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -597,6 +611,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -612,6 +627,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->delete_twingraph_entities: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -673,6 +689,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -688,6 +705,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->download_twingraph: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -746,6 +764,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -762,6 +781,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->find_all_datasets: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -821,6 +841,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -836,6 +857,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->find_dataset_by_id: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -895,6 +917,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -911,6 +934,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->get_dataset_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -971,6 +995,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -986,6 +1011,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->get_dataset_security: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1044,6 +1070,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1059,6 +1086,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->get_dataset_security_users: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1119,6 +1147,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1134,6 +1163,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->get_dataset_twingraph_status: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1193,6 +1223,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1210,6 +1241,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->get_twingraph_entities: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1270,6 +1302,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1285,6 +1318,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->link_workspace: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1348,6 +1382,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1363,6 +1398,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->refresh_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1420,6 +1456,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1433,6 +1470,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->remove_all_dataset_compatibility_elements: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1491,6 +1529,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1505,6 +1544,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->remove_dataset_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1566,6 +1606,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1581,6 +1622,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->rollback_refresh: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1640,6 +1682,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1657,6 +1700,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->search_datasets: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1718,6 +1762,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1734,6 +1779,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->set_dataset_default_security: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1797,6 +1843,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1813,6 +1860,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->twingraph_batch_query: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1875,6 +1923,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1895,6 +1944,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->twingraph_batch_update: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1958,6 +2008,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1974,6 +2025,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->twingraph_query: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2033,6 +2085,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -2048,6 +2101,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->unlink_workspace: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2109,6 +2163,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -2125,6 +2180,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->update_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2187,6 +2243,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -2204,6 +2261,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->update_dataset_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2267,6 +2325,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -2284,6 +2343,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->update_twingraph_entities: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2346,6 +2406,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -2362,6 +2423,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DatasetApi->upload_twingraph: %s\n" % e)
 ```
+
 
 
 ### Parameters

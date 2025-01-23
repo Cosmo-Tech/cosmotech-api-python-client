@@ -53,6 +53,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -69,6 +70,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->add_workspace_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -129,6 +131,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -144,6 +147,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->create_workspace: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -202,6 +206,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -215,6 +220,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->delete_all_workspace_files: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -273,6 +279,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -286,6 +293,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->delete_workspace: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -345,6 +353,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -359,6 +368,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->delete_workspace_file: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -418,6 +428,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -434,6 +445,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->download_workspace_file: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -494,6 +506,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -509,6 +522,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->find_all_workspace_files: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -568,6 +582,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -584,6 +599,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->find_all_workspaces: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -643,6 +659,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -658,6 +675,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->find_workspace_by_id: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -717,6 +735,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -733,6 +752,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -792,6 +812,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -808,6 +829,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_permissions: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -867,6 +889,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -882,6 +905,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_security: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -940,6 +964,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -955,6 +980,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->get_workspace_security_users: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1014,6 +1040,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1029,6 +1056,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->link_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1089,6 +1117,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1103,6 +1132,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->remove_workspace_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1164,6 +1194,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1180,6 +1211,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->set_workspace_default_security: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1240,6 +1272,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1255,6 +1288,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->unlink_dataset: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1316,6 +1350,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1332,6 +1367,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->update_workspace: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1394,6 +1430,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1411,6 +1448,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->update_workspace_access_control: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1472,6 +1510,7 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1490,6 +1529,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling WorkspaceApi->upload_workspace_file: %s\n" % e)
 ```
+
 
 
 ### Parameters
