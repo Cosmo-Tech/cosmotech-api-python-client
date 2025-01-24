@@ -841,7 +841,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
-    organization_update_request = {"name":"CosmoTech Digital Twins Engine"} # OrganizationUpdateRequest | the new Organization details. This endpoint can't be used to update security
+    organization_update_request = {"name":"Digital Twin Solutions"} # OrganizationUpdateRequest | the new Organization details. This endpoint can't be used to update security
 
     try:
         # Update an Organization
