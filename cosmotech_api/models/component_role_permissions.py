@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,8 +26,8 @@ class ComponentRolePermissions(BaseModel):
     """
     a RBAC by component
     """ # noqa: E501
-    component: Optional[StrictStr] = None
-    roles: Optional[Dict[str, List[StrictStr]]] = None
+    component: StrictStr
+    roles: Dict[str, List[StrictStr]]
     __properties: ClassVar[List[str]] = ["component", "roles"]
 
     model_config = ConfigDict(

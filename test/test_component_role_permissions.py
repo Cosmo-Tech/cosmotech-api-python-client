@@ -44,6 +44,12 @@ class TestComponentRolePermissions(unittest.TestCase):
             )
         else:
             return ComponentRolePermissions(
+                component = '',
+                roles = {
+                    'key' : [
+                        ''
+                        ]
+                    },
         )
         """
 

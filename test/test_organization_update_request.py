@@ -39,6 +39,7 @@ class TestOrganizationUpdateRequest(unittest.TestCase):
             )
         else:
             return OrganizationUpdateRequest(
+                name = '',
         )
         """
 

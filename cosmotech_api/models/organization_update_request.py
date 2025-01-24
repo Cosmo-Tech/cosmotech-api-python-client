@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class OrganizationUpdateRequest(BaseModel):
     """
     Request object for updating an organization
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="the Organization name")
+    name: StrictStr = Field(description="the Organization name")
     __properties: ClassVar[List[str]] = ["name"]
 
     model_config = ConfigDict(

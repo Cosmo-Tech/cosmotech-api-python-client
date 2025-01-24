@@ -48,6 +48,16 @@ class TestOrganization(unittest.TestCase):
             )
         else:
             return Organization(
+                id = '',
+                name = '',
+                owner_id = '',
+                security = cosmotech_api.models.organization_security.OrganizationSecurity(
+                    default = '', 
+                    access_control_list = [
+                        cosmotech_api.models.organization_access_control.OrganizationAccessControl(
+                            id = '', 
+                            role = '', )
+                        ], ),
         )
         """
 

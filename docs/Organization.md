@@ -6,10 +6,10 @@ an Organization
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Organization unique identifier | [optional] [readonly] 
-**name** | **str** | the Organization name | [optional] 
-**owner_id** | **str** | the Owner User Id | [optional] [readonly] 
-**security** | [**OrganizationSecurity**](OrganizationSecurity.md) |  | [optional] 
+**id** | **str** | the Organization unique identifier | [readonly] 
+**name** | **str** | the Organization name | 
+**owner_id** | **str** | the Owner User Id | [readonly] 
+**security** | [**OrganizationSecurity**](OrganizationSecurity.md) |  | 
 
 ## Example
 

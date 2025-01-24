@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from cosmotech_api.models.organization_security import OrganizationSecurity
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,10 +27,10 @@ class Organization(BaseModel):
     """
     an Organization
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="the Organization unique identifier")
-    name: Optional[StrictStr] = Field(default=None, description="the Organization name")
-    owner_id: Optional[StrictStr] = Field(default=None, description="the Owner User Id", alias="ownerId")
-    security: Optional[OrganizationSecurity] = None
+    id: StrictStr = Field(description="the Organization unique identifier")
+    name: StrictStr = Field(description="the Organization name")
+    owner_id: StrictStr = Field(description="the Owner User Id", alias="ownerId")
+    security: OrganizationSecurity
     __properties: ClassVar[List[str]] = ["id", "name", "ownerId", "security"]
 
     model_config = ConfigDict(
