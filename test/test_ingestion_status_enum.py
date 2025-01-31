@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from cosmotech_api.models.ingestion_status_enum import IngestionStatusEnum

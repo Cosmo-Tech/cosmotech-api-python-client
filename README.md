@@ -69,6 +69,7 @@ configuration = cosmotech_api.Configuration(
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -299,4 +300,5 @@ Authentication schemes defined for the API:
 ## Author
 
 platform@cosmotech.com
+
 
