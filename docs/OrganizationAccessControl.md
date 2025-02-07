@@ -1,6 +1,6 @@
 # OrganizationAccessControl
 
-Response object for organization access control
+a Organization access control item
 
 ## Properties
 
