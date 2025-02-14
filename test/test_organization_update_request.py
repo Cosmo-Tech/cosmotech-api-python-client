@@ -36,11 +36,10 @@ class TestOrganizationUpdateRequest(unittest.TestCase):
         model = OrganizationUpdateRequest()
         if include_optional:
             return OrganizationUpdateRequest(
-                name = ''
+                name = '0'
             )
         else:
             return OrganizationUpdateRequest(
-                name = '',
         )
         """
 

@@ -36,7 +36,7 @@ class TestOrganizationCreateRequest(unittest.TestCase):
         model = OrganizationCreateRequest()
         if include_optional:
             return OrganizationCreateRequest(
-                name = '',
+                name = '0',
                 security = cosmotech_api.models.organization_security.OrganizationSecurity(
                     default = '', 
                     access_control_list = [
@@ -47,7 +47,7 @@ class TestOrganizationCreateRequest(unittest.TestCase):
             )
         else:
             return OrganizationCreateRequest(
-                name = '',
+                name = '0',
         )
         """
 

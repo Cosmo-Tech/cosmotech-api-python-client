@@ -1,6 +1,6 @@
 # OrganizationSecurity
 
-the Organization security information
+Response object for organization security information
 
 ## Properties
 

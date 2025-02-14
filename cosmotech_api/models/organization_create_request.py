@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from cosmotech_api.models.organization_security import OrganizationSecurity
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +29,7 @@ class OrganizationCreateRequest(BaseModel):
     """
     Request object for creating a new organization
     """ # noqa: E501
-    name: StrictStr = Field(description="the Organization name")
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the Organization name")
     security: Optional[OrganizationSecurity] = None
     __properties: ClassVar[List[str]] = ["name", "security"]
 
