@@ -18,27 +18,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from cosmotech_api.models.workspace_solution import WorkspaceSolution
+from cosmotech_api.models.workspace_web_app import WorkspaceWebApp
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WorkspaceSolution(BaseModel):
+class WorkspaceUpdateRequest(BaseModel):
     """
-    the Workspace Solution configuration
+    Request object for updating a workspace
     """ # noqa: E501
-    solution_id: Annotated[str, Field(strict=True)] = Field(description="the Solution Id attached to this workspace", alias="solutionId")
-    run_template_filter: Optional[List[StrictStr]] = Field(default=None, description="the list of Solution Run Template Id to filter", alias="runTemplateFilter")
-    default_run_template_dataset: Optional[Dict[str, Any]] = Field(default=None, description="a map of RunTemplateId/DatasetId to set a default dataset for a Run Template", alias="defaultRunTemplateDataset")
-    __properties: ClassVar[List[str]] = ["solutionId", "runTemplateFilter", "defaultRunTemplateDataset"]
-
-    @field_validator('solution_id')
-    def solution_id_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^sol-\w{10,20}", value):
-            raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
-        return value
+    key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="technical key for resource name convention and version grouping. Must be unique")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="Workspace name")
+    description: Optional[StrictStr] = Field(default=None, description="the Workspace description")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="the list of tags")
+    solution: Optional[WorkspaceSolution] = None
+    web_app: Optional[WorkspaceWebApp] = Field(default=None, alias="webApp")
+    dataset_copy: Optional[StrictBool] = Field(default=None, description="Activate the copy of dataset on scenario creation", alias="datasetCopy")
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "tags", "solution", "webApp", "datasetCopy"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +57,7 @@ class WorkspaceSolution(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WorkspaceSolution from a JSON string"""
+        """Create an instance of WorkspaceUpdateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,11 +78,17 @@ class WorkspaceSolution(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of solution
+        if self.solution:
+            _dict['solution'] = self.solution.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of web_app
+        if self.web_app:
+            _dict['webApp'] = self.web_app.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WorkspaceSolution from a dict"""
+        """Create an instance of WorkspaceUpdateRequest from a dict"""
         if obj is None:
             return None
 
@@ -91,9 +96,13 @@ class WorkspaceSolution(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "solutionId": obj.get("solutionId"),
-            "runTemplateFilter": obj.get("runTemplateFilter"),
-            "defaultRunTemplateDataset": obj.get("defaultRunTemplateDataset")
+            "key": obj.get("key"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "tags": obj.get("tags"),
+            "solution": WorkspaceSolution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,
+            "webApp": WorkspaceWebApp.from_dict(obj["webApp"]) if obj.get("webApp") is not None else None,
+            "datasetCopy": obj.get("datasetCopy")
         })
         return _obj
 

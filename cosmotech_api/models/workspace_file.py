@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class WorkspaceFile(BaseModel):
     """
     a Workspace File resource
     """ # noqa: E501
-    file_name: Optional[StrictStr] = Field(default=None, description="the Workspace File name", alias="fileName")
+    file_name: StrictStr = Field(description="the Workspace File name", alias="fileName")
     __properties: ClassVar[List[str]] = ["fileName"]
 
     model_config = ConfigDict(

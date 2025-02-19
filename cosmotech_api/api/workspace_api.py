@@ -18,13 +18,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest
 from cosmotech_api.models.workspace_file import WorkspaceFile
 from cosmotech_api.models.workspace_role import WorkspaceRole
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
+from cosmotech_api.models.workspace_update_request import WorkspaceUpdateRequest
 
 from cosmotech_api.api_client import ApiClient, RequestSerialized
 from cosmotech_api.api_response import ApiResponse
@@ -45,7 +47,593 @@ class WorkspaceApi:
 
 
     @validate_call
-    def add_workspace_access_control(
+    def create_dataset_link(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Workspace:
+        """create_dataset_link
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: dataset id to be linked to (required)
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dataset_link_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Workspace",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_dataset_link_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Workspace]:
+        """create_dataset_link
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: dataset id to be linked to (required)
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dataset_link_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Workspace",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_dataset_link_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """create_dataset_link
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: dataset id to be linked to (required)
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dataset_link_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Workspace",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_dataset_link_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        dataset_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        # process the query parameters
+        if dataset_id is not None:
+            
+            _query_params.append(('datasetId', dataset_id))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/link',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_workspace(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_create_request: Annotated[WorkspaceCreateRequest, Field(description="the Workspace to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Workspace:
+        """Create a new workspace
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_create_request: the Workspace to create (required)
+        :type workspace_create_request: WorkspaceCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_workspace_serialize(
+            organization_id=organization_id,
+            workspace_create_request=workspace_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Workspace",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_workspace_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_create_request: Annotated[WorkspaceCreateRequest, Field(description="the Workspace to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Workspace]:
+        """Create a new workspace
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_create_request: the Workspace to create (required)
+        :type workspace_create_request: WorkspaceCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_workspace_serialize(
+            organization_id=organization_id,
+            workspace_create_request=workspace_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Workspace",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_workspace_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_create_request: Annotated[WorkspaceCreateRequest, Field(description="the Workspace to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create a new workspace
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_create_request: the Workspace to create (required)
+        :type workspace_create_request: WorkspaceCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_workspace_serialize(
+            organization_id=organization_id,
+            workspace_create_request=workspace_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Workspace",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_workspace_serialize(
+        self,
+        organization_id,
+        workspace_create_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if workspace_create_request is not None:
+            _body_params = workspace_create_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/workspaces',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_workspace_access_control(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -94,7 +682,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_workspace_access_control_serialize(
+        _param = self._create_workspace_access_control_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             workspace_access_control=workspace_access_control,
@@ -120,7 +708,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def add_workspace_access_control_with_http_info(
+    def create_workspace_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -169,7 +757,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_workspace_access_control_serialize(
+        _param = self._create_workspace_access_control_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             workspace_access_control=workspace_access_control,
@@ -195,7 +783,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def add_workspace_access_control_without_preload_content(
+    def create_workspace_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -244,7 +832,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_workspace_access_control_serialize(
+        _param = self._create_workspace_access_control_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             workspace_access_control=workspace_access_control,
@@ -265,7 +853,7 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _add_workspace_access_control_serialize(
+    def _create_workspace_access_control_serialize(
         self,
         organization_id,
         workspace_id,
@@ -285,7 +873,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -348,10 +938,13 @@ class WorkspaceApi:
 
 
     @validate_call
-    def create_workspace(
+    def create_workspace_file(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace: Annotated[Workspace, Field(description="the Workspace to create")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
+        overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
+        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -364,14 +957,20 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workspace:
-        """Create a new workspace
+    ) -> WorkspaceFile:
+        """Upload a file for the Workspace
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param workspace: the Workspace to create (required)
-        :type workspace: Workspace
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param file: The file to upload (required)
+        :type file: bytearray
+        :param overwrite: Whether to overwrite an existing file
+        :type overwrite: bool
+        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
+        :type destination: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -394,9 +993,12 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_workspace_serialize(
+        _param = self._create_workspace_file_serialize(
             organization_id=organization_id,
-            workspace=workspace,
+            workspace_id=workspace_id,
+            file=file,
+            overwrite=overwrite,
+            destination=destination,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -404,7 +1006,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Workspace",
+            '201': "WorkspaceFile",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -419,10 +1021,13 @@ class WorkspaceApi:
 
 
     @validate_call
-    def create_workspace_with_http_info(
+    def create_workspace_file_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace: Annotated[Workspace, Field(description="the Workspace to create")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
+        overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
+        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -435,14 +1040,20 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workspace]:
-        """Create a new workspace
+    ) -> ApiResponse[WorkspaceFile]:
+        """Upload a file for the Workspace
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param workspace: the Workspace to create (required)
-        :type workspace: Workspace
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param file: The file to upload (required)
+        :type file: bytearray
+        :param overwrite: Whether to overwrite an existing file
+        :type overwrite: bool
+        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
+        :type destination: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -465,9 +1076,12 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_workspace_serialize(
+        _param = self._create_workspace_file_serialize(
             organization_id=organization_id,
-            workspace=workspace,
+            workspace_id=workspace_id,
+            file=file,
+            overwrite=overwrite,
+            destination=destination,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -475,7 +1089,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Workspace",
+            '201': "WorkspaceFile",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -490,10 +1104,13 @@ class WorkspaceApi:
 
 
     @validate_call
-    def create_workspace_without_preload_content(
+    def create_workspace_file_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace: Annotated[Workspace, Field(description="the Workspace to create")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
+        overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
+        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -507,13 +1124,19 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new workspace
+        """Upload a file for the Workspace
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param workspace: the Workspace to create (required)
-        :type workspace: Workspace
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param file: The file to upload (required)
+        :type file: bytearray
+        :param overwrite: Whether to overwrite an existing file
+        :type overwrite: bool
+        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
+        :type destination: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -536,9 +1159,12 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_workspace_serialize(
+        _param = self._create_workspace_file_serialize(
             organization_id=organization_id,
-            workspace=workspace,
+            workspace_id=workspace_id,
+            file=file,
+            overwrite=overwrite,
+            destination=destination,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -546,7 +1172,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Workspace",
+            '201': "WorkspaceFile",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -556,10 +1182,13 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _create_workspace_serialize(
+    def _create_workspace_file_serialize(
         self,
         organization_id,
-        workspace,
+        workspace_id,
+        file,
+        overwrite,
+        destination,
         _request_auth,
         _content_type,
         _headers,
@@ -575,18 +1204,26 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
+        if overwrite is not None:
+            _form_params.append(('overwrite', overwrite))
+        if destination is not None:
+            _form_params.append(('destination', destination))
+        if file is not None:
+            _files['file'] = file
         # process the body parameter
-        if workspace is not None:
-            _body_params = workspace
 
 
         # set the HTTP header `Accept`
@@ -604,8 +1241,7 @@ class WorkspaceApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json', 
-                        'application/yaml'
+                        'multipart/form-data'
                     ]
                 )
             )
@@ -619,7 +1255,7 @@ class WorkspaceApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/organizations/{organization_id}/workspaces',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -636,10 +1272,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def delete_all_workspace_files(
+    def delete_dataset_link(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -653,13 +1290,15 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete all Workspace files
+        """delete_dataset_link
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
+        :param dataset_id: dataset id to be linked to (required)
+        :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -682,9 +1321,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_all_workspace_files_serialize(
+        _param = self._delete_dataset_link_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
+            dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -692,7 +1332,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': None,
+            '400': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -707,10 +1348,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def delete_all_workspace_files_with_http_info(
+    def delete_dataset_link_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -724,13 +1366,15 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete all Workspace files
+        """delete_dataset_link
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
+        :param dataset_id: dataset id to be linked to (required)
+        :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -753,9 +1397,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_all_workspace_files_serialize(
+        _param = self._delete_dataset_link_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
+            dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -763,7 +1408,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': None,
+            '400': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -778,10 +1424,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def delete_all_workspace_files_without_preload_content(
+    def delete_dataset_link_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -795,13 +1442,15 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete all Workspace files
+        """delete_dataset_link
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
+        :param dataset_id: dataset id to be linked to (required)
+        :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -824,9 +1473,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_all_workspace_files_serialize(
+        _param = self._delete_dataset_link_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
+            dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -834,7 +1484,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': None,
+            '400': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -844,10 +1495,11 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _delete_all_workspace_files_serialize(
+    def _delete_dataset_link_serialize(
         self,
         organization_id,
         workspace_id,
+        dataset_id,
         _request_auth,
         _content_type,
         _headers,
@@ -863,7 +1515,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -872,6 +1526,10 @@ class WorkspaceApi:
         if workspace_id is not None:
             _path_params['workspace_id'] = workspace_id
         # process the query parameters
+        if dataset_id is not None:
+            
+            _query_params.append(('datasetId', dataset_id))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -886,7 +1544,7 @@ class WorkspaceApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/link',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1133,7 +1791,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1157,6 +1817,290 @@ class WorkspaceApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_workspace_access_control(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Remove the specified access from the given Organization Workspace
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_workspace_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_workspace_access_control_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Remove the specified access from the given Organization Workspace
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_workspace_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_workspace_access_control_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Remove the specified access from the given Organization Workspace
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_workspace_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_workspace_access_control_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        identity_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if identity_id is not None:
+            _path_params['identity_id'] = identity_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1413,7 +2357,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1457,11 +2403,10 @@ class WorkspaceApi:
 
 
     @validate_call
-    def download_workspace_file(
+    def delete_workspace_files(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        file_name: Annotated[StrictStr, Field(description="the file name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1474,16 +2419,14 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
-        """Download the Workspace File specified
+    ) -> None:
+        """Delete all Workspace files
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param file_name: the file name (required)
-        :type file_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1506,10 +2449,9 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._download_workspace_file_serialize(
+        _param = self._delete_workspace_files_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            file_name=file_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1517,7 +2459,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '204': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -1532,11 +2474,10 @@ class WorkspaceApi:
 
 
     @validate_call
-    def download_workspace_file_with_http_info(
+    def delete_workspace_files_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        file_name: Annotated[StrictStr, Field(description="the file name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1549,16 +2490,14 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
-        """Download the Workspace File specified
+    ) -> ApiResponse[None]:
+        """Delete all Workspace files
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param file_name: the file name (required)
-        :type file_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1581,10 +2520,9 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._download_workspace_file_serialize(
+        _param = self._delete_workspace_files_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            file_name=file_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1592,7 +2530,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '204': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -1607,290 +2545,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def download_workspace_file_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        file_name: Annotated[StrictStr, Field(description="the file name")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download the Workspace File specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param file_name: the file name (required)
-        :type file_name: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._download_workspace_file_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            file_name=file_name,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _download_workspace_file_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        file_name,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        # process the query parameters
-        if file_name is not None:
-            
-            _query_params.append(('file_name', file_name))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/octet-stream'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files/download',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def find_all_workspace_files(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[WorkspaceFile]:
-        """List all Workspace files
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_workspace_files_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkspaceFile]",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def find_all_workspace_files_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[WorkspaceFile]]:
-        """List all Workspace files
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_workspace_files_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkspaceFile]",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def find_all_workspace_files_without_preload_content(
+    def delete_workspace_files_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -1907,7 +2562,7 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List all Workspace files
+        """Delete all Workspace files
 
 
         :param organization_id: the Organization identifier (required)
@@ -1936,7 +2591,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_workspace_files_serialize(
+        _param = self._delete_workspace_files_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -1946,7 +2601,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkspaceFile]",
+            '204': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -1956,7 +2611,7 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _find_all_workspace_files_serialize(
+    def _delete_workspace_files_serialize(
         self,
         organization_id,
         workspace_id,
@@ -1975,7 +2630,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1989,13 +2646,6 @@ class WorkspaceApi:
         # process the body parameter
 
 
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
 
 
         # authentication setting
@@ -2004,7 +2654,7 @@ class WorkspaceApi:
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
+            method='DELETE',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files',
             path_params=_path_params,
             query_params=_query_params,
@@ -2022,297 +2672,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def find_all_workspaces(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workspace]:
-        """List all Workspaces
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_workspaces_serialize(
-            organization_id=organization_id,
-            page=page,
-            size=size,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workspace]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def find_all_workspaces_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workspace]]:
-        """List all Workspaces
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_workspaces_serialize(
-            organization_id=organization_id,
-            page=page,
-            size=size,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workspace]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def find_all_workspaces_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """List all Workspaces
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_workspaces_serialize(
-            organization_id=organization_id,
-            page=page,
-            size=size,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workspace]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _find_all_workspaces_serialize(
-        self,
-        organization_id,
-        page,
-        size,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if size is not None:
-            
-            _query_params.append(('size', size))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/workspaces',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def find_workspace_by_id(
+    def get_workspace(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -2358,7 +2718,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_workspace_by_id_serialize(
+        _param = self._get_workspace_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -2383,7 +2743,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def find_workspace_by_id_with_http_info(
+    def get_workspace_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -2429,7 +2789,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_workspace_by_id_serialize(
+        _param = self._get_workspace_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -2454,7 +2814,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def find_workspace_by_id_without_preload_content(
+    def get_workspace_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -2500,7 +2860,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_workspace_by_id_serialize(
+        _param = self._get_workspace_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -2520,7 +2880,7 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _find_workspace_by_id_serialize(
+    def _get_workspace_serialize(
         self,
         organization_id,
         workspace_id,
@@ -2539,7 +2899,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2826,7 +3188,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2875,11 +3239,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def get_workspace_permissions(
+    def get_workspace_file(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
+        file_name: Annotated[StrictStr, Field(description="the file name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2892,16 +3256,16 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[str]:
-        """Get the Workspace permission by given role
+    ) -> bytearray:
+        """Download the Workspace File specified
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param role: the Role (required)
-        :type role: str
+        :param file_name: the file name (required)
+        :type file_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2924,10 +3288,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workspace_permissions_serialize(
+        _param = self._get_workspace_file_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            role=role,
+            file_name=file_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2935,7 +3299,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
+            '200': "bytearray",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2949,11 +3314,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def get_workspace_permissions_with_http_info(
+    def get_workspace_file_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
+        file_name: Annotated[StrictStr, Field(description="the file name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2966,16 +3331,16 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[str]]:
-        """Get the Workspace permission by given role
+    ) -> ApiResponse[bytearray]:
+        """Download the Workspace File specified
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param role: the Role (required)
-        :type role: str
+        :param file_name: the file name (required)
+        :type file_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2998,10 +3363,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workspace_permissions_serialize(
+        _param = self._get_workspace_file_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            role=role,
+            file_name=file_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3009,7 +3374,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
+            '200': "bytearray",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3023,11 +3389,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def get_workspace_permissions_without_preload_content(
+    def get_workspace_file_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
+        file_name: Annotated[StrictStr, Field(description="the file name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3041,15 +3407,15 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Workspace permission by given role
+        """Download the Workspace File specified
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param role: the Role (required)
-        :type role: str
+        :param file_name: the file name (required)
+        :type file_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3072,10 +3438,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workspace_permissions_serialize(
+        _param = self._get_workspace_file_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            role=role,
+            file_name=file_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3083,7 +3449,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
+            '200': "bytearray",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3092,11 +3459,11 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _get_workspace_permissions_serialize(
+    def _get_workspace_file_serialize(
         self,
         organization_id,
         workspace_id,
-        role,
+        file_name,
         _request_auth,
         _content_type,
         _headers,
@@ -3112,7 +3479,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3120,9 +3489,11 @@ class WorkspaceApi:
             _path_params['organization_id'] = organization_id
         if workspace_id is not None:
             _path_params['workspace_id'] = workspace_id
-        if role is not None:
-            _path_params['role'] = role
         # process the query parameters
+        if file_name is not None:
+            
+            _query_params.append(('file_name', file_name))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -3132,7 +3503,7 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/octet-stream'
                 ]
             )
 
@@ -3144,7 +3515,7 @@ class WorkspaceApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files/download',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3388,7 +3759,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3435,7 +3808,571 @@ class WorkspaceApi:
 
 
     @validate_call
-    def get_workspace_security_users(
+    def list_workspace_files(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[WorkspaceFile]:
+        """List all Workspace files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_workspace_files_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[WorkspaceFile]",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_workspace_files_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[WorkspaceFile]]:
+        """List all Workspace files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_workspace_files_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[WorkspaceFile]",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_workspace_files_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List all Workspace files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_workspace_files_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[WorkspaceFile]",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_workspace_files_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_workspace_role_permissions(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        role: Annotated[StrictStr, Field(description="the Role")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[str]:
+        """Get the Workspace permission by given role
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param role: the Role (required)
+        :type role: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_workspace_role_permissions_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            role=role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[str]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_workspace_role_permissions_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        role: Annotated[StrictStr, Field(description="the Role")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[str]]:
+        """Get the Workspace permission by given role
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param role: the Role (required)
+        :type role: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_workspace_role_permissions_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            role=role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[str]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_workspace_role_permissions_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        role: Annotated[StrictStr, Field(description="the Role")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get the Workspace permission by given role
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param role: the Role (required)
+        :type role: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_workspace_role_permissions_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            role=role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[str]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_workspace_role_permissions_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        role,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if role is not None:
+            _path_params['role'] = role
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_workspace_security_users(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -3481,7 +4418,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workspace_security_users_serialize(
+        _param = self._list_workspace_security_users_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -3506,7 +4443,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def get_workspace_security_users_with_http_info(
+    def list_workspace_security_users_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -3552,7 +4489,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workspace_security_users_serialize(
+        _param = self._list_workspace_security_users_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -3577,7 +4514,7 @@ class WorkspaceApi:
 
 
     @validate_call
-    def get_workspace_security_users_without_preload_content(
+    def list_workspace_security_users_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -3623,7 +4560,7 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workspace_security_users_serialize(
+        _param = self._list_workspace_security_users_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             _request_auth=_request_auth,
@@ -3643,7 +4580,7 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _get_workspace_security_users_serialize(
+    def _list_workspace_security_users_serialize(
         self,
         organization_id,
         workspace_id,
@@ -3662,7 +4599,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3709,11 +4648,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def link_dataset(
+    def list_workspaces(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
+        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3726,16 +4665,16 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workspace:
-        """link_dataset
+    ) -> List[Workspace]:
+        """List all Workspaces
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param dataset_id: dataset id to be linked to (required)
-        :type dataset_id: str
+        :param page: page number to query (first page is at index 0)
+        :type page: int
+        :param size: amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3758,10 +4697,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._link_dataset_serialize(
+        _param = self._list_workspaces_serialize(
             organization_id=organization_id,
-            workspace_id=workspace_id,
-            dataset_id=dataset_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3769,9 +4708,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
-            '400': None,
-            '404': None,
+            '200': "List[Workspace]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3785,11 +4722,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def link_dataset_with_http_info(
+    def list_workspaces_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
+        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3802,16 +4739,16 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workspace]:
-        """link_dataset
+    ) -> ApiResponse[List[Workspace]]:
+        """List all Workspaces
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param dataset_id: dataset id to be linked to (required)
-        :type dataset_id: str
+        :param page: page number to query (first page is at index 0)
+        :type page: int
+        :param size: amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3834,10 +4771,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._link_dataset_serialize(
+        _param = self._list_workspaces_serialize(
             organization_id=organization_id,
-            workspace_id=workspace_id,
-            dataset_id=dataset_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3845,9 +4782,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
-            '400': None,
-            '404': None,
+            '200': "List[Workspace]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3861,11 +4796,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def link_dataset_without_preload_content(
+    def list_workspaces_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
+        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3879,15 +4814,15 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """link_dataset
+        """List all Workspaces
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param dataset_id: dataset id to be linked to (required)
-        :type dataset_id: str
+        :param page: page number to query (first page is at index 0)
+        :type page: int
+        :param size: amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3910,10 +4845,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._link_dataset_serialize(
+        _param = self._list_workspaces_serialize(
             organization_id=organization_id,
-            workspace_id=workspace_id,
-            dataset_id=dataset_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3921,9 +4856,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
-            '400': None,
-            '404': None,
+            '200': "List[Workspace]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3932,11 +4865,11 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _link_dataset_serialize(
+    def _list_workspaces_serialize(
         self,
         organization_id,
-        workspace_id,
-        dataset_id,
+        page,
+        size,
         _request_auth,
         _content_type,
         _headers,
@@ -3952,18 +4885,22 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
         # process the query parameters
-        if dataset_id is not None:
+        if page is not None:
             
-            _query_params.append(('datasetId', dataset_id))
+            _query_params.append(('page', page))
+            
+        if size is not None:
+            
+            _query_params.append(('size', size))
             
         # process the header parameters
         # process the form parameters
@@ -3985,887 +4922,8 @@ class WorkspaceApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/link',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def remove_workspace_access_control(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove the specified access from the given Organization Workspace
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_workspace_access_control_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def remove_workspace_access_control_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove the specified access from the given Organization Workspace
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_workspace_access_control_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def remove_workspace_access_control_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Remove the specified access from the given Organization Workspace
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_workspace_access_control_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _remove_workspace_access_control_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        identity_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        if identity_id is not None:
-            _path_params['identity_id'] = identity_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def set_workspace_default_security(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> WorkspaceSecurity:
-        """Set the Workspace default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param workspace_role: This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. (required)
-        :type workspace_role: WorkspaceRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_workspace_default_security_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            workspace_role=workspace_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "WorkspaceSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def set_workspace_default_security_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[WorkspaceSecurity]:
-        """Set the Workspace default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param workspace_role: This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. (required)
-        :type workspace_role: WorkspaceRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_workspace_default_security_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            workspace_role=workspace_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "WorkspaceSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def set_workspace_default_security_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Set the Workspace default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param workspace_role: This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. (required)
-        :type workspace_role: WorkspaceRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_workspace_default_security_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            workspace_role=workspace_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "WorkspaceSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _set_workspace_default_security_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        workspace_role,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if workspace_role is not None:
-            _body_params = workspace_role
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/security/default',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def unlink_dataset(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workspace:
-        """unlink_dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param dataset_id: dataset id to be linked to (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unlink_dataset_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def unlink_dataset_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workspace]:
-        """unlink_dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param dataset_id: dataset id to be linked to (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unlink_dataset_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def unlink_dataset_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="dataset id to be linked to")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """unlink_dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param dataset_id: dataset id to be linked to (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unlink_dataset_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _unlink_dataset_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        dataset_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        # process the query parameters
-        if dataset_id is not None:
-            
-            _query_params.append(('datasetId', dataset_id))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/unlink',
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4886,7 +4944,7 @@ class WorkspaceApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        workspace: Annotated[Workspace, Field(description="The new Workspace details. This endpoint can't be used to update security")],
+        workspace_update_request: Annotated[WorkspaceUpdateRequest, Field(description="The new Workspace details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4907,8 +4965,8 @@ class WorkspaceApi:
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param workspace: The new Workspace details. This endpoint can't be used to update security (required)
-        :type workspace: Workspace
+        :param workspace_update_request: The new Workspace details. This endpoint can't be used to update security (required)
+        :type workspace_update_request: WorkspaceUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4934,7 +4992,7 @@ class WorkspaceApi:
         _param = self._update_workspace_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            workspace=workspace,
+            workspace_update_request=workspace_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4962,7 +5020,7 @@ class WorkspaceApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        workspace: Annotated[Workspace, Field(description="The new Workspace details. This endpoint can't be used to update security")],
+        workspace_update_request: Annotated[WorkspaceUpdateRequest, Field(description="The new Workspace details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4983,8 +5041,8 @@ class WorkspaceApi:
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param workspace: The new Workspace details. This endpoint can't be used to update security (required)
-        :type workspace: Workspace
+        :param workspace_update_request: The new Workspace details. This endpoint can't be used to update security (required)
+        :type workspace_update_request: WorkspaceUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5010,7 +5068,7 @@ class WorkspaceApi:
         _param = self._update_workspace_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            workspace=workspace,
+            workspace_update_request=workspace_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5038,7 +5096,7 @@ class WorkspaceApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        workspace: Annotated[Workspace, Field(description="The new Workspace details. This endpoint can't be used to update security")],
+        workspace_update_request: Annotated[WorkspaceUpdateRequest, Field(description="The new Workspace details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5059,8 +5117,8 @@ class WorkspaceApi:
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param workspace: The new Workspace details. This endpoint can't be used to update security (required)
-        :type workspace: Workspace
+        :param workspace_update_request: The new Workspace details. This endpoint can't be used to update security (required)
+        :type workspace_update_request: WorkspaceUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5086,7 +5144,7 @@ class WorkspaceApi:
         _param = self._update_workspace_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            workspace=workspace,
+            workspace_update_request=workspace_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5109,7 +5167,7 @@ class WorkspaceApi:
         self,
         organization_id,
         workspace_id,
-        workspace,
+        workspace_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5125,7 +5183,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -5137,8 +5197,8 @@ class WorkspaceApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if workspace is not None:
-            _body_params = workspace
+        if workspace_update_request is not None:
+            _body_params = workspace_update_request
 
 
         # set the HTTP header `Accept`
@@ -5441,7 +5501,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -5505,13 +5567,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def upload_workspace_file(
+    def update_workspace_default_security(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        file: Union[StrictBytes, StrictStr],
-        overwrite: Optional[StrictBool] = None,
-        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
+        workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5524,20 +5584,16 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> WorkspaceFile:
-        """Upload a file for the Workspace
+    ) -> WorkspaceSecurity:
+        """Update the Workspace default security
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param file: (required)
-        :type file: bytearray
-        :param overwrite:
-        :type overwrite: bool
-        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
-        :type destination: str
+        :param workspace_role: This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. (required)
+        :type workspace_role: WorkspaceRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5560,12 +5616,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._upload_workspace_file_serialize(
+        _param = self._update_workspace_default_security_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            file=file,
-            overwrite=overwrite,
-            destination=destination,
+            workspace_role=workspace_role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5573,8 +5627,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "WorkspaceFile",
-            '400': None,
+            '201': "WorkspaceSecurity",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5588,13 +5642,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def upload_workspace_file_with_http_info(
+    def update_workspace_default_security_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        file: Union[StrictBytes, StrictStr],
-        overwrite: Optional[StrictBool] = None,
-        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
+        workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5607,20 +5659,16 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[WorkspaceFile]:
-        """Upload a file for the Workspace
+    ) -> ApiResponse[WorkspaceSecurity]:
+        """Update the Workspace default security
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param file: (required)
-        :type file: bytearray
-        :param overwrite:
-        :type overwrite: bool
-        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
-        :type destination: str
+        :param workspace_role: This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. (required)
+        :type workspace_role: WorkspaceRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5643,12 +5691,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._upload_workspace_file_serialize(
+        _param = self._update_workspace_default_security_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            file=file,
-            overwrite=overwrite,
-            destination=destination,
+            workspace_role=workspace_role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5656,8 +5702,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "WorkspaceFile",
-            '400': None,
+            '201': "WorkspaceSecurity",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5671,13 +5717,11 @@ class WorkspaceApi:
 
 
     @validate_call
-    def upload_workspace_file_without_preload_content(
+    def update_workspace_default_security_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        file: Union[StrictBytes, StrictStr],
-        overwrite: Optional[StrictBool] = None,
-        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
+        workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5691,19 +5735,15 @@ class WorkspaceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upload a file for the Workspace
+        """Update the Workspace default security
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param file: (required)
-        :type file: bytearray
-        :param overwrite:
-        :type overwrite: bool
-        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
-        :type destination: str
+        :param workspace_role: This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. (required)
+        :type workspace_role: WorkspaceRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5726,12 +5766,10 @@ class WorkspaceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._upload_workspace_file_serialize(
+        _param = self._update_workspace_default_security_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
-            file=file,
-            overwrite=overwrite,
-            destination=destination,
+            workspace_role=workspace_role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5739,8 +5777,8 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "WorkspaceFile",
-            '400': None,
+            '201': "WorkspaceSecurity",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5749,13 +5787,11 @@ class WorkspaceApi:
         return response_data.response
 
 
-    def _upload_workspace_file_serialize(
+    def _update_workspace_default_security_serialize(
         self,
         organization_id,
         workspace_id,
-        file,
-        overwrite,
-        destination,
+        workspace_role,
         _request_auth,
         _content_type,
         _headers,
@@ -5771,7 +5807,9 @@ class WorkspaceApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -5782,13 +5820,9 @@ class WorkspaceApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if overwrite is not None:
-            _form_params.append(('overwrite', overwrite))
-        if destination is not None:
-            _form_params.append(('destination', destination))
-        if file is not None:
-            _files['file'] = file
         # process the body parameter
+        if workspace_role is not None:
+            _body_params = workspace_role
 
 
         # set the HTTP header `Accept`
@@ -5806,7 +5840,8 @@ class WorkspaceApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -5819,8 +5854,8 @@ class WorkspaceApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/files',
+            method='PATCH',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/security/default',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

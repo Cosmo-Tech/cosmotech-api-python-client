@@ -83,8 +83,10 @@ from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
 from cosmotech_api.models.twincache_status_enum import TwincacheStatusEnum
 from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
+from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest
 from cosmotech_api.models.workspace_file import WorkspaceFile
 from cosmotech_api.models.workspace_role import WorkspaceRole
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
+from cosmotech_api.models.workspace_update_request import WorkspaceUpdateRequest
 from cosmotech_api.models.workspace_web_app import WorkspaceWebApp

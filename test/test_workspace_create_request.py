@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.workspace import Workspace
+from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest
 
-class TestWorkspace(unittest.TestCase):
-    """Workspace unit test stubs"""
+class TestWorkspaceCreateRequest(unittest.TestCase):
+    """WorkspaceCreateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,29 +26,23 @@ class TestWorkspace(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Workspace:
-        """Test Workspace
+    def make_instance(self, include_optional) -> WorkspaceCreateRequest:
+        """Test WorkspaceCreateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Workspace`
+        # uncomment below to create an instance of `WorkspaceCreateRequest`
         """
-        model = Workspace()
+        model = WorkspaceCreateRequest()
         if include_optional:
-            return Workspace(
-                id = 'w-0123456789ab',
-                organization_id = 'o-0123456789ab',
-                key = 'MyKey',
+            return WorkspaceCreateRequest(
+                key = '0',
                 name = 'FranceOffice',
                 description = '',
-                linked_dataset_id_list = [
-                    ''
-                    ],
                 version = '1.0.0',
                 tags = [
                     ''
                     ],
-                owner_id = '',
                 solution = cosmotech_api.models.workspace_solution.WorkspaceSolution(
                     solution_id = 'sol-HqXzyCBw3_uufVPI', 
                     run_template_filter = [
@@ -69,30 +63,20 @@ class TestWorkspace(unittest.TestCase):
                         ], )
             )
         else:
-            return Workspace(
-                id = 'w-0123456789ab',
-                organization_id = 'o-0123456789ab',
-                key = 'MyKey',
+            return WorkspaceCreateRequest(
+                key = '0',
                 name = 'FranceOffice',
-                owner_id = '',
                 solution = cosmotech_api.models.workspace_solution.WorkspaceSolution(
                     solution_id = 'sol-HqXzyCBw3_uufVPI', 
                     run_template_filter = [
                         ''
                         ], 
                     default_run_template_dataset = { }, ),
-                security = cosmotech_api.models.workspace_security.WorkspaceSecurity(
-                    default = '', 
-                    access_control_list = [
-                        cosmotech_api.models.workspace_access_control.WorkspaceAccessControl(
-                            id = '', 
-                            role = '', )
-                        ], ),
         )
         """
 
-    def testWorkspace(self):
-        """Test Workspace"""
+    def testWorkspaceCreateRequest(self):
+        """Test WorkspaceCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

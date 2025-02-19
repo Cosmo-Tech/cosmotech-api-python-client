@@ -36,7 +36,7 @@ class TestWorkspaceSolution(unittest.TestCase):
         model = WorkspaceSolution()
         if include_optional:
             return WorkspaceSolution(
-                solution_id = '',
+                solution_id = 'sol-HqXzyCBw3_uufVPI',
                 run_template_filter = [
                     ''
                     ],
@@ -44,6 +44,7 @@ class TestWorkspaceSolution(unittest.TestCase):
             )
         else:
             return WorkspaceSolution(
+                solution_id = 'sol-HqXzyCBw3_uufVPI',
         )
         """
 

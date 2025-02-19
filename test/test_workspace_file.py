@@ -40,6 +40,7 @@ class TestWorkspaceFile(unittest.TestCase):
             )
         else:
             return WorkspaceFile(
+                file_name = '',
         )
         """
 

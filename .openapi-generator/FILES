@@ -86,10 +86,12 @@ cosmotech_api/models/twin_graph_batch_result.py
 cosmotech_api/models/twincache_status_enum.py
 cosmotech_api/models/workspace.py
 cosmotech_api/models/workspace_access_control.py
+cosmotech_api/models/workspace_create_request.py
 cosmotech_api/models/workspace_file.py
 cosmotech_api/models/workspace_role.py
 cosmotech_api/models/workspace_security.py
 cosmotech_api/models/workspace_solution.py
+cosmotech_api/models/workspace_update_request.py
 cosmotech_api/models/workspace_web_app.py
 cosmotech_api/py.typed
 cosmotech_api/rest.py
@@ -168,10 +170,12 @@ docs/TwincacheStatusEnum.md
 docs/Workspace.md
 docs/WorkspaceAccessControl.md
 docs/WorkspaceApi.md
+docs/WorkspaceCreateRequest.md
 docs/WorkspaceFile.md
 docs/WorkspaceRole.md
 docs/WorkspaceSecurity.md
 docs/WorkspaceSolution.md
+docs/WorkspaceUpdateRequest.md
 docs/WorkspaceWebApp.md
 git_push.sh
 pyproject.toml
@@ -255,9 +259,11 @@ test/test_twincache_status_enum.py
 test/test_workspace.py
 test/test_workspace_access_control.py
 test/test_workspace_api.py
+test/test_workspace_create_request.py
 test/test_workspace_file.py
 test/test_workspace_role.py
 test/test_workspace_security.py
 test/test_workspace_solution.py
+test/test_workspace_update_request.py
 test/test_workspace_web_app.py
 tox.ini
