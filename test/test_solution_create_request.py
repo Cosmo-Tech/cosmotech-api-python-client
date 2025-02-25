@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.solution import Solution
+from cosmotech_api.models.solution_create_request import SolutionCreateRequest
 
-class TestSolution(unittest.TestCase):
-    """Solution unit test stubs"""
+class TestSolutionCreateRequest(unittest.TestCase):
+    """SolutionCreateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,23 @@ class TestSolution(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Solution:
-        """Test Solution
+    def make_instance(self, include_optional) -> SolutionCreateRequest:
+        """Test SolutionCreateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Solution`
+        # uncomment below to create an instance of `SolutionCreateRequest`
         """
-        model = Solution()
+        model = SolutionCreateRequest()
         if include_optional:
-            return Solution(
-                id = 'sol-123456aBcDeF',
-                organization_id = 'o-123456aBcDeF',
+            return SolutionCreateRequest(
                 key = 'brewery-solution',
                 name = 'Brewery Solution',
                 description = 'A solution for brewery management and optimization',
                 repository = 'cosmotech/brewery_solution',
+                version = '1.0.0',
                 always_pull = True,
                 csm_simulator = 'brewery_simulator',
-                version = '1.0.0',
-                owner_id = '0',
-                sdk_version = '2.4',
-                url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 tags = ["brewery","optimization"],
                 parameters = [
                     cosmotech_api.models.run_template_parameter.RunTemplateParameter(
@@ -111,6 +106,8 @@ class TestSolution(unittest.TestCase):
                         run_template_source_dir = '', 
                         execution_timeout = 56, )
                     ],
+                sdk_version = '2.4',
+                url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 security = cosmotech_api.models.solution_security.SolutionSecurity(
                     default = 'none', 
                     access_control_list = [
@@ -120,89 +117,17 @@ class TestSolution(unittest.TestCase):
                         ], )
             )
         else:
-            return Solution(
-                id = 'sol-123456aBcDeF',
-                organization_id = 'o-123456aBcDeF',
+            return SolutionCreateRequest(
                 key = 'brewery-solution',
                 name = 'Brewery Solution',
                 repository = 'cosmotech/brewery_solution',
-                csm_simulator = 'brewery_simulator',
                 version = '1.0.0',
-                owner_id = '0',
-                parameters = [
-                    cosmotech_api.models.run_template_parameter.RunTemplateParameter(
-                        id = '0', 
-                        labels = {
-                            'key' : ''
-                            }, 
-                        var_type = '', 
-                        default_value = '', 
-                        min_value = '', 
-                        max_value = '', 
-                        regex_validation = '', 
-                        options = { }, )
-                    ],
-                parameter_groups = [
-                    cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
-                        id = '0', 
-                        labels = {
-                            'key' : ''
-                            }, 
-                        is_table = True, 
-                        options = { }, 
-                        parent_id = '', 
-                        parameters = [
-                            ''
-                            ], )
-                    ],
-                run_templates = [
-                    cosmotech_api.models.run_template.RunTemplate(
-                        id = 'template-123', 
-                        name = '0', 
-                        labels = {
-                            'key' : ''
-                            }, 
-                        description = '', 
-                        csm_simulation = '', 
-                        tags = [
-                            ''
-                            ], 
-                        compute_size = '', 
-                        run_sizing = cosmotech_api.models.run_template_resource_sizing.RunTemplateResourceSizing(
-                            requests = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
-                                cpu = '', 
-                                memory = '', ), 
-                            limits = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
-                                cpu = '', 
-                                memory = '', ), ), 
-                        no_data_ingestion_state = True, 
-                        parameters_handler_source = 'cloud', 
-                        dataset_validator_source = 'cloud', 
-                        pre_run_source = 'cloud', 
-                        run_source = 'cloud', 
-                        post_run_source = 'cloud', 
-                        scenariodata_transform_source = 'cloud', 
-                        parameter_groups = [
-                            ''
-                            ], 
-                        stack_steps = True, 
-                        git_repository_url = '', 
-                        git_branch_name = '', 
-                        run_template_source_dir = '', 
-                        execution_timeout = 56, )
-                    ],
-                security = cosmotech_api.models.solution_security.SolutionSecurity(
-                    default = 'none', 
-                    access_control_list = [
-                        cosmotech_api.models.solution_access_control.SolutionAccessControl(
-                            id = 'user@company.com', 
-                            role = 'editor', )
-                        ], ),
+                csm_simulator = 'brewery_simulator',
         )
         """
 
-    def testSolution(self):
-        """Test Solution"""
+    def testSolutionCreateRequest(self):
+        """Test SolutionCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

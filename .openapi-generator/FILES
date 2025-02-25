@@ -37,7 +37,6 @@ cosmotech_api/models/dataset_source_type.py
 cosmotech_api/models/dataset_twin_graph_hash.py
 cosmotech_api/models/dataset_twin_graph_info.py
 cosmotech_api/models/dataset_twin_graph_query.py
-cosmotech_api/models/delete_historical_data.py
 cosmotech_api/models/file_upload_metadata.py
 cosmotech_api/models/file_upload_validation.py
 cosmotech_api/models/graph_properties.py
@@ -62,7 +61,6 @@ cosmotech_api/models/run_state.py
 cosmotech_api/models/run_status.py
 cosmotech_api/models/run_status_node.py
 cosmotech_api/models/run_template.py
-cosmotech_api/models/run_template_orchestrator.py
 cosmotech_api/models/run_template_parameter.py
 cosmotech_api/models/run_template_parameter_group.py
 cosmotech_api/models/run_template_parameter_value.py
@@ -78,8 +76,10 @@ cosmotech_api/models/runner_validation_status.py
 cosmotech_api/models/send_run_data_request.py
 cosmotech_api/models/solution.py
 cosmotech_api/models/solution_access_control.py
+cosmotech_api/models/solution_create_request.py
 cosmotech_api/models/solution_role.py
 cosmotech_api/models/solution_security.py
+cosmotech_api/models/solution_update_request.py
 cosmotech_api/models/source_info.py
 cosmotech_api/models/sub_dataset_graph_query.py
 cosmotech_api/models/twin_graph_batch_result.py
@@ -116,7 +116,6 @@ docs/DatasetSourceType.md
 docs/DatasetTwinGraphHash.md
 docs/DatasetTwinGraphInfo.md
 docs/DatasetTwinGraphQuery.md
-docs/DeleteHistoricalData.md
 docs/FileUploadMetadata.md
 docs/FileUploadValidation.md
 docs/GraphProperties.md
@@ -143,7 +142,6 @@ docs/RunState.md
 docs/RunStatus.md
 docs/RunStatusNode.md
 docs/RunTemplate.md
-docs/RunTemplateOrchestrator.md
 docs/RunTemplateParameter.md
 docs/RunTemplateParameterGroup.md
 docs/RunTemplateParameterValue.md
@@ -161,8 +159,10 @@ docs/SendRunDataRequest.md
 docs/Solution.md
 docs/SolutionAccessControl.md
 docs/SolutionApi.md
+docs/SolutionCreateRequest.md
 docs/SolutionRole.md
 docs/SolutionSecurity.md
+docs/SolutionUpdateRequest.md
 docs/SourceInfo.md
 docs/SubDatasetGraphQuery.md
 docs/TwinGraphBatchResult.md
@@ -205,7 +205,6 @@ test/test_dataset_source_type.py
 test/test_dataset_twin_graph_hash.py
 test/test_dataset_twin_graph_info.py
 test/test_dataset_twin_graph_query.py
-test/test_delete_historical_data.py
 test/test_file_upload_metadata.py
 test/test_file_upload_validation.py
 test/test_graph_properties.py
@@ -232,7 +231,6 @@ test/test_run_state.py
 test/test_run_status.py
 test/test_run_status_node.py
 test/test_run_template.py
-test/test_run_template_orchestrator.py
 test/test_run_template_parameter.py
 test/test_run_template_parameter_group.py
 test/test_run_template_parameter_value.py
@@ -250,8 +248,10 @@ test/test_send_run_data_request.py
 test/test_solution.py
 test/test_solution_access_control.py
 test/test_solution_api.py
+test/test_solution_create_request.py
 test/test_solution_role.py
 test/test_solution_security.py
+test/test_solution_update_request.py
 test/test_source_info.py
 test/test_sub_dataset_graph_query.py
 test/test_twin_graph_batch_result.py

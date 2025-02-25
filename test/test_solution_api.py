@@ -27,38 +27,17 @@ class TestSolutionApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_add_or_replace_parameter_groups(self) -> None:
-        """Test case for add_or_replace_parameter_groups
-
-        Add Parameter Groups. Any item with the same ID will be overwritten
-        """
-        pass
-
-    def test_add_or_replace_parameters(self) -> None:
-        """Test case for add_or_replace_parameters
-
-        Add Parameters. Any item with the same ID will be overwritten
-        """
-        pass
-
-    def test_add_or_replace_run_templates(self) -> None:
-        """Test case for add_or_replace_run_templates
-
-        Add Run Templates. Any item with the same ID will be overwritten
-        """
-        pass
-
-    def test_add_solution_access_control(self) -> None:
-        """Test case for add_solution_access_control
-
-        Add a control access to the Solution
-        """
-        pass
-
     def test_create_solution(self) -> None:
         """Test case for create_solution
 
-        Register a new solution
+        Create a new solution
+        """
+        pass
+
+    def test_create_solution_access_control(self) -> None:
+        """Test case for create_solution_access_control
+
+        Create solution access control
         """
         pass
 
@@ -69,22 +48,43 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_solution_access_control(self) -> None:
+        """Test case for delete_solution_access_control
+
+        Delete solution access control
+        """
+        pass
+
+    def test_delete_solution_parameter_groups(self) -> None:
+        """Test case for delete_solution_parameter_groups
+
+        Delete all parameter groups from the solution
+        """
+        pass
+
+    def test_delete_solution_parameters(self) -> None:
+        """Test case for delete_solution_parameters
+
+        Delete all parameters from the solution
+        """
+        pass
+
     def test_delete_solution_run_template(self) -> None:
         """Test case for delete_solution_run_template
 
-        Remove the specified Solution Run Template
+        Delete a specific run template
         """
         pass
 
-    def test_find_all_solutions(self) -> None:
-        """Test case for find_all_solutions
+    def test_delete_solution_run_templates(self) -> None:
+        """Test case for delete_solution_run_templates
 
-        List all Solutions
+        Delete all run templates from the solution
         """
         pass
 
-    def test_find_solution_by_id(self) -> None:
-        """Test case for find_solution_by_id
+    def test_get_solution(self) -> None:
+        """Test case for get_solution
 
         Get the details of a solution
         """
@@ -93,56 +93,28 @@ class TestSolutionApi(unittest.TestCase):
     def test_get_solution_access_control(self) -> None:
         """Test case for get_solution_access_control
 
-        Get a control access for the Solution
+        Get solution access control
         """
         pass
 
     def test_get_solution_security(self) -> None:
         """Test case for get_solution_security
 
-        Get the Solution security information
+        Get solution security information
         """
         pass
 
-    def test_get_solution_security_users(self) -> None:
-        """Test case for get_solution_security_users
+    def test_list_solution_security_users(self) -> None:
+        """Test case for list_solution_security_users
 
-        Get the Solution security users list
+        List solution security users
         """
         pass
 
-    def test_remove_all_run_templates(self) -> None:
-        """Test case for remove_all_run_templates
+    def test_list_solutions(self) -> None:
+        """Test case for list_solutions
 
-        Remove all Run Templates from the Solution specified
-        """
-        pass
-
-    def test_remove_all_solution_parameter_groups(self) -> None:
-        """Test case for remove_all_solution_parameter_groups
-
-        Remove all Parameter Groups from the Solution specified
-        """
-        pass
-
-    def test_remove_all_solution_parameters(self) -> None:
-        """Test case for remove_all_solution_parameters
-
-        Remove all Parameters from the Solution specified
-        """
-        pass
-
-    def test_remove_solution_access_control(self) -> None:
-        """Test case for remove_solution_access_control
-
-        Remove the specified access from the given Organization Solution
-        """
-        pass
-
-    def test_set_solution_default_security(self) -> None:
-        """Test case for set_solution_default_security
-
-        Set the Solution default security
+        List all Solutions
         """
         pass
 
@@ -156,14 +128,42 @@ class TestSolutionApi(unittest.TestCase):
     def test_update_solution_access_control(self) -> None:
         """Test case for update_solution_access_control
 
-        Update the specified access to User for a Solution
+        Update solution access control
+        """
+        pass
+
+    def test_update_solution_default_security(self) -> None:
+        """Test case for update_solution_default_security
+
+        Update solution default security
+        """
+        pass
+
+    def test_update_solution_parameter_groups(self) -> None:
+        """Test case for update_solution_parameter_groups
+
+        Update solution parameter groups
+        """
+        pass
+
+    def test_update_solution_parameters(self) -> None:
+        """Test case for update_solution_parameters
+
+        Update solution parameters
         """
         pass
 
     def test_update_solution_run_template(self) -> None:
         """Test case for update_solution_run_template
 
-        Update the specified Solution Run Template
+        Update a specific run template
+        """
+        pass
+
+    def test_update_solution_run_templates(self) -> None:
+        """Test case for update_solution_run_templates
+
+        Update solution run templates
         """
         pass
 

@@ -20,19 +20,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
 class RunTemplateParameterGroup(BaseModel):
     """
-    a Parameter Group for a Run Template
+    A Parameter Group for a Run Template
     """ # noqa: E501
-    id: StrictStr = Field(description="the Parameter Group id")
+    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the Parameter Group id")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
-    is_table: Optional[StrictBool] = Field(default=None, description="does the group define a table", alias="isTable")
-    options: Optional[Dict[str, Any]] = Field(default=None, description="freeform options")
-    parent_id: Optional[StrictStr] = Field(default=None, description="the Run Template Group parent Id", alias="parentId")
-    parameters: Optional[List[StrictStr]] = Field(default=None, description="an ordered list of Run Template Parameters")
+    is_table: Optional[StrictBool] = Field(default=None, description="Does the group define a table", alias="isTable")
+    options: Optional[Dict[str, Any]] = Field(default=None, description="Freeform options")
+    parent_id: Optional[StrictStr] = Field(default=None, description="The Run Template Group parent Id", alias="parentId")
+    parameters: Optional[List[StrictStr]] = Field(default=None, description="An ordered list of Run Template Parameters")
     __properties: ClassVar[List[str]] = ["id", "labels", "isTable", "options", "parentId", "parameters"]
 
     model_config = ConfigDict(

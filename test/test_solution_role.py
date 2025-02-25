@@ -36,11 +36,11 @@ class TestSolutionRole(unittest.TestCase):
         model = SolutionRole()
         if include_optional:
             return SolutionRole(
-                role = ''
+                role = 'editor'
             )
         else:
             return SolutionRole(
-                role = '',
+                role = 'editor',
         )
         """
 

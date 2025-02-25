@@ -26,7 +26,7 @@ from typing_extensions import Self
 
 class RunTemplateResourceSizing(BaseModel):
     """
-    a description object for resource requests and limits (default same configuration as basic sizing)
+    A description object for resource requests and limits
     """ # noqa: E501
     requests: ResourceSizeInfo
     limits: ResourceSizeInfo

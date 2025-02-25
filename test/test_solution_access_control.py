@@ -36,13 +36,13 @@ class TestSolutionAccessControl(unittest.TestCase):
         model = SolutionAccessControl()
         if include_optional:
             return SolutionAccessControl(
-                id = '',
-                role = ''
+                id = 'user@company.com',
+                role = 'editor'
             )
         else:
             return SolutionAccessControl(
-                id = '',
-                role = '',
+                id = 'user@company.com',
+                role = 'editor',
         )
         """
 

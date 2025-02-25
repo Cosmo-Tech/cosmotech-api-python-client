@@ -25,8 +25,10 @@ from cosmotech_api.models.run_template_parameter import RunTemplateParameter
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
+from cosmotech_api.models.solution_create_request import SolutionCreateRequest
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
+from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
 
 from cosmotech_api.api_client import ApiClient, RequestSerialized
 from cosmotech_api.api_response import ApiResponse
@@ -47,11 +49,10 @@ class SolutionApi:
 
 
     @validate_call
-    def add_or_replace_parameter_groups(
+    def create_solution(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_parameter_group: Annotated[List[RunTemplateParameterGroup], Field(description="the Parameter Groups")],
+        solution_create_request: Annotated[SolutionCreateRequest, Field(description="the Solution to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,16 +65,14 @@ class SolutionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RunTemplateParameterGroup]:
-        """Add Parameter Groups. Any item with the same ID will be overwritten
+    ) -> Solution:
+        """Create a new solution
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template_parameter_group: the Parameter Groups (required)
-        :type run_template_parameter_group: List[RunTemplateParameterGroup]
+        :param solution_create_request: the Solution to create (required)
+        :type solution_create_request: SolutionCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -96,10 +95,9 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_or_replace_parameter_groups_serialize(
+        _param = self._create_solution_serialize(
             organization_id=organization_id,
-            solution_id=solution_id,
-            run_template_parameter_group=run_template_parameter_group,
+            solution_create_request=solution_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -107,9 +105,8 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplateParameterGroup]",
+            '201': "Solution",
             '400': None,
-            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -123,11 +120,10 @@ class SolutionApi:
 
 
     @validate_call
-    def add_or_replace_parameter_groups_with_http_info(
+    def create_solution_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_parameter_group: Annotated[List[RunTemplateParameterGroup], Field(description="the Parameter Groups")],
+        solution_create_request: Annotated[SolutionCreateRequest, Field(description="the Solution to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,16 +136,14 @@ class SolutionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RunTemplateParameterGroup]]:
-        """Add Parameter Groups. Any item with the same ID will be overwritten
+    ) -> ApiResponse[Solution]:
+        """Create a new solution
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template_parameter_group: the Parameter Groups (required)
-        :type run_template_parameter_group: List[RunTemplateParameterGroup]
+        :param solution_create_request: the Solution to create (required)
+        :type solution_create_request: SolutionCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -172,10 +166,9 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_or_replace_parameter_groups_serialize(
+        _param = self._create_solution_serialize(
             organization_id=organization_id,
-            solution_id=solution_id,
-            run_template_parameter_group=run_template_parameter_group,
+            solution_create_request=solution_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -183,9 +176,8 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplateParameterGroup]",
+            '201': "Solution",
             '400': None,
-            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,11 +191,10 @@ class SolutionApi:
 
 
     @validate_call
-    def add_or_replace_parameter_groups_without_preload_content(
+    def create_solution_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_parameter_group: Annotated[List[RunTemplateParameterGroup], Field(description="the Parameter Groups")],
+        solution_create_request: Annotated[SolutionCreateRequest, Field(description="the Solution to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,15 +208,13 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add Parameter Groups. Any item with the same ID will be overwritten
+        """Create a new solution
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template_parameter_group: the Parameter Groups (required)
-        :type run_template_parameter_group: List[RunTemplateParameterGroup]
+        :param solution_create_request: the Solution to create (required)
+        :type solution_create_request: SolutionCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -248,10 +237,9 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_or_replace_parameter_groups_serialize(
+        _param = self._create_solution_serialize(
             organization_id=organization_id,
-            solution_id=solution_id,
-            run_template_parameter_group=run_template_parameter_group,
+            solution_create_request=solution_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -259,9 +247,8 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplateParameterGroup]",
+            '201': "Solution",
             '400': None,
-            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -270,11 +257,10 @@ class SolutionApi:
         return response_data.response
 
 
-    def _add_or_replace_parameter_groups_serialize(
+    def _create_solution_serialize(
         self,
         organization_id,
-        solution_id,
-        run_template_parameter_group,
+        solution_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -284,7 +270,6 @@ class SolutionApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'RunTemplateParameterGroup': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -299,14 +284,12 @@ class SolutionApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if run_template_parameter_group is not None:
-            _body_params = run_template_parameter_group
+        if solution_create_request is not None:
+            _body_params = solution_create_request
 
 
         # set the HTTP header `Accept`
@@ -324,7 +307,8 @@ class SolutionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -338,7 +322,7 @@ class SolutionApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameterGroups',
+            resource_path='/organizations/{organization_id}/solutions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -355,627 +339,11 @@ class SolutionApi:
 
 
     @validate_call
-    def add_or_replace_parameters(
+    def create_solution_access_control(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_parameter: Annotated[List[RunTemplateParameter], Field(description="the Parameters")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RunTemplateParameter]:
-        """Add Parameters. Any item with the same ID will be overwritten
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template_parameter: the Parameters (required)
-        :type run_template_parameter: List[RunTemplateParameter]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._add_or_replace_parameters_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            run_template_parameter=run_template_parameter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplateParameter]",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def add_or_replace_parameters_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_parameter: Annotated[List[RunTemplateParameter], Field(description="the Parameters")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RunTemplateParameter]]:
-        """Add Parameters. Any item with the same ID will be overwritten
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template_parameter: the Parameters (required)
-        :type run_template_parameter: List[RunTemplateParameter]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._add_or_replace_parameters_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            run_template_parameter=run_template_parameter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplateParameter]",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def add_or_replace_parameters_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_parameter: Annotated[List[RunTemplateParameter], Field(description="the Parameters")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Add Parameters. Any item with the same ID will be overwritten
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template_parameter: the Parameters (required)
-        :type run_template_parameter: List[RunTemplateParameter]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._add_or_replace_parameters_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            run_template_parameter=run_template_parameter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplateParameter]",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _add_or_replace_parameters_serialize(
-        self,
-        organization_id,
-        solution_id,
-        run_template_parameter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            'RunTemplateParameter': '',
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if run_template_parameter is not None:
-            _body_params = run_template_parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameters',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def add_or_replace_run_templates(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template: Annotated[List[RunTemplate], Field(description="the Run Templates")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RunTemplate]:
-        """Add Run Templates. Any item with the same ID will be overwritten
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template: the Run Templates (required)
-        :type run_template: List[RunTemplate]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._add_or_replace_run_templates_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            run_template=run_template,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplate]",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def add_or_replace_run_templates_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template: Annotated[List[RunTemplate], Field(description="the Run Templates")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RunTemplate]]:
-        """Add Run Templates. Any item with the same ID will be overwritten
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template: the Run Templates (required)
-        :type run_template: List[RunTemplate]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._add_or_replace_run_templates_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            run_template=run_template,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplate]",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def add_or_replace_run_templates_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template: Annotated[List[RunTemplate], Field(description="the Run Templates")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Add Run Templates. Any item with the same ID will be overwritten
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param run_template: the Run Templates (required)
-        :type run_template: List[RunTemplate]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._add_or_replace_run_templates_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            run_template=run_template,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[RunTemplate]",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _add_or_replace_run_templates_serialize(
-        self,
-        organization_id,
-        solution_id,
-        run_template,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            'RunTemplate': '',
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if run_template is not None:
-            _body_params = run_template
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/runTemplates',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def add_solution_access_control(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_access_control: Annotated[SolutionAccessControl, Field(description="the new Solution security access to add.")],
+        solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -989,14 +357,14 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SolutionAccessControl:
-        """Add a control access to the Solution
+        """Create solution access control
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param solution_id: the Solution identifier (required)
         :type solution_id: str
-        :param solution_access_control: the new Solution security access to add. (required)
+        :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1020,7 +388,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_solution_access_control_serialize(
+        _param = self._create_solution_access_control_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             solution_access_control=solution_access_control,
@@ -1046,11 +414,11 @@ class SolutionApi:
 
 
     @validate_call
-    def add_solution_access_control_with_http_info(
+    def create_solution_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_access_control: Annotated[SolutionAccessControl, Field(description="the new Solution security access to add.")],
+        solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1064,14 +432,14 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SolutionAccessControl]:
-        """Add a control access to the Solution
+        """Create solution access control
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param solution_id: the Solution identifier (required)
         :type solution_id: str
-        :param solution_access_control: the new Solution security access to add. (required)
+        :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1095,7 +463,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_solution_access_control_serialize(
+        _param = self._create_solution_access_control_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             solution_access_control=solution_access_control,
@@ -1121,11 +489,11 @@ class SolutionApi:
 
 
     @validate_call
-    def add_solution_access_control_without_preload_content(
+    def create_solution_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_access_control: Annotated[SolutionAccessControl, Field(description="the new Solution security access to add.")],
+        solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1139,14 +507,14 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add a control access to the Solution
+        """Create solution access control
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param solution_id: the Solution identifier (required)
         :type solution_id: str
-        :param solution_access_control: the new Solution security access to add. (required)
+        :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1170,7 +538,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_solution_access_control_serialize(
+        _param = self._create_solution_access_control_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             solution_access_control=solution_access_control,
@@ -1191,7 +559,7 @@ class SolutionApi:
         return response_data.response
 
 
-    def _add_solution_access_control_serialize(
+    def _create_solution_access_control_serialize(
         self,
         organization_id,
         solution_id,
@@ -1260,296 +628,6 @@ class SolutionApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/organizations/{organization_id}/solutions/{solution_id}/security/access',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def create_solution(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution: Annotated[Solution, Field(description="the Solution to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Solution:
-        """Register a new solution
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution: the Solution to create (required)
-        :type solution: Solution
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_solution_serialize(
-            organization_id=organization_id,
-            solution=solution,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Solution",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def create_solution_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution: Annotated[Solution, Field(description="the Solution to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Solution]:
-        """Register a new solution
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution: the Solution to create (required)
-        :type solution: Solution
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_solution_serialize(
-            organization_id=organization_id,
-            solution=solution,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Solution",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def create_solution_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution: Annotated[Solution, Field(description="the Solution to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Register a new solution
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution: the Solution to create (required)
-        :type solution: Solution
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_solution_serialize(
-            organization_id=organization_id,
-            solution=solution,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Solution",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _create_solution_serialize(
-        self,
-        organization_id,
-        solution,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if solution is not None:
-            _body_params = solution
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/solutions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1835,6 +913,828 @@ class SolutionApi:
 
 
     @validate_call
+    def delete_solution_access_control(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete solution access control
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_access_control_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_solution_access_control_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete solution access control
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_access_control_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_solution_access_control_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete solution access control
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_access_control_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_solution_access_control_serialize(
+        self,
+        organization_id,
+        solution_id,
+        identity_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        if identity_id is not None:
+            _path_params['identity_id'] = identity_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_solution_parameter_groups(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete all parameter groups from the solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_parameter_groups_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_solution_parameter_groups_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete all parameter groups from the solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_parameter_groups_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_solution_parameter_groups_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete all parameter groups from the solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_parameter_groups_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_solution_parameter_groups_serialize(
+        self,
+        organization_id,
+        solution_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameterGroups',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_solution_parameters(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete all parameters from the solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_parameters_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_solution_parameters_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete all parameters from the solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_parameters_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_solution_parameters_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete all parameters from the solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_parameters_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_solution_parameters_serialize(
+        self,
+        organization_id,
+        solution_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameters',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_solution_run_template(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
@@ -1853,7 +1753,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Remove the specified Solution Run Template
+        """Delete a specific run template
 
 
         :param organization_id: the Organization identifier (required)
@@ -1928,7 +1828,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Remove the specified Solution Run Template
+        """Delete a specific run template
 
 
         :param organization_id: the Organization identifier (required)
@@ -2003,7 +1903,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove the specified Solution Run Template
+        """Delete a specific run template
 
 
         :param organization_id: the Organization identifier (required)
@@ -2119,11 +2019,10 @@ class SolutionApi:
 
 
     @validate_call
-    def find_all_solutions(
+    def delete_solution_run_templates(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2136,16 +2035,14 @@ class SolutionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Solution]:
-        """List all Solutions
+    ) -> None:
+        """Delete all run templates from the solution
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2168,10 +2065,9 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_solutions_serialize(
+        _param = self._delete_solution_run_templates_serialize(
             organization_id=organization_id,
-            page=page,
-            size=size,
+            solution_id=solution_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2179,7 +2075,8 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Solution]",
+            '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2193,11 +2090,10 @@ class SolutionApi:
 
 
     @validate_call
-    def find_all_solutions_with_http_info(
+    def delete_solution_run_templates_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2210,16 +2106,14 @@ class SolutionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Solution]]:
-        """List all Solutions
+    ) -> ApiResponse[None]:
+        """Delete all run templates from the solution
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2242,10 +2136,9 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_solutions_serialize(
+        _param = self._delete_solution_run_templates_serialize(
             organization_id=organization_id,
-            page=page,
-            size=size,
+            solution_id=solution_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2253,7 +2146,8 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Solution]",
+            '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2267,11 +2161,10 @@ class SolutionApi:
 
 
     @validate_call
-    def find_all_solutions_without_preload_content(
+    def delete_solution_run_templates_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2285,15 +2178,13 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List all Solutions
+        """Delete all run templates from the solution
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2316,10 +2207,9 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_all_solutions_serialize(
+        _param = self._delete_solution_run_templates_serialize(
             organization_id=organization_id,
-            page=page,
-            size=size,
+            solution_id=solution_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2327,7 +2217,8 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Solution]",
+            '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2336,11 +2227,10 @@ class SolutionApi:
         return response_data.response
 
 
-    def _find_all_solutions_serialize(
+    def _delete_solution_run_templates_serialize(
         self,
         organization_id,
-        page,
-        size,
+        solution_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2364,27 +2254,14 @@ class SolutionApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if size is not None:
-            
-            _query_params.append(('size', size))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
 
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
 
 
         # authentication setting
@@ -2393,8 +2270,8 @@ class SolutionApi:
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/solutions',
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/runTemplates',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2411,7 +2288,7 @@ class SolutionApi:
 
 
     @validate_call
-    def find_solution_by_id(
+    def get_solution(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
@@ -2457,7 +2334,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_solution_by_id_serialize(
+        _param = self._get_solution_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             _request_auth=_request_auth,
@@ -2482,7 +2359,7 @@ class SolutionApi:
 
 
     @validate_call
-    def find_solution_by_id_with_http_info(
+    def get_solution_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
@@ -2528,7 +2405,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_solution_by_id_serialize(
+        _param = self._get_solution_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             _request_auth=_request_auth,
@@ -2553,7 +2430,7 @@ class SolutionApi:
 
 
     @validate_call
-    def find_solution_by_id_without_preload_content(
+    def get_solution_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
@@ -2599,7 +2476,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_solution_by_id_serialize(
+        _param = self._get_solution_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             _request_auth=_request_auth,
@@ -2619,7 +2496,7 @@ class SolutionApi:
         return response_data.response
 
 
-    def _find_solution_by_id_serialize(
+    def _get_solution_serialize(
         self,
         organization_id,
         solution_id,
@@ -2705,7 +2582,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SolutionAccessControl:
-        """Get a control access for the Solution
+        """Get solution access control
 
 
         :param organization_id: the Organization identifier (required)
@@ -2780,7 +2657,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SolutionAccessControl]:
-        """Get a control access for the Solution
+        """Get solution access control
 
 
         :param organization_id: the Organization identifier (required)
@@ -2855,7 +2732,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a control access for the Solution
+        """Get solution access control
 
 
         :param organization_id: the Organization identifier (required)
@@ -2995,7 +2872,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SolutionSecurity:
-        """Get the Solution security information
+        """Get solution security information
 
 
         :param organization_id: the Organization identifier (required)
@@ -3066,7 +2943,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SolutionSecurity]:
-        """Get the Solution security information
+        """Get solution security information
 
 
         :param organization_id: the Organization identifier (required)
@@ -3137,7 +3014,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Solution security information
+        """Get solution security information
 
 
         :param organization_id: the Organization identifier (required)
@@ -3254,7 +3131,7 @@ class SolutionApi:
 
 
     @validate_call
-    def get_solution_security_users(
+    def list_solution_security_users(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
@@ -3271,7 +3148,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[str]:
-        """Get the Solution security users list
+        """List solution security users
 
 
         :param organization_id: the Organization identifier (required)
@@ -3300,7 +3177,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_solution_security_users_serialize(
+        _param = self._list_solution_security_users_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             _request_auth=_request_auth,
@@ -3325,7 +3202,7 @@ class SolutionApi:
 
 
     @validate_call
-    def get_solution_security_users_with_http_info(
+    def list_solution_security_users_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
@@ -3342,7 +3219,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[str]]:
-        """Get the Solution security users list
+        """List solution security users
 
 
         :param organization_id: the Organization identifier (required)
@@ -3371,7 +3248,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_solution_security_users_serialize(
+        _param = self._list_solution_security_users_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             _request_auth=_request_auth,
@@ -3396,7 +3273,7 @@ class SolutionApi:
 
 
     @validate_call
-    def get_solution_security_users_without_preload_content(
+    def list_solution_security_users_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
@@ -3413,7 +3290,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Solution security users list
+        """List solution security users
 
 
         :param organization_id: the Organization identifier (required)
@@ -3442,7 +3319,7 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_solution_security_users_serialize(
+        _param = self._list_solution_security_users_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
             _request_auth=_request_auth,
@@ -3462,7 +3339,7 @@ class SolutionApi:
         return response_data.response
 
 
-    def _get_solution_security_users_serialize(
+    def _list_solution_security_users_serialize(
         self,
         organization_id,
         solution_id,
@@ -3530,10 +3407,11 @@ class SolutionApi:
 
 
     @validate_call
-    def remove_all_run_templates(
+    def list_solutions(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3546,14 +3424,16 @@ class SolutionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove all Run Templates from the Solution specified
+    ) -> List[Solution]:
+        """List all Solutions
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
+        :param page: Page number to query (zero-based indexing)
+        :type page: int
+        :param size: Number of records per page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3576,9 +3456,10 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_all_run_templates_serialize(
+        _param = self._list_solutions_serialize(
             organization_id=organization_id,
-            solution_id=solution_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3586,8 +3467,7 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
+            '200': "List[Solution]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3601,10 +3481,11 @@ class SolutionApi:
 
 
     @validate_call
-    def remove_all_run_templates_with_http_info(
+    def list_solutions_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3617,14 +3498,16 @@ class SolutionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove all Run Templates from the Solution specified
+    ) -> ApiResponse[List[Solution]]:
+        """List all Solutions
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
+        :param page: Page number to query (zero-based indexing)
+        :type page: int
+        :param size: Number of records per page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3647,9 +3530,10 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_all_run_templates_serialize(
+        _param = self._list_solutions_serialize(
             organization_id=organization_id,
-            solution_id=solution_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3657,8 +3541,7 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
+            '200': "List[Solution]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3672,10 +3555,11 @@ class SolutionApi:
 
 
     @validate_call
-    def remove_all_run_templates_without_preload_content(
+    def list_solutions_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3689,13 +3573,15 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove all Run Templates from the Solution specified
+        """List all Solutions
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
+        :param page: Page number to query (zero-based indexing)
+        :type page: int
+        :param size: Number of records per page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3718,9 +3604,10 @@ class SolutionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_all_run_templates_serialize(
+        _param = self._list_solutions_serialize(
             organization_id=organization_id,
-            solution_id=solution_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3728,8 +3615,7 @@ class SolutionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
+            '200': "List[Solution]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3738,10 +3624,11 @@ class SolutionApi:
         return response_data.response
 
 
-    def _remove_all_run_templates_serialize(
+    def _list_solutions_serialize(
         self,
         organization_id,
-        solution_id,
+        page,
+        size,
         _request_auth,
         _content_type,
         _headers,
@@ -3765,1118 +3652,18 @@ class SolutionApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
         # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if size is not None:
+            
+            _query_params.append(('size', size))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/runTemplates',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def remove_all_solution_parameter_groups(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove all Parameter Groups from the Solution specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_all_solution_parameter_groups_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def remove_all_solution_parameter_groups_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove all Parameter Groups from the Solution specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_all_solution_parameter_groups_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def remove_all_solution_parameter_groups_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Remove all Parameter Groups from the Solution specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_all_solution_parameter_groups_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _remove_all_solution_parameter_groups_serialize(
-        self,
-        organization_id,
-        solution_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameterGroups',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def remove_all_solution_parameters(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove all Parameters from the Solution specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_all_solution_parameters_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def remove_all_solution_parameters_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove all Parameters from the Solution specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_all_solution_parameters_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def remove_all_solution_parameters_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Remove all Parameters from the Solution specified
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_all_solution_parameters_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _remove_all_solution_parameters_serialize(
-        self,
-        organization_id,
-        solution_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameters',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def remove_solution_access_control(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove the specified access from the given Organization Solution
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_solution_access_control_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def remove_solution_access_control_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove the specified access from the given Organization Solution
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_solution_access_control_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def remove_solution_access_control_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Remove the specified access from the given Organization Solution
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_solution_access_control_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _remove_solution_access_control_serialize(
-        self,
-        organization_id,
-        solution_id,
-        identity_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
-        if identity_id is not None:
-            _path_params['identity_id'] = identity_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def set_solution_default_security(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_role: Annotated[SolutionRole, Field(description="This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SolutionSecurity:
-        """Set the Solution default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param solution_role: This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. (required)
-        :type solution_role: SolutionRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_solution_default_security_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            solution_role=solution_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SolutionSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def set_solution_default_security_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_role: Annotated[SolutionRole, Field(description="This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SolutionSecurity]:
-        """Set the Solution default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param solution_role: This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. (required)
-        :type solution_role: SolutionRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_solution_default_security_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            solution_role=solution_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SolutionSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def set_solution_default_security_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_role: Annotated[SolutionRole, Field(description="This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Set the Solution default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param solution_id: the Solution identifier (required)
-        :type solution_id: str
-        :param solution_role: This change the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. (required)
-        :type solution_role: SolutionRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_solution_default_security_serialize(
-            organization_id=organization_id,
-            solution_id=solution_id,
-            solution_role=solution_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SolutionSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _set_solution_default_security_serialize(
-        self,
-        organization_id,
-        solution_id,
-        solution_role,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if solution_id is not None:
-            _path_params['solution_id'] = solution_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if solution_role is not None:
-            _body_params = solution_role
 
 
         # set the HTTP header `Accept`
@@ -4887,20 +3674,6 @@ class SolutionApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -4908,8 +3681,8 @@ class SolutionApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/solutions/{solution_id}/security/default',
+            method='GET',
+            resource_path='/organizations/{organization_id}/solutions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4930,7 +3703,7 @@ class SolutionApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution: Annotated[Solution, Field(description="the new Solution details. This endpoint can't be used to update security")],
+        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="the new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4951,8 +3724,8 @@ class SolutionApi:
         :type organization_id: str
         :param solution_id: the Solution identifier (required)
         :type solution_id: str
-        :param solution: the new Solution details. This endpoint can't be used to update security (required)
-        :type solution: Solution
+        :param solution_update_request: the new Solution details. This endpoint can't be used to update security (required)
+        :type solution_update_request: SolutionUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4978,7 +3751,7 @@ class SolutionApi:
         _param = self._update_solution_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
-            solution=solution,
+            solution_update_request=solution_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5006,7 +3779,7 @@ class SolutionApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution: Annotated[Solution, Field(description="the new Solution details. This endpoint can't be used to update security")],
+        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="the new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5027,8 +3800,8 @@ class SolutionApi:
         :type organization_id: str
         :param solution_id: the Solution identifier (required)
         :type solution_id: str
-        :param solution: the new Solution details. This endpoint can't be used to update security (required)
-        :type solution: Solution
+        :param solution_update_request: the new Solution details. This endpoint can't be used to update security (required)
+        :type solution_update_request: SolutionUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5054,7 +3827,7 @@ class SolutionApi:
         _param = self._update_solution_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
-            solution=solution,
+            solution_update_request=solution_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5082,7 +3855,7 @@ class SolutionApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution: Annotated[Solution, Field(description="the new Solution details. This endpoint can't be used to update security")],
+        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="the new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5103,8 +3876,8 @@ class SolutionApi:
         :type organization_id: str
         :param solution_id: the Solution identifier (required)
         :type solution_id: str
-        :param solution: the new Solution details. This endpoint can't be used to update security (required)
-        :type solution: Solution
+        :param solution_update_request: the new Solution details. This endpoint can't be used to update security (required)
+        :type solution_update_request: SolutionUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5130,7 +3903,7 @@ class SolutionApi:
         _param = self._update_solution_serialize(
             organization_id=organization_id,
             solution_id=solution_id,
-            solution=solution,
+            solution_update_request=solution_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5153,7 +3926,7 @@ class SolutionApi:
         self,
         organization_id,
         solution_id,
-        solution,
+        solution_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5183,8 +3956,8 @@ class SolutionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if solution is not None:
-            _body_params = solution
+        if solution_update_request is not None:
+            _body_params = solution_update_request
 
 
         # set the HTTP header `Accept`
@@ -5239,7 +4012,7 @@ class SolutionApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        solution_role: Annotated[SolutionRole, Field(description="The new Solution Access Control")],
+        solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5253,7 +4026,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SolutionAccessControl:
-        """Update the specified access to User for a Solution
+        """Update solution access control
 
 
         :param organization_id: the Organization identifier (required)
@@ -5262,7 +4035,7 @@ class SolutionApi:
         :type solution_id: str
         :param identity_id: the User identifier (required)
         :type identity_id: str
-        :param solution_role: The new Solution Access Control (required)
+        :param solution_role: Access control updates (required)
         :type solution_role: SolutionRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5318,7 +4091,7 @@ class SolutionApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        solution_role: Annotated[SolutionRole, Field(description="The new Solution Access Control")],
+        solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5332,7 +4105,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SolutionAccessControl]:
-        """Update the specified access to User for a Solution
+        """Update solution access control
 
 
         :param organization_id: the Organization identifier (required)
@@ -5341,7 +4114,7 @@ class SolutionApi:
         :type solution_id: str
         :param identity_id: the User identifier (required)
         :type identity_id: str
-        :param solution_role: The new Solution Access Control (required)
+        :param solution_role: Access control updates (required)
         :type solution_role: SolutionRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5397,7 +4170,7 @@ class SolutionApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        solution_role: Annotated[SolutionRole, Field(description="The new Solution Access Control")],
+        solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5411,7 +4184,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update the specified access to User for a Solution
+        """Update solution access control
 
 
         :param organization_id: the Organization identifier (required)
@@ -5420,7 +4193,7 @@ class SolutionApi:
         :type solution_id: str
         :param identity_id: the User identifier (required)
         :type identity_id: str
-        :param solution_role: The new Solution Access Control (required)
+        :param solution_role: Access control updates (required)
         :type solution_role: SolutionRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5522,7 +4295,8 @@ class SolutionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -5553,12 +4327,935 @@ class SolutionApi:
 
 
     @validate_call
+    def update_solution_default_security(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        solution_role: Annotated[SolutionRole, Field(description="This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SolutionSecurity:
+        """Update solution default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param solution_role: This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. (required)
+        :type solution_role: SolutionRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_default_security_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            solution_role=solution_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SolutionSecurity",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_solution_default_security_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        solution_role: Annotated[SolutionRole, Field(description="This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SolutionSecurity]:
+        """Update solution default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param solution_role: This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. (required)
+        :type solution_role: SolutionRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_default_security_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            solution_role=solution_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SolutionSecurity",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_solution_default_security_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        solution_role: Annotated[SolutionRole, Field(description="This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update solution default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param solution_role: This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution. (required)
+        :type solution_role: SolutionRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_default_security_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            solution_role=solution_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SolutionSecurity",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_solution_default_security_serialize(
+        self,
+        organization_id,
+        solution_id,
+        solution_role,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if solution_role is not None:
+            _body_params = solution_role
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/security/default',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_solution_parameter_groups(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template_parameter_group: Annotated[List[RunTemplateParameterGroup], Field(description="Parameter groups to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[RunTemplateParameterGroup]:
+        """Update solution parameter groups
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template_parameter_group: Parameter groups to update (required)
+        :type run_template_parameter_group: List[RunTemplateParameterGroup]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_parameter_groups_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template_parameter_group=run_template_parameter_group,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplateParameterGroup]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_solution_parameter_groups_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template_parameter_group: Annotated[List[RunTemplateParameterGroup], Field(description="Parameter groups to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[RunTemplateParameterGroup]]:
+        """Update solution parameter groups
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template_parameter_group: Parameter groups to update (required)
+        :type run_template_parameter_group: List[RunTemplateParameterGroup]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_parameter_groups_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template_parameter_group=run_template_parameter_group,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplateParameterGroup]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_solution_parameter_groups_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template_parameter_group: Annotated[List[RunTemplateParameterGroup], Field(description="Parameter groups to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update solution parameter groups
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template_parameter_group: Parameter groups to update (required)
+        :type run_template_parameter_group: List[RunTemplateParameterGroup]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_parameter_groups_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template_parameter_group=run_template_parameter_group,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplateParameterGroup]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_solution_parameter_groups_serialize(
+        self,
+        organization_id,
+        solution_id,
+        run_template_parameter_group,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'RunTemplateParameterGroup': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if run_template_parameter_group is not None:
+            _body_params = run_template_parameter_group
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameterGroups',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_solution_parameters(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template_parameter: Annotated[List[RunTemplateParameter], Field(description="Parameters to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[RunTemplateParameter]:
+        """Update solution parameters
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template_parameter: Parameters to update (required)
+        :type run_template_parameter: List[RunTemplateParameter]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_parameters_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template_parameter=run_template_parameter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplateParameter]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_solution_parameters_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template_parameter: Annotated[List[RunTemplateParameter], Field(description="Parameters to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[RunTemplateParameter]]:
+        """Update solution parameters
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template_parameter: Parameters to update (required)
+        :type run_template_parameter: List[RunTemplateParameter]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_parameters_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template_parameter=run_template_parameter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplateParameter]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_solution_parameters_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template_parameter: Annotated[List[RunTemplateParameter], Field(description="Parameters to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update solution parameters
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template_parameter: Parameters to update (required)
+        :type run_template_parameter: List[RunTemplateParameter]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_parameters_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template_parameter=run_template_parameter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplateParameter]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_solution_parameters_serialize(
+        self,
+        organization_id,
+        solution_id,
+        run_template_parameter,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'RunTemplateParameter': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if run_template_parameter is not None:
+            _body_params = run_template_parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/parameters',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update_solution_run_template(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
-        run_template: Annotated[RunTemplate, Field(description="the Run Templates")],
+        run_template: Annotated[RunTemplate, Field(description="Run template updates")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5572,7 +5269,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[RunTemplate]:
-        """Update the specified Solution Run Template
+        """Update a specific run template
 
 
         :param organization_id: the Organization identifier (required)
@@ -5581,7 +5278,7 @@ class SolutionApi:
         :type solution_id: str
         :param run_template_id: the Run Template identifier (required)
         :type run_template_id: str
-        :param run_template: the Run Templates (required)
+        :param run_template: Run template updates (required)
         :type run_template: RunTemplate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5638,7 +5335,7 @@ class SolutionApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
-        run_template: Annotated[RunTemplate, Field(description="the Run Templates")],
+        run_template: Annotated[RunTemplate, Field(description="Run template updates")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5652,7 +5349,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[RunTemplate]]:
-        """Update the specified Solution Run Template
+        """Update a specific run template
 
 
         :param organization_id: the Organization identifier (required)
@@ -5661,7 +5358,7 @@ class SolutionApi:
         :type solution_id: str
         :param run_template_id: the Run Template identifier (required)
         :type run_template_id: str
-        :param run_template: the Run Templates (required)
+        :param run_template: Run template updates (required)
         :type run_template: RunTemplate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5718,7 +5415,7 @@ class SolutionApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
-        run_template: Annotated[RunTemplate, Field(description="the Run Templates")],
+        run_template: Annotated[RunTemplate, Field(description="Run template updates")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5732,7 +5429,7 @@ class SolutionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update the specified Solution Run Template
+        """Update a specific run template
 
 
         :param organization_id: the Organization identifier (required)
@@ -5741,7 +5438,7 @@ class SolutionApi:
         :type solution_id: str
         :param run_template_id: the Run Template identifier (required)
         :type run_template_id: str
-        :param run_template: the Run Templates (required)
+        :param run_template: Run template updates (required)
         :type run_template: RunTemplate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5860,6 +5557,315 @@ class SolutionApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_solution_run_templates(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template: Annotated[List[RunTemplate], Field(description="Run templates to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[RunTemplate]:
+        """Update solution run templates
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template: Run templates to update (required)
+        :type run_template: List[RunTemplate]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_run_templates_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template=run_template,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplate]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_solution_run_templates_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template: Annotated[List[RunTemplate], Field(description="Run templates to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[RunTemplate]]:
+        """Update solution run templates
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template: Run templates to update (required)
+        :type run_template: List[RunTemplate]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_run_templates_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template=run_template,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplate]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_solution_run_templates_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        run_template: Annotated[List[RunTemplate], Field(description="Run templates to update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update solution run templates
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param run_template: Run templates to update (required)
+        :type run_template: List[RunTemplate]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_solution_run_templates_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            run_template=run_template,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[RunTemplate]",
+            '400': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_solution_run_templates_serialize(
+        self,
+        organization_id,
+        solution_id,
+        run_template,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'RunTemplate': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if run_template is not None:
+            _body_params = run_template
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/runTemplates',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

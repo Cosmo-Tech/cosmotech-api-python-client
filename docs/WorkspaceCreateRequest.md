@@ -7,7 +7,7 @@ Request object for creating a new workspace
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | technical key for resource name convention and version grouping. Must be unique | 
-**name** | **str** | Workspace name. This name is display in the sample webApp | 
+**name** | **str** | Workspace name. This name is displayed in the sample webApp | 
 **description** | **str** | the Workspace description | [optional] 
 **version** | **str** | the Workspace version MAJOR.MINOR.PATCH. | [optional] 
 **tags** | **List[str]** | the list of tags | [optional] 

@@ -25,9 +25,9 @@ from typing_extensions import Self
 
 class SolutionRole(BaseModel):
     """
-    the Solution Role
+    The Solution Role
     """ # noqa: E501
-    role: StrictStr = Field(description="the Solution Role")
+    role: StrictStr = Field(description="The Solution Role")
     __properties: ClassVar[List[str]] = ["role"]
 
     model_config = ConfigDict(

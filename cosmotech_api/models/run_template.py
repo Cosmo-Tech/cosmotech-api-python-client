@@ -20,8 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from cosmotech_api.models.delete_historical_data import DeleteHistoricalData
-from cosmotech_api.models.run_template_orchestrator import RunTemplateOrchestrator
+from typing_extensions import Annotated
 from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
 from cosmotech_api.models.run_template_step_source import RunTemplateStepSource
 from typing import Optional, Set
@@ -29,43 +28,30 @@ from typing_extensions import Self
 
 class RunTemplate(BaseModel):
     """
-    a Solution Run Template
+    A Solution Run Template
     """ # noqa: E501
-    id: StrictStr = Field(description="the Solution Run Template id")
-    name: Optional[StrictStr] = Field(default=None, description="the Run Template name")
+    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution Run Template id")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Run Template name")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
-    description: Optional[StrictStr] = Field(default=None, description="the Run Template description")
-    csm_simulation: Optional[StrictStr] = Field(default=None, description="the Cosmo Tech simulation name. This information is send to the Engine. Mandatory information if no Engine is defined", alias="csmSimulation")
-    tags: Optional[List[StrictStr]] = Field(default=None, description="the list of Run Template tags")
-    compute_size: Optional[StrictStr] = Field(default=None, description="the compute size needed for this Run Template. Standard sizes are basic and highcpu. Default is basic", alias="computeSize")
+    description: Optional[StrictStr] = Field(default=None, description="The Run Template description")
+    csm_simulation: Optional[StrictStr] = Field(default=None, description="The Cosmo Tech simulation name", alias="csmSimulation")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of Run Template tags")
+    compute_size: Optional[StrictStr] = Field(default=None, description="The compute size needed for this Run Template", alias="computeSize")
     run_sizing: Optional[RunTemplateResourceSizing] = Field(default=None, alias="runSizing")
-    no_data_ingestion_state: Optional[StrictBool] = Field(default=None, description="set to true if the run template does not want to check data ingestion state (no probes or not control plane)", alias="noDataIngestionState")
-    fetch_datasets: Optional[StrictBool] = Field(default=None, description="whether or not the fetch dataset step is done", alias="fetchDatasets")
-    scenario_data_download_transform: Optional[StrictBool] = Field(default=None, description="whether or not the scenario data download transform step step is done", alias="scenarioDataDownloadTransform")
-    fetch_scenario_parameters: Optional[StrictBool] = Field(default=None, description="whether or not the fetch parameters step is done", alias="fetchScenarioParameters")
-    apply_parameters: Optional[StrictBool] = Field(default=None, description="whether or not the apply parameter step is done", alias="applyParameters")
-    validate_data: Optional[StrictBool] = Field(default=None, description="whether or not the validate step is done", alias="validateData")
-    send_datasets_to_data_warehouse: Optional[StrictBool] = Field(default=None, description="whether or not the Datasets values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting", alias="sendDatasetsToDataWarehouse")
-    send_input_parameters_to_data_warehouse: Optional[StrictBool] = Field(default=None, description="whether or not the input parameters values are send to the DataWarehouse prior to Simulation Run. If not set follow the Workspace setting", alias="sendInputParametersToDataWarehouse")
-    pre_run: Optional[StrictBool] = Field(default=None, description="whether or not the pre-run step is done", alias="preRun")
-    run: Optional[StrictBool] = Field(default=None, description="whether or not the run step is done")
-    post_run: Optional[StrictBool] = Field(default=None, description="whether or not the post-run step is done", alias="postRun")
-    parameters_json: Optional[StrictBool] = Field(default=None, description="whether or not to store the scenario parameters in json instead of csv", alias="parametersJson")
+    no_data_ingestion_state: Optional[StrictBool] = Field(default=None, description="Set to true if the run template does not want to check data ingestion state", alias="noDataIngestionState")
     parameters_handler_source: Optional[RunTemplateStepSource] = Field(default=None, alias="parametersHandlerSource")
     dataset_validator_source: Optional[RunTemplateStepSource] = Field(default=None, alias="datasetValidatorSource")
     pre_run_source: Optional[RunTemplateStepSource] = Field(default=None, alias="preRunSource")
     run_source: Optional[RunTemplateStepSource] = Field(default=None, alias="runSource")
     post_run_source: Optional[RunTemplateStepSource] = Field(default=None, alias="postRunSource")
     scenariodata_transform_source: Optional[RunTemplateStepSource] = Field(default=None, alias="scenariodataTransformSource")
-    parameter_groups: Optional[List[StrictStr]] = Field(default=None, description="the ordered list of parameters groups for the Run Template", alias="parameterGroups")
-    stack_steps: Optional[StrictBool] = Field(default=None, description="whether or not to stack adjacent scenario run steps in one container run which will chain steps", alias="stackSteps")
-    git_repository_url: Optional[StrictStr] = Field(default=None, description="an optional URL to the git repository", alias="gitRepositoryUrl")
-    git_branch_name: Optional[StrictStr] = Field(default=None, description="an optional git branch name", alias="gitBranchName")
-    run_template_source_dir: Optional[StrictStr] = Field(default=None, description="an optional directory where to find the run template source", alias="runTemplateSourceDir")
-    orchestrator_type: Optional[RunTemplateOrchestrator] = Field(default=None, alias="orchestratorType")
-    execution_timeout: Optional[StrictInt] = Field(default=None, description="an optional duration in seconds in which a workflow is allowed to run", alias="executionTimeout")
-    delete_historical_data: Optional[DeleteHistoricalData] = Field(default=None, alias="deleteHistoricalData")
-    __properties: ClassVar[List[str]] = ["id", "name", "labels", "description", "csmSimulation", "tags", "computeSize", "runSizing", "noDataIngestionState", "fetchDatasets", "scenarioDataDownloadTransform", "fetchScenarioParameters", "applyParameters", "validateData", "sendDatasetsToDataWarehouse", "sendInputParametersToDataWarehouse", "preRun", "run", "postRun", "parametersJson", "parametersHandlerSource", "datasetValidatorSource", "preRunSource", "runSource", "postRunSource", "scenariodataTransformSource", "parameterGroups", "stackSteps", "gitRepositoryUrl", "gitBranchName", "runTemplateSourceDir", "orchestratorType", "executionTimeout", "deleteHistoricalData"]
+    parameter_groups: Optional[List[StrictStr]] = Field(default=None, description="The ordered list of parameters groups for the Run Template", alias="parameterGroups")
+    stack_steps: Optional[StrictBool] = Field(default=None, description="Whether or not to stack adjacent scenario run steps", alias="stackSteps")
+    git_repository_url: Optional[StrictStr] = Field(default=None, description="An optional URL to the git repository", alias="gitRepositoryUrl")
+    git_branch_name: Optional[StrictStr] = Field(default=None, description="An optional git branch name", alias="gitBranchName")
+    run_template_source_dir: Optional[StrictStr] = Field(default=None, description="An optional directory where to find the run template source", alias="runTemplateSourceDir")
+    execution_timeout: Optional[StrictInt] = Field(default=None, description="An optional duration in seconds in which a workflow is allowed to run", alias="executionTimeout")
+    __properties: ClassVar[List[str]] = ["id", "name", "labels", "description", "csmSimulation", "tags", "computeSize", "runSizing", "noDataIngestionState", "parametersHandlerSource", "datasetValidatorSource", "preRunSource", "runSource", "postRunSource", "scenariodataTransformSource", "parameterGroups", "stackSteps", "gitRepositoryUrl", "gitBranchName", "runTemplateSourceDir", "executionTimeout"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,9 +95,6 @@ class RunTemplate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of run_sizing
         if self.run_sizing:
             _dict['runSizing'] = self.run_sizing.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of delete_historical_data
-        if self.delete_historical_data:
-            _dict['deleteHistoricalData'] = self.delete_historical_data.to_dict()
         return _dict
 
     @classmethod
@@ -133,17 +116,6 @@ class RunTemplate(BaseModel):
             "computeSize": obj.get("computeSize"),
             "runSizing": RunTemplateResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
             "noDataIngestionState": obj.get("noDataIngestionState"),
-            "fetchDatasets": obj.get("fetchDatasets"),
-            "scenarioDataDownloadTransform": obj.get("scenarioDataDownloadTransform"),
-            "fetchScenarioParameters": obj.get("fetchScenarioParameters"),
-            "applyParameters": obj.get("applyParameters"),
-            "validateData": obj.get("validateData"),
-            "sendDatasetsToDataWarehouse": obj.get("sendDatasetsToDataWarehouse"),
-            "sendInputParametersToDataWarehouse": obj.get("sendInputParametersToDataWarehouse"),
-            "preRun": obj.get("preRun"),
-            "run": obj.get("run"),
-            "postRun": obj.get("postRun"),
-            "parametersJson": obj.get("parametersJson"),
             "parametersHandlerSource": obj.get("parametersHandlerSource"),
             "datasetValidatorSource": obj.get("datasetValidatorSource"),
             "preRunSource": obj.get("preRunSource"),
@@ -155,9 +127,7 @@ class RunTemplate(BaseModel):
             "gitRepositoryUrl": obj.get("gitRepositoryUrl"),
             "gitBranchName": obj.get("gitBranchName"),
             "runTemplateSourceDir": obj.get("runTemplateSourceDir"),
-            "orchestratorType": obj.get("orchestratorType"),
-            "executionTimeout": obj.get("executionTimeout"),
-            "deleteHistoricalData": DeleteHistoricalData.from_dict(obj["deleteHistoricalData"]) if obj.get("deleteHistoricalData") is not None else None
+            "executionTimeout": obj.get("executionTimeout")
         })
         return _obj
 

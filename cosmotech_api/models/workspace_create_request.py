@@ -32,7 +32,7 @@ class WorkspaceCreateRequest(BaseModel):
     Request object for creating a new workspace
     """ # noqa: E501
     key: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="technical key for resource name convention and version grouping. Must be unique")
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Workspace name. This name is display in the sample webApp")
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Workspace name. This name is displayed in the sample webApp")
     description: Optional[StrictStr] = Field(default=None, description="the Workspace description")
     version: Optional[StrictStr] = Field(default=None, description="the Workspace version MAJOR.MINOR.PATCH.")
     tags: Optional[List[StrictStr]] = Field(default=None, description="the list of tags")

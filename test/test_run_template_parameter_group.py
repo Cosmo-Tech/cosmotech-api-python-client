@@ -36,7 +36,7 @@ class TestRunTemplateParameterGroup(unittest.TestCase):
         model = RunTemplateParameterGroup()
         if include_optional:
             return RunTemplateParameterGroup(
-                id = '',
+                id = '0',
                 labels = {
                     'key' : ''
                     },
@@ -49,7 +49,7 @@ class TestRunTemplateParameterGroup(unittest.TestCase):
             )
         else:
             return RunTemplateParameterGroup(
-                id = '',
+                id = '0',
         )
         """
 

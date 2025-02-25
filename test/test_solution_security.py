@@ -36,20 +36,20 @@ class TestSolutionSecurity(unittest.TestCase):
         model = SolutionSecurity()
         if include_optional:
             return SolutionSecurity(
-                default = '',
+                default = 'none',
                 access_control_list = [
                     cosmotech_api.models.solution_access_control.SolutionAccessControl(
-                        id = '', 
-                        role = '', )
+                        id = 'user@company.com', 
+                        role = 'editor', )
                     ]
             )
         else:
             return SolutionSecurity(
-                default = '',
+                default = 'none',
                 access_control_list = [
                     cosmotech_api.models.solution_access_control.SolutionAccessControl(
-                        id = '', 
-                        role = '', )
+                        id = 'user@company.com', 
+                        role = 'editor', )
                     ],
         )
         """

@@ -36,8 +36,8 @@ class TestRunTemplate(unittest.TestCase):
         model = RunTemplate()
         if include_optional:
             return RunTemplate(
-                id = '',
-                name = '',
+                id = 'template-123',
+                name = '0',
                 labels = {
                     'key' : ''
                     },
@@ -55,17 +55,6 @@ class TestRunTemplate(unittest.TestCase):
                         cpu = '', 
                         memory = '', ), ),
                 no_data_ingestion_state = True,
-                fetch_datasets = True,
-                scenario_data_download_transform = True,
-                fetch_scenario_parameters = True,
-                apply_parameters = True,
-                validate_data = True,
-                send_datasets_to_data_warehouse = True,
-                send_input_parameters_to_data_warehouse = True,
-                pre_run = True,
-                run = True,
-                post_run = True,
-                parameters_json = True,
                 parameters_handler_source = 'cloud',
                 dataset_validator_source = 'cloud',
                 pre_run_source = 'cloud',
@@ -79,16 +68,11 @@ class TestRunTemplate(unittest.TestCase):
                 git_repository_url = '',
                 git_branch_name = '',
                 run_template_source_dir = '',
-                orchestrator_type = 'argoWorkflow',
-                execution_timeout = 56,
-                delete_historical_data = cosmotech_api.models.delete_historical_data.DeleteHistoricalData(
-                    enable = True, 
-                    poll_frequency = 56, 
-                    time_out = 56, )
+                execution_timeout = 56
             )
         else:
             return RunTemplate(
-                id = '',
+                id = 'template-123',
         )
         """
 

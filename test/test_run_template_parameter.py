@@ -36,7 +36,7 @@ class TestRunTemplateParameter(unittest.TestCase):
         model = RunTemplateParameter()
         if include_optional:
             return RunTemplateParameter(
-                id = '',
+                id = '0',
                 labels = {
                     'key' : ''
                     },
@@ -49,7 +49,7 @@ class TestRunTemplateParameter(unittest.TestCase):
             )
         else:
             return RunTemplateParameter(
-                id = '',
+                id = '0',
         )
         """
 

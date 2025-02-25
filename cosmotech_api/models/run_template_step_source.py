@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class RunTemplateStepSource(str, Enum):
     """
-    the source local, cloud or git repository
+    The source local, cloud or git repository
     """
 
     """

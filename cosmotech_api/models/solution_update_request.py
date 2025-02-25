@@ -18,52 +18,31 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from cosmotech_api.models.run_template import RunTemplate
 from cosmotech_api.models.run_template_parameter import RunTemplateParameter
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
-from cosmotech_api.models.solution_security import SolutionSecurity
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Solution(BaseModel):
+class SolutionUpdateRequest(BaseModel):
     """
-    A version of a Solution
+    Request object for updating a solution
     """ # noqa: E501
-    id: Annotated[str, Field(strict=True)] = Field(description="The Solution version unique identifier")
-    organization_id: Annotated[str, Field(strict=True)] = Field(description="The Organization unique identifier", alias="organizationId")
-    key: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution key which groups Solution versions")
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution name")
+    key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="technical key for resource name convention and version grouping. Must be unique")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Solution name")
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
-    repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
+    repository: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The registry repository containing the image")
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    csm_simulator: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
-    version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
-    owner_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The User id which owns this Solution", alias="ownerId")
+    csm_simulator: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
+    version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
     sdk_version: Optional[StrictStr] = Field(default=None, description="The MAJOR.MINOR version used to build this solution", alias="sdkVersion")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
-    parameters: List[RunTemplateParameter] = Field(description="The list of Run Template Parameters")
-    parameter_groups: List[RunTemplateParameterGroup] = Field(description="The list of parameters groups for the Run Templates", alias="parameterGroups")
-    run_templates: List[RunTemplate] = Field(description="List of Run Templates", alias="runTemplates")
-    security: SolutionSecurity
-    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "ownerId", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
-
-    @field_validator('id')
-    def id_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^sol-\w{10,20}", value):
-            raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
-        return value
-
-    @field_validator('organization_id')
-    def organization_id_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^o-\w{10,20}", value):
-            raise ValueError(r"must validate the regular expression /^o-\w{10,20}/")
-        return value
+    parameters: Optional[List[RunTemplateParameter]] = Field(default=None, description="The list of Run Template Parameters")
+    parameter_groups: Optional[List[RunTemplateParameterGroup]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "sdkVersion", "url", "tags", "parameters", "parameterGroups"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +62,7 @@ class Solution(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Solution from a JSON string"""
+        """Create an instance of SolutionUpdateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -95,14 +74,8 @@ class Solution(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "id",
-            "organization_id",
-            "owner_id",
         ])
 
         _dict = self.model_dump(
@@ -124,21 +97,11 @@ class Solution(BaseModel):
                 if _item_parameter_groups:
                     _items.append(_item_parameter_groups.to_dict())
             _dict['parameterGroups'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in run_templates (list)
-        _items = []
-        if self.run_templates:
-            for _item_run_templates in self.run_templates:
-                if _item_run_templates:
-                    _items.append(_item_run_templates.to_dict())
-            _dict['runTemplates'] = _items
-        # override the default output from pydantic by calling `to_dict()` of security
-        if self.security:
-            _dict['security'] = self.security.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Solution from a dict"""
+        """Create an instance of SolutionUpdateRequest from a dict"""
         if obj is None:
             return None
 
@@ -146,8 +109,6 @@ class Solution(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "organizationId": obj.get("organizationId"),
             "key": obj.get("key"),
             "name": obj.get("name"),
             "description": obj.get("description"),
@@ -155,14 +116,11 @@ class Solution(BaseModel):
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
             "csmSimulator": obj.get("csmSimulator"),
             "version": obj.get("version"),
-            "ownerId": obj.get("ownerId"),
             "sdkVersion": obj.get("sdkVersion"),
             "url": obj.get("url"),
             "tags": obj.get("tags"),
             "parameters": [RunTemplateParameter.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
-            "parameterGroups": [RunTemplateParameterGroup.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None,
-            "runTemplates": [RunTemplate.from_dict(_item) for _item in obj["runTemplates"]] if obj.get("runTemplates") is not None else None,
-            "security": SolutionSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
+            "parameterGroups": [RunTemplateParameterGroup.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None
         })
         return _obj
 

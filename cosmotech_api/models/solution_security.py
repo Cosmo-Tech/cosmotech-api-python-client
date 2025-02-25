@@ -26,10 +26,10 @@ from typing_extensions import Self
 
 class SolutionSecurity(BaseModel):
     """
-    the Solution security information
+    The Solution security information
     """ # noqa: E501
-    default: StrictStr = Field(description="the role by default")
-    access_control_list: List[SolutionAccessControl] = Field(description="the list which can access this Solution with detailed access control information", alias="accessControlList")
+    default: StrictStr = Field(description="The role by default")
+    access_control_list: List[SolutionAccessControl] = Field(description="The list which can access this Solution with detailed access control information", alias="accessControlList")
     __properties: ClassVar[List[str]] = ["default", "accessControlList"]
 
     model_config = ConfigDict(

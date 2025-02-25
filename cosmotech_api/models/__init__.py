@@ -34,7 +34,6 @@ from cosmotech_api.models.dataset_source_type import DatasetSourceType
 from cosmotech_api.models.dataset_twin_graph_hash import DatasetTwinGraphHash
 from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
 from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
-from cosmotech_api.models.delete_historical_data import DeleteHistoricalData
 from cosmotech_api.models.file_upload_metadata import FileUploadMetadata
 from cosmotech_api.models.file_upload_validation import FileUploadValidation
 from cosmotech_api.models.graph_properties import GraphProperties
@@ -59,7 +58,6 @@ from cosmotech_api.models.run_state import RunState
 from cosmotech_api.models.run_status import RunStatus
 from cosmotech_api.models.run_status_node import RunStatusNode
 from cosmotech_api.models.run_template import RunTemplate
-from cosmotech_api.models.run_template_orchestrator import RunTemplateOrchestrator
 from cosmotech_api.models.run_template_parameter import RunTemplateParameter
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.models.run_template_parameter_value import RunTemplateParameterValue
@@ -75,8 +73,10 @@ from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
 from cosmotech_api.models.send_run_data_request import SendRunDataRequest
 from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
+from cosmotech_api.models.solution_create_request import SolutionCreateRequest
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
+from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
 from cosmotech_api.models.source_info import SourceInfo
 from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
 from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
