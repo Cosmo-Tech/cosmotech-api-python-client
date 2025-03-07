@@ -21,8 +21,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from cosmotech_api.models.run_template_parameter import RunTemplateParameter
-from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,9 +38,7 @@ class SolutionUpdateRequest(BaseModel):
     sdk_version: Optional[StrictStr] = Field(default=None, description="The MAJOR.MINOR version used to build this solution", alias="sdkVersion")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
-    parameters: Optional[List[RunTemplateParameter]] = Field(default=None, description="The list of Run Template Parameters")
-    parameter_groups: Optional[List[RunTemplateParameterGroup]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "sdkVersion", "url", "tags", "parameters", "parameterGroups"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "sdkVersion", "url", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,20 +79,6 @@ class SolutionUpdateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in parameters (list)
-        _items = []
-        if self.parameters:
-            for _item_parameters in self.parameters:
-                if _item_parameters:
-                    _items.append(_item_parameters.to_dict())
-            _dict['parameters'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in parameter_groups (list)
-        _items = []
-        if self.parameter_groups:
-            for _item_parameter_groups in self.parameter_groups:
-                if _item_parameter_groups:
-                    _items.append(_item_parameter_groups.to_dict())
-            _dict['parameterGroups'] = _items
         return _dict
 
     @classmethod
@@ -118,9 +100,7 @@ class SolutionUpdateRequest(BaseModel):
             "version": obj.get("version"),
             "sdkVersion": obj.get("sdkVersion"),
             "url": obj.get("url"),
-            "tags": obj.get("tags"),
-            "parameters": [RunTemplateParameter.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
-            "parameterGroups": [RunTemplateParameterGroup.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None
+            "tags": obj.get("tags")
         })
         return _obj
 

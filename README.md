@@ -141,7 +141,7 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**list_permissions**](docs/OrganizationApi.md#list_permissions) | **GET** /organizations/permissions | Get all permissions per components
 *OrganizationApi* | [**update_organization**](docs/OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an Organization
 *OrganizationApi* | [**update_organization_access_control**](docs/OrganizationApi.md#update_organization_access_control) | **PATCH** /organizations/{organization_id}/security/access/{identity_id} | Update the specified access to User for an Organization
-*OrganizationApi* | [**update_organization_default_security**](docs/OrganizationApi.md#update_organization_default_security) | **POST** /organizations/{organization_id}/security/default | Update the Organization default security
+*OrganizationApi* | [**update_organization_default_security**](docs/OrganizationApi.md#update_organization_default_security) | **PATCH** /organizations/{organization_id}/security/default | Update the Organization default security
 *RunApi* | [**delete_run**](docs/RunApi.md#delete_run) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id} | Delete a run
 *RunApi* | [**get_run**](docs/RunApi.md#get_run) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id} | Get the details of a run
 *RunApi* | [**get_run_logs**](docs/RunApi.md#get_run_logs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/logs | get the logs for the Run

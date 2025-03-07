@@ -16,8 +16,6 @@ Name | Type | Description | Notes
 **sdk_version** | **str** | The MAJOR.MINOR version used to build this solution | [optional] 
 **url** | **str** | An optional URL link to solution page | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 
-**parameters** | [**List[RunTemplateParameter]**](RunTemplateParameter.md) | The list of Run Template Parameters | [optional] 
-**parameter_groups** | [**List[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md) | The list of parameters groups for the Run Templates | [optional] 
 
 ## Example
 

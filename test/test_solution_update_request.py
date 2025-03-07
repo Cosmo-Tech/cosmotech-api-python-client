@@ -45,33 +45,7 @@ class TestSolutionUpdateRequest(unittest.TestCase):
                 version = '1.0.0',
                 sdk_version = '2.4',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
-                tags = ["brewery","optimization"],
-                parameters = [
-                    cosmotech_api.models.run_template_parameter.RunTemplateParameter(
-                        id = '0', 
-                        labels = {
-                            'key' : ''
-                            }, 
-                        var_type = '', 
-                        default_value = '', 
-                        min_value = '', 
-                        max_value = '', 
-                        regex_validation = '', 
-                        options = { }, )
-                    ],
-                parameter_groups = [
-                    cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
-                        id = '0', 
-                        labels = {
-                            'key' : ''
-                            }, 
-                        is_table = True, 
-                        options = { }, 
-                        parent_id = '', 
-                        parameters = [
-                            ''
-                            ], )
-                    ]
+                tags = ["brewery","optimization"]
             )
         else:
             return SolutionUpdateRequest(

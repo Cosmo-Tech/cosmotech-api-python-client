@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**list_permissions**](OrganizationApi.md#list_permissions) | **GET** /organizations/permissions | Get all permissions per components
 [**update_organization**](OrganizationApi.md#update_organization) | **PATCH** /organizations/{organization_id} | Update an Organization
 [**update_organization_access_control**](OrganizationApi.md#update_organization_access_control) | **PATCH** /organizations/{organization_id}/security/access/{identity_id} | Update the specified access to User for an Organization
-[**update_organization_default_security**](OrganizationApi.md#update_organization_default_security) | **POST** /organizations/{organization_id}/security/default | Update the Organization default security
+[**update_organization_default_security**](OrganizationApi.md#update_organization_default_security) | **PATCH** /organizations/{organization_id}/security/default | Update the Organization default security
 
 
 # **create_organization**
