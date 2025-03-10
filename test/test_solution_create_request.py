@@ -78,7 +78,6 @@ class TestSolutionCreateRequest(unittest.TestCase):
                             'key' : ''
                             }, 
                         description = '', 
-                        csm_simulation = '', 
                         tags = [
                             ''
                             ], 
@@ -90,20 +89,9 @@ class TestSolutionCreateRequest(unittest.TestCase):
                             limits = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
                                 cpu = '', 
                                 memory = '', ), ), 
-                        no_data_ingestion_state = True, 
-                        parameters_handler_source = 'cloud', 
-                        dataset_validator_source = 'cloud', 
-                        pre_run_source = 'cloud', 
-                        run_source = 'cloud', 
-                        post_run_source = 'cloud', 
-                        scenariodata_transform_source = 'cloud', 
                         parameter_groups = [
                             ''
                             ], 
-                        stack_steps = True, 
-                        git_repository_url = '', 
-                        git_branch_name = '', 
-                        run_template_source_dir = '', 
                         execution_timeout = 56, )
                     ],
                 sdk_version = '2.4',

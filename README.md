@@ -255,7 +255,6 @@ Class | Method | HTTP request | Description
  - [RunTemplateParameterGroup](docs/RunTemplateParameterGroup.md)
  - [RunTemplateParameterValue](docs/RunTemplateParameterValue.md)
  - [RunTemplateResourceSizing](docs/RunTemplateResourceSizing.md)
- - [RunTemplateStepSource](docs/RunTemplateStepSource.md)
  - [Runner](docs/Runner.md)
  - [RunnerAccessControl](docs/RunnerAccessControl.md)
  - [RunnerResourceSizing](docs/RunnerResourceSizing.md)

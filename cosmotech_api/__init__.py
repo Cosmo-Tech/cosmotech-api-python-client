@@ -85,7 +85,6 @@ from cosmotech_api.models.run_template_parameter import RunTemplateParameter
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.models.run_template_parameter_value import RunTemplateParameterValue
 from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
-from cosmotech_api.models.run_template_step_source import RunTemplateStepSource
 from cosmotech_api.models.runner import Runner
 from cosmotech_api.models.runner_access_control import RunnerAccessControl
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing

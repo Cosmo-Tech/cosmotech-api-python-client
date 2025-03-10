@@ -65,7 +65,6 @@ cosmotech_api/models/run_template_parameter.py
 cosmotech_api/models/run_template_parameter_group.py
 cosmotech_api/models/run_template_parameter_value.py
 cosmotech_api/models/run_template_resource_sizing.py
-cosmotech_api/models/run_template_step_source.py
 cosmotech_api/models/runner.py
 cosmotech_api/models/runner_access_control.py
 cosmotech_api/models/runner_resource_sizing.py
@@ -146,7 +145,6 @@ docs/RunTemplateParameter.md
 docs/RunTemplateParameterGroup.md
 docs/RunTemplateParameterValue.md
 docs/RunTemplateResourceSizing.md
-docs/RunTemplateStepSource.md
 docs/Runner.md
 docs/RunnerAccessControl.md
 docs/RunnerApi.md
@@ -235,7 +233,6 @@ test/test_run_template_parameter.py
 test/test_run_template_parameter_group.py
 test/test_run_template_parameter_value.py
 test/test_run_template_resource_sizing.py
-test/test_run_template_step_source.py
 test/test_runner.py
 test/test_runner_access_control.py
 test/test_runner_api.py

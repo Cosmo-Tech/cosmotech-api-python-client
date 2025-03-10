@@ -18,11 +18,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
-from cosmotech_api.models.run_template_step_source import RunTemplateStepSource
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,24 +33,12 @@ class RunTemplate(BaseModel):
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Run Template name")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
     description: Optional[StrictStr] = Field(default=None, description="The Run Template description")
-    csm_simulation: Optional[StrictStr] = Field(default=None, description="The Cosmo Tech simulation name", alias="csmSimulation")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of Run Template tags")
     compute_size: Optional[StrictStr] = Field(default=None, description="The compute size needed for this Run Template", alias="computeSize")
     run_sizing: Optional[RunTemplateResourceSizing] = Field(default=None, alias="runSizing")
-    no_data_ingestion_state: Optional[StrictBool] = Field(default=None, description="Set to true if the run template does not want to check data ingestion state", alias="noDataIngestionState")
-    parameters_handler_source: Optional[RunTemplateStepSource] = Field(default=None, alias="parametersHandlerSource")
-    dataset_validator_source: Optional[RunTemplateStepSource] = Field(default=None, alias="datasetValidatorSource")
-    pre_run_source: Optional[RunTemplateStepSource] = Field(default=None, alias="preRunSource")
-    run_source: Optional[RunTemplateStepSource] = Field(default=None, alias="runSource")
-    post_run_source: Optional[RunTemplateStepSource] = Field(default=None, alias="postRunSource")
-    scenariodata_transform_source: Optional[RunTemplateStepSource] = Field(default=None, alias="scenariodataTransformSource")
     parameter_groups: Optional[List[StrictStr]] = Field(default=None, description="The ordered list of parameters groups for the Run Template", alias="parameterGroups")
-    stack_steps: Optional[StrictBool] = Field(default=None, description="Whether or not to stack adjacent scenario run steps", alias="stackSteps")
-    git_repository_url: Optional[StrictStr] = Field(default=None, description="An optional URL to the git repository", alias="gitRepositoryUrl")
-    git_branch_name: Optional[StrictStr] = Field(default=None, description="An optional git branch name", alias="gitBranchName")
-    run_template_source_dir: Optional[StrictStr] = Field(default=None, description="An optional directory where to find the run template source", alias="runTemplateSourceDir")
     execution_timeout: Optional[StrictInt] = Field(default=None, description="An optional duration in seconds in which a workflow is allowed to run", alias="executionTimeout")
-    __properties: ClassVar[List[str]] = ["id", "name", "labels", "description", "csmSimulation", "tags", "computeSize", "runSizing", "noDataIngestionState", "parametersHandlerSource", "datasetValidatorSource", "preRunSource", "runSource", "postRunSource", "scenariodataTransformSource", "parameterGroups", "stackSteps", "gitRepositoryUrl", "gitBranchName", "runTemplateSourceDir", "executionTimeout"]
+    __properties: ClassVar[List[str]] = ["id", "name", "labels", "description", "tags", "computeSize", "runSizing", "parameterGroups", "executionTimeout"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,22 +98,10 @@ class RunTemplate(BaseModel):
             "name": obj.get("name"),
             "labels": obj.get("labels"),
             "description": obj.get("description"),
-            "csmSimulation": obj.get("csmSimulation"),
             "tags": obj.get("tags"),
             "computeSize": obj.get("computeSize"),
             "runSizing": RunTemplateResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
-            "noDataIngestionState": obj.get("noDataIngestionState"),
-            "parametersHandlerSource": obj.get("parametersHandlerSource"),
-            "datasetValidatorSource": obj.get("datasetValidatorSource"),
-            "preRunSource": obj.get("preRunSource"),
-            "runSource": obj.get("runSource"),
-            "postRunSource": obj.get("postRunSource"),
-            "scenariodataTransformSource": obj.get("scenariodataTransformSource"),
             "parameterGroups": obj.get("parameterGroups"),
-            "stackSteps": obj.get("stackSteps"),
-            "gitRepositoryUrl": obj.get("gitRepositoryUrl"),
-            "gitBranchName": obj.get("gitBranchName"),
-            "runTemplateSourceDir": obj.get("runTemplateSourceDir"),
             "executionTimeout": obj.get("executionTimeout")
         })
         return _obj
