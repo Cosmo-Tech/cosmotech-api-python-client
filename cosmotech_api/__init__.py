@@ -20,6 +20,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from cosmotech_api.api.connector_api import ConnectorApi
 from cosmotech_api.api.dataset_api import DatasetApi
+from cosmotech_api.api.meta_api import MetaApi
 from cosmotech_api.api.organization_api import OrganizationApi
 from cosmotech_api.api.run_api import RunApi
 from cosmotech_api.api.runner_api import RunnerApi
@@ -38,6 +39,8 @@ from cosmotech_api.exceptions import ApiAttributeError
 from cosmotech_api.exceptions import ApiException
 
 # import models into sdk package
+from cosmotech_api.models.about_info import AboutInfo
+from cosmotech_api.models.about_info_version import AboutInfoVersion
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
 from cosmotech_api.models.connector import Connector
 from cosmotech_api.models.connector_parameter import ConnectorParameter

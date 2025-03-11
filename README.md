@@ -128,6 +128,7 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**update_dataset_access_control**](docs/DatasetApi.md#update_dataset_access_control) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id} | Update the specified access to User for a Dataset
 *DatasetApi* | [**update_twingraph_entities**](docs/DatasetApi.md#update_twingraph_entities) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type} | Update entities in a graph instance
 *DatasetApi* | [**upload_twingraph**](docs/DatasetApi.md#upload_twingraph) | **POST** /organizations/{organization_id}/datasets/{dataset_id} | Upload data from zip file to dataset&#39;s twingraph
+*MetaApi* | [**about**](docs/MetaApi.md#about) | **GET** /about | Get various information about the API
 *OrganizationApi* | [**create_organization**](docs/OrganizationApi.md#create_organization) | **POST** /organizations | Create a new organization
 *OrganizationApi* | [**create_organization_access_control**](docs/OrganizationApi.md#create_organization_access_control) | **POST** /organizations/{organization_id}/security/access | Add a control access to the Organization
 *OrganizationApi* | [**delete_organization**](docs/OrganizationApi.md#delete_organization) | **DELETE** /organizations/{organization_id} | Delete an organization
@@ -208,6 +209,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AboutInfo](docs/AboutInfo.md)
+ - [AboutInfoVersion](docs/AboutInfoVersion.md)
  - [ComponentRolePermissions](docs/ComponentRolePermissions.md)
  - [Connector](docs/Connector.md)
  - [ConnectorParameter](docs/ConnectorParameter.md)
