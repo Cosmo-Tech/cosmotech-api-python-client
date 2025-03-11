@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.runner import Runner
+from cosmotech_api.models.runner_create_request import RunnerCreateRequest
 
-class TestRunner(unittest.TestCase):
-    """Runner unit test stubs"""
+class TestRunnerCreateRequest(unittest.TestCase):
+    """RunnerCreateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,34 +26,24 @@ class TestRunner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Runner:
-        """Test Runner
+    def make_instance(self, include_optional) -> RunnerCreateRequest:
+        """Test RunnerCreateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Runner`
+        # uncomment below to create an instance of `RunnerCreateRequest`
         """
-        model = Runner()
+        model = RunnerCreateRequest()
         if include_optional:
-            return Runner(
-                id = '',
-                name = '',
+            return RunnerCreateRequest(
+                name = '0',
                 description = '',
                 tags = [
                     ''
                     ],
-                parent_id = '',
-                owner_id = '',
-                root_id = '',
-                solution_id = '',
-                run_template_id = '',
-                organization_id = '',
-                workspace_id = '',
-                creation_date = 56,
-                last_update = 56,
-                owner_name = '',
-                solution_name = '',
-                run_template_name = '',
+                solution_id = 'sol-123456aBcDeF',
+                parent_id = 'r-123456aBcDeF',
+                run_template_id = '0',
                 dataset_list = [
                     ''
                     ],
@@ -71,8 +61,9 @@ class TestRunner(unittest.TestCase):
                         value = '', 
                         is_inherited = True, )
                     ],
-                last_run_id = '',
-                validation_status = 'Draft',
+                owner_name = '0',
+                solution_name = '0',
+                run_template_name = '0',
                 security = cosmotech_api.models.runner_security.RunnerSecurity(
                     default = '', 
                     access_control_list = [
@@ -82,40 +73,16 @@ class TestRunner(unittest.TestCase):
                         ], )
             )
         else:
-            return Runner(
-                id = '',
-                name = '',
-                owner_id = '',
-                solution_id = '',
-                run_template_id = '',
-                organization_id = '',
-                workspace_id = '',
-                creation_date = 56,
-                last_update = 56,
-                owner_name = '',
-                dataset_list = [
-                    ''
-                    ],
-                parameters_values = [
-                    cosmotech_api.models.runner_run_template_parameter_value.RunnerRunTemplateParameterValue(
-                        parameter_id = '', 
-                        var_type = '', 
-                        value = '', 
-                        is_inherited = True, )
-                    ],
-                validation_status = 'Draft',
-                security = cosmotech_api.models.runner_security.RunnerSecurity(
-                    default = '', 
-                    access_control_list = [
-                        cosmotech_api.models.runner_access_control.RunnerAccessControl(
-                            id = '', 
-                            role = '', )
-                        ], ),
+            return RunnerCreateRequest(
+                name = '0',
+                solution_id = 'sol-123456aBcDeF',
+                run_template_id = '0',
+                owner_name = '0',
         )
         """
 
-    def testRunner(self):
-        """Test Runner"""
+    def testRunnerCreateRequest(self):
+        """Test RunnerCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -150,21 +150,21 @@ Class | Method | HTTP request | Description
 *RunApi* | [**list_runs**](docs/RunApi.md#list_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs | get the list of Runs for the Runner
 *RunApi* | [**query_run_data**](docs/RunApi.md#query_run_data) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/data/query | query the run data
 *RunApi* | [**send_run_data**](docs/RunApi.md#send_run_data) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/data/send | Send data associated to a run
-*RunnerApi* | [**add_runner_access_control**](docs/RunnerApi.md#add_runner_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access | Add a control access to the Runner
 *RunnerApi* | [**create_runner**](docs/RunnerApi.md#create_runner) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners | Create a new Runner
+*RunnerApi* | [**create_runner_access_control**](docs/RunnerApi.md#create_runner_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access | Add a control access to the Runner
 *RunnerApi* | [**delete_runner**](docs/RunnerApi.md#delete_runner) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id} | Delete a runner
+*RunnerApi* | [**delete_runner_access_control**](docs/RunnerApi.md#delete_runner_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id} | Remove the specified access from the given Organization Runner
 *RunnerApi* | [**get_runner**](docs/RunnerApi.md#get_runner) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id} | Get the details of an runner
 *RunnerApi* | [**get_runner_access_control**](docs/RunnerApi.md#get_runner_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id} | Get a control access for the Runner
-*RunnerApi* | [**get_runner_permissions**](docs/RunnerApi.md#get_runner_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/permissions/{role} | Get the Runner permission by given role
 *RunnerApi* | [**get_runner_security**](docs/RunnerApi.md#get_runner_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security | Get the Runner security information
-*RunnerApi* | [**get_runner_security_users**](docs/RunnerApi.md#get_runner_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/users | Get the Runner security users list
+*RunnerApi* | [**list_runner_permissions**](docs/RunnerApi.md#list_runner_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/permissions/{role} | Get the Runner permission by given role
+*RunnerApi* | [**list_runner_security_users**](docs/RunnerApi.md#list_runner_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/users | Get the Runner security users list
 *RunnerApi* | [**list_runners**](docs/RunnerApi.md#list_runners) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners | List all Runners
-*RunnerApi* | [**remove_runner_access_control**](docs/RunnerApi.md#remove_runner_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id} | Remove the specified access from the given Organization Runner
-*RunnerApi* | [**set_runner_default_security**](docs/RunnerApi.md#set_runner_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default | Set the Runner default security
 *RunnerApi* | [**start_run**](docs/RunnerApi.md#start_run) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/start | Start a run with runner parameters
 *RunnerApi* | [**stop_run**](docs/RunnerApi.md#stop_run) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/stop | Stop the last run
 *RunnerApi* | [**update_runner**](docs/RunnerApi.md#update_runner) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id} | Update a runner
 *RunnerApi* | [**update_runner_access_control**](docs/RunnerApi.md#update_runner_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id} | Update the specified access to User for a Runner
+*RunnerApi* | [**update_runner_default_security**](docs/RunnerApi.md#update_runner_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default | Set the Runner default security
 *SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Create a new solution
 *SolutionApi* | [**create_solution_access_control**](docs/SolutionApi.md#create_solution_access_control) | **POST** /organizations/{organization_id}/solutions/{solution_id}/security/access | Create solution access control
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
@@ -260,10 +260,12 @@ Class | Method | HTTP request | Description
  - [RunTemplateResourceSizing](docs/RunTemplateResourceSizing.md)
  - [Runner](docs/Runner.md)
  - [RunnerAccessControl](docs/RunnerAccessControl.md)
+ - [RunnerCreateRequest](docs/RunnerCreateRequest.md)
  - [RunnerResourceSizing](docs/RunnerResourceSizing.md)
  - [RunnerRole](docs/RunnerRole.md)
  - [RunnerRunTemplateParameterValue](docs/RunnerRunTemplateParameterValue.md)
  - [RunnerSecurity](docs/RunnerSecurity.md)
+ - [RunnerUpdateRequest](docs/RunnerUpdateRequest.md)
  - [RunnerValidationStatus](docs/RunnerValidationStatus.md)
  - [SendRunDataRequest](docs/SendRunDataRequest.md)
  - [Solution](docs/Solution.md)

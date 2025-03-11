@@ -66,10 +66,12 @@ from cosmotech_api.models.run_template_parameter_value import RunTemplateParamet
 from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
 from cosmotech_api.models.runner import Runner
 from cosmotech_api.models.runner_access_control import RunnerAccessControl
+from cosmotech_api.models.runner_create_request import RunnerCreateRequest
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_role import RunnerRole
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
 from cosmotech_api.models.runner_security import RunnerSecurity
+from cosmotech_api.models.runner_update_request import RunnerUpdateRequest
 from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
 from cosmotech_api.models.send_run_data_request import SendRunDataRequest
 from cosmotech_api.models.solution import Solution

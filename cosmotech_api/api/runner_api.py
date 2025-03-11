@@ -23,8 +23,10 @@ from typing_extensions import Annotated
 from cosmotech_api.models.created_run import CreatedRun
 from cosmotech_api.models.runner import Runner
 from cosmotech_api.models.runner_access_control import RunnerAccessControl
+from cosmotech_api.models.runner_create_request import RunnerCreateRequest
 from cosmotech_api.models.runner_role import RunnerRole
 from cosmotech_api.models.runner_security import RunnerSecurity
+from cosmotech_api.models.runner_update_request import RunnerUpdateRequest
 
 from cosmotech_api.api_client import ApiClient, RequestSerialized
 from cosmotech_api.api_response import ApiResponse
@@ -45,7 +47,312 @@ class RunnerApi:
 
 
     @validate_call
-    def add_runner_access_control(
+    def create_runner(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_create_request: Annotated[RunnerCreateRequest, Field(description="the Runner to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Runner:
+        """Create a new Runner
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_create_request: the Runner to create (required)
+        :type runner_create_request: RunnerCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_runner_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_create_request=runner_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Runner",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_runner_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_create_request: Annotated[RunnerCreateRequest, Field(description="the Runner to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Runner]:
+        """Create a new Runner
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_create_request: the Runner to create (required)
+        :type runner_create_request: RunnerCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_runner_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_create_request=runner_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Runner",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_runner_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_create_request: Annotated[RunnerCreateRequest, Field(description="the Runner to create")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create a new Runner
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_create_request: the Runner to create (required)
+        :type runner_create_request: RunnerCreateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_runner_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_create_request=runner_create_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Runner",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_runner_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        runner_create_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if runner_create_request is not None:
+            _body_params = runner_create_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_runner_access_control(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -97,7 +404,7 @@ class RunnerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_runner_access_control_serialize(
+        _param = self._create_runner_access_control_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
@@ -124,7 +431,7 @@ class RunnerApi:
 
 
     @validate_call
-    def add_runner_access_control_with_http_info(
+    def create_runner_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -176,7 +483,7 @@ class RunnerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_runner_access_control_serialize(
+        _param = self._create_runner_access_control_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
@@ -203,7 +510,7 @@ class RunnerApi:
 
 
     @validate_call
-    def add_runner_access_control_without_preload_content(
+    def create_runner_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -255,7 +562,7 @@ class RunnerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_runner_access_control_serialize(
+        _param = self._create_runner_access_control_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
@@ -277,7 +584,7 @@ class RunnerApi:
         return response_data.response
 
 
-    def _add_runner_access_control_serialize(
+    def _create_runner_access_control_serialize(
         self,
         organization_id,
         workspace_id,
@@ -349,311 +656,6 @@ class RunnerApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def create_runner(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner: Annotated[Runner, Field(description="the Runner to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Runner:
-        """Create a new Runner
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner: the Runner to create (required)
-        :type runner: Runner
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_runner_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner=runner,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Runner",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def create_runner_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner: Annotated[Runner, Field(description="the Runner to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Runner]:
-        """Create a new Runner
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner: the Runner to create (required)
-        :type runner: Runner
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_runner_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner=runner,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Runner",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def create_runner_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner: Annotated[Runner, Field(description="the Runner to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Create a new Runner
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner: the Runner to create (required)
-        :type runner: Runner
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_runner_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner=runner,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Runner",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _create_runner_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        runner,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if runner is not None:
-            _body_params = runner
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -938,6 +940,305 @@ class RunnerApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_runner_access_control(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Remove the specified access from the given Organization Runner
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_runner_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_runner_access_control_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Remove the specified access from the given Organization Runner
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_runner_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_runner_access_control_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Remove the specified access from the given Organization Runner
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_runner_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_runner_access_control_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        runner_id,
+        identity_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if runner_id is not None:
+            _path_params['runner_id'] = runner_id
+        if identity_id is not None:
+            _path_params['identity_id'] = identity_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1551,309 +1852,6 @@ class RunnerApi:
 
 
     @validate_call
-    def get_runner_permissions(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[str]:
-        """Get the Runner permission by given role
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param role: the Role (required)
-        :type role: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_runner_permissions_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            role=role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_runner_permissions_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[str]]:
-        """Get the Runner permission by given role
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param role: the Role (required)
-        :type role: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_runner_permissions_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            role=role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_runner_permissions_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get the Runner permission by given role
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param role: the Role (required)
-        :type role: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_runner_permissions_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            role=role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_runner_permissions_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        runner_id,
-        role,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        if runner_id is not None:
-            _path_params['runner_id'] = runner_id
-        if role is not None:
-            _path_params['role'] = role
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/permissions/{role}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def get_runner_security(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
@@ -2145,7 +2143,310 @@ class RunnerApi:
 
 
     @validate_call
-    def get_runner_security_users(
+    def list_runner_permissions(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        role: Annotated[StrictStr, Field(description="the Role")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[str]:
+        """Get the Runner permission by given role
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param role: the Role (required)
+        :type role: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_runner_permissions_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            role=role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[str]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_runner_permissions_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        role: Annotated[StrictStr, Field(description="the Role")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[str]]:
+        """Get the Runner permission by given role
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param role: the Role (required)
+        :type role: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_runner_permissions_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            role=role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[str]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_runner_permissions_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        role: Annotated[StrictStr, Field(description="the Role")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get the Runner permission by given role
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param role: the Role (required)
+        :type role: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_runner_permissions_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            role=role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[str]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_runner_permissions_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        runner_id,
+        role,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if runner_id is not None:
+            _path_params['runner_id'] = runner_id
+        if role is not None:
+            _path_params['role'] = role
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/permissions/{role}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_runner_security_users(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -2194,7 +2495,7 @@ class RunnerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_runner_security_users_serialize(
+        _param = self._list_runner_security_users_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
@@ -2220,7 +2521,7 @@ class RunnerApi:
 
 
     @validate_call
-    def get_runner_security_users_with_http_info(
+    def list_runner_security_users_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -2269,7 +2570,7 @@ class RunnerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_runner_security_users_serialize(
+        _param = self._list_runner_security_users_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
@@ -2295,7 +2596,7 @@ class RunnerApi:
 
 
     @validate_call
-    def get_runner_security_users_without_preload_content(
+    def list_runner_security_users_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
@@ -2344,7 +2645,7 @@ class RunnerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_runner_security_users_serialize(
+        _param = self._list_runner_security_users_serialize(
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
@@ -2365,7 +2666,7 @@ class RunnerApi:
         return response_data.response
 
 
-    def _get_runner_security_users_serialize(
+    def _list_runner_security_users_serialize(
         self,
         organization_id,
         workspace_id,
@@ -2727,625 +3028,6 @@ class RunnerApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def remove_runner_access_control(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove the specified access from the given Organization Runner
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_runner_access_control_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def remove_runner_access_control_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove the specified access from the given Organization Runner
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_runner_access_control_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def remove_runner_access_control_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Remove the specified access from the given Organization Runner
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_runner_access_control_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _remove_runner_access_control_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        runner_id,
-        identity_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        if runner_id is not None:
-            _path_params['runner_id'] = runner_id
-        if identity_id is not None:
-            _path_params['identity_id'] = identity_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def set_runner_default_security(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RunnerSecurity:
-        """Set the Runner default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param runner_role: This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. (required)
-        :type runner_role: RunnerRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_runner_default_security_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            runner_role=runner_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "RunnerSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def set_runner_default_security_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RunnerSecurity]:
-        """Set the Runner default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param runner_role: This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. (required)
-        :type runner_role: RunnerRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_runner_default_security_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            runner_role=runner_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "RunnerSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def set_runner_default_security_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Set the Runner default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
-        :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
-        :type runner_id: str
-        :param runner_role: This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. (required)
-        :type runner_role: RunnerRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_runner_default_security_serialize(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            runner_id=runner_id,
-            runner_role=runner_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "RunnerSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _set_runner_default_security_serialize(
-        self,
-        organization_id,
-        workspace_id,
-        runner_id,
-        runner_role,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if workspace_id is not None:
-            _path_params['workspace_id'] = workspace_id
-        if runner_id is not None:
-            _path_params['runner_id'] = runner_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if runner_role is not None:
-            _body_params = runner_role
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3942,7 +3624,7 @@ class RunnerApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        runner: Annotated[Runner, Field(description="the new Runner details. This endpoint can't be used to update security")],
+        runner_update_request: Annotated[RunnerUpdateRequest, Field(description="the new Runner details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3965,8 +3647,8 @@ class RunnerApi:
         :type workspace_id: str
         :param runner_id: the Runner identifier (required)
         :type runner_id: str
-        :param runner: the new Runner details. This endpoint can't be used to update security (required)
-        :type runner: Runner
+        :param runner_update_request: the new Runner details. This endpoint can't be used to update security (required)
+        :type runner_update_request: RunnerUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3993,7 +3675,7 @@ class RunnerApi:
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
-            runner=runner,
+            runner_update_request=runner_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4022,7 +3704,7 @@ class RunnerApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        runner: Annotated[Runner, Field(description="the new Runner details. This endpoint can't be used to update security")],
+        runner_update_request: Annotated[RunnerUpdateRequest, Field(description="the new Runner details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4045,8 +3727,8 @@ class RunnerApi:
         :type workspace_id: str
         :param runner_id: the Runner identifier (required)
         :type runner_id: str
-        :param runner: the new Runner details. This endpoint can't be used to update security (required)
-        :type runner: Runner
+        :param runner_update_request: the new Runner details. This endpoint can't be used to update security (required)
+        :type runner_update_request: RunnerUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4073,7 +3755,7 @@ class RunnerApi:
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
-            runner=runner,
+            runner_update_request=runner_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4102,7 +3784,7 @@ class RunnerApi:
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        runner: Annotated[Runner, Field(description="the new Runner details. This endpoint can't be used to update security")],
+        runner_update_request: Annotated[RunnerUpdateRequest, Field(description="the new Runner details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4125,8 +3807,8 @@ class RunnerApi:
         :type workspace_id: str
         :param runner_id: the Runner identifier (required)
         :type runner_id: str
-        :param runner: the new Runner details. This endpoint can't be used to update security (required)
-        :type runner: Runner
+        :param runner_update_request: the new Runner details. This endpoint can't be used to update security (required)
+        :type runner_update_request: RunnerUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4153,7 +3835,7 @@ class RunnerApi:
             organization_id=organization_id,
             workspace_id=workspace_id,
             runner_id=runner_id,
-            runner=runner,
+            runner_update_request=runner_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4177,7 +3859,7 @@ class RunnerApi:
         organization_id,
         workspace_id,
         runner_id,
-        runner,
+        runner_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4209,8 +3891,8 @@ class RunnerApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if runner is not None:
-            _body_params = runner
+        if runner_update_request is not None:
+            _body_params = runner_update_request
 
 
         # set the HTTP header `Accept`
@@ -4578,6 +4260,326 @@ class RunnerApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_runner_default_security(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RunnerSecurity:
+        """Set the Runner default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param runner_role: This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. (required)
+        :type runner_role: RunnerRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_runner_default_security_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            runner_role=runner_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "RunnerSecurity",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_runner_default_security_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[RunnerSecurity]:
+        """Set the Runner default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param runner_role: This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. (required)
+        :type runner_role: RunnerRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_runner_default_security_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            runner_role=runner_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "RunnerSecurity",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_runner_default_security_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Set the Runner default security
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param runner_id: the Runner identifier (required)
+        :type runner_id: str
+        :param runner_role: This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner. (required)
+        :type runner_role: RunnerRole
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_runner_default_security_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            runner_id=runner_id,
+            runner_role=runner_role,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "RunnerSecurity",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_runner_default_security_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        runner_id,
+        runner_role,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if runner_id is not None:
+            _path_params['runner_id'] = runner_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if runner_role is not None:
+            _body_params = runner_role
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

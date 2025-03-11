@@ -18,42 +18,50 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
 from cosmotech_api.models.runner_security import RunnerSecurity
-from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Runner(BaseModel):
+class RunnerCreateRequest(BaseModel):
     """
-    a Runner with complete information
+    Request object for creating a new runner
     """ # noqa: E501
-    id: StrictStr = Field(description="the Runner unique identifier")
-    name: StrictStr = Field(description="the Runner name")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the Runner name")
     description: Optional[StrictStr] = Field(default=None, description="the Runner description")
     tags: Optional[List[StrictStr]] = Field(default=None, description="the list of tags")
-    parent_id: Optional[StrictStr] = Field(default=None, description="the Runner parent id", alias="parentId")
-    owner_id: StrictStr = Field(description="the user id which own this Runner", alias="ownerId")
-    root_id: Optional[StrictStr] = Field(default=None, description="the runner root id", alias="rootId")
-    solution_id: StrictStr = Field(description="the Solution Id associated with this Runner", alias="solutionId")
-    run_template_id: StrictStr = Field(description="the Solution Run Template Id associated with this Runner", alias="runTemplateId")
-    organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
-    workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
-    creation_date: StrictInt = Field(description="the Runner creation date", alias="creationDate")
-    last_update: StrictInt = Field(description="the last time a Runner was updated", alias="lastUpdate")
-    owner_name: StrictStr = Field(description="the name of the owner", alias="ownerName")
-    solution_name: Optional[StrictStr] = Field(default=None, description="the Solution name", alias="solutionName")
-    run_template_name: Optional[StrictStr] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
-    dataset_list: List[StrictStr] = Field(description="the list of Dataset Id associated to this Runner Run Template", alias="datasetList")
+    solution_id: Annotated[str, Field(strict=True)] = Field(description="the Solution Id associated with this Runner", alias="solutionId")
+    parent_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="the Runner parent id", alias="parentId")
+    run_template_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the Solution Run Template Id associated with this Runner", alias="runTemplateId")
+    dataset_list: Optional[List[StrictStr]] = Field(default=None, description="the list of Dataset Id associated to this Runner Run Template", alias="datasetList")
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, alias="runSizing")
-    parameters_values: List[RunnerRunTemplateParameterValue] = Field(description="the list of Solution Run Template parameters values", alias="parametersValues")
-    last_run_id: Optional[StrictStr] = Field(default=None, description="last run id from current runner", alias="lastRunId")
-    validation_status: RunnerValidationStatus = Field(alias="validationStatus")
-    security: RunnerSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "ownerId", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "creationDate", "lastUpdate", "ownerName", "solutionName", "runTemplateName", "datasetList", "runSizing", "parametersValues", "lastRunId", "validationStatus", "security"]
+    parameters_values: Optional[List[RunnerRunTemplateParameterValue]] = Field(default=None, description="the list of Solution Run Template parameters values", alias="parametersValues")
+    owner_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the name of the owner", alias="ownerName")
+    solution_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the Solution name", alias="solutionName")
+    run_template_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
+    security: Optional[RunnerSecurity] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "solutionId", "parentId", "runTemplateId", "datasetList", "runSizing", "parametersValues", "ownerName", "solutionName", "runTemplateName", "security"]
+
+    @field_validator('solution_id')
+    def solution_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^sol-\w{10,20}", value):
+            raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
+        return value
+
+    @field_validator('parent_id')
+    def parent_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^r-\w{10,20}", value):
+            raise ValueError(r"must validate the regular expression /^r-\w{10,20}/")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,7 +81,7 @@ class Runner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Runner from a JSON string"""
+        """Create an instance of RunnerCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -89,23 +97,9 @@ class Runner(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "id",
-            "owner_id",
-            "root_id",
             "solution_id",
-            "organization_id",
-            "workspace_id",
-            "creation_date",
-            "last_update",
             "owner_name",
             "solution_name",
             "run_template_name",
@@ -133,7 +127,7 @@ class Runner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Runner from a dict"""
+        """Create an instance of RunnerCreateRequest from a dict"""
         if obj is None:
             return None
 
@@ -141,27 +135,18 @@ class Runner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "tags": obj.get("tags"),
-            "parentId": obj.get("parentId"),
-            "ownerId": obj.get("ownerId"),
-            "rootId": obj.get("rootId"),
             "solutionId": obj.get("solutionId"),
+            "parentId": obj.get("parentId"),
             "runTemplateId": obj.get("runTemplateId"),
-            "organizationId": obj.get("organizationId"),
-            "workspaceId": obj.get("workspaceId"),
-            "creationDate": obj.get("creationDate"),
-            "lastUpdate": obj.get("lastUpdate"),
-            "ownerName": obj.get("ownerName"),
-            "solutionName": obj.get("solutionName"),
-            "runTemplateName": obj.get("runTemplateName"),
             "datasetList": obj.get("datasetList"),
             "runSizing": RunnerResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
             "parametersValues": [RunnerRunTemplateParameterValue.from_dict(_item) for _item in obj["parametersValues"]] if obj.get("parametersValues") is not None else None,
-            "lastRunId": obj.get("lastRunId"),
-            "validationStatus": obj.get("validationStatus"),
+            "ownerName": obj.get("ownerName"),
+            "solutionName": obj.get("solutionName"),
+            "runTemplateName": obj.get("runTemplateName"),
             "security": RunnerSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj
