@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1625,7 +1625,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = 'organization_id_example' # str | the Organization identifier
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     scenario_id = 'scenario_id_example' # str | the Scenario identifier
-    scenario = cosmotech_api.Scenario() # Scenario | the new Scenario details. This endpoint can't be used to update security
+    scenario = cosmotech_api.Scenario() # Scenario | The new Scenario details. This endpoint can't be used to update :   - id   - ownerId   - datasetList   - solutionId   - runTemplateId   - parametersValues   - security 
 
     try:
         # Update a scenario
@@ -1646,7 +1646,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier | 
  **workspace_id** | **str**| the Workspace identifier | 
  **scenario_id** | **str**| the Scenario identifier | 
- **scenario** | [**Scenario**](Scenario.md)| the new Scenario details. This endpoint can&#39;t be used to update security | 
+ **scenario** | [**Scenario**](Scenario.md)| The new Scenario details. This endpoint can&#39;t be used to update :   - id   - ownerId   - datasetList   - solutionId   - runTemplateId   - parametersValues   - security  | 
 
 ### Return type
 
@@ -1742,7 +1742,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details

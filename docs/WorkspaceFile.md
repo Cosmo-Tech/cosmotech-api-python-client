@@ -6,7 +6,7 @@ a Workspace File resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_name** | **str** | the Workspace File name | 
+**file_name** | **str** | the Workspace File name | [optional] 
 
 ## Example
 

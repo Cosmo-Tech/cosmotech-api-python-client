@@ -1,6 +1,6 @@
 # cosmotech_api.DatasetApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**search_datasets**](DatasetApi.md#search_datasets) | **POST** /organizations/{organization_id}/datasets/search | Search Datasets by tags
 [**set_dataset_default_security**](DatasetApi.md#set_dataset_default_security) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/security/default | Set the Dataset default security
 [**twingraph_batch_query**](DatasetApi.md#twingraph_batch_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch-query | Run a query on a graph instance and return the result as a zip file in async mode
-[**twingraph_batch_update**](DatasetApi.md#twingraph_batch_update) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch | Async batch update by loading a CSV file on a graph instance 
+[**twingraph_batch_update**](DatasetApi.md#twingraph_batch_update) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/batch | Async batch update by loading a CSV file on a graph instance
 [**twingraph_query**](DatasetApi.md#twingraph_query) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/twingraph | Return the result of a query made on the graph instance as a json
 [**unlink_workspace**](DatasetApi.md#unlink_workspace) | **POST** /organizations/{organization_id}/datasets/{dataset_id}/unlink | 
 [**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/datasets/{dataset_id} | Update a dataset
@@ -52,10 +52,10 @@ from cosmotech_api.models.dataset_access_control import DatasetAccessControl
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -130,10 +130,10 @@ from cosmotech_api.models.dataset_compatibility import DatasetCompatibility
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -211,10 +211,10 @@ from cosmotech_api.models.dataset_copy_parameters import DatasetCopyParameters
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -288,10 +288,10 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -367,10 +367,10 @@ from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -446,10 +446,10 @@ from cosmotech_api.models.graph_properties import GraphProperties
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -524,10 +524,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -599,10 +599,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -677,10 +677,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -752,10 +752,10 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -770,7 +770,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.DatasetApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
-    page = 56 # int | page number to query (first page is at index 0) (optional)
+    page = 56 # int | page number to query (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -790,7 +790,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier | 
- **page** | **int**| page number to query (first page is at index 0) | [optional] 
+ **page** | **int**| page number to query | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
@@ -829,10 +829,10 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -905,10 +905,10 @@ from cosmotech_api.models.dataset_access_control import DatasetAccessControl
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -983,10 +983,10 @@ from cosmotech_api.models.dataset_security import DatasetSecurity
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1058,10 +1058,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1135,10 +1135,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1211,10 +1211,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1290,10 +1290,10 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1358,7 +1358,7 @@ Name | Type | Description  | Notes
 
 Refresh data on dataset from dataset's source
 
-Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin      Azure storage      Local File (import a new file)  During refresh, datas are overwritten Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin       Azure storage      Local File (import a new file)  During refresh, datas are overwritten Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1370,10 +1370,10 @@ from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1444,10 +1444,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1517,10 +1517,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1594,10 +1594,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1670,10 +1670,10 @@ from cosmotech_api.models.dataset_search import DatasetSearch
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1689,7 +1689,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = cosmotech_api.DatasetApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
     dataset_search = cosmotech_api.DatasetSearch() # DatasetSearch | the Dataset search parameters
-    page = 56 # int | page number to query (first page is at index 0) (optional)
+    page = 56 # int | page number to query (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -1710,7 +1710,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier | 
  **dataset_search** | [**DatasetSearch**](DatasetSearch.md)| the Dataset search parameters | 
- **page** | **int**| page number to query (first page is at index 0) | [optional] 
+ **page** | **int**| page number to query | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
@@ -1750,10 +1750,10 @@ from cosmotech_api.models.dataset_security import DatasetSecurity
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1831,10 +1831,10 @@ from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1896,7 +1896,7 @@ Name | Type | Description  | Notes
 # **twingraph_batch_update**
 > TwinGraphBatchResult twingraph_batch_update(organization_id, dataset_id, twin_graph_query, body)
 
-Async batch update by loading a CSV file on a graph instance 
+Async batch update by loading a CSV file on a graph instance
 
 Async batch update by loading a CSV file on a graph instance  Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
@@ -1911,10 +1911,10 @@ from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1937,7 +1937,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
  # bytearray | 
 
     try:
-        # Async batch update by loading a CSV file on a graph instance 
+        # Async batch update by loading a CSV file on a graph instance
         api_response = api_instance.twingraph_batch_update(organization_id, dataset_id, twin_graph_query, body)
         print("The response of DatasetApi->twingraph_batch_update:\n")
         pprint(api_response)
@@ -1996,10 +1996,10 @@ from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2047,7 +2047,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2073,10 +2073,10 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2151,10 +2151,10 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2170,7 +2170,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = cosmotech_api.DatasetApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
     dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    dataset = cosmotech_api.Dataset() # Dataset | the new Dataset details. This endpoint can't be used to update security
+    dataset = cosmotech_api.Dataset() # Dataset | The new Dataset details. This endpoint can't be used to update :   - id   - security 
 
     try:
         # Update a dataset
@@ -2190,7 +2190,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| the Organization identifier | 
  **dataset_id** | **str**| the Dataset identifier | 
- **dataset** | [**Dataset**](Dataset.md)| the new Dataset details. This endpoint can&#39;t be used to update security | 
+ **dataset** | [**Dataset**](Dataset.md)| The new Dataset details. This endpoint can&#39;t be used to update :   - id   - security  | 
 
 ### Return type
 
@@ -2231,10 +2231,10 @@ from cosmotech_api.models.dataset_role import DatasetRole
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2313,10 +2313,10 @@ from cosmotech_api.models.graph_properties import GraphProperties
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2366,7 +2366,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2394,10 +2394,10 @@ from cosmotech_api.models.file_upload_validation import FileUploadValidation
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters

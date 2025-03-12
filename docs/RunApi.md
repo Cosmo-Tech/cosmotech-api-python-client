@@ -1,6 +1,6 @@
 # cosmotech_api.RunApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://dev.api.cosmotech.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,10 +27,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -106,10 +106,10 @@ from cosmotech_api.models.run import Run
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -186,10 +186,10 @@ from cosmotech_api.models.run_logs import RunLogs
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -265,10 +265,10 @@ from cosmotech_api.models.run_status import RunStatus
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -344,10 +344,10 @@ from cosmotech_api.models.run import Run
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -364,7 +364,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = 'organization_id_example' # str | the Organization identifier
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     runner_id = 'runner_id_example' # str | the Runner identifier
-    page = 56 # int | page number to query (first page is at index 0) (optional)
+    page = 56 # int | page number to query (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier | 
  **workspace_id** | **str**| the Workspace identifier | 
  **runner_id** | **str**| the Runner identifier | 
- **page** | **int**| page number to query (first page is at index 0) | [optional] 
+ **page** | **int**| page number to query | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
@@ -426,10 +426,10 @@ from cosmotech_api.models.run_data_query import RunDataQuery
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -508,10 +508,10 @@ from cosmotech_api.models.send_run_data_request import SendRunDataRequest
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://dev.api.cosmotech.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "https://dev.api.cosmotech.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details

@@ -1,6 +1,6 @@
 # RunTemplateStepSource
 
-The source local, cloud or git repository
+the source local, cloud or git repository
 
 ## Enum
 

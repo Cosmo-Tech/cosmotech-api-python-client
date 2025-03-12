@@ -1,6 +1,6 @@
 # RunTemplateParameter
 
-A Run Template Parameter
+a Run Template Parameter
 
 ## Properties
 
@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **id** | **str** | the Parameter id | 
 **labels** | **Dict[str, str]** | a translated label with key as ISO 639-1 code | [optional] 
 **var_type** | **str** | the variable type for the parameter. Basic types or special type %DATASETID% | [optional] 
-**default_value** | **str** | The default value for this parameter | [optional] 
-**min_value** | **str** | The minimum value for this parameter | [optional] 
-**max_value** | **str** | The maximum value for this parameter | [optional] 
-**regex_validation** | **str** | A regex to validate the value | [optional] 
-**options** | **Dict[str, object]** | Freeform options | [optional] 
+**default_value** | **str** | the default value for this parameter | [optional] 
+**min_value** | **str** | the minimum value for this parameter | [optional] 
+**max_value** | **str** | the maximum value for this parameter | [optional] 
+**regex_validation** | **str** | a regex to validate the value | [optional] 
+**options** | **Dict[str, object]** | freeform options | [optional] 
 
 ## Example
 
