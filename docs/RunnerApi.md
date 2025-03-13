@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**stop_run**](RunnerApi.md#stop_run) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/stop | Stop the last run
 [**update_runner**](RunnerApi.md#update_runner) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id} | Update a runner
 [**update_runner_access_control**](RunnerApi.md#update_runner_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/access/{identity_id} | Update the specified access to User for a Runner
-[**update_runner_default_security**](RunnerApi.md#update_runner_default_security) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default | Set the Runner default security
+[**update_runner_default_security**](RunnerApi.md#update_runner_default_security) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default | Set the Runner default security
 
 
 # **create_runner**

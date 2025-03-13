@@ -4578,7 +4578,7 @@ class RunnerApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
+            method='PATCH',
             resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default',
             path_params=_path_params,
             query_params=_query_params,
