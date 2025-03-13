@@ -6,8 +6,8 @@ a RBAC by component
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**component** | **str** |  | [optional] 
-**roles** | **Dict[str, List[str]]** |  | [optional] 
+**component** | **str** |  | 
+**roles** | **Dict[str, List[str]]** |  | 
 
 ## Example
 
