@@ -35,10 +35,9 @@ class SolutionUpdateRequest(BaseModel):
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
     csm_simulator: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
     version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
-    sdk_version: Optional[StrictStr] = Field(default=None, description="The MAJOR.MINOR version used to build this solution", alias="sdkVersion")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "sdkVersion", "url", "tags"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "url", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,7 +97,6 @@ class SolutionUpdateRequest(BaseModel):
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
             "csmSimulator": obj.get("csmSimulator"),
             "version": obj.get("version"),
-            "sdkVersion": obj.get("sdkVersion"),
             "url": obj.get("url"),
             "tags": obj.get("tags")
         })

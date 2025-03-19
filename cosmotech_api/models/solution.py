@@ -42,7 +42,7 @@ class Solution(BaseModel):
     csm_simulator: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
     version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
     owner_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The User id which owns this Solution", alias="ownerId")
-    sdk_version: Optional[StrictStr] = Field(default=None, description="The MAJOR.MINOR version used to build this solution", alias="sdkVersion")
+    sdk_version: Optional[StrictStr] = Field(default=None, description="The full SDK version used to build this solution, if available", alias="sdkVersion")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     parameters: List[RunTemplateParameter] = Field(description="The list of Run Template Parameters")

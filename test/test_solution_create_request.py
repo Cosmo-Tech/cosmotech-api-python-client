@@ -94,7 +94,6 @@ class TestSolutionCreateRequest(unittest.TestCase):
                             ], 
                         execution_timeout = 56, )
                     ],
-                sdk_version = '2.4',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 security = cosmotech_api.models.solution_security.SolutionSecurity(
                     default = 'none', 

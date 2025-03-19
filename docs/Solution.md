@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **csm_simulator** | **str** | The main Cosmo Tech simulator name used in standard Run Template | 
 **version** | **str** | The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 
 **owner_id** | **str** | The User id which owns this Solution | [readonly] 
-**sdk_version** | **str** | The MAJOR.MINOR version used to build this solution | [optional] 
+**sdk_version** | **str** | The full SDK version used to build this solution, if available | [optional] 
 **url** | **str** | An optional URL link to solution page | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 
 **parameters** | [**List[RunTemplateParameter]**](RunTemplateParameter.md) | The list of Run Template Parameters | 

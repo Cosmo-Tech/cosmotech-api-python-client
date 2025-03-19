@@ -43,7 +43,6 @@ class TestSolutionUpdateRequest(unittest.TestCase):
                 always_pull = True,
                 csm_simulator = 'brewery_simulator',
                 version = '1.0.0',
-                sdk_version = '2.4',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 tags = ["brewery","optimization"]
             )
