@@ -6,22 +6,25 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_solution**](SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Create a new solution
 [**create_solution_access_control**](SolutionApi.md#create_solution_access_control) | **POST** /organizations/{organization_id}/solutions/{solution_id}/security/access | Create solution access control
+[**create_solution_parameter**](SolutionApi.md#create_solution_parameter) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameters | Create solution parameter for a solution
 [**delete_solution**](SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 [**delete_solution_access_control**](SolutionApi.md#delete_solution_access_control) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Delete solution access control
+[**delete_solution_parameter**](SolutionApi.md#delete_solution_parameter) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Delete specific parameter from the solution
 [**delete_solution_parameter_groups**](SolutionApi.md#delete_solution_parameter_groups) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Delete all parameter groups from the solution
-[**delete_solution_parameters**](SolutionApi.md#delete_solution_parameters) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters | Delete all parameters from the solution
 [**delete_solution_run_template**](SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Delete a specific run template
 [**delete_solution_run_templates**](SolutionApi.md#delete_solution_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Delete all run templates from the solution
 [**get_solution**](SolutionApi.md#get_solution) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 [**get_solution_access_control**](SolutionApi.md#get_solution_access_control) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Get solution access control
+[**get_solution_parameter**](SolutionApi.md#get_solution_parameter) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Get the details of a solution parameter
 [**get_solution_security**](SolutionApi.md#get_solution_security) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security | Get solution security information
+[**list_solution_parameters**](SolutionApi.md#list_solution_parameters) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameters | List all solution parameters
 [**list_solution_security_users**](SolutionApi.md#list_solution_security_users) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/users | List solution security users
 [**list_solutions**](SolutionApi.md#list_solutions) | **GET** /organizations/{organization_id}/solutions | List all Solutions
 [**update_solution**](SolutionApi.md#update_solution) | **PATCH** /organizations/{organization_id}/solutions/{solution_id} | Update a solution
 [**update_solution_access_control**](SolutionApi.md#update_solution_access_control) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Update solution access control
 [**update_solution_default_security**](SolutionApi.md#update_solution_default_security) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/security/default | Update solution default security
+[**update_solution_parameter**](SolutionApi.md#update_solution_parameter) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Update solution parameter
 [**update_solution_parameter_groups**](SolutionApi.md#update_solution_parameter_groups) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Update solution parameter groups
-[**update_solution_parameters**](SolutionApi.md#update_solution_parameters) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/parameters | Update solution parameters
 [**update_solution_run_template**](SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update a specific run template
 [**update_solution_run_templates**](SolutionApi.md#update_solution_run_templates) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Update solution run templates
 
@@ -181,6 +184,86 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_solution_parameter**
+> RunTemplateParameter create_solution_parameter(organization_id, solution_id, run_template_parameter_create_request)
+
+Create solution parameter for a solution
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.SolutionApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    solution_id = 'solution_id_example' # str | the Solution identifier
+    run_template_parameter_create_request = cosmotech_api.RunTemplateParameterCreateRequest() # RunTemplateParameterCreateRequest | Parameter to create
+
+    try:
+        # Create solution parameter for a solution
+        api_response = api_instance.create_solution_parameter(organization_id, solution_id, run_template_parameter_create_request)
+        print("The response of SolutionApi->create_solution_parameter:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SolutionApi->create_solution_parameter: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **solution_id** | **str**| the Solution identifier | 
+ **run_template_parameter_create_request** | [**RunTemplateParameterCreateRequest**](RunTemplateParameterCreateRequest.md)| Parameter to create | 
+
+### Return type
+
+[**RunTemplateParameter**](RunTemplateParameter.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Parameters successfully created |  -  |
+**400** | Bad request |  -  |
+**404** | Solution not found or insufficient access rights |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_solution**
 > delete_solution(organization_id, solution_id)
 
@@ -329,6 +412,81 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_solution_parameter**
+> delete_solution_parameter(organization_id, solution_id, parameter_id)
+
+Delete specific parameter from the solution
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.SolutionApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    solution_id = 'solution_id_example' # str | the Solution identifier
+    parameter_id = 'parameter_id_example' # str | the solution parameter identifier
+
+    try:
+        # Delete specific parameter from the solution
+        api_instance.delete_solution_parameter(organization_id, solution_id, parameter_id)
+    except Exception as e:
+        print("Exception when calling SolutionApi->delete_solution_parameter: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **solution_id** | **str**| the Solution identifier | 
+ **parameter_id** | **str**| the solution parameter identifier | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Parameter successfully deleted |  -  |
+**404** | Solution or parameter not found or insufficient access rights |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_solution_parameter_groups**
 > delete_solution_parameter_groups(organization_id, solution_id)
 
@@ -398,79 +556,6 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Parameter groups successfully deleted |  -  |
-**404** | Solution not found or insufficient access rights |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_solution_parameters**
-> delete_solution_parameters(organization_id, solution_id)
-
-Delete all parameters from the solution
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-
-    try:
-        # Delete all parameters from the solution
-        api_instance.delete_solution_parameters(organization_id, solution_id)
-    except Exception as e:
-        print("Exception when calling SolutionApi->delete_solution_parameters: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | Parameters successfully deleted |  -  |
 **404** | Solution not found or insufficient access rights |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -777,6 +862,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_solution_parameter**
+> RunTemplateParameter get_solution_parameter(organization_id, solution_id, parameter_id)
+
+Get the details of a solution parameter
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.SolutionApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    solution_id = 'solution_id_example' # str | the Solution identifier
+    parameter_id = 'parameter_id_example' # str | the solution parameter identifier
+
+    try:
+        # Get the details of a solution parameter
+        api_response = api_instance.get_solution_parameter(organization_id, solution_id, parameter_id)
+        print("The response of SolutionApi->get_solution_parameter:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SolutionApi->get_solution_parameter: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **solution_id** | **str**| the Solution identifier | 
+ **parameter_id** | **str**| the solution parameter identifier | 
+
+### Return type
+
+[**RunTemplateParameter**](RunTemplateParameter.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Parameters successfully retrieved |  -  |
+**400** | Bad Request |  -  |
+**404** | Solution or parameter not found or insufficient access rights |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_solution_security**
 > SolutionSecurity get_solution_security(organization_id, solution_id)
 
@@ -849,6 +1013,83 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Solution security information successfully retrieved |  -  |
+**404** | Solution not found or insufficient access rights |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_solution_parameters**
+> List[RunTemplateParameter] list_solution_parameters(organization_id, solution_id)
+
+List all solution parameters
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.SolutionApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    solution_id = 'solution_id_example' # str | the Solution identifier
+
+    try:
+        # List all solution parameters
+        api_response = api_instance.list_solution_parameters(organization_id, solution_id)
+        print("The response of SolutionApi->list_solution_parameters:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SolutionApi->list_solution_parameters: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **solution_id** | **str**| the Solution identifier | 
+
+### Return type
+
+[**List[RunTemplateParameter]**](RunTemplateParameter.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Parameters successfully retrieved |  -  |
+**400** | Bad Request |  -  |
 **404** | Solution not found or insufficient access rights |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1245,6 +1486,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_solution_parameter**
+> RunTemplateParameter update_solution_parameter(organization_id, solution_id, parameter_id, run_template_parameter_update_request)
+
+Update solution parameter
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_update_request import RunTemplateParameterUpdateRequest
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.SolutionApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    solution_id = 'solution_id_example' # str | the Solution identifier
+    parameter_id = 'parameter_id_example' # str | the solution parameter identifier
+    run_template_parameter_update_request = cosmotech_api.RunTemplateParameterUpdateRequest() # RunTemplateParameterUpdateRequest | Parameter to update
+
+    try:
+        # Update solution parameter
+        api_response = api_instance.update_solution_parameter(organization_id, solution_id, parameter_id, run_template_parameter_update_request)
+        print("The response of SolutionApi->update_solution_parameter:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SolutionApi->update_solution_parameter: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **solution_id** | **str**| the Solution identifier | 
+ **parameter_id** | **str**| the solution parameter identifier | 
+ **run_template_parameter_update_request** | [**RunTemplateParameterUpdateRequest**](RunTemplateParameterUpdateRequest.md)| Parameter to update | 
+
+### Return type
+
+[**RunTemplateParameter**](RunTemplateParameter.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Parameters successfully updated |  -  |
+**400** | Bad request |  -  |
+**404** | Solution or parameter not found or insufficient access rights |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_solution_parameter_groups**
 > List[RunTemplateParameterGroup] update_solution_parameter_groups(organization_id, solution_id, run_template_parameter_group)
 
@@ -1320,85 +1643,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Parameter groups successfully updated |  -  |
 **400** | Bad request - Invalid parameter groups |  -  |
-**404** | Solution not found or insufficient access rights |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_solution_parameters**
-> List[RunTemplateParameter] update_solution_parameters(organization_id, solution_id, run_template_parameter)
-
-Update solution parameters
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.models.run_template_parameter import RunTemplateParameter
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    run_template_parameter = [cosmotech_api.RunTemplateParameter()] # List[RunTemplateParameter] | Parameters to update
-
-    try:
-        # Update solution parameters
-        api_response = api_instance.update_solution_parameters(organization_id, solution_id, run_template_parameter)
-        print("The response of SolutionApi->update_solution_parameters:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling SolutionApi->update_solution_parameters: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **run_template_parameter** | [**List[RunTemplateParameter]**](RunTemplateParameter.md)| Parameters to update | 
-
-### Return type
-
-[**List[RunTemplateParameter]**](RunTemplateParameter.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Parameters successfully updated |  -  |
-**400** | Bad request - Invalid parameters |  -  |
 **404** | Solution not found or insufficient access rights |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

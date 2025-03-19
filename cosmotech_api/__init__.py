@@ -85,7 +85,9 @@ from cosmotech_api.models.run_status import RunStatus
 from cosmotech_api.models.run_status_node import RunStatusNode
 from cosmotech_api.models.run_template import RunTemplate
 from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
+from cosmotech_api.models.run_template_parameter_update_request import RunTemplateParameterUpdateRequest
 from cosmotech_api.models.run_template_parameter_value import RunTemplateParameterValue
 from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
 from cosmotech_api.models.runner import Runner

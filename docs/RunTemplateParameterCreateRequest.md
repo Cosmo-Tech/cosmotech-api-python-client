@@ -1,6 +1,6 @@
-# RunTemplateParameter
+# RunTemplateParameterCreateRequest
 
-A Run Template Parameter
+A Run Template Parameter for creation
 
 ## Properties
 
@@ -19,19 +19,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of RunTemplateParameter from a JSON string
-run_template_parameter_instance = RunTemplateParameter.from_json(json)
+# create an instance of RunTemplateParameterCreateRequest from a JSON string
+run_template_parameter_create_request_instance = RunTemplateParameterCreateRequest.from_json(json)
 # print the JSON string representation of the object
-print(RunTemplateParameter.to_json())
+print(RunTemplateParameterCreateRequest.to_json())
 
 # convert the object into a dict
-run_template_parameter_dict = run_template_parameter_instance.to_dict()
-# create an instance of RunTemplateParameter from a dict
-run_template_parameter_from_dict = RunTemplateParameter.from_dict(run_template_parameter_dict)
+run_template_parameter_create_request_dict = run_template_parameter_create_request_instance.to_dict()
+# create an instance of RunTemplateParameterCreateRequest from a dict
+run_template_parameter_create_request_from_dict = RunTemplateParameterCreateRequest.from_dict(run_template_parameter_create_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,20 +24,19 @@ from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RunTemplateParameter(BaseModel):
+class RunTemplateParameterUpdateRequest(BaseModel):
     """
-    A Run Template Parameter
+    A Run Template Parameter for update parameter
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the Parameter id")
     description: Optional[StrictStr] = Field(default=None, description="the parameter description")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
-    var_type: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
+    var_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
     default_value: Optional[StrictStr] = Field(default=None, description="The default value for this parameter", alias="defaultValue")
     min_value: Optional[StrictStr] = Field(default=None, description="The minimum value for this parameter", alias="minValue")
     max_value: Optional[StrictStr] = Field(default=None, description="The maximum value for this parameter", alias="maxValue")
     regex_validation: Optional[StrictStr] = Field(default=None, description="A regex to validate the value", alias="regexValidation")
     options: Optional[Dict[str, Any]] = Field(default=None, description="Freeform options")
-    __properties: ClassVar[List[str]] = ["id", "description", "labels", "varType", "defaultValue", "minValue", "maxValue", "regexValidation", "options"]
+    __properties: ClassVar[List[str]] = ["description", "labels", "varType", "defaultValue", "minValue", "maxValue", "regexValidation", "options"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +56,7 @@ class RunTemplateParameter(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RunTemplateParameter from a JSON string"""
+        """Create an instance of RunTemplateParameterUpdateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,7 +81,7 @@ class RunTemplateParameter(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RunTemplateParameter from a dict"""
+        """Create an instance of RunTemplateParameterUpdateRequest from a dict"""
         if obj is None:
             return None
 
@@ -90,7 +89,6 @@ class RunTemplateParameter(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "description": obj.get("description"),
             "labels": obj.get("labels"),
             "varType": obj.get("varType"),

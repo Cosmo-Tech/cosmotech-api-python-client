@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_update_request import RunTemplateParameterUpdateRequest
 
-class TestRunTemplateParameter(unittest.TestCase):
-    """RunTemplateParameter unit test stubs"""
+class TestRunTemplateParameterUpdateRequest(unittest.TestCase):
+    """RunTemplateParameterUpdateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,17 +26,16 @@ class TestRunTemplateParameter(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RunTemplateParameter:
-        """Test RunTemplateParameter
+    def make_instance(self, include_optional) -> RunTemplateParameterUpdateRequest:
+        """Test RunTemplateParameterUpdateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RunTemplateParameter`
+        # uncomment below to create an instance of `RunTemplateParameterUpdateRequest`
         """
-        model = RunTemplateParameter()
+        model = RunTemplateParameterUpdateRequest()
         if include_optional:
-            return RunTemplateParameter(
-                id = '0',
+            return RunTemplateParameterUpdateRequest(
                 description = '',
                 labels = {
                     'key' : ''
@@ -49,14 +48,12 @@ class TestRunTemplateParameter(unittest.TestCase):
                 options = { }
             )
         else:
-            return RunTemplateParameter(
-                id = '0',
-                var_type = '0',
+            return RunTemplateParameterUpdateRequest(
         )
         """
 
-    def testRunTemplateParameter(self):
-        """Test RunTemplateParameter"""
+    def testRunTemplateParameterUpdateRequest(self):
+        """Test RunTemplateParameterUpdateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

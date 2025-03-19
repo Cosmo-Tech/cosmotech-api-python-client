@@ -22,7 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.run_template import RunTemplate
-from cosmotech_api.models.run_template_parameter import RunTemplateParameter
+from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
 from cosmotech_api.models.solution_security import SolutionSecurity
 from typing import Optional, Set
@@ -40,7 +40,7 @@ class SolutionCreateRequest(BaseModel):
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
     csm_simulator: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
-    parameters: Optional[List[RunTemplateParameter]] = Field(default=None, description="The list of Run Template Parameters")
+    parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
     parameter_groups: Optional[List[RunTemplateParameterGroup]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: Optional[List[RunTemplate]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
@@ -130,7 +130,7 @@ class SolutionCreateRequest(BaseModel):
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
             "csmSimulator": obj.get("csmSimulator"),
             "tags": obj.get("tags"),
-            "parameters": [RunTemplateParameter.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
+            "parameters": [RunTemplateParameterCreateRequest.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
             "parameterGroups": [RunTemplateParameterGroup.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None,
             "runTemplates": [RunTemplate.from_dict(_item) for _item in obj["runTemplates"]] if obj.get("runTemplates") is not None else None,
             "url": obj.get("url"),

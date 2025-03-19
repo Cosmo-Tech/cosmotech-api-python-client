@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,7 +38,8 @@ class SolutionUpdateRequest(BaseModel):
     version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "url", "tags"]
+    parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "url", "tags", "parameters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,13 @@ class SolutionUpdateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in parameters (list)
+        _items = []
+        if self.parameters:
+            for _item_parameters in self.parameters:
+                if _item_parameters:
+                    _items.append(_item_parameters.to_dict())
+            _dict['parameters'] = _items
         return _dict
 
     @classmethod
@@ -98,7 +107,8 @@ class SolutionUpdateRequest(BaseModel):
             "csmSimulator": obj.get("csmSimulator"),
             "version": obj.get("version"),
             "url": obj.get("url"),
-            "tags": obj.get("tags")
+            "tags": obj.get("tags"),
+            "parameters": [RunTemplateParameterCreateRequest.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None
         })
         return _obj
 

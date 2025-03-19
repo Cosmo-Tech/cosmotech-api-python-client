@@ -45,12 +45,13 @@ class TestSolutionCreateRequest(unittest.TestCase):
                 csm_simulator = 'brewery_simulator',
                 tags = ["brewery","optimization"],
                 parameters = [
-                    cosmotech_api.models.run_template_parameter.RunTemplateParameter(
+                    cosmotech_api.models.run_template_parameter_create_request.RunTemplateParameterCreateRequest(
                         id = '0', 
+                        description = '', 
                         labels = {
                             'key' : ''
                             }, 
-                        var_type = '', 
+                        var_type = '0', 
                         default_value = '', 
                         min_value = '', 
                         max_value = '', 

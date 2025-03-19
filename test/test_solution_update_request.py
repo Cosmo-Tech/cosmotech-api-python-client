@@ -44,7 +44,21 @@ class TestSolutionUpdateRequest(unittest.TestCase):
                 csm_simulator = 'brewery_simulator',
                 version = '1.0.0',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
-                tags = ["brewery","optimization"]
+                tags = ["brewery","optimization"],
+                parameters = [
+                    cosmotech_api.models.run_template_parameter_create_request.RunTemplateParameterCreateRequest(
+                        id = '0', 
+                        description = '', 
+                        labels = {
+                            'key' : ''
+                            }, 
+                        var_type = '0', 
+                        default_value = '', 
+                        min_value = '', 
+                        max_value = '', 
+                        regex_validation = '', 
+                        options = { }, )
+                    ]
             )
         else:
             return SolutionUpdateRequest(

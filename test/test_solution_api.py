@@ -41,6 +41,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_create_solution_parameter(self) -> None:
+        """Test case for create_solution_parameter
+
+        Create solution parameter for a solution
+        """
+        pass
+
     def test_delete_solution(self) -> None:
         """Test case for delete_solution
 
@@ -55,17 +62,17 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_solution_parameter(self) -> None:
+        """Test case for delete_solution_parameter
+
+        Delete specific parameter from the solution
+        """
+        pass
+
     def test_delete_solution_parameter_groups(self) -> None:
         """Test case for delete_solution_parameter_groups
 
         Delete all parameter groups from the solution
-        """
-        pass
-
-    def test_delete_solution_parameters(self) -> None:
-        """Test case for delete_solution_parameters
-
-        Delete all parameters from the solution
         """
         pass
 
@@ -97,10 +104,24 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_get_solution_parameter(self) -> None:
+        """Test case for get_solution_parameter
+
+        Get the details of a solution parameter
+        """
+        pass
+
     def test_get_solution_security(self) -> None:
         """Test case for get_solution_security
 
         Get solution security information
+        """
+        pass
+
+    def test_list_solution_parameters(self) -> None:
+        """Test case for list_solution_parameters
+
+        List all solution parameters
         """
         pass
 
@@ -139,17 +160,17 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_update_solution_parameter(self) -> None:
+        """Test case for update_solution_parameter
+
+        Update solution parameter
+        """
+        pass
+
     def test_update_solution_parameter_groups(self) -> None:
         """Test case for update_solution_parameter_groups
 
         Update solution parameter groups
-        """
-        pass
-
-    def test_update_solution_parameters(self) -> None:
-        """Test case for update_solution_parameters
-
-        Update solution parameters
         """
         pass
 
