@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **url** | **str** | An optional URL link to solution page | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 
 **parameters** | [**List[RunTemplateParameterCreateRequest]**](RunTemplateParameterCreateRequest.md) | The list of Run Template Parameters | [optional] [default to []]
+**parameter_groups** | [**List[RunTemplateParameterGroupCreateRequest]**](RunTemplateParameterGroupCreateRequest.md) | The list of parameters groups for the Run Templates | [optional] [default to []]
 
 ## Example
 

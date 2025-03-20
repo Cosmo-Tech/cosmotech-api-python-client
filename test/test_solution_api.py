@@ -48,6 +48,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_create_solution_parameter_group(self) -> None:
+        """Test case for create_solution_parameter_group
+
+        Create a solution parameter group
+        """
+        pass
+
     def test_delete_solution(self) -> None:
         """Test case for delete_solution
 
@@ -69,10 +76,10 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_solution_parameter_groups(self) -> None:
-        """Test case for delete_solution_parameter_groups
+    def test_delete_solution_parameter_group(self) -> None:
+        """Test case for delete_solution_parameter_group
 
-        Delete all parameter groups from the solution
+        Delete a parameter group from the solution
         """
         pass
 
@@ -111,10 +118,24 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_get_solution_parameter_group(self) -> None:
+        """Test case for get_solution_parameter_group
+
+        Get details of a solution parameter group
+        """
+        pass
+
     def test_get_solution_security(self) -> None:
         """Test case for get_solution_security
 
         Get solution security information
+        """
+        pass
+
+    def test_list_solution_parameter_groups(self) -> None:
+        """Test case for list_solution_parameter_groups
+
+        List all solution parameter groups
         """
         pass
 
@@ -167,10 +188,10 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
-    def test_update_solution_parameter_groups(self) -> None:
-        """Test case for update_solution_parameter_groups
+    def test_update_solution_parameter_group(self) -> None:
+        """Test case for update_solution_parameter_group
 
-        Update solution parameter groups
+        Update a solution parameter group
         """
         pass
 

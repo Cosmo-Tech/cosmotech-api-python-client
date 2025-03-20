@@ -66,6 +66,7 @@ class TestSolution(unittest.TestCase):
                 parameter_groups = [
                     cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
                         id = '0', 
+                        description = '', 
                         labels = {
                             'key' : ''
                             }, 
@@ -135,6 +136,7 @@ class TestSolution(unittest.TestCase):
                 parameter_groups = [
                     cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
                         id = '0', 
+                        description = '', 
                         labels = {
                             'key' : ''
                             }, 

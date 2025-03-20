@@ -20,22 +20,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RunTemplateParameterGroup(BaseModel):
+class RunTemplateParameterGroupUpdateRequest(BaseModel):
     """
-    A Parameter Group for a Run Template
+    A Parameter Group Update Request for a Run Template
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the Parameter Group id")
     description: Optional[StrictStr] = Field(default=None, description="A description of the parameter group")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
-    is_table: StrictBool = Field(description="Does the group define a table", alias="isTable")
+    is_table: Optional[StrictBool] = Field(default=None, description="Does the group define a table", alias="isTable")
     options: Optional[Dict[str, Any]] = Field(default=None, description="Freeform options")
     parent_id: Optional[StrictStr] = Field(default=None, description="The Run Template Group parent Id", alias="parentId")
-    parameters: List[StrictStr] = Field(description="An ordered list of Run Template Parameters")
-    __properties: ClassVar[List[str]] = ["id", "description", "labels", "isTable", "options", "parentId", "parameters"]
+    parameters: Optional[List[StrictStr]] = Field(default=None, description="An ordered list of Run Template Parameters")
+    __properties: ClassVar[List[str]] = ["description", "labels", "isTable", "options", "parentId", "parameters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +53,7 @@ class RunTemplateParameterGroup(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RunTemplateParameterGroup from a JSON string"""
+        """Create an instance of RunTemplateParameterGroupUpdateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +78,7 @@ class RunTemplateParameterGroup(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RunTemplateParameterGroup from a dict"""
+        """Create an instance of RunTemplateParameterGroupUpdateRequest from a dict"""
         if obj is None:
             return None
 
@@ -88,7 +86,6 @@ class RunTemplateParameterGroup(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "description": obj.get("description"),
             "labels": obj.get("labels"),
             "isTable": obj.get("isTable"),

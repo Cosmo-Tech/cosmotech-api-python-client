@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
+from cosmotech_api.models.run_template_parameter_group_create_request import RunTemplateParameterGroupCreateRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -39,7 +40,8 @@ class SolutionUpdateRequest(BaseModel):
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "url", "tags", "parameters"]
+    parameter_groups: Optional[List[RunTemplateParameterGroupCreateRequest]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "url", "tags", "parameters", "parameterGroups"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +89,13 @@ class SolutionUpdateRequest(BaseModel):
                 if _item_parameters:
                     _items.append(_item_parameters.to_dict())
             _dict['parameters'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in parameter_groups (list)
+        _items = []
+        if self.parameter_groups:
+            for _item_parameter_groups in self.parameter_groups:
+                if _item_parameter_groups:
+                    _items.append(_item_parameter_groups.to_dict())
+            _dict['parameterGroups'] = _items
         return _dict
 
     @classmethod
@@ -108,7 +117,8 @@ class SolutionUpdateRequest(BaseModel):
             "version": obj.get("version"),
             "url": obj.get("url"),
             "tags": obj.get("tags"),
-            "parameters": [RunTemplateParameterCreateRequest.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None
+            "parameters": [RunTemplateParameterCreateRequest.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
+            "parameterGroups": [RunTemplateParameterGroupCreateRequest.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None
         })
         return _obj
 

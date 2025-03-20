@@ -6,8 +6,8 @@ A version of a Solution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The Solution version unique identifier | [readonly] 
-**organization_id** | **str** | The Organization unique identifier | [readonly] 
+**id** | **str** | The Solution version unique identifier | 
+**organization_id** | **str** | The Organization unique identifier | 
 **key** | **str** | The Solution key which groups Solution versions | 
 **name** | **str** | The Solution name | 
 **description** | **str** | The Solution description | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **always_pull** | **bool** | Set to true if the runtemplate wants to always pull the image | [optional] [default to False]
 **csm_simulator** | **str** | The main Cosmo Tech simulator name used in standard Run Template | 
 **version** | **str** | The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 
-**owner_id** | **str** | The User id which owns this Solution | [readonly] 
+**owner_id** | **str** | The User id which owns this Solution | 
 **sdk_version** | **str** | The full SDK version used to build this solution, if available | [optional] 
 **url** | **str** | An optional URL link to solution page | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 

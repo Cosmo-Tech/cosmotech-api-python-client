@@ -67,6 +67,8 @@ cosmotech_api/models/run_template.py
 cosmotech_api/models/run_template_parameter.py
 cosmotech_api/models/run_template_parameter_create_request.py
 cosmotech_api/models/run_template_parameter_group.py
+cosmotech_api/models/run_template_parameter_group_create_request.py
+cosmotech_api/models/run_template_parameter_group_update_request.py
 cosmotech_api/models/run_template_parameter_update_request.py
 cosmotech_api/models/run_template_parameter_value.py
 cosmotech_api/models/run_template_resource_sizing.py
@@ -154,6 +156,8 @@ docs/RunTemplate.md
 docs/RunTemplateParameter.md
 docs/RunTemplateParameterCreateRequest.md
 docs/RunTemplateParameterGroup.md
+docs/RunTemplateParameterGroupCreateRequest.md
+docs/RunTemplateParameterGroupUpdateRequest.md
 docs/RunTemplateParameterUpdateRequest.md
 docs/RunTemplateParameterValue.md
 docs/RunTemplateResourceSizing.md
@@ -249,6 +253,8 @@ test/test_run_template.py
 test/test_run_template_parameter.py
 test/test_run_template_parameter_create_request.py
 test/test_run_template_parameter_group.py
+test/test_run_template_parameter_group_create_request.py
+test/test_run_template_parameter_group_update_request.py
 test/test_run_template_parameter_update_request.py
 test/test_run_template_parameter_value.py
 test/test_run_template_resource_sizing.py

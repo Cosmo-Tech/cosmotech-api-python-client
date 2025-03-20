@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
+from cosmotech_api.models.run_template_parameter_group_create_request import RunTemplateParameterGroupCreateRequest
 
-class TestRunTemplateParameterGroup(unittest.TestCase):
-    """RunTemplateParameterGroup unit test stubs"""
+class TestRunTemplateParameterGroupCreateRequest(unittest.TestCase):
+    """RunTemplateParameterGroupCreateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestRunTemplateParameterGroup(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RunTemplateParameterGroup:
-        """Test RunTemplateParameterGroup
+    def make_instance(self, include_optional) -> RunTemplateParameterGroupCreateRequest:
+        """Test RunTemplateParameterGroupCreateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RunTemplateParameterGroup`
+        # uncomment below to create an instance of `RunTemplateParameterGroupCreateRequest`
         """
-        model = RunTemplateParameterGroup()
+        model = RunTemplateParameterGroupCreateRequest()
         if include_optional:
-            return RunTemplateParameterGroup(
+            return RunTemplateParameterGroupCreateRequest(
                 id = '0',
                 description = '',
                 labels = {
@@ -49,17 +49,13 @@ class TestRunTemplateParameterGroup(unittest.TestCase):
                     ]
             )
         else:
-            return RunTemplateParameterGroup(
+            return RunTemplateParameterGroupCreateRequest(
                 id = '0',
-                is_table = True,
-                parameters = [
-                    ''
-                    ],
         )
         """
 
-    def testRunTemplateParameterGroup(self):
-        """Test RunTemplateParameterGroup"""
+    def testRunTemplateParameterGroupCreateRequest(self):
+        """Test RunTemplateParameterGroupCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

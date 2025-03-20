@@ -7,11 +7,12 @@ A Parameter Group for a Run Template
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the Parameter Group id | 
+**description** | **str** | A description of the parameter group | [optional] 
 **labels** | **Dict[str, str]** | a translated label with key as ISO 639-1 code | [optional] 
-**is_table** | **bool** | Does the group define a table | [optional] 
+**is_table** | **bool** | Does the group define a table | 
 **options** | **Dict[str, object]** | Freeform options | [optional] 
 **parent_id** | **str** | The Run Template Group parent Id | [optional] 
-**parameters** | **List[str]** | An ordered list of Run Template Parameters | [optional] 
+**parameters** | **List[str]** | An ordered list of Run Template Parameters | 
 
 ## Example
 

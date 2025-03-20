@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **csm_simulator** | **str** | The main Cosmo Tech simulator name used in standard Run Template | 
 **tags** | **List[str]** | The list of tags | [optional] 
 **parameters** | [**List[RunTemplateParameterCreateRequest]**](RunTemplateParameterCreateRequest.md) | The list of Run Template Parameters | [optional] [default to []]
-**parameter_groups** | [**List[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md) | The list of parameters groups for the Run Templates | [optional] [default to []]
+**parameter_groups** | [**List[RunTemplateParameterGroupCreateRequest]**](RunTemplateParameterGroupCreateRequest.md) | The list of parameters groups for the Run Templates | [optional] [default to []]
 **run_templates** | [**List[RunTemplate]**](RunTemplate.md) | List of Run Templates | [optional] [default to []]
 **url** | **str** | An optional URL link to solution page | [optional] 
 **security** | [**SolutionSecurity**](SolutionSecurity.md) |  | [optional] 

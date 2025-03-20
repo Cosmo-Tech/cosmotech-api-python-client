@@ -59,8 +59,9 @@ class TestSolutionCreateRequest(unittest.TestCase):
                         options = { }, )
                     ],
                 parameter_groups = [
-                    cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
+                    cosmotech_api.models.run_template_parameter_group_create_request.RunTemplateParameterGroupCreateRequest(
                         id = '0', 
+                        description = '', 
                         labels = {
                             'key' : ''
                             }, 
