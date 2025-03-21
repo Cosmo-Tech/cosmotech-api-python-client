@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -602,7 +602,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -675,7 +675,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -751,7 +751,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -820,7 +820,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -864,7 +864,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
     organization_id = 'organization_id_example' # str | the Organization identifier
-    organization_update_request = {"name":"Digital Twin Solutions"} # OrganizationUpdateRequest | the new Organization details. This endpoint can't be used to update security
+    organization_update_request = cosmotech_api.OrganizationUpdateRequest() # OrganizationUpdateRequest | the new Organization details. This endpoint can't be used to update security
 
     try:
         # Update an Organization
@@ -896,7 +896,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -975,8 +975,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1053,7 +1053,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 

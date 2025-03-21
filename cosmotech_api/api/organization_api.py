@@ -279,7 +279,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -569,7 +570,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1367,7 +1369,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1643,7 +1646,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1916,7 +1920,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -2177,7 +2182,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -2438,7 +2444,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -2715,7 +2722,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -2958,7 +2966,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3237,7 +3246,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3542,7 +3552,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3553,7 +3564,8 @@ class OrganizationApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -3831,7 +3843,8 @@ class OrganizationApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 

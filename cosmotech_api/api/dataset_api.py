@@ -32,6 +32,7 @@ from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
 from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
 from cosmotech_api.models.file_upload_validation import FileUploadValidation
 from cosmotech_api.models.graph_properties import GraphProperties
+from cosmotech_api.models.ingestion_status_enum import IngestionStatusEnum
 from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
 from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
 
@@ -316,7 +317,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -625,7 +627,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -636,7 +639,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -920,7 +924,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1210,7 +1215,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1515,7 +1521,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1526,7 +1533,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -1846,7 +1854,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -2987,7 +2996,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3263,7 +3273,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3554,7 +3565,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3830,7 +3842,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -4106,7 +4119,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -4151,7 +4165,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> str:
+    ) -> IngestionStatusEnum:
         """Get the dataset's refresh job status
 
         Get the status of the import workflow lauch on the dataset's refresh. This endpoint needs to be called to update a dataset IngestionStatus or TwincacheStatus
@@ -4192,7 +4206,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
+            '200': "IngestionStatusEnum",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4222,7 +4236,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[str]:
+    ) -> ApiResponse[IngestionStatusEnum]:
         """Get the dataset's refresh job status
 
         Get the status of the import workflow lauch on the dataset's refresh. This endpoint needs to be called to update a dataset IngestionStatus or TwincacheStatus
@@ -4263,7 +4277,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
+            '200': "IngestionStatusEnum",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4334,7 +4348,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
+            '200': "IngestionStatusEnum",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4382,8 +4396,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/yaml', 
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -4988,7 +5002,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -5264,7 +5279,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -6093,7 +6109,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -6400,7 +6417,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -6705,7 +6723,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -7010,7 +7029,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -7021,7 +7041,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -7073,7 +7094,7 @@ class DatasetApi:
     ) -> TwinGraphBatchResult:
         """Async batch update by loading a CSV file on a graph instance 
 
-        Async batch update by loading a CSV file on a graph instance  Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+        Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -7153,7 +7174,7 @@ class DatasetApi:
     ) -> ApiResponse[TwinGraphBatchResult]:
         """Async batch update by loading a CSV file on a graph instance 
 
-        Async batch update by loading a CSV file on a graph instance  Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+        Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -7233,7 +7254,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Async batch update by loading a CSV file on a graph instance 
 
-        Async batch update by loading a CSV file on a graph instance  Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+        Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -7342,7 +7363,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -7658,7 +7680,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -7956,7 +7979,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -8250,7 +8274,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -8570,7 +8595,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -8581,7 +8607,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -8901,7 +8928,8 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/yaml'
                     ]
                 )
             )
@@ -9202,7 +9230,8 @@ class DatasetApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 

@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class SendRunDataRequest(BaseModel):
     """
-    SendRunDataRequest
+    Run Data to send
     """ # noqa: E501
     id: Optional[StrictStr] = None
     data: Optional[List[Dict[str, Any]]] = None

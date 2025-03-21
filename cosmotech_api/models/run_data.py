@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class RunData(BaseModel):
     """
-    Run Data to send
+    Run Data stored
     """ # noqa: E501
     database_name: Optional[StrictStr] = Field(default=None, description="Database name")
     table_name: Optional[StrictStr] = Field(default=None, description="Table name")

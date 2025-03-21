@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -481,8 +481,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -563,8 +563,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
