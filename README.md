@@ -169,17 +169,19 @@ Class | Method | HTTP request | Description
 *SolutionApi* | [**create_solution_access_control**](docs/SolutionApi.md#create_solution_access_control) | **POST** /organizations/{organization_id}/solutions/{solution_id}/security/access | Create solution access control
 *SolutionApi* | [**create_solution_parameter**](docs/SolutionApi.md#create_solution_parameter) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameters | Create solution parameter for a solution
 *SolutionApi* | [**create_solution_parameter_group**](docs/SolutionApi.md#create_solution_parameter_group) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Create a solution parameter group
+*SolutionApi* | [**create_solution_run_template**](docs/SolutionApi.md#create_solution_run_template) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Create a solution run template
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 *SolutionApi* | [**delete_solution_access_control**](docs/SolutionApi.md#delete_solution_access_control) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Delete solution access control
 *SolutionApi* | [**delete_solution_parameter**](docs/SolutionApi.md#delete_solution_parameter) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Delete specific parameter from the solution
 *SolutionApi* | [**delete_solution_parameter_group**](docs/SolutionApi.md#delete_solution_parameter_group) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups/{parameter_group_id} | Delete a parameter group from the solution
 *SolutionApi* | [**delete_solution_run_template**](docs/SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Delete a specific run template
-*SolutionApi* | [**delete_solution_run_templates**](docs/SolutionApi.md#delete_solution_run_templates) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Delete all run templates from the solution
+*SolutionApi* | [**get_run_template**](docs/SolutionApi.md#get_run_template) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Retrieve a solution run templates
 *SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 *SolutionApi* | [**get_solution_access_control**](docs/SolutionApi.md#get_solution_access_control) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Get solution access control
 *SolutionApi* | [**get_solution_parameter**](docs/SolutionApi.md#get_solution_parameter) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Get the details of a solution parameter
 *SolutionApi* | [**get_solution_parameter_group**](docs/SolutionApi.md#get_solution_parameter_group) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups/{parameter_group_id} | Get details of a solution parameter group
 *SolutionApi* | [**get_solution_security**](docs/SolutionApi.md#get_solution_security) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security | Get solution security information
+*SolutionApi* | [**list_run_templates**](docs/SolutionApi.md#list_run_templates) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | List all solution run templates
 *SolutionApi* | [**list_solution_parameter_groups**](docs/SolutionApi.md#list_solution_parameter_groups) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | List all solution parameter groups
 *SolutionApi* | [**list_solution_parameters**](docs/SolutionApi.md#list_solution_parameters) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameters | List all solution parameters
 *SolutionApi* | [**list_solution_security_users**](docs/SolutionApi.md#list_solution_security_users) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/users | List solution security users
@@ -190,7 +192,6 @@ Class | Method | HTTP request | Description
 *SolutionApi* | [**update_solution_parameter**](docs/SolutionApi.md#update_solution_parameter) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Update solution parameter
 *SolutionApi* | [**update_solution_parameter_group**](docs/SolutionApi.md#update_solution_parameter_group) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups/{parameter_group_id} | Update a solution parameter group
 *SolutionApi* | [**update_solution_run_template**](docs/SolutionApi.md#update_solution_run_template) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Update a specific run template
-*SolutionApi* | [**update_solution_run_templates**](docs/SolutionApi.md#update_solution_run_templates) | **PATCH** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Update solution run templates
 *WorkspaceApi* | [**create_dataset_link**](docs/WorkspaceApi.md#create_dataset_link) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/link | 
 *WorkspaceApi* | [**create_workspace**](docs/WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 *WorkspaceApi* | [**create_workspace_access_control**](docs/WorkspaceApi.md#create_workspace_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/access | Add a control access to the Workspace
@@ -260,6 +261,7 @@ Class | Method | HTTP request | Description
  - [RunStatus](docs/RunStatus.md)
  - [RunStatusNode](docs/RunStatusNode.md)
  - [RunTemplate](docs/RunTemplate.md)
+ - [RunTemplateCreateRequest](docs/RunTemplateCreateRequest.md)
  - [RunTemplateParameter](docs/RunTemplateParameter.md)
  - [RunTemplateParameterCreateRequest](docs/RunTemplateParameterCreateRequest.md)
  - [RunTemplateParameterGroup](docs/RunTemplateParameterGroup.md)
@@ -268,6 +270,7 @@ Class | Method | HTTP request | Description
  - [RunTemplateParameterUpdateRequest](docs/RunTemplateParameterUpdateRequest.md)
  - [RunTemplateParameterValue](docs/RunTemplateParameterValue.md)
  - [RunTemplateResourceSizing](docs/RunTemplateResourceSizing.md)
+ - [RunTemplateUpdateRequest](docs/RunTemplateUpdateRequest.md)
  - [Runner](docs/Runner.md)
  - [RunnerAccessControl](docs/RunnerAccessControl.md)
  - [RunnerCreateRequest](docs/RunnerCreateRequest.md)

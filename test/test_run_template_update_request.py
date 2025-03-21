@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.run_template import RunTemplate
+from cosmotech_api.models.run_template_update_request import RunTemplateUpdateRequest
 
-class TestRunTemplate(unittest.TestCase):
-    """RunTemplate unit test stubs"""
+class TestRunTemplateUpdateRequest(unittest.TestCase):
+    """RunTemplateUpdateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,17 +26,16 @@ class TestRunTemplate(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RunTemplate:
-        """Test RunTemplate
+    def make_instance(self, include_optional) -> RunTemplateUpdateRequest:
+        """Test RunTemplateUpdateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RunTemplate`
+        # uncomment below to create an instance of `RunTemplateUpdateRequest`
         """
-        model = RunTemplate()
+        model = RunTemplateUpdateRequest()
         if include_optional:
-            return RunTemplate(
-                id = 'template-123',
+            return RunTemplateUpdateRequest(
                 name = '0',
                 labels = {
                     'key' : ''
@@ -59,16 +58,12 @@ class TestRunTemplate(unittest.TestCase):
                 execution_timeout = 56
             )
         else:
-            return RunTemplate(
-                id = 'template-123',
-                parameter_groups = [
-                    ''
-                    ],
+            return RunTemplateUpdateRequest(
         )
         """
 
-    def testRunTemplate(self):
-        """Test RunTemplate"""
+    def testRunTemplateUpdateRequest(self):
+        """Test RunTemplateUpdateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

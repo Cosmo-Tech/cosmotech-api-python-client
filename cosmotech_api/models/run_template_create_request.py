@@ -25,9 +25,9 @@ from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourc
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RunTemplate(BaseModel):
+class RunTemplateCreateRequest(BaseModel):
     """
-    A Solution Run Template
+    A Solution Run Template Create Request
     """ # noqa: E501
     id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution Run Template id")
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Run Template name")
@@ -36,7 +36,7 @@ class RunTemplate(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of Run Template tags")
     compute_size: Optional[StrictStr] = Field(default=None, description="The compute size needed for this Run Template", alias="computeSize")
     run_sizing: Optional[RunTemplateResourceSizing] = Field(default=None, alias="runSizing")
-    parameter_groups: List[StrictStr] = Field(description="The ordered list of parameters groups for the Run Template", alias="parameterGroups")
+    parameter_groups: Optional[List[StrictStr]] = Field(default=None, description="The ordered list of parameters groups for the Run Template", alias="parameterGroups")
     execution_timeout: Optional[StrictInt] = Field(default=None, description="An optional duration in seconds in which a workflow is allowed to run", alias="executionTimeout")
     __properties: ClassVar[List[str]] = ["id", "name", "labels", "description", "tags", "computeSize", "runSizing", "parameterGroups", "executionTimeout"]
 
@@ -58,7 +58,7 @@ class RunTemplate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RunTemplate from a JSON string"""
+        """Create an instance of RunTemplateCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class RunTemplate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RunTemplate from a dict"""
+        """Create an instance of RunTemplateCreateRequest from a dict"""
         if obj is None:
             return None
 

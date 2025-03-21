@@ -21,7 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from cosmotech_api.models.run_template import RunTemplate
+from cosmotech_api.models.run_template_create_request import RunTemplateCreateRequest
 from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest
 from cosmotech_api.models.run_template_parameter_group_create_request import RunTemplateParameterGroupCreateRequest
 from cosmotech_api.models.solution_security import SolutionSecurity
@@ -42,7 +42,7 @@ class SolutionCreateRequest(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
     parameter_groups: Optional[List[RunTemplateParameterGroupCreateRequest]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
-    run_templates: Optional[List[RunTemplate]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
+    run_templates: Optional[List[RunTemplateCreateRequest]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     security: Optional[SolutionSecurity] = None
     __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "version", "alwaysPull", "csmSimulator", "tags", "parameters", "parameterGroups", "runTemplates", "url", "security"]
@@ -132,7 +132,7 @@ class SolutionCreateRequest(BaseModel):
             "tags": obj.get("tags"),
             "parameters": [RunTemplateParameterCreateRequest.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
             "parameterGroups": [RunTemplateParameterGroupCreateRequest.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None,
-            "runTemplates": [RunTemplate.from_dict(_item) for _item in obj["runTemplates"]] if obj.get("runTemplates") is not None else None,
+            "runTemplates": [RunTemplateCreateRequest.from_dict(_item) for _item in obj["runTemplates"]] if obj.get("runTemplates") is not None else None,
             "url": obj.get("url"),
             "security": SolutionSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })

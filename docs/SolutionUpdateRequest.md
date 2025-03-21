@@ -15,8 +15,9 @@ Name | Type | Description | Notes
 **version** | **str** | The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | [optional] 
 **url** | **str** | An optional URL link to solution page | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 
-**parameters** | [**List[RunTemplateParameterCreateRequest]**](RunTemplateParameterCreateRequest.md) | The list of Run Template Parameters | [optional] [default to []]
-**parameter_groups** | [**List[RunTemplateParameterGroupCreateRequest]**](RunTemplateParameterGroupCreateRequest.md) | The list of parameters groups for the Run Templates | [optional] [default to []]
+**parameters** | [**List[RunTemplateParameterCreateRequest]**](RunTemplateParameterCreateRequest.md) | The list of Run Template Parameters | [optional] 
+**parameter_groups** | [**List[RunTemplateParameterGroupCreateRequest]**](RunTemplateParameterGroupCreateRequest.md) | The list of parameters groups for the Run Templates | [optional] 
+**run_templates** | [**List[RunTemplateCreateRequest]**](RunTemplateCreateRequest.md) | List of Run Templates | [optional] 
 
 ## Example
 

@@ -55,6 +55,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_create_solution_run_template(self) -> None:
+        """Test case for create_solution_run_template
+
+        Create a solution run template
+        """
+        pass
+
     def test_delete_solution(self) -> None:
         """Test case for delete_solution
 
@@ -90,10 +97,10 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_solution_run_templates(self) -> None:
-        """Test case for delete_solution_run_templates
+    def test_get_run_template(self) -> None:
+        """Test case for get_run_template
 
-        Delete all run templates from the solution
+        Retrieve a solution run templates
         """
         pass
 
@@ -129,6 +136,13 @@ class TestSolutionApi(unittest.TestCase):
         """Test case for get_solution_security
 
         Get solution security information
+        """
+        pass
+
+    def test_list_run_templates(self) -> None:
+        """Test case for list_run_templates
+
+        List all solution run templates
         """
         pass
 
@@ -199,13 +213,6 @@ class TestSolutionApi(unittest.TestCase):
         """Test case for update_solution_run_template
 
         Update a specific run template
-        """
-        pass
-
-    def test_update_solution_run_templates(self) -> None:
-        """Test case for update_solution_run_templates
-
-        Update solution run templates
         """
         pass
 

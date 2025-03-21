@@ -64,6 +64,7 @@ cosmotech_api/models/run_state.py
 cosmotech_api/models/run_status.py
 cosmotech_api/models/run_status_node.py
 cosmotech_api/models/run_template.py
+cosmotech_api/models/run_template_create_request.py
 cosmotech_api/models/run_template_parameter.py
 cosmotech_api/models/run_template_parameter_create_request.py
 cosmotech_api/models/run_template_parameter_group.py
@@ -72,6 +73,7 @@ cosmotech_api/models/run_template_parameter_group_update_request.py
 cosmotech_api/models/run_template_parameter_update_request.py
 cosmotech_api/models/run_template_parameter_value.py
 cosmotech_api/models/run_template_resource_sizing.py
+cosmotech_api/models/run_template_update_request.py
 cosmotech_api/models/runner.py
 cosmotech_api/models/runner_access_control.py
 cosmotech_api/models/runner_create_request.py
@@ -153,6 +155,7 @@ docs/RunState.md
 docs/RunStatus.md
 docs/RunStatusNode.md
 docs/RunTemplate.md
+docs/RunTemplateCreateRequest.md
 docs/RunTemplateParameter.md
 docs/RunTemplateParameterCreateRequest.md
 docs/RunTemplateParameterGroup.md
@@ -161,6 +164,7 @@ docs/RunTemplateParameterGroupUpdateRequest.md
 docs/RunTemplateParameterUpdateRequest.md
 docs/RunTemplateParameterValue.md
 docs/RunTemplateResourceSizing.md
+docs/RunTemplateUpdateRequest.md
 docs/Runner.md
 docs/RunnerAccessControl.md
 docs/RunnerApi.md
@@ -250,6 +254,7 @@ test/test_run_state.py
 test/test_run_status.py
 test/test_run_status_node.py
 test/test_run_template.py
+test/test_run_template_create_request.py
 test/test_run_template_parameter.py
 test/test_run_template_parameter_create_request.py
 test/test_run_template_parameter_group.py
@@ -258,6 +263,7 @@ test/test_run_template_parameter_group_update_request.py
 test/test_run_template_parameter_update_request.py
 test/test_run_template_parameter_value.py
 test/test_run_template_resource_sizing.py
+test/test_run_template_update_request.py
 test/test_runner.py
 test/test_runner_access_control.py
 test/test_runner_api.py

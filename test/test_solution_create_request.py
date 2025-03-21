@@ -73,7 +73,7 @@ class TestSolutionCreateRequest(unittest.TestCase):
                             ], )
                     ],
                 run_templates = [
-                    cosmotech_api.models.run_template.RunTemplate(
+                    cosmotech_api.models.run_template_create_request.RunTemplateCreateRequest(
                         id = 'template-123', 
                         name = '0', 
                         labels = {

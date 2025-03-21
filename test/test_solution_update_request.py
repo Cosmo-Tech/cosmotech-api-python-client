@@ -72,6 +72,30 @@ class TestSolutionUpdateRequest(unittest.TestCase):
                         parameters = [
                             ''
                             ], )
+                    ],
+                run_templates = [
+                    cosmotech_api.models.run_template_create_request.RunTemplateCreateRequest(
+                        id = 'template-123', 
+                        name = '0', 
+                        labels = {
+                            'key' : ''
+                            }, 
+                        description = '', 
+                        tags = [
+                            ''
+                            ], 
+                        compute_size = '', 
+                        run_sizing = cosmotech_api.models.run_template_resource_sizing.RunTemplateResourceSizing(
+                            requests = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
+                                cpu = '', 
+                                memory = '', ), 
+                            limits = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
+                                cpu = '', 
+                                memory = '', ), ), 
+                        parameter_groups = [
+                            ''
+                            ], 
+                        execution_timeout = 56, )
                     ]
             )
         else:
