@@ -24,7 +24,6 @@ from cosmotech_api.models.query_result import QueryResult
 from cosmotech_api.models.run import Run
 from cosmotech_api.models.run_data import RunData
 from cosmotech_api.models.run_data_query import RunDataQuery
-from cosmotech_api.models.run_logs import RunLogs
 from cosmotech_api.models.run_status import RunStatus
 from cosmotech_api.models.send_run_data_request import SendRunDataRequest
 
@@ -674,7 +673,7 @@ class RunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RunLogs:
+    ) -> str:
         """get the logs for the Run
 
 
@@ -720,7 +719,7 @@ class RunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RunLogs",
+            '200': "str",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -752,7 +751,7 @@ class RunApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RunLogs]:
+    ) -> ApiResponse[str]:
         """get the logs for the Run
 
 
@@ -798,7 +797,7 @@ class RunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RunLogs",
+            '200': "str",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -876,7 +875,7 @@ class RunApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RunLogs",
+            '200': "str",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -930,8 +929,7 @@ class RunApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    'application/yaml'
+                    'text/plain'
                 ]
             )
 

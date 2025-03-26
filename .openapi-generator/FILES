@@ -57,8 +57,6 @@ cosmotech_api/models/run.py
 cosmotech_api/models/run_container.py
 cosmotech_api/models/run_data.py
 cosmotech_api/models/run_data_query.py
-cosmotech_api/models/run_logs.py
-cosmotech_api/models/run_logs_entry.py
 cosmotech_api/models/run_resource_requested.py
 cosmotech_api/models/run_state.py
 cosmotech_api/models/run_status.py
@@ -148,8 +146,6 @@ docs/RunApi.md
 docs/RunContainer.md
 docs/RunData.md
 docs/RunDataQuery.md
-docs/RunLogs.md
-docs/RunLogsEntry.md
 docs/RunResourceRequested.md
 docs/RunState.md
 docs/RunStatus.md
@@ -247,8 +243,6 @@ test/test_run_api.py
 test/test_run_container.py
 test/test_run_data.py
 test/test_run_data_query.py
-test/test_run_logs.py
-test/test_run_logs_entry.py
 test/test_run_resource_requested.py
 test/test_run_state.py
 test/test_run_status.py

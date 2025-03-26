@@ -254,8 +254,6 @@ Class | Method | HTTP request | Description
  - [RunContainer](docs/RunContainer.md)
  - [RunData](docs/RunData.md)
  - [RunDataQuery](docs/RunDataQuery.md)
- - [RunLogs](docs/RunLogs.md)
- - [RunLogsEntry](docs/RunLogsEntry.md)
  - [RunResourceRequested](docs/RunResourceRequested.md)
  - [RunState](docs/RunState.md)
  - [RunStatus](docs/RunStatus.md)

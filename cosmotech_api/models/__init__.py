@@ -53,8 +53,6 @@ from cosmotech_api.models.run import Run
 from cosmotech_api.models.run_container import RunContainer
 from cosmotech_api.models.run_data import RunData
 from cosmotech_api.models.run_data_query import RunDataQuery
-from cosmotech_api.models.run_logs import RunLogs
-from cosmotech_api.models.run_logs_entry import RunLogsEntry
 from cosmotech_api.models.run_resource_requested import RunResourceRequested
 from cosmotech_api.models.run_state import RunState
 from cosmotech_api.models.run_status import RunStatus
