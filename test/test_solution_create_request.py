@@ -42,7 +42,6 @@ class TestSolutionCreateRequest(unittest.TestCase):
                 repository = 'cosmotech/brewery_solution',
                 version = '1.0.0',
                 always_pull = True,
-                csm_simulator = 'brewery_simulator',
                 tags = ["brewery","optimization"],
                 parameters = [
                     cosmotech_api.models.run_template_parameter_create_request.RunTemplateParameterCreateRequest(
@@ -111,7 +110,6 @@ class TestSolutionCreateRequest(unittest.TestCase):
                 name = 'Brewery Solution',
                 repository = 'cosmotech/brewery_solution',
                 version = '1.0.0',
-                csm_simulator = 'brewery_simulator',
         )
         """
 

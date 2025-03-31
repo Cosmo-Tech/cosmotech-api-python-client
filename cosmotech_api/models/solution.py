@@ -39,7 +39,6 @@ class Solution(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
     repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    csm_simulator: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
     version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
     owner_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The User id which owns this Solution", alias="ownerId")
     sdk_version: Optional[StrictStr] = Field(default=None, description="The full SDK version used to build this solution, if available", alias="sdkVersion")
@@ -49,7 +48,7 @@ class Solution(BaseModel):
     parameter_groups: List[RunTemplateParameterGroup] = Field(description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: List[RunTemplate] = Field(description="List of Run Templates", alias="runTemplates")
     security: SolutionSecurity
-    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "ownerId", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
+    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "version", "ownerId", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -147,7 +146,6 @@ class Solution(BaseModel):
             "description": obj.get("description"),
             "repository": obj.get("repository"),
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
-            "csmSimulator": obj.get("csmSimulator"),
             "version": obj.get("version"),
             "ownerId": obj.get("ownerId"),
             "sdkVersion": obj.get("sdkVersion"),

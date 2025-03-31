@@ -36,14 +36,13 @@ class SolutionUpdateRequest(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
     repository: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The registry repository containing the image")
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    csm_simulator: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
     version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
     parameter_groups: Optional[List[RunTemplateParameterGroupCreateRequest]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: Optional[List[RunTemplateCreateRequest]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "csmSimulator", "version", "url", "tags", "parameters", "parameterGroups", "runTemplates"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "version", "url", "tags", "parameters", "parameterGroups", "runTemplates"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -122,7 +121,6 @@ class SolutionUpdateRequest(BaseModel):
             "description": obj.get("description"),
             "repository": obj.get("repository"),
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
-            "csmSimulator": obj.get("csmSimulator"),
             "version": obj.get("version"),
             "url": obj.get("url"),
             "tags": obj.get("tags"),

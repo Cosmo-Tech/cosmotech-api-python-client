@@ -38,14 +38,13 @@ class SolutionCreateRequest(BaseModel):
     repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
     version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH")
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    csm_simulator: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The main Cosmo Tech simulator name used in standard Run Template", alias="csmSimulator")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
     parameter_groups: Optional[List[RunTemplateParameterGroupCreateRequest]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: Optional[List[RunTemplateCreateRequest]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     security: Optional[SolutionSecurity] = None
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "version", "alwaysPull", "csmSimulator", "tags", "parameters", "parameterGroups", "runTemplates", "url", "security"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "version", "alwaysPull", "tags", "parameters", "parameterGroups", "runTemplates", "url", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -128,7 +127,6 @@ class SolutionCreateRequest(BaseModel):
             "repository": obj.get("repository"),
             "version": obj.get("version"),
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
-            "csmSimulator": obj.get("csmSimulator"),
             "tags": obj.get("tags"),
             "parameters": [RunTemplateParameterCreateRequest.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
             "parameterGroups": [RunTemplateParameterGroupCreateRequest.from_dict(_item) for _item in obj["parameterGroups"]] if obj.get("parameterGroups") is not None else None,

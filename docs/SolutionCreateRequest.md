@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **repository** | **str** | The registry repository containing the image | 
 **version** | **str** | The Solution version MAJOR.MINOR.PATCH | 
 **always_pull** | **bool** | Set to true if the runtemplate wants to always pull the image | [optional] [default to False]
-**csm_simulator** | **str** | The main Cosmo Tech simulator name used in standard Run Template | 
 **tags** | **List[str]** | The list of tags | [optional] 
 **parameters** | [**List[RunTemplateParameterCreateRequest]**](RunTemplateParameterCreateRequest.md) | The list of Run Template Parameters | [optional] [default to []]
 **parameter_groups** | [**List[RunTemplateParameterGroupCreateRequest]**](RunTemplateParameterGroupCreateRequest.md) | The list of parameters groups for the Run Templates | [optional] [default to []]

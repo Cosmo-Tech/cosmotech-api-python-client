@@ -43,7 +43,6 @@ class TestSolution(unittest.TestCase):
                 description = 'A solution for brewery management and optimization',
                 repository = 'cosmotech/brewery_solution',
                 always_pull = True,
-                csm_simulator = 'brewery_simulator',
                 version = '1.0.0',
                 owner_id = '0',
                 sdk_version = '11.3.0-39929.27365ede',
@@ -116,7 +115,6 @@ class TestSolution(unittest.TestCase):
                 key = 'brewery-solution',
                 name = 'Brewery Solution',
                 repository = 'cosmotech/brewery_solution',
-                csm_simulator = 'brewery_simulator',
                 version = '1.0.0',
                 owner_id = '0',
                 parameters = [

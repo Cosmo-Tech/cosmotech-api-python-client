@@ -41,7 +41,6 @@ class TestSolutionUpdateRequest(unittest.TestCase):
                 description = 'A solution for brewery management and optimization',
                 repository = 'cosmotech/brewery_solution',
                 always_pull = True,
-                csm_simulator = 'brewery_simulator',
                 version = '1.0.0',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 tags = ["brewery","optimization"],
