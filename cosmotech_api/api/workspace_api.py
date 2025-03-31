@@ -314,7 +314,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -590,7 +591,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -1231,7 +1233,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -2920,7 +2923,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -3781,7 +3785,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -4057,7 +4062,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -4345,7 +4351,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -4914,7 +4921,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -5208,7 +5216,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
@@ -5834,7 +5843,8 @@ class WorkspaceApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/yaml'
                 ]
             )
 
