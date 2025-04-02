@@ -35,7 +35,7 @@ class SolutionUpdateRequest(BaseModel):
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Solution name")
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
     repository: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The registry repository containing the image")
-    always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
+    always_pull: Optional[StrictBool] = Field(default=None, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
     version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
@@ -120,7 +120,7 @@ class SolutionUpdateRequest(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "repository": obj.get("repository"),
-            "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
+            "alwaysPull": obj.get("alwaysPull"),
             "version": obj.get("version"),
             "url": obj.get("url"),
             "tags": obj.get("tags"),
