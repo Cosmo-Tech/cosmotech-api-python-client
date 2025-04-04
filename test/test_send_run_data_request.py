@@ -43,6 +43,10 @@ class TestSendRunDataRequest(unittest.TestCase):
             )
         else:
             return SendRunDataRequest(
+                id = '',
+                data = [
+                    { }
+                    ],
         )
         """
 

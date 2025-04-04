@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,8 +27,8 @@ class SendRunDataRequest(BaseModel):
     """
     Run Data to send
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    data: Optional[List[Dict[str, Any]]] = None
+    id: StrictStr
+    data: List[Dict[str, Any]]
     __properties: ClassVar[List[str]] = ["id", "data"]
 
     model_config = ConfigDict(
