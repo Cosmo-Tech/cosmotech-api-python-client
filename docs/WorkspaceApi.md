@@ -58,8 +58,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
     dataset_id = 'dataset_id_example' # str | dataset id to be linked to
 
     try:
@@ -77,8 +77,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
  **dataset_id** | **str**| dataset id to be linked to | 
 
 ### Return type
@@ -98,9 +98,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the workspace details |  -  |
+**200** | The workspace details |  -  |
 **400** | Bad request |  -  |
-**404** | the workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -137,8 +137,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_create_request = cosmotech_api.WorkspaceCreateRequest() # WorkspaceCreateRequest | the Workspace to create
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_create_request = cosmotech_api.WorkspaceCreateRequest() # WorkspaceCreateRequest | The Workspace to create
 
     try:
         # Create a new workspace
@@ -156,8 +156,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_create_request** | [**WorkspaceCreateRequest**](WorkspaceCreateRequest.md)| the Workspace to create | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_create_request** | [**WorkspaceCreateRequest**](WorkspaceCreateRequest.md)| The Workspace to create | 
 
 ### Return type
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the workspace details |  -  |
+**201** | The workspace details |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -213,9 +213,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    workspace_access_control = cosmotech_api.WorkspaceAccessControl() # WorkspaceAccessControl | the new Workspace security access to add.
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    workspace_access_control = cosmotech_api.WorkspaceAccessControl() # WorkspaceAccessControl | The new Workspace security access to add.
 
     try:
         # Add a control access to the Workspace
@@ -233,9 +233,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **workspace_access_control** | [**WorkspaceAccessControl**](WorkspaceAccessControl.md)| the new Workspace security access to add. | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **workspace_access_control** | [**WorkspaceAccessControl**](WorkspaceAccessControl.md)| The new Workspace security access to add. | 
 
 ### Return type
 
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The Workspace access |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -291,8 +291,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
     file = None # bytearray | The file to upload
     overwrite = False # bool | Whether to overwrite an existing file (optional) (default to False)
     destination = 'destination_example' # str | Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location.  (optional)
@@ -313,8 +313,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
  **file** | **bytearray**| The file to upload | 
  **overwrite** | **bool**| Whether to overwrite an existing file | [optional] [default to False]
  **destination** | **str**| Destination path. Must end with a &#39;/&#39; if specifying a folder. Note that paths may or may not start with a &#39;/&#39;, but they are always treated as relative to the Workspace root location.  | [optional] 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the file resource details |  -  |
+**201** | The file resource details |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -372,8 +372,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
     dataset_id = 'dataset_id_example' # str | dataset id to be linked to
 
     try:
@@ -389,8 +389,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
  **dataset_id** | **str**| dataset id to be linked to | 
 
 ### Return type
@@ -410,9 +410,9 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the request succeeded |  -  |
+**200** | The request succeeded |  -  |
 **400** | Bad request |  -  |
-**404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Dataset specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -447,8 +447,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
         # Delete a workspace
@@ -464,8 +464,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
 
 ### Return type
 
@@ -484,9 +484,9 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | the workspace details |  -  |
+**204** | The workspace details |  -  |
 **400** | Bad request |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -521,9 +521,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    identity_id = 'identity_id_example' # str | The User identifier
 
     try:
         # Remove the specified access from the given Organization Workspace
@@ -539,9 +539,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **identity_id** | **str**| The User identifier | 
 
 ### Return type
 
@@ -596,9 +596,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    file_name = 'file_name_example' # str | the file name
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    file_name = 'file_name_example' # str | The file name
 
     try:
         # Delete a workspace file
@@ -614,9 +614,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **file_name** | **str**| the file name | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **file_name** | **str**| The file name | 
 
 ### Return type
 
@@ -636,7 +636,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
-**404** | the Workspace or the file specified is unknown or you don&#39;t have access to them |  -  |
+**404** | The Workspace or the file specified is unknown or you don&#39;t have access to them |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -671,8 +671,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
         # Delete all Workspace files
@@ -688,8 +688,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
 
 ### Return type
 
@@ -709,7 +709,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to them |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to them |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -745,8 +745,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
         # Get the details of an workspace
@@ -764,8 +764,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
 
 ### Return type
 
@@ -784,7 +784,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the Workspace details |  -  |
+**200** | The Workspace details |  -  |
 **404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -821,9 +821,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    identity_id = 'identity_id_example' # str | The User identifier
 
     try:
         # Get a control access for the Workspace
@@ -841,9 +841,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **identity_id** | **str**| The User identifier | 
 
 ### Return type
 
@@ -898,9 +898,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    file_name = 'file_name_example' # str | the file name
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    file_name = 'file_name_example' # str | The file name
 
     try:
         # Download the Workspace File specified
@@ -918,9 +918,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **file_name** | **str**| the file name | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **file_name** | **str**| The file name | 
 
 ### Return type
 
@@ -939,8 +939,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the workspace file as a resource |  -  |
-**404** | the Workspace file specified is unknown or you don&#39;t have access to it |  -  |
+**200** | The workspace file as a resource |  -  |
+**404** | The Workspace file specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -976,8 +976,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
         # Get the Workspace security information
@@ -995,8 +995,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
 
 ### Return type
 
@@ -1016,7 +1016,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The Workspace security |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1052,8 +1052,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
         # List all Workspace files
@@ -1071,8 +1071,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
 
 ### Return type
 
@@ -1091,8 +1091,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the workspace files |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**200** | The workspace files |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1127,9 +1127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    role = 'role_example' # str | the Role
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    role = 'role_example' # str | The Role
 
     try:
         # Get the Workspace permission by given role
@@ -1147,9 +1147,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **role** | **str**| the Role | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **role** | **str**| The Role | 
 
 ### Return type
 
@@ -1203,8 +1203,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
         # Get the Workspace security users list
@@ -1222,8 +1222,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
 
 ### Return type
 
@@ -1243,7 +1243,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The Workspace security users list |  -  |
-**404** | the Workspace or the User specified is unknown or you don&#39;t have access to them |  -  |
+**404** | The Workspace or the User specified is unknown or you don&#39;t have access to them |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1279,9 +1279,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
     page = 56 # int | page number to query (first page is at index 0) (optional)
-    size = 56 # int | amount of result by page (optional)
+    size = 56 # int | Amount of result by page (optional)
 
     try:
         # List all Workspaces
@@ -1299,9 +1299,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| The Organization identifier | 
  **page** | **int**| page number to query (first page is at index 0) | [optional] 
- **size** | **int**| amount of result by page | [optional] 
+ **size** | **int**| Amount of result by page | [optional] 
 
 ### Return type
 
@@ -1320,7 +1320,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the workspace details |  -  |
+**200** | The workspace details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1357,8 +1357,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
     workspace_update_request = cosmotech_api.WorkspaceUpdateRequest() # WorkspaceUpdateRequest | The new Workspace details. This endpoint can't be used to update security
 
     try:
@@ -1377,8 +1377,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
  **workspace_update_request** | [**WorkspaceUpdateRequest**](WorkspaceUpdateRequest.md)| The new Workspace details. This endpoint can&#39;t be used to update security | 
 
 ### Return type
@@ -1398,9 +1398,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the workspace details |  -  |
+**200** | The workspace details |  -  |
 **400** | Bad request |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1437,9 +1437,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    identity_id = 'identity_id_example' # str | The User identifier
     workspace_role = cosmotech_api.WorkspaceRole() # WorkspaceRole | The new Workspace Access Control
 
     try:
@@ -1458,9 +1458,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **identity_id** | **str**| The User identifier | 
  **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| The new Workspace Access Control | 
 
 ### Return type
@@ -1518,8 +1518,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
     workspace_role = cosmotech_api.WorkspaceRole() # WorkspaceRole | This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.
 
     try:
@@ -1538,8 +1538,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
  **workspace_role** | [**WorkspaceRole**](WorkspaceRole.md)| This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace. | 
 
 ### Return type
@@ -1560,7 +1560,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The Workspace default visibility |  -  |
-**404** | the Workspace specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

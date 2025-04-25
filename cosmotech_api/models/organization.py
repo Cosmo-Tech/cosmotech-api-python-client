@@ -20,19 +20,21 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
+from cosmotech_api.models.organization_edit_info import OrganizationEditInfo
 from cosmotech_api.models.organization_security import OrganizationSecurity
 from typing import Optional, Set
 from typing_extensions import Self
 
 class Organization(BaseModel):
     """
-    an Organization
+    An Organization
     """ # noqa: E501
-    id: StrictStr = Field(description="the Organization unique identifier")
-    name: StrictStr = Field(description="the Organization name")
-    owner_id: StrictStr = Field(description="the Owner User Id", alias="ownerId")
+    id: StrictStr = Field(description="The Organization unique identifier")
+    name: StrictStr = Field(description="The Organization name")
+    create_info: OrganizationEditInfo = Field(description="The details of the Organization creation", alias="createInfo")
+    update_info: OrganizationEditInfo = Field(description="The details of the Organization last update", alias="updateInfo")
     security: OrganizationSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "ownerId", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "createInfo", "updateInfo", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -65,11 +67,9 @@ class Organization(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
-            "owner_id",
         ])
 
         _dict = self.model_dump(
@@ -77,6 +77,12 @@ class Organization(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of create_info
+        if self.create_info:
+            _dict['createInfo'] = self.create_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of update_info
+        if self.update_info:
+            _dict['updateInfo'] = self.update_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of security
         if self.security:
             _dict['security'] = self.security.to_dict()
@@ -94,7 +100,8 @@ class Organization(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "ownerId": obj.get("ownerId"),
+            "createInfo": OrganizationEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
+            "updateInfo": OrganizationEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
             "security": OrganizationSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj

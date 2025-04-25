@@ -26,11 +26,11 @@ from typing_extensions import Self
 
 class WorkspaceSolution(BaseModel):
     """
-    the Workspace Solution configuration
+    The Workspace Solution configuration
     """ # noqa: E501
-    solution_id: Annotated[str, Field(strict=True)] = Field(description="the Solution Id attached to this workspace", alias="solutionId")
-    run_template_filter: Optional[List[StrictStr]] = Field(default=None, description="the list of Solution Run Template Id to filter", alias="runTemplateFilter")
-    default_run_template_dataset: Optional[Dict[str, Any]] = Field(default=None, description="a map of RunTemplateId/DatasetId to set a default dataset for a Run Template", alias="defaultRunTemplateDataset")
+    solution_id: Annotated[str, Field(strict=True)] = Field(description="The Solution Id attached to this workspace", alias="solutionId")
+    run_template_filter: Optional[List[StrictStr]] = Field(default=None, description="The list of Solution Run Template Id to filter", alias="runTemplateFilter")
+    default_run_template_dataset: Optional[Dict[str, Any]] = Field(default=None, description="A map of RunTemplateId/DatasetId to set a default dataset for a Run Template", alias="defaultRunTemplateDataset")
     __properties: ClassVar[List[str]] = ["solutionId", "runTemplateFilter", "defaultRunTemplateDataset"]
 
     @field_validator('solution_id')

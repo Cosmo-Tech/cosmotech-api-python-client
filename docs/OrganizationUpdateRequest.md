@@ -6,7 +6,7 @@ Request object for updating an organization
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | the Organization name | [optional] 
+**name** | **str** | The Organization name | [optional] 
 
 ## Example
 

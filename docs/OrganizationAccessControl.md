@@ -6,8 +6,8 @@ Response object for organization access control
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the identity id | 
-**role** | **str** | a role | 
+**id** | **str** | The identity id | 
+**role** | **str** | A role | 
 
 ## Example
 

@@ -38,7 +38,12 @@ class TestOrganization(unittest.TestCase):
             return Organization(
                 id = '',
                 name = '',
-                owner_id = '',
+                create_info = cosmotech_api.models.organization_edit_info.OrganizationEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.organization_edit_info.OrganizationEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 security = cosmotech_api.models.organization_security.OrganizationSecurity(
                     default = '', 
                     access_control_list = [
@@ -51,7 +56,12 @@ class TestOrganization(unittest.TestCase):
             return Organization(
                 id = '',
                 name = '',
-                owner_id = '',
+                create_info = cosmotech_api.models.organization_edit_info.OrganizationEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.organization_edit_info.OrganizationEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 security = cosmotech_api.models.organization_security.OrganizationSecurity(
                     default = '', 
                     access_control_list = [

@@ -6,7 +6,7 @@ Request object for updating a solution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** | technical key for resource name convention and version grouping. Must be unique | [optional] 
+**key** | **str** | Technical key for resource name convention and version grouping. Must be unique | [optional] 
 **name** | **str** | The Solution name | [optional] 
 **description** | **str** | The Solution description | [optional] 
 **repository** | **str** | The registry repository containing the image | [optional] 

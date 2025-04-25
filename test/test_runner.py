@@ -43,14 +43,17 @@ class TestRunner(unittest.TestCase):
                     ''
                     ],
                 parent_id = '',
-                owner_id = '',
+                create_info = cosmotech_api.models.runner_edit_info.RunnerEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.runner_edit_info.RunnerEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 root_id = '',
                 solution_id = '',
                 run_template_id = '',
                 organization_id = '',
                 workspace_id = '',
-                creation_date = 56,
-                last_update = 56,
                 owner_name = '',
                 solution_name = '',
                 run_template_name = '',
@@ -85,13 +88,16 @@ class TestRunner(unittest.TestCase):
             return Runner(
                 id = '',
                 name = '',
-                owner_id = '',
+                create_info = cosmotech_api.models.runner_edit_info.RunnerEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.runner_edit_info.RunnerEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 solution_id = '',
                 run_template_id = '',
                 organization_id = '',
                 workspace_id = '',
-                creation_date = 56,
-                last_update = 56,
                 owner_name = '',
                 dataset_list = [
                     ''

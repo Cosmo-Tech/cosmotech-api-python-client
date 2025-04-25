@@ -49,7 +49,7 @@ class OrganizationApi:
     @validate_call
     def create_organization(
         self,
-        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="the Organization to create")],
+        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="The Organization to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,7 +66,7 @@ class OrganizationApi:
         """Create a new organization
 
 
-        :param organization_create_request: the Organization to create (required)
+        :param organization_create_request: The Organization to create (required)
         :type organization_create_request: OrganizationCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -116,7 +116,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_with_http_info(
         self,
-        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="the Organization to create")],
+        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="The Organization to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,7 +133,7 @@ class OrganizationApi:
         """Create a new organization
 
 
-        :param organization_create_request: the Organization to create (required)
+        :param organization_create_request: The Organization to create (required)
         :type organization_create_request: OrganizationCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -183,7 +183,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_without_preload_content(
         self,
-        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="the Organization to create")],
+        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="The Organization to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,7 +200,7 @@ class OrganizationApi:
         """Create a new organization
 
 
-        :param organization_create_request: the Organization to create (required)
+        :param organization_create_request: The Organization to create (required)
         :type organization_create_request: OrganizationCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -325,8 +325,8 @@ class OrganizationApi:
     @validate_call
     def create_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_access_control: Annotated[OrganizationAccessControl, Field(description="the new Organization security access to add.")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_access_control: Annotated[OrganizationAccessControl, Field(description="The new Organization security access to add.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -343,9 +343,9 @@ class OrganizationApi:
         """Add a control access to the Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param organization_access_control: the new Organization security access to add. (required)
+        :param organization_access_control: The new Organization security access to add. (required)
         :type organization_access_control: OrganizationAccessControl
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -396,8 +396,8 @@ class OrganizationApi:
     @validate_call
     def create_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_access_control: Annotated[OrganizationAccessControl, Field(description="the new Organization security access to add.")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_access_control: Annotated[OrganizationAccessControl, Field(description="The new Organization security access to add.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -414,9 +414,9 @@ class OrganizationApi:
         """Add a control access to the Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param organization_access_control: the new Organization security access to add. (required)
+        :param organization_access_control: The new Organization security access to add. (required)
         :type organization_access_control: OrganizationAccessControl
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -467,8 +467,8 @@ class OrganizationApi:
     @validate_call
     def create_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_access_control: Annotated[OrganizationAccessControl, Field(description="the new Organization security access to add.")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_access_control: Annotated[OrganizationAccessControl, Field(description="The new Organization security access to add.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -485,9 +485,9 @@ class OrganizationApi:
         """Add a control access to the Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param organization_access_control: the new Organization security access to add. (required)
+        :param organization_access_control: The new Organization security access to add. (required)
         :type organization_access_control: OrganizationAccessControl
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -616,7 +616,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -633,7 +633,7 @@ class OrganizationApi:
         """Delete an organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -683,7 +683,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -700,7 +700,7 @@ class OrganizationApi:
         """Delete an organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -750,7 +750,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -767,7 +767,7 @@ class OrganizationApi:
         """Delete an organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -870,8 +870,8 @@ class OrganizationApi:
     @validate_call
     def delete_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -888,9 +888,9 @@ class OrganizationApi:
         """Remove the specified access from the given Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -941,8 +941,8 @@ class OrganizationApi:
     @validate_call
     def delete_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -959,9 +959,9 @@ class OrganizationApi:
         """Remove the specified access from the given Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1012,8 +1012,8 @@ class OrganizationApi:
     @validate_call
     def delete_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1030,9 +1030,9 @@ class OrganizationApi:
         """Remove the specified access from the given Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1139,7 +1139,7 @@ class OrganizationApi:
     @validate_call
     def get_organization(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1156,7 +1156,7 @@ class OrganizationApi:
         """Get the details of an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1206,7 +1206,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1223,7 +1223,7 @@ class OrganizationApi:
         """Get the details of an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1273,7 +1273,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1290,7 +1290,7 @@ class OrganizationApi:
         """Get the details of an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1401,8 +1401,8 @@ class OrganizationApi:
     @validate_call
     def get_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1419,9 +1419,9 @@ class OrganizationApi:
         """Get a control access for the Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1472,8 +1472,8 @@ class OrganizationApi:
     @validate_call
     def get_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1490,9 +1490,9 @@ class OrganizationApi:
         """Get a control access for the Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1543,8 +1543,8 @@ class OrganizationApi:
     @validate_call
     def get_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1561,9 +1561,9 @@ class OrganizationApi:
         """Get a control access for the Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1678,8 +1678,8 @@ class OrganizationApi:
     @validate_call
     def get_organization_permissions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1696,9 +1696,9 @@ class OrganizationApi:
         """Get the Organization permissions by given role
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param role: the Role (required)
+        :param role: The Role (required)
         :type role: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1748,8 +1748,8 @@ class OrganizationApi:
     @validate_call
     def get_organization_permissions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1766,9 +1766,9 @@ class OrganizationApi:
         """Get the Organization permissions by given role
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param role: the Role (required)
+        :param role: The Role (required)
         :type role: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1818,8 +1818,8 @@ class OrganizationApi:
     @validate_call
     def get_organization_permissions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        role: Annotated[StrictStr, Field(description="the Role")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1836,9 +1836,9 @@ class OrganizationApi:
         """Get the Organization permissions by given role
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param role: the Role (required)
+        :param role: The Role (required)
         :type role: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1952,7 +1952,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1969,7 +1969,7 @@ class OrganizationApi:
         """Get the Organization security information
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2019,7 +2019,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2036,7 +2036,7 @@ class OrganizationApi:
         """Get the Organization security information
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2086,7 +2086,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2103,7 +2103,7 @@ class OrganizationApi:
         """Get the Organization security information
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2476,8 +2476,8 @@ class OrganizationApi:
     @validate_call
     def list_organizations(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2494,9 +2494,9 @@ class OrganizationApi:
         """List all Organizations
 
 
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2546,8 +2546,8 @@ class OrganizationApi:
     @validate_call
     def list_organizations_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2564,9 +2564,9 @@ class OrganizationApi:
         """List all Organizations
 
 
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2616,8 +2616,8 @@ class OrganizationApi:
     @validate_call
     def list_organizations_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2634,9 +2634,9 @@ class OrganizationApi:
         """List all Organizations
 
 
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2998,8 +2998,8 @@ class OrganizationApi:
     @validate_call
     def update_organization(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="the new Organization details. This endpoint can't be used to update security")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="The new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3016,9 +3016,9 @@ class OrganizationApi:
         """Update an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param organization_update_request: the new Organization details. This endpoint can't be used to update security (required)
+        :param organization_update_request: The new Organization details. This endpoint can't be used to update security (required)
         :type organization_update_request: OrganizationUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3070,8 +3070,8 @@ class OrganizationApi:
     @validate_call
     def update_organization_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="the new Organization details. This endpoint can't be used to update security")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="The new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3088,9 +3088,9 @@ class OrganizationApi:
         """Update an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param organization_update_request: the new Organization details. This endpoint can't be used to update security (required)
+        :param organization_update_request: The new Organization details. This endpoint can't be used to update security (required)
         :type organization_update_request: OrganizationUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3142,8 +3142,8 @@ class OrganizationApi:
     @validate_call
     def update_organization_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="the new Organization details. This endpoint can't be used to update security")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="The new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3160,9 +3160,9 @@ class OrganizationApi:
         """Update an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param organization_update_request: the new Organization details. This endpoint can't be used to update security (required)
+        :param organization_update_request: The new Organization details. This endpoint can't be used to update security (required)
         :type organization_update_request: OrganizationUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3292,8 +3292,8 @@ class OrganizationApi:
     @validate_call
     def update_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="The new Organization Access Control")],
         _request_timeout: Union[
             None,
@@ -3311,9 +3311,9 @@ class OrganizationApi:
         """Update the specified access to User for an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param organization_role: The new Organization Access Control (required)
         :type organization_role: OrganizationRole
@@ -3367,8 +3367,8 @@ class OrganizationApi:
     @validate_call
     def update_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="The new Organization Access Control")],
         _request_timeout: Union[
             None,
@@ -3386,9 +3386,9 @@ class OrganizationApi:
         """Update the specified access to User for an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param organization_role: The new Organization Access Control (required)
         :type organization_role: OrganizationRole
@@ -3442,8 +3442,8 @@ class OrganizationApi:
     @validate_call
     def update_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="The new Organization Access Control")],
         _request_timeout: Union[
             None,
@@ -3461,9 +3461,9 @@ class OrganizationApi:
         """Update the specified access to User for an Organization
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param organization_role: The new Organization Access Control (required)
         :type organization_role: OrganizationRole
@@ -3598,7 +3598,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_default_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
         _request_timeout: Union[
             None,
@@ -3616,7 +3616,7 @@ class OrganizationApi:
         """Update the Organization default security
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
         :type organization_role: OrganizationRole
@@ -3669,7 +3669,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_default_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
         _request_timeout: Union[
             None,
@@ -3687,7 +3687,7 @@ class OrganizationApi:
         """Update the Organization default security
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
         :type organization_role: OrganizationRole
@@ -3740,7 +3740,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_default_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
         _request_timeout: Union[
             None,
@@ -3758,7 +3758,7 @@ class OrganizationApi:
         """Update the Organization default security
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param organization_role: This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. (required)
         :type organization_role: OrganizationRole

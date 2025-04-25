@@ -44,7 +44,12 @@ class TestSolution(unittest.TestCase):
                 repository = 'cosmotech/brewery_solution',
                 always_pull = True,
                 version = '1.0.0',
-                owner_id = '0',
+                create_info = cosmotech_api.models.solution_edit_info.SolutionEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.solution_edit_info.SolutionEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 sdk_version = '11.3.0-39929.27365ede',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 tags = ["brewery","optimization"],
@@ -116,7 +121,12 @@ class TestSolution(unittest.TestCase):
                 name = 'Brewery Solution',
                 repository = 'cosmotech/brewery_solution',
                 version = '1.0.0',
-                owner_id = '0',
+                create_info = cosmotech_api.models.solution_edit_info.SolutionEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.solution_edit_info.SolutionEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 parameters = [
                     cosmotech_api.models.run_template_parameter.RunTemplateParameter(
                         id = '0', 

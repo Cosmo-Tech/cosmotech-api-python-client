@@ -28,8 +28,8 @@ class OrganizationSecurity(BaseModel):
     """
     Response object for organization security information
     """ # noqa: E501
-    default: StrictStr = Field(description="the role by default")
-    access_control_list: List[OrganizationAccessControl] = Field(description="the list which can access this Organization with detailed access control information", alias="accessControlList")
+    default: StrictStr = Field(description="The role by default")
+    access_control_list: List[OrganizationAccessControl] = Field(description="The list which can access this Organization with detailed access control information", alias="accessControlList")
     __properties: ClassVar[List[str]] = ["default", "accessControlList"]
 
     model_config = ConfigDict(

@@ -28,9 +28,9 @@ class RunTemplateParameterUpdateRequest(BaseModel):
     """
     A Run Template Parameter for update parameter
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="the parameter description")
-    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
-    var_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
+    description: Optional[StrictStr] = Field(default=None, description="The parameter description")
+    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
+    var_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
     default_value: Optional[StrictStr] = Field(default=None, description="The default value for this parameter", alias="defaultValue")
     min_value: Optional[StrictStr] = Field(default=None, description="The minimum value for this parameter", alias="minValue")
     max_value: Optional[StrictStr] = Field(default=None, description="The maximum value for this parameter", alias="maxValue")

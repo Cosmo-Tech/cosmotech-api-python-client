@@ -6,7 +6,7 @@ Request object for creating a new organization
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | the Organization name | 
+**name** | **str** | The Organization name | 
 **security** | [**OrganizationSecurity**](OrganizationSecurity.md) |  | [optional] 
 
 ## Example

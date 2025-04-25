@@ -27,8 +27,8 @@ class OrganizationAccessControl(BaseModel):
     """
     Response object for organization access control
     """ # noqa: E501
-    id: StrictStr = Field(description="the identity id")
-    role: StrictStr = Field(description="a role")
+    id: StrictStr = Field(description="The identity id")
+    role: StrictStr = Field(description="A role")
     __properties: ClassVar[List[str]] = ["id", "role"]
 
     model_config = ConfigDict(

@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class CreatedRun(BaseModel):
     """
-    Newle created Run info
+    Newly created Run info
     """ # noqa: E501
     id: StrictStr = Field(description="Run id")
     __properties: ClassVar[List[str]] = ["id"]

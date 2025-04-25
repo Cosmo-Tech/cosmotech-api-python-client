@@ -44,6 +44,7 @@ from cosmotech_api.models.io_types_enum import IoTypesEnum
 from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl
 from cosmotech_api.models.organization_create_request import OrganizationCreateRequest
+from cosmotech_api.models.organization_edit_info import OrganizationEditInfo
 from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity
 from cosmotech_api.models.organization_update_request import OrganizationUpdateRequest
@@ -53,6 +54,7 @@ from cosmotech_api.models.run import Run
 from cosmotech_api.models.run_container import RunContainer
 from cosmotech_api.models.run_data import RunData
 from cosmotech_api.models.run_data_query import RunDataQuery
+from cosmotech_api.models.run_edit_info import RunEditInfo
 from cosmotech_api.models.run_resource_requested import RunResourceRequested
 from cosmotech_api.models.run_state import RunState
 from cosmotech_api.models.run_status import RunStatus
@@ -71,6 +73,7 @@ from cosmotech_api.models.run_template_update_request import RunTemplateUpdateRe
 from cosmotech_api.models.runner import Runner
 from cosmotech_api.models.runner_access_control import RunnerAccessControl
 from cosmotech_api.models.runner_create_request import RunnerCreateRequest
+from cosmotech_api.models.runner_edit_info import RunnerEditInfo
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_role import RunnerRole
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
@@ -81,6 +84,7 @@ from cosmotech_api.models.send_run_data_request import SendRunDataRequest
 from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
 from cosmotech_api.models.solution_create_request import SolutionCreateRequest
+from cosmotech_api.models.solution_edit_info import SolutionEditInfo
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
@@ -91,6 +95,7 @@ from cosmotech_api.models.twincache_status_enum import TwincacheStatusEnum
 from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest
+from cosmotech_api.models.workspace_edit_info import WorkspaceEditInfo
 from cosmotech_api.models.workspace_file import WorkspaceFile
 from cosmotech_api.models.workspace_role import WorkspaceRole
 from cosmotech_api.models.workspace_security import WorkspaceSecurity

@@ -24,6 +24,7 @@ from typing_extensions import Annotated
 from cosmotech_api.models.run_template import RunTemplate
 from cosmotech_api.models.run_template_parameter import RunTemplateParameter
 from cosmotech_api.models.run_template_parameter_group import RunTemplateParameterGroup
+from cosmotech_api.models.solution_edit_info import SolutionEditInfo
 from cosmotech_api.models.solution_security import SolutionSecurity
 from typing import Optional, Set
 from typing_extensions import Self
@@ -40,7 +41,8 @@ class Solution(BaseModel):
     repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
     version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
-    owner_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The User id which owns this Solution", alias="ownerId")
+    create_info: SolutionEditInfo = Field(description="The details of the Solution creation", alias="createInfo")
+    update_info: SolutionEditInfo = Field(description="The details of the Solution last update", alias="updateInfo")
     sdk_version: Optional[StrictStr] = Field(default=None, description="The full SDK version used to build this solution, if available", alias="sdkVersion")
     url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
@@ -48,7 +50,7 @@ class Solution(BaseModel):
     parameter_groups: List[RunTemplateParameterGroup] = Field(description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: List[RunTemplate] = Field(description="List of Run Templates", alias="runTemplates")
     security: SolutionSecurity
-    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "version", "ownerId", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
+    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "version", "createInfo", "updateInfo", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -103,6 +105,12 @@ class Solution(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of create_info
+        if self.create_info:
+            _dict['createInfo'] = self.create_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of update_info
+        if self.update_info:
+            _dict['updateInfo'] = self.update_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in parameters (list)
         _items = []
         if self.parameters:
@@ -147,7 +155,8 @@ class Solution(BaseModel):
             "repository": obj.get("repository"),
             "alwaysPull": obj.get("alwaysPull") if obj.get("alwaysPull") is not None else False,
             "version": obj.get("version"),
-            "ownerId": obj.get("ownerId"),
+            "createInfo": SolutionEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
+            "updateInfo": SolutionEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
             "sdkVersion": obj.get("sdkVersion"),
             "url": obj.get("url"),
             "tags": obj.get("tags"),

@@ -57,8 +57,8 @@ class SolutionApi:
     @validate_call
     def create_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_create_request: Annotated[SolutionCreateRequest, Field(description="the Solution to create")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,9 +75,9 @@ class SolutionApi:
         """Create a new solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_create_request: the Solution to create (required)
+        :param solution_create_request: The Solution to create (required)
         :type solution_create_request: SolutionCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -128,8 +128,8 @@ class SolutionApi:
     @validate_call
     def create_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_create_request: Annotated[SolutionCreateRequest, Field(description="the Solution to create")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,9 +146,9 @@ class SolutionApi:
         """Create a new solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_create_request: the Solution to create (required)
+        :param solution_create_request: The Solution to create (required)
         :type solution_create_request: SolutionCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -199,8 +199,8 @@ class SolutionApi:
     @validate_call
     def create_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_create_request: Annotated[SolutionCreateRequest, Field(description="the Solution to create")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,9 +217,9 @@ class SolutionApi:
         """Create a new solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_create_request: the Solution to create (required)
+        :param solution_create_request: The Solution to create (required)
         :type solution_create_request: SolutionCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -348,8 +348,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -367,9 +367,9 @@ class SolutionApi:
         """Create solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
@@ -423,8 +423,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -442,9 +442,9 @@ class SolutionApi:
         """Create solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
@@ -498,8 +498,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -517,9 +517,9 @@ class SolutionApi:
         """Create solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
@@ -654,8 +654,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -673,9 +673,9 @@ class SolutionApi:
         """Create solution parameter for a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_create_request: Parameter to create (required)
         :type run_template_parameter_create_request: RunTemplateParameterCreateRequest
@@ -730,8 +730,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -749,9 +749,9 @@ class SolutionApi:
         """Create solution parameter for a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_create_request: Parameter to create (required)
         :type run_template_parameter_create_request: RunTemplateParameterCreateRequest
@@ -806,8 +806,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -825,9 +825,9 @@ class SolutionApi:
         """Create solution parameter for a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_create_request: Parameter to create (required)
         :type run_template_parameter_create_request: RunTemplateParameterCreateRequest
@@ -963,8 +963,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -982,9 +982,9 @@ class SolutionApi:
         """Create a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_group_create_request: Parameter group to create (required)
         :type run_template_parameter_group_create_request: RunTemplateParameterGroupCreateRequest
@@ -1039,8 +1039,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1058,9 +1058,9 @@ class SolutionApi:
         """Create a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_group_create_request: Parameter group to create (required)
         :type run_template_parameter_group_create_request: RunTemplateParameterGroupCreateRequest
@@ -1115,8 +1115,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1134,9 +1134,9 @@ class SolutionApi:
         """Create a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_group_create_request: Parameter group to create (required)
         :type run_template_parameter_group_create_request: RunTemplateParameterGroupCreateRequest
@@ -1272,8 +1272,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1291,9 +1291,9 @@ class SolutionApi:
         """Create a solution run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_create_request: Run template to create (required)
         :type run_template_create_request: RunTemplateCreateRequest
@@ -1348,8 +1348,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1367,9 +1367,9 @@ class SolutionApi:
         """Create a solution run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_create_request: Run template to create (required)
         :type run_template_create_request: RunTemplateCreateRequest
@@ -1424,8 +1424,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1443,9 +1443,9 @@ class SolutionApi:
         """Create a solution run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param run_template_create_request: Run template to create (required)
         :type run_template_create_request: RunTemplateCreateRequest
@@ -1581,8 +1581,8 @@ class SolutionApi:
     @validate_call
     def delete_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1599,9 +1599,9 @@ class SolutionApi:
         """Delete a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1652,8 +1652,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1670,9 +1670,9 @@ class SolutionApi:
         """Delete a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1723,8 +1723,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1741,9 +1741,9 @@ class SolutionApi:
         """Delete a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1850,9 +1850,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1869,11 +1869,11 @@ class SolutionApi:
         """Delete solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1925,9 +1925,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1944,11 +1944,11 @@ class SolutionApi:
         """Delete solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2000,9 +2000,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2019,11 +2019,11 @@ class SolutionApi:
         """Delete solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2134,9 +2134,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2153,11 +2153,11 @@ class SolutionApi:
         """Delete specific parameter from the solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2209,9 +2209,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2228,11 +2228,11 @@ class SolutionApi:
         """Delete specific parameter from the solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2284,9 +2284,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2303,11 +2303,11 @@ class SolutionApi:
         """Delete specific parameter from the solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2418,9 +2418,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2437,11 +2437,11 @@ class SolutionApi:
         """Delete a parameter group from the solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2493,9 +2493,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2512,11 +2512,11 @@ class SolutionApi:
         """Delete a parameter group from the solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2568,9 +2568,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2587,11 +2587,11 @@ class SolutionApi:
         """Delete a parameter group from the solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2702,9 +2702,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2721,11 +2721,11 @@ class SolutionApi:
         """Delete a specific run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2777,9 +2777,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2796,11 +2796,11 @@ class SolutionApi:
         """Delete a specific run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2852,9 +2852,9 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2871,11 +2871,11 @@ class SolutionApi:
         """Delete a specific run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2986,9 +2986,9 @@ class SolutionApi:
     @validate_call
     def get_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3005,11 +3005,11 @@ class SolutionApi:
         """Retrieve a solution run templates
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3061,9 +3061,9 @@ class SolutionApi:
     @validate_call
     def get_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3080,11 +3080,11 @@ class SolutionApi:
         """Retrieve a solution run templates
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3136,9 +3136,9 @@ class SolutionApi:
     @validate_call
     def get_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3155,11 +3155,11 @@ class SolutionApi:
         """Retrieve a solution run templates
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3278,8 +3278,8 @@ class SolutionApi:
     @validate_call
     def get_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3296,9 +3296,9 @@ class SolutionApi:
         """Get the details of a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3349,8 +3349,8 @@ class SolutionApi:
     @validate_call
     def get_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3367,9 +3367,9 @@ class SolutionApi:
         """Get the details of a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3420,8 +3420,8 @@ class SolutionApi:
     @validate_call
     def get_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3438,9 +3438,9 @@ class SolutionApi:
         """Get the details of a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3555,9 +3555,9 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3574,11 +3574,11 @@ class SolutionApi:
         """Get solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3630,9 +3630,9 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3649,11 +3649,11 @@ class SolutionApi:
         """Get solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3705,9 +3705,9 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3724,11 +3724,11 @@ class SolutionApi:
         """Get solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3847,9 +3847,9 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3866,11 +3866,11 @@ class SolutionApi:
         """Get the details of a solution parameter
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3923,9 +3923,9 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3942,11 +3942,11 @@ class SolutionApi:
         """Get the details of a solution parameter
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3999,9 +3999,9 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4018,11 +4018,11 @@ class SolutionApi:
         """Get the details of a solution parameter
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4142,9 +4142,9 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4161,11 +4161,11 @@ class SolutionApi:
         """Get details of a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4217,9 +4217,9 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4236,11 +4236,11 @@ class SolutionApi:
         """Get details of a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4292,9 +4292,9 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4311,11 +4311,11 @@ class SolutionApi:
         """Get details of a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4434,8 +4434,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4452,9 +4452,9 @@ class SolutionApi:
         """Get solution security information
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4505,8 +4505,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4523,9 +4523,9 @@ class SolutionApi:
         """Get solution security information
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4576,8 +4576,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4594,9 +4594,9 @@ class SolutionApi:
         """Get solution security information
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4711,8 +4711,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4729,9 +4729,9 @@ class SolutionApi:
         """List all solution run templates
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4782,8 +4782,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4800,9 +4800,9 @@ class SolutionApi:
         """List all solution run templates
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4853,8 +4853,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4871,9 +4871,9 @@ class SolutionApi:
         """List all solution run templates
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4988,8 +4988,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5006,9 +5006,9 @@ class SolutionApi:
         """List all solution parameter groups
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5059,8 +5059,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5077,9 +5077,9 @@ class SolutionApi:
         """List all solution parameter groups
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5130,8 +5130,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5148,9 +5148,9 @@ class SolutionApi:
         """List all solution parameter groups
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5265,8 +5265,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5283,9 +5283,9 @@ class SolutionApi:
         """List all solution parameters
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5337,8 +5337,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5355,9 +5355,9 @@ class SolutionApi:
         """List all solution parameters
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5409,8 +5409,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5427,9 +5427,9 @@ class SolutionApi:
         """List all solution parameters
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5545,8 +5545,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5563,9 +5563,9 @@ class SolutionApi:
         """List solution security users
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5616,8 +5616,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5634,9 +5634,9 @@ class SolutionApi:
         """List solution security users
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5687,8 +5687,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5705,9 +5705,9 @@ class SolutionApi:
         """List solution security users
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5822,7 +5822,7 @@ class SolutionApi:
     @validate_call
     def list_solutions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
         _request_timeout: Union[
@@ -5841,7 +5841,7 @@ class SolutionApi:
         """List all Solutions
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param page: Page number to query (zero-based indexing)
         :type page: int
@@ -5896,7 +5896,7 @@ class SolutionApi:
     @validate_call
     def list_solutions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
         _request_timeout: Union[
@@ -5915,7 +5915,7 @@ class SolutionApi:
         """List all Solutions
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param page: Page number to query (zero-based indexing)
         :type page: int
@@ -5970,7 +5970,7 @@ class SolutionApi:
     @validate_call
     def list_solutions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
         _request_timeout: Union[
@@ -5989,7 +5989,7 @@ class SolutionApi:
         """List all Solutions
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
         :param page: Page number to query (zero-based indexing)
         :type page: int
@@ -6115,9 +6115,9 @@ class SolutionApi:
     @validate_call
     def update_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="the new Solution details. This endpoint can't be used to update security")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6134,11 +6134,11 @@ class SolutionApi:
         """Update a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param solution_update_request: the new Solution details. This endpoint can't be used to update security (required)
+        :param solution_update_request: The new Solution details. This endpoint can't be used to update security (required)
         :type solution_update_request: SolutionUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6191,9 +6191,9 @@ class SolutionApi:
     @validate_call
     def update_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="the new Solution details. This endpoint can't be used to update security")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6210,11 +6210,11 @@ class SolutionApi:
         """Update a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param solution_update_request: the new Solution details. This endpoint can't be used to update security (required)
+        :param solution_update_request: The new Solution details. This endpoint can't be used to update security (required)
         :type solution_update_request: SolutionUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6267,9 +6267,9 @@ class SolutionApi:
     @validate_call
     def update_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="the new Solution details. This endpoint can't be used to update security")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6286,11 +6286,11 @@ class SolutionApi:
         """Update a solution
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param solution_update_request: the new Solution details. This endpoint can't be used to update security (required)
+        :param solution_update_request: The new Solution details. This endpoint can't be used to update security (required)
         :type solution_update_request: SolutionUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6424,9 +6424,9 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
             None,
@@ -6444,11 +6444,11 @@ class SolutionApi:
         """Update solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param solution_role: Access control updates (required)
         :type solution_role: SolutionRole
@@ -6503,9 +6503,9 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
             None,
@@ -6523,11 +6523,11 @@ class SolutionApi:
         """Update solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param solution_role: Access control updates (required)
         :type solution_role: SolutionRole
@@ -6582,9 +6582,9 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
             None,
@@ -6602,11 +6602,11 @@ class SolutionApi:
         """Update solution access control
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param identity_id: the User identifier (required)
+        :param identity_id: The User identifier (required)
         :type identity_id: str
         :param solution_role: Access control updates (required)
         :type solution_role: SolutionRole
@@ -7051,9 +7051,9 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
             None,
@@ -7071,11 +7071,11 @@ class SolutionApi:
         """Update solution parameter
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param run_template_parameter_update_request: Parameter to update (required)
         :type run_template_parameter_update_request: RunTemplateParameterUpdateRequest
@@ -7131,9 +7131,9 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
             None,
@@ -7151,11 +7151,11 @@ class SolutionApi:
         """Update solution parameter
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param run_template_parameter_update_request: Parameter to update (required)
         :type run_template_parameter_update_request: RunTemplateParameterUpdateRequest
@@ -7211,9 +7211,9 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_id: Annotated[StrictStr, Field(description="the solution parameter identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
             None,
@@ -7231,11 +7231,11 @@ class SolutionApi:
         """Update solution parameter
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_id: the solution parameter identifier (required)
+        :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
         :param run_template_parameter_update_request: Parameter to update (required)
         :type run_template_parameter_update_request: RunTemplateParameterUpdateRequest
@@ -7375,9 +7375,9 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
             None,
@@ -7395,11 +7395,11 @@ class SolutionApi:
         """Update a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param run_template_parameter_group_update_request: Parameter groups to update (required)
         :type run_template_parameter_group_update_request: RunTemplateParameterGroupUpdateRequest
@@ -7455,9 +7455,9 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
             None,
@@ -7475,11 +7475,11 @@ class SolutionApi:
         """Update a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param run_template_parameter_group_update_request: Parameter groups to update (required)
         :type run_template_parameter_group_update_request: RunTemplateParameterGroupUpdateRequest
@@ -7535,9 +7535,9 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        parameter_group_id: Annotated[StrictStr, Field(description="the parameter group identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
             None,
@@ -7555,11 +7555,11 @@ class SolutionApi:
         """Update a solution parameter group
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param parameter_group_id: the parameter group identifier (required)
+        :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
         :param run_template_parameter_group_update_request: Parameter groups to update (required)
         :type run_template_parameter_group_update_request: RunTemplateParameterGroupUpdateRequest
@@ -7699,9 +7699,9 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
             None,
@@ -7719,11 +7719,11 @@ class SolutionApi:
         """Update a specific run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param run_template_update_request: Run template updates (required)
         :type run_template_update_request: RunTemplateUpdateRequest
@@ -7779,9 +7779,9 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
             None,
@@ -7799,11 +7799,11 @@ class SolutionApi:
         """Update a specific run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param run_template_update_request: Run template updates (required)
         :type run_template_update_request: RunTemplateUpdateRequest
@@ -7859,9 +7859,9 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
-        run_template_id: Annotated[StrictStr, Field(description="the Run Template identifier")],
+        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
             None,
@@ -7879,11 +7879,11 @@ class SolutionApi:
         """Update a specific run template
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param solution_id: the Solution identifier (required)
+        :param solution_id: The Solution identifier (required)
         :type solution_id: str
-        :param run_template_id: the Run Template identifier (required)
+        :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
         :param run_template_update_request: Run template updates (required)
         :type run_template_update_request: RunTemplateUpdateRequest

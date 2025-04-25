@@ -6,9 +6,9 @@ A Run Template Parameter for update parameter
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | the parameter description | [optional] 
-**labels** | **Dict[str, str]** | a translated label with key as ISO 639-1 code | [optional] 
-**var_type** | **str** | the variable type for the parameter. Basic types or special type %DATASETID% | [optional] 
+**description** | **str** | The parameter description | [optional] 
+**labels** | **Dict[str, str]** | A translated label with key as ISO 639-1 code | [optional] 
+**var_type** | **str** | The variable type for the parameter. Basic types or special type %DATASETID% | [optional] 
 **default_value** | **str** | The default value for this parameter | [optional] 
 **min_value** | **str** | The minimum value for this parameter | [optional] 
 **max_value** | **str** | The maximum value for this parameter | [optional] 

@@ -6,7 +6,7 @@ Request object for creating a new solution
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** | technical key for resource name convention and version grouping. Must be unique | 
+**key** | **str** | Technical key for resource name convention and version grouping. Must be unique | 
 **name** | **str** | Solution name. This name is displayed in the sample webApp | 
 **description** | **str** | The Solution description | [optional] 
 **repository** | **str** | The registry repository containing the image | 

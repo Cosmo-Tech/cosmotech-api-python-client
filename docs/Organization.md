@@ -1,14 +1,15 @@
 # Organization
 
-an Organization
+An Organization
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Organization unique identifier | [readonly] 
-**name** | **str** | the Organization name | 
-**owner_id** | **str** | the Owner User Id | [readonly] 
+**id** | **str** | The Organization unique identifier | [readonly] 
+**name** | **str** | The Organization name | 
+**create_info** | [**OrganizationEditInfo**](OrganizationEditInfo.md) | The details of the Organization creation | 
+**update_info** | [**OrganizationEditInfo**](OrganizationEditInfo.md) | The details of the Organization last update | 
 **security** | [**OrganizationSecurity**](OrganizationSecurity.md) |  | 
 
 ## Example

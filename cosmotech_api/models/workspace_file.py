@@ -25,9 +25,9 @@ from typing_extensions import Self
 
 class WorkspaceFile(BaseModel):
     """
-    a Workspace File resource
+    A Workspace File resource
     """ # noqa: E501
-    file_name: StrictStr = Field(description="the Workspace File name", alias="fileName")
+    file_name: StrictStr = Field(description="The Workspace File name", alias="fileName")
     __properties: ClassVar[List[str]] = ["fileName"]
 
     model_config = ConfigDict(

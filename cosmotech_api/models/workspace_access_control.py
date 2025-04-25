@@ -25,10 +25,10 @@ from typing_extensions import Self
 
 class WorkspaceAccessControl(BaseModel):
     """
-    a Workspace access control item
+    A Workspace access control item
     """ # noqa: E501
-    id: StrictStr = Field(description="the identity id")
-    role: StrictStr = Field(description="a role")
+    id: StrictStr = Field(description="The identity id")
+    role: StrictStr = Field(description="A role")
     __properties: ClassVar[List[str]] = ["id", "role"]
 
     model_config = ConfigDict(

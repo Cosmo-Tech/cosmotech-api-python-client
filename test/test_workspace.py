@@ -48,7 +48,12 @@ class TestWorkspace(unittest.TestCase):
                 tags = [
                     ''
                     ],
-                owner_id = '',
+                create_info = cosmotech_api.models.workspace_edit_info.WorkspaceEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.workspace_edit_info.WorkspaceEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 solution = cosmotech_api.models.workspace_solution.WorkspaceSolution(
                     solution_id = 'sol-HqXzyCBw3_uufVPI', 
                     run_template_filter = [
@@ -74,7 +79,12 @@ class TestWorkspace(unittest.TestCase):
                 organization_id = 'o-0123456789ab',
                 key = 'MyKey',
                 name = 'FranceOffice',
-                owner_id = '',
+                create_info = cosmotech_api.models.workspace_edit_info.WorkspaceEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
+                update_info = cosmotech_api.models.workspace_edit_info.WorkspaceEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 solution = cosmotech_api.models.workspace_solution.WorkspaceSolution(
                     solution_id = 'sol-HqXzyCBw3_uufVPI', 
                     run_template_filter = [

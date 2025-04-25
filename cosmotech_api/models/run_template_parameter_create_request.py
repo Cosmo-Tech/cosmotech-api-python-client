@@ -28,10 +28,10 @@ class RunTemplateParameterCreateRequest(BaseModel):
     """
     A Run Template Parameter for creation
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the Parameter id")
-    description: Optional[StrictStr] = Field(default=None, description="the parameter description")
-    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
-    var_type: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
+    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Parameter id")
+    description: Optional[StrictStr] = Field(default=None, description="The parameter description")
+    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
+    var_type: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
     default_value: Optional[StrictStr] = Field(default=None, description="The default value for this parameter", alias="defaultValue")
     min_value: Optional[StrictStr] = Field(default=None, description="The minimum value for this parameter", alias="minValue")
     max_value: Optional[StrictStr] = Field(default=None, description="The maximum value for this parameter", alias="maxValue")

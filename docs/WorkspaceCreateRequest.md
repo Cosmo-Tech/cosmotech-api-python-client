@@ -6,11 +6,11 @@ Request object for creating a new workspace
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** | technical key for resource name convention and version grouping. Must be unique | 
+**key** | **str** | Technical key for resource name convention and version grouping. Must be unique | 
 **name** | **str** | Workspace name. This name is displayed in the sample webApp | 
-**description** | **str** | the Workspace description | [optional] 
-**version** | **str** | the Workspace version MAJOR.MINOR.PATCH. | [optional] 
-**tags** | **List[str]** | the list of tags | [optional] 
+**description** | **str** | The Workspace description | [optional] 
+**version** | **str** | The Workspace version MAJOR.MINOR.PATCH. | [optional] 
+**tags** | **List[str]** | The list of tags | [optional] 
 **solution** | [**WorkspaceSolution**](WorkspaceSolution.md) |  | 
 **web_app** | [**WorkspaceWebApp**](WorkspaceWebApp.md) |  | [optional] 
 **dataset_copy** | **bool** | Activate the copy of dataset on scenario creation | [optional] [default to True]

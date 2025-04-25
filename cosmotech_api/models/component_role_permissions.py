@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class ComponentRolePermissions(BaseModel):
     """
-    a RBAC by component
+    A RBAC by component
     """ # noqa: E501
     component: StrictStr
     roles: Dict[str, List[StrictStr]]

@@ -48,6 +48,7 @@ cosmotech_api/models/io_types_enum.py
 cosmotech_api/models/organization.py
 cosmotech_api/models/organization_access_control.py
 cosmotech_api/models/organization_create_request.py
+cosmotech_api/models/organization_edit_info.py
 cosmotech_api/models/organization_role.py
 cosmotech_api/models/organization_security.py
 cosmotech_api/models/organization_update_request.py
@@ -57,6 +58,7 @@ cosmotech_api/models/run.py
 cosmotech_api/models/run_container.py
 cosmotech_api/models/run_data.py
 cosmotech_api/models/run_data_query.py
+cosmotech_api/models/run_edit_info.py
 cosmotech_api/models/run_resource_requested.py
 cosmotech_api/models/run_state.py
 cosmotech_api/models/run_status.py
@@ -75,6 +77,7 @@ cosmotech_api/models/run_template_update_request.py
 cosmotech_api/models/runner.py
 cosmotech_api/models/runner_access_control.py
 cosmotech_api/models/runner_create_request.py
+cosmotech_api/models/runner_edit_info.py
 cosmotech_api/models/runner_resource_sizing.py
 cosmotech_api/models/runner_role.py
 cosmotech_api/models/runner_run_template_parameter_value.py
@@ -85,6 +88,7 @@ cosmotech_api/models/send_run_data_request.py
 cosmotech_api/models/solution.py
 cosmotech_api/models/solution_access_control.py
 cosmotech_api/models/solution_create_request.py
+cosmotech_api/models/solution_edit_info.py
 cosmotech_api/models/solution_role.py
 cosmotech_api/models/solution_security.py
 cosmotech_api/models/solution_update_request.py
@@ -95,6 +99,7 @@ cosmotech_api/models/twincache_status_enum.py
 cosmotech_api/models/workspace.py
 cosmotech_api/models/workspace_access_control.py
 cosmotech_api/models/workspace_create_request.py
+cosmotech_api/models/workspace_edit_info.py
 cosmotech_api/models/workspace_file.py
 cosmotech_api/models/workspace_role.py
 cosmotech_api/models/workspace_security.py
@@ -136,6 +141,7 @@ docs/Organization.md
 docs/OrganizationAccessControl.md
 docs/OrganizationApi.md
 docs/OrganizationCreateRequest.md
+docs/OrganizationEditInfo.md
 docs/OrganizationRole.md
 docs/OrganizationSecurity.md
 docs/OrganizationUpdateRequest.md
@@ -146,6 +152,7 @@ docs/RunApi.md
 docs/RunContainer.md
 docs/RunData.md
 docs/RunDataQuery.md
+docs/RunEditInfo.md
 docs/RunResourceRequested.md
 docs/RunState.md
 docs/RunStatus.md
@@ -165,6 +172,7 @@ docs/Runner.md
 docs/RunnerAccessControl.md
 docs/RunnerApi.md
 docs/RunnerCreateRequest.md
+docs/RunnerEditInfo.md
 docs/RunnerResourceSizing.md
 docs/RunnerRole.md
 docs/RunnerRunTemplateParameterValue.md
@@ -176,6 +184,7 @@ docs/Solution.md
 docs/SolutionAccessControl.md
 docs/SolutionApi.md
 docs/SolutionCreateRequest.md
+docs/SolutionEditInfo.md
 docs/SolutionRole.md
 docs/SolutionSecurity.md
 docs/SolutionUpdateRequest.md
@@ -187,6 +196,7 @@ docs/Workspace.md
 docs/WorkspaceAccessControl.md
 docs/WorkspaceApi.md
 docs/WorkspaceCreateRequest.md
+docs/WorkspaceEditInfo.md
 docs/WorkspaceFile.md
 docs/WorkspaceRole.md
 docs/WorkspaceSecurity.md
@@ -233,6 +243,7 @@ test/test_organization.py
 test/test_organization_access_control.py
 test/test_organization_api.py
 test/test_organization_create_request.py
+test/test_organization_edit_info.py
 test/test_organization_role.py
 test/test_organization_security.py
 test/test_organization_update_request.py
@@ -243,6 +254,7 @@ test/test_run_api.py
 test/test_run_container.py
 test/test_run_data.py
 test/test_run_data_query.py
+test/test_run_edit_info.py
 test/test_run_resource_requested.py
 test/test_run_state.py
 test/test_run_status.py
@@ -262,6 +274,7 @@ test/test_runner.py
 test/test_runner_access_control.py
 test/test_runner_api.py
 test/test_runner_create_request.py
+test/test_runner_edit_info.py
 test/test_runner_resource_sizing.py
 test/test_runner_role.py
 test/test_runner_run_template_parameter_value.py
@@ -273,6 +286,7 @@ test/test_solution.py
 test/test_solution_access_control.py
 test/test_solution_api.py
 test/test_solution_create_request.py
+test/test_solution_edit_info.py
 test/test_solution_role.py
 test/test_solution_security.py
 test/test_solution_update_request.py
@@ -284,6 +298,7 @@ test/test_workspace.py
 test/test_workspace_access_control.py
 test/test_workspace_api.py
 test/test_workspace_create_request.py
+test/test_workspace_edit_info.py
 test/test_workspace_file.py
 test/test_workspace_role.py
 test/test_workspace_security.py

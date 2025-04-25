@@ -31,7 +31,7 @@ class RunTemplateCreateRequest(BaseModel):
     """ # noqa: E501
     id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution Run Template id")
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Run Template name")
-    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
+    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
     description: Optional[StrictStr] = Field(default=None, description="The Run Template description")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of Run Template tags")
     compute_size: Optional[StrictStr] = Field(default=None, description="The compute size needed for this Run Template", alias="computeSize")

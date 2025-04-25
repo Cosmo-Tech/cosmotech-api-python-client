@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The Solution Run Template id | 
 **name** | **str** | The Run Template name | [optional] 
-**labels** | **Dict[str, str]** | a translated label with key as ISO 639-1 code | [optional] 
+**labels** | **Dict[str, str]** | A translated label with key as ISO 639-1 code | [optional] 
 **description** | **str** | The Run Template description | [optional] 
 **tags** | **List[str]** | The list of Run Template tags | [optional] 
 **compute_size** | **str** | The compute size needed for this Run Template | [optional] 

@@ -28,7 +28,7 @@ class RunTemplateParameterGroupUpdateRequest(BaseModel):
     A Parameter Group Update Request for a Run Template
     """ # noqa: E501
     description: Optional[StrictStr] = Field(default=None, description="A description of the parameter group")
-    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
+    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
     is_table: Optional[StrictBool] = Field(default=None, description="Does the group define a table", alias="isTable")
     options: Optional[Dict[str, Any]] = Field(default=None, description="Freeform options")
     parent_id: Optional[StrictStr] = Field(default=None, description="The Run Template Group parent Id", alias="parentId")

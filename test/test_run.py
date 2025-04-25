@@ -39,18 +39,19 @@ class TestRun(unittest.TestCase):
                 id = '',
                 state = 'Running',
                 organization_id = '',
+                create_info = cosmotech_api.models.run_edit_info.RunEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 workflow_id = '',
                 csm_simulation_run = '',
                 generate_name = '',
                 workflow_name = '',
-                owner_id = '',
                 workspace_id = '',
                 workspace_key = '',
                 runner_id = '',
                 solution_id = '',
                 run_template_id = '',
                 compute_size = '',
-                created_at = '',
                 dataset_list = [
                     ''
                     ],
@@ -92,6 +93,9 @@ class TestRun(unittest.TestCase):
             )
         else:
             return Run(
+                create_info = cosmotech_api.models.run_edit_info.RunEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
         )
         """
 

@@ -26,10 +26,10 @@ from typing_extensions import Self
 
 class WorkspaceSecurity(BaseModel):
     """
-    the workspace security information
+    The workspace security information
     """ # noqa: E501
-    default: StrictStr = Field(description="the role by default")
-    access_control_list: List[WorkspaceAccessControl] = Field(description="the list which can access this Workspace with detailed access control information", alias="accessControlList")
+    default: StrictStr = Field(description="The role by default")
+    access_control_list: List[WorkspaceAccessControl] = Field(description="The list which can access this Workspace with detailed access control information", alias="accessControlList")
     __properties: ClassVar[List[str]] = ["default", "accessControlList"]
 
     model_config = ConfigDict(

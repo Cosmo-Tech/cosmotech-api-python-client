@@ -25,10 +25,10 @@ from typing_extensions import Self
 
 class WorkspaceWebApp(BaseModel):
     """
-    a Workspace Web Application
+    A Workspace Web Application
     """ # noqa: E501
-    url: StrictStr = Field(description="the Workspace Web Application URL")
-    iframes: Optional[Dict[str, Any]] = Field(default=None, description="a map of iframeKey/iframeURL")
+    url: StrictStr = Field(description="The Workspace Web Application URL")
+    iframes: Optional[Dict[str, Any]] = Field(default=None, description="A map of iframeKey/iframeURL")
     options: Optional[Dict[str, Any]] = Field(default=None, description="free form options for Web Application")
     __properties: ClassVar[List[str]] = ["url", "iframes", "options"]
 

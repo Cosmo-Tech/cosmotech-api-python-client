@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **repository** | **str** | The registry repository containing the image | 
 **always_pull** | **bool** | Set to true if the runtemplate wants to always pull the image | [optional] [default to False]
 **version** | **str** | The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 
-**owner_id** | **str** | The User id which owns this Solution | 
+**create_info** | [**SolutionEditInfo**](SolutionEditInfo.md) | The details of the Solution creation | 
+**update_info** | [**SolutionEditInfo**](SolutionEditInfo.md) | The details of the Solution last update | 
 **sdk_version** | **str** | The full SDK version used to build this solution, if available | [optional] 
 **url** | **str** | An optional URL link to solution page | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 

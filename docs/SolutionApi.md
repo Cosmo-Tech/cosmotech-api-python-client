@@ -66,8 +66,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_create_request = cosmotech_api.SolutionCreateRequest() # SolutionCreateRequest | the Solution to create
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_create_request = cosmotech_api.SolutionCreateRequest() # SolutionCreateRequest | The Solution to create
 
     try:
         # Create a new solution
@@ -85,8 +85,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_create_request** | [**SolutionCreateRequest**](SolutionCreateRequest.md)| the Solution to create | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_create_request** | [**SolutionCreateRequest**](SolutionCreateRequest.md)| The Solution to create | 
 
 ### Return type
 
@@ -142,8 +142,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
     solution_access_control = cosmotech_api.SolutionAccessControl() # SolutionAccessControl | Access control to create
 
     try:
@@ -162,8 +162,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
  **solution_access_control** | [**SolutionAccessControl**](SolutionAccessControl.md)| Access control to create | 
 
 ### Return type
@@ -221,8 +221,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
     run_template_parameter_create_request = cosmotech_api.RunTemplateParameterCreateRequest() # RunTemplateParameterCreateRequest | Parameter to create
 
     try:
@@ -241,8 +241,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
  **run_template_parameter_create_request** | [**RunTemplateParameterCreateRequest**](RunTemplateParameterCreateRequest.md)| Parameter to create | 
 
 ### Return type
@@ -301,8 +301,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
     run_template_parameter_group_create_request = cosmotech_api.RunTemplateParameterGroupCreateRequest() # RunTemplateParameterGroupCreateRequest | Parameter group to create
 
     try:
@@ -321,8 +321,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
  **run_template_parameter_group_create_request** | [**RunTemplateParameterGroupCreateRequest**](RunTemplateParameterGroupCreateRequest.md)| Parameter group to create | 
 
 ### Return type
@@ -381,8 +381,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
     run_template_create_request = cosmotech_api.RunTemplateCreateRequest() # RunTemplateCreateRequest | Run template to create
 
     try:
@@ -401,8 +401,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
  **run_template_create_request** | [**RunTemplateCreateRequest**](RunTemplateCreateRequest.md)| Run template to create | 
 
 ### Return type
@@ -459,8 +459,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # Delete a solution
@@ -476,8 +476,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -532,9 +532,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    identity_id = 'identity_id_example' # str | The User identifier
 
     try:
         # Delete solution access control
@@ -550,9 +550,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **identity_id** | **str**| The User identifier | 
 
 ### Return type
 
@@ -607,9 +607,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    parameter_id = 'parameter_id_example' # str | the solution parameter identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    parameter_id = 'parameter_id_example' # str | The solution parameter identifier
 
     try:
         # Delete specific parameter from the solution
@@ -625,9 +625,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **parameter_id** | **str**| the solution parameter identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **parameter_id** | **str**| The solution parameter identifier | 
 
 ### Return type
 
@@ -682,9 +682,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    parameter_group_id = 'parameter_group_id_example' # str | the parameter group identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    parameter_group_id = 'parameter_group_id_example' # str | The parameter group identifier
 
     try:
         # Delete a parameter group from the solution
@@ -700,9 +700,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **parameter_group_id** | **str**| the parameter group identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **parameter_group_id** | **str**| The parameter group identifier | 
 
 ### Return type
 
@@ -757,9 +757,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    run_template_id = 'run_template_id_example' # str | the Run Template identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    run_template_id = 'run_template_id_example' # str | The Run Template identifier
 
     try:
         # Delete a specific run template
@@ -775,9 +775,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **run_template_id** | **str**| the Run Template identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **run_template_id** | **str**| The Run Template identifier | 
 
 ### Return type
 
@@ -833,9 +833,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    run_template_id = 'run_template_id_example' # str | the Run Template identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    run_template_id = 'run_template_id_example' # str | The Run Template identifier
 
     try:
         # Retrieve a solution run templates
@@ -853,9 +853,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **run_template_id** | **str**| the Run Template identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **run_template_id** | **str**| The Run Template identifier | 
 
 ### Return type
 
@@ -911,8 +911,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # Get the details of a solution
@@ -930,8 +930,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -987,9 +987,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    identity_id = 'identity_id_example' # str | The User identifier
 
     try:
         # Get solution access control
@@ -1007,9 +1007,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **identity_id** | **str**| The User identifier | 
 
 ### Return type
 
@@ -1065,9 +1065,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    parameter_id = 'parameter_id_example' # str | the solution parameter identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    parameter_id = 'parameter_id_example' # str | The solution parameter identifier
 
     try:
         # Get the details of a solution parameter
@@ -1085,9 +1085,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **parameter_id** | **str**| the solution parameter identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **parameter_id** | **str**| The solution parameter identifier | 
 
 ### Return type
 
@@ -1144,9 +1144,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    parameter_group_id = 'parameter_group_id_example' # str | the parameter group identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    parameter_group_id = 'parameter_group_id_example' # str | The parameter group identifier
 
     try:
         # Get details of a solution parameter group
@@ -1164,9 +1164,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **parameter_group_id** | **str**| the parameter group identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **parameter_group_id** | **str**| The parameter group identifier | 
 
 ### Return type
 
@@ -1222,8 +1222,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # Get solution security information
@@ -1241,8 +1241,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -1298,8 +1298,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # List all solution run templates
@@ -1317,8 +1317,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -1374,8 +1374,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # List all solution parameter groups
@@ -1393,8 +1393,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -1450,8 +1450,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # List all solution parameters
@@ -1469,8 +1469,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -1526,8 +1526,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
 
     try:
         # List solution security users
@@ -1545,8 +1545,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
 
 ### Return type
 
@@ -1602,7 +1602,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
     page = 56 # int | Page number to query (zero-based indexing) (optional)
     size = 56 # int | Number of records per page (optional)
 
@@ -1622,7 +1622,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| The Organization identifier | 
  **page** | **int**| Page number to query (zero-based indexing) | [optional] 
  **size** | **int**| Number of records per page | [optional] 
 
@@ -1680,9 +1680,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    solution_update_request = cosmotech_api.SolutionUpdateRequest() # SolutionUpdateRequest | the new Solution details. This endpoint can't be used to update security
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    solution_update_request = cosmotech_api.SolutionUpdateRequest() # SolutionUpdateRequest | The new Solution details. This endpoint can't be used to update security
 
     try:
         # Update a solution
@@ -1700,9 +1700,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **solution_update_request** | [**SolutionUpdateRequest**](SolutionUpdateRequest.md)| the new Solution details. This endpoint can&#39;t be used to update security | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **solution_update_request** | [**SolutionUpdateRequest**](SolutionUpdateRequest.md)| The new Solution details. This endpoint can&#39;t be used to update security | 
 
 ### Return type
 
@@ -1760,9 +1760,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    identity_id = 'identity_id_example' # str | The User identifier
     solution_role = cosmotech_api.SolutionRole() # SolutionRole | Access control updates
 
     try:
@@ -1781,9 +1781,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **identity_id** | **str**| The User identifier | 
  **solution_role** | [**SolutionRole**](SolutionRole.md)| Access control updates | 
 
 ### Return type
@@ -1920,9 +1920,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    parameter_id = 'parameter_id_example' # str | the solution parameter identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    parameter_id = 'parameter_id_example' # str | The solution parameter identifier
     run_template_parameter_update_request = cosmotech_api.RunTemplateParameterUpdateRequest() # RunTemplateParameterUpdateRequest | Parameter to update
 
     try:
@@ -1941,9 +1941,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **parameter_id** | **str**| the solution parameter identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **parameter_id** | **str**| The solution parameter identifier | 
  **run_template_parameter_update_request** | [**RunTemplateParameterUpdateRequest**](RunTemplateParameterUpdateRequest.md)| Parameter to update | 
 
 ### Return type
@@ -2002,9 +2002,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    parameter_group_id = 'parameter_group_id_example' # str | the parameter group identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    parameter_group_id = 'parameter_group_id_example' # str | The parameter group identifier
     run_template_parameter_group_update_request = cosmotech_api.RunTemplateParameterGroupUpdateRequest() # RunTemplateParameterGroupUpdateRequest | Parameter groups to update
 
     try:
@@ -2023,9 +2023,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **parameter_group_id** | **str**| the parameter group identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **parameter_group_id** | **str**| The parameter group identifier | 
  **run_template_parameter_group_update_request** | [**RunTemplateParameterGroupUpdateRequest**](RunTemplateParameterGroupUpdateRequest.md)| Parameter groups to update | 
 
 ### Return type
@@ -2084,9 +2084,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.SolutionApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    solution_id = 'solution_id_example' # str | the Solution identifier
-    run_template_id = 'run_template_id_example' # str | the Run Template identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    solution_id = 'solution_id_example' # str | The Solution identifier
+    run_template_id = 'run_template_id_example' # str | The Run Template identifier
     run_template_update_request = cosmotech_api.RunTemplateUpdateRequest() # RunTemplateUpdateRequest | Run template updates
 
     try:
@@ -2105,9 +2105,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **solution_id** | **str**| the Solution identifier | 
- **run_template_id** | **str**| the Run Template identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **solution_id** | **str**| The Solution identifier | 
+ **run_template_id** | **str**| The Run Template identifier | 
  **run_template_update_request** | [**RunTemplateUpdateRequest**](RunTemplateUpdateRequest.md)| Run template updates | 
 
 ### Return type

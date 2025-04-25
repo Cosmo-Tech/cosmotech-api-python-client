@@ -28,9 +28,9 @@ class RunTemplateParameterGroup(BaseModel):
     """
     A Parameter Group for a Run Template
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the Parameter Group id")
+    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Parameter Group id")
     description: Optional[StrictStr] = Field(default=None, description="A description of the parameter group")
-    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="a translated label with key as ISO 639-1 code")
+    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
     is_table: StrictBool = Field(description="Does the group define a table", alias="isTable")
     options: Optional[Dict[str, Any]] = Field(default=None, description="Freeform options")
     parent_id: Optional[StrictStr] = Field(default=None, description="The Run Template Group parent Id", alias="parentId")

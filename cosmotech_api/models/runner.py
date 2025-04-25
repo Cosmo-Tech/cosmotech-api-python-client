@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from cosmotech_api.models.runner_edit_info import RunnerEditInfo
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
 from cosmotech_api.models.runner_security import RunnerSecurity
@@ -36,14 +37,13 @@ class Runner(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="the Runner description")
     tags: Optional[List[StrictStr]] = Field(default=None, description="the list of tags")
     parent_id: Optional[StrictStr] = Field(default=None, description="the Runner parent id", alias="parentId")
-    owner_id: StrictStr = Field(description="the user id which own this Runner", alias="ownerId")
+    create_info: RunnerEditInfo = Field(description="The details of the Runner creation", alias="createInfo")
+    update_info: RunnerEditInfo = Field(description="The details of the Runner last update", alias="updateInfo")
     root_id: Optional[StrictStr] = Field(default=None, description="the runner root id", alias="rootId")
     solution_id: StrictStr = Field(description="the Solution Id associated with this Runner", alias="solutionId")
     run_template_id: StrictStr = Field(description="the Solution Run Template Id associated with this Runner", alias="runTemplateId")
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
-    creation_date: StrictInt = Field(description="the Runner creation date", alias="creationDate")
-    last_update: StrictInt = Field(description="the last time a Runner was updated", alias="lastUpdate")
     owner_name: StrictStr = Field(description="the name of the owner", alias="ownerName")
     solution_name: Optional[StrictStr] = Field(default=None, description="the Solution name", alias="solutionName")
     run_template_name: Optional[StrictStr] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
@@ -53,7 +53,7 @@ class Runner(BaseModel):
     last_run_id: Optional[StrictStr] = Field(default=None, description="last run id from current runner", alias="lastRunId")
     validation_status: RunnerValidationStatus = Field(alias="validationStatus")
     security: RunnerSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "ownerId", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "creationDate", "lastUpdate", "ownerName", "solutionName", "runTemplateName", "datasetList", "runSizing", "parametersValues", "lastRunId", "validationStatus", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "ownerName", "solutionName", "runTemplateName", "datasetList", "runSizing", "parametersValues", "lastRunId", "validationStatus", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,19 +93,13 @@ class Runner(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
-            "owner_id",
             "root_id",
             "solution_id",
             "organization_id",
             "workspace_id",
-            "creation_date",
-            "last_update",
             "owner_name",
             "solution_name",
             "run_template_name",
@@ -116,6 +110,12 @@ class Runner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of create_info
+        if self.create_info:
+            _dict['createInfo'] = self.create_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of update_info
+        if self.update_info:
+            _dict['updateInfo'] = self.update_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of run_sizing
         if self.run_sizing:
             _dict['runSizing'] = self.run_sizing.to_dict()
@@ -146,14 +146,13 @@ class Runner(BaseModel):
             "description": obj.get("description"),
             "tags": obj.get("tags"),
             "parentId": obj.get("parentId"),
-            "ownerId": obj.get("ownerId"),
+            "createInfo": RunnerEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
+            "updateInfo": RunnerEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
             "rootId": obj.get("rootId"),
             "solutionId": obj.get("solutionId"),
             "runTemplateId": obj.get("runTemplateId"),
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),
-            "creationDate": obj.get("creationDate"),
-            "lastUpdate": obj.get("lastUpdate"),
             "ownerName": obj.get("ownerName"),
             "solutionName": obj.get("solutionName"),
             "runTemplateName": obj.get("runTemplateName"),

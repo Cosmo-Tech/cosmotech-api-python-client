@@ -53,7 +53,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_create_request = cosmotech_api.OrganizationCreateRequest() # OrganizationCreateRequest | the Organization to create
+    organization_create_request = cosmotech_api.OrganizationCreateRequest() # OrganizationCreateRequest | The Organization to create
 
     try:
         # Create a new organization
@@ -71,7 +71,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_create_request** | [**OrganizationCreateRequest**](OrganizationCreateRequest.md)| the Organization to create | 
+ **organization_create_request** | [**OrganizationCreateRequest**](OrganizationCreateRequest.md)| The Organization to create | 
 
 ### Return type
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | the Organization details |  -  |
+**201** | The Organization details |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -127,8 +127,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    organization_access_control = cosmotech_api.OrganizationAccessControl() # OrganizationAccessControl | the new Organization security access to add.
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    organization_access_control = cosmotech_api.OrganizationAccessControl() # OrganizationAccessControl | The new Organization security access to add.
 
     try:
         # Add a control access to the Organization
@@ -146,8 +146,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **organization_access_control** | [**OrganizationAccessControl**](OrganizationAccessControl.md)| the new Organization security access to add. | 
+ **organization_id** | **str**| The Organization identifier | 
+ **organization_access_control** | [**OrganizationAccessControl**](OrganizationAccessControl.md)| The new Organization security access to add. | 
 
 ### Return type
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The Organization access |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -202,7 +202,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
 
     try:
         # Delete an organization
@@ -218,7 +218,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| The Organization identifier | 
 
 ### Return type
 
@@ -238,7 +238,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -273,8 +273,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    identity_id = 'identity_id_example' # str | The User identifier
 
     try:
         # Remove the specified access from the given Organization
@@ -290,8 +290,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **identity_id** | **str**| The User identifier | 
 
 ### Return type
 
@@ -311,7 +311,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Request succeeded |  -  |
-**404** | the Organization or the user specified is unknown or you don&#39;t have access to them |  -  |
+**404** | The Organization or the user specified is unknown or you don&#39;t have access to them |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -347,7 +347,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
 
     try:
         # Get the details of an Organization
@@ -365,7 +365,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| The Organization identifier | 
 
 ### Return type
 
@@ -384,8 +384,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the Organization details |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**200** | The Organization details |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -421,8 +421,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    identity_id = 'identity_id_example' # str | The User identifier
 
     try:
         # Get a control access for the Organization
@@ -440,8 +440,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **identity_id** | **str**| The User identifier | 
 
 ### Return type
 
@@ -496,8 +496,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    role = 'role_example' # str | the Role
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    role = 'role_example' # str | The Role
 
     try:
         # Get the Organization permissions by given role
@@ -515,8 +515,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **role** | **str**| the Role | 
+ **organization_id** | **str**| The Organization identifier | 
+ **role** | **str**| The Role | 
 
 ### Return type
 
@@ -571,7 +571,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
 
     try:
         # Get the Organization security information
@@ -589,7 +589,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| The Organization identifier | 
 
 ### Return type
 
@@ -609,7 +609,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The Organization security |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -682,7 +682,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The Organization security users list |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -718,8 +718,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    page = 56 # int | page number to query (first page is at index 0) (optional)
-    size = 56 # int | amount of result by page (optional)
+    page = 56 # int | Page number to query (first page is at index 0) (optional)
+    size = 56 # int | Amount of result by page (optional)
 
     try:
         # List all Organizations
@@ -737,8 +737,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| page number to query (first page is at index 0) | [optional] 
- **size** | **int**| amount of result by page | [optional] 
+ **page** | **int**| Page number to query (first page is at index 0) | [optional] 
+ **size** | **int**| Amount of result by page | [optional] 
 
 ### Return type
 
@@ -757,7 +757,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the list of Organizations |  -  |
+**200** | The list of Organizations |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -863,8 +863,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    organization_update_request = cosmotech_api.OrganizationUpdateRequest() # OrganizationUpdateRequest | the new Organization details. This endpoint can't be used to update security
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    organization_update_request = cosmotech_api.OrganizationUpdateRequest() # OrganizationUpdateRequest | The new Organization details. This endpoint can't be used to update security
 
     try:
         # Update an Organization
@@ -882,8 +882,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **organization_update_request** | [**OrganizationUpdateRequest**](OrganizationUpdateRequest.md)| the new Organization details. This endpoint can&#39;t be used to update security | 
+ **organization_id** | **str**| The Organization identifier | 
+ **organization_update_request** | [**OrganizationUpdateRequest**](OrganizationUpdateRequest.md)| The new Organization details. This endpoint can&#39;t be used to update security | 
 
 ### Return type
 
@@ -902,9 +902,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the organization details |  -  |
+**200** | The organization details |  -  |
 **400** | Bad request |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -941,8 +941,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    identity_id = 'identity_id_example' # str | the User identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    identity_id = 'identity_id_example' # str | The User identifier
     organization_role = cosmotech_api.OrganizationRole() # OrganizationRole | The new Organization Access Control
 
     try:
@@ -961,8 +961,8 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **identity_id** | **str**| the User identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **identity_id** | **str**| The User identifier | 
  **organization_role** | [**OrganizationRole**](OrganizationRole.md)| The new Organization Access Control | 
 
 ### Return type
@@ -1020,7 +1020,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
     organization_role = cosmotech_api.OrganizationRole() # OrganizationRole | This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.
 
     try:
@@ -1039,7 +1039,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
+ **organization_id** | **str**| The Organization identifier | 
  **organization_role** | [**OrganizationRole**](OrganizationRole.md)| This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization. | 
 
 ### Return type
@@ -1060,7 +1060,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The Organization default visibility |  -  |
-**404** | the Organization specified is unknown or you don&#39;t have access to it |  -  |
+**404** | The Organization specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

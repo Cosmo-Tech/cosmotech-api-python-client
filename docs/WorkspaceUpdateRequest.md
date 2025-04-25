@@ -6,10 +6,10 @@ Request object for updating a workspace
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** | technical key for resource name convention and version grouping. Must be unique | [optional] 
+**key** | **str** | Technical key for resource name convention and version grouping. Must be unique | [optional] 
 **name** | **str** | Workspace name | [optional] 
-**description** | **str** | the Workspace description | [optional] 
-**tags** | **List[str]** | the list of tags | [optional] 
+**description** | **str** | The Workspace description | [optional] 
+**tags** | **List[str]** | The list of tags | [optional] 
 **solution** | [**WorkspaceSolution**](WorkspaceSolution.md) |  | [optional] 
 **web_app** | [**WorkspaceWebApp**](WorkspaceWebApp.md) |  | [optional] 
 **dataset_copy** | **bool** | Activate the copy of dataset on scenario creation | [optional] 

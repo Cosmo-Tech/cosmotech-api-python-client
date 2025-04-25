@@ -11,14 +11,13 @@ Name | Type | Description | Notes
 **description** | **str** | the Runner description | [optional] 
 **tags** | **List[str]** | the list of tags | [optional] 
 **parent_id** | **str** | the Runner parent id | [optional] 
-**owner_id** | **str** | the user id which own this Runner | [readonly] 
+**create_info** | [**RunnerEditInfo**](RunnerEditInfo.md) | The details of the Runner creation | 
+**update_info** | [**RunnerEditInfo**](RunnerEditInfo.md) | The details of the Runner last update | 
 **root_id** | **str** | the runner root id | [optional] [readonly] 
 **solution_id** | **str** | the Solution Id associated with this Runner | [readonly] 
 **run_template_id** | **str** | the Solution Run Template Id associated with this Runner | 
 **organization_id** | **str** | the associated Organization Id | [readonly] 
 **workspace_id** | **str** | the associated Workspace Id | [readonly] 
-**creation_date** | **int** | the Runner creation date | [readonly] 
-**last_update** | **int** | the last time a Runner was updated | [readonly] 
 **owner_name** | **str** | the name of the owner | [readonly] 
 **solution_name** | **str** | the Solution name | [optional] [readonly] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] [readonly] 

@@ -1,6 +1,6 @@
 # ComponentRolePermissions
 
-a RBAC by component
+A RBAC by component
 
 ## Properties
 

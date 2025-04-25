@@ -42,6 +42,9 @@ class TestRunStatus(unittest.TestCase):
                 runner_id = '',
                 workflow_id = '',
                 workflow_name = '',
+                create_info = cosmotech_api.models.run_edit_info.RunEditInfo(
+                    timestamp = 56, 
+                    user_id = '', ),
                 start_time = '',
                 end_time = '',
                 phase = '',
