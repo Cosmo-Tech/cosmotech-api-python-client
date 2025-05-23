@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **dataset_list** | **List[str]** | the list of Dataset Id associated to this Runner Run Template | 
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | 
-**last_run_id** | **str** | last run id from current runner | [optional] 
+**last_run_info** | [**LastRunInfo**](LastRunInfo.md) |  | 
 **validation_status** | [**RunnerValidationStatus**](RunnerValidationStatus.md) |  | 
 **security** | [**RunnerSecurity**](RunnerSecurity.md) |  | 
 

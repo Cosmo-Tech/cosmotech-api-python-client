@@ -18,17 +18,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class OrganizationRole(BaseModel):
+class LastRunInfo(BaseModel):
     """
-    The Organization Role
+    last run info from current runner
     """ # noqa: E501
-    role: StrictStr = Field(description="The Organization Role")
-    __properties: ClassVar[List[str]] = ["role"]
+    last_run_id: Optional[StrictStr] = Field(default=None, description="last run id from current runner", alias="lastRunId")
+    last_run_status: Optional[StrictStr] = Field(default=None, description="last run status from current runner", alias="lastRunStatus")
+    __properties: ClassVar[List[str]] = ["lastRunId", "lastRunStatus"]
+
+    @field_validator('last_run_status')
+    def last_run_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NotStarted', 'Running', 'Successful', 'Failed', 'Unknown']):
+            raise ValueError("must be one of enum values ('NotStarted', 'Running', 'Successful', 'Failed', 'Unknown')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +59,7 @@ class OrganizationRole(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of OrganizationRole from a JSON string"""
+        """Create an instance of LastRunInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +84,7 @@ class OrganizationRole(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of OrganizationRole from a dict"""
+        """Create an instance of LastRunInfo from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +92,8 @@ class OrganizationRole(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "role": obj.get("role")
+            "lastRunId": obj.get("lastRunId"),
+            "lastRunStatus": obj.get("lastRunStatus")
         })
         return _obj
 

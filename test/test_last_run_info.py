@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.container_resource_size_info import ContainerResourceSizeInfo
+from cosmotech_api.models.last_run_info import LastRunInfo
 
-class TestContainerResourceSizeInfo(unittest.TestCase):
-    """ContainerResourceSizeInfo unit test stubs"""
+class TestLastRunInfo(unittest.TestCase):
+    """LastRunInfo unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,26 @@ class TestContainerResourceSizeInfo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ContainerResourceSizeInfo:
-        """Test ContainerResourceSizeInfo
+    def make_instance(self, include_optional) -> LastRunInfo:
+        """Test LastRunInfo
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ContainerResourceSizeInfo`
+        # uncomment below to create an instance of `LastRunInfo`
         """
-        model = ContainerResourceSizeInfo()
+        model = LastRunInfo()
         if include_optional:
-            return ContainerResourceSizeInfo(
-                cpu = '',
-                memory = ''
+            return LastRunInfo(
+                last_run_id = '',
+                last_run_status = 'NotStarted'
             )
         else:
-            return ContainerResourceSizeInfo(
-                cpu = '',
-                memory = '',
+            return LastRunInfo(
         )
         """
 
-    def testContainerResourceSizeInfo(self):
-        """Test ContainerResourceSizeInfo"""
+    def testLastRunInfo(self):
+        """Test LastRunInfo"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
