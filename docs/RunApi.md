@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_run_logs**
-> str get_run_logs(organization_id, workspace_id, runner_id, run_id)
+> RunLogs get_run_logs(organization_id, workspace_id, runner_id, run_id)
 
 get the logs for the Run
 
@@ -182,6 +182,7 @@ get the logs for the Run
 
 ```python
 import cosmotech_api
+from cosmotech_api.models.run_logs import RunLogs
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
@@ -230,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**RunLogs**](RunLogs.md)
 
 ### Authorization
 
@@ -239,7 +240,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -318,7 +319,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -399,7 +400,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -480,8 +481,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json, application/yaml
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -562,8 +563,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json, application/yaml
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 

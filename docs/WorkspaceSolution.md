@@ -1,14 +1,14 @@
 # WorkspaceSolution
 
-The Workspace Solution configuration
+the Workspace Solution configuration
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**solution_id** | **str** | The Solution Id attached to this workspace | 
-**run_template_filter** | **List[str]** | The list of Solution Run Template Id to filter | [optional] 
-**default_run_template_dataset** | **Dict[str, object]** | A map of RunTemplateId/DatasetId to set a default dataset for a Run Template | [optional] 
+**solution_id** | **str** | the Solution Id attached to this workspace | [optional] 
+**run_template_filter** | **List[str]** | the list of Solution Run Template Id to filter | [optional] 
+**default_run_template_dataset** | **Dict[str, object]** | a map of RunTemplateId/DatasetId to set a default dataset for a Run Template | [optional] 
 
 ## Example
 
