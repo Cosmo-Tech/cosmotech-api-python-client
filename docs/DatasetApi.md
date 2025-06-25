@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -181,8 +181,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -418,8 +418,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -804,7 +804,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -879,7 +879,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -957,7 +957,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1033,7 +1033,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1108,7 +1108,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1120,7 +1120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dataset_twingraph_status**
-> str get_dataset_twingraph_status(organization_id, dataset_id)
+> IngestionStatusEnum get_dataset_twingraph_status(organization_id, dataset_id)
 
 Get the dataset's refresh job status
 
@@ -1132,6 +1132,7 @@ Get the status of the import workflow lauch on the dataset's refresh. This endpo
 
 ```python
 import cosmotech_api
+from cosmotech_api.models.ingestion_status_enum import IngestionStatusEnum
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
@@ -1176,7 +1177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**IngestionStatusEnum**](IngestionStatusEnum.md)
 
 ### Authorization
 
@@ -1185,7 +1186,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1341,7 +1342,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1420,7 +1421,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1644,7 +1645,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1724,7 +1725,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1802,7 +1803,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1882,8 +1883,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1898,7 +1899,7 @@ Name | Type | Description  | Notes
 
 Async batch update by loading a CSV file on a graph instance 
 
-Async batch update by loading a CSV file on a graph instance  Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
 ### Example
 
@@ -1968,7 +1969,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: text/csv, application/octet-stream
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2047,7 +2048,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2124,7 +2125,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2203,7 +2204,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/yaml
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2284,8 +2285,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2366,7 +2367,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/yaml
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2446,7 +2447,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/octet-stream
- - **Accept**: application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
