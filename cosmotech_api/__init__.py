@@ -18,7 +18,6 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from cosmotech_api.api.connector_api import ConnectorApi
 from cosmotech_api.api.dataset_api import DatasetApi
 from cosmotech_api.api.meta_api import MetaApi
 from cosmotech_api.api.organization_api import OrganizationApi
@@ -42,29 +41,21 @@ from cosmotech_api.exceptions import ApiException
 from cosmotech_api.models.about_info import AboutInfo
 from cosmotech_api.models.about_info_version import AboutInfoVersion
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
-from cosmotech_api.models.connector import Connector
-from cosmotech_api.models.connector_parameter import ConnectorParameter
-from cosmotech_api.models.connector_parameter_group import ConnectorParameterGroup
 from cosmotech_api.models.container_resource_size_info import ContainerResourceSizeInfo
 from cosmotech_api.models.container_resource_sizing import ContainerResourceSizing
+from cosmotech_api.models.create_info import CreateInfo
 from cosmotech_api.models.created_run import CreatedRun
 from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.models.dataset_access_control import DatasetAccessControl
-from cosmotech_api.models.dataset_compatibility import DatasetCompatibility
-from cosmotech_api.models.dataset_connector import DatasetConnector
-from cosmotech_api.models.dataset_copy_parameters import DatasetCopyParameters
+from cosmotech_api.models.dataset_create_request import DatasetCreateRequest
+from cosmotech_api.models.dataset_part import DatasetPart
+from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
+from cosmotech_api.models.dataset_part_type_enum import DatasetPartTypeEnum
+from cosmotech_api.models.dataset_part_update_request import DatasetPartUpdateRequest
 from cosmotech_api.models.dataset_role import DatasetRole
-from cosmotech_api.models.dataset_search import DatasetSearch
 from cosmotech_api.models.dataset_security import DatasetSecurity
-from cosmotech_api.models.dataset_source_type import DatasetSourceType
-from cosmotech_api.models.dataset_twin_graph_hash import DatasetTwinGraphHash
-from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
-from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
-from cosmotech_api.models.file_upload_metadata import FileUploadMetadata
-from cosmotech_api.models.file_upload_validation import FileUploadValidation
-from cosmotech_api.models.graph_properties import GraphProperties
-from cosmotech_api.models.ingestion_status_enum import IngestionStatusEnum
-from cosmotech_api.models.io_types_enum import IoTypesEnum
+from cosmotech_api.models.dataset_update_request import DatasetUpdateRequest
+from cosmotech_api.models.edit_info import EditInfo
 from cosmotech_api.models.last_run_info import LastRunInfo
 from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl
@@ -113,10 +104,6 @@ from cosmotech_api.models.solution_edit_info import SolutionEditInfo
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
-from cosmotech_api.models.source_info import SourceInfo
-from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
-from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
-from cosmotech_api.models.twincache_status_enum import TwincacheStatusEnum
 from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest

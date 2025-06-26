@@ -37,7 +37,6 @@ class Workspace(BaseModel):
     key: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Technical key for resource name convention and version grouping. Must be unique")
     name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Workspace name. This name is display in the sample webApp")
     description: Optional[StrictStr] = Field(default=None, description="The Workspace description")
-    linked_dataset_id_list: Optional[List[StrictStr]] = Field(default=None, description="list of dataset linked to this dataset", alias="linkedDatasetIdList")
     version: Optional[StrictStr] = Field(default=None, description="The Workspace version MAJOR.MINOR.PATCH.")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     create_info: WorkspaceEditInfo = Field(description="The details of the Workspace creation", alias="createInfo")
@@ -46,7 +45,7 @@ class Workspace(BaseModel):
     web_app: Optional[WorkspaceWebApp] = Field(default=None, alias="webApp")
     dataset_copy: Optional[StrictBool] = Field(default=True, description="Activate the copy of dataset on scenario creation, meaning that each scenario created in this workspace will make this copy. when false, scenario use directly the dataset specified.", alias="datasetCopy")
     security: WorkspaceSecurity
-    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "linkedDatasetIdList", "version", "tags", "createInfo", "updateInfo", "solution", "webApp", "datasetCopy", "security"]
+    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "version", "tags", "createInfo", "updateInfo", "solution", "webApp", "datasetCopy", "security"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -137,7 +136,6 @@ class Workspace(BaseModel):
             "key": obj.get("key"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "linkedDatasetIdList": obj.get("linkedDatasetIdList"),
             "version": obj.get("version"),
             "tags": obj.get("tags"),
             "createInfo": WorkspaceEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,

@@ -41,9 +41,6 @@ class TestWorkspace(unittest.TestCase):
                 key = 'MyKey',
                 name = 'FranceOffice',
                 description = '',
-                linked_dataset_id_list = [
-                    ''
-                    ],
                 version = '1.0.0',
                 tags = [
                     ''

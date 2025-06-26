@@ -17,24 +17,18 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.models.dataset_access_control import DatasetAccessControl
-from cosmotech_api.models.dataset_compatibility import DatasetCompatibility
-from cosmotech_api.models.dataset_copy_parameters import DatasetCopyParameters
+from cosmotech_api.models.dataset_create_request import DatasetCreateRequest
+from cosmotech_api.models.dataset_part import DatasetPart
+from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
+from cosmotech_api.models.dataset_part_update_request import DatasetPartUpdateRequest
 from cosmotech_api.models.dataset_role import DatasetRole
-from cosmotech_api.models.dataset_search import DatasetSearch
 from cosmotech_api.models.dataset_security import DatasetSecurity
-from cosmotech_api.models.dataset_twin_graph_hash import DatasetTwinGraphHash
-from cosmotech_api.models.dataset_twin_graph_info import DatasetTwinGraphInfo
-from cosmotech_api.models.dataset_twin_graph_query import DatasetTwinGraphQuery
-from cosmotech_api.models.file_upload_validation import FileUploadValidation
-from cosmotech_api.models.graph_properties import GraphProperties
-from cosmotech_api.models.ingestion_status_enum import IngestionStatusEnum
-from cosmotech_api.models.sub_dataset_graph_query import SubDatasetGraphQuery
-from cosmotech_api.models.twin_graph_batch_result import TwinGraphBatchResult
+from cosmotech_api.models.dataset_update_request import DatasetUpdateRequest
 
 from cosmotech_api.api_client import ApiClient, RequestSerialized
 from cosmotech_api.api_response import ApiResponse
@@ -55,9 +49,337 @@ class DatasetApi:
 
 
     @validate_call
-    def add_dataset_access_control(
+    def create_dataset(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_create_request: DatasetCreateRequest,
+        files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Dataset:
+        """Create a Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_create_request: (required)
+        :type dataset_create_request: DatasetCreateRequest
+        :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
+        :type files: List[bytearray]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dataset_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_create_request=dataset_create_request,
+            files=files,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Dataset",
+            '400': None,
+            '403': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_dataset_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_create_request: DatasetCreateRequest,
+        files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Dataset]:
+        """Create a Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_create_request: (required)
+        :type dataset_create_request: DatasetCreateRequest
+        :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
+        :type files: List[bytearray]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dataset_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_create_request=dataset_create_request,
+            files=files,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Dataset",
+            '400': None,
+            '403': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_dataset_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_create_request: DatasetCreateRequest,
+        files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create a Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_create_request: (required)
+        :type dataset_create_request: DatasetCreateRequest
+        :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
+        :type files: List[bytearray]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dataset_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_create_request=dataset_create_request,
+            files=files,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Dataset",
+            '400': None,
+            '403': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_dataset_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        dataset_create_request,
+        files,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'files': 'csv',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if files is not None:
+            _files['files'] = files
+        if dataset_create_request is not None:
+            _form_params.append(('datasetCreateRequest', dataset_create_request))
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/yaml'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_dataset_access_control(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         dataset_access_control: Annotated[DatasetAccessControl, Field(description="the new Dataset security access to add.")],
         _request_timeout: Union[
@@ -78,6 +400,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param dataset_access_control: the new Dataset security access to add. (required)
@@ -104,8 +428,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_dataset_access_control_serialize(
+        _param = self._create_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             dataset_access_control=dataset_access_control,
             _request_auth=_request_auth,
@@ -130,9 +455,10 @@ class DatasetApi:
 
 
     @validate_call
-    def add_dataset_access_control_with_http_info(
+    def create_dataset_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         dataset_access_control: Annotated[DatasetAccessControl, Field(description="the new Dataset security access to add.")],
         _request_timeout: Union[
@@ -153,6 +479,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param dataset_access_control: the new Dataset security access to add. (required)
@@ -179,8 +507,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_dataset_access_control_serialize(
+        _param = self._create_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             dataset_access_control=dataset_access_control,
             _request_auth=_request_auth,
@@ -205,9 +534,10 @@ class DatasetApi:
 
 
     @validate_call
-    def add_dataset_access_control_without_preload_content(
+    def create_dataset_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         dataset_access_control: Annotated[DatasetAccessControl, Field(description="the new Dataset security access to add.")],
         _request_timeout: Union[
@@ -228,6 +558,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param dataset_access_control: the new Dataset security access to add. (required)
@@ -254,8 +586,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_dataset_access_control_serialize(
+        _param = self._create_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             dataset_access_control=dataset_access_control,
             _request_auth=_request_auth,
@@ -275,9 +608,10 @@ class DatasetApi:
         return response_data.response
 
 
-    def _add_dataset_access_control_serialize(
+    def _create_dataset_access_control_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
         dataset_access_control,
         _request_auth,
@@ -303,6 +637,8 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         # process the query parameters
@@ -344,7 +680,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security/access',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/access',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -361,11 +697,13 @@ class DatasetApi:
 
 
     @validate_call
-    def add_or_replace_dataset_compatibility_elements(
+    def create_dataset_part(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_compatibility: Annotated[List[DatasetCompatibility], Field(description="the Dataset Compatibility elements")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
+        dataset_part_create_request: DatasetPartCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -378,16 +716,20 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[DatasetCompatibility]:
-        """Add Dataset Compatibility elements.
+    ) -> DatasetPart:
+        """Create a data part of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param dataset_compatibility: the Dataset Compatibility elements (required)
-        :type dataset_compatibility: List[DatasetCompatibility]
+        :param file: Data file to upload (required)
+        :type file: bytearray
+        :param dataset_part_create_request: (required)
+        :type dataset_part_create_request: DatasetPartCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -410,10 +752,12 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_or_replace_dataset_compatibility_elements_serialize(
+        _param = self._create_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            dataset_compatibility=dataset_compatibility,
+            file=file,
+            dataset_part_create_request=dataset_part_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -421,8 +765,9 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[DatasetCompatibility]",
+            '201': "DatasetPart",
             '400': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -437,11 +782,13 @@ class DatasetApi:
 
 
     @validate_call
-    def add_or_replace_dataset_compatibility_elements_with_http_info(
+    def create_dataset_part_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_compatibility: Annotated[List[DatasetCompatibility], Field(description="the Dataset Compatibility elements")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
+        dataset_part_create_request: DatasetPartCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -454,16 +801,20 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[DatasetCompatibility]]:
-        """Add Dataset Compatibility elements.
+    ) -> ApiResponse[DatasetPart]:
+        """Create a data part of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param dataset_compatibility: the Dataset Compatibility elements (required)
-        :type dataset_compatibility: List[DatasetCompatibility]
+        :param file: Data file to upload (required)
+        :type file: bytearray
+        :param dataset_part_create_request: (required)
+        :type dataset_part_create_request: DatasetPartCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -486,10 +837,12 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_or_replace_dataset_compatibility_elements_serialize(
+        _param = self._create_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            dataset_compatibility=dataset_compatibility,
+            file=file,
+            dataset_part_create_request=dataset_part_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -497,8 +850,9 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[DatasetCompatibility]",
+            '201': "DatasetPart",
             '400': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -513,11 +867,13 @@ class DatasetApi:
 
 
     @validate_call
-    def add_or_replace_dataset_compatibility_elements_without_preload_content(
+    def create_dataset_part_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_compatibility: Annotated[List[DatasetCompatibility], Field(description="the Dataset Compatibility elements")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
+        dataset_part_create_request: DatasetPartCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -531,15 +887,19 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add Dataset Compatibility elements.
+        """Create a data part of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param dataset_compatibility: the Dataset Compatibility elements (required)
-        :type dataset_compatibility: List[DatasetCompatibility]
+        :param file: Data file to upload (required)
+        :type file: bytearray
+        :param dataset_part_create_request: (required)
+        :type dataset_part_create_request: DatasetPartCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -562,10 +922,12 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_or_replace_dataset_compatibility_elements_serialize(
+        _param = self._create_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            dataset_compatibility=dataset_compatibility,
+            file=file,
+            dataset_part_create_request=dataset_part_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -573,8 +935,9 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[DatasetCompatibility]",
+            '201': "DatasetPart",
             '400': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -584,11 +947,13 @@ class DatasetApi:
         return response_data.response
 
 
-    def _add_or_replace_dataset_compatibility_elements_serialize(
+    def _create_dataset_part_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
-        dataset_compatibility,
+        file,
+        dataset_part_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -598,7 +963,6 @@ class DatasetApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'DatasetCompatibility': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -613,14 +977,18 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
+        if file is not None:
+            _files['file'] = file
+        if dataset_part_create_request is not None:
+            _form_params.append(('datasetPartCreateRequest', dataset_part_create_request))
         # process the body parameter
-        if dataset_compatibility is not None:
-            _body_params = dataset_compatibility
 
 
         # set the HTTP header `Accept`
@@ -639,8 +1007,7 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json', 
-                        'application/yaml'
+                        'multipart/form-data'
                     ]
                 )
             )
@@ -654,1222 +1021,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/compatibility',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def copy_dataset(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_copy_parameters: Annotated[DatasetCopyParameters, Field(description="the Dataset copy parameters")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DatasetCopyParameters:
-        """Copy a Dataset to another Dataset.
-
-        Not implemented!
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_copy_parameters: the Dataset copy parameters (required)
-        :type dataset_copy_parameters: DatasetCopyParameters
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._copy_dataset_serialize(
-            organization_id=organization_id,
-            dataset_copy_parameters=dataset_copy_parameters,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "DatasetCopyParameters",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def copy_dataset_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_copy_parameters: Annotated[DatasetCopyParameters, Field(description="the Dataset copy parameters")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DatasetCopyParameters]:
-        """Copy a Dataset to another Dataset.
-
-        Not implemented!
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_copy_parameters: the Dataset copy parameters (required)
-        :type dataset_copy_parameters: DatasetCopyParameters
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._copy_dataset_serialize(
-            organization_id=organization_id,
-            dataset_copy_parameters=dataset_copy_parameters,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "DatasetCopyParameters",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def copy_dataset_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_copy_parameters: Annotated[DatasetCopyParameters, Field(description="the Dataset copy parameters")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Copy a Dataset to another Dataset.
-
-        Not implemented!
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_copy_parameters: the Dataset copy parameters (required)
-        :type dataset_copy_parameters: DatasetCopyParameters
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._copy_dataset_serialize(
-            organization_id=organization_id,
-            dataset_copy_parameters=dataset_copy_parameters,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "DatasetCopyParameters",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _copy_dataset_serialize(
-        self,
-        organization_id,
-        dataset_copy_parameters,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if dataset_copy_parameters is not None:
-            _body_params = dataset_copy_parameters
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/copy',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def create_dataset(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset: Annotated[Dataset, Field(description="the Dataset to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dataset:
-        """Create a new Dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset: the Dataset to create (required)
-        :type dataset: Dataset
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_dataset_serialize(
-            organization_id=organization_id,
-            dataset=dataset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dataset",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def create_dataset_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset: Annotated[Dataset, Field(description="the Dataset to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dataset]:
-        """Create a new Dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset: the Dataset to create (required)
-        :type dataset: Dataset
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_dataset_serialize(
-            organization_id=organization_id,
-            dataset=dataset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dataset",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def create_dataset_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset: Annotated[Dataset, Field(description="the Dataset to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Create a new Dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset: the Dataset to create (required)
-        :type dataset: Dataset
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_dataset_serialize(
-            organization_id=organization_id,
-            dataset=dataset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dataset",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _create_dataset_serialize(
-        self,
-        organization_id,
-        dataset,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if dataset is not None:
-            _body_params = dataset
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def create_sub_dataset(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        sub_dataset_graph_query: Annotated[SubDatasetGraphQuery, Field(description="the Cypher query to filter")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dataset:
-        """Create a sub-dataset from the dataset in parameter
-
-        Create a copy of the dataset using the results of the list of queries given in parameter. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param sub_dataset_graph_query: the Cypher query to filter (required)
-        :type sub_dataset_graph_query: SubDatasetGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_sub_dataset_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            sub_dataset_graph_query=sub_dataset_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def create_sub_dataset_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        sub_dataset_graph_query: Annotated[SubDatasetGraphQuery, Field(description="the Cypher query to filter")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dataset]:
-        """Create a sub-dataset from the dataset in parameter
-
-        Create a copy of the dataset using the results of the list of queries given in parameter. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param sub_dataset_graph_query: the Cypher query to filter (required)
-        :type sub_dataset_graph_query: SubDatasetGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_sub_dataset_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            sub_dataset_graph_query=sub_dataset_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def create_sub_dataset_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        sub_dataset_graph_query: Annotated[SubDatasetGraphQuery, Field(description="the Cypher query to filter")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Create a sub-dataset from the dataset in parameter
-
-        Create a copy of the dataset using the results of the list of queries given in parameter. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param sub_dataset_graph_query: the Cypher query to filter (required)
-        :type sub_dataset_graph_query: SubDatasetGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_sub_dataset_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            sub_dataset_graph_query=sub_dataset_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _create_sub_dataset_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        sub_dataset_graph_query,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if sub_dataset_graph_query is not None:
-            _body_params = sub_dataset_graph_query
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/subdataset',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def create_twingraph_entities(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        graph_properties: Annotated[List[GraphProperties], Field(description="the entities to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> str:
-        """Create new entities in a graph instance
-
-        Create new entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param graph_properties: the entities to create (required)
-        :type graph_properties: List[GraphProperties]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_twingraph_entities_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            type=type,
-            graph_properties=graph_properties,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def create_twingraph_entities_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        graph_properties: Annotated[List[GraphProperties], Field(description="the entities to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[str]:
-        """Create new entities in a graph instance
-
-        Create new entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param graph_properties: the entities to create (required)
-        :type graph_properties: List[GraphProperties]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_twingraph_entities_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            type=type,
-            graph_properties=graph_properties,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def create_twingraph_entities_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        graph_properties: Annotated[List[GraphProperties], Field(description="the entities to create")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Create new entities in a graph instance
-
-        Create new entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param graph_properties: the entities to create (required)
-        :type graph_properties: List[GraphProperties]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_twingraph_entities_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            type=type,
-            graph_properties=graph_properties,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _create_twingraph_entities_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        type,
-        graph_properties,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            'GraphProperties': '',
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        if type is not None:
-            _path_params['type'] = type
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if graph_properties is not None:
-            _body_params = graph_properties
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1889,6 +1041,7 @@ class DatasetApi:
     def delete_dataset(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -1903,11 +1056,14 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a dataset
+        """Delete a Dataset
 
+        Delete a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1934,6 +1090,7 @@ class DatasetApi:
 
         _param = self._delete_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1943,6 +1100,7 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -1960,6 +1118,7 @@ class DatasetApi:
     def delete_dataset_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -1974,11 +1133,14 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a dataset
+        """Delete a Dataset
 
+        Delete a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2005,6 +1167,7 @@ class DatasetApi:
 
         _param = self._delete_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2014,6 +1177,7 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -2031,6 +1195,7 @@ class DatasetApi:
     def delete_dataset_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -2045,11 +1210,14 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a dataset
+        """Delete a Dataset
 
+        Delete a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2076,7 +1244,305 @@ class DatasetApi:
 
         _param = self._delete_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '403': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_dataset_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        dataset_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if dataset_id is not None:
+            _path_params['dataset_id'] = dataset_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_dataset_access_control(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Remove the specified access from the given Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_dataset_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_dataset_access_control_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Remove the specified access from the given Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_dataset_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            identity_id=identity_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_dataset_access_control_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Remove the specified access from the given Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param identity_id: the User identifier (required)
+        :type identity_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_dataset_access_control_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            identity_id=identity_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2094,10 +1560,12 @@ class DatasetApi:
         return response_data.response
 
 
-    def _delete_dataset_serialize(
+    def _delete_dataset_access_control_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
+        identity_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2121,8 +1589,12 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
+        if identity_id is not None:
+            _path_params['identity_id'] = identity_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2138,7 +1610,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/access/{identity_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2155,12 +1627,12 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_twingraph_entities(
+    def delete_dataset_part(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        ids: Annotated[List[StrictStr], Field(description="the entities to delete")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2174,18 +1646,18 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete entities in a graph instance
+        """Delete a Dataset part
 
-        Delete entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+        Delete a dataset part
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param ids: the entities to delete (required)
-        :type ids: List[str]
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2208,11 +1680,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_twingraph_entities_serialize(
+        _param = self._delete_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            type=type,
-            ids=ids,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2221,6 +1693,8 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '403': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2234,12 +1708,12 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_twingraph_entities_with_http_info(
+    def delete_dataset_part_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        ids: Annotated[List[StrictStr], Field(description="the entities to delete")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2253,18 +1727,18 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete entities in a graph instance
+        """Delete a Dataset part
 
-        Delete entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+        Delete a dataset part
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param ids: the entities to delete (required)
-        :type ids: List[str]
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2287,11 +1761,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_twingraph_entities_serialize(
+        _param = self._delete_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            type=type,
-            ids=ids,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2300,6 +1774,8 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '403': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2313,12 +1789,12 @@ class DatasetApi:
 
 
     @validate_call
-    def delete_twingraph_entities_without_preload_content(
+    def delete_dataset_part_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        ids: Annotated[List[StrictStr], Field(description="the entities to delete")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2332,18 +1808,18 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete entities in a graph instance
+        """Delete a Dataset part
 
-        Delete entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
+        Delete a dataset part
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param ids: the entities to delete (required)
-        :type ids: List[str]
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2366,11 +1842,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_twingraph_entities_serialize(
+        _param = self._delete_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            type=type,
-            ids=ids,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2379,6 +1855,8 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '403': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2387,12 +1865,12 @@ class DatasetApi:
         return response_data.response
 
 
-    def _delete_twingraph_entities_serialize(
+    def _delete_dataset_part_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
-        type,
-        ids,
+        dataset_part_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2402,7 +1880,6 @@ class DatasetApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'ids': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2417,15 +1894,13 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
-        if type is not None:
-            _path_params['type'] = type
+        if dataset_part_id is not None:
+            _path_params['dataset_part_id'] = dataset_part_id
         # process the query parameters
-        if ids is not None:
-            
-            _query_params.append(('ids', ids))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2440,7 +1915,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2457,10 +1932,12 @@ class DatasetApi:
 
 
     @validate_call
-    def download_twingraph(
+    def download_dataset_part(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        hash: Annotated[StrictStr, Field(description="the Graph download identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2474,14 +1951,17 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """Download a graph as a zip file
+        """Download data from a dataset part
 
-        Download the compressed graph reference by the hash in a zip file Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param hash: the Graph download identifier (required)
-        :type hash: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2504,9 +1984,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._download_twingraph_serialize(
+        _param = self._download_dataset_part_serialize(
             organization_id=organization_id,
-            hash=hash,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2515,6 +1997,8 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '403': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2528,10 +2012,12 @@ class DatasetApi:
 
 
     @validate_call
-    def download_twingraph_with_http_info(
+    def download_dataset_part_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        hash: Annotated[StrictStr, Field(description="the Graph download identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2545,14 +2031,17 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """Download a graph as a zip file
+        """Download data from a dataset part
 
-        Download the compressed graph reference by the hash in a zip file Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param hash: the Graph download identifier (required)
-        :type hash: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2575,9 +2064,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._download_twingraph_serialize(
+        _param = self._download_dataset_part_serialize(
             organization_id=organization_id,
-            hash=hash,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2586,6 +2077,8 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '403': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2599,10 +2092,12 @@ class DatasetApi:
 
 
     @validate_call
-    def download_twingraph_without_preload_content(
+    def download_dataset_part_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        hash: Annotated[StrictStr, Field(description="the Graph download identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2616,14 +2111,17 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download a graph as a zip file
+        """Download data from a dataset part
 
-        Download the compressed graph reference by the hash in a zip file Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param hash: the Graph download identifier (required)
-        :type hash: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2646,9 +2144,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._download_twingraph_serialize(
+        _param = self._download_dataset_part_serialize(
             organization_id=organization_id,
-            hash=hash,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2657,6 +2157,8 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '403': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2665,10 +2167,12 @@ class DatasetApi:
         return response_data.response
 
 
-    def _download_twingraph_serialize(
+    def _download_dataset_part_serialize(
         self,
         organization_id,
-        hash,
+        workspace_id,
+        dataset_id,
+        dataset_part_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2692,8 +2196,12 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
-        if hash is not None:
-            _path_params['hash'] = hash
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if dataset_id is not None:
+            _path_params['dataset_id'] = dataset_id
+        if dataset_part_id is not None:
+            _path_params['dataset_part_id'] = dataset_part_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2716,7 +2224,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/organizations/{organization_id}/datasets/twingraph/download/{hash}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id}/download',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2733,302 +2241,10 @@ class DatasetApi:
 
 
     @validate_call
-    def find_all_datasets(
+    def get_dataset(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Dataset]:
-        """List all Datasets
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_datasets_serialize(
-            organization_id=organization_id,
-            page=page,
-            size=size,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dataset]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def find_all_datasets_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Dataset]]:
-        """List all Datasets
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_datasets_serialize(
-            organization_id=organization_id,
-            page=page,
-            size=size,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dataset]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def find_all_datasets_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """List all Datasets
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param page: page number to query (first page is at index 0)
-        :type page: int
-        :param size: amount of result by page
-        :type size: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._find_all_datasets_serialize(
-            organization_id=organization_id,
-            page=page,
-            size=size,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dataset]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _find_all_datasets_serialize(
-        self,
-        organization_id,
-        page,
-        size,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if size is not None:
-            
-            _query_params.append(('size', size))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/datasets',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def find_dataset_by_id(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -3043,11 +2259,14 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Dataset:
-        """Get the details of a Dataset
+        """Retrieve a Dataset
 
+        Retrieve a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3072,8 +2291,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_dataset_by_id_serialize(
+        _param = self._get_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3083,6 +2303,7 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dataset",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -3097,9 +2318,10 @@ class DatasetApi:
 
 
     @validate_call
-    def find_dataset_by_id_with_http_info(
+    def get_dataset_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -3114,11 +2336,14 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Dataset]:
-        """Get the details of a Dataset
+        """Retrieve a Dataset
 
+        Retrieve a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3143,8 +2368,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_dataset_by_id_serialize(
+        _param = self._get_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3154,6 +2380,7 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dataset",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -3168,9 +2395,10 @@ class DatasetApi:
 
 
     @validate_call
-    def find_dataset_by_id_without_preload_content(
+    def get_dataset_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -3185,11 +2413,14 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the details of a Dataset
+        """Retrieve a Dataset
 
+        Retrieve a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3214,8 +2445,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._find_dataset_by_id_serialize(
+        _param = self._get_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3225,6 +2457,7 @@ class DatasetApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dataset",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -3234,9 +2467,10 @@ class DatasetApi:
         return response_data.response
 
 
-    def _find_dataset_by_id_serialize(
+    def _get_dataset_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
         _request_auth,
         _content_type,
@@ -3261,6 +2495,8 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         # process the query parameters
@@ -3286,7 +2522,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3306,6 +2542,7 @@ class DatasetApi:
     def get_dataset_access_control(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
@@ -3326,6 +2563,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param identity_id: the User identifier (required)
@@ -3354,6 +2593,7 @@ class DatasetApi:
 
         _param = self._get_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             identity_id=identity_id,
             _request_auth=_request_auth,
@@ -3381,6 +2621,7 @@ class DatasetApi:
     def get_dataset_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
@@ -3401,6 +2642,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param identity_id: the User identifier (required)
@@ -3429,6 +2672,7 @@ class DatasetApi:
 
         _param = self._get_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             identity_id=identity_id,
             _request_auth=_request_auth,
@@ -3456,6 +2700,7 @@ class DatasetApi:
     def get_dataset_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
@@ -3476,6 +2721,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param identity_id: the User identifier (required)
@@ -3504,6 +2751,7 @@ class DatasetApi:
 
         _param = self._get_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             identity_id=identity_id,
             _request_auth=_request_auth,
@@ -3526,6 +2774,7 @@ class DatasetApi:
     def _get_dataset_access_control_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
         identity_id,
         _request_auth,
@@ -3551,6 +2800,8 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         if identity_id is not None:
@@ -3578,7 +2829,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/access/{identity_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3595,10 +2846,12 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_security(
+    def get_dataset_part(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3611,14 +2864,18 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DatasetSecurity:
-        """Get the Dataset security information
+    ) -> DatasetPart:
+        """Retrieve a data part of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3641,9 +2898,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_dataset_security_serialize(
+        _param = self._get_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3651,7 +2910,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetSecurity",
+            '200': "DatasetPart",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -3666,10 +2926,12 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_security_with_http_info(
+    def get_dataset_part_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3682,14 +2944,18 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DatasetSecurity]:
-        """Get the Dataset security information
+    ) -> ApiResponse[DatasetPart]:
+        """Retrieve a data part of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3712,9 +2978,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_dataset_security_serialize(
+        _param = self._get_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3722,7 +2990,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetSecurity",
+            '200': "DatasetPart",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -3737,10 +3006,12 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_security_without_preload_content(
+    def get_dataset_part_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3754,13 +3025,17 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Dataset security information
+        """Retrieve a data part of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3783,9 +3058,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_dataset_security_serialize(
+        _param = self._get_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3793,7 +3070,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetSecurity",
+            '200': "DatasetPart",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -3803,10 +3081,12 @@ class DatasetApi:
         return response_data.response
 
 
-    def _get_dataset_security_serialize(
+    def _get_dataset_part_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
+        dataset_part_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3830,8 +3110,12 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
+        if dataset_part_id is not None:
+            _path_params['dataset_part_id'] = dataset_part_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3855,7 +3139,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3872,9 +3156,342 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_security_users(
+    def list_dataset_parts(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[DatasetPart]:
+        """Retrieve all dataset parts of a Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_dataset_parts_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            page=page,
+            size=size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[DatasetPart]",
+            '403': None,
+            '404': None,
+            '422': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_dataset_parts_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[DatasetPart]]:
+        """Retrieve all dataset parts of a Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_dataset_parts_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            page=page,
+            size=size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[DatasetPart]",
+            '403': None,
+            '404': None,
+            '422': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_dataset_parts_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve all dataset parts of a Dataset
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_dataset_parts_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            page=page,
+            size=size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[DatasetPart]",
+            '403': None,
+            '404': None,
+            '422': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_dataset_parts_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        dataset_id,
+        page,
+        size,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if dataset_id is not None:
+            _path_params['dataset_id'] = dataset_id
+        # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if size is not None:
+            
+            _query_params.append(('size', size))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/yaml'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_dataset_security_users(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -3894,6 +3511,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3918,8 +3537,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_dataset_security_users_serialize(
+        _param = self._list_dataset_security_users_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3943,9 +3563,10 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_security_users_with_http_info(
+    def list_dataset_security_users_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -3965,6 +3586,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3989,8 +3612,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_dataset_security_users_serialize(
+        _param = self._list_dataset_security_users_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4014,9 +3638,10 @@ class DatasetApi:
 
 
     @validate_call
-    def get_dataset_security_users_without_preload_content(
+    def list_dataset_security_users_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         _request_timeout: Union[
             None,
@@ -4036,6 +3661,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4060,8 +3687,9 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_dataset_security_users_serialize(
+        _param = self._list_dataset_security_users_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4080,9 +3708,10 @@ class DatasetApi:
         return response_data.response
 
 
-    def _get_dataset_security_users_serialize(
+    def _list_dataset_security_users_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
         _request_auth,
         _content_type,
@@ -4107,596 +3736,11 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security/users',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_dataset_twingraph_status(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the dataset identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IngestionStatusEnum:
-        """Get the dataset's refresh job status
-
-        Get the status of the import workflow lauch on the dataset's refresh. This endpoint needs to be called to update a dataset IngestionStatus or TwincacheStatus
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the dataset identifier (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_dataset_twingraph_status_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IngestionStatusEnum",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_dataset_twingraph_status_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the dataset identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IngestionStatusEnum]:
-        """Get the dataset's refresh job status
-
-        Get the status of the import workflow lauch on the dataset's refresh. This endpoint needs to be called to update a dataset IngestionStatus or TwincacheStatus
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the dataset identifier (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_dataset_twingraph_status_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IngestionStatusEnum",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_dataset_twingraph_status_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the dataset identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get the dataset's refresh job status
-
-        Get the status of the import workflow lauch on the dataset's refresh. This endpoint needs to be called to update a dataset IngestionStatus or TwincacheStatus
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the dataset identifier (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_dataset_twingraph_status_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IngestionStatusEnum",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_dataset_twingraph_status_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/status',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_twingraph_entities(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        ids: Annotated[List[StrictStr], Field(description="the entities to get")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> str:
-        """Get entities in a graph instance
-
-        Get entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param ids: the entities to get (required)
-        :type ids: List[str]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_twingraph_entities_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            type=type,
-            ids=ids,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_twingraph_entities_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        ids: Annotated[List[StrictStr], Field(description="the entities to get")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[str]:
-        """Get entities in a graph instance
-
-        Get entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param ids: the entities to get (required)
-        :type ids: List[str]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_twingraph_entities_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            type=type,
-            ids=ids,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_twingraph_entities_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        ids: Annotated[List[StrictStr], Field(description="the entities to get")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get entities in a graph instance
-
-        Get entities in a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param ids: the entities to get (required)
-        :type ids: List[str]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_twingraph_entities_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            type=type,
-            ids=ids,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_twingraph_entities_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        type,
-        ids,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            'ids': 'multi',
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        if type is not None:
-            _path_params['type'] = type
-        # process the query parameters
-        if ids is not None:
-            
-            _query_params.append(('ids', ids))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -4718,7 +3762,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/users',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4735,11 +3779,12 @@ class DatasetApi:
 
 
     @validate_call
-    def link_workspace(
+    def list_datasets(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="workspace id to be linked to")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4752,16 +3797,19 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dataset:
-        """link_workspace
+    ) -> List[Dataset]:
+        """Retrieve a list of defined Dataset
 
+        List all datasets
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param workspace_id: workspace id to be linked to (required)
+        :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4784,10 +3832,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._link_workspace_serialize(
+        _param = self._list_datasets_serialize(
             organization_id=organization_id,
-            dataset_id=dataset_id,
             workspace_id=workspace_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4795,8 +3844,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-            '400': None,
+            '200': "List[Dataset]",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -4811,11 +3860,12 @@ class DatasetApi:
 
 
     @validate_call
-    def link_workspace_with_http_info(
+    def list_datasets_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="workspace id to be linked to")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4828,16 +3878,19 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dataset]:
-        """link_workspace
+    ) -> ApiResponse[List[Dataset]]:
+        """Retrieve a list of defined Dataset
 
+        List all datasets
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param workspace_id: workspace id to be linked to (required)
+        :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4860,10 +3913,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._link_workspace_serialize(
+        _param = self._list_datasets_serialize(
             organization_id=organization_id,
-            dataset_id=dataset_id,
             workspace_id=workspace_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4871,8 +3925,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-            '400': None,
+            '200': "List[Dataset]",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -4887,11 +3941,12 @@ class DatasetApi:
 
 
     @validate_call
-    def link_workspace_without_preload_content(
+    def list_datasets_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="workspace id to be linked to")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4905,15 +3960,18 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """link_workspace
+        """Retrieve a list of defined Dataset
 
+        List all datasets
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param workspace_id: workspace id to be linked to (required)
+        :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4936,10 +3994,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._link_workspace_serialize(
+        _param = self._list_datasets_serialize(
             organization_id=organization_id,
-            dataset_id=dataset_id,
             workspace_id=workspace_id,
+            page=page,
+            size=size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4947,8 +4006,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-            '400': None,
+            '200': "List[Dataset]",
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -4958,11 +4017,12 @@ class DatasetApi:
         return response_data.response
 
 
-    def _link_workspace_serialize(
+    def _list_datasets_serialize(
         self,
         organization_id,
-        dataset_id,
         workspace_id,
+        page,
+        size,
         _request_auth,
         _content_type,
         _headers,
@@ -4986,12 +4046,16 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
         if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        # process the query parameters
+        if page is not None:
             
-            _query_params.append(('workspaceId', workspace_id))
+            _query_params.append(('page', page))
+            
+        if size is not None:
+            
+            _query_params.append(('size', size))
             
         # process the header parameters
         # process the form parameters
@@ -5014,8 +4078,8 @@ class DatasetApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/link',
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5032,10 +4096,17 @@ class DatasetApi:
 
 
     @validate_call
-    def refresh_dataset(
+    def query_data(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        filters: Annotated[Optional[List[StrictStr]], Field(description="Property names that should be part of the response data. You can specify a property name like:  - id  - stock  - quantity  - ... ")] = None,
+        sums: Annotated[Optional[List[StrictStr]], Field(description="Property names to sum by")] = None,
+        counts: Annotated[Optional[List[StrictStr]], Field(description="Property names to count by")] = None,
+        offset: Annotated[Optional[StrictInt], Field(description="The query offset")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="The query limit")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5048,15 +4119,28 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DatasetTwinGraphInfo:
-        """Refresh data on dataset from dataset's source
+    ) -> List[object]:
+        """Get data of a Dataset
 
-        Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin      Azure storage      Local File (import a new file)  During refresh, datas are overwritten Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
+        :param filters: Property names that should be part of the response data. You can specify a property name like:  - id  - stock  - quantity  - ... 
+        :type filters: List[str]
+        :param sums: Property names to sum by
+        :type sums: List[str]
+        :param counts: Property names to count by
+        :type counts: List[str]
+        :param offset: The query offset
+        :type offset: int
+        :param limit: The query limit
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5079,9 +4163,16 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refresh_dataset_serialize(
+        _param = self._query_data_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
+            filters=filters,
+            sums=sums,
+            counts=counts,
+            offset=offset,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5089,7 +4180,11 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetTwinGraphInfo",
+            '200': "List[object]",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5103,10 +4198,17 @@ class DatasetApi:
 
 
     @validate_call
-    def refresh_dataset_with_http_info(
+    def query_data_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        filters: Annotated[Optional[List[StrictStr]], Field(description="Property names that should be part of the response data. You can specify a property name like:  - id  - stock  - quantity  - ... ")] = None,
+        sums: Annotated[Optional[List[StrictStr]], Field(description="Property names to sum by")] = None,
+        counts: Annotated[Optional[List[StrictStr]], Field(description="Property names to count by")] = None,
+        offset: Annotated[Optional[StrictInt], Field(description="The query offset")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="The query limit")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5119,15 +4221,28 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DatasetTwinGraphInfo]:
-        """Refresh data on dataset from dataset's source
+    ) -> ApiResponse[List[object]]:
+        """Get data of a Dataset
 
-        Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin      Azure storage      Local File (import a new file)  During refresh, datas are overwritten Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
+        :param filters: Property names that should be part of the response data. You can specify a property name like:  - id  - stock  - quantity  - ... 
+        :type filters: List[str]
+        :param sums: Property names to sum by
+        :type sums: List[str]
+        :param counts: Property names to count by
+        :type counts: List[str]
+        :param offset: The query offset
+        :type offset: int
+        :param limit: The query limit
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5150,9 +4265,16 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refresh_dataset_serialize(
+        _param = self._query_data_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
+            filters=filters,
+            sums=sums,
+            counts=counts,
+            offset=offset,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5160,7 +4282,11 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetTwinGraphInfo",
+            '200': "List[object]",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5174,10 +4300,17 @@ class DatasetApi:
 
 
     @validate_call
-    def refresh_dataset_without_preload_content(
+    def query_data_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        filters: Annotated[Optional[List[StrictStr]], Field(description="Property names that should be part of the response data. You can specify a property name like:  - id  - stock  - quantity  - ... ")] = None,
+        sums: Annotated[Optional[List[StrictStr]], Field(description="Property names to sum by")] = None,
+        counts: Annotated[Optional[List[StrictStr]], Field(description="Property names to count by")] = None,
+        offset: Annotated[Optional[StrictInt], Field(description="The query offset")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="The query limit")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5191,14 +4324,27 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Refresh data on dataset from dataset's source
+        """Get data of a Dataset
 
-        Refresh dataset from parent source. At date, sources can be:      dataset (refresh from another dataset)      Azure Digital twin      Azure storage      Local File (import a new file)  During refresh, datas are overwritten Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
+        :param filters: Property names that should be part of the response data. You can specify a property name like:  - id  - stock  - quantity  - ... 
+        :type filters: List[str]
+        :param sums: Property names to sum by
+        :type sums: List[str]
+        :param counts: Property names to count by
+        :type counts: List[str]
+        :param offset: The query offset
+        :type offset: int
+        :param limit: The query limit
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5221,9 +4367,16 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refresh_dataset_serialize(
+        _param = self._query_data_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
+            filters=filters,
+            sums=sums,
+            counts=counts,
+            offset=offset,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5231,7 +4384,11 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetTwinGraphInfo",
+            '200': "List[object]",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5240,10 +4397,17 @@ class DatasetApi:
         return response_data.response
 
 
-    def _refresh_dataset_serialize(
+    def _query_data_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
+        dataset_part_id,
+        filters,
+        sums,
+        counts,
+        offset,
+        limit,
         _request_auth,
         _content_type,
         _headers,
@@ -5253,6 +4417,9 @@ class DatasetApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'filters': 'multi',
+            'sums': 'multi',
+            'counts': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -5267,9 +4434,33 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
+        if dataset_part_id is not None:
+            _path_params['dataset_part_id'] = dataset_part_id
         # process the query parameters
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sums is not None:
+            
+            _query_params.append(('sums', sums))
+            
+        if counts is not None:
+            
+            _query_params.append(('counts', counts))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -5291,8 +4482,8 @@ class DatasetApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/refresh',
+            method='GET',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id}/query',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5309,10 +4500,14 @@ class DatasetApi:
 
 
     @validate_call
-    def remove_all_dataset_compatibility_elements(
+    def replace_dataset_part(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
+        dataset_part_update_request: Optional[DatasetPartUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5325,14 +4520,22 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove all Dataset Compatibility elements from the Dataset specified
+    ) -> DatasetPart:
+        """Replace existing dataset parts of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
+        :param file: Data file to upload (required)
+        :type file: bytearray
+        :param dataset_part_update_request:
+        :type dataset_part_update_request: DatasetPartUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5355,9 +4558,13 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_all_dataset_compatibility_elements_serialize(
+        _param = self._replace_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
+            file=file,
+            dataset_part_update_request=dataset_part_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5365,8 +4572,10 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': "DatasetPart",
+            '403': None,
             '404': None,
+            '422': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5380,10 +4589,14 @@ class DatasetApi:
 
 
     @validate_call
-    def remove_all_dataset_compatibility_elements_with_http_info(
+    def replace_dataset_part_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
+        dataset_part_update_request: Optional[DatasetPartUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5396,14 +4609,22 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove all Dataset Compatibility elements from the Dataset specified
+    ) -> ApiResponse[DatasetPart]:
+        """Replace existing dataset parts of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
+        :param file: Data file to upload (required)
+        :type file: bytearray
+        :param dataset_part_update_request:
+        :type dataset_part_update_request: DatasetPartUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5426,9 +4647,13 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_all_dataset_compatibility_elements_serialize(
+        _param = self._replace_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
+            file=file,
+            dataset_part_update_request=dataset_part_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5436,8 +4661,10 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': "DatasetPart",
+            '403': None,
             '404': None,
+            '422': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5451,10 +4678,14 @@ class DatasetApi:
 
 
     @validate_call
-    def remove_all_dataset_compatibility_elements_without_preload_content(
+    def replace_dataset_part_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
+        dataset_part_update_request: Optional[DatasetPartUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5468,13 +4699,21 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove all Dataset Compatibility elements from the Dataset specified
+        """Replace existing dataset parts of a Dataset
 
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
+        :param dataset_part_id: the Dataset part identifier (required)
+        :type dataset_part_id: str
+        :param file: Data file to upload (required)
+        :type file: bytearray
+        :param dataset_part_update_request:
+        :type dataset_part_update_request: DatasetPartUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5497,9 +4736,13 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_all_dataset_compatibility_elements_serialize(
+        _param = self._replace_dataset_part_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
+            dataset_part_id=dataset_part_id,
+            file=file,
+            dataset_part_update_request=dataset_part_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5507,8 +4750,10 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': "DatasetPart",
+            '403': None,
             '404': None,
+            '422': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5517,10 +4762,14 @@ class DatasetApi:
         return response_data.response
 
 
-    def _remove_all_dataset_compatibility_elements_serialize(
+    def _replace_dataset_part_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
+        dataset_part_id,
+        file,
+        dataset_part_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5544,564 +4793,19 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
+        if dataset_part_id is not None:
+            _path_params['dataset_part_id'] = dataset_part_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/compatibility',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def remove_dataset_access_control(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Remove the specified access from the given Dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_dataset_access_control_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def remove_dataset_access_control_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Remove the specified access from the given Dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_dataset_access_control_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def remove_dataset_access_control_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        identity_id: Annotated[StrictStr, Field(description="the User identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Remove the specified access from the given Dataset
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param identity_id: the User identifier (required)
-        :type identity_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._remove_dataset_access_control_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            identity_id=identity_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _remove_dataset_access_control_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        identity_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        if identity_id is not None:
-            _path_params['identity_id'] = identity_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def rollback_refresh(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> str:
-        """Rollback the dataset after a failed refresh
-
-        Rollback the twingraph on a dataset after a failed refresh Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._rollback_refresh_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def rollback_refresh_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[str]:
-        """Rollback the dataset after a failed refresh
-
-        Rollback the twingraph on a dataset after a failed refresh Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._rollback_refresh_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def rollback_refresh_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Rollback the dataset after a failed refresh
-
-        Rollback the twingraph on a dataset after a failed refresh Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._rollback_refresh_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _rollback_refresh_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
+        if file is not None:
+            _files['file'] = file
+        if dataset_part_update_request is not None:
+            _form_params.append(('datasetPartUpdateRequest', dataset_part_update_request))
         # process the body parameter
 
 
@@ -6114,6 +4818,371 @@ class DatasetApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def search_dataset_parts(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        request_body: Annotated[List[StrictStr], Field(description="the Dataset parts search parameters")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[DatasetPart]:
+        """Search Dataset parts by tags
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param request_body: the Dataset parts search parameters (required)
+        :type request_body: List[str]
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_dataset_parts_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            request_body=request_body,
+            page=page,
+            size=size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[DatasetPart]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def search_dataset_parts_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        request_body: Annotated[List[StrictStr], Field(description="the Dataset parts search parameters")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[DatasetPart]]:
+        """Search Dataset parts by tags
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param request_body: the Dataset parts search parameters (required)
+        :type request_body: List[str]
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_dataset_parts_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            request_body=request_body,
+            page=page,
+            size=size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[DatasetPart]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def search_dataset_parts_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        request_body: Annotated[List[StrictStr], Field(description="the Dataset parts search parameters")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search Dataset parts by tags
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
+        :type dataset_id: str
+        :param request_body: the Dataset parts search parameters (required)
+        :type request_body: List[str]
+        :param page: Page number to query (first page is at index 0)
+        :type page: int
+        :param size: Amount of result by page
+        :type size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_dataset_parts_serialize(
+            organization_id=organization_id,
+            workspace_id=workspace_id,
+            dataset_id=dataset_id,
+            request_body=request_body,
+            page=page,
+            size=size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[DatasetPart]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _search_dataset_parts_serialize(
+        self,
+        organization_id,
+        workspace_id,
+        dataset_id,
+        request_body,
+        page,
+        size,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'request_body': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
+        if dataset_id is not None:
+            _path_params['dataset_id'] = dataset_id
+        # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if size is not None:
+            
+            _query_params.append(('size', size))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if request_body is not None:
+            _body_params = request_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/yaml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -6122,7 +5191,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/refresh/rollback',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/search',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6142,9 +5211,10 @@ class DatasetApi:
     def search_datasets(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_search: Annotated[DatasetSearch, Field(description="the Dataset search parameters")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        request_body: Annotated[List[StrictStr], Field(description="the Dataset search parameters")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6163,11 +5233,13 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_search: the Dataset search parameters (required)
-        :type dataset_search: DatasetSearch
-        :param page: page number to query (first page is at index 0)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param request_body: the Dataset search parameters (required)
+        :type request_body: List[str]
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6193,7 +5265,8 @@ class DatasetApi:
 
         _param = self._search_datasets_serialize(
             organization_id=organization_id,
-            dataset_search=dataset_search,
+            workspace_id=workspace_id,
+            request_body=request_body,
             page=page,
             size=size,
             _request_auth=_request_auth,
@@ -6220,9 +5293,10 @@ class DatasetApi:
     def search_datasets_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_search: Annotated[DatasetSearch, Field(description="the Dataset search parameters")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        request_body: Annotated[List[StrictStr], Field(description="the Dataset search parameters")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6241,11 +5315,13 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_search: the Dataset search parameters (required)
-        :type dataset_search: DatasetSearch
-        :param page: page number to query (first page is at index 0)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param request_body: the Dataset search parameters (required)
+        :type request_body: List[str]
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6271,7 +5347,8 @@ class DatasetApi:
 
         _param = self._search_datasets_serialize(
             organization_id=organization_id,
-            dataset_search=dataset_search,
+            workspace_id=workspace_id,
+            request_body=request_body,
             page=page,
             size=size,
             _request_auth=_request_auth,
@@ -6298,9 +5375,10 @@ class DatasetApi:
     def search_datasets_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_search: Annotated[DatasetSearch, Field(description="the Dataset search parameters")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        request_body: Annotated[List[StrictStr], Field(description="the Dataset search parameters")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6319,11 +5397,13 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_search: the Dataset search parameters (required)
-        :type dataset_search: DatasetSearch
-        :param page: page number to query (first page is at index 0)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param request_body: the Dataset search parameters (required)
+        :type request_body: List[str]
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6349,7 +5429,8 @@ class DatasetApi:
 
         _param = self._search_datasets_serialize(
             organization_id=organization_id,
-            dataset_search=dataset_search,
+            workspace_id=workspace_id,
+            request_body=request_body,
             page=page,
             size=size,
             _request_auth=_request_auth,
@@ -6371,7 +5452,8 @@ class DatasetApi:
     def _search_datasets_serialize(
         self,
         organization_id,
-        dataset_search,
+        workspace_id,
+        request_body,
         page,
         size,
         _request_auth,
@@ -6383,6 +5465,7 @@ class DatasetApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'request_body': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -6397,6 +5480,8 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         # process the query parameters
         if page is not None:
             
@@ -6409,1260 +5494,8 @@ class DatasetApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if dataset_search is not None:
-            _body_params = dataset_search
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/search',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def set_dataset_default_security(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DatasetSecurity:
-        """Set the Dataset default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param dataset_role: This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. (required)
-        :type dataset_role: DatasetRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_dataset_default_security_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_role=dataset_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "DatasetSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def set_dataset_default_security_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DatasetSecurity]:
-        """Set the Dataset default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param dataset_role: This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. (required)
-        :type dataset_role: DatasetRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_dataset_default_security_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_role=dataset_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "DatasetSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def set_dataset_default_security_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Set the Dataset default security
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param dataset_role: This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. (required)
-        :type dataset_role: DatasetRole
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_dataset_default_security_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_role=dataset_role,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "DatasetSecurity",
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _set_dataset_default_security_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        dataset_role,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if dataset_role is not None:
-            _body_params = dataset_role
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security/default',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def twingraph_batch_query(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Graph Identifier")],
-        dataset_twin_graph_query: Annotated[DatasetTwinGraphQuery, Field(description="the query to run")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DatasetTwinGraphHash:
-        """Run a query on a graph instance and return the result as a zip file in async mode
-
-        Run a query on a graph instance and return the result as a zip file in async mode Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Graph Identifier (required)
-        :type dataset_id: str
-        :param dataset_twin_graph_query: the query to run (required)
-        :type dataset_twin_graph_query: DatasetTwinGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_batch_query_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_twin_graph_query=dataset_twin_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetTwinGraphHash",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def twingraph_batch_query_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Graph Identifier")],
-        dataset_twin_graph_query: Annotated[DatasetTwinGraphQuery, Field(description="the query to run")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DatasetTwinGraphHash]:
-        """Run a query on a graph instance and return the result as a zip file in async mode
-
-        Run a query on a graph instance and return the result as a zip file in async mode Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Graph Identifier (required)
-        :type dataset_id: str
-        :param dataset_twin_graph_query: the query to run (required)
-        :type dataset_twin_graph_query: DatasetTwinGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_batch_query_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_twin_graph_query=dataset_twin_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetTwinGraphHash",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def twingraph_batch_query_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Graph Identifier")],
-        dataset_twin_graph_query: Annotated[DatasetTwinGraphQuery, Field(description="the query to run")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Run a query on a graph instance and return the result as a zip file in async mode
-
-        Run a query on a graph instance and return the result as a zip file in async mode Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Graph Identifier (required)
-        :type dataset_id: str
-        :param dataset_twin_graph_query: the query to run (required)
-        :type dataset_twin_graph_query: DatasetTwinGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_batch_query_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_twin_graph_query=dataset_twin_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DatasetTwinGraphHash",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _twingraph_batch_query_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        dataset_twin_graph_query,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if dataset_twin_graph_query is not None:
-            _body_params = dataset_twin_graph_query
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json', 
-                        'application/yaml'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/batch-query',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def twingraph_batch_update(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        twin_graph_query: DatasetTwinGraphQuery,
-        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TwinGraphBatchResult:
-        """Async batch update by loading a CSV file on a graph instance 
-
-        Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param twin_graph_query: (required)
-        :type twin_graph_query: DatasetTwinGraphQuery
-        :param body: (required)
-        :type body: bytearray
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_batch_update_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            twin_graph_query=twin_graph_query,
-            body=body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TwinGraphBatchResult",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def twingraph_batch_update_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        twin_graph_query: DatasetTwinGraphQuery,
-        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TwinGraphBatchResult]:
-        """Async batch update by loading a CSV file on a graph instance 
-
-        Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param twin_graph_query: (required)
-        :type twin_graph_query: DatasetTwinGraphQuery
-        :param body: (required)
-        :type body: bytearray
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_batch_update_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            twin_graph_query=twin_graph_query,
-            body=body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TwinGraphBatchResult",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def twingraph_batch_update_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        twin_graph_query: DatasetTwinGraphQuery,
-        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Async batch update by loading a CSV file on a graph instance 
-
-        Async batch update by loading a CSV file on a graph instance Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
-        :type dataset_id: str
-        :param twin_graph_query: (required)
-        :type twin_graph_query: DatasetTwinGraphQuery
-        :param body: (required)
-        :type body: bytearray
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_batch_update_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            twin_graph_query=twin_graph_query,
-            body=body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TwinGraphBatchResult",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _twingraph_batch_update_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        twin_graph_query,
-        body,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        if twin_graph_query is not None:
-            
-            _query_params.append(('twinGraphQuery', twin_graph_query))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if body is not None:
-            # convert to byte array if the input is a file name (str)
-            if isinstance(body, str):
-                with open(body, "rb") as _fp:
-                    _body_params = _fp.read()
-            elif isinstance(body, tuple):
-                # drop the filename from the tuple
-                _body_params = body[1]
-            else:
-                _body_params = body
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'text/csv', 
-                        'application/octet-stream'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/batch',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def twingraph_query(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_twin_graph_query: Annotated[DatasetTwinGraphQuery, Field(description="the query to run")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[object]:
-        """Return the result of a query made on the graph instance as a json
-
-        Run a query on a graph instance and return the result as a json Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param dataset_twin_graph_query: the query to run (required)
-        :type dataset_twin_graph_query: DatasetTwinGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_query_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_twin_graph_query=dataset_twin_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[object]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def twingraph_query_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_twin_graph_query: Annotated[DatasetTwinGraphQuery, Field(description="the query to run")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[object]]:
-        """Return the result of a query made on the graph instance as a json
-
-        Run a query on a graph instance and return the result as a json Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param dataset_twin_graph_query: the query to run (required)
-        :type dataset_twin_graph_query: DatasetTwinGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_query_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_twin_graph_query=dataset_twin_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[object]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def twingraph_query_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_twin_graph_query: Annotated[DatasetTwinGraphQuery, Field(description="the query to run")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Return the result of a query made on the graph instance as a json
-
-        Run a query on a graph instance and return the result as a json Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param dataset_twin_graph_query: the query to run (required)
-        :type dataset_twin_graph_query: DatasetTwinGraphQuery
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._twingraph_query_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            dataset_twin_graph_query=dataset_twin_graph_query,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[object]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _twingraph_query_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        dataset_twin_graph_query,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if dataset_twin_graph_query is not None:
-            _body_params = dataset_twin_graph_query
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`
@@ -7695,304 +5528,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/twingraph',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def unlink_workspace(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="workspace id to be linked to")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dataset:
-        """unlink_workspace
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param workspace_id: workspace id to be linked to (required)
-        :type workspace_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unlink_workspace_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            workspace_id=workspace_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def unlink_workspace_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="workspace id to be linked to")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dataset]:
-        """unlink_workspace
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param workspace_id: workspace id to be linked to (required)
-        :type workspace_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unlink_workspace_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            workspace_id=workspace_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def unlink_workspace_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="workspace id to be linked to")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """unlink_workspace
-
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param workspace_id: workspace id to be linked to (required)
-        :type workspace_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._unlink_workspace_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            workspace_id=workspace_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dataset",
-            '400': None,
-            '404': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _unlink_workspace_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        workspace_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        if workspace_id is not None:
-            
-            _query_params.append(('workspaceId', workspace_id))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/unlink',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/search',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8012,8 +5548,10 @@ class DatasetApi:
     def update_dataset(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset: Annotated[Dataset, Field(description="the new Dataset details. This endpoint can't be used to update security")],
+        dataset_update_request: DatasetUpdateRequest,
+        files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8027,15 +5565,20 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Dataset:
-        """Update a dataset
+        """Update a Dataset
 
+        Update a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param dataset: the new Dataset details. This endpoint can't be used to update security (required)
-        :type dataset: Dataset
+        :param dataset_update_request: (required)
+        :type dataset_update_request: DatasetUpdateRequest
+        :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
+        :type files: List[bytearray]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8060,8 +5603,10 @@ class DatasetApi:
 
         _param = self._update_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            dataset=dataset,
+            dataset_update_request=dataset_update_request,
+            files=files,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8071,6 +5616,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dataset",
             '400': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -8088,8 +5634,10 @@ class DatasetApi:
     def update_dataset_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset: Annotated[Dataset, Field(description="the new Dataset details. This endpoint can't be used to update security")],
+        dataset_update_request: DatasetUpdateRequest,
+        files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8103,15 +5651,20 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Dataset]:
-        """Update a dataset
+        """Update a Dataset
 
+        Update a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param dataset: the new Dataset details. This endpoint can't be used to update security (required)
-        :type dataset: Dataset
+        :param dataset_update_request: (required)
+        :type dataset_update_request: DatasetUpdateRequest
+        :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
+        :type files: List[bytearray]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8136,8 +5689,10 @@ class DatasetApi:
 
         _param = self._update_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            dataset=dataset,
+            dataset_update_request=dataset_update_request,
+            files=files,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8147,6 +5702,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dataset",
             '400': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -8164,8 +5720,10 @@ class DatasetApi:
     def update_dataset_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset: Annotated[Dataset, Field(description="the new Dataset details. This endpoint can't be used to update security")],
+        dataset_update_request: DatasetUpdateRequest,
+        files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8179,15 +5737,20 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a dataset
+        """Update a Dataset
 
+        Update a dataset
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param dataset: the new Dataset details. This endpoint can't be used to update security (required)
-        :type dataset: Dataset
+        :param dataset_update_request: (required)
+        :type dataset_update_request: DatasetUpdateRequest
+        :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
+        :type files: List[bytearray]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8212,8 +5775,10 @@ class DatasetApi:
 
         _param = self._update_dataset_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            dataset=dataset,
+            dataset_update_request=dataset_update_request,
+            files=files,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8223,6 +5788,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dataset",
             '400': None,
+            '403': None,
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -8235,8 +5801,10 @@ class DatasetApi:
     def _update_dataset_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
-        dataset,
+        dataset_update_request,
+        files,
         _request_auth,
         _content_type,
         _headers,
@@ -8246,6 +5814,7 @@ class DatasetApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'files': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8260,14 +5829,18 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
+        if files is not None:
+            _files['files'] = files
+        if dataset_update_request is not None:
+            _form_params.append(('datasetUpdateRequest', dataset_update_request))
         # process the body parameter
-        if dataset is not None:
-            _body_params = dataset
 
 
         # set the HTTP header `Accept`
@@ -8286,8 +5859,7 @@ class DatasetApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json', 
-                        'application/yaml'
+                        'multipart/form-data'
                     ]
                 )
             )
@@ -8301,7 +5873,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8321,6 +5893,7 @@ class DatasetApi:
     def update_dataset_access_control(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="The new Dataset Access Control")],
@@ -8342,6 +5915,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param identity_id: the User identifier (required)
@@ -8372,6 +5947,7 @@ class DatasetApi:
 
         _param = self._update_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             identity_id=identity_id,
             dataset_role=dataset_role,
@@ -8400,6 +5976,7 @@ class DatasetApi:
     def update_dataset_access_control_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="The new Dataset Access Control")],
@@ -8421,6 +5998,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param identity_id: the User identifier (required)
@@ -8451,6 +6030,7 @@ class DatasetApi:
 
         _param = self._update_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             identity_id=identity_id,
             dataset_role=dataset_role,
@@ -8479,6 +6059,7 @@ class DatasetApi:
     def update_dataset_access_control_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="The new Dataset Access Control")],
@@ -8500,6 +6081,8 @@ class DatasetApi:
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param identity_id: the User identifier (required)
@@ -8530,6 +6113,7 @@ class DatasetApi:
 
         _param = self._update_dataset_access_control_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
             identity_id=identity_id,
             dataset_role=dataset_role,
@@ -8553,6 +6137,7 @@ class DatasetApi:
     def _update_dataset_access_control_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
         identity_id,
         dataset_role,
@@ -8579,6 +6164,8 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
         if identity_id is not None:
@@ -8622,7 +6209,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/security/access/{identity_id}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/access/{identity_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8639,12 +6226,12 @@ class DatasetApi:
 
 
     @validate_call
-    def update_twingraph_entities(
+    def update_dataset_default_security(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        graph_properties: Annotated[List[GraphProperties], Field(description="The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true ")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8657,19 +6244,18 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> str:
-        """Update entities in a graph instance
+    ) -> DatasetSecurity:
+        """Set the Dataset default security
 
-        update entities in a graph instance
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param graph_properties: The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true  (required)
-        :type graph_properties: List[GraphProperties]
+        :param dataset_role: This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. (required)
+        :type dataset_role: DatasetRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8692,11 +6278,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_twingraph_entities_serialize(
+        _param = self._update_dataset_default_security_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            type=type,
-            graph_properties=graph_properties,
+            dataset_role=dataset_role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8704,7 +6290,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
+            '201': "DatasetSecurity",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8718,12 +6305,12 @@ class DatasetApi:
 
 
     @validate_call
-    def update_twingraph_entities_with_http_info(
+    def update_dataset_default_security_with_http_info(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        graph_properties: Annotated[List[GraphProperties], Field(description="The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true ")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8736,19 +6323,18 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[str]:
-        """Update entities in a graph instance
+    ) -> ApiResponse[DatasetSecurity]:
+        """Set the Dataset default security
 
-        update entities in a graph instance
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param graph_properties: The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true  (required)
-        :type graph_properties: List[GraphProperties]
+        :param dataset_role: This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. (required)
+        :type dataset_role: DatasetRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8771,11 +6357,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_twingraph_entities_serialize(
+        _param = self._update_dataset_default_security_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            type=type,
-            graph_properties=graph_properties,
+            dataset_role=dataset_role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8783,7 +6369,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
+            '201': "DatasetSecurity",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8797,12 +6384,12 @@ class DatasetApi:
 
 
     @validate_call
-    def update_twingraph_entities_without_preload_content(
+    def update_dataset_default_security_without_preload_content(
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset Identifier")],
-        type: Annotated[StrictStr, Field(description="the entity model type")],
-        graph_properties: Annotated[List[GraphProperties], Field(description="The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true ")],
+        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8816,18 +6403,17 @@ class DatasetApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update entities in a graph instance
+        """Set the Dataset default security
 
-        update entities in a graph instance
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param dataset_id: the Dataset Identifier (required)
+        :param workspace_id: the Workspace identifier (required)
+        :type workspace_id: str
+        :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
-        :param type: the entity model type (required)
-        :type type: str
-        :param graph_properties: The entities to update Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true  (required)
-        :type graph_properties: List[GraphProperties]
+        :param dataset_role: This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset. (required)
+        :type dataset_role: DatasetRole
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8850,11 +6436,11 @@ class DatasetApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_twingraph_entities_serialize(
+        _param = self._update_dataset_default_security_serialize(
             organization_id=organization_id,
+            workspace_id=workspace_id,
             dataset_id=dataset_id,
-            type=type,
-            graph_properties=graph_properties,
+            dataset_role=dataset_role,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8862,7 +6448,8 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "str",
+            '201': "DatasetSecurity",
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8871,12 +6458,12 @@ class DatasetApi:
         return response_data.response
 
 
-    def _update_twingraph_entities_serialize(
+    def _update_dataset_default_security_serialize(
         self,
         organization_id,
+        workspace_id,
         dataset_id,
-        type,
-        graph_properties,
+        dataset_role,
         _request_auth,
         _content_type,
         _headers,
@@ -8886,7 +6473,6 @@ class DatasetApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'GraphProperties': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8901,16 +6487,16 @@ class DatasetApi:
         # process the path parameters
         if organization_id is not None:
             _path_params['organization_id'] = organization_id
+        if workspace_id is not None:
+            _path_params['workspace_id'] = workspace_id
         if dataset_id is not None:
             _path_params['dataset_id'] = dataset_id
-        if type is not None:
-            _path_params['type'] = type
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if graph_properties is not None:
-            _body_params = graph_properties
+        if dataset_role is not None:
+            _body_params = dataset_role
 
 
         # set the HTTP header `Accept`
@@ -8943,320 +6529,7 @@ class DatasetApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}/twingraph/{type}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def upload_twingraph(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> FileUploadValidation:
-        """Upload data from zip file to dataset's twingraph
-
-        To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * id  those colomns represent * The source of the edge * The target of the edge * The id of the edge  All following columns content are up to you. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param body: (required)
-        :type body: bytearray
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._upload_twingraph_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            body=body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '202': "FileUploadValidation",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def upload_twingraph_with_http_info(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[FileUploadValidation]:
-        """Upload data from zip file to dataset's twingraph
-
-        To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * id  those colomns represent * The source of the edge * The target of the edge * The id of the edge  All following columns content are up to you. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param body: (required)
-        :type body: bytearray
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._upload_twingraph_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            body=body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '202': "FileUploadValidation",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def upload_twingraph_without_preload_content(
-        self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Upload data from zip file to dataset's twingraph
-
-        To create a new graph from flat files,  you need to create a Zip file. This Zip file must countain two folders named Edges and Nodes.  .zip hierarchy: *main_folder/Nodes *main_folder/Edges  In each folder you can place one or multiple csv files containing your Nodes or Edges data.  Your csv files must follow the following header (column name) requirements:  The Nodes CSVs requires at least one column (the 1st).Column name = 'id'. It will represent the nodes ID Ids must be populated with string  The Edges CSVs require three columns named, in order, * source * target * id  those colomns represent * The source of the edge * The target of the edge * The id of the edge  All following columns content are up to you. Note: This endpoint is activated only if `csm.platform.twincache.useGraphModule` property is set to true 
-
-        :param organization_id: the Organization identifier (required)
-        :type organization_id: str
-        :param dataset_id: the Dataset identifier (required)
-        :type dataset_id: str
-        :param body: (required)
-        :type body: bytearray
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._upload_twingraph_serialize(
-            organization_id=organization_id,
-            dataset_id=dataset_id,
-            body=body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '202': "FileUploadValidation",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _upload_twingraph_serialize(
-        self,
-        organization_id,
-        dataset_id,
-        body,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if dataset_id is not None:
-            _path_params['dataset_id'] = dataset_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if body is not None:
-            # convert to byte array if the input is a file name (str)
-            if isinstance(body, str):
-                with open(body, "rb") as _fp:
-                    _body_params = _fp.read()
-            elif isinstance(body, tuple):
-                # drop the filename from the tuple
-                _body_params = body[1]
-            else:
-                _body_params = body
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/yaml'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/octet-stream'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oAuth2AuthCode'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/datasets/{dataset_id}',
+            resource_path='/organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/default',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

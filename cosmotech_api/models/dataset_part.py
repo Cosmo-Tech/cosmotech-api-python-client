@@ -21,34 +21,33 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from cosmotech_api.models.create_info import CreateInfo
-from cosmotech_api.models.dataset_part import DatasetPart
-from cosmotech_api.models.dataset_security import DatasetSecurity
+from cosmotech_api.models.dataset_part_type_enum import DatasetPartTypeEnum
 from cosmotech_api.models.edit_info import EditInfo
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Dataset(BaseModel):
+class DatasetPart(BaseModel):
     """
-    Dataset object
+    Dataset part object
     """ # noqa: E501
     id: Annotated[str, Field(strict=True)]
     name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
+    source_name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
+    tags: List[StrictStr]
+    type: DatasetPartTypeEnum
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
-    tags: List[StrictStr] = Field(description="the list of tags")
-    parts: List[DatasetPart]
-    create_info: CreateInfo = Field(description="The details of the Dataset creation", alias="createInfo")
+    dataset_id: StrictStr = Field(description="the associated Dataset Id", alias="datasetId")
+    create_info: EditInfo = Field(description="The details of the Dataset creation", alias="createInfo")
     update_info: EditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
-    security: DatasetSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "organizationId", "workspaceId", "tags", "parts", "createInfo", "updateInfo", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "sourceName", "description", "tags", "type", "organizationId", "workspaceId", "datasetId", "createInfo", "updateInfo"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"^d-\w{10,20}", value):
-            raise ValueError(r"must validate the regular expression /^d-\w{10,20}/")
+        if not re.match(r"^dp-\w{10,20}", value):
+            raise ValueError(r"must validate the regular expression /^dp-\w{10,20}/")
         return value
 
     model_config = ConfigDict(
@@ -69,7 +68,7 @@ class Dataset(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Dataset from a JSON string"""
+        """Create an instance of DatasetPart from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,10 +82,12 @@ class Dataset(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "organization_id",
             "workspace_id",
+            "dataset_id",
         ])
 
         _dict = self.model_dump(
@@ -94,27 +95,17 @@ class Dataset(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in parts (list)
-        _items = []
-        if self.parts:
-            for _item_parts in self.parts:
-                if _item_parts:
-                    _items.append(_item_parts.to_dict())
-            _dict['parts'] = _items
         # override the default output from pydantic by calling `to_dict()` of create_info
         if self.create_info:
             _dict['createInfo'] = self.create_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of update_info
         if self.update_info:
             _dict['updateInfo'] = self.update_info.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of security
-        if self.security:
-            _dict['security'] = self.security.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Dataset from a dict"""
+        """Create an instance of DatasetPart from a dict"""
         if obj is None:
             return None
 
@@ -124,14 +115,15 @@ class Dataset(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
+            "tags": obj.get("tags"),
+            "type": obj.get("type") if obj.get("type") is not None else DatasetPartTypeEnum.RELATIONAL,
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),
-            "tags": obj.get("tags"),
-            "parts": [DatasetPart.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
-            "createInfo": CreateInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
-            "updateInfo": EditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
-            "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
+            "datasetId": obj.get("datasetId"),
+            "createInfo": EditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
+            "updateInfo": EditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None
         })
         return _obj
 

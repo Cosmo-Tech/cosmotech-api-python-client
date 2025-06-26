@@ -27,12 +27,6 @@ class TestWorkspaceApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_dataset_link(self) -> None:
-        """Test case for create_dataset_link
-
-        """
-        pass
-
     def test_create_workspace(self) -> None:
         """Test case for create_workspace
 
@@ -54,12 +48,6 @@ class TestWorkspaceApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_dataset_link(self) -> None:
-        """Test case for delete_dataset_link
-
-        """
-        pass
-
     def test_delete_workspace(self) -> None:
         """Test case for delete_workspace
 
@@ -70,7 +58,7 @@ class TestWorkspaceApi(unittest.TestCase):
     def test_delete_workspace_access_control(self) -> None:
         """Test case for delete_workspace_access_control
 
-        Remove the specified access from the given Organization Workspace
+        Remove the specified access from the given Workspace
         """
         pass
 
@@ -91,7 +79,7 @@ class TestWorkspaceApi(unittest.TestCase):
     def test_get_workspace(self) -> None:
         """Test case for get_workspace
 
-        Get the details of an workspace
+        Get the details of a workspace
         """
         pass
 

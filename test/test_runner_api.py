@@ -51,14 +51,14 @@ class TestRunnerApi(unittest.TestCase):
     def test_delete_runner_access_control(self) -> None:
         """Test case for delete_runner_access_control
 
-        Remove the specified access from the given Organization Runner
+        Remove the specified access from the given Runner
         """
         pass
 
     def test_get_runner(self) -> None:
         """Test case for get_runner
 
-        Get the details of an runner
+        Get the details of a runner
         """
         pass
 

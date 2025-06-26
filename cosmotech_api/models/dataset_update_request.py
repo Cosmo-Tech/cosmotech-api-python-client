@@ -18,38 +18,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from cosmotech_api.models.create_info import CreateInfo
-from cosmotech_api.models.dataset_part import DatasetPart
+from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
 from cosmotech_api.models.dataset_security import DatasetSecurity
-from cosmotech_api.models.edit_info import EditInfo
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Dataset(BaseModel):
+class DatasetUpdateRequest(BaseModel):
     """
-    Dataset object
+    Dataset creation request
     """ # noqa: E501
-    id: Annotated[str, Field(strict=True)]
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
+    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = None
     description: Optional[StrictStr] = None
-    organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
-    workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
-    tags: List[StrictStr] = Field(description="the list of tags")
-    parts: List[DatasetPart]
-    create_info: CreateInfo = Field(description="The details of the Dataset creation", alias="createInfo")
-    update_info: EditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
-    security: DatasetSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "organizationId", "workspaceId", "tags", "parts", "createInfo", "updateInfo", "security"]
-
-    @field_validator('id')
-    def id_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^d-\w{10,20}", value):
-            raise ValueError(r"must validate the regular expression /^d-\w{10,20}/")
-        return value
+    tags: Optional[List[StrictStr]] = None
+    parts: Optional[List[DatasetPartCreateRequest]] = None
+    security: Optional[DatasetSecurity] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "parts", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,7 +55,7 @@ class Dataset(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Dataset from a JSON string"""
+        """Create an instance of DatasetUpdateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,12 +67,8 @@ class Dataset(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "organization_id",
-            "workspace_id",
         ])
 
         _dict = self.model_dump(
@@ -101,12 +83,6 @@ class Dataset(BaseModel):
                 if _item_parts:
                     _items.append(_item_parts.to_dict())
             _dict['parts'] = _items
-        # override the default output from pydantic by calling `to_dict()` of create_info
-        if self.create_info:
-            _dict['createInfo'] = self.create_info.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of update_info
-        if self.update_info:
-            _dict['updateInfo'] = self.update_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of security
         if self.security:
             _dict['security'] = self.security.to_dict()
@@ -114,7 +90,7 @@ class Dataset(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Dataset from a dict"""
+        """Create an instance of DatasetUpdateRequest from a dict"""
         if obj is None:
             return None
 
@@ -122,15 +98,10 @@ class Dataset(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "organizationId": obj.get("organizationId"),
-            "workspaceId": obj.get("workspaceId"),
             "tags": obj.get("tags"),
-            "parts": [DatasetPart.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
-            "createInfo": CreateInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
-            "updateInfo": EditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
+            "parts": [DatasetPartCreateRequest.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
             "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj

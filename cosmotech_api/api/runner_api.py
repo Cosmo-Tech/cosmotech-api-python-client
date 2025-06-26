@@ -977,7 +977,7 @@ class RunnerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Remove the specified access from the given Organization Runner
+        """Remove the specified access from the given Runner
 
 
         :param organization_id: the Organization identifier (required)
@@ -1056,7 +1056,7 @@ class RunnerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Remove the specified access from the given Organization Runner
+        """Remove the specified access from the given Runner
 
 
         :param organization_id: the Organization identifier (required)
@@ -1135,7 +1135,7 @@ class RunnerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove the specified access from the given Organization Runner
+        """Remove the specified access from the given Runner
 
 
         :param organization_id: the Organization identifier (required)
@@ -1275,7 +1275,7 @@ class RunnerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Runner:
-        """Get the details of an runner
+        """Get the details of a runner
 
 
         :param organization_id: the Organization identifier (required)
@@ -1350,7 +1350,7 @@ class RunnerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Runner]:
-        """Get the details of an runner
+        """Get the details of a runner
 
 
         :param organization_id: the Organization identifier (required)
@@ -1425,7 +1425,7 @@ class RunnerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the details of an runner
+        """Get the details of a runner
 
 
         :param organization_id: the Organization identifier (required)

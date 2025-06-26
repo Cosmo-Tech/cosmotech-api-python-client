@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **key** | **str** | Technical key for resource name convention and version grouping. Must be unique | 
 **name** | **str** | Workspace name. This name is display in the sample webApp | 
 **description** | **str** | The Workspace description | [optional] 
-**linked_dataset_id_list** | **List[str]** | list of dataset linked to this dataset | [optional] 
 **version** | **str** | The Workspace version MAJOR.MINOR.PATCH. | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 
 **create_info** | [**WorkspaceEditInfo**](WorkspaceEditInfo.md) | The details of the Workspace creation | 

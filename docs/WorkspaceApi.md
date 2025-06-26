@@ -1,19 +1,17 @@
 # cosmotech_api.WorkspaceApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_dataset_link**](WorkspaceApi.md#create_dataset_link) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/link | 
 [**create_workspace**](WorkspaceApi.md#create_workspace) | **POST** /organizations/{organization_id}/workspaces | Create a new workspace
 [**create_workspace_access_control**](WorkspaceApi.md#create_workspace_access_control) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/security/access | Add a control access to the Workspace
 [**create_workspace_file**](WorkspaceApi.md#create_workspace_file) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/files | Upload a file for the Workspace
-[**delete_dataset_link**](WorkspaceApi.md#delete_dataset_link) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/link | 
 [**delete_workspace**](WorkspaceApi.md#delete_workspace) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id} | Delete a workspace
-[**delete_workspace_access_control**](WorkspaceApi.md#delete_workspace_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Remove the specified access from the given Organization Workspace
+[**delete_workspace_access_control**](WorkspaceApi.md#delete_workspace_access_control) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Remove the specified access from the given Workspace
 [**delete_workspace_file**](WorkspaceApi.md#delete_workspace_file) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files/delete | Delete a workspace file
 [**delete_workspace_files**](WorkspaceApi.md#delete_workspace_files) | **DELETE** /organizations/{organization_id}/workspaces/{workspace_id}/files | Delete all Workspace files
-[**get_workspace**](WorkspaceApi.md#get_workspace) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of an workspace
+[**get_workspace**](WorkspaceApi.md#get_workspace) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of a workspace
 [**get_workspace_access_control**](WorkspaceApi.md#get_workspace_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Get a control access for the Workspace
 [**get_workspace_file**](WorkspaceApi.md#get_workspace_file) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files/download | Download the Workspace File specified
 [**get_workspace_security**](WorkspaceApi.md#get_workspace_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security | Get the Workspace security information
@@ -25,84 +23,6 @@ Method | HTTP request | Description
 [**update_workspace_access_control**](WorkspaceApi.md#update_workspace_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Update the specified access to User for a Workspace
 [**update_workspace_default_security**](WorkspaceApi.md#update_workspace_default_security) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/security/default | Update the Workspace default security
 
-
-# **create_dataset_link**
-> Workspace create_dataset_link(organization_id, workspace_id, dataset_id)
-
-
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.models.workspace import Workspace
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | The Organization identifier
-    workspace_id = 'workspace_id_example' # str | The Workspace identifier
-    dataset_id = 'dataset_id_example' # str | dataset id to be linked to
-
-    try:
-        api_response = api_instance.create_dataset_link(organization_id, workspace_id, dataset_id)
-        print("The response of WorkspaceApi->create_dataset_link:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling WorkspaceApi->create_dataset_link: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| The Organization identifier | 
- **workspace_id** | **str**| The Workspace identifier | 
- **dataset_id** | **str**| dataset id to be linked to | 
-
-### Return type
-
-[**Workspace**](Workspace.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The workspace details |  -  |
-**400** | Bad request |  -  |
-**404** | The workspace specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_workspace**
 > Workspace create_workspace(organization_id, workspace_create_request)
@@ -120,10 +40,10 @@ from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -196,10 +116,10 @@ from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -274,10 +194,10 @@ from cosmotech_api.models.workspace_file import WorkspaceFile
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -341,81 +261,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_dataset_link**
-> delete_dataset_link(organization_id, workspace_id, dataset_id)
-
-
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.WorkspaceApi(api_client)
-    organization_id = 'organization_id_example' # str | The Organization identifier
-    workspace_id = 'workspace_id_example' # str | The Workspace identifier
-    dataset_id = 'dataset_id_example' # str | dataset id to be linked to
-
-    try:
-        api_instance.delete_dataset_link(organization_id, workspace_id, dataset_id)
-    except Exception as e:
-        print("Exception when calling WorkspaceApi->delete_dataset_link: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| The Organization identifier | 
- **workspace_id** | **str**| The Workspace identifier | 
- **dataset_id** | **str**| dataset id to be linked to | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The request succeeded |  -  |
-**400** | Bad request |  -  |
-**404** | The Dataset specified is unknown or you don&#39;t have access to it |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **delete_workspace**
 > delete_workspace(organization_id, workspace_id)
 
@@ -430,10 +275,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -493,7 +338,7 @@ void (empty response body)
 # **delete_workspace_access_control**
 > delete_workspace_access_control(organization_id, workspace_id, identity_id)
 
-Remove the specified access from the given Organization Workspace
+Remove the specified access from the given Workspace
 
 ### Example
 
@@ -504,10 +349,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -526,7 +371,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     identity_id = 'identity_id_example' # str | The User identifier
 
     try:
-        # Remove the specified access from the given Organization Workspace
+        # Remove the specified access from the given Workspace
         api_instance.delete_workspace_access_control(organization_id, workspace_id, identity_id)
     except Exception as e:
         print("Exception when calling WorkspaceApi->delete_workspace_access_control: %s\n" % e)
@@ -579,10 +424,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -654,10 +499,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -716,7 +561,7 @@ void (empty response body)
 # **get_workspace**
 > Workspace get_workspace(organization_id, workspace_id)
 
-Get the details of an workspace
+Get the details of a workspace
 
 ### Example
 
@@ -728,10 +573,10 @@ from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -749,7 +594,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | The Workspace identifier
 
     try:
-        # Get the details of an workspace
+        # Get the details of a workspace
         api_response = api_instance.get_workspace(organization_id, workspace_id)
         print("The response of WorkspaceApi->get_workspace:\n")
         pprint(api_response)
@@ -804,10 +649,10 @@ from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -881,10 +726,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -959,10 +804,10 @@ from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1035,10 +880,10 @@ from cosmotech_api.models.workspace_file import WorkspaceFile
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1110,10 +955,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1186,10 +1031,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1262,10 +1107,10 @@ from cosmotech_api.models.workspace import Workspace
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1340,10 +1185,10 @@ from cosmotech_api.models.workspace_update_request import WorkspaceUpdateRequest
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1420,10 +1265,10 @@ from cosmotech_api.models.workspace_role import WorkspaceRole
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1501,10 +1346,10 @@ from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to http://localhost:8080
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost"
+    host = "http://localhost:8080"
 )
 
 # The client must configure the authentication and authorization parameters
