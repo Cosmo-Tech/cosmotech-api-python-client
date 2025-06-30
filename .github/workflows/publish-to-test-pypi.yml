@@ -1,5 +1,8 @@
 name: Publish Python 🐍 distributions 📦 to TestPyPI
 
+permissions:
+  id-token: write # This is required for requesting the JWT
+
 on:
   push:
     tags:
