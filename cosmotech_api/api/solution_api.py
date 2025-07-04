@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import List, Optional
+from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from cosmotech_api.models.run_template import RunTemplate
 from cosmotech_api.models.run_template_create_request import RunTemplateCreateRequest
@@ -32,6 +32,7 @@ from cosmotech_api.models.run_template_update_request import RunTemplateUpdateRe
 from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
 from cosmotech_api.models.solution_create_request import SolutionCreateRequest
+from cosmotech_api.models.solution_file import SolutionFile
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
@@ -57,7 +58,7 @@ class SolutionApi:
     @validate_call
     def create_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
@@ -75,7 +76,7 @@ class SolutionApi:
         """Create a new solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param solution_create_request: The Solution to create (required)
         :type solution_create_request: SolutionCreateRequest
@@ -128,7 +129,7 @@ class SolutionApi:
     @validate_call
     def create_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
@@ -146,7 +147,7 @@ class SolutionApi:
         """Create a new solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param solution_create_request: The Solution to create (required)
         :type solution_create_request: SolutionCreateRequest
@@ -199,7 +200,7 @@ class SolutionApi:
     @validate_call
     def create_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
@@ -217,7 +218,7 @@ class SolutionApi:
         """Create a new solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
         :param solution_create_request: The Solution to create (required)
         :type solution_create_request: SolutionCreateRequest
@@ -348,8 +349,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -367,9 +368,9 @@ class SolutionApi:
         """Create solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
@@ -423,8 +424,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -442,9 +443,9 @@ class SolutionApi:
         """Create solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
@@ -498,8 +499,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -517,9 +518,9 @@ class SolutionApi:
         """Create solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param solution_access_control: Access control to create (required)
         :type solution_access_control: SolutionAccessControl
@@ -652,10 +653,345 @@ class SolutionApi:
 
 
     @validate_call
+    def create_solution_file(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
+        overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
+        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Solution root location. ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SolutionFile:
+        """Upload a file for the Solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file: The file to upload (required)
+        :type file: bytearray
+        :param overwrite: Whether to overwrite an existing file
+        :type overwrite: bool
+        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Solution root location. 
+        :type destination: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file=file,
+            overwrite=overwrite,
+            destination=destination,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "SolutionFile",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_solution_file_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
+        overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
+        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Solution root location. ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SolutionFile]:
+        """Upload a file for the Solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file: The file to upload (required)
+        :type file: bytearray
+        :param overwrite: Whether to overwrite an existing file
+        :type overwrite: bool
+        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Solution root location. 
+        :type destination: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file=file,
+            overwrite=overwrite,
+            destination=destination,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "SolutionFile",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_solution_file_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
+        overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
+        destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Solution root location. ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Upload a file for the Solution
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file: The file to upload (required)
+        :type file: bytearray
+        :param overwrite: Whether to overwrite an existing file
+        :type overwrite: bool
+        :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Solution root location. 
+        :type destination: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file=file,
+            overwrite=overwrite,
+            destination=destination,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "SolutionFile",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_solution_file_serialize(
+        self,
+        organization_id,
+        solution_id,
+        file,
+        overwrite,
+        destination,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if overwrite is not None:
+            _form_params.append(('overwrite', overwrite))
+        if destination is not None:
+            _form_params.append(('destination', destination))
+        if file is not None:
+            _files['file'] = file
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/yaml'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/files',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def create_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -673,9 +1009,9 @@ class SolutionApi:
         """Create solution parameter for a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_create_request: Parameter to create (required)
         :type run_template_parameter_create_request: RunTemplateParameterCreateRequest
@@ -730,8 +1066,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -749,9 +1085,9 @@ class SolutionApi:
         """Create solution parameter for a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_create_request: Parameter to create (required)
         :type run_template_parameter_create_request: RunTemplateParameterCreateRequest
@@ -806,8 +1142,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -825,9 +1161,9 @@ class SolutionApi:
         """Create solution parameter for a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_create_request: Parameter to create (required)
         :type run_template_parameter_create_request: RunTemplateParameterCreateRequest
@@ -963,8 +1299,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -982,9 +1318,9 @@ class SolutionApi:
         """Create a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_group_create_request: Parameter group to create (required)
         :type run_template_parameter_group_create_request: RunTemplateParameterGroupCreateRequest
@@ -1039,8 +1375,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1058,9 +1394,9 @@ class SolutionApi:
         """Create a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_group_create_request: Parameter group to create (required)
         :type run_template_parameter_group_create_request: RunTemplateParameterGroupCreateRequest
@@ -1115,8 +1451,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1134,9 +1470,9 @@ class SolutionApi:
         """Create a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_parameter_group_create_request: Parameter group to create (required)
         :type run_template_parameter_group_create_request: RunTemplateParameterGroupCreateRequest
@@ -1272,8 +1608,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1291,9 +1627,9 @@ class SolutionApi:
         """Create a solution run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_create_request: Run template to create (required)
         :type run_template_create_request: RunTemplateCreateRequest
@@ -1348,8 +1684,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1367,9 +1703,9 @@ class SolutionApi:
         """Create a solution run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_create_request: Run template to create (required)
         :type run_template_create_request: RunTemplateCreateRequest
@@ -1424,8 +1760,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1443,9 +1779,9 @@ class SolutionApi:
         """Create a solution run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_create_request: Run template to create (required)
         :type run_template_create_request: RunTemplateCreateRequest
@@ -1581,8 +1917,8 @@ class SolutionApi:
     @validate_call
     def delete_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1599,9 +1935,9 @@ class SolutionApi:
         """Delete a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1652,8 +1988,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1670,9 +2006,9 @@ class SolutionApi:
         """Delete a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1723,8 +2059,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1741,9 +2077,9 @@ class SolutionApi:
         """Delete a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1850,8 +2186,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1869,9 +2205,9 @@ class SolutionApi:
         """Delete solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -1925,8 +2261,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1944,9 +2280,9 @@ class SolutionApi:
         """Delete solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -2000,8 +2336,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -2019,9 +2355,9 @@ class SolutionApi:
         """Delete solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -2132,10 +2468,565 @@ class SolutionApi:
 
 
     @validate_call
+    def delete_solution_file(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file_name: Annotated[StrictStr, Field(description="The file name")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete a solution file
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file_name: The file name (required)
+        :type file_name: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file_name=file_name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_solution_file_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file_name: Annotated[StrictStr, Field(description="The file name")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete a solution file
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file_name: The file name (required)
+        :type file_name: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file_name=file_name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_solution_file_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file_name: Annotated[StrictStr, Field(description="The file name")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete a solution file
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file_name: The file name (required)
+        :type file_name: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file_name=file_name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_solution_file_serialize(
+        self,
+        organization_id,
+        solution_id,
+        file_name,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        if file_name is not None:
+            
+            _query_params.append(('file_name', file_name))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/files/delete',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_solution_files(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete all Solution files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_files_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_solution_files_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete all Solution files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_files_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_solution_files_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete all Solution files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_solution_files_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_solution_files_serialize(
+        self,
+        organization_id,
+        solution_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/files',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -2153,9 +3044,9 @@ class SolutionApi:
         """Delete specific parameter from the solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -2209,8 +3100,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -2228,9 +3119,9 @@ class SolutionApi:
         """Delete specific parameter from the solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -2284,8 +3175,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -2303,9 +3194,9 @@ class SolutionApi:
         """Delete specific parameter from the solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -2418,8 +3309,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -2437,9 +3328,9 @@ class SolutionApi:
         """Delete a parameter group from the solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -2493,8 +3384,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -2512,9 +3403,9 @@ class SolutionApi:
         """Delete a parameter group from the solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -2568,8 +3459,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -2587,9 +3478,9 @@ class SolutionApi:
         """Delete a parameter group from the solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -2702,8 +3593,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -2721,9 +3612,9 @@ class SolutionApi:
         """Delete a specific run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -2777,8 +3668,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -2796,9 +3687,9 @@ class SolutionApi:
         """Delete a specific run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -2852,8 +3743,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -2871,9 +3762,9 @@ class SolutionApi:
         """Delete a specific run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -2986,8 +3877,8 @@ class SolutionApi:
     @validate_call
     def get_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -3005,9 +3896,9 @@ class SolutionApi:
         """Retrieve a solution run templates
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -3061,8 +3952,8 @@ class SolutionApi:
     @validate_call
     def get_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -3080,9 +3971,9 @@ class SolutionApi:
         """Retrieve a solution run templates
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -3136,8 +4027,8 @@ class SolutionApi:
     @validate_call
     def get_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -3155,9 +4046,9 @@ class SolutionApi:
         """Retrieve a solution run templates
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -3278,8 +4169,8 @@ class SolutionApi:
     @validate_call
     def get_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3296,9 +4187,9 @@ class SolutionApi:
         """Get the details of a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3349,8 +4240,8 @@ class SolutionApi:
     @validate_call
     def get_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3367,9 +4258,9 @@ class SolutionApi:
         """Get the details of a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3420,8 +4311,8 @@ class SolutionApi:
     @validate_call
     def get_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3438,9 +4329,9 @@ class SolutionApi:
         """Get the details of a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3555,8 +4446,8 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -3574,9 +4465,9 @@ class SolutionApi:
         """Get solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -3630,8 +4521,8 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -3649,9 +4540,9 @@ class SolutionApi:
         """Get solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -3705,8 +4596,8 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -3724,9 +4615,9 @@ class SolutionApi:
         """Get solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -3845,10 +4736,303 @@ class SolutionApi:
 
 
     @validate_call
+    def get_solution_file(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file_name: Annotated[StrictStr, Field(description="The file name")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> bytearray:
+        """Download the Solution File specified
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file_name: The file name (required)
+        :type file_name: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file_name=file_name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_solution_file_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file_name: Annotated[StrictStr, Field(description="The file name")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[bytearray]:
+        """Download the Solution File specified
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file_name: The file name (required)
+        :type file_name: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file_name=file_name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_solution_file_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        file_name: Annotated[StrictStr, Field(description="The file name")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download the Solution File specified
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param file_name: The file name (required)
+        :type file_name: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_solution_file_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            file_name=file_name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_solution_file_serialize(
+        self,
+        organization_id,
+        solution_id,
+        file_name,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        if file_name is not None:
+            
+            _query_params.append(('file_name', file_name))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/octet-stream'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/files/download',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -3866,9 +5050,9 @@ class SolutionApi:
         """Get the details of a solution parameter
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -3923,8 +5107,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -3942,9 +5126,9 @@ class SolutionApi:
         """Get the details of a solution parameter
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -3999,8 +5183,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -4018,9 +5202,9 @@ class SolutionApi:
         """Get the details of a solution parameter
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -4142,8 +5326,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -4161,9 +5345,9 @@ class SolutionApi:
         """Get details of a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -4217,8 +5401,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -4236,9 +5420,9 @@ class SolutionApi:
         """Get details of a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -4292,8 +5476,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -4311,9 +5495,9 @@ class SolutionApi:
         """Get details of a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -4434,8 +5618,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4452,9 +5636,9 @@ class SolutionApi:
         """Get solution security information
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4505,8 +5689,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4523,9 +5707,9 @@ class SolutionApi:
         """Get solution security information
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4576,8 +5760,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4594,9 +5778,9 @@ class SolutionApi:
         """Get solution security information
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4711,8 +5895,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4729,9 +5913,9 @@ class SolutionApi:
         """List all solution run templates
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4782,8 +5966,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4800,9 +5984,9 @@ class SolutionApi:
         """List all solution run templates
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4853,8 +6037,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4871,9 +6055,9 @@ class SolutionApi:
         """List all solution run templates
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4986,10 +6170,287 @@ class SolutionApi:
 
 
     @validate_call
+    def list_solution_files(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[SolutionFile]:
+        """List all Solution files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_solution_files_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SolutionFile]",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_solution_files_with_http_info(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[SolutionFile]]:
+        """List all Solution files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_solution_files_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SolutionFile]",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_solution_files_without_preload_content(
+        self,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List all Solution files
+
+
+        :param organization_id: the Organization identifier (required)
+        :type organization_id: str
+        :param solution_id: the Solution identifier (required)
+        :type solution_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_solution_files_serialize(
+            organization_id=organization_id,
+            solution_id=solution_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SolutionFile]",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_solution_files_serialize(
+        self,
+        organization_id,
+        solution_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if solution_id is not None:
+            _path_params['solution_id'] = solution_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/yaml'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oAuth2AuthCode'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/solutions/{solution_id}/files',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def list_solution_parameter_groups(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5006,9 +6467,9 @@ class SolutionApi:
         """List all solution parameter groups
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5059,8 +6520,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5077,9 +6538,9 @@ class SolutionApi:
         """List all solution parameter groups
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5130,8 +6591,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5148,9 +6609,9 @@ class SolutionApi:
         """List all solution parameter groups
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5265,8 +6726,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5283,9 +6744,9 @@ class SolutionApi:
         """List all solution parameters
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5337,8 +6798,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5355,9 +6816,9 @@ class SolutionApi:
         """List all solution parameters
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5409,8 +6870,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5427,9 +6888,9 @@ class SolutionApi:
         """List all solution parameters
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5545,8 +7006,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5563,9 +7024,9 @@ class SolutionApi:
         """List solution security users
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5616,8 +7077,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5634,9 +7095,9 @@ class SolutionApi:
         """List solution security users
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5687,8 +7148,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5705,9 +7166,9 @@ class SolutionApi:
         """List solution security users
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5822,9 +7283,9 @@ class SolutionApi:
     @validate_call
     def list_solutions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5841,11 +7302,11 @@ class SolutionApi:
         """List all Solutions
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param page: Page number to query (zero-based indexing)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: Number of records per page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5896,9 +7357,9 @@ class SolutionApi:
     @validate_call
     def list_solutions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5915,11 +7376,11 @@ class SolutionApi:
         """List all Solutions
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param page: Page number to query (zero-based indexing)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: Number of records per page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5970,9 +7431,9 @@ class SolutionApi:
     @validate_call
     def list_solutions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="Page number to query (zero-based indexing)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5989,11 +7450,11 @@ class SolutionApi:
         """List all Solutions
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param page: Page number to query (zero-based indexing)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: Number of records per page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6115,8 +7576,8 @@ class SolutionApi:
     @validate_call
     def update_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -6134,9 +7595,9 @@ class SolutionApi:
         """Update a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param solution_update_request: The new Solution details. This endpoint can't be used to update security (required)
         :type solution_update_request: SolutionUpdateRequest
@@ -6191,8 +7652,8 @@ class SolutionApi:
     @validate_call
     def update_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -6210,9 +7671,9 @@ class SolutionApi:
         """Update a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param solution_update_request: The new Solution details. This endpoint can't be used to update security (required)
         :type solution_update_request: SolutionUpdateRequest
@@ -6267,8 +7728,8 @@ class SolutionApi:
     @validate_call
     def update_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -6286,9 +7747,9 @@ class SolutionApi:
         """Update a solution
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param solution_update_request: The new Solution details. This endpoint can't be used to update security (required)
         :type solution_update_request: SolutionUpdateRequest
@@ -6424,8 +7885,8 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
@@ -6444,9 +7905,9 @@ class SolutionApi:
         """Update solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -6503,8 +7964,8 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
@@ -6523,9 +7984,9 @@ class SolutionApi:
         """Update solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -6582,8 +8043,8 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
@@ -6602,9 +8063,9 @@ class SolutionApi:
         """Update solution access control
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param identity_id: The User identifier (required)
         :type identity_id: str
@@ -7051,8 +8512,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
@@ -7071,9 +8532,9 @@ class SolutionApi:
         """Update solution parameter
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -7131,8 +8592,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
@@ -7151,9 +8612,9 @@ class SolutionApi:
         """Update solution parameter
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -7211,8 +8672,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
@@ -7231,9 +8692,9 @@ class SolutionApi:
         """Update solution parameter
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_id: The solution parameter identifier (required)
         :type parameter_id: str
@@ -7375,8 +8836,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
@@ -7395,9 +8856,9 @@ class SolutionApi:
         """Update a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -7455,8 +8916,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
@@ -7475,9 +8936,9 @@ class SolutionApi:
         """Update a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -7535,8 +8996,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
@@ -7555,9 +9016,9 @@ class SolutionApi:
         """Update a solution parameter group
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param parameter_group_id: The parameter group identifier (required)
         :type parameter_group_id: str
@@ -7699,8 +9160,8 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
@@ -7719,9 +9180,9 @@ class SolutionApi:
         """Update a specific run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -7779,8 +9240,8 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
@@ -7799,9 +9260,9 @@ class SolutionApi:
         """Update a specific run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str
@@ -7859,8 +9320,8 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="The Solution identifier")],
+        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
@@ -7879,9 +9340,9 @@ class SolutionApi:
         """Update a specific run template
 
 
-        :param organization_id: The Organization identifier (required)
+        :param organization_id: the Organization identifier (required)
         :type organization_id: str
-        :param solution_id: The Solution identifier (required)
+        :param solution_id: the Solution identifier (required)
         :type solution_id: str
         :param run_template_id: The Run Template identifier (required)
         :type run_template_id: str

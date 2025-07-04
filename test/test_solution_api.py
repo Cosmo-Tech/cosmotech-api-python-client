@@ -41,6 +41,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_create_solution_file(self) -> None:
+        """Test case for create_solution_file
+
+        Upload a file for the Solution
+        """
+        pass
+
     def test_create_solution_parameter(self) -> None:
         """Test case for create_solution_parameter
 
@@ -73,6 +80,20 @@ class TestSolutionApi(unittest.TestCase):
         """Test case for delete_solution_access_control
 
         Delete solution access control
+        """
+        pass
+
+    def test_delete_solution_file(self) -> None:
+        """Test case for delete_solution_file
+
+        Delete a solution file
+        """
+        pass
+
+    def test_delete_solution_files(self) -> None:
+        """Test case for delete_solution_files
+
+        Delete all Solution files
         """
         pass
 
@@ -118,6 +139,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_get_solution_file(self) -> None:
+        """Test case for get_solution_file
+
+        Download the Solution File specified
+        """
+        pass
+
     def test_get_solution_parameter(self) -> None:
         """Test case for get_solution_parameter
 
@@ -143,6 +171,13 @@ class TestSolutionApi(unittest.TestCase):
         """Test case for list_run_templates
 
         List all solution run templates
+        """
+        pass
+
+    def test_list_solution_files(self) -> None:
+        """Test case for list_solution_files
+
+        List all Solution files
         """
         pass
 

@@ -101,6 +101,7 @@ from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
 from cosmotech_api.models.solution_create_request import SolutionCreateRequest
 from cosmotech_api.models.solution_edit_info import SolutionEditInfo
+from cosmotech_api.models.solution_file import SolutionFile
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
