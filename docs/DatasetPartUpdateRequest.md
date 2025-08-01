@@ -6,6 +6,7 @@ Dataset part update request object
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**source_name** | **str** | the source data name (e.g. filename associated to the dataset part) | [optional] 
 **description** | **str** |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
 

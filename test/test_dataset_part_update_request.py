@@ -36,6 +36,7 @@ class TestDatasetPartUpdateRequest(unittest.TestCase):
         model = DatasetPartUpdateRequest()
         if include_optional:
             return DatasetPartUpdateRequest(
+                source_name = '0',
                 description = '',
                 tags = [
                     ''

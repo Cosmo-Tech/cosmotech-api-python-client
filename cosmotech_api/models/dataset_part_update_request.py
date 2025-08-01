@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,9 +28,10 @@ class DatasetPartUpdateRequest(BaseModel):
     """
     Dataset part update request object
     """ # noqa: E501
+    source_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["description", "tags"]
+    __properties: ClassVar[List[str]] = ["sourceName", "description", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +84,7 @@ class DatasetPartUpdateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
             "tags": obj.get("tags")
         })
