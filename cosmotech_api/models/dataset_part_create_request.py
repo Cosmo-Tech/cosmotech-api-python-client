@@ -30,7 +30,7 @@ class DatasetPartCreateRequest(BaseModel):
     Dataset part create request object
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
-    source_name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
+    source_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
     type: Optional[DatasetPartTypeEnum] = DatasetPartTypeEnum.RELATIONAL

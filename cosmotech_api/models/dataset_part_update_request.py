@@ -28,7 +28,7 @@ class DatasetPartUpdateRequest(BaseModel):
     """
     Dataset part update request object
     """ # noqa: E501
-    source_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
+    source_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = ["sourceName", "description", "tags"]
