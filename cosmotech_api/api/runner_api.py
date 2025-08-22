@@ -2748,8 +2748,8 @@ class RunnerApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2770,9 +2770,9 @@ class RunnerApi:
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2826,8 +2826,8 @@ class RunnerApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2848,9 +2848,9 @@ class RunnerApi:
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2904,8 +2904,8 @@ class RunnerApi:
         self,
         organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
-        size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
+        size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2926,9 +2926,9 @@ class RunnerApi:
         :type organization_id: str
         :param workspace_id: the Workspace identifier (required)
         :type workspace_id: str
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
-        :param size: amount of result by page
+        :param size: Amount of result by page
         :type size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

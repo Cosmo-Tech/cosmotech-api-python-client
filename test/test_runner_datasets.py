@@ -15,10 +15,10 @@
 
 import unittest
 
-from cosmotech_api.models.workspace_solution import WorkspaceSolution
+from cosmotech_api.models.runner_datasets import RunnerDatasets
 
-class TestWorkspaceSolution(unittest.TestCase):
-    """WorkspaceSolution unit test stubs"""
+class TestRunnerDatasets(unittest.TestCase):
+    """RunnerDatasets unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,34 +26,35 @@ class TestWorkspaceSolution(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> WorkspaceSolution:
-        """Test WorkspaceSolution
+    def make_instance(self, include_optional) -> RunnerDatasets:
+        """Test RunnerDatasets
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `WorkspaceSolution`
+        # uncomment below to create an instance of `RunnerDatasets`
         """
-        model = WorkspaceSolution()
+        model = RunnerDatasets()
         if include_optional:
-            return WorkspaceSolution(
-                solution_id = 'sol-HqXzyCBw3_uufVPI',
-                dataset_id = 'd-HqXzyCBw3_uufVPI',
-                default_parameter_values = {
-                    'key' : ''
-                    },
-                run_template_filter = [
+            return RunnerDatasets(
+                bases = [
                     ''
                     ],
-                default_run_template_dataset = { }
+                parameter = '',
+                parameters = [
+                    None
+                    ]
             )
         else:
-            return WorkspaceSolution(
-                solution_id = 'sol-HqXzyCBw3_uufVPI',
+            return RunnerDatasets(
+                bases = [
+                    ''
+                    ],
+                parameter = '',
         )
         """
 
-    def testWorkspaceSolution(self):
-        """Test WorkspaceSolution"""
+    def testRunnerDatasets(self):
+        """Test RunnerDatasets"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

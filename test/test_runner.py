@@ -57,9 +57,14 @@ class TestRunner(unittest.TestCase):
                 owner_name = '',
                 solution_name = '',
                 run_template_name = '',
-                dataset_list = [
-                    ''
-                    ],
+                datasets = cosmotech_api.models.runner_datasets.RunnerDatasets(
+                    bases = [
+                        ''
+                        ], 
+                    parameter = '', 
+                    parameters = [
+                        None
+                        ], ),
                 run_sizing = cosmotech_api.models.runner_resource_sizing.RunnerResourceSizing(
                     requests = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
                         cpu = '', 
@@ -101,9 +106,14 @@ class TestRunner(unittest.TestCase):
                 organization_id = '',
                 workspace_id = '',
                 owner_name = '',
-                dataset_list = [
-                    ''
-                    ],
+                datasets = cosmotech_api.models.runner_datasets.RunnerDatasets(
+                    bases = [
+                        ''
+                        ], 
+                    parameter = '', 
+                    parameters = [
+                        None
+                        ], ),
                 parameters_values = [
                     cosmotech_api.models.runner_run_template_parameter_value.RunnerRunTemplateParameterValue(
                         parameter_id = '', 

@@ -53,6 +53,10 @@ class TestWorkspace(unittest.TestCase):
                     user_id = '', ),
                 solution = cosmotech_api.models.workspace_solution.WorkspaceSolution(
                     solution_id = 'sol-HqXzyCBw3_uufVPI', 
+                    dataset_id = 'd-HqXzyCBw3_uufVPI', 
+                    default_parameter_values = {
+                        'key' : ''
+                        }, 
                     run_template_filter = [
                         ''
                         ], 
@@ -84,6 +88,10 @@ class TestWorkspace(unittest.TestCase):
                     user_id = '', ),
                 solution = cosmotech_api.models.workspace_solution.WorkspaceSolution(
                     solution_id = 'sol-HqXzyCBw3_uufVPI', 
+                    dataset_id = 'd-HqXzyCBw3_uufVPI', 
+                    default_parameter_values = {
+                        'key' : ''
+                        }, 
                     run_template_filter = [
                         ''
                         ], 

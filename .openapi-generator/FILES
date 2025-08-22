@@ -69,6 +69,7 @@ cosmotech_api/models/run_template_update_request.py
 cosmotech_api/models/runner.py
 cosmotech_api/models/runner_access_control.py
 cosmotech_api/models/runner_create_request.py
+cosmotech_api/models/runner_datasets.py
 cosmotech_api/models/runner_edit_info.py
 cosmotech_api/models/runner_resource_sizing.py
 cosmotech_api/models/runner_role.py
@@ -81,7 +82,6 @@ cosmotech_api/models/solution.py
 cosmotech_api/models/solution_access_control.py
 cosmotech_api/models/solution_create_request.py
 cosmotech_api/models/solution_edit_info.py
-cosmotech_api/models/solution_file.py
 cosmotech_api/models/solution_role.py
 cosmotech_api/models/solution_security.py
 cosmotech_api/models/solution_update_request.py
@@ -153,6 +153,7 @@ docs/Runner.md
 docs/RunnerAccessControl.md
 docs/RunnerApi.md
 docs/RunnerCreateRequest.md
+docs/RunnerDatasets.md
 docs/RunnerEditInfo.md
 docs/RunnerResourceSizing.md
 docs/RunnerRole.md
@@ -166,7 +167,6 @@ docs/SolutionAccessControl.md
 docs/SolutionApi.md
 docs/SolutionCreateRequest.md
 docs/SolutionEditInfo.md
-docs/SolutionFile.md
 docs/SolutionRole.md
 docs/SolutionSecurity.md
 docs/SolutionUpdateRequest.md
@@ -244,6 +244,7 @@ test/test_runner.py
 test/test_runner_access_control.py
 test/test_runner_api.py
 test/test_runner_create_request.py
+test/test_runner_datasets.py
 test/test_runner_edit_info.py
 test/test_runner_resource_sizing.py
 test/test_runner_role.py
@@ -257,7 +258,6 @@ test/test_solution_access_control.py
 test/test_solution_api.py
 test/test_solution_create_request.py
 test/test_solution_edit_info.py
-test/test_solution_file.py
 test/test_solution_role.py
 test/test_solution_security.py
 test/test_solution_update_request.py

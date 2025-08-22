@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from cosmotech_api.models.last_run_info import LastRunInfo
+from cosmotech_api.models.runner_datasets import RunnerDatasets
 from cosmotech_api.models.runner_edit_info import RunnerEditInfo
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
@@ -48,13 +49,13 @@ class Runner(BaseModel):
     owner_name: StrictStr = Field(description="the name of the owner", alias="ownerName")
     solution_name: Optional[StrictStr] = Field(default=None, description="the Solution name", alias="solutionName")
     run_template_name: Optional[StrictStr] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
-    dataset_list: List[StrictStr] = Field(description="the list of Dataset Id associated to this Runner Run Template", alias="datasetList")
+    datasets: RunnerDatasets
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, alias="runSizing")
     parameters_values: List[RunnerRunTemplateParameterValue] = Field(description="the list of Solution Run Template parameters values", alias="parametersValues")
     last_run_info: LastRunInfo = Field(alias="lastRunInfo")
     validation_status: RunnerValidationStatus = Field(alias="validationStatus")
     security: RunnerSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "ownerName", "solutionName", "runTemplateName", "datasetList", "runSizing", "parametersValues", "lastRunInfo", "validationStatus", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "ownerName", "solutionName", "runTemplateName", "datasets", "runSizing", "parametersValues", "lastRunInfo", "validationStatus", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -117,6 +118,9 @@ class Runner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of update_info
         if self.update_info:
             _dict['updateInfo'] = self.update_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of datasets
+        if self.datasets:
+            _dict['datasets'] = self.datasets.to_dict()
         # override the default output from pydantic by calling `to_dict()` of run_sizing
         if self.run_sizing:
             _dict['runSizing'] = self.run_sizing.to_dict()
@@ -160,7 +164,7 @@ class Runner(BaseModel):
             "ownerName": obj.get("ownerName"),
             "solutionName": obj.get("solutionName"),
             "runTemplateName": obj.get("runTemplateName"),
-            "datasetList": obj.get("datasetList"),
+            "datasets": RunnerDatasets.from_dict(obj["datasets"]) if obj.get("datasets") is not None else None,
             "runSizing": RunnerResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
             "parametersValues": [RunnerRunTemplateParameterValue.from_dict(_item) for _item in obj["parametersValues"]] if obj.get("parametersValues") is not None else None,
             "lastRunInfo": LastRunInfo.from_dict(obj["lastRunInfo"]) if obj.get("lastRunInfo") is not None else None,

@@ -29,15 +29,27 @@ class WorkspaceSolution(BaseModel):
     The Workspace Solution configuration
     """ # noqa: E501
     solution_id: Annotated[str, Field(strict=True)] = Field(description="The Solution Id attached to this workspace", alias="solutionId")
+    dataset_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The Dataset Id attached to this workspace. This dataset will be used to store default values for Solution parameters with file's varType. ", alias="datasetId")
+    default_parameter_values: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map of parameterId/value to set default values for Solution parameters with simple varType (int, string, ...)", alias="defaultParameterValues")
     run_template_filter: Optional[List[StrictStr]] = Field(default=None, description="The list of Solution Run Template Id to filter", alias="runTemplateFilter")
     default_run_template_dataset: Optional[Dict[str, Any]] = Field(default=None, description="A map of RunTemplateId/DatasetId to set a default dataset for a Run Template", alias="defaultRunTemplateDataset")
-    __properties: ClassVar[List[str]] = ["solutionId", "runTemplateFilter", "defaultRunTemplateDataset"]
+    __properties: ClassVar[List[str]] = ["solutionId", "datasetId", "defaultParameterValues", "runTemplateFilter", "defaultRunTemplateDataset"]
 
     @field_validator('solution_id')
     def solution_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if not re.match(r"^sol-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
+        return value
+
+    @field_validator('dataset_id')
+    def dataset_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^d-\w{10,20}", value):
+            raise ValueError(r"must validate the regular expression /^d-\w{10,20}/")
         return value
 
     model_config = ConfigDict(
@@ -92,6 +104,8 @@ class WorkspaceSolution(BaseModel):
 
         _obj = cls.model_validate({
             "solutionId": obj.get("solutionId"),
+            "datasetId": obj.get("datasetId"),
+            "defaultParameterValues": obj.get("defaultParameterValues"),
             "runTemplateFilter": obj.get("runTemplateFilter"),
             "defaultRunTemplateDataset": obj.get("defaultRunTemplateDataset")
         })

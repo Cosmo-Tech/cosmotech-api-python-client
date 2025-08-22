@@ -154,26 +154,21 @@ Class | Method | HTTP request | Description
 *RunnerApi* | [**update_runner_default_security**](docs/RunnerApi.md#update_runner_default_security) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/security/default | Set the Runner default security
 *SolutionApi* | [**create_solution**](docs/SolutionApi.md#create_solution) | **POST** /organizations/{organization_id}/solutions | Create a new solution
 *SolutionApi* | [**create_solution_access_control**](docs/SolutionApi.md#create_solution_access_control) | **POST** /organizations/{organization_id}/solutions/{solution_id}/security/access | Create solution access control
-*SolutionApi* | [**create_solution_file**](docs/SolutionApi.md#create_solution_file) | **POST** /organizations/{organization_id}/solutions/{solution_id}/files | Upload a file for the Solution
 *SolutionApi* | [**create_solution_parameter**](docs/SolutionApi.md#create_solution_parameter) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameters | Create solution parameter for a solution
 *SolutionApi* | [**create_solution_parameter_group**](docs/SolutionApi.md#create_solution_parameter_group) | **POST** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | Create a solution parameter group
 *SolutionApi* | [**create_solution_run_template**](docs/SolutionApi.md#create_solution_run_template) | **POST** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | Create a solution run template
 *SolutionApi* | [**delete_solution**](docs/SolutionApi.md#delete_solution) | **DELETE** /organizations/{organization_id}/solutions/{solution_id} | Delete a solution
 *SolutionApi* | [**delete_solution_access_control**](docs/SolutionApi.md#delete_solution_access_control) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Delete solution access control
-*SolutionApi* | [**delete_solution_file**](docs/SolutionApi.md#delete_solution_file) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/files/delete | Delete a solution file
-*SolutionApi* | [**delete_solution_files**](docs/SolutionApi.md#delete_solution_files) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/files | Delete all Solution files
 *SolutionApi* | [**delete_solution_parameter**](docs/SolutionApi.md#delete_solution_parameter) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Delete specific parameter from the solution
 *SolutionApi* | [**delete_solution_parameter_group**](docs/SolutionApi.md#delete_solution_parameter_group) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups/{parameter_group_id} | Delete a parameter group from the solution
 *SolutionApi* | [**delete_solution_run_template**](docs/SolutionApi.md#delete_solution_run_template) | **DELETE** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Delete a specific run template
 *SolutionApi* | [**get_run_template**](docs/SolutionApi.md#get_run_template) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runTemplates/{run_template_id} | Retrieve a solution run templates
 *SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /organizations/{organization_id}/solutions/{solution_id} | Get the details of a solution
 *SolutionApi* | [**get_solution_access_control**](docs/SolutionApi.md#get_solution_access_control) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/access/{identity_id} | Get solution access control
-*SolutionApi* | [**get_solution_file**](docs/SolutionApi.md#get_solution_file) | **GET** /organizations/{organization_id}/solutions/{solution_id}/files/download | Download the Solution File specified
 *SolutionApi* | [**get_solution_parameter**](docs/SolutionApi.md#get_solution_parameter) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameters/{parameter_id} | Get the details of a solution parameter
 *SolutionApi* | [**get_solution_parameter_group**](docs/SolutionApi.md#get_solution_parameter_group) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups/{parameter_group_id} | Get details of a solution parameter group
 *SolutionApi* | [**get_solution_security**](docs/SolutionApi.md#get_solution_security) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security | Get solution security information
 *SolutionApi* | [**list_run_templates**](docs/SolutionApi.md#list_run_templates) | **GET** /organizations/{organization_id}/solutions/{solution_id}/runTemplates | List all solution run templates
-*SolutionApi* | [**list_solution_files**](docs/SolutionApi.md#list_solution_files) | **GET** /organizations/{organization_id}/solutions/{solution_id}/files | List all Solution files
 *SolutionApi* | [**list_solution_parameter_groups**](docs/SolutionApi.md#list_solution_parameter_groups) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameterGroups | List all solution parameter groups
 *SolutionApi* | [**list_solution_parameters**](docs/SolutionApi.md#list_solution_parameters) | **GET** /organizations/{organization_id}/solutions/{solution_id}/parameters | List all solution parameters
 *SolutionApi* | [**list_solution_security_users**](docs/SolutionApi.md#list_solution_security_users) | **GET** /organizations/{organization_id}/solutions/{solution_id}/security/users | List solution security users
@@ -257,6 +252,7 @@ Class | Method | HTTP request | Description
  - [Runner](docs/Runner.md)
  - [RunnerAccessControl](docs/RunnerAccessControl.md)
  - [RunnerCreateRequest](docs/RunnerCreateRequest.md)
+ - [RunnerDatasets](docs/RunnerDatasets.md)
  - [RunnerEditInfo](docs/RunnerEditInfo.md)
  - [RunnerResourceSizing](docs/RunnerResourceSizing.md)
  - [RunnerRole](docs/RunnerRole.md)
@@ -269,7 +265,6 @@ Class | Method | HTTP request | Description
  - [SolutionAccessControl](docs/SolutionAccessControl.md)
  - [SolutionCreateRequest](docs/SolutionCreateRequest.md)
  - [SolutionEditInfo](docs/SolutionEditInfo.md)
- - [SolutionFile](docs/SolutionFile.md)
  - [SolutionRole](docs/SolutionRole.md)
  - [SolutionSecurity](docs/SolutionSecurity.md)
  - [SolutionUpdateRequest](docs/SolutionUpdateRequest.md)

@@ -89,6 +89,7 @@ from cosmotech_api.models.run_template_update_request import RunTemplateUpdateRe
 from cosmotech_api.models.runner import Runner
 from cosmotech_api.models.runner_access_control import RunnerAccessControl
 from cosmotech_api.models.runner_create_request import RunnerCreateRequest
+from cosmotech_api.models.runner_datasets import RunnerDatasets
 from cosmotech_api.models.runner_edit_info import RunnerEditInfo
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_role import RunnerRole
@@ -101,7 +102,6 @@ from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
 from cosmotech_api.models.solution_create_request import SolutionCreateRequest
 from cosmotech_api.models.solution_edit_info import SolutionEditInfo
-from cosmotech_api.models.solution_file import SolutionFile
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
