@@ -167,6 +167,13 @@ class TestDatasetApi(unittest.TestCase):
         """
         pass
 
+    def test_update_dataset_part(self) -> None:
+        """Test case for update_dataset_part
+
+        Update existing dataset parts information of a Dataset
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

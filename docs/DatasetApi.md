@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**update_dataset**](DatasetApi.md#update_dataset) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id} | Update a Dataset
 [**update_dataset_access_control**](DatasetApi.md#update_dataset_access_control) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/access/{identity_id} | Update the specified access to User for a Dataset
 [**update_dataset_default_security**](DatasetApi.md#update_dataset_default_security) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/default | Set the Dataset default security
+[**update_dataset_part**](DatasetApi.md#update_dataset_part) | **PATCH** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id} | Update existing dataset parts information of a Dataset
 
 
 # **create_dataset**
@@ -104,8 +105,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Dataset successfully created |  -  |
 **400** | Bad request |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
-**404** | Organization or workspace specified is not found |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Organization, workspace specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -269,7 +270,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Dataset part successfully created |  -  |
 **400** | Bad request - Dataset part cannot be created |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -347,7 +348,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Dataset successfully deleted |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Organization or workspace or dataset specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -504,7 +505,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Dataset part successfully deleted |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset part specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -584,7 +585,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset part successfully downloaded |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset part specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -665,8 +666,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset successfully retrieved |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
-**404** | Organization or workspace or dataset specified is not found |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Organization, workspace or dataset specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -826,7 +827,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset part successfully retrieved |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset part specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -909,7 +910,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of dataset parts |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset specified is not found |  -  |
 **422** | Targeted dataset do not support requests |  -  |
 
@@ -1070,8 +1071,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Datasets successfully retrieved |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
-**404** | Organization or workspace or dataset specified is not found |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Organization, workspace or dataset specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1161,7 +1162,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Data related to provided information |  -  |
 **400** | Bad request - Data cannot be retrieved from provided information |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset specified is not found or you don&#39;t have access to it |  -  |
 **422** | Targeted dataset do not support requests |  -  |
 
@@ -1248,7 +1249,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset part successfully replaced |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset part specified is not found |  -  |
 **422** | Targeted dataset do not support requests |  -  |
 
@@ -1500,8 +1501,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Dataset successfully updated |  -  |
 **400** | Bad request |  -  |
-**403** | Insufficient permissions on organization or workspace or dataset |  -  |
-**404** | Organization or workspace or dataset specified is not found |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Organization, workspace or dataset specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1666,6 +1667,91 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | The Dataset default visibility |  -  |
 **404** | the Dataset specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_dataset_part**
+> DatasetPart update_dataset_part(organization_id, workspace_id, dataset_id, dataset_part_id, dataset_part_update_request)
+
+Update existing dataset parts information of a Dataset
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.dataset_part import DatasetPart
+from cosmotech_api.models.dataset_part_update_request import DatasetPartUpdateRequest
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost:8080"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.DatasetApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+    dataset_part_id = 'dataset_part_id_example' # str | the Dataset part identifier
+    dataset_part_update_request = cosmotech_api.DatasetPartUpdateRequest() # DatasetPartUpdateRequest | Dataset part information to update
+
+    try:
+        # Update existing dataset parts information of a Dataset
+        api_response = api_instance.update_dataset_part(organization_id, workspace_id, dataset_id, dataset_part_id, dataset_part_update_request)
+        print("The response of DatasetApi->update_dataset_part:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DatasetApi->update_dataset_part: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **dataset_id** | **str**| the Dataset identifier | 
+ **dataset_part_id** | **str**| the Dataset part identifier | 
+ **dataset_part_update_request** | [**DatasetPartUpdateRequest**](DatasetPartUpdateRequest.md)| Dataset part information to update | 
+
+### Return type
+
+[**DatasetPart**](DatasetPart.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Dataset part information successfully updated |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Dataset part specified is not found |  -  |
+**422** | Targeted dataset do not support requests |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
