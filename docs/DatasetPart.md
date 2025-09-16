@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **source_name** | **str** | the source data name (e.g. filename associated to the dataset part) | 
 **description** | **str** |  | [optional] 
 **tags** | **List[str]** |  | 
-**type** | [**DatasetPartTypeEnum**](DatasetPartTypeEnum.md) |  | [default to DatasetPartTypeEnum.RELATIONAL]
+**type** | [**DatasetPartTypeEnum**](DatasetPartTypeEnum.md) |  | [default to DatasetPartTypeEnum.FILE]
 **organization_id** | **str** | the associated Organization Id | [readonly] 
 **workspace_id** | **str** | the associated Workspace Id | [readonly] 
 **dataset_id** | **str** | the associated Dataset Id | [readonly] 

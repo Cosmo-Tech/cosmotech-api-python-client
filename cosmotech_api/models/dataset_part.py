@@ -118,7 +118,7 @@ class DatasetPart(BaseModel):
             "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
             "tags": obj.get("tags"),
-            "type": obj.get("type") if obj.get("type") is not None else DatasetPartTypeEnum.RELATIONAL,
+            "type": obj.get("type") if obj.get("type") is not None else DatasetPartTypeEnum.FILE,
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),
             "datasetId": obj.get("datasetId"),

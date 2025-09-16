@@ -28,7 +28,7 @@ class DatasetPartTypeEnum(str, Enum):
     allowed enum values
     """
     FILE = 'File'
-    RELATIONAL = 'Relational'
+    DB = 'DB'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

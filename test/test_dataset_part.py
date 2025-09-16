@@ -43,7 +43,7 @@ class TestDatasetPart(unittest.TestCase):
                 tags = [
                     ''
                     ],
-                type = 'Relational',
+                type = 'File',
                 organization_id = '',
                 workspace_id = '',
                 dataset_id = '',
@@ -62,7 +62,7 @@ class TestDatasetPart(unittest.TestCase):
                 tags = [
                     ''
                     ],
-                type = 'Relational',
+                type = 'File',
                 organization_id = '',
                 workspace_id = '',
                 dataset_id = '',

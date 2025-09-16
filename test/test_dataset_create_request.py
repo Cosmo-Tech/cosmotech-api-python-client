@@ -49,7 +49,7 @@ class TestDatasetCreateRequest(unittest.TestCase):
                         tags = [
                             ''
                             ], 
-                        type = 'Relational', )
+                        type = 'File', )
                     ],
                 security = cosmotech_api.models.dataset_security.DatasetSecurity(
                     default = '', 

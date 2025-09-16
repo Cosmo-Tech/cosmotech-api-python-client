@@ -42,7 +42,7 @@ class TestDatasetPartCreateRequest(unittest.TestCase):
                 tags = [
                     ''
                     ],
-                type = 'Relational'
+                type = 'File'
             )
         else:
             return DatasetPartCreateRequest(

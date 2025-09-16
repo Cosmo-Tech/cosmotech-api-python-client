@@ -1,6 +1,6 @@
 # RunData
 
-Run Data to send
+Run Data stored
 
 ## Properties
 

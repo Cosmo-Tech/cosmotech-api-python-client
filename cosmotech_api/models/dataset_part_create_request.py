@@ -33,7 +33,7 @@ class DatasetPartCreateRequest(BaseModel):
     source_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
-    type: Optional[DatasetPartTypeEnum] = DatasetPartTypeEnum.RELATIONAL
+    type: Optional[DatasetPartTypeEnum] = DatasetPartTypeEnum.FILE
     __properties: ClassVar[List[str]] = ["name", "sourceName", "description", "tags", "type"]
 
     model_config = ConfigDict(
@@ -91,7 +91,7 @@ class DatasetPartCreateRequest(BaseModel):
             "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
             "tags": obj.get("tags"),
-            "type": obj.get("type") if obj.get("type") is not None else DatasetPartTypeEnum.RELATIONAL
+            "type": obj.get("type") if obj.get("type") is not None else DatasetPartTypeEnum.FILE
         })
         return _obj
 
