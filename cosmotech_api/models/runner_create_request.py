@@ -93,16 +93,8 @@ class RunnerCreateRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "solution_id",
-            "owner_name",
-            "solution_name",
-            "run_template_name",
         ])
 
         _dict = self.model_dump(

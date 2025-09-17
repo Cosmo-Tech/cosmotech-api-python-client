@@ -9,15 +9,15 @@ Name | Type | Description | Notes
 **name** | **str** | the Runner name | 
 **description** | **str** | the Runner description | [optional] 
 **tags** | **List[str]** | the list of tags | [optional] 
-**solution_id** | **str** | the Solution Id associated with this Runner | [readonly] 
+**solution_id** | **str** | the Solution Id associated with this Runner | 
 **parent_id** | **str** | the Runner parent id | [optional] 
 **run_template_id** | **str** | the Solution Run Template Id associated with this Runner | 
 **dataset_list** | **List[str]** | the list of Dataset Id associated to this Runner Run Template | [optional] [default to []]
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] [default to []]
-**owner_name** | **str** | the name of the owner | [readonly] 
-**solution_name** | **str** | the Solution name | [optional] [readonly] 
-**run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] [readonly] 
+**owner_name** | **str** | the name of the owner | 
+**solution_name** | **str** | the Solution name | [optional] 
+**run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] 
 **security** | [**RunnerSecurity**](RunnerSecurity.md) |  | [optional] 
 
 ## Example
