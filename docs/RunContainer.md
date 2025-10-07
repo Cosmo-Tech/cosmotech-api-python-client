@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **solution_container** | **bool** | whether or not this container is a Cosmo Tech solution container | [optional] [readonly] 
 **node_label** | **str** | the node label request | [optional] 
 **run_sizing** | [**ContainerResourceSizing**](ContainerResourceSizing.md) |  | [optional] 
+**artifacts** | [**List[RunContainerArtifact]**](RunContainerArtifact.md) | the list of artifacts | [optional] 
 
 ## Example
 

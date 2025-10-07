@@ -1,13 +1,12 @@
 # SendRunDataRequest
 
-Run Data to send
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**data** | **List[Dict[str, object]]** |  | 
+**id** | **str** |  | [optional] 
+**data** | **List[Dict[str, object]]** |  | [optional] 
 
 ## Example
 
