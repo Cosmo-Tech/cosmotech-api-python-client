@@ -1,13 +1,13 @@
 # WorkspaceAccessControl
 
-a Workspace access control item
+A Workspace access control item
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the identity id | 
-**role** | **str** | a role | 
+**id** | **str** | The identity id | 
+**role** | **str** | A role | 
 
 ## Example
 
