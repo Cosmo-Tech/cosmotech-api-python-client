@@ -1,13 +1,13 @@
 # OrganizationSecurity
 
-Response object for organization security information
+the Organization security information
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default** | **str** | The role by default | 
-**access_control_list** | [**List[OrganizationAccessControl]**](OrganizationAccessControl.md) | The list which can access this Organization with detailed access control information | 
+**default** | **str** | the role by default | 
+**access_control_list** | [**List[OrganizationAccessControl]**](OrganizationAccessControl.md) | the list which can access this Organization with detailed access control information | 
 
 ## Example
 

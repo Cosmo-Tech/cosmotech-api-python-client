@@ -1,6 +1,6 @@
 # cosmotech_api.RunApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**get_run_logs**](RunApi.md#get_run_logs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/logs | get the logs for the Run
 [**get_run_status**](RunApi.md#get_run_status) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/status | get the status for the Run
 [**list_runs**](RunApi.md#list_runs) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs | get the list of Runs for the Runner
+[**query_run_data**](RunApi.md#query_run_data) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/data/query | query the run data
+[**send_run_data**](RunApi.md#send_run_data) | **POST** /organizations/{organization_id}/workspaces/{workspace_id}/runners/{runner_id}/runs/{run_id}/data/send | Send data associated to a run
 
 
 # **delete_run**
@@ -25,10 +27,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -104,10 +106,10 @@ from cosmotech_api.models.run import Run
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -158,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -170,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_run_logs**
-> str get_run_logs(organization_id, workspace_id, runner_id, run_id)
+> RunLogs get_run_logs(organization_id, workspace_id, runner_id, run_id)
 
 get the logs for the Run
 
@@ -180,13 +182,14 @@ get the logs for the Run
 
 ```python
 import cosmotech_api
+from cosmotech_api.models.run_logs import RunLogs
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -228,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**RunLogs**](RunLogs.md)
 
 ### Authorization
 
@@ -237,7 +240,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -262,10 +265,10 @@ from cosmotech_api.models.run_status import RunStatus
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -316,7 +319,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -341,10 +344,10 @@ from cosmotech_api.models.run import Run
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "http://localhost:8080"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -397,13 +400,178 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/yaml
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the run details list |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **query_run_data**
+> QueryResult query_run_data(organization_id, workspace_id, runner_id, run_id, run_data_query)
+
+query the run data
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.query_result import QueryResult
+from cosmotech_api.models.run_data_query import RunDataQuery
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.RunApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    runner_id = 'runner_id_example' # str | the Runner identifier
+    run_id = 'run_id_example' # str | the Run identifier
+    run_data_query = cosmotech_api.RunDataQuery() # RunDataQuery | the query to run
+
+    try:
+        # query the run data
+        api_response = api_instance.query_run_data(organization_id, workspace_id, runner_id, run_id, run_data_query)
+        print("The response of RunApi->query_run_data:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RunApi->query_run_data: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **runner_id** | **str**| the Runner identifier | 
+ **run_id** | **str**| the Run identifier | 
+ **run_data_query** | [**RunDataQuery**](RunDataQuery.md)| the query to run | 
+
+### Return type
+
+[**QueryResult**](QueryResult.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the query response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **send_run_data**
+> RunData send_run_data(organization_id, workspace_id, runner_id, run_id, send_run_data_request)
+
+Send data associated to a run
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.run_data import RunData
+from cosmotech_api.models.send_run_data_request import SendRunDataRequest
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.RunApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    runner_id = 'runner_id_example' # str | the Runner identifier
+    run_id = 'run_id_example' # str | the Run identifier
+    send_run_data_request = cosmotech_api.SendRunDataRequest() # SendRunDataRequest | Custom data to register
+
+    try:
+        # Send data associated to a run
+        api_response = api_instance.send_run_data(organization_id, workspace_id, runner_id, run_id, send_run_data_request)
+        print("The response of RunApi->send_run_data:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RunApi->send_run_data: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **runner_id** | **str**| the Runner identifier | 
+ **run_id** | **str**| the Run identifier | 
+ **send_run_data_request** | [**SendRunDataRequest**](SendRunDataRequest.md)| Custom data to register | 
+
+### Return type
+
+[**RunData**](RunData.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Data stored |  -  |
+**400** | Data sent format is malformed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
