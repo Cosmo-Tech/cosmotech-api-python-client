@@ -912,7 +912,6 @@ Name | Type | Description  | Notes
 **200** | List of dataset parts |  -  |
 **403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset specified is not found |  -  |
-**422** | Targeted dataset do not support requests |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1259,9 +1258,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset part successfully replaced |  -  |
+**400** | Bad request |  -  |
 **403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset part specified is not found |  -  |
-**422** | Targeted dataset do not support requests |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1345,6 +1344,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset part list containing tags |  -  |
+**400** | Bad request |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Dataset specified is not found or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1426,6 +1428,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset list containing tags |  -  |
+**403** | Insufficient permissions on organization, workspace or dataset |  -  |
+**404** | Organization, workspace or dataset specified is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1759,9 +1763,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Dataset part information successfully updated |  -  |
+**400** | Bad request |  -  |
 **403** | Insufficient permissions on organization, workspace or dataset |  -  |
 **404** | Dataset part specified is not found |  -  |
-**422** | Targeted dataset do not support requests |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
