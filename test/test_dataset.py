@@ -44,6 +44,7 @@ class TestDataset(unittest.TestCase):
                 tags = [
                     ''
                     ],
+                additional_data = { },
                 parts = [
                     cosmotech_api.models.dataset_part.DatasetPart(
                         id = 'dp-HqXzyCBw3_uufVPI', 
@@ -53,6 +54,7 @@ class TestDataset(unittest.TestCase):
                         tags = [
                             ''
                             ], 
+                        additional_data = { }, 
                         type = 'File', 
                         organization_id = '', 
                         workspace_id = '', 
@@ -93,6 +95,7 @@ class TestDataset(unittest.TestCase):
                         tags = [
                             ''
                             ], 
+                        additional_data = { }, 
                         type = 'File', 
                         organization_id = '', 
                         workspace_id = '', 

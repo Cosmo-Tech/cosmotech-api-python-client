@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **version** | **str** | The Workspace version MAJOR.MINOR.PATCH. | [optional] 
 **tags** | **List[str]** | The list of tags | [optional] 
 **solution** | [**WorkspaceSolution**](WorkspaceSolution.md) |  | 
-**web_app** | [**WorkspaceWebApp**](WorkspaceWebApp.md) |  | [optional] 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **dataset_copy** | **bool** | Activate the copy of dataset on scenario creation | [optional] [default to True]
 **security** | [**WorkspaceSecurity**](WorkspaceSecurity.md) |  | [optional] 
 

@@ -53,10 +53,7 @@ class TestWorkspaceCreateRequest(unittest.TestCase):
                         ''
                         ], 
                     default_run_template_dataset = { }, ),
-                web_app = cosmotech_api.models.workspace_web_app.WorkspaceWebApp(
-                    url = '', 
-                    iframes = { }, 
-                    options = { }, ),
+                additional_data = { },
                 dataset_copy = True,
                 security = cosmotech_api.models.workspace_security.WorkspaceSecurity(
                     default = '', 

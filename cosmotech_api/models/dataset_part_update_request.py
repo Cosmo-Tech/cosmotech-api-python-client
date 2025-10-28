@@ -31,7 +31,8 @@ class DatasetPartUpdateRequest(BaseModel):
     source_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["sourceName", "description", "tags"]
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
+    __properties: ClassVar[List[str]] = ["sourceName", "description", "tags", "additionalData"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +87,8 @@ class DatasetPartUpdateRequest(BaseModel):
         _obj = cls.model_validate({
             "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
-            "tags": obj.get("tags")
+            "tags": obj.get("tags"),
+            "additionalData": obj.get("additionalData")
         })
         return _obj
 

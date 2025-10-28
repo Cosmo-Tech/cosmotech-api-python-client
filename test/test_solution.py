@@ -65,7 +65,7 @@ class TestSolution(unittest.TestCase):
                         min_value = '', 
                         max_value = '', 
                         regex_validation = '', 
-                        options = { }, )
+                        additional_data = { }, )
                     ],
                 parameter_groups = [
                     cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
@@ -75,7 +75,7 @@ class TestSolution(unittest.TestCase):
                             'key' : ''
                             }, 
                         is_table = True, 
-                        options = { }, 
+                        additional_data = { }, 
                         parent_id = '', 
                         parameters = [
                             ''
@@ -139,7 +139,7 @@ class TestSolution(unittest.TestCase):
                         min_value = '', 
                         max_value = '', 
                         regex_validation = '', 
-                        options = { }, )
+                        additional_data = { }, )
                     ],
                 parameter_groups = [
                     cosmotech_api.models.run_template_parameter_group.RunTemplateParameterGroup(
@@ -149,7 +149,7 @@ class TestSolution(unittest.TestCase):
                             'key' : ''
                             }, 
                         is_table = True, 
-                        options = { }, 
+                        additional_data = { }, 
                         parent_id = '', 
                         parameters = [
                             ''

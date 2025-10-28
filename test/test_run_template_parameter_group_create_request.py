@@ -42,7 +42,7 @@ class TestRunTemplateParameterGroupCreateRequest(unittest.TestCase):
                     'key' : ''
                     },
                 is_table = True,
-                options = { },
+                additional_data = { },
                 parent_id = '',
                 parameters = [
                     ''

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **source_name** | **str** | the source data name (e.g. filename associated to the dataset part) | 
 **description** | **str** |  | [optional] 
 **tags** | **List[str]** |  | [optional] [default to []]
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **type** | [**DatasetPartTypeEnum**](DatasetPartTypeEnum.md) |  | [optional] [default to DatasetPartTypeEnum.FILE]
 
 ## Example

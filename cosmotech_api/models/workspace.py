@@ -24,7 +24,6 @@ from typing_extensions import Annotated
 from cosmotech_api.models.workspace_edit_info import WorkspaceEditInfo
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
-from cosmotech_api.models.workspace_web_app import WorkspaceWebApp
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -42,10 +41,10 @@ class Workspace(BaseModel):
     create_info: WorkspaceEditInfo = Field(description="The details of the Workspace creation", alias="createInfo")
     update_info: WorkspaceEditInfo = Field(description="The details of the Workspace last update", alias="updateInfo")
     solution: WorkspaceSolution
-    web_app: Optional[WorkspaceWebApp] = Field(default=None, alias="webApp")
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     dataset_copy: Optional[StrictBool] = Field(default=True, description="Activate the copy of dataset on scenario creation, meaning that each scenario created in this workspace will make this copy. when false, scenario use directly the dataset specified.", alias="datasetCopy")
     security: WorkspaceSecurity
-    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "version", "tags", "createInfo", "updateInfo", "solution", "webApp", "datasetCopy", "security"]
+    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "version", "tags", "createInfo", "updateInfo", "solution", "additionalData", "datasetCopy", "security"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -113,9 +112,6 @@ class Workspace(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of solution
         if self.solution:
             _dict['solution'] = self.solution.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of web_app
-        if self.web_app:
-            _dict['webApp'] = self.web_app.to_dict()
         # override the default output from pydantic by calling `to_dict()` of security
         if self.security:
             _dict['security'] = self.security.to_dict()
@@ -141,7 +137,7 @@ class Workspace(BaseModel):
             "createInfo": WorkspaceEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
             "updateInfo": WorkspaceEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
             "solution": WorkspaceSolution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,
-            "webApp": WorkspaceWebApp.from_dict(obj["webApp"]) if obj.get("webApp") is not None else None,
+            "additionalData": obj.get("additionalData"),
             "datasetCopy": obj.get("datasetCopy") if obj.get("datasetCopy") is not None else True,
             "security": WorkspaceSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** | A description of the parameter group | [optional] 
 **labels** | **Dict[str, str]** | A translated label with key as ISO 639-1 code | [optional] 
 **is_table** | **bool** | Does the group define a table | [optional] [default to False]
-**options** | **Dict[str, object]** | Freeform options | [optional] 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **parent_id** | **str** | The Run Template Group parent Id | [optional] 
 **parameters** | **List[str]** | An ordered list of Run Template Parameters | [optional] [default to []]
 

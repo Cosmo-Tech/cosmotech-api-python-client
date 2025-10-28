@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **tags** | **List[str]** |  | [optional] [default to []]
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **parts** | [**List[DatasetPartCreateRequest]**](DatasetPartCreateRequest.md) |  | [optional] [default to []]
 **security** | [**DatasetSecurity**](DatasetSecurity.md) |  | [optional] 
 **runner_id** | **str** |  | [optional] 

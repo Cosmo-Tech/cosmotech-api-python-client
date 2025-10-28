@@ -90,7 +90,6 @@ cosmotech_api/models/workspace_role.py
 cosmotech_api/models/workspace_security.py
 cosmotech_api/models/workspace_solution.py
 cosmotech_api/models/workspace_update_request.py
-cosmotech_api/models/workspace_web_app.py
 cosmotech_api/py.typed
 cosmotech_api/rest.py
 docs/AboutInfo.md
@@ -172,7 +171,6 @@ docs/WorkspaceRole.md
 docs/WorkspaceSecurity.md
 docs/WorkspaceSolution.md
 docs/WorkspaceUpdateRequest.md
-docs/WorkspaceWebApp.md
 git_push.sh
 pyproject.toml
 requirements.txt
@@ -259,5 +257,4 @@ test/test_workspace_role.py
 test/test_workspace_security.py
 test/test_workspace_solution.py
 test/test_workspace_update_request.py
-test/test_workspace_web_app.py
 tox.ini

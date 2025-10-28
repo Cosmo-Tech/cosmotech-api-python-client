@@ -33,10 +33,11 @@ class DatasetCreateRequest(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     parts: Optional[List[DatasetPartCreateRequest]] = None
     security: Optional[DatasetSecurity] = None
     runner_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, alias="runnerId")
-    __properties: ClassVar[List[str]] = ["name", "description", "tags", "parts", "security", "runnerId"]
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts", "security", "runnerId"]
 
     @field_validator('runner_id')
     def runner_id_validate_regular_expression(cls, value):
@@ -112,6 +113,7 @@ class DatasetCreateRequest(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "tags": obj.get("tags"),
+            "additionalData": obj.get("additionalData"),
             "parts": [DatasetPartCreateRequest.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
             "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None,
             "runnerId": obj.get("runnerId")

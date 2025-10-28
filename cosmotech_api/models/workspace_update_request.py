@@ -22,7 +22,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
-from cosmotech_api.models.workspace_web_app import WorkspaceWebApp
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,9 +34,9 @@ class WorkspaceUpdateRequest(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The Workspace description")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     solution: Optional[WorkspaceSolution] = None
-    web_app: Optional[WorkspaceWebApp] = Field(default=None, alias="webApp")
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     dataset_copy: Optional[StrictBool] = Field(default=None, description="Activate the copy of dataset on scenario creation", alias="datasetCopy")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "tags", "solution", "webApp", "datasetCopy"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "tags", "solution", "additionalData", "datasetCopy"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,9 +80,6 @@ class WorkspaceUpdateRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of solution
         if self.solution:
             _dict['solution'] = self.solution.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of web_app
-        if self.web_app:
-            _dict['webApp'] = self.web_app.to_dict()
         return _dict
 
     @classmethod
@@ -101,7 +97,7 @@ class WorkspaceUpdateRequest(BaseModel):
             "description": obj.get("description"),
             "tags": obj.get("tags"),
             "solution": WorkspaceSolution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,
-            "webApp": WorkspaceWebApp.from_dict(obj["webApp"]) if obj.get("webApp") is not None else None,
+            "additionalData": obj.get("additionalData"),
             "datasetCopy": obj.get("datasetCopy")
         })
         return _obj

@@ -42,6 +42,7 @@ class TestDatasetPartCreateRequest(unittest.TestCase):
                 tags = [
                     ''
                     ],
+                additional_data = { },
                 type = 'File'
             )
         else:

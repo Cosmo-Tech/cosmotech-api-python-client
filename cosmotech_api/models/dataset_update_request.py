@@ -33,9 +33,10 @@ class DatasetUpdateRequest(BaseModel):
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = None
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     parts: Optional[List[DatasetPartCreateRequest]] = None
     security: Optional[DatasetSecurity] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "tags", "parts", "security"]
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,6 +102,7 @@ class DatasetUpdateRequest(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "tags": obj.get("tags"),
+            "additionalData": obj.get("additionalData"),
             "parts": [DatasetPartCreateRequest.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
             "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })

@@ -41,6 +41,7 @@ class TestDatasetCreateRequest(unittest.TestCase):
                 tags = [
                     ''
                     ],
+                additional_data = { },
                 parts = [
                     cosmotech_api.models.dataset_part_create_request.DatasetPartCreateRequest(
                         name = '0', 
@@ -49,6 +50,7 @@ class TestDatasetCreateRequest(unittest.TestCase):
                         tags = [
                             ''
                             ], 
+                        additional_data = { }, 
                         type = 'File', )
                     ],
                 security = cosmotech_api.models.dataset_security.DatasetSecurity(

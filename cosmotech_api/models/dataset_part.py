@@ -35,13 +35,14 @@ class DatasetPart(BaseModel):
     source_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: List[StrictStr]
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     type: DatasetPartTypeEnum
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
     dataset_id: StrictStr = Field(description="the associated Dataset Id", alias="datasetId")
     create_info: EditInfo = Field(description="The details of the Dataset creation", alias="createInfo")
     update_info: EditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
-    __properties: ClassVar[List[str]] = ["id", "name", "sourceName", "description", "tags", "type", "organizationId", "workspaceId", "datasetId", "createInfo", "updateInfo"]
+    __properties: ClassVar[List[str]] = ["id", "name", "sourceName", "description", "tags", "additionalData", "type", "organizationId", "workspaceId", "datasetId", "createInfo", "updateInfo"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -118,6 +119,7 @@ class DatasetPart(BaseModel):
             "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
             "tags": obj.get("tags"),
+            "additionalData": obj.get("additionalData"),
             "type": obj.get("type") if obj.get("type") is not None else DatasetPartTypeEnum.FILE,
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **organization_id** | **str** | the associated Organization Id | [readonly] 
 **workspace_id** | **str** | the associated Workspace Id | [readonly] 
 **tags** | **List[str]** | the list of tags | 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **parts** | [**List[DatasetPart]**](DatasetPart.md) |  | 
 **create_info** | [**CreateInfo**](CreateInfo.md) | The details of the Dataset creation | 
 **update_info** | [**EditInfo**](EditInfo.md) | The details of the Dataset last update | 

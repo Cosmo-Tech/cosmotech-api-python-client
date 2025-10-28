@@ -38,11 +38,12 @@ class Dataset(BaseModel):
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
     tags: List[StrictStr] = Field(description="the list of tags")
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     parts: List[DatasetPart]
     create_info: CreateInfo = Field(description="The details of the Dataset creation", alias="createInfo")
     update_info: EditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
     security: DatasetSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "organizationId", "workspaceId", "tags", "parts", "createInfo", "updateInfo", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "organizationId", "workspaceId", "tags", "additionalData", "parts", "createInfo", "updateInfo", "security"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -128,6 +129,7 @@ class Dataset(BaseModel):
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),
             "tags": obj.get("tags"),
+            "additionalData": obj.get("additionalData"),
             "parts": [DatasetPart.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
             "createInfo": CreateInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
             "updateInfo": EditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,

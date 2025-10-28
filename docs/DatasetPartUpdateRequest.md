@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **source_name** | **str** | the source data name (e.g. filename associated to the dataset part) | [optional] 
 **description** | **str** |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 
 ## Example
 

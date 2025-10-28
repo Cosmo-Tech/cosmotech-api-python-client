@@ -43,6 +43,7 @@ class TestDatasetPart(unittest.TestCase):
                 tags = [
                     ''
                     ],
+                additional_data = { },
                 type = 'File',
                 organization_id = '',
                 workspace_id = '',

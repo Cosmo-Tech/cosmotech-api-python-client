@@ -45,7 +45,7 @@ class TestRunTemplateParameterUpdateRequest(unittest.TestCase):
                 min_value = '',
                 max_value = '',
                 regex_validation = '',
-                options = { }
+                additional_data = { }
             )
         else:
             return RunTemplateParameterUpdateRequest(

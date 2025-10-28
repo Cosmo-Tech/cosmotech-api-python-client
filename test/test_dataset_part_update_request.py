@@ -40,7 +40,8 @@ class TestDatasetPartUpdateRequest(unittest.TestCase):
                 description = '',
                 tags = [
                     ''
-                    ]
+                    ],
+                additional_data = { }
             )
         else:
             return DatasetPartUpdateRequest(
