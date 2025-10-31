@@ -48,11 +48,7 @@ class TestWorkspaceCreateRequest(unittest.TestCase):
                     dataset_id = 'd-HqXzyCBw3_uufVPI', 
                     default_parameter_values = {
                         'key' : ''
-                        }, 
-                    run_template_filter = [
-                        ''
-                        ], 
-                    default_run_template_dataset = { }, ),
+                        }, ),
                 additional_data = { },
                 dataset_copy = True,
                 security = cosmotech_api.models.workspace_security.WorkspaceSecurity(
@@ -72,11 +68,7 @@ class TestWorkspaceCreateRequest(unittest.TestCase):
                     dataset_id = 'd-HqXzyCBw3_uufVPI', 
                     default_parameter_values = {
                         'key' : ''
-                        }, 
-                    run_template_filter = [
-                        ''
-                        ], 
-                    default_run_template_dataset = { }, ),
+                        }, ),
         )
         """
 

@@ -40,11 +40,7 @@ class TestWorkspaceSolution(unittest.TestCase):
                 dataset_id = 'd-HqXzyCBw3_uufVPI',
                 default_parameter_values = {
                     'key' : ''
-                    },
-                run_template_filter = [
-                    ''
-                    ],
-                default_run_template_dataset = { }
+                    }
             )
         else:
             return WorkspaceSolution(

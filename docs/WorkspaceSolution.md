@@ -9,8 +9,6 @@ Name | Type | Description | Notes
 **solution_id** | **str** | The Solution Id attached to this workspace | 
 **dataset_id** | **str** | The Dataset Id attached to this workspace. This dataset will be used to store default values for Solution parameters with file&#39;s varType.  | [optional] 
 **default_parameter_values** | **Dict[str, str]** | A map of parameterId/value to set default values for Solution parameters with simple varType (int, string, ...) | [optional] 
-**run_template_filter** | **List[str]** | The list of Solution Run Template Id to filter | [optional] 
-**default_run_template_dataset** | **Dict[str, object]** | A map of RunTemplateId/DatasetId to set a default dataset for a Run Template | [optional] 
 
 ## Example
 

@@ -31,9 +31,7 @@ class WorkspaceSolution(BaseModel):
     solution_id: Annotated[str, Field(strict=True)] = Field(description="The Solution Id attached to this workspace", alias="solutionId")
     dataset_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The Dataset Id attached to this workspace. This dataset will be used to store default values for Solution parameters with file's varType. ", alias="datasetId")
     default_parameter_values: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map of parameterId/value to set default values for Solution parameters with simple varType (int, string, ...)", alias="defaultParameterValues")
-    run_template_filter: Optional[List[StrictStr]] = Field(default=None, description="The list of Solution Run Template Id to filter", alias="runTemplateFilter")
-    default_run_template_dataset: Optional[Dict[str, Any]] = Field(default=None, description="A map of RunTemplateId/DatasetId to set a default dataset for a Run Template", alias="defaultRunTemplateDataset")
-    __properties: ClassVar[List[str]] = ["solutionId", "datasetId", "defaultParameterValues", "runTemplateFilter", "defaultRunTemplateDataset"]
+    __properties: ClassVar[List[str]] = ["solutionId", "datasetId", "defaultParameterValues"]
 
     @field_validator('solution_id')
     def solution_id_validate_regular_expression(cls, value):
@@ -105,9 +103,7 @@ class WorkspaceSolution(BaseModel):
         _obj = cls.model_validate({
             "solutionId": obj.get("solutionId"),
             "datasetId": obj.get("datasetId"),
-            "defaultParameterValues": obj.get("defaultParameterValues"),
-            "runTemplateFilter": obj.get("runTemplateFilter"),
-            "defaultRunTemplateDataset": obj.get("defaultRunTemplateDataset")
+            "defaultParameterValues": obj.get("defaultParameterValues")
         })
         return _obj
 
