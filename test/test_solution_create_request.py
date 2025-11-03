@@ -54,7 +54,6 @@ class TestSolutionCreateRequest(unittest.TestCase):
                         default_value = '', 
                         min_value = '', 
                         max_value = '', 
-                        regex_validation = '', 
                         additional_data = { }, )
                     ],
                 parameter_groups = [
@@ -64,9 +63,7 @@ class TestSolutionCreateRequest(unittest.TestCase):
                         labels = {
                             'key' : ''
                             }, 
-                        is_table = True, 
                         additional_data = { }, 
-                        parent_id = '', 
                         parameters = [
                             ''
                             ], )

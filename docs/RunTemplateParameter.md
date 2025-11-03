@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **default_value** | **str** | The default value for this parameter | [optional] 
 **min_value** | **str** | The minimum value for this parameter | [optional] 
 **max_value** | **str** | The maximum value for this parameter | [optional] 
-**regex_validation** | **str** | A regex to validate the value | [optional] 
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 
 ## Example

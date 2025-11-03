@@ -20,11 +20,12 @@ from cosmotech_api.models.about_info_version import AboutInfoVersion
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
 from cosmotech_api.models.container_resource_size_info import ContainerResourceSizeInfo
 from cosmotech_api.models.container_resource_sizing import ContainerResourceSizing
-from cosmotech_api.models.create_info import CreateInfo
 from cosmotech_api.models.created_run import CreatedRun
 from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.models.dataset_access_control import DatasetAccessControl
+from cosmotech_api.models.dataset_create_info import DatasetCreateInfo
 from cosmotech_api.models.dataset_create_request import DatasetCreateRequest
+from cosmotech_api.models.dataset_edit_info import DatasetEditInfo
 from cosmotech_api.models.dataset_part import DatasetPart
 from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
 from cosmotech_api.models.dataset_part_type_enum import DatasetPartTypeEnum
@@ -32,7 +33,6 @@ from cosmotech_api.models.dataset_part_update_request import DatasetPartUpdateRe
 from cosmotech_api.models.dataset_role import DatasetRole
 from cosmotech_api.models.dataset_security import DatasetSecurity
 from cosmotech_api.models.dataset_update_request import DatasetUpdateRequest
-from cosmotech_api.models.edit_info import EditInfo
 from cosmotech_api.models.last_run_info import LastRunInfo
 from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl

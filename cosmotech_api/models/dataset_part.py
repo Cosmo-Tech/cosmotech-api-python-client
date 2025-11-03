@@ -21,8 +21,8 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from cosmotech_api.models.dataset_edit_info import DatasetEditInfo
 from cosmotech_api.models.dataset_part_type_enum import DatasetPartTypeEnum
-from cosmotech_api.models.edit_info import EditInfo
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,8 +40,8 @@ class DatasetPart(BaseModel):
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
     dataset_id: StrictStr = Field(description="the associated Dataset Id", alias="datasetId")
-    create_info: EditInfo = Field(description="The details of the Dataset creation", alias="createInfo")
-    update_info: EditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
+    create_info: DatasetEditInfo = Field(description="The details of the Dataset creation", alias="createInfo")
+    update_info: DatasetEditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
     __properties: ClassVar[List[str]] = ["id", "name", "sourceName", "description", "tags", "additionalData", "type", "organizationId", "workspaceId", "datasetId", "createInfo", "updateInfo"]
 
     @field_validator('id')
@@ -124,8 +124,8 @@ class DatasetPart(BaseModel):
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),
             "datasetId": obj.get("datasetId"),
-            "createInfo": EditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
-            "updateInfo": EditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None
+            "createInfo": DatasetEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
+            "updateInfo": DatasetEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None
         })
         return _obj
 

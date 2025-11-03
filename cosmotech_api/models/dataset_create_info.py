@@ -18,25 +18,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RunTemplateParameter(BaseModel):
+class DatasetCreateInfo(BaseModel):
     """
-    A Run Template Parameter
+    DatasetCreateInfo
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Parameter id")
-    description: Optional[StrictStr] = Field(default=None, description="The parameter description")
-    labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
-    var_type: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")
-    default_value: Optional[StrictStr] = Field(default=None, description="The default value for this parameter", alias="defaultValue")
-    min_value: Optional[StrictStr] = Field(default=None, description="The minimum value for this parameter", alias="minValue")
-    max_value: Optional[StrictStr] = Field(default=None, description="The maximum value for this parameter", alias="maxValue")
-    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    __properties: ClassVar[List[str]] = ["id", "description", "labels", "varType", "defaultValue", "minValue", "maxValue", "additionalData"]
+    timestamp: StrictInt = Field(description="The timestamp of the creation in millisecond")
+    user_id: StrictStr = Field(description="The id of the user who did the creation", alias="userId")
+    runner_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The runner id which has created the dataset (nullable)", alias="runnerId")
+    __properties: ClassVar[List[str]] = ["timestamp", "userId", "runnerId"]
+
+    @field_validator('runner_id')
+    def runner_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^r-\w{10,20}", value):
+            raise ValueError(r"must validate the regular expression /^r-\w{10,20}/")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +61,7 @@ class RunTemplateParameter(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RunTemplateParameter from a JSON string"""
+        """Create an instance of DatasetCreateInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +86,7 @@ class RunTemplateParameter(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RunTemplateParameter from a dict"""
+        """Create an instance of DatasetCreateInfo from a dict"""
         if obj is None:
             return None
 
@@ -89,14 +94,9 @@ class RunTemplateParameter(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "description": obj.get("description"),
-            "labels": obj.get("labels"),
-            "varType": obj.get("varType"),
-            "defaultValue": obj.get("defaultValue"),
-            "minValue": obj.get("minValue"),
-            "maxValue": obj.get("maxValue"),
-            "additionalData": obj.get("additionalData")
+            "timestamp": obj.get("timestamp"),
+            "userId": obj.get("userId"),
+            "runnerId": obj.get("runnerId")
         })
         return _obj
 

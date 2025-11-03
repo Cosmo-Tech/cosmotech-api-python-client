@@ -62,11 +62,11 @@ class TestDataset(unittest.TestCase):
                         create_info = null, 
                         update_info = null, )
                     ],
-                create_info = cosmotech_api.models.create_info.CreateInfo(
+                create_info = cosmotech_api.models.dataset_create_info.DatasetCreateInfo(
                     timestamp = 56, 
                     user_id = '', 
                     runner_id = 'r-HqXzyCBw3_uufVPI', ),
-                update_info = cosmotech_api.models.edit_info.EditInfo(
+                update_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
                 security = cosmotech_api.models.dataset_security.DatasetSecurity(
@@ -103,11 +103,11 @@ class TestDataset(unittest.TestCase):
                         create_info = null, 
                         update_info = null, )
                     ],
-                create_info = cosmotech_api.models.create_info.CreateInfo(
+                create_info = cosmotech_api.models.dataset_create_info.DatasetCreateInfo(
                     timestamp = 56, 
                     user_id = '', 
                     runner_id = 'r-HqXzyCBw3_uufVPI', ),
-                update_info = cosmotech_api.models.edit_info.EditInfo(
+                update_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
                 security = cosmotech_api.models.dataset_security.DatasetSecurity(

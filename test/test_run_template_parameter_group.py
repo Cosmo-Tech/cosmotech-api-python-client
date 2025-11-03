@@ -41,9 +41,7 @@ class TestRunTemplateParameterGroup(unittest.TestCase):
                 labels = {
                     'key' : ''
                     },
-                is_table = True,
                 additional_data = { },
-                parent_id = '',
                 parameters = [
                     ''
                     ]
@@ -51,7 +49,6 @@ class TestRunTemplateParameterGroup(unittest.TestCase):
         else:
             return RunTemplateParameterGroup(
                 id = '0',
-                is_table = True,
                 parameters = [
                     ''
                     ],

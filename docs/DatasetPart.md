@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **organization_id** | **str** | the associated Organization Id | [readonly] 
 **workspace_id** | **str** | the associated Workspace Id | [readonly] 
 **dataset_id** | **str** | the associated Dataset Id | [readonly] 
-**create_info** | [**EditInfo**](EditInfo.md) | The details of the Dataset creation | 
-**update_info** | [**EditInfo**](EditInfo.md) | The details of the Dataset last update | 
+**create_info** | [**DatasetEditInfo**](DatasetEditInfo.md) | The details of the Dataset creation | 
+**update_info** | [**DatasetEditInfo**](DatasetEditInfo.md) | The details of the Dataset last update | 
 
 ## Example
 

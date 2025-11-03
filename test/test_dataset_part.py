@@ -48,10 +48,10 @@ class TestDatasetPart(unittest.TestCase):
                 organization_id = '',
                 workspace_id = '',
                 dataset_id = '',
-                create_info = cosmotech_api.models.edit_info.EditInfo(
+                create_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
-                update_info = cosmotech_api.models.edit_info.EditInfo(
+                update_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', )
             )
@@ -67,10 +67,10 @@ class TestDatasetPart(unittest.TestCase):
                 organization_id = '',
                 workspace_id = '',
                 dataset_id = '',
-                create_info = cosmotech_api.models.edit_info.EditInfo(
+                create_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
-                update_info = cosmotech_api.models.edit_info.EditInfo(
+                update_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
         )

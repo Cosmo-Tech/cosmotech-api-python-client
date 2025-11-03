@@ -40,9 +40,7 @@ class TestRunTemplateParameterGroupUpdateRequest(unittest.TestCase):
                 labels = {
                     'key' : ''
                     },
-                is_table = True,
                 additional_data = { },
-                parent_id = '',
                 parameters = [
                     ''
                     ]

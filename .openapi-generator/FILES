@@ -23,11 +23,12 @@ cosmotech_api/models/about_info_version.py
 cosmotech_api/models/component_role_permissions.py
 cosmotech_api/models/container_resource_size_info.py
 cosmotech_api/models/container_resource_sizing.py
-cosmotech_api/models/create_info.py
 cosmotech_api/models/created_run.py
 cosmotech_api/models/dataset.py
 cosmotech_api/models/dataset_access_control.py
+cosmotech_api/models/dataset_create_info.py
 cosmotech_api/models/dataset_create_request.py
+cosmotech_api/models/dataset_edit_info.py
 cosmotech_api/models/dataset_part.py
 cosmotech_api/models/dataset_part_create_request.py
 cosmotech_api/models/dataset_part_type_enum.py
@@ -35,7 +36,6 @@ cosmotech_api/models/dataset_part_update_request.py
 cosmotech_api/models/dataset_role.py
 cosmotech_api/models/dataset_security.py
 cosmotech_api/models/dataset_update_request.py
-cosmotech_api/models/edit_info.py
 cosmotech_api/models/last_run_info.py
 cosmotech_api/models/organization.py
 cosmotech_api/models/organization_access_control.py
@@ -97,12 +97,13 @@ docs/AboutInfoVersion.md
 docs/ComponentRolePermissions.md
 docs/ContainerResourceSizeInfo.md
 docs/ContainerResourceSizing.md
-docs/CreateInfo.md
 docs/CreatedRun.md
 docs/Dataset.md
 docs/DatasetAccessControl.md
 docs/DatasetApi.md
+docs/DatasetCreateInfo.md
 docs/DatasetCreateRequest.md
+docs/DatasetEditInfo.md
 docs/DatasetPart.md
 docs/DatasetPartCreateRequest.md
 docs/DatasetPartTypeEnum.md
@@ -110,7 +111,6 @@ docs/DatasetPartUpdateRequest.md
 docs/DatasetRole.md
 docs/DatasetSecurity.md
 docs/DatasetUpdateRequest.md
-docs/EditInfo.md
 docs/LastRunInfo.md
 docs/MetaApi.md
 docs/Organization.md
@@ -183,12 +183,13 @@ test/test_about_info_version.py
 test/test_component_role_permissions.py
 test/test_container_resource_size_info.py
 test/test_container_resource_sizing.py
-test/test_create_info.py
 test/test_created_run.py
 test/test_dataset.py
 test/test_dataset_access_control.py
 test/test_dataset_api.py
+test/test_dataset_create_info.py
 test/test_dataset_create_request.py
+test/test_dataset_edit_info.py
 test/test_dataset_part.py
 test/test_dataset_part_create_request.py
 test/test_dataset_part_type_enum.py
@@ -196,7 +197,6 @@ test/test_dataset_part_update_request.py
 test/test_dataset_role.py
 test/test_dataset_security.py
 test/test_dataset_update_request.py
-test/test_edit_info.py
 test/test_last_run_info.py
 test/test_meta_api.py
 test/test_organization.py

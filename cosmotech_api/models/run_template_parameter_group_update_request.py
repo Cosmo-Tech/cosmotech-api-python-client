@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,11 +29,9 @@ class RunTemplateParameterGroupUpdateRequest(BaseModel):
     """ # noqa: E501
     description: Optional[StrictStr] = Field(default=None, description="A description of the parameter group")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
-    is_table: Optional[StrictBool] = Field(default=None, description="Does the group define a table", alias="isTable")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    parent_id: Optional[StrictStr] = Field(default=None, description="The Run Template Group parent Id", alias="parentId")
     parameters: Optional[List[StrictStr]] = Field(default=None, description="An ordered list of Run Template Parameters")
-    __properties: ClassVar[List[str]] = ["description", "labels", "isTable", "additionalData", "parentId", "parameters"]
+    __properties: ClassVar[List[str]] = ["description", "labels", "additionalData", "parameters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,9 +86,7 @@ class RunTemplateParameterGroupUpdateRequest(BaseModel):
         _obj = cls.model_validate({
             "description": obj.get("description"),
             "labels": obj.get("labels"),
-            "isTable": obj.get("isTable"),
             "additionalData": obj.get("additionalData"),
-            "parentId": obj.get("parentId"),
             "parameters": obj.get("parameters")
         })
         return _obj

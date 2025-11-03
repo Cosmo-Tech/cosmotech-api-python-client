@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -31,11 +31,9 @@ class RunTemplateParameterGroup(BaseModel):
     id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Parameter Group id")
     description: Optional[StrictStr] = Field(default=None, description="A description of the parameter group")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
-    is_table: StrictBool = Field(description="Does the group define a table", alias="isTable")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    parent_id: Optional[StrictStr] = Field(default=None, description="The Run Template Group parent Id", alias="parentId")
     parameters: List[StrictStr] = Field(description="An ordered list of Run Template Parameters")
-    __properties: ClassVar[List[str]] = ["id", "description", "labels", "isTable", "additionalData", "parentId", "parameters"]
+    __properties: ClassVar[List[str]] = ["id", "description", "labels", "additionalData", "parameters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,9 +89,7 @@ class RunTemplateParameterGroup(BaseModel):
             "id": obj.get("id"),
             "description": obj.get("description"),
             "labels": obj.get("labels"),
-            "isTable": obj.get("isTable"),
             "additionalData": obj.get("additionalData"),
-            "parentId": obj.get("parentId"),
             "parameters": obj.get("parameters")
         })
         return _obj

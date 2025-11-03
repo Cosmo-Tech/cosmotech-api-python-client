@@ -45,7 +45,6 @@ class TestRunTemplateParameter(unittest.TestCase):
                 default_value = '',
                 min_value = '',
                 max_value = '',
-                regex_validation = '',
                 additional_data = { }
             )
         else:

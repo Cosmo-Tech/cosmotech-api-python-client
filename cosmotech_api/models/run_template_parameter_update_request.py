@@ -34,9 +34,8 @@ class RunTemplateParameterUpdateRequest(BaseModel):
     default_value: Optional[StrictStr] = Field(default=None, description="The default value for this parameter", alias="defaultValue")
     min_value: Optional[StrictStr] = Field(default=None, description="The minimum value for this parameter", alias="minValue")
     max_value: Optional[StrictStr] = Field(default=None, description="The maximum value for this parameter", alias="maxValue")
-    regex_validation: Optional[StrictStr] = Field(default=None, description="A regex to validate the value", alias="regexValidation")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    __properties: ClassVar[List[str]] = ["description", "labels", "varType", "defaultValue", "minValue", "maxValue", "regexValidation", "additionalData"]
+    __properties: ClassVar[List[str]] = ["description", "labels", "varType", "defaultValue", "minValue", "maxValue", "additionalData"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,7 +94,6 @@ class RunTemplateParameterUpdateRequest(BaseModel):
             "defaultValue": obj.get("defaultValue"),
             "minValue": obj.get("minValue"),
             "maxValue": obj.get("maxValue"),
-            "regexValidation": obj.get("regexValidation"),
             "additionalData": obj.get("additionalData")
         })
         return _obj
