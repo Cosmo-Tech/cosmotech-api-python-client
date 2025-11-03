@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **dataset_list** | **List[str]** | the list of Dataset Id associated to this Runner Run Template | [optional] [default to []]
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] [default to []]
-**owner_name** | **str** | the name of the owner | 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **solution_name** | **str** | the Solution name | [optional] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] 
 **security** | [**RunnerSecurity**](RunnerSecurity.md) |  | [optional] 

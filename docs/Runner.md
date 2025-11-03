@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **run_template_id** | **str** | the Solution Run Template Id associated with this Runner | 
 **organization_id** | **str** | the associated Organization Id | [readonly] 
 **workspace_id** | **str** | the associated Workspace Id | [readonly] 
-**owner_name** | **str** | the name of the owner | [readonly] 
 **solution_name** | **str** | the Solution name | [optional] [readonly] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] [readonly] 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **datasets** | [**RunnerDatasets**](RunnerDatasets.md) |  | 
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | 

@@ -37,10 +37,10 @@ class RunnerUpdateRequest(BaseModel):
     dataset_list: Optional[List[StrictStr]] = Field(default=None, description="the list of Dataset Id associated to this Runner Run Template", alias="datasetList")
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, alias="runSizing")
     parameters_values: Optional[List[RunnerRunTemplateParameterValue]] = Field(default=None, description="the list of Solution Run Template parameters values", alias="parametersValues")
-    owner_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the name of the owner", alias="ownerName")
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     solution_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the Solution name", alias="solutionName")
     run_template_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
-    __properties: ClassVar[List[str]] = ["name", "description", "tags", "runTemplateId", "datasetList", "runSizing", "parametersValues", "ownerName", "solutionName", "runTemplateName"]
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "runTemplateId", "datasetList", "runSizing", "parametersValues", "additionalData", "solutionName", "runTemplateName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,7 +110,7 @@ class RunnerUpdateRequest(BaseModel):
             "datasetList": obj.get("datasetList"),
             "runSizing": RunnerResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
             "parametersValues": [RunnerRunTemplateParameterValue.from_dict(_item) for _item in obj["parametersValues"]] if obj.get("parametersValues") is not None else None,
-            "ownerName": obj.get("ownerName"),
+            "additionalData": obj.get("additionalData"),
             "solutionName": obj.get("solutionName"),
             "runTemplateName": obj.get("runTemplateName")
         })

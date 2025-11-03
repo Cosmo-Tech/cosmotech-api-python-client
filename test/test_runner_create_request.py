@@ -61,7 +61,7 @@ class TestRunnerCreateRequest(unittest.TestCase):
                         value = '', 
                         is_inherited = True, )
                     ],
-                owner_name = '0',
+                additional_data = { },
                 solution_name = '0',
                 run_template_name = '0',
                 security = cosmotech_api.models.runner_security.RunnerSecurity(
@@ -77,7 +77,6 @@ class TestRunnerCreateRequest(unittest.TestCase):
                 name = '0',
                 solution_id = 'sol-123456aBcDeF',
                 run_template_id = '0',
-                owner_name = '0',
         )
         """
 

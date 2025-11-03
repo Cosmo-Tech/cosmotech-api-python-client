@@ -59,7 +59,7 @@ class TestRunnerUpdateRequest(unittest.TestCase):
                         value = '', 
                         is_inherited = True, )
                     ],
-                owner_name = '0',
+                additional_data = { },
                 solution_name = '0',
                 run_template_name = '0'
             )

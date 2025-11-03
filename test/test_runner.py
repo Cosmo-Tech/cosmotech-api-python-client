@@ -54,9 +54,9 @@ class TestRunner(unittest.TestCase):
                 run_template_id = '',
                 organization_id = '',
                 workspace_id = '',
-                owner_name = '',
                 solution_name = '',
                 run_template_name = '',
+                additional_data = { },
                 datasets = cosmotech_api.models.runner_datasets.RunnerDatasets(
                     bases = [
                         ''
@@ -105,7 +105,6 @@ class TestRunner(unittest.TestCase):
                 run_template_id = '',
                 organization_id = '',
                 workspace_id = '',
-                owner_name = '',
                 datasets = cosmotech_api.models.runner_datasets.RunnerDatasets(
                     bases = [
                         ''

@@ -46,16 +46,16 @@ class Runner(BaseModel):
     run_template_id: StrictStr = Field(description="the Solution Run Template Id associated with this Runner", alias="runTemplateId")
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")
-    owner_name: StrictStr = Field(description="the name of the owner", alias="ownerName")
     solution_name: Optional[StrictStr] = Field(default=None, description="the Solution name", alias="solutionName")
     run_template_name: Optional[StrictStr] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
+    additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     datasets: RunnerDatasets
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, alias="runSizing")
     parameters_values: List[RunnerRunTemplateParameterValue] = Field(description="the list of Solution Run Template parameters values", alias="parametersValues")
     last_run_info: LastRunInfo = Field(alias="lastRunInfo")
     validation_status: RunnerValidationStatus = Field(alias="validationStatus")
     security: RunnerSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "ownerName", "solutionName", "runTemplateName", "datasets", "runSizing", "parametersValues", "lastRunInfo", "validationStatus", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "solutionName", "runTemplateName", "additionalData", "datasets", "runSizing", "parametersValues", "lastRunInfo", "validationStatus", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,7 +94,6 @@ class Runner(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -102,7 +101,6 @@ class Runner(BaseModel):
             "solution_id",
             "organization_id",
             "workspace_id",
-            "owner_name",
             "solution_name",
             "run_template_name",
         ])
@@ -161,9 +159,9 @@ class Runner(BaseModel):
             "runTemplateId": obj.get("runTemplateId"),
             "organizationId": obj.get("organizationId"),
             "workspaceId": obj.get("workspaceId"),
-            "ownerName": obj.get("ownerName"),
             "solutionName": obj.get("solutionName"),
             "runTemplateName": obj.get("runTemplateName"),
+            "additionalData": obj.get("additionalData"),
             "datasets": RunnerDatasets.from_dict(obj["datasets"]) if obj.get("datasets") is not None else None,
             "runSizing": RunnerResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
             "parametersValues": [RunnerRunTemplateParameterValue.from_dict(_item) for _item in obj["parametersValues"]] if obj.get("parametersValues") is not None else None,
