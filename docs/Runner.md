@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **solution_name** | **str** | the Solution name | [optional] [readonly] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] [readonly] 
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
-**datasets** | [**RunnerDatasets**](RunnerDatasets.md) |  | 
+**datasets** | [**RunnerDatasets**](RunnerDatasets.md) | definition of datasets used by the runner | 
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | 
 **last_run_info** | [**LastRunInfo**](LastRunInfo.md) |  | 

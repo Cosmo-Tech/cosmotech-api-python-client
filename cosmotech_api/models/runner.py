@@ -49,7 +49,7 @@ class Runner(BaseModel):
     solution_name: Optional[StrictStr] = Field(default=None, description="the Solution name", alias="solutionName")
     run_template_name: Optional[StrictStr] = Field(default=None, description="the Solution Run Template name associated with this Runner", alias="runTemplateName")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    datasets: RunnerDatasets
+    datasets: RunnerDatasets = Field(description="definition of datasets used by the runner")
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, alias="runSizing")
     parameters_values: List[RunnerRunTemplateParameterValue] = Field(description="the list of Solution Run Template parameters values", alias="parametersValues")
     last_run_info: LastRunInfo = Field(alias="lastRunInfo")
