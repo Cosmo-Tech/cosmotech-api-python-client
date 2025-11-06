@@ -4099,12 +4099,12 @@ class DatasetApi:
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
-        selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        counts: Annotated[Optional[List[StrictStr]], Field(description="Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        mins: Annotated[Optional[List[StrictStr]], Field(description="Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        maxs: Annotated[Optional[List[StrictStr]], Field(description="Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
+        selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        counts: Annotated[Optional[List[StrictStr]], Field(description="Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        mins: Annotated[Optional[List[StrictStr]], Field(description="Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        maxs: Annotated[Optional[List[StrictStr]], Field(description="Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="The query offset")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The query limit")] = None,
         group_bys: Annotated[Optional[List[StrictStr]], Field(description="Column names to group by")] = None,
@@ -4133,17 +4133,17 @@ class DatasetApi:
         :type dataset_id: str
         :param dataset_part_id: the Dataset part identifier (required)
         :type dataset_part_id: str
-        :param selects: Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param selects: Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type selects: List[str]
-        :param sums: Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param sums: Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type sums: List[str]
-        :param avgs: Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param avgs: Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type avgs: List[str]
-        :param counts: Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param counts: Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type counts: List[str]
-        :param mins: Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param mins: Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type mins: List[str]
-        :param maxs: Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param maxs: Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type maxs: List[str]
         :param offset: The query offset
         :type offset: int
@@ -4221,12 +4221,12 @@ class DatasetApi:
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
-        selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        counts: Annotated[Optional[List[StrictStr]], Field(description="Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        mins: Annotated[Optional[List[StrictStr]], Field(description="Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        maxs: Annotated[Optional[List[StrictStr]], Field(description="Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
+        selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        counts: Annotated[Optional[List[StrictStr]], Field(description="Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        mins: Annotated[Optional[List[StrictStr]], Field(description="Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        maxs: Annotated[Optional[List[StrictStr]], Field(description="Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="The query offset")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The query limit")] = None,
         group_bys: Annotated[Optional[List[StrictStr]], Field(description="Column names to group by")] = None,
@@ -4255,17 +4255,17 @@ class DatasetApi:
         :type dataset_id: str
         :param dataset_part_id: the Dataset part identifier (required)
         :type dataset_part_id: str
-        :param selects: Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param selects: Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type selects: List[str]
-        :param sums: Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param sums: Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type sums: List[str]
-        :param avgs: Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param avgs: Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type avgs: List[str]
-        :param counts: Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param counts: Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type counts: List[str]
-        :param mins: Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param mins: Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type mins: List[str]
-        :param maxs: Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param maxs: Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type maxs: List[str]
         :param offset: The query offset
         :type offset: int
@@ -4343,12 +4343,12 @@ class DatasetApi:
         workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
         dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
         dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
-        selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        counts: Annotated[Optional[List[StrictStr]], Field(description="Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        mins: Annotated[Optional[List[StrictStr]], Field(description="Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
-        maxs: Annotated[Optional[List[StrictStr]], Field(description="Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). ")] = None,
+        selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        counts: Annotated[Optional[List[StrictStr]], Field(description="Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        mins: Annotated[Optional[List[StrictStr]], Field(description="Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
+        maxs: Annotated[Optional[List[StrictStr]], Field(description="Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="The query offset")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The query limit")] = None,
         group_bys: Annotated[Optional[List[StrictStr]], Field(description="Column names to group by")] = None,
@@ -4377,17 +4377,17 @@ class DatasetApi:
         :type dataset_id: str
         :param dataset_part_id: the Dataset part identifier (required)
         :type dataset_part_id: str
-        :param selects: Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param selects: Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type selects: List[str]
-        :param sums: Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param sums: Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type sums: List[str]
-        :param avgs: Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param avgs: Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type avgs: List[str]
-        :param counts: Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param counts: Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type counts: List[str]
-        :param mins: Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param mins: Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type mins: List[str]
-        :param maxs: Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*). 
+        :param maxs: Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*). 
         :type maxs: List[str]
         :param offset: The query offset
         :type offset: int

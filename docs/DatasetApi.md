@@ -1110,12 +1110,12 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     dataset_id = 'dataset_id_example' # str | the Dataset identifier
     dataset_part_id = 'dataset_part_id_example' # str | the Dataset part identifier
-    selects = ['selects_example'] # List[str] | Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a '*' at the end of the column name (e.g. stock*).  (optional)
-    sums = ['sums_example'] # List[str] | Column names to sum by. If you want to sum only distinct columns, add a '*' at the end of the column name (e.g. stock*).  (optional)
-    avgs = ['avgs_example'] # List[str] | Column names to average by. If you want to apply 'average' only on distinct columns, add a '*' at the end of the column name (e.g. stock*).  (optional)
-    counts = ['counts_example'] # List[str] | Column names to count by. If you want to count only distinct columns, add a '*' at the end of the column name (e.g. stock*).  (optional)
-    mins = ['mins_example'] # List[str] | Column names to min by. If you want to apply 'min' only on distinct columns, add a '*' at the end of the column name (e.g. stock*).  (optional)
-    maxs = ['maxs_example'] # List[str] | Column names to max by. If you want to apply 'max' only on distinct columns, add a '*' at the end of the column name (e.g. stock*).  (optional)
+    selects = ['selects_example'] # List[str] | Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*).  (optional)
+    sums = ['sums_example'] # List[str] | Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*).  (optional)
+    avgs = ['avgs_example'] # List[str] | Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*).  (optional)
+    counts = ['counts_example'] # List[str] | Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*).  (optional)
+    mins = ['mins_example'] # List[str] | Column names to min by. If you want to apply 'min' only on distinct columns, add a * at the end of the column name (e.g. stock*).  (optional)
+    maxs = ['maxs_example'] # List[str] | Column names to max by. If you want to apply 'max' only on distinct columns, add a * at the end of the column name (e.g. stock*).  (optional)
     offset = 56 # int | The query offset (optional)
     limit = 56 # int | The query limit (optional)
     group_bys = ['group_bys_example'] # List[str] | Column names to group by (optional)
@@ -1141,12 +1141,12 @@ Name | Type | Description  | Notes
  **workspace_id** | **str**| the Workspace identifier | 
  **dataset_id** | **str**| the Dataset identifier | 
  **dataset_part_id** | **str**| the Dataset part identifier | 
- **selects** | [**List[str]**](str.md)| Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a &#39;*&#39; at the end of the column name (e.g. stock*).  | [optional] 
- **sums** | [**List[str]**](str.md)| Column names to sum by. If you want to sum only distinct columns, add a &#39;*&#39; at the end of the column name (e.g. stock*).  | [optional] 
- **avgs** | [**List[str]**](str.md)| Column names to average by. If you want to apply &#39;average&#39; only on distinct columns, add a &#39;*&#39; at the end of the column name (e.g. stock*).  | [optional] 
- **counts** | [**List[str]**](str.md)| Column names to count by. If you want to count only distinct columns, add a &#39;*&#39; at the end of the column name (e.g. stock*).  | [optional] 
- **mins** | [**List[str]**](str.md)| Column names to min by. If you want to apply &#39;min&#39; only on distinct columns, add a &#39;*&#39; at the end of the column name (e.g. stock*).  | [optional] 
- **maxs** | [**List[str]**](str.md)| Column names to max by. If you want to apply &#39;max&#39; only on distinct columns, add a &#39;*&#39; at the end of the column name (e.g. stock*).  | [optional] 
+ **selects** | [**List[str]**](str.md)| Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*).  | [optional] 
+ **sums** | [**List[str]**](str.md)| Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*).  | [optional] 
+ **avgs** | [**List[str]**](str.md)| Column names to average by. If you want to apply &#39;average&#39; only on distinct columns, add a * at the end of the column name (e.g. stock*).  | [optional] 
+ **counts** | [**List[str]**](str.md)| Column names to count by. If you want to count only distinct columns, add a * at the end of the column name (e.g. stock*).  | [optional] 
+ **mins** | [**List[str]**](str.md)| Column names to min by. If you want to apply &#39;min&#39; only on distinct columns, add a * at the end of the column name (e.g. stock*).  | [optional] 
+ **maxs** | [**List[str]**](str.md)| Column names to max by. If you want to apply &#39;max&#39; only on distinct columns, add a * at the end of the column name (e.g. stock*).  | [optional] 
  **offset** | **int**| The query offset | [optional] 
  **limit** | **int**| The query limit | [optional] 
  **group_bys** | [**List[str]**](str.md)| Column names to group by | [optional] 
