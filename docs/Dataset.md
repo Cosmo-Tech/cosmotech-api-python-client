@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **tags** | **List[str]** | the list of tags | 
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **parts** | [**List[DatasetPart]**](DatasetPart.md) |  | 
-**create_info** | [**DatasetCreateInfo**](DatasetCreateInfo.md) | The details of the Dataset creation | 
+**create_info** | [**DatasetEditInfo**](DatasetEditInfo.md) | The details of the Dataset creation | 
 **update_info** | [**DatasetEditInfo**](DatasetEditInfo.md) | The details of the Dataset last update | 
 **security** | [**DatasetSecurity**](DatasetSecurity.md) |  | 
 

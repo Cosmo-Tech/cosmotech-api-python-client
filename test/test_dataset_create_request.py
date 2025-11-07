@@ -59,8 +59,7 @@ class TestDatasetCreateRequest(unittest.TestCase):
                         cosmotech_api.models.dataset_access_control.DatasetAccessControl(
                             id = '', 
                             role = '', )
-                        ], ),
-                runner_id = 'r-HqXzyCBw3_uufVPI'
+                        ], )
             )
         else:
             return DatasetCreateRequest(

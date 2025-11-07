@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
@@ -36,18 +36,7 @@ class DatasetCreateRequest(BaseModel):
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     parts: Optional[List[DatasetPartCreateRequest]] = None
     security: Optional[DatasetSecurity] = None
-    runner_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, alias="runnerId")
-    __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts", "security", "runnerId"]
-
-    @field_validator('runner_id')
-    def runner_id_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^r-\w{10,20}", value):
-            raise ValueError(r"must validate the regular expression /^r-\w{10,20}/")
-        return value
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -115,8 +104,7 @@ class DatasetCreateRequest(BaseModel):
             "tags": obj.get("tags"),
             "additionalData": obj.get("additionalData"),
             "parts": [DatasetPartCreateRequest.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
-            "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None,
-            "runnerId": obj.get("runnerId")
+            "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj
 

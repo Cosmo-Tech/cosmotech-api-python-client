@@ -23,7 +23,6 @@ from cosmotech_api.models.container_resource_sizing import ContainerResourceSizi
 from cosmotech_api.models.created_run import CreatedRun
 from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.models.dataset_access_control import DatasetAccessControl
-from cosmotech_api.models.dataset_create_info import DatasetCreateInfo
 from cosmotech_api.models.dataset_create_request import DatasetCreateRequest
 from cosmotech_api.models.dataset_edit_info import DatasetEditInfo
 from cosmotech_api.models.dataset_part import DatasetPart

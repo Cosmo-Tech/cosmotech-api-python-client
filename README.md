@@ -208,7 +208,6 @@ Class | Method | HTTP request | Description
  - [CreatedRun](docs/CreatedRun.md)
  - [Dataset](docs/Dataset.md)
  - [DatasetAccessControl](docs/DatasetAccessControl.md)
- - [DatasetCreateInfo](docs/DatasetCreateInfo.md)
  - [DatasetCreateRequest](docs/DatasetCreateRequest.md)
  - [DatasetEditInfo](docs/DatasetEditInfo.md)
  - [DatasetPart](docs/DatasetPart.md)

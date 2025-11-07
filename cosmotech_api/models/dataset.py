@@ -21,7 +21,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from cosmotech_api.models.dataset_create_info import DatasetCreateInfo
 from cosmotech_api.models.dataset_edit_info import DatasetEditInfo
 from cosmotech_api.models.dataset_part import DatasetPart
 from cosmotech_api.models.dataset_security import DatasetSecurity
@@ -40,7 +39,7 @@ class Dataset(BaseModel):
     tags: List[StrictStr] = Field(description="the list of tags")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     parts: List[DatasetPart]
-    create_info: DatasetCreateInfo = Field(description="The details of the Dataset creation", alias="createInfo")
+    create_info: DatasetEditInfo = Field(description="The details of the Dataset creation", alias="createInfo")
     update_info: DatasetEditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
     security: DatasetSecurity
     __properties: ClassVar[List[str]] = ["id", "name", "description", "organizationId", "workspaceId", "tags", "additionalData", "parts", "createInfo", "updateInfo", "security"]
@@ -131,7 +130,7 @@ class Dataset(BaseModel):
             "tags": obj.get("tags"),
             "additionalData": obj.get("additionalData"),
             "parts": [DatasetPart.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
-            "createInfo": DatasetCreateInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
+            "createInfo": DatasetEditInfo.from_dict(obj["createInfo"]) if obj.get("createInfo") is not None else None,
             "updateInfo": DatasetEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
             "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })

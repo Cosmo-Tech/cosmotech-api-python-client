@@ -26,7 +26,6 @@ cosmotech_api/models/container_resource_sizing.py
 cosmotech_api/models/created_run.py
 cosmotech_api/models/dataset.py
 cosmotech_api/models/dataset_access_control.py
-cosmotech_api/models/dataset_create_info.py
 cosmotech_api/models/dataset_create_request.py
 cosmotech_api/models/dataset_edit_info.py
 cosmotech_api/models/dataset_part.py
@@ -101,7 +100,6 @@ docs/CreatedRun.md
 docs/Dataset.md
 docs/DatasetAccessControl.md
 docs/DatasetApi.md
-docs/DatasetCreateInfo.md
 docs/DatasetCreateRequest.md
 docs/DatasetEditInfo.md
 docs/DatasetPart.md
@@ -187,7 +185,6 @@ test/test_created_run.py
 test/test_dataset.py
 test/test_dataset_access_control.py
 test/test_dataset_api.py
-test/test_dataset_create_info.py
 test/test_dataset_create_request.py
 test/test_dataset_edit_info.py
 test/test_dataset_part.py

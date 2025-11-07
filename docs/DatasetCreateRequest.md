@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **parts** | [**List[DatasetPartCreateRequest]**](DatasetPartCreateRequest.md) |  | [optional] [default to []]
 **security** | [**DatasetSecurity**](DatasetSecurity.md) |  | [optional] 
-**runner_id** | **str** |  | [optional] 
 
 ## Example
 

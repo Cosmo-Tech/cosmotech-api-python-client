@@ -62,10 +62,9 @@ class TestDataset(unittest.TestCase):
                         create_info = null, 
                         update_info = null, )
                     ],
-                create_info = cosmotech_api.models.dataset_create_info.DatasetCreateInfo(
+                create_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
-                    user_id = '', 
-                    runner_id = 'r-HqXzyCBw3_uufVPI', ),
+                    user_id = '', ),
                 update_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
@@ -103,10 +102,9 @@ class TestDataset(unittest.TestCase):
                         create_info = null, 
                         update_info = null, )
                     ],
-                create_info = cosmotech_api.models.dataset_create_info.DatasetCreateInfo(
+                create_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
-                    user_id = '', 
-                    runner_id = 'r-HqXzyCBw3_uufVPI', ),
+                    user_id = '', ),
                 update_info = cosmotech_api.models.dataset_edit_info.DatasetEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
