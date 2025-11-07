@@ -31,8 +31,8 @@ class SolutionUpdateRequest(BaseModel):
     """
     Request object for updating a solution
     """ # noqa: E501
-    key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="Technical key for resource name convention and version grouping. Must be unique")
-    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Solution name")
+    key: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="Technical key for resource name convention and version grouping. Must be unique")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution name")
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
     repository: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The registry repository containing the image")
     always_pull: Optional[StrictBool] = Field(default=None, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")

@@ -28,7 +28,7 @@ class RunTemplateParameterGroupCreateRequest(BaseModel):
     """
     A Parameter Group Create Request for a Run Template
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Parameter Group id")
+    id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Parameter Group id")
     description: Optional[StrictStr] = Field(default=None, description="A description of the parameter group")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")

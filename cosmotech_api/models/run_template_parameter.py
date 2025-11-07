@@ -28,7 +28,7 @@ class RunTemplateParameter(BaseModel):
     """
     A Run Template Parameter
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Parameter id")
+    id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Parameter id")
     description: Optional[StrictStr] = Field(default=None, description="The parameter description")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
     var_type: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The variable type for the parameter. Basic types or special type %DATASETID%", alias="varType")

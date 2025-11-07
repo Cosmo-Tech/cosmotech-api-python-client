@@ -32,7 +32,7 @@ class Dataset(BaseModel):
     Dataset object
     """ # noqa: E501
     id: Annotated[str, Field(strict=True)]
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
+    name: Annotated[str, Field(min_length=1, strict=True)]
     description: Optional[StrictStr] = None
     organization_id: StrictStr = Field(description="the associated Organization Id", alias="organizationId")
     workspace_id: StrictStr = Field(description="the associated Workspace Id", alias="workspaceId")

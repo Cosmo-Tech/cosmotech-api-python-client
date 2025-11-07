@@ -29,8 +29,8 @@ class WorkspaceUpdateRequest(BaseModel):
     """
     Request object for updating a workspace
     """ # noqa: E501
-    key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="Technical key for resource name convention and version grouping. Must be unique")
-    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="Workspace name")
+    key: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="Technical key for resource name convention and version grouping. Must be unique")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="Workspace name")
     description: Optional[StrictStr] = Field(default=None, description="The Workspace description")
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     solution: Optional[WorkspaceSolution] = None

@@ -29,7 +29,7 @@ class OrganizationCreateRequest(BaseModel):
     """
     Request object for creating a new organization
     """ # noqa: E501
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Organization name")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Organization name")
     security: Optional[OrganizationSecurity] = None
     __properties: ClassVar[List[str]] = ["name", "security"]
 

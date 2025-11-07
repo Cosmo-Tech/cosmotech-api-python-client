@@ -28,7 +28,7 @@ class OrganizationUpdateRequest(BaseModel):
     """
     Request object for updating an organization
     """ # noqa: E501
-    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=50)]] = Field(default=None, description="The Organization name")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Organization name")
     __properties: ClassVar[List[str]] = ["name"]
 
     model_config = ConfigDict(

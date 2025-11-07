@@ -30,7 +30,7 @@ class DatasetCreateRequest(BaseModel):
     """
     Dataset creation request
     """ # noqa: E501
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
+    name: Annotated[str, Field(min_length=1, strict=True)]
     description: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = None
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")

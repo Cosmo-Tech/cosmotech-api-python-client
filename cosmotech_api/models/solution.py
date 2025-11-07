@@ -35,8 +35,8 @@ class Solution(BaseModel):
     """ # noqa: E501
     id: Annotated[str, Field(strict=True)] = Field(description="The Solution version unique identifier")
     organization_id: Annotated[str, Field(strict=True)] = Field(description="The Organization unique identifier", alias="organizationId")
-    key: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution key which groups Solution versions")
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="The Solution name")
+    key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution key which groups Solution versions")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution name")
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
     repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")

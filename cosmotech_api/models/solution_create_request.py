@@ -32,8 +32,8 @@ class SolutionCreateRequest(BaseModel):
     """
     Request object for creating a new solution
     """ # noqa: E501
-    key: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Technical key for resource name convention and version grouping. Must be unique")
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Solution name. This name is displayed in the sample webApp")
+    key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Technical key for resource name convention and version grouping. Must be unique")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Solution name. This name is displayed in the sample webApp")
     description: Optional[StrictStr] = Field(default=None, description="The Solution description")
     repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
     version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH")

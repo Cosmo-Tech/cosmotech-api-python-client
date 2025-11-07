@@ -31,7 +31,7 @@ class DatasetPart(BaseModel):
     Dataset part object
     """ # noqa: E501
     id: Annotated[str, Field(strict=True)]
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)]
+    name: Annotated[str, Field(min_length=1, strict=True)]
     source_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the source data name (e.g. filename associated to the dataset part)", alias="sourceName")
     description: Optional[StrictStr] = None
     tags: List[StrictStr]
