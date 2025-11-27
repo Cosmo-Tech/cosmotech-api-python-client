@@ -52,14 +52,7 @@ class TestDatasetUpdateRequest(unittest.TestCase):
                             ], 
                         additional_data = { }, 
                         type = 'File', )
-                    ],
-                security = cosmotech_api.models.dataset_security.DatasetSecurity(
-                    default = '', 
-                    access_control_list = [
-                        cosmotech_api.models.dataset_access_control.DatasetAccessControl(
-                            id = '', 
-                            role = '', )
-                        ], )
+                    ]
             )
         else:
             return DatasetUpdateRequest(

@@ -22,7 +22,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
-from cosmotech_api.models.dataset_security import DatasetSecurity
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,8 +34,7 @@ class DatasetUpdateRequest(BaseModel):
     tags: Optional[List[StrictStr]] = None
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     parts: Optional[List[DatasetPartCreateRequest]] = None
-    security: Optional[DatasetSecurity] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts", "security"]
+    __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +82,6 @@ class DatasetUpdateRequest(BaseModel):
                 if _item_parts:
                     _items.append(_item_parts.to_dict())
             _dict['parts'] = _items
-        # override the default output from pydantic by calling `to_dict()` of security
-        if self.security:
-            _dict['security'] = self.security.to_dict()
         return _dict
 
     @classmethod
@@ -103,8 +98,7 @@ class DatasetUpdateRequest(BaseModel):
             "description": obj.get("description"),
             "tags": obj.get("tags"),
             "additionalData": obj.get("additionalData"),
-            "parts": [DatasetPartCreateRequest.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None,
-            "security": DatasetSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
+            "parts": [DatasetPartCreateRequest.from_dict(_item) for _item in obj["parts"]] if obj.get("parts") is not None else None
         })
         return _obj
 

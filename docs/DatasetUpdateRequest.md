@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **tags** | **List[str]** |  | [optional] 
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **parts** | [**List[DatasetPartCreateRequest]**](DatasetPartCreateRequest.md) |  | [optional] 
-**security** | [**DatasetSecurity**](DatasetSecurity.md) |  | [optional] 
 
 ## Example
 
