@@ -42,10 +42,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.RunApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    run_id = 'run_id_example' # str | the Run identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    runner_id = 'runner_id_example' # str | The Runner identifier
+    run_id = 'run_id_example' # str | The Run identifier
 
     try:
         # Delete a run
@@ -61,10 +61,10 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **run_id** | **str**| the Run identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **runner_id** | **str**| The Runner identifier | 
+ **run_id** | **str**| The Run identifier | 
 
 ### Return type
 
@@ -121,10 +121,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.RunApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    run_id = 'run_id_example' # str | the Run identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    runner_id = 'runner_id_example' # str | The Runner identifier
+    run_id = 'run_id_example' # str | The Run identifier
 
     try:
         # Get the details of a run
@@ -142,10 +142,10 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **run_id** | **str**| the Run identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **runner_id** | **str**| The Runner identifier | 
+ **run_id** | **str**| The Run identifier | 
 
 ### Return type
 
@@ -200,10 +200,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.RunApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    run_id = 'run_id_example' # str | the Run identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    runner_id = 'runner_id_example' # str | The Runner identifier
+    run_id = 'run_id_example' # str | The Run identifier
 
     try:
         # get the logs for the Run
@@ -221,10 +221,10 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **run_id** | **str**| the Run identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **runner_id** | **str**| The Runner identifier | 
+ **run_id** | **str**| The Run identifier | 
 
 ### Return type
 
@@ -279,10 +279,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.RunApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
-    run_id = 'run_id_example' # str | the Run identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    runner_id = 'runner_id_example' # str | The Runner identifier
+    run_id = 'run_id_example' # str | The Run identifier
 
     try:
         # get the status for the Run
@@ -300,10 +300,10 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
- **run_id** | **str**| the Run identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **runner_id** | **str**| The Runner identifier | 
+ **run_id** | **str**| The Run identifier | 
 
 ### Return type
 
@@ -358,9 +358,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.RunApi(api_client)
-    organization_id = 'organization_id_example' # str | the Organization identifier
-    workspace_id = 'workspace_id_example' # str | the Workspace identifier
-    runner_id = 'runner_id_example' # str | the Runner identifier
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+    runner_id = 'runner_id_example' # str | The Runner identifier
     page = 56 # int | page number to query (first page is at index 0) (optional)
     size = 56 # int | amount of result by page (optional)
 
@@ -380,9 +380,9 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**| the Organization identifier | 
- **workspace_id** | **str**| the Workspace identifier | 
- **runner_id** | **str**| the Runner identifier | 
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+ **runner_id** | **str**| The Runner identifier | 
  **page** | **int**| page number to query (first page is at index 0) | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 

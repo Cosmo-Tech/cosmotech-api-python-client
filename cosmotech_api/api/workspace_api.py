@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from cosmotech_api.models.workspace import Workspace
@@ -49,7 +49,7 @@ class WorkspaceApi:
     @validate_call
     def create_workspace(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         workspace_create_request: Annotated[WorkspaceCreateRequest, Field(description="The Workspace to create")],
         _request_timeout: Union[
             None,
@@ -120,7 +120,7 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         workspace_create_request: Annotated[WorkspaceCreateRequest, Field(description="The Workspace to create")],
         _request_timeout: Union[
             None,
@@ -191,7 +191,7 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         workspace_create_request: Annotated[WorkspaceCreateRequest, Field(description="The Workspace to create")],
         _request_timeout: Union[
             None,
@@ -340,8 +340,8 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_access_control: Annotated[WorkspaceAccessControl, Field(description="The new Workspace security access to add.")],
         _request_timeout: Union[
             None,
@@ -415,8 +415,8 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_access_control: Annotated[WorkspaceAccessControl, Field(description="The new Workspace security access to add.")],
         _request_timeout: Union[
             None,
@@ -490,8 +490,8 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_access_control: Annotated[WorkspaceAccessControl, Field(description="The new Workspace security access to add.")],
         _request_timeout: Union[
             None,
@@ -646,8 +646,8 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_file(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
         overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
         destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
@@ -729,8 +729,8 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_file_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
         overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
         destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
@@ -812,8 +812,8 @@ class WorkspaceApi:
     @validate_call
     def create_workspace_file_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The file to upload")],
         overwrite: Annotated[Optional[StrictBool], Field(description="Whether to overwrite an existing file")] = None,
         destination: Annotated[Optional[StrictStr], Field(description="Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. ")] = None,
@@ -981,8 +981,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1053,8 +1053,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1125,8 +1125,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1253,8 +1253,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1328,8 +1328,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1403,8 +1403,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1537,8 +1537,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_file(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file_name: Annotated[StrictStr, Field(description="The file name")],
         _request_timeout: Union[
             None,
@@ -1612,8 +1612,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_file_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file_name: Annotated[StrictStr, Field(description="The file name")],
         _request_timeout: Union[
             None,
@@ -1687,8 +1687,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_file_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file_name: Annotated[StrictStr, Field(description="The file name")],
         _request_timeout: Union[
             None,
@@ -1823,8 +1823,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_files(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1894,8 +1894,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_files_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1965,8 +1965,8 @@ class WorkspaceApi:
     @validate_call
     def delete_workspace_files_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2092,8 +2092,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2163,8 +2163,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2234,8 +2234,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2369,8 +2369,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -2444,8 +2444,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -2519,8 +2519,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -2661,8 +2661,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_file(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file_name: Annotated[StrictStr, Field(description="The file name")],
         _request_timeout: Union[
             None,
@@ -2736,8 +2736,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_file_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file_name: Annotated[StrictStr, Field(description="The file name")],
         _request_timeout: Union[
             None,
@@ -2811,8 +2811,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_file_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         file_name: Annotated[StrictStr, Field(description="The file name")],
         _request_timeout: Union[
             None,
@@ -2954,8 +2954,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3025,8 +3025,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3096,8 +3096,8 @@ class WorkspaceApi:
     @validate_call
     def get_workspace_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3231,8 +3231,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_files(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3302,8 +3302,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_files_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3373,8 +3373,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_files_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3508,8 +3508,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_role_permissions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
@@ -3582,8 +3582,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_role_permissions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
@@ -3656,8 +3656,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_role_permissions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
@@ -3797,8 +3797,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_security_users(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3868,8 +3868,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_security_users_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3939,8 +3939,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspace_security_users_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4074,8 +4074,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspaces(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
@@ -4095,7 +4095,7 @@ class WorkspaceApi:
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
         :param size: Amount of result by page
         :type size: int
@@ -4148,8 +4148,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspaces_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
@@ -4169,7 +4169,7 @@ class WorkspaceApi:
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
         :param size: Amount of result by page
         :type size: int
@@ -4222,8 +4222,8 @@ class WorkspaceApi:
     @validate_call
     def list_workspaces_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
             None,
@@ -4243,7 +4243,7 @@ class WorkspaceApi:
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param page: page number to query (first page is at index 0)
+        :param page: Page number to query (first page is at index 0)
         :type page: int
         :param size: Amount of result by page
         :type size: int
@@ -4367,8 +4367,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_update_request: Annotated[WorkspaceUpdateRequest, Field(description="The new Workspace details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -4443,8 +4443,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_update_request: Annotated[WorkspaceUpdateRequest, Field(description="The new Workspace details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -4519,8 +4519,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_update_request: Annotated[WorkspaceUpdateRequest, Field(description="The new Workspace details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -4676,8 +4676,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         workspace_role: Annotated[WorkspaceRole, Field(description="The new Workspace Access Control")],
         _request_timeout: Union[
@@ -4755,8 +4755,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         workspace_role: Annotated[WorkspaceRole, Field(description="The new Workspace Access Control")],
         _request_timeout: Union[
@@ -4834,8 +4834,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         workspace_role: Annotated[WorkspaceRole, Field(description="The new Workspace Access Control")],
         _request_timeout: Union[
@@ -4997,8 +4997,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_default_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
         _request_timeout: Union[
             None,
@@ -5072,8 +5072,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_default_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
         _request_timeout: Union[
             None,
@@ -5147,8 +5147,8 @@ class WorkspaceApi:
     @validate_call
     def update_workspace_default_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="The Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
         workspace_role: Annotated[WorkspaceRole, Field(description="This change the workspace default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the workspace.")],
         _request_timeout: Union[
             None,

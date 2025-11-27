@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.run import Run
@@ -44,10 +44,10 @@ class RunApi:
     @validate_call
     def delete_run(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,13 +64,13 @@ class RunApi:
         """Delete a run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -124,10 +124,10 @@ class RunApi:
     @validate_call
     def delete_run_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,13 +144,13 @@ class RunApi:
         """Delete a run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -204,10 +204,10 @@ class RunApi:
     @validate_call
     def delete_run_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -224,13 +224,13 @@ class RunApi:
         """Delete a run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -346,10 +346,10 @@ class RunApi:
     @validate_call
     def get_run(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -366,13 +366,13 @@ class RunApi:
         """Get the details of a run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -425,10 +425,10 @@ class RunApi:
     @validate_call
     def get_run_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -445,13 +445,13 @@ class RunApi:
         """Get the details of a run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -504,10 +504,10 @@ class RunApi:
     @validate_call
     def get_run_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -524,13 +524,13 @@ class RunApi:
         """Get the details of a run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -653,10 +653,10 @@ class RunApi:
     @validate_call
     def get_run_logs(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -673,13 +673,13 @@ class RunApi:
         """get the logs for the Run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -731,10 +731,10 @@ class RunApi:
     @validate_call
     def get_run_logs_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -751,13 +751,13 @@ class RunApi:
         """get the logs for the Run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -809,10 +809,10 @@ class RunApi:
     @validate_call
     def get_run_logs_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -829,13 +829,13 @@ class RunApi:
         """get the logs for the Run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -956,10 +956,10 @@ class RunApi:
     @validate_call
     def get_run_status(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -976,13 +976,13 @@ class RunApi:
         """get the status for the Run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1034,10 +1034,10 @@ class RunApi:
     @validate_call
     def get_run_status_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1054,13 +1054,13 @@ class RunApi:
         """get the status for the Run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1112,10 +1112,10 @@ class RunApi:
     @validate_call
     def get_run_status_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
-        run_id: Annotated[StrictStr, Field(description="the Run identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
+        run_id: Annotated[str, Field(strict=True, description="The Run identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1132,13 +1132,13 @@ class RunApi:
         """get the status for the Run
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
-        :param run_id: the Run identifier (required)
+        :param run_id: The Run identifier (required)
         :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1260,9 +1260,9 @@ class RunApi:
     @validate_call
     def list_runs(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
         page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
@@ -1281,11 +1281,11 @@ class RunApi:
         """get the list of Runs for the Runner
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
         :param page: page number to query (first page is at index 0)
         :type page: int
@@ -1342,9 +1342,9 @@ class RunApi:
     @validate_call
     def list_runs_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
         page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
@@ -1363,11 +1363,11 @@ class RunApi:
         """get the list of Runs for the Runner
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
         :param page: page number to query (first page is at index 0)
         :type page: int
@@ -1424,9 +1424,9 @@ class RunApi:
     @validate_call
     def list_runs_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="The Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="The Runner identifier")],
         page: Annotated[Optional[StrictInt], Field(description="page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="amount of result by page")] = None,
         _request_timeout: Union[
@@ -1445,11 +1445,11 @@ class RunApi:
         """get the list of Runs for the Runner
 
 
-        :param organization_id: the Organization identifier (required)
+        :param organization_id: The Organization identifier (required)
         :type organization_id: str
-        :param workspace_id: the Workspace identifier (required)
+        :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
-        :param runner_id: the Runner identifier (required)
+        :param runner_id: The Runner identifier (required)
         :type runner_id: str
         :param page: page number to query (first page is at index 0)
         :type page: int

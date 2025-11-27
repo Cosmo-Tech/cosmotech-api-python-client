@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.created_run import CreatedRun
@@ -49,8 +49,8 @@ class RunnerApi:
     @validate_call
     def create_runner(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         runner_create_request: Annotated[RunnerCreateRequest, Field(description="the Runner to create")],
         _request_timeout: Union[
             None,
@@ -124,8 +124,8 @@ class RunnerApi:
     @validate_call
     def create_runner_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         runner_create_request: Annotated[RunnerCreateRequest, Field(description="the Runner to create")],
         _request_timeout: Union[
             None,
@@ -199,8 +199,8 @@ class RunnerApi:
     @validate_call
     def create_runner_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         runner_create_request: Annotated[RunnerCreateRequest, Field(description="the Runner to create")],
         _request_timeout: Union[
             None,
@@ -355,9 +355,9 @@ class RunnerApi:
     @validate_call
     def create_runner_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_access_control: Annotated[RunnerAccessControl, Field(description="the new Runner security access to add.")],
         _request_timeout: Union[
             None,
@@ -434,9 +434,9 @@ class RunnerApi:
     @validate_call
     def create_runner_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_access_control: Annotated[RunnerAccessControl, Field(description="the new Runner security access to add.")],
         _request_timeout: Union[
             None,
@@ -513,9 +513,9 @@ class RunnerApi:
     @validate_call
     def create_runner_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_access_control: Annotated[RunnerAccessControl, Field(description="the new Runner security access to add.")],
         _request_timeout: Union[
             None,
@@ -676,9 +676,9 @@ class RunnerApi:
     @validate_call
     def delete_runner(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -751,9 +751,9 @@ class RunnerApi:
     @validate_call
     def delete_runner_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -826,9 +826,9 @@ class RunnerApi:
     @validate_call
     def delete_runner_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -960,9 +960,9 @@ class RunnerApi:
     @validate_call
     def delete_runner_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1039,9 +1039,9 @@ class RunnerApi:
     @validate_call
     def delete_runner_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1118,9 +1118,9 @@ class RunnerApi:
     @validate_call
     def delete_runner_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1259,9 +1259,9 @@ class RunnerApi:
     @validate_call
     def get_runner(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1334,9 +1334,9 @@ class RunnerApi:
     @validate_call
     def get_runner_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1409,9 +1409,9 @@ class RunnerApi:
     @validate_call
     def get_runner_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1551,9 +1551,9 @@ class RunnerApi:
     @validate_call
     def get_runner_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1630,9 +1630,9 @@ class RunnerApi:
     @validate_call
     def get_runner_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1709,9 +1709,9 @@ class RunnerApi:
     @validate_call
     def get_runner_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1858,9 +1858,9 @@ class RunnerApi:
     @validate_call
     def get_runner_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1933,9 +1933,9 @@ class RunnerApi:
     @validate_call
     def get_runner_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2008,9 +2008,9 @@ class RunnerApi:
     @validate_call
     def get_runner_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2150,9 +2150,9 @@ class RunnerApi:
     @validate_call
     def list_runner_permissions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         role: Annotated[StrictStr, Field(description="the Role")],
         _request_timeout: Union[
             None,
@@ -2228,9 +2228,9 @@ class RunnerApi:
     @validate_call
     def list_runner_permissions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         role: Annotated[StrictStr, Field(description="the Role")],
         _request_timeout: Union[
             None,
@@ -2306,9 +2306,9 @@ class RunnerApi:
     @validate_call
     def list_runner_permissions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         role: Annotated[StrictStr, Field(description="the Role")],
         _request_timeout: Union[
             None,
@@ -2746,8 +2746,8 @@ class RunnerApi:
     @validate_call
     def list_runners(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -2824,8 +2824,8 @@ class RunnerApi:
     @validate_call
     def list_runners_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -2902,8 +2902,8 @@ class RunnerApi:
     @validate_call
     def list_runners_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -3054,9 +3054,9 @@ class RunnerApi:
     @validate_call
     def start_run(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3129,9 +3129,9 @@ class RunnerApi:
     @validate_call
     def start_run_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3204,9 +3204,9 @@ class RunnerApi:
     @validate_call
     def start_run_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3346,9 +3346,9 @@ class RunnerApi:
     @validate_call
     def stop_run(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3421,9 +3421,9 @@ class RunnerApi:
     @validate_call
     def stop_run_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3496,9 +3496,9 @@ class RunnerApi:
     @validate_call
     def stop_run_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3630,9 +3630,9 @@ class RunnerApi:
     @validate_call
     def update_runner(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_update_request: Annotated[RunnerUpdateRequest, Field(description="the new Runner details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -3710,9 +3710,9 @@ class RunnerApi:
     @validate_call
     def update_runner_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_update_request: Annotated[RunnerUpdateRequest, Field(description="the new Runner details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -3790,9 +3790,9 @@ class RunnerApi:
     @validate_call
     def update_runner_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_update_request: Annotated[RunnerUpdateRequest, Field(description="the new Runner details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -3954,9 +3954,9 @@ class RunnerApi:
     @validate_call
     def update_runner_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         runner_role: Annotated[RunnerRole, Field(description="The new Runner Access Control")],
         _request_timeout: Union[
@@ -4037,9 +4037,9 @@ class RunnerApi:
     @validate_call
     def update_runner_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         runner_role: Annotated[RunnerRole, Field(description="The new Runner Access Control")],
         _request_timeout: Union[
@@ -4120,9 +4120,9 @@ class RunnerApi:
     @validate_call
     def update_runner_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         runner_role: Annotated[RunnerRole, Field(description="The new Runner Access Control")],
         _request_timeout: Union[
@@ -4290,9 +4290,9 @@ class RunnerApi:
     @validate_call
     def update_runner_default_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
         _request_timeout: Union[
             None,
@@ -4369,9 +4369,9 @@ class RunnerApi:
     @validate_call
     def update_runner_default_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
         _request_timeout: Union[
             None,
@@ -4448,9 +4448,9 @@ class RunnerApi:
     @validate_call
     def update_runner_default_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        runner_id: Annotated[StrictStr, Field(description="the Runner identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        runner_id: Annotated[str, Field(strict=True, description="the Runner identifier")],
         runner_role: Annotated[RunnerRole, Field(description="This change the runner default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the runner.")],
         _request_timeout: Union[
             None,

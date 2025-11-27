@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions
@@ -325,7 +325,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_access_control: Annotated[OrganizationAccessControl, Field(description="The new Organization security access to add.")],
         _request_timeout: Union[
             None,
@@ -396,7 +396,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_access_control: Annotated[OrganizationAccessControl, Field(description="The new Organization security access to add.")],
         _request_timeout: Union[
             None,
@@ -467,7 +467,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_access_control: Annotated[OrganizationAccessControl, Field(description="The new Organization security access to add.")],
         _request_timeout: Union[
             None,
@@ -616,7 +616,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -683,7 +683,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -750,7 +750,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -870,7 +870,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -941,7 +941,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1012,7 +1012,7 @@ class OrganizationApi:
     @validate_call
     def delete_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1139,7 +1139,7 @@ class OrganizationApi:
     @validate_call
     def get_organization(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1206,7 +1206,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1273,7 +1273,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1401,7 +1401,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1472,7 +1472,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1543,7 +1543,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1678,7 +1678,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_permissions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
@@ -1748,7 +1748,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_permissions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
@@ -1818,7 +1818,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_permissions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         role: Annotated[StrictStr, Field(description="The Role")],
         _request_timeout: Union[
             None,
@@ -1952,7 +1952,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2019,7 +2019,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2086,7 +2086,7 @@ class OrganizationApi:
     @validate_call
     def get_organization_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2214,7 +2214,7 @@ class OrganizationApi:
     @validate_call
     def list_organization_security_users(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2281,7 +2281,7 @@ class OrganizationApi:
     @validate_call
     def list_organization_security_users_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2348,7 +2348,7 @@ class OrganizationApi:
     @validate_call
     def list_organization_security_users_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2998,7 +2998,7 @@ class OrganizationApi:
     @validate_call
     def update_organization(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="The new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -3070,7 +3070,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="The new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -3142,7 +3142,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_update_request: Annotated[OrganizationUpdateRequest, Field(description="The new Organization details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -3292,7 +3292,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="The new Organization Access Control")],
         _request_timeout: Union[
@@ -3367,7 +3367,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="The new Organization Access Control")],
         _request_timeout: Union[
@@ -3442,7 +3442,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="The new Organization Access Control")],
         _request_timeout: Union[
@@ -3598,7 +3598,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_default_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
         _request_timeout: Union[
             None,
@@ -3669,7 +3669,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_default_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
         _request_timeout: Union[
             None,
@@ -3740,7 +3740,7 @@ class OrganizationApi:
     @validate_call
     def update_organization_default_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="The Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="The Organization identifier")],
         organization_role: Annotated[OrganizationRole, Field(description="This change the organization default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the organization.")],
         _request_timeout: Union[
             None,

@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictInt, StrictStr
+from pydantic import Field, StrictBytes, StrictInt, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from cosmotech_api.models.dataset import Dataset
@@ -51,8 +51,8 @@ class DatasetApi:
     @validate_call
     def create_dataset(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         dataset_create_request: DatasetCreateRequest,
         files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
@@ -132,8 +132,8 @@ class DatasetApi:
     @validate_call
     def create_dataset_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         dataset_create_request: DatasetCreateRequest,
         files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
@@ -213,8 +213,8 @@ class DatasetApi:
     @validate_call
     def create_dataset_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         dataset_create_request: DatasetCreateRequest,
         files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
@@ -378,9 +378,9 @@ class DatasetApi:
     @validate_call
     def create_dataset_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_access_control: Annotated[DatasetAccessControl, Field(description="the new Dataset security access to add.")],
         _request_timeout: Union[
             None,
@@ -457,9 +457,9 @@ class DatasetApi:
     @validate_call
     def create_dataset_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_access_control: Annotated[DatasetAccessControl, Field(description="the new Dataset security access to add.")],
         _request_timeout: Union[
             None,
@@ -536,9 +536,9 @@ class DatasetApi:
     @validate_call
     def create_dataset_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_access_control: Annotated[DatasetAccessControl, Field(description="the new Dataset security access to add.")],
         _request_timeout: Union[
             None,
@@ -699,9 +699,9 @@ class DatasetApi:
     @validate_call
     def create_dataset_part(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
         dataset_part_create_request: DatasetPartCreateRequest,
         _request_timeout: Union[
@@ -784,9 +784,9 @@ class DatasetApi:
     @validate_call
     def create_dataset_part_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
         dataset_part_create_request: DatasetPartCreateRequest,
         _request_timeout: Union[
@@ -869,9 +869,9 @@ class DatasetApi:
     @validate_call
     def create_dataset_part_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
         dataset_part_create_request: DatasetPartCreateRequest,
         _request_timeout: Union[
@@ -1040,9 +1040,9 @@ class DatasetApi:
     @validate_call
     def delete_dataset(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1117,9 +1117,9 @@ class DatasetApi:
     @validate_call
     def delete_dataset_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1194,9 +1194,9 @@ class DatasetApi:
     @validate_call
     def delete_dataset_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1330,9 +1330,9 @@ class DatasetApi:
     @validate_call
     def delete_dataset_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1409,9 +1409,9 @@ class DatasetApi:
     @validate_call
     def delete_dataset_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1488,9 +1488,9 @@ class DatasetApi:
     @validate_call
     def delete_dataset_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -1629,10 +1629,10 @@ class DatasetApi:
     @validate_call
     def delete_dataset_part(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1710,10 +1710,10 @@ class DatasetApi:
     @validate_call
     def delete_dataset_part_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1791,10 +1791,10 @@ class DatasetApi:
     @validate_call
     def delete_dataset_part_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1934,10 +1934,10 @@ class DatasetApi:
     @validate_call
     def download_dataset_part(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2014,10 +2014,10 @@ class DatasetApi:
     @validate_call
     def download_dataset_part_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2094,10 +2094,10 @@ class DatasetApi:
     @validate_call
     def download_dataset_part_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2243,9 +2243,9 @@ class DatasetApi:
     @validate_call
     def get_dataset(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2320,9 +2320,9 @@ class DatasetApi:
     @validate_call
     def get_dataset_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2397,9 +2397,9 @@ class DatasetApi:
     @validate_call
     def get_dataset_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2541,9 +2541,9 @@ class DatasetApi:
     @validate_call
     def get_dataset_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -2620,9 +2620,9 @@ class DatasetApi:
     @validate_call
     def get_dataset_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -2699,9 +2699,9 @@ class DatasetApi:
     @validate_call
     def get_dataset_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         _request_timeout: Union[
             None,
@@ -2848,10 +2848,10 @@ class DatasetApi:
     @validate_call
     def get_dataset_part(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2928,10 +2928,10 @@ class DatasetApi:
     @validate_call
     def get_dataset_part_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3008,10 +3008,10 @@ class DatasetApi:
     @validate_call
     def get_dataset_part_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3158,9 +3158,9 @@ class DatasetApi:
     @validate_call
     def list_dataset_parts(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -3242,9 +3242,9 @@ class DatasetApi:
     @validate_call
     def list_dataset_parts_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -3326,9 +3326,9 @@ class DatasetApi:
     @validate_call
     def list_dataset_parts_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -3487,9 +3487,9 @@ class DatasetApi:
     @validate_call
     def list_dataset_security_users(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3562,9 +3562,9 @@ class DatasetApi:
     @validate_call
     def list_dataset_security_users_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3637,9 +3637,9 @@ class DatasetApi:
     @validate_call
     def list_dataset_security_users_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3778,8 +3778,8 @@ class DatasetApi:
     @validate_call
     def list_datasets(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -3859,8 +3859,8 @@ class DatasetApi:
     @validate_call
     def list_datasets_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -3940,8 +3940,8 @@ class DatasetApi:
     @validate_call
     def list_datasets_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -4095,10 +4095,10 @@ class DatasetApi:
     @validate_call
     def query_data(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
@@ -4217,10 +4217,10 @@ class DatasetApi:
     @validate_call
     def query_data_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
@@ -4339,10 +4339,10 @@ class DatasetApi:
     @validate_call
     def query_data_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         selects: Annotated[Optional[List[StrictStr]], Field(description="Column names that should be part of the response data. You can specify a column name like:  - id  - stock  - quantity  - ... If you want to select only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         sums: Annotated[Optional[List[StrictStr]], Field(description="Column names to sum by. If you want to sum only distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
         avgs: Annotated[Optional[List[StrictStr]], Field(description="Column names to average by. If you want to apply 'average' only on distinct columns, add a * at the end of the column name (e.g. stock*). ")] = None,
@@ -4588,10 +4588,10 @@ class DatasetApi:
     @validate_call
     def replace_dataset_part(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
         dataset_part_update_request: Optional[DatasetPartUpdateRequest] = None,
         _request_timeout: Union[
@@ -4677,10 +4677,10 @@ class DatasetApi:
     @validate_call
     def replace_dataset_part_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
         dataset_part_update_request: Optional[DatasetPartUpdateRequest] = None,
         _request_timeout: Union[
@@ -4766,10 +4766,10 @@ class DatasetApi:
     @validate_call
     def replace_dataset_part_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="Data file to upload")],
         dataset_part_update_request: Optional[DatasetPartUpdateRequest] = None,
         _request_timeout: Union[
@@ -4944,9 +4944,9 @@ class DatasetApi:
     @validate_call
     def search_dataset_parts(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         request_body: Annotated[List[StrictStr], Field(description="the Dataset parts search parameters")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
@@ -5033,9 +5033,9 @@ class DatasetApi:
     @validate_call
     def search_dataset_parts_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         request_body: Annotated[List[StrictStr], Field(description="the Dataset parts search parameters")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
@@ -5122,9 +5122,9 @@ class DatasetApi:
     @validate_call
     def search_dataset_parts_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         request_body: Annotated[List[StrictStr], Field(description="the Dataset parts search parameters")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
@@ -5305,8 +5305,8 @@ class DatasetApi:
     @validate_call
     def search_datasets(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         request_body: Annotated[List[StrictStr], Field(description="the Dataset search parameters")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
@@ -5389,8 +5389,8 @@ class DatasetApi:
     @validate_call
     def search_datasets_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         request_body: Annotated[List[StrictStr], Field(description="the Dataset search parameters")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
@@ -5473,8 +5473,8 @@ class DatasetApi:
     @validate_call
     def search_datasets_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
         request_body: Annotated[List[StrictStr], Field(description="the Dataset search parameters")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
@@ -5648,9 +5648,9 @@ class DatasetApi:
     @validate_call
     def update_dataset(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_update_request: DatasetUpdateRequest,
         files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
@@ -5734,9 +5734,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_update_request: DatasetUpdateRequest,
         files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
@@ -5820,9 +5820,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_update_request: DatasetUpdateRequest,
         files: Annotated[Optional[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]]], Field(description="Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on ")] = None,
         _request_timeout: Union[
@@ -5993,9 +5993,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="The new Dataset Access Control")],
         _request_timeout: Union[
@@ -6076,9 +6076,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="The new Dataset Access Control")],
         _request_timeout: Union[
@@ -6159,9 +6159,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         identity_id: Annotated[StrictStr, Field(description="the User identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="The new Dataset Access Control")],
         _request_timeout: Union[
@@ -6329,9 +6329,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_default_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
         _request_timeout: Union[
             None,
@@ -6408,9 +6408,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_default_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
         _request_timeout: Union[
             None,
@@ -6487,9 +6487,9 @@ class DatasetApi:
     @validate_call
     def update_dataset_default_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
         dataset_role: Annotated[DatasetRole, Field(description="This change the dataset default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the dataset.")],
         _request_timeout: Union[
             None,
@@ -6649,10 +6649,10 @@ class DatasetApi:
     @validate_call
     def update_dataset_part(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         dataset_part_update_request: Annotated[DatasetPartUpdateRequest, Field(description="Dataset part information to update")],
         _request_timeout: Union[
             None,
@@ -6734,10 +6734,10 @@ class DatasetApi:
     @validate_call
     def update_dataset_part_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         dataset_part_update_request: Annotated[DatasetPartUpdateRequest, Field(description="Dataset part information to update")],
         _request_timeout: Union[
             None,
@@ -6819,10 +6819,10 @@ class DatasetApi:
     @validate_call
     def update_dataset_part_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        workspace_id: Annotated[StrictStr, Field(description="the Workspace identifier")],
-        dataset_id: Annotated[StrictStr, Field(description="the Dataset identifier")],
-        dataset_part_id: Annotated[StrictStr, Field(description="the Dataset part identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        workspace_id: Annotated[str, Field(strict=True, description="the Workspace identifier")],
+        dataset_id: Annotated[str, Field(strict=True, description="the Dataset identifier")],
+        dataset_part_id: Annotated[str, Field(strict=True, description="the Dataset part identifier")],
         dataset_part_update_request: Annotated[DatasetPartUpdateRequest, Field(description="Dataset part information to update")],
         _request_timeout: Union[
             None,

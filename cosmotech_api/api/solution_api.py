@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.run_template import RunTemplate
@@ -57,7 +57,7 @@ class SolutionApi:
     @validate_call
     def create_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
         solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
@@ -128,7 +128,7 @@ class SolutionApi:
     @validate_call
     def create_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
         solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
@@ -199,7 +199,7 @@ class SolutionApi:
     @validate_call
     def create_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
         solution_create_request: Annotated[SolutionCreateRequest, Field(description="The Solution to create")],
         _request_timeout: Union[
             None,
@@ -348,8 +348,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -423,8 +423,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -498,8 +498,8 @@ class SolutionApi:
     @validate_call
     def create_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_access_control: Annotated[SolutionAccessControl, Field(description="Access control to create")],
         _request_timeout: Union[
             None,
@@ -654,8 +654,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -730,8 +730,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -806,8 +806,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_parameter_create_request: Annotated[RunTemplateParameterCreateRequest, Field(description="Parameter to create")],
         _request_timeout: Union[
             None,
@@ -963,8 +963,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1039,8 +1039,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1115,8 +1115,8 @@ class SolutionApi:
     @validate_call
     def create_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_parameter_group_create_request: Annotated[RunTemplateParameterGroupCreateRequest, Field(description="Parameter group to create")],
         _request_timeout: Union[
             None,
@@ -1272,8 +1272,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1348,8 +1348,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1424,8 +1424,8 @@ class SolutionApi:
     @validate_call
     def create_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_create_request: Annotated[RunTemplateCreateRequest, Field(description="Run template to create")],
         _request_timeout: Union[
             None,
@@ -1581,8 +1581,8 @@ class SolutionApi:
     @validate_call
     def delete_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1652,8 +1652,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1723,8 +1723,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1850,8 +1850,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -1925,8 +1925,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -2000,8 +2000,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -2134,8 +2134,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -2209,8 +2209,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -2284,8 +2284,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -2418,8 +2418,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -2493,8 +2493,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -2568,8 +2568,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -2702,8 +2702,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -2777,8 +2777,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -2852,8 +2852,8 @@ class SolutionApi:
     @validate_call
     def delete_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -2986,8 +2986,8 @@ class SolutionApi:
     @validate_call
     def get_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -3061,8 +3061,8 @@ class SolutionApi:
     @validate_call
     def get_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -3136,8 +3136,8 @@ class SolutionApi:
     @validate_call
     def get_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         _request_timeout: Union[
             None,
@@ -3278,8 +3278,8 @@ class SolutionApi:
     @validate_call
     def get_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3349,8 +3349,8 @@ class SolutionApi:
     @validate_call
     def get_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3420,8 +3420,8 @@ class SolutionApi:
     @validate_call
     def get_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3555,8 +3555,8 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -3630,8 +3630,8 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -3705,8 +3705,8 @@ class SolutionApi:
     @validate_call
     def get_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         _request_timeout: Union[
             None,
@@ -3847,8 +3847,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -3923,8 +3923,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -3999,8 +3999,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         _request_timeout: Union[
             None,
@@ -4142,8 +4142,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -4217,8 +4217,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -4292,8 +4292,8 @@ class SolutionApi:
     @validate_call
     def get_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         _request_timeout: Union[
             None,
@@ -4434,8 +4434,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4505,8 +4505,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4576,8 +4576,8 @@ class SolutionApi:
     @validate_call
     def get_solution_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4711,8 +4711,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4782,8 +4782,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4853,8 +4853,8 @@ class SolutionApi:
     @validate_call
     def list_run_templates_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4988,8 +4988,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5059,8 +5059,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5130,8 +5130,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameter_groups_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5265,8 +5265,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5337,8 +5337,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5409,8 +5409,8 @@ class SolutionApi:
     @validate_call
     def list_solution_parameters_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5545,8 +5545,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5616,8 +5616,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5687,8 +5687,8 @@ class SolutionApi:
     @validate_call
     def list_solution_security_users_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5822,7 +5822,7 @@ class SolutionApi:
     @validate_call
     def list_solutions(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -5896,7 +5896,7 @@ class SolutionApi:
     @validate_call
     def list_solutions_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -5970,7 +5970,7 @@ class SolutionApi:
     @validate_call
     def list_solutions_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
         page: Annotated[Optional[StrictInt], Field(description="Page number to query (first page is at index 0)")] = None,
         size: Annotated[Optional[StrictInt], Field(description="Amount of result by page")] = None,
         _request_timeout: Union[
@@ -6115,8 +6115,8 @@ class SolutionApi:
     @validate_call
     def update_solution(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -6191,8 +6191,8 @@ class SolutionApi:
     @validate_call
     def update_solution_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -6267,8 +6267,8 @@ class SolutionApi:
     @validate_call
     def update_solution_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_update_request: Annotated[SolutionUpdateRequest, Field(description="The new Solution details. This endpoint can't be used to update security")],
         _request_timeout: Union[
             None,
@@ -6424,8 +6424,8 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
@@ -6503,8 +6503,8 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
@@ -6582,8 +6582,8 @@ class SolutionApi:
     @validate_call
     def update_solution_access_control_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         identity_id: Annotated[StrictStr, Field(description="The User identifier")],
         solution_role: Annotated[SolutionRole, Field(description="Access control updates")],
         _request_timeout: Union[
@@ -6745,8 +6745,8 @@ class SolutionApi:
     @validate_call
     def update_solution_default_security(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_role: Annotated[SolutionRole, Field(description="This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
         _request_timeout: Union[
             None,
@@ -6820,8 +6820,8 @@ class SolutionApi:
     @validate_call
     def update_solution_default_security_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_role: Annotated[SolutionRole, Field(description="This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
         _request_timeout: Union[
             None,
@@ -6895,8 +6895,8 @@ class SolutionApi:
     @validate_call
     def update_solution_default_security_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         solution_role: Annotated[SolutionRole, Field(description="This changes the solution default security. The default security is the role assigned to any person not on the Access Control List. If the default security is None, then nobody outside of the ACL can access the solution.")],
         _request_timeout: Union[
             None,
@@ -7051,8 +7051,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
@@ -7131,8 +7131,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
@@ -7211,8 +7211,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_id: Annotated[StrictStr, Field(description="The solution parameter identifier")],
         run_template_parameter_update_request: Annotated[RunTemplateParameterUpdateRequest, Field(description="Parameter to update")],
         _request_timeout: Union[
@@ -7375,8 +7375,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
@@ -7455,8 +7455,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
@@ -7535,8 +7535,8 @@ class SolutionApi:
     @validate_call
     def update_solution_parameter_group_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         parameter_group_id: Annotated[StrictStr, Field(description="The parameter group identifier")],
         run_template_parameter_group_update_request: Annotated[RunTemplateParameterGroupUpdateRequest, Field(description="Parameter groups to update")],
         _request_timeout: Union[
@@ -7699,8 +7699,8 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
@@ -7779,8 +7779,8 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template_with_http_info(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
@@ -7859,8 +7859,8 @@ class SolutionApi:
     @validate_call
     def update_solution_run_template_without_preload_content(
         self,
-        organization_id: Annotated[StrictStr, Field(description="the Organization identifier")],
-        solution_id: Annotated[StrictStr, Field(description="the Solution identifier")],
+        organization_id: Annotated[str, Field(strict=True, description="the Organization identifier")],
+        solution_id: Annotated[str, Field(strict=True, description="the Solution identifier")],
         run_template_id: Annotated[StrictStr, Field(description="The Run Template identifier")],
         run_template_update_request: Annotated[RunTemplateUpdateRequest, Field(description="Run template updates")],
         _request_timeout: Union[
