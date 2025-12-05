@@ -85,3 +85,4 @@ from cosmotech_api.models.workspace_role import WorkspaceRole
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
 from cosmotech_api.models.workspace_update_request import WorkspaceUpdateRequest
+

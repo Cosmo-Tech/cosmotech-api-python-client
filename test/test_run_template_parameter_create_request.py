@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from cosmotech_api.models.run_template_parameter_create_request import RunTemplateParameterCreateRequest

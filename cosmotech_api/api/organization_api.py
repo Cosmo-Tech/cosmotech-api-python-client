@@ -11,6 +11,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -100,7 +101,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Organization",
             '400': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -166,7 +168,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Organization",
             '400': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -232,7 +235,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Organization",
             '400': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -377,7 +381,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -447,7 +452,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -517,7 +523,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -661,7 +668,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -727,7 +735,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -793,7 +802,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -916,7 +926,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -986,7 +997,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1056,7 +1068,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1178,7 +1191,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Organization",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1244,7 +1258,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Organization",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1310,7 +1325,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Organization",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1441,7 +1457,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1511,7 +1528,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1581,7 +1599,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1714,7 +1733,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1783,7 +1803,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1852,7 +1873,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1982,7 +2004,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationSecurity",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2048,7 +2071,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationSecurity",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2114,7 +2138,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationSecurity",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2241,7 +2266,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2307,7 +2333,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2373,7 +2400,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2503,7 +2531,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Organization]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2572,7 +2601,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Organization]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2641,7 +2671,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Organization]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2770,7 +2801,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ComponentRolePermissions]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2831,7 +2863,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ComponentRolePermissions]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2892,7 +2925,8 @@ class OrganizationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ComponentRolePermissions]",
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3021,7 +3055,8 @@ class OrganizationApi:
             '200': "Organization",
             '400': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3092,7 +3127,8 @@ class OrganizationApi:
             '200': "Organization",
             '400': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3163,7 +3199,8 @@ class OrganizationApi:
             '200': "Organization",
             '400': None,
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3315,7 +3352,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3389,7 +3427,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3463,7 +3502,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationAccessControl",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3614,7 +3654,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "OrganizationSecurity",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3684,7 +3725,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "OrganizationSecurity",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3754,7 +3796,8 @@ class OrganizationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "OrganizationSecurity",
             '404': None,
-        }        response_data = self.api_client.call_api(
+        }
+        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

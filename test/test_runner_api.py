@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from cosmotech_api.api.runner_api import RunnerApi

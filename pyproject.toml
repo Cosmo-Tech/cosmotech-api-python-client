@@ -1,23 +1,29 @@
-[tool.poetry]
+[project]
 name = "cosmotech_api"
 version = "1.0.0"
 description = "Cosmo Tech Platform API"
-authors = ["Repository <platform@cosmotech.com>"]
-license = "MIT License"
+authors = [
+  {name = "Repository",email = "platform@cosmotech.com"},
+]
+license = { text = "MIT License" }
 readme = "README.md"
-repository = "https://github.com/Cosmo-Tech/cosmotech-api-python-client"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Cosmo Tech Platform API"]
-include = ["cosmotech_api/py.typed"]
+requires-python = ">=3.9"
 
-[tool.poetry.dependencies]
-python = "^3.9"
+dependencies = [
+  "urllib3 (>=2.1.0,<3.0.0)",
+  "python-dateutil (>=2.8.2)",
+  "pydantic (>=2)",
+  "typing-extensions (>=4.7.1)",
+]
 
-urllib3 = ">= 2.1.0, < 3.0.0"
-python-dateutil = ">= 2.8.2"
-pydantic = ">= 2"
-typing-extensions = ">= 4.7.1"
+[project.urls]
+Repository = "https://github.com/Cosmo-Tech/cosmotech-api-python-client"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry]
+requires-poetry = ">=2.0"
+
+[tool.poetry.group.dev.dependencies]
 pytest = ">= 7.2.1"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"
