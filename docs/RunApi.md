@@ -37,7 +37,6 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
-
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -53,7 +52,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RunApi->delete_run: %s\n" % e)
 ```
-
 
 
 ### Parameters
@@ -116,7 +114,6 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
-
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -134,7 +131,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RunApi->get_run: %s\n" % e)
 ```
-
 
 
 ### Parameters
@@ -195,7 +191,6 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
-
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -213,7 +208,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RunApi->get_run_logs: %s\n" % e)
 ```
-
 
 
 ### Parameters
@@ -274,7 +268,6 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
-
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -292,7 +285,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RunApi->get_run_status: %s\n" % e)
 ```
-
 
 
 ### Parameters
@@ -353,7 +345,6 @@ configuration = cosmotech_api.Configuration(
 # satisfies your auth use case.
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
-
 # Enter a context with an instance of the API client
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -372,7 +363,6 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RunApi->list_runs: %s\n" % e)
 ```
-
 
 
 ### Parameters

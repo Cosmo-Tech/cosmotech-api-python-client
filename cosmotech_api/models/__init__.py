@@ -13,7 +13,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from cosmotech_api.models.about_info import AboutInfo
 from cosmotech_api.models.about_info_version import AboutInfoVersion

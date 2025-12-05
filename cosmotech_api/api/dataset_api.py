@@ -11,7 +11,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -117,8 +116,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -198,8 +196,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -279,8 +276,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -442,8 +438,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -521,8 +516,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -600,8 +594,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -769,8 +762,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -854,8 +846,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -939,8 +930,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1102,8 +1092,7 @@ class DatasetApi:
             '204': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1179,8 +1168,7 @@ class DatasetApi:
             '204': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1256,8 +1244,7 @@ class DatasetApi:
             '204': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1394,8 +1381,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1473,8 +1459,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1552,8 +1537,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1695,8 +1679,7 @@ class DatasetApi:
             '204': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1776,8 +1759,7 @@ class DatasetApi:
             '204': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1857,8 +1839,7 @@ class DatasetApi:
             '204': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1999,8 +1980,7 @@ class DatasetApi:
             '200': "bytearray",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2079,8 +2059,7 @@ class DatasetApi:
             '200': "bytearray",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2159,8 +2138,7 @@ class DatasetApi:
             '200': "bytearray",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2305,8 +2283,7 @@ class DatasetApi:
             '200': "Dataset",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2382,8 +2359,7 @@ class DatasetApi:
             '200': "Dataset",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2459,8 +2435,7 @@ class DatasetApi:
             '200': "Dataset",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2605,8 +2580,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2684,8 +2658,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2763,8 +2736,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2913,8 +2885,7 @@ class DatasetApi:
             '200': "DatasetPart",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2993,8 +2964,7 @@ class DatasetApi:
             '200': "DatasetPart",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3073,8 +3043,7 @@ class DatasetApi:
             '200': "DatasetPart",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3227,8 +3196,7 @@ class DatasetApi:
             '200': "List[DatasetPart]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3311,8 +3279,7 @@ class DatasetApi:
             '200': "List[DatasetPart]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3395,8 +3362,7 @@ class DatasetApi:
             '200': "List[DatasetPart]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3547,8 +3513,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3622,8 +3587,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3697,8 +3661,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3844,8 +3807,7 @@ class DatasetApi:
             '200': "List[Dataset]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3925,8 +3887,7 @@ class DatasetApi:
             '200': "List[Dataset]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4006,8 +3967,7 @@ class DatasetApi:
             '200': "List[Dataset]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4202,8 +4162,7 @@ class DatasetApi:
             '403': None,
             '404': None,
             '422': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4324,8 +4283,7 @@ class DatasetApi:
             '403': None,
             '404': None,
             '422': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4446,8 +4404,7 @@ class DatasetApi:
             '403': None,
             '404': None,
             '422': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4662,8 +4619,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4751,8 +4707,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4840,8 +4795,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5018,8 +4972,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5107,8 +5060,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5196,8 +5148,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5374,8 +5325,7 @@ class DatasetApi:
             '200': "List[Dataset]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5458,8 +5408,7 @@ class DatasetApi:
             '200': "List[Dataset]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5542,8 +5491,7 @@ class DatasetApi:
             '200': "List[Dataset]",
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5719,8 +5667,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5805,8 +5752,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5891,8 +5837,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6061,8 +6006,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6144,8 +6088,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6227,8 +6170,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DatasetAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6393,8 +6335,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DatasetSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6472,8 +6413,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DatasetSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6551,8 +6491,7 @@ class DatasetApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DatasetSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6719,8 +6658,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6804,8 +6742,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6889,8 +6826,7 @@ class DatasetApi:
             '400': None,
             '403': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

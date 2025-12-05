@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
 from cosmotech_api.models.component_role_permissions import ComponentRolePermissions

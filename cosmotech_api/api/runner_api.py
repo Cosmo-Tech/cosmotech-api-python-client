@@ -11,7 +11,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -109,8 +108,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Runner",
             '400': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -184,8 +182,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Runner",
             '400': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -259,8 +256,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Runner",
             '400': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -419,8 +415,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -498,8 +493,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -577,8 +571,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -736,8 +729,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -811,8 +803,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -886,8 +877,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1024,8 +1014,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1103,8 +1092,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1182,8 +1170,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1319,8 +1306,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Runner",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1394,8 +1380,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Runner",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1469,8 +1454,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Runner",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1615,8 +1599,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1694,8 +1677,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1773,8 +1755,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1918,8 +1899,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1993,8 +1973,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2068,8 +2047,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2213,8 +2191,7 @@ class RunnerApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2291,8 +2268,7 @@ class RunnerApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2369,8 +2345,7 @@ class RunnerApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2514,8 +2489,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2589,8 +2563,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2664,8 +2637,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2809,8 +2781,7 @@ class RunnerApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Runner]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2887,8 +2858,7 @@ class RunnerApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Runner]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2965,8 +2935,7 @@ class RunnerApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Runner]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3114,8 +3083,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "CreatedRun",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3189,8 +3157,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "CreatedRun",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3264,8 +3231,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "CreatedRun",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3406,8 +3372,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3481,8 +3446,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3556,8 +3520,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3695,8 +3658,7 @@ class RunnerApi:
             '200': "Runner",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3775,8 +3737,7 @@ class RunnerApi:
             '200': "Runner",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3855,8 +3816,7 @@ class RunnerApi:
             '200': "Runner",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4022,8 +3982,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4105,8 +4064,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4188,8 +4146,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunnerAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4354,8 +4311,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RunnerSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4433,8 +4389,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RunnerSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4512,8 +4467,7 @@ class RunnerApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RunnerSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

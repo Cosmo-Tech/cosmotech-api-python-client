@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
 from cosmotech_api.models.container_resource_sizing import ContainerResourceSizing

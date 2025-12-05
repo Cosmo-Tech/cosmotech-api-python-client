@@ -11,7 +11,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -113,8 +112,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Solution",
             '400': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -184,8 +182,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Solution",
             '400': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -255,8 +252,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Solution",
             '400': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -408,8 +404,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -483,8 +478,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -558,8 +552,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -715,8 +708,7 @@ class SolutionApi:
             '200': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -791,8 +783,7 @@ class SolutionApi:
             '200': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -867,8 +858,7 @@ class SolutionApi:
             '200': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1024,8 +1014,7 @@ class SolutionApi:
             '201': "RunTemplateParameterGroup",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1100,8 +1089,7 @@ class SolutionApi:
             '201': "RunTemplateParameterGroup",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1176,8 +1164,7 @@ class SolutionApi:
             '201': "RunTemplateParameterGroup",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1333,8 +1320,7 @@ class SolutionApi:
             '201': "RunTemplate",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1409,8 +1395,7 @@ class SolutionApi:
             '201': "RunTemplate",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1485,8 +1470,7 @@ class SolutionApi:
             '201': "RunTemplate",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1637,8 +1621,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1708,8 +1691,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1779,8 +1761,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1910,8 +1891,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1985,8 +1965,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2060,8 +2039,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2194,8 +2172,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2269,8 +2246,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2344,8 +2320,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2478,8 +2453,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2553,8 +2527,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2628,8 +2601,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2762,8 +2734,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2837,8 +2808,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2912,8 +2882,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3046,8 +3015,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunTemplate",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3121,8 +3089,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunTemplate",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3196,8 +3163,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunTemplate",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3334,8 +3300,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Solution",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3405,8 +3370,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Solution",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3476,8 +3440,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Solution",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3615,8 +3578,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3690,8 +3652,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3765,8 +3726,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3908,8 +3868,7 @@ class SolutionApi:
             '200': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3984,8 +3943,7 @@ class SolutionApi:
             '200': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4060,8 +4018,7 @@ class SolutionApi:
             '200': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4202,8 +4159,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunTemplateParameterGroup",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4277,8 +4233,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunTemplateParameterGroup",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4352,8 +4307,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RunTemplateParameterGroup",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4490,8 +4444,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4561,8 +4514,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4632,8 +4584,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4767,8 +4718,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RunTemplate]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4838,8 +4788,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RunTemplate]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4909,8 +4858,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RunTemplate]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5044,8 +4992,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RunTemplateParameterGroup]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5115,8 +5062,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RunTemplateParameterGroup]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5186,8 +5132,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RunTemplateParameterGroup]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5322,8 +5267,7 @@ class SolutionApi:
             '200': "List[RunTemplateParameter]",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5394,8 +5338,7 @@ class SolutionApi:
             '200': "List[RunTemplateParameter]",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5466,8 +5409,7 @@ class SolutionApi:
             '200': "List[RunTemplateParameter]",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5601,8 +5543,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5672,8 +5613,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5743,8 +5683,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5881,8 +5820,7 @@ class SolutionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Solution]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5955,8 +5893,7 @@ class SolutionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Solution]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6029,8 +5966,7 @@ class SolutionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Solution]",
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6176,8 +6112,7 @@ class SolutionApi:
             '200': "Solution",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6252,8 +6187,7 @@ class SolutionApi:
             '200': "Solution",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6328,8 +6262,7 @@ class SolutionApi:
             '200': "Solution",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6488,8 +6421,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6567,8 +6499,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6646,8 +6577,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionAccessControl",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6805,8 +6735,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6880,8 +6809,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -6955,8 +6883,7 @@ class SolutionApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SolutionSecurity",
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7116,8 +7043,7 @@ class SolutionApi:
             '201': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7196,8 +7122,7 @@ class SolutionApi:
             '201': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7276,8 +7201,7 @@ class SolutionApi:
             '201': "RunTemplateParameter",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7440,8 +7364,7 @@ class SolutionApi:
             '200': "RunTemplateParameterGroup",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7520,8 +7443,7 @@ class SolutionApi:
             '200': "RunTemplateParameterGroup",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7600,8 +7522,7 @@ class SolutionApi:
             '200': "RunTemplateParameterGroup",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7764,8 +7685,7 @@ class SolutionApi:
             '200': "RunTemplate",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7844,8 +7764,7 @@ class SolutionApi:
             '200': "RunTemplate",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -7924,8 +7843,7 @@ class SolutionApi:
             '200': "RunTemplate",
             '400': None,
             '404': None,
-        }
-        response_data = self.api_client.call_api(
+        }        response_data = self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
