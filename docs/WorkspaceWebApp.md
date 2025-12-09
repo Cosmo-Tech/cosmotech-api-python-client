@@ -1,13 +1,13 @@
 # WorkspaceWebApp
 
-A Workspace Web Application
+a Workspace Web Application
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**url** | **str** | The Workspace Web Application URL | 
-**iframes** | **Dict[str, object]** | A map of iframeKey/iframeURL | [optional] 
+**url** | **str** | the Workspace Web Application URL | 
+**iframes** | **Dict[str, object]** | a map of iframeKey/iframeURL | [optional] 
 **options** | **Dict[str, object]** | free form options for Web Application | [optional] 
 
 ## Example

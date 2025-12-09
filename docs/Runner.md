@@ -1,32 +1,36 @@
 # Runner
 
-a Runner with complete information
+a Runner with base information
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Runner unique identifier | [readonly] 
-**name** | **str** | the Runner name | 
+**id** | **str** | the Runner unique identifier | [optional] [readonly] 
+**name** | **str** | the Runner name | [optional] 
 **description** | **str** | the Runner description | [optional] 
 **tags** | **List[str]** | the list of tags | [optional] 
 **parent_id** | **str** | the Runner parent id | [optional] 
-**create_info** | [**RunnerEditInfo**](RunnerEditInfo.md) | The details of the Runner creation | 
-**update_info** | [**RunnerEditInfo**](RunnerEditInfo.md) | The details of the Runner last update | 
+**owner_id** | **str** | the user id which own this Runner | [optional] [readonly] 
 **root_id** | **str** | the runner root id | [optional] [readonly] 
-**solution_id** | **str** | the Solution Id associated with this Runner | [readonly] 
-**run_template_id** | **str** | the Solution Run Template Id associated with this Runner | 
-**organization_id** | **str** | the associated Organization Id | [readonly] 
-**workspace_id** | **str** | the associated Workspace Id | [readonly] 
+**solution_id** | **str** | the Solution Id associated with this Runner | [optional] [readonly] 
+**run_template_id** | **str** | the Solution Run Template Id associated with this Runner | [optional] 
+**organization_id** | **str** | the associated Organization Id | [optional] [readonly] 
+**workspace_id** | **str** | the associated Workspace Id | [optional] [readonly] 
+**state** | [**RunnerJobState**](RunnerJobState.md) |  | [optional] 
+**creation_date** | **int** | the Runner creation date | [optional] [readonly] 
+**last_update** | **int** | the last time a Runner was updated | [optional] [readonly] 
+**owner_name** | **str** | the name of the owner | [optional] [readonly] 
 **solution_name** | **str** | the Solution name | [optional] [readonly] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] [readonly] 
-**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
-**datasets** | [**RunnerDatasets**](RunnerDatasets.md) | definition of datasets used by the runner | 
+**dataset_list** | **List[str]** | the list of Dataset Id associated to this Runner Run Template | [optional] 
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
-**parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | 
-**last_run_info** | [**LastRunInfo**](LastRunInfo.md) |  | 
-**validation_status** | [**RunnerValidationStatus**](RunnerValidationStatus.md) |  | 
-**security** | [**RunnerSecurity**](RunnerSecurity.md) |  | 
+**parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] 
+**last_run** | [**RunnerLastRun**](RunnerLastRun.md) |  | [optional] 
+**parent_last_run** | [**RunnerParentLastRun**](RunnerParentLastRun.md) |  | [optional] 
+**root_last_run** | [**RunnerRootLastRun**](RunnerRootLastRun.md) |  | [optional] 
+**validation_status** | [**RunnerValidationStatus**](RunnerValidationStatus.md) |  | [optional] 
+**security** | [**RunnerSecurity**](RunnerSecurity.md) |  | [optional] 
 
 ## Example
 
