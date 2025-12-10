@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **parent_id** | **str** | the Runner parent id | [optional] 
 **run_template_id** | **str** | the Solution Run Template Id associated with this Runner | 
 **dataset_list** | **List[str]** | the list of Dataset Id associated to this Runner Run Template | [optional] [default to []]
-**run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) |  | [optional] 
+**run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) | definition of resources needed for the runner run | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | [optional] [default to []]
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **solution_name** | **str** | the Solution name | [optional] 

@@ -1,28 +1,28 @@
 # Solution
 
-a version of a Solution
+A version of a Solution
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Solution version unique identifier | [optional] [readonly] 
-**organization_id** | **str** | the Organization unique identifier | [optional] [readonly] 
-**key** | **str** | the Solution key which group Solution versions | [optional] 
-**name** | **str** | the Solution name | [optional] 
-**description** | **str** | the Solution description | [optional] 
-**repository** | **str** | the registry repository containing the image | [optional] 
-**always_pull** | **bool** | set to true if the runtemplate wants to always pull the image | [optional] [default to False]
-**csm_simulator** | **str** | the main Cosmo Tech simulator name used in standard Run Template | [optional] 
-**version** | **str** | the Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | [optional] 
-**owner_id** | **str** | the User id which own this Solution | [optional] [readonly] 
-**sdk_version** | **str** | the MAJOR.MINOR version used to build this solution | [optional] 
-**url** | **str** | an optional URL link to solution page | [optional] 
-**tags** | **List[str]** | the list of tags | [optional] 
-**parameters** | [**List[RunTemplateParameter]**](RunTemplateParameter.md) | the list of Run Template Parameters | [optional] 
-**parameter_groups** | [**List[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md) | the list of parameters groups for the Run Templates | [optional] 
-**run_templates** | [**List[RunTemplate]**](RunTemplate.md) | list of Run Template | [optional] 
-**security** | [**SolutionSecurity**](SolutionSecurity.md) |  | [optional] 
+**id** | **str** | The Solution version unique identifier | 
+**organization_id** | **str** | The Organization unique identifier | 
+**key** | **str** | The Solution key which groups Solution versions | 
+**name** | **str** | The Solution name | 
+**description** | **str** | The Solution description | [optional] 
+**repository** | **str** | The registry repository containing the image | 
+**always_pull** | **bool** | Set to true if the runtemplate wants to always pull the image | [optional] [default to False]
+**version** | **str** | The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag | 
+**create_info** | [**SolutionEditInfo**](SolutionEditInfo.md) | The details of the Solution creation | 
+**update_info** | [**SolutionEditInfo**](SolutionEditInfo.md) | The details of the Solution last update | 
+**sdk_version** | **str** | The full SDK version used to build this solution, if available | [optional] 
+**url** | **str** | An optional URL link to solution page | [optional] 
+**tags** | **List[str]** | The list of tags | [optional] 
+**parameters** | [**List[RunTemplateParameter]**](RunTemplateParameter.md) | The list of Run Template Parameters | 
+**parameter_groups** | [**List[RunTemplateParameterGroup]**](RunTemplateParameterGroup.md) | The list of parameters groups for the Run Templates | 
+**run_templates** | [**List[RunTemplate]**](RunTemplate.md) | List of Run Templates | [default to []]
+**security** | [**SolutionSecurity**](SolutionSecurity.md) |  | 
 
 ## Example
 

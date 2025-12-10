@@ -35,7 +35,7 @@ class RunnerUpdateRequest(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="the list of tags")
     run_template_id: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the Solution Run Template Id associated with this Runner", alias="runTemplateId")
     dataset_list: Optional[List[StrictStr]] = Field(default=None, description="the list of Dataset Id associated to this Runner Run Template", alias="datasetList")
-    run_sizing: Optional[RunnerResourceSizing] = Field(default=None, alias="runSizing")
+    run_sizing: Optional[RunnerResourceSizing] = Field(default=None, description="definition of resources needed for the runner run", alias="runSizing")
     parameters_values: Optional[List[RunnerRunTemplateParameterValue]] = Field(default=None, description="the list of Solution Run Template parameters values", alias="parametersValues")
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
     solution_name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="the Solution name", alias="solutionName")

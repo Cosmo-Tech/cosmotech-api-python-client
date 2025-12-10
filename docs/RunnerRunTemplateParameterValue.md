@@ -7,7 +7,7 @@ the value of a Solution Run Template parameter for a Runner
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **parameter_id** | **str** | the parameter Id | 
-**var_type** | **str** | the parameter value type | [optional] [readonly] 
+**var_type** | **str** | the parameter value type | [optional] 
 **value** | **str** | the parameter value | 
 **is_inherited** | **bool** | whether or not the value is inherited from parent or has been changed | [optional] 
 
