@@ -1,6 +1,6 @@
 # RunTemplateResourceSizing
 
-a description object for resource requests and limits (default same configuration as basic sizing)
+A description object for resource requests and limits
 
 ## Properties
 
