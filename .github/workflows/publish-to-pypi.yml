@@ -20,6 +20,7 @@ jobs:
       run: |
         echo Changing version in setup.py to ${{ steps.get_version.outputs.VERSION }}
         sed -i 's/VERSION = ".*"/VERSION = "${{ steps.get_version.outputs.VERSION }}"/g' setup.py
+        sed -i 's/version = ".*"/version = "${{ steps.get_version.outputs.VERSION }}"/g' pyproject.toml
     - name: Set up Python 3.9
       uses: actions/setup-python@v1
       with:
