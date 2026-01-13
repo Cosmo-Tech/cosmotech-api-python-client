@@ -1,6 +1,6 @@
 # RunTemplateResourceSizing
 
-A description object for resource requests and limits
+A description object for resource requests and limits Values must follow the Kubernetes resource requirements/limits syntax:  See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes 
 
 ## Properties
 
