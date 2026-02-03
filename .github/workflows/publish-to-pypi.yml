@@ -21,6 +21,8 @@ jobs:
         echo Changing version in setup.py to ${{ steps.get_version.outputs.VERSION }}
         sed -i 's/VERSION = ".*"/VERSION = "${{ steps.get_version.outputs.VERSION }}"/g' setup.py
         sed -i 's/version = ".*"/version = "${{ steps.get_version.outputs.VERSION }}"/g' pyproject.toml
+        sed -i 's#docs/#https://github.com/Cosmo-Tech/cosmotech-api-python-client/tree/${{ steps.get_version.outputs.VERSION }}/docs/#g' README.md
+        sed -i '/All URIs are relative/d' README.md
     - name: Set up Python 3.10
       uses: actions/setup-python@v1
       with:
