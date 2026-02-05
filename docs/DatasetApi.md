@@ -32,6 +32,8 @@ Method | HTTP request | Description
 
 Create a Dataset
 
+Create a new dataset in the workspace. The dataset is initialized with specified parts (can be empty). The dataset can also be populated through dataset parts.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -195,6 +197,8 @@ Name | Type | Description  | Notes
 
 Create a data part of a Dataset
 
+Create a new data part within a dataset. Specify type as 'File' for file storage or 'DB' for database storage. Returns the created part.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -280,7 +284,7 @@ Name | Type | Description  | Notes
 
 Delete a Dataset
 
-Delete a dataset
+Permanently delete a dataset and all its data parts. This operation cannot be undone.
 
 ### Example
 
@@ -357,6 +361,8 @@ void (empty response body)
 > delete_dataset_access_control(organization_id, workspace_id, dataset_id, identity_id)
 
 Remove the specified access from the given Dataset
+
+Remove a user or group's access to a dataset. Cannot remove the last administrator - at least one admin must remain.
 
 ### Example
 
@@ -515,6 +521,8 @@ void (empty response body)
 
 Download data from a dataset part
 
+Download the file content from a dataset part. Returns the file as an application/octet-stream.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -595,7 +603,7 @@ Name | Type | Description  | Notes
 
 Retrieve a Dataset
 
-Retrieve a dataset
+Retrieve complete information about a specific dataset including dataset parts.
 
 ### Example
 
@@ -837,6 +845,8 @@ Name | Type | Description  | Notes
 
 Retrieve all dataset parts of a Dataset
 
+Retrieve all data parts associated with a dataset.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -997,7 +1007,7 @@ Name | Type | Description  | Notes
 
 Retrieve a list of defined Dataset
 
-List all datasets
+Retrieve a paginated list of all datasets in the specified workspace. Supports pagination via 'page' and 'size' query parameters. Returns datasets based on user permissions.
 
 ### Example
 
@@ -1079,6 +1089,8 @@ Name | Type | Description  | Notes
 > bytearray query_data(organization_id, workspace_id, dataset_id, dataset_part_id, selects=selects, sums=sums, avgs=avgs, counts=counts, mins=mins, maxs=maxs, offset=offset, limit=limit, group_bys=group_bys, order_bys=order_bys)
 
 Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
+
+Execute a query against a dataset part. Results are returned as plain-text CSV. Only available for parts with type=DB.
 
 ### Example
 
@@ -1438,7 +1450,7 @@ Name | Type | Description  | Notes
 
 Update a Dataset
 
-Update a dataset
+Update dataset information and return the updated dataset.
 
 ### Example
 

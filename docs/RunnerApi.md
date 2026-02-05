@@ -26,6 +26,8 @@ Method | HTTP request | Description
 
 Create a new Runner
 
+Create a new runner for executing simulations. Use parentId to create a child runner that inherits configuration from a parent.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -104,6 +106,8 @@ Name | Type | Description  | Notes
 > RunnerAccessControl create_runner_access_control(organization_id, workspace_id, runner_id, runner_access_control)
 
 Add a control access to the Runner
+
+Grant access to a runner for a user or group. Valid roles: viewer, editor, validator (can validate runs), admin.
 
 ### Example
 
@@ -184,6 +188,8 @@ Name | Type | Description  | Notes
 > delete_runner(organization_id, workspace_id, runner_id)
 
 Delete a runner
+
+Delete a runner. Cannot delete while runs are in progress. Note: Child runners that reference this runner are not deleted automatically.
 
 ### Example
 
@@ -336,6 +342,8 @@ void (empty response body)
 > Runner get_runner(organization_id, workspace_id, runner_id)
 
 Get the details of a runner
+
+Retrieve detailed information about a runner.
 
 ### Example
 
@@ -728,6 +736,8 @@ Name | Type | Description  | Notes
 
 List all Runners
 
+Retrieve a paginated list of all runners in a workspace.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -807,6 +817,8 @@ Name | Type | Description  | Notes
 
 Start a run with runner parameters
 
+Start a new simulation run using the runner's current configuration. Returns the run Id. The run executes asynchronously - use the run status endpoint to monitor progress
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -884,6 +896,8 @@ Name | Type | Description  | Notes
 > stop_run(organization_id, workspace_id, runner_id)
 
 Stop the last run
+
+Stop the currently executing run for this runner. The stop operation is asynchronous - the run may continue briefly before stopping.
 
 ### Example
 

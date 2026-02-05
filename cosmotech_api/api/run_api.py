@@ -365,6 +365,7 @@ class RunApi:
     ) -> Run:
         """Get the details of a run
 
+        Retrieve detailed information about a specific run.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -444,6 +445,7 @@ class RunApi:
     ) -> ApiResponse[Run]:
         """Get the details of a run
 
+        Retrieve detailed information about a specific run.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -523,6 +525,7 @@ class RunApi:
     ) -> RESTResponseType:
         """Get the details of a run
 
+        Retrieve detailed information about a specific run.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -672,6 +675,7 @@ class RunApi:
     ) -> str:
         """get the logs for the Run
 
+        Retrieve execution logs for a run as plain text. Logs are aggregated from all containers. May be truncated for long-running simulations.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -750,6 +754,7 @@ class RunApi:
     ) -> ApiResponse[str]:
         """get the logs for the Run
 
+        Retrieve execution logs for a run as plain text. Logs are aggregated from all containers. May be truncated for long-running simulations.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -828,6 +833,7 @@ class RunApi:
     ) -> RESTResponseType:
         """get the logs for the Run
 
+        Retrieve execution logs for a run as plain text. Logs are aggregated from all containers. May be truncated for long-running simulations.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -975,6 +981,7 @@ class RunApi:
     ) -> RunStatus:
         """get the status for the Run
 
+        Retrieve detailed execution status of a run.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1053,6 +1060,7 @@ class RunApi:
     ) -> ApiResponse[RunStatus]:
         """get the status for the Run
 
+        Retrieve detailed execution status of a run.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1131,6 +1139,7 @@ class RunApi:
     ) -> RESTResponseType:
         """get the status for the Run
 
+        Retrieve detailed execution status of a run.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1280,6 +1289,7 @@ class RunApi:
     ) -> List[Run]:
         """get the list of Runs for the Runner
 
+        Retrieve a paginated list of all runs for a specific runner.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1362,6 +1372,7 @@ class RunApi:
     ) -> ApiResponse[List[Run]]:
         """get the list of Runs for the Runner
 
+        Retrieve a paginated list of all runs for a specific runner.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1444,6 +1455,7 @@ class RunApi:
     ) -> RESTResponseType:
         """get the list of Runs for the Runner
 
+        Retrieve a paginated list of all runs for a specific runner.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str

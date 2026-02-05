@@ -25,6 +25,8 @@ Method | HTTP request | Description
 
 Create a new organization
 
+Create a new organization.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -53,7 +55,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.OrganizationApi(api_client)
-    organization_create_request = cosmotech_api.OrganizationCreateRequest() # OrganizationCreateRequest | The Organization to create
+    organization_create_request = cosmotech_api.OrganizationCreateRequest() # OrganizationCreateRequest | 
 
     try:
         # Create a new organization
@@ -71,7 +73,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_create_request** | [**OrganizationCreateRequest**](OrganizationCreateRequest.md)| The Organization to create | 
+ **organization_create_request** | [**OrganizationCreateRequest**](OrganizationCreateRequest.md)|  | 
 
 ### Return type
 
@@ -99,6 +101,8 @@ Name | Type | Description  | Notes
 > OrganizationAccessControl create_organization_access_control(organization_id, organization_access_control)
 
 Add a control access to the Organization
+
+Grant access to an organization for a user or group.
 
 ### Example
 
@@ -175,6 +179,8 @@ Name | Type | Description  | Notes
 > delete_organization(organization_id)
 
 Delete an organization
+
+Permanently delete an organization. This operation cannot be undone.
 
 ### Example
 
@@ -319,6 +325,8 @@ void (empty response body)
 > Organization get_organization(organization_id)
 
 Get the details of an Organization
+
+Retrieve detailed information about an organization.
 
 ### Example
 
@@ -690,6 +698,8 @@ Name | Type | Description  | Notes
 > List[Organization] list_organizations(page=page, size=size)
 
 List all Organizations
+
+Retrieve a paginated list of all organizations the authenticated user has permission to view. Use 'page' and 'size' query parameters for pagination.
 
 ### Example
 

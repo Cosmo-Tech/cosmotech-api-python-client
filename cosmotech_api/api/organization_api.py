@@ -49,7 +49,7 @@ class OrganizationApi:
     @validate_call
     def create_organization(
         self,
-        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="The Organization to create")],
+        organization_create_request: OrganizationCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,8 +65,9 @@ class OrganizationApi:
     ) -> Organization:
         """Create a new organization
 
+        Create a new organization.
 
-        :param organization_create_request: The Organization to create (required)
+        :param organization_create_request: (required)
         :type organization_create_request: OrganizationCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -116,7 +117,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_with_http_info(
         self,
-        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="The Organization to create")],
+        organization_create_request: OrganizationCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,8 +133,9 @@ class OrganizationApi:
     ) -> ApiResponse[Organization]:
         """Create a new organization
 
+        Create a new organization.
 
-        :param organization_create_request: The Organization to create (required)
+        :param organization_create_request: (required)
         :type organization_create_request: OrganizationCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -183,7 +185,7 @@ class OrganizationApi:
     @validate_call
     def create_organization_without_preload_content(
         self,
-        organization_create_request: Annotated[OrganizationCreateRequest, Field(description="The Organization to create")],
+        organization_create_request: OrganizationCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -199,8 +201,9 @@ class OrganizationApi:
     ) -> RESTResponseType:
         """Create a new organization
 
+        Create a new organization.
 
-        :param organization_create_request: The Organization to create (required)
+        :param organization_create_request: (required)
         :type organization_create_request: OrganizationCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -342,6 +345,7 @@ class OrganizationApi:
     ) -> OrganizationAccessControl:
         """Add a control access to the Organization
 
+        Grant access to an organization for a user or group.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -413,6 +417,7 @@ class OrganizationApi:
     ) -> ApiResponse[OrganizationAccessControl]:
         """Add a control access to the Organization
 
+        Grant access to an organization for a user or group.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -484,6 +489,7 @@ class OrganizationApi:
     ) -> RESTResponseType:
         """Add a control access to the Organization
 
+        Grant access to an organization for a user or group.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -632,6 +638,7 @@ class OrganizationApi:
     ) -> None:
         """Delete an organization
 
+        Permanently delete an organization. This operation cannot be undone.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -699,6 +706,7 @@ class OrganizationApi:
     ) -> ApiResponse[None]:
         """Delete an organization
 
+        Permanently delete an organization. This operation cannot be undone.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -766,6 +774,7 @@ class OrganizationApi:
     ) -> RESTResponseType:
         """Delete an organization
 
+        Permanently delete an organization. This operation cannot be undone.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1155,6 +1164,7 @@ class OrganizationApi:
     ) -> Organization:
         """Get the details of an Organization
 
+        Retrieve detailed information about an organization.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1222,6 +1232,7 @@ class OrganizationApi:
     ) -> ApiResponse[Organization]:
         """Get the details of an Organization
 
+        Retrieve detailed information about an organization.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1289,6 +1300,7 @@ class OrganizationApi:
     ) -> RESTResponseType:
         """Get the details of an Organization
 
+        Retrieve detailed information about an organization.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2493,6 +2505,7 @@ class OrganizationApi:
     ) -> List[Organization]:
         """List all Organizations
 
+        Retrieve a paginated list of all organizations the authenticated user has permission to view. Use 'page' and 'size' query parameters for pagination.
 
         :param page: Page number to query (first page is at index 0)
         :type page: int
@@ -2563,6 +2576,7 @@ class OrganizationApi:
     ) -> ApiResponse[List[Organization]]:
         """List all Organizations
 
+        Retrieve a paginated list of all organizations the authenticated user has permission to view. Use 'page' and 'size' query parameters for pagination.
 
         :param page: Page number to query (first page is at index 0)
         :type page: int
@@ -2633,6 +2647,7 @@ class OrganizationApi:
     ) -> RESTResponseType:
         """List all Organizations
 
+        Retrieve a paginated list of all organizations the authenticated user has permission to view. Use 'page' and 'size' query parameters for pagination.
 
         :param page: Page number to query (first page is at index 0)
         :type page: int

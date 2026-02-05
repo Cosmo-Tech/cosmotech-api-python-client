@@ -94,6 +94,8 @@ void (empty response body)
 
 Get the details of a run
 
+Retrieve detailed information about a specific run.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -174,6 +176,8 @@ Name | Type | Description  | Notes
 
 get the logs for the Run
 
+Retrieve execution logs for a run as plain text. Logs are aggregated from all containers. May be truncated for long-running simulations.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -251,6 +255,8 @@ Name | Type | Description  | Notes
 > RunStatus get_run_status(organization_id, workspace_id, runner_id, run_id)
 
 get the status for the Run
+
+Retrieve detailed execution status of a run.
 
 ### Example
 
@@ -330,6 +336,8 @@ Name | Type | Description  | Notes
 > List[Run] list_runs(organization_id, workspace_id, runner_id, page=page, size=size)
 
 get the list of Runs for the Runner
+
+Retrieve a paginated list of all runs for a specific runner.
 
 ### Example
 

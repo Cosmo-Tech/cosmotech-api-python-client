@@ -74,6 +74,7 @@ class SolutionApi:
     ) -> Solution:
         """Create a new solution
 
+        Create a new solution with optional run templates and parameter definitions.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -145,6 +146,7 @@ class SolutionApi:
     ) -> ApiResponse[Solution]:
         """Create a new solution
 
+        Create a new solution with optional run templates and parameter definitions.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -216,6 +218,7 @@ class SolutionApi:
     ) -> RESTResponseType:
         """Create a new solution
 
+        Create a new solution with optional run templates and parameter definitions.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -366,6 +369,7 @@ class SolutionApi:
     ) -> SolutionAccessControl:
         """Create solution access control
 
+        Grant access to a solution for a user or group.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -441,6 +445,7 @@ class SolutionApi:
     ) -> ApiResponse[SolutionAccessControl]:
         """Create solution access control
 
+        Grant access to a solution for a user or group.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -516,6 +521,7 @@ class SolutionApi:
     ) -> RESTResponseType:
         """Create solution access control
 
+        Grant access to a solution for a user or group.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3295,6 +3301,7 @@ class SolutionApi:
     ) -> Solution:
         """Get the details of a solution
 
+        Retrieve detailed information about a solution.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3366,6 +3373,7 @@ class SolutionApi:
     ) -> ApiResponse[Solution]:
         """Get the details of a solution
 
+        Retrieve detailed information about a solution.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3437,6 +3445,7 @@ class SolutionApi:
     ) -> RESTResponseType:
         """Get the details of a solution
 
+        Retrieve detailed information about a solution.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -5840,6 +5849,7 @@ class SolutionApi:
     ) -> List[Solution]:
         """List all Solutions
 
+        Retrieve a paginated list of all solutions in an organization that the user has permission to view.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -5914,6 +5924,7 @@ class SolutionApi:
     ) -> ApiResponse[List[Solution]]:
         """List all Solutions
 
+        Retrieve a paginated list of all solutions in an organization that the user has permission to view.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -5988,6 +5999,7 @@ class SolutionApi:
     ) -> RESTResponseType:
         """List all Solutions
 
+        Retrieve a paginated list of all solutions in an organization that the user has permission to view.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str

@@ -55,6 +55,7 @@ class MetaApi:
     ) -> AboutInfo:
         """Get various information about the API
 
+        Retrieve API version information and build details.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -117,6 +118,7 @@ class MetaApi:
     ) -> ApiResponse[AboutInfo]:
         """Get various information about the API
 
+        Retrieve API version information and build details.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -179,6 +181,7 @@ class MetaApi:
     ) -> RESTResponseType:
         """Get various information about the API
 
+        Retrieve API version information and build details.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

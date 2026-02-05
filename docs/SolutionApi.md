@@ -38,6 +38,8 @@ Method | HTTP request | Description
 
 Create a new solution
 
+Create a new solution with optional run templates and parameter definitions.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -114,6 +116,8 @@ Name | Type | Description  | Notes
 > SolutionAccessControl create_solution_access_control(organization_id, solution_id, solution_access_control)
 
 Create solution access control
+
+Grant access to a solution for a user or group.
 
 ### Example
 
@@ -884,6 +888,8 @@ Name | Type | Description  | Notes
 
 Get the details of a solution
 
+Retrieve detailed information about a solution.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -1574,6 +1580,8 @@ Name | Type | Description  | Notes
 > List[Solution] list_solutions(organization_id, page=page, size=size)
 
 List all Solutions
+
+Retrieve a paginated list of all solutions in an organization that the user has permission to view.
 
 ### Example
 

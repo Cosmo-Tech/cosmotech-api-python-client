@@ -67,6 +67,7 @@ class RunnerApi:
     ) -> Runner:
         """Create a new Runner
 
+        Create a new runner for executing simulations. Use parentId to create a child runner that inherits configuration from a parent.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -142,6 +143,7 @@ class RunnerApi:
     ) -> ApiResponse[Runner]:
         """Create a new Runner
 
+        Create a new runner for executing simulations. Use parentId to create a child runner that inherits configuration from a parent.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -217,6 +219,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """Create a new Runner
 
+        Create a new runner for executing simulations. Use parentId to create a child runner that inherits configuration from a parent.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -374,6 +377,7 @@ class RunnerApi:
     ) -> RunnerAccessControl:
         """Add a control access to the Runner
 
+        Grant access to a runner for a user or group. Valid roles: viewer, editor, validator (can validate runs), admin.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -453,6 +457,7 @@ class RunnerApi:
     ) -> ApiResponse[RunnerAccessControl]:
         """Add a control access to the Runner
 
+        Grant access to a runner for a user or group. Valid roles: viewer, editor, validator (can validate runs), admin.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -532,6 +537,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """Add a control access to the Runner
 
+        Grant access to a runner for a user or group. Valid roles: viewer, editor, validator (can validate runs), admin.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -694,6 +700,7 @@ class RunnerApi:
     ) -> None:
         """Delete a runner
 
+        Delete a runner. Cannot delete while runs are in progress. Note: Child runners that reference this runner are not deleted automatically.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -769,6 +776,7 @@ class RunnerApi:
     ) -> ApiResponse[None]:
         """Delete a runner
 
+        Delete a runner. Cannot delete while runs are in progress. Note: Child runners that reference this runner are not deleted automatically.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -844,6 +852,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """Delete a runner
 
+        Delete a runner. Cannot delete while runs are in progress. Note: Child runners that reference this runner are not deleted automatically.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1277,6 +1286,7 @@ class RunnerApi:
     ) -> Runner:
         """Get the details of a runner
 
+        Retrieve detailed information about a runner.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1352,6 +1362,7 @@ class RunnerApi:
     ) -> ApiResponse[Runner]:
         """Get the details of a runner
 
+        Retrieve detailed information about a runner.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1427,6 +1438,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """Get the details of a runner
 
+        Retrieve detailed information about a runner.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2765,6 +2777,7 @@ class RunnerApi:
     ) -> List[Runner]:
         """List all Runners
 
+        Retrieve a paginated list of all runners in a workspace.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2843,6 +2856,7 @@ class RunnerApi:
     ) -> ApiResponse[List[Runner]]:
         """List all Runners
 
+        Retrieve a paginated list of all runners in a workspace.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2921,6 +2935,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """List all Runners
 
+        Retrieve a paginated list of all runners in a workspace.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3072,6 +3087,7 @@ class RunnerApi:
     ) -> CreatedRun:
         """Start a run with runner parameters
 
+        Start a new simulation run using the runner's current configuration. Returns the run Id. The run executes asynchronously - use the run status endpoint to monitor progress
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3147,6 +3163,7 @@ class RunnerApi:
     ) -> ApiResponse[CreatedRun]:
         """Start a run with runner parameters
 
+        Start a new simulation run using the runner's current configuration. Returns the run Id. The run executes asynchronously - use the run status endpoint to monitor progress
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3222,6 +3239,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """Start a run with runner parameters
 
+        Start a new simulation run using the runner's current configuration. Returns the run Id. The run executes asynchronously - use the run status endpoint to monitor progress
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3364,6 +3382,7 @@ class RunnerApi:
     ) -> None:
         """Stop the last run
 
+        Stop the currently executing run for this runner. The stop operation is asynchronous - the run may continue briefly before stopping.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3439,6 +3458,7 @@ class RunnerApi:
     ) -> ApiResponse[None]:
         """Stop the last run
 
+        Stop the currently executing run for this runner. The stop operation is asynchronous - the run may continue briefly before stopping.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3514,6 +3534,7 @@ class RunnerApi:
     ) -> RESTResponseType:
         """Stop the last run
 
+        Stop the currently executing run for this runner. The stop operation is asynchronous - the run may continue briefly before stopping.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str

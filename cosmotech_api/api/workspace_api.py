@@ -66,6 +66,7 @@ class WorkspaceApi:
     ) -> Workspace:
         """Create a new workspace
 
+        Create a new workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -137,6 +138,7 @@ class WorkspaceApi:
     ) -> ApiResponse[Workspace]:
         """Create a new workspace
 
+        Create a new workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -208,6 +210,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Create a new workspace
 
+        Create a new workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -358,6 +361,7 @@ class WorkspaceApi:
     ) -> WorkspaceAccessControl:
         """Add a control access to the Workspace
 
+        Grant access to a workspace for a user or group.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -433,6 +437,7 @@ class WorkspaceApi:
     ) -> ApiResponse[WorkspaceAccessControl]:
         """Add a control access to the Workspace
 
+        Grant access to a workspace for a user or group.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -508,6 +513,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Add a control access to the Workspace
 
+        Grant access to a workspace for a user or group.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -666,6 +672,7 @@ class WorkspaceApi:
     ) -> WorkspaceFile:
         """Upload a file for the Workspace
 
+        Upload a file to workspace storage. Use 'destination' to specify path, 'overwrite' to replace existing files.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -749,6 +756,7 @@ class WorkspaceApi:
     ) -> ApiResponse[WorkspaceFile]:
         """Upload a file for the Workspace
 
+        Upload a file to workspace storage. Use 'destination' to specify path, 'overwrite' to replace existing files.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -832,6 +840,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Upload a file for the Workspace
 
+        Upload a file to workspace storage. Use 'destination' to specify path, 'overwrite' to replace existing files.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -998,6 +1007,7 @@ class WorkspaceApi:
     ) -> None:
         """Delete a workspace
 
+        Permanently delete a workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1070,6 +1080,7 @@ class WorkspaceApi:
     ) -> ApiResponse[None]:
         """Delete a workspace
 
+        Permanently delete a workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1142,6 +1153,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Delete a workspace
 
+        Permanently delete a workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1271,6 +1283,7 @@ class WorkspaceApi:
     ) -> None:
         """Remove the specified access from the given Workspace
 
+        Remove a user's access to a workspace. Cannot remove the last administrator.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1346,6 +1359,7 @@ class WorkspaceApi:
     ) -> ApiResponse[None]:
         """Remove the specified access from the given Workspace
 
+        Remove a user's access to a workspace. Cannot remove the last administrator.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -1421,6 +1435,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Remove the specified access from the given Workspace
 
+        Remove a user's access to a workspace. Cannot remove the last administrator.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2109,6 +2124,7 @@ class WorkspaceApi:
     ) -> Workspace:
         """Get the details of a workspace
 
+        Retrieve detailed information about a workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2180,6 +2196,7 @@ class WorkspaceApi:
     ) -> ApiResponse[Workspace]:
         """Get the details of a workspace
 
+        Retrieve detailed information about a workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2251,6 +2268,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Get the details of a workspace
 
+        Retrieve detailed information about a workspace.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2679,6 +2697,7 @@ class WorkspaceApi:
     ) -> bytearray:
         """Download the Workspace File specified
 
+        Download a specific file from workspace storage. Returns file as binary stream.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2754,6 +2773,7 @@ class WorkspaceApi:
     ) -> ApiResponse[bytearray]:
         """Download the Workspace File specified
 
+        Download a specific file from workspace storage. Returns file as binary stream.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -2829,6 +2849,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """Download the Workspace File specified
 
+        Download a specific file from workspace storage. Returns file as binary stream.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -4092,6 +4113,7 @@ class WorkspaceApi:
     ) -> List[Workspace]:
         """List all Workspaces
 
+        Retrieve a paginated list of all workspaces in an organization that the user has permission to view.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -4166,6 +4188,7 @@ class WorkspaceApi:
     ) -> ApiResponse[List[Workspace]]:
         """List all Workspaces
 
+        Retrieve a paginated list of all workspaces in an organization that the user has permission to view.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str
@@ -4240,6 +4263,7 @@ class WorkspaceApi:
     ) -> RESTResponseType:
         """List all Workspaces
 
+        Retrieve a paginated list of all workspaces in an organization that the user has permission to view.
 
         :param organization_id: The Organization identifier (required)
         :type organization_id: str

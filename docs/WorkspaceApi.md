@@ -29,6 +29,8 @@ Method | HTTP request | Description
 
 Create a new workspace
 
+Create a new workspace.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -105,6 +107,8 @@ Name | Type | Description  | Notes
 > WorkspaceAccessControl create_workspace_access_control(organization_id, workspace_id, workspace_access_control)
 
 Add a control access to the Workspace
+
+Grant access to a workspace for a user or group.
 
 ### Example
 
@@ -183,6 +187,8 @@ Name | Type | Description  | Notes
 > WorkspaceFile create_workspace_file(organization_id, workspace_id, file, overwrite=overwrite, destination=destination)
 
 Upload a file for the Workspace
+
+Upload a file to workspace storage. Use 'destination' to specify path, 'overwrite' to replace existing files.
 
 ### Example
 
@@ -266,6 +272,8 @@ Name | Type | Description  | Notes
 
 Delete a workspace
 
+Permanently delete a workspace.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -339,6 +347,8 @@ void (empty response body)
 > delete_workspace_access_control(organization_id, workspace_id, identity_id)
 
 Remove the specified access from the given Workspace
+
+Remove a user's access to a workspace. Cannot remove the last administrator.
 
 ### Example
 
@@ -563,6 +573,8 @@ void (empty response body)
 
 Get the details of a workspace
 
+Retrieve detailed information about a workspace.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
@@ -716,6 +728,8 @@ Name | Type | Description  | Notes
 > bytearray get_workspace_file(organization_id, workspace_id, file_name)
 
 Download the Workspace File specified
+
+Download a specific file from workspace storage. Returns file as binary stream.
 
 ### Example
 
@@ -1096,6 +1110,8 @@ Name | Type | Description  | Notes
 > List[Workspace] list_workspaces(organization_id, page=page, size=size)
 
 List all Workspaces
+
+Retrieve a paginated list of all workspaces in an organization that the user has permission to view.
 
 ### Example
 

@@ -70,6 +70,7 @@ class DatasetApi:
     ) -> Dataset:
         """Create a Dataset
 
+        Create a new dataset in the workspace. The dataset is initialized with specified parts (can be empty). The dataset can also be populated through dataset parts.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -151,6 +152,7 @@ class DatasetApi:
     ) -> ApiResponse[Dataset]:
         """Create a Dataset
 
+        Create a new dataset in the workspace. The dataset is initialized with specified parts (can be empty). The dataset can also be populated through dataset parts.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -232,6 +234,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Create a Dataset
 
+        Create a new dataset in the workspace. The dataset is initialized with specified parts (can be empty). The dataset can also be populated through dataset parts.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -719,6 +722,7 @@ class DatasetApi:
     ) -> DatasetPart:
         """Create a data part of a Dataset
 
+        Create a new data part within a dataset. Specify type as 'File' for file storage or 'DB' for database storage. Returns the created part.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -804,6 +808,7 @@ class DatasetApi:
     ) -> ApiResponse[DatasetPart]:
         """Create a data part of a Dataset
 
+        Create a new data part within a dataset. Specify type as 'File' for file storage or 'DB' for database storage. Returns the created part.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -889,6 +894,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Create a data part of a Dataset
 
+        Create a new data part within a dataset. Specify type as 'File' for file storage or 'DB' for database storage. Returns the created part.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1058,7 +1064,7 @@ class DatasetApi:
     ) -> None:
         """Delete a Dataset
 
-        Delete a dataset
+        Permanently delete a dataset and all its data parts. This operation cannot be undone.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1135,7 +1141,7 @@ class DatasetApi:
     ) -> ApiResponse[None]:
         """Delete a Dataset
 
-        Delete a dataset
+        Permanently delete a dataset and all its data parts. This operation cannot be undone.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1212,7 +1218,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Delete a Dataset
 
-        Delete a dataset
+        Permanently delete a dataset and all its data parts. This operation cannot be undone.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1349,6 +1355,7 @@ class DatasetApi:
     ) -> None:
         """Remove the specified access from the given Dataset
 
+        Remove a user or group's access to a dataset. Cannot remove the last administrator - at least one admin must remain.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1428,6 +1435,7 @@ class DatasetApi:
     ) -> ApiResponse[None]:
         """Remove the specified access from the given Dataset
 
+        Remove a user or group's access to a dataset. Cannot remove the last administrator - at least one admin must remain.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1507,6 +1515,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Remove the specified access from the given Dataset
 
+        Remove a user or group's access to a dataset. Cannot remove the last administrator - at least one admin must remain.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -1953,6 +1962,7 @@ class DatasetApi:
     ) -> bytearray:
         """Download data from a dataset part
 
+        Download the file content from a dataset part. Returns the file as an application/octet-stream.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2033,6 +2043,7 @@ class DatasetApi:
     ) -> ApiResponse[bytearray]:
         """Download data from a dataset part
 
+        Download the file content from a dataset part. Returns the file as an application/octet-stream.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2113,6 +2124,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Download data from a dataset part
 
+        Download the file content from a dataset part. Returns the file as an application/octet-stream.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2261,7 +2273,7 @@ class DatasetApi:
     ) -> Dataset:
         """Retrieve a Dataset
 
-        Retrieve a dataset
+        Retrieve complete information about a specific dataset including dataset parts.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2338,7 +2350,7 @@ class DatasetApi:
     ) -> ApiResponse[Dataset]:
         """Retrieve a Dataset
 
-        Retrieve a dataset
+        Retrieve complete information about a specific dataset including dataset parts.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -2415,7 +2427,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Retrieve a Dataset
 
-        Retrieve a dataset
+        Retrieve complete information about a specific dataset including dataset parts.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3178,6 +3190,7 @@ class DatasetApi:
     ) -> List[DatasetPart]:
         """Retrieve all dataset parts of a Dataset
 
+        Retrieve all data parts associated with a dataset.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3262,6 +3275,7 @@ class DatasetApi:
     ) -> ApiResponse[List[DatasetPart]]:
         """Retrieve all dataset parts of a Dataset
 
+        Retrieve all data parts associated with a dataset.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3346,6 +3360,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Retrieve all dataset parts of a Dataset
 
+        Retrieve all data parts associated with a dataset.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3798,7 +3813,7 @@ class DatasetApi:
     ) -> List[Dataset]:
         """Retrieve a list of defined Dataset
 
-        List all datasets
+        Retrieve a paginated list of all datasets in the specified workspace. Supports pagination via 'page' and 'size' query parameters. Returns datasets based on user permissions.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3879,7 +3894,7 @@ class DatasetApi:
     ) -> ApiResponse[List[Dataset]]:
         """Retrieve a list of defined Dataset
 
-        List all datasets
+        Retrieve a paginated list of all datasets in the specified workspace. Supports pagination via 'page' and 'size' query parameters. Returns datasets based on user permissions.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -3960,7 +3975,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Retrieve a list of defined Dataset
 
-        List all datasets
+        Retrieve a paginated list of all datasets in the specified workspace. Supports pagination via 'page' and 'size' query parameters. Returns datasets based on user permissions.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -4125,6 +4140,7 @@ class DatasetApi:
     ) -> bytearray:
         """Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
 
+        Execute a query against a dataset part. Results are returned as plain-text CSV. Only available for parts with type=DB.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -4247,6 +4263,7 @@ class DatasetApi:
     ) -> ApiResponse[bytearray]:
         """Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
 
+        Execute a query against a dataset part. Results are returned as plain-text CSV. Only available for parts with type=DB.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -4369,6 +4386,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
 
+        Execute a query against a dataset part. Results are returned as plain-text CSV. Only available for parts with type=DB.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -5671,7 +5689,7 @@ class DatasetApi:
     ) -> Dataset:
         """Update a Dataset
 
-        Update a dataset
+        Update dataset information and return the updated dataset.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -5757,7 +5775,7 @@ class DatasetApi:
     ) -> ApiResponse[Dataset]:
         """Update a Dataset
 
-        Update a dataset
+        Update dataset information and return the updated dataset.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str
@@ -5843,7 +5861,7 @@ class DatasetApi:
     ) -> RESTResponseType:
         """Update a Dataset
 
-        Update a dataset
+        Update dataset information and return the updated dataset.
 
         :param organization_id: the Organization identifier (required)
         :type organization_id: str

@@ -12,6 +12,8 @@ Method | HTTP request | Description
 
 Get various information about the API
 
+Retrieve API version information and build details.
+
 ### Example
 
 * OAuth Authentication (oAuth2AuthCode):
