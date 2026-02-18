@@ -50,7 +50,7 @@ class TestSolution(unittest.TestCase):
                 update_info = cosmotech_api.models.solution_edit_info.SolutionEditInfo(
                     timestamp = 56, 
                     user_id = '', ),
-                sdk_version = '11.3.0-39929.27365ede',
+                sdk_version = '12.0.0-40296.1c163396',
                 url = 'https://github.com/Cosmo-Tech/brewery-solution',
                 tags = ["brewery","optimization"],
                 parameters = [
