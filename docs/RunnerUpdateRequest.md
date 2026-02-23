@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
 **solution_name** | **str** | the Solution name | [optional] 
 **run_template_name** | **str** | the Solution Run Template name associated with this Runner | [optional] 
-**validation_status** | [**RunnerValidationStatus**](RunnerValidationStatus.md) |  | [optional] 
 
 ## Example
 
