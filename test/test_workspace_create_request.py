@@ -50,7 +50,6 @@ class TestWorkspaceCreateRequest(unittest.TestCase):
                         'key' : ''
                         }, ),
                 additional_data = { },
-                dataset_copy = True,
                 security = cosmotech_api.models.workspace_security.WorkspaceSecurity(
                     default = '', 
                     access_control_list = [

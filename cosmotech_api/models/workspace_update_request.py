@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
@@ -35,8 +35,7 @@ class WorkspaceUpdateRequest(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     solution: Optional[WorkspaceSolution] = None
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    dataset_copy: Optional[StrictBool] = Field(default=None, description="Activate the copy of dataset on scenario creation", alias="datasetCopy")
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "tags", "solution", "additionalData", "datasetCopy"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "tags", "solution", "additionalData"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,8 +96,7 @@ class WorkspaceUpdateRequest(BaseModel):
             "description": obj.get("description"),
             "tags": obj.get("tags"),
             "solution": WorkspaceSolution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,
-            "additionalData": obj.get("additionalData"),
-            "datasetCopy": obj.get("datasetCopy")
+            "additionalData": obj.get("additionalData")
         })
         return _obj
 

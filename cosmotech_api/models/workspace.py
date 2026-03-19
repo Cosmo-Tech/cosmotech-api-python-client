@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.workspace_edit_info import WorkspaceEditInfo
@@ -42,9 +42,8 @@ class Workspace(BaseModel):
     update_info: WorkspaceEditInfo = Field(description="The details of the Workspace last update", alias="updateInfo")
     solution: WorkspaceSolution
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    dataset_copy: Optional[StrictBool] = Field(default=True, description="Activate the copy of dataset on scenario creation, meaning that each scenario created in this workspace will make this copy. when false, scenario use directly the dataset specified.", alias="datasetCopy")
     security: WorkspaceSecurity
-    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "version", "tags", "createInfo", "updateInfo", "solution", "additionalData", "datasetCopy", "security"]
+    __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "version", "tags", "createInfo", "updateInfo", "solution", "additionalData", "security"]
 
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
@@ -138,7 +137,6 @@ class Workspace(BaseModel):
             "updateInfo": WorkspaceEditInfo.from_dict(obj["updateInfo"]) if obj.get("updateInfo") is not None else None,
             "solution": WorkspaceSolution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,
             "additionalData": obj.get("additionalData"),
-            "datasetCopy": obj.get("datasetCopy") if obj.get("datasetCopy") is not None else True,
             "security": WorkspaceSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj

@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **update_info** | [**WorkspaceEditInfo**](WorkspaceEditInfo.md) | The details of the Workspace last update | 
 **solution** | [**WorkspaceSolution**](WorkspaceSolution.md) |  | 
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
-**dataset_copy** | **bool** | Activate the copy of dataset on scenario creation, meaning that each scenario created in this workspace will make this copy. when false, scenario use directly the dataset specified. | [optional] [default to True]
 **security** | [**WorkspaceSecurity**](WorkspaceSecurity.md) |  | 
 
 ## Example

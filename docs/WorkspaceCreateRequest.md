@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **tags** | **List[str]** | The list of tags | [optional] 
 **solution** | [**WorkspaceSolution**](WorkspaceSolution.md) |  | 
 **additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
-**dataset_copy** | **bool** | Activate the copy of dataset on scenario creation | [optional] [default to True]
 **security** | [**WorkspaceSecurity**](WorkspaceSecurity.md) |  | [optional] 
 
 ## Example

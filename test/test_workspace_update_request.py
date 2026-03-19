@@ -48,8 +48,7 @@ class TestWorkspaceUpdateRequest(unittest.TestCase):
                     default_parameter_values = {
                         'key' : ''
                         }, ),
-                additional_data = { },
-                dataset_copy = True
+                additional_data = { }
             )
         else:
             return WorkspaceUpdateRequest(

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
@@ -37,9 +37,8 @@ class WorkspaceCreateRequest(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     solution: WorkspaceSolution
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
-    dataset_copy: Optional[StrictBool] = Field(default=True, description="Activate the copy of dataset on scenario creation", alias="datasetCopy")
     security: Optional[WorkspaceSecurity] = None
-    __properties: ClassVar[List[str]] = ["key", "name", "description", "version", "tags", "solution", "additionalData", "datasetCopy", "security"]
+    __properties: ClassVar[List[str]] = ["key", "name", "description", "version", "tags", "solution", "additionalData", "security"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -105,7 +104,6 @@ class WorkspaceCreateRequest(BaseModel):
             "tags": obj.get("tags"),
             "solution": WorkspaceSolution.from_dict(obj["solution"]) if obj.get("solution") is not None else None,
             "additionalData": obj.get("additionalData"),
-            "datasetCopy": obj.get("datasetCopy") if obj.get("datasetCopy") is not None else True,
             "security": WorkspaceSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
         return _obj
