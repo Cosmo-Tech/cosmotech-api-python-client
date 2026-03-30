@@ -1,12 +1,11 @@
 # cosmotech_api.ConnectorApi
 
-All URIs are relative to *https://dev.api.cosmotech.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**find_all_connectors**](ConnectorApi.md#find_all_connectors) | **GET** /connectors | List all Connectors
 [**find_connector_by_id**](ConnectorApi.md#find_connector_by_id) | **GET** /connectors/{connector_id} | Get the details of a connector
-[**find_connector_by_name**](ConnectorApi.md#find_connector_by_name) | **GET** /connectors/name/{connector_name} | Get the details of a connector
 [**register_connector**](ConnectorApi.md#register_connector) | **POST** /connectors | Register a new connector
 [**unregister_connector**](ConnectorApi.md#unregister_connector) | **DELETE** /connectors/{connector_id} | Unregister a connector
 
@@ -26,10 +25,10 @@ from cosmotech_api.models.connector import Connector
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -43,7 +42,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with cosmotech_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cosmotech_api.ConnectorApi(api_client)
-    page = 56 # int | page number to query (optional)
+    page = 56 # int | page number to query (first page is at index 0) (optional)
     size = 56 # int | amount of result by page (optional)
 
     try:
@@ -62,7 +61,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| page number to query | [optional] 
+ **page** | **int**| page number to query (first page is at index 0) | [optional] 
  **size** | **int**| amount of result by page | [optional] 
 
 ### Return type
@@ -101,10 +100,10 @@ from cosmotech_api.models.connector import Connector
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -160,79 +159,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **find_connector_by_name**
-> Connector find_connector_by_name(connector_name)
-
-Get the details of a connector
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-
-```python
-import cosmotech_api
-from cosmotech_api.models.connector import Connector
-from cosmotech_api.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with cosmotech_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cosmotech_api.ConnectorApi(api_client)
-    connector_name = 'connector_name_example' # str | the Connector name
-
-    try:
-        # Get the details of a connector
-        api_response = api_instance.find_connector_by_name(connector_name)
-        print("The response of ConnectorApi->find_connector_by_name:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ConnectorApi->find_connector_by_name: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **connector_name** | **str**| the Connector name | 
-
-### Return type
-
-[**Connector**](Connector.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | the Connector details |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **register_connector**
 > Connector register_connector(connector)
 
@@ -248,10 +174,10 @@ from cosmotech_api.models.connector import Connector
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -321,10 +247,10 @@ import cosmotech_api
 from cosmotech_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://dev.api.cosmotech.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = cosmotech_api.Configuration(
-    host = "https://dev.api.cosmotech.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters

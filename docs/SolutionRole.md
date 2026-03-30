@@ -1,12 +1,12 @@
 # SolutionRole
 
-The Solution Role
+the Solution Role
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role** | **str** | The Solution Role | 
+**role** | **str** | the Solution Role | 
 
 ## Example
 
