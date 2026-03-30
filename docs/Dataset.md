@@ -1,34 +1,22 @@
 # Dataset
 
-a Dataset
+Dataset object
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Dataset unique identifier | [optional] [readonly] 
-**name** | **str** | the Dataset name | [optional] 
-**description** | **str** | the Dataset description | [optional] 
-**owner_id** | **str** | the User id which own this Dataset | [optional] [readonly] 
-**owner_name** | **str** | the name of the owner | [optional] [readonly] 
-**organization_id** | **str** | the Organization Id related to this Dataset | [optional] [readonly] 
-**parent_id** | **str** | the Dataset id which is the parent of this Dataset | [optional] 
-**linked_workspace_id_list** | **List[str]** | list of workspace linked to this dataset | [optional] 
-**twingraph_id** | **str** | the twin graph id | [optional] 
-**main** | **bool** | is this the main dataset | [optional] 
-**creation_date** | **int** | the Dataset creation date | [optional] [readonly] 
-**refresh_date** | **int** | the last time a refresh was done | [optional] [readonly] 
-**source_type** | [**DatasetSourceType**](DatasetSourceType.md) |  | [optional] 
-**source** | [**SourceInfo**](SourceInfo.md) |  | [optional] 
-**ingestion_status** | [**IngestionStatusEnum**](IngestionStatusEnum.md) |  | [optional] 
-**twincache_status** | [**TwincacheStatusEnum**](TwincacheStatusEnum.md) |  | [optional] 
-**queries** | **List[str]** | the list of queries | [optional] 
-**tags** | **List[str]** | the list of tags | [optional] 
-**connector** | [**DatasetConnector**](DatasetConnector.md) |  | [optional] 
-**fragments_ids** | **List[str]** | the list of other Datasets ids to compose as fragments | [optional] 
-**validator_id** | **str** | the validator id | [optional] 
-**compatibility** | [**List[DatasetCompatibility]**](DatasetCompatibility.md) | the list of compatible Solutions versions | [optional] 
-**security** | [**DatasetSecurity**](DatasetSecurity.md) |  | [optional] 
+**id** | **str** |  | 
+**name** | **str** |  | 
+**description** | **str** |  | [optional] 
+**organization_id** | **str** | the associated Organization Id | [readonly] 
+**workspace_id** | **str** | the associated Workspace Id | [readonly] 
+**tags** | **List[str]** | the list of tags | 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
+**parts** | [**List[DatasetPart]**](DatasetPart.md) |  | 
+**create_info** | [**DatasetEditInfo**](DatasetEditInfo.md) | The details of the Dataset creation | 
+**update_info** | [**DatasetEditInfo**](DatasetEditInfo.md) | The details of the Dataset last update | 
+**security** | [**DatasetSecurity**](DatasetSecurity.md) |  | 
 
 ## Example
 
