@@ -1,12 +1,12 @@
 # WorkspaceRole
 
-The Workspace Role
+the Workspace Role
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role** | **str** | The Workspace Role | 
+**role** | **str** | the Workspace Role | 
 
 ## Example
 

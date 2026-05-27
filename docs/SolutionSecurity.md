@@ -1,13 +1,13 @@
 # SolutionSecurity
 
-The Solution security information
+the Solution security information
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default** | **str** | The role by default | 
-**access_control_list** | [**List[SolutionAccessControl]**](SolutionAccessControl.md) | The list which can access this Solution with detailed access control information | 
+**default** | **str** | the role by default | 
+**access_control_list** | [**List[SolutionAccessControl]**](SolutionAccessControl.md) | the list which can access this Solution with detailed access control information | 
 
 ## Example
 
