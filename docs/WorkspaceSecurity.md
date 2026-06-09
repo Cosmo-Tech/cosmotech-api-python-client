@@ -1,13 +1,13 @@
 # WorkspaceSecurity
 
-the workspace security information
+The workspace security information
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default** | **str** | the role by default | 
-**access_control_list** | [**List[WorkspaceAccessControl]**](WorkspaceAccessControl.md) | the list which can access this Workspace with detailed access control information | 
+**default** | **str** | The role by default | 
+**access_control_list** | [**List[WorkspaceAccessControl]**](WorkspaceAccessControl.md) | The list which can access this Workspace with detailed access control information | 
 
 ## Example
 

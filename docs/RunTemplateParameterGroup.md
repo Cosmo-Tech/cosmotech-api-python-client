@@ -1,17 +1,16 @@
 # RunTemplateParameterGroup
 
-a Parameter Group for a Run Template
+A Parameter Group for a Run Template
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the Parameter Group id | 
-**labels** | **Dict[str, str]** | a translated label with key as ISO 639-1 code | [optional] 
-**is_table** | **bool** | does the group define a table | [optional] 
-**options** | **Dict[str, object]** | freeform options | [optional] 
-**parent_id** | **str** | the Run Template Group parent Id | [optional] 
-**parameters** | **List[str]** | an ordered list of Run Template Parameters | [optional] 
+**id** | **str** | The Parameter Group id | 
+**description** | **str** | A description of the parameter group | [optional] 
+**labels** | **Dict[str, str]** | A translated label with key as ISO 639-1 code | [optional] 
+**additional_data** | **Dict[str, object]** | Free form additional data | [optional] 
+**parameters** | **List[str]** | An ordered list of Run Template Parameters | 
 
 ## Example
 
