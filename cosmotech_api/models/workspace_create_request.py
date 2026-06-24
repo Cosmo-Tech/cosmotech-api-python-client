@@ -25,15 +25,16 @@ from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class WorkspaceCreateRequest(BaseModel):
     """
     Request object for creating a new workspace
     """ # noqa: E501
     key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Technical key for resource name convention and version grouping. Must be unique")
-    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Workspace name. This name is displayed in the sample webApp")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Workspace name. This name is displayed in the sample webApp", json_schema_extra={"examples": ["FranceOffice"]})
     description: Optional[StrictStr] = Field(default=None, description="The Workspace description")
-    version: Optional[StrictStr] = Field(default=None, description="The Workspace version MAJOR.MINOR.PATCH.")
+    version: Optional[StrictStr] = Field(default=None, description="The Workspace version MAJOR.MINOR.PATCH.", json_schema_extra={"examples": ["1.0.0"]})
     tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
     solution: WorkspaceSolution
     additional_data: Optional[Dict[str, Any]] = Field(default=None, description="Free form additional data", alias="additionalData")
@@ -41,7 +42,8 @@ class WorkspaceCreateRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["key", "name", "description", "version", "tags", "solution", "additionalData", "security"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +55,7 @@ class WorkspaceCreateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

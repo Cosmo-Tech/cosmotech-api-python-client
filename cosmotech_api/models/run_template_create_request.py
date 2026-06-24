@@ -24,12 +24,13 @@ from typing_extensions import Annotated
 from cosmotech_api.models.run_template_resource_sizing import RunTemplateResourceSizing
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class RunTemplateCreateRequest(BaseModel):
     """
     A Solution Run Template Create Request
     """ # noqa: E501
-    id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution Run Template id")
+    id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution Run Template id", json_schema_extra={"examples": ["template-123"]})
     name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Run Template name")
     labels: Optional[Dict[str, StrictStr]] = Field(default=None, description="A translated label with key as ISO 639-1 code")
     description: Optional[StrictStr] = Field(default=None, description="The Run Template description")
@@ -41,7 +42,8 @@ class RunTemplateCreateRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "name", "labels", "description", "tags", "computeSize", "runSizing", "parameterGroups", "executionTimeout"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +55,7 @@ class RunTemplateCreateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

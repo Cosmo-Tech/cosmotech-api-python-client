@@ -25,6 +25,7 @@ from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRe
 from cosmotech_api.models.dataset_security import DatasetSecurity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class DatasetCreateRequest(BaseModel):
     """
@@ -39,7 +40,8 @@ class DatasetCreateRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["name", "description", "tags", "additionalData", "parts", "security"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,8 +53,7 @@ class DatasetCreateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

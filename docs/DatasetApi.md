@@ -65,7 +65,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = 'organization_id_example' # str | the Organization identifier
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     dataset_create_request = cosmotech_api.DatasetCreateRequest() # DatasetCreateRequest | 
-    files = None # List[bytearray] | Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  (optional)
+    files = None # List[bytes] | Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  (optional)
 
     try:
         # Create a Dataset
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier | 
  **workspace_id** | **str**| the Workspace identifier | 
  **dataset_create_request** | [**DatasetCreateRequest**](DatasetCreateRequest.md)|  | 
- **files** | **List[bytearray]**| Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  | [optional] 
+ **files** | **List[bytes]**| Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  | [optional] 
 
 ### Return type
 
@@ -230,7 +230,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     organization_id = 'organization_id_example' # str | the Organization identifier
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     dataset_id = 'dataset_id_example' # str | the Dataset identifier
-    file = None # bytearray | Data file to upload
+    file = None # bytes | Data file to upload
     dataset_part_create_request = cosmotech_api.DatasetPartCreateRequest() # DatasetPartCreateRequest | 
 
     try:
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
  **organization_id** | **str**| the Organization identifier | 
  **workspace_id** | **str**| the Workspace identifier | 
  **dataset_id** | **str**| the Dataset identifier | 
- **file** | **bytearray**| Data file to upload | 
+ **file** | **bytes**| Data file to upload | 
  **dataset_part_create_request** | [**DatasetPartCreateRequest**](DatasetPartCreateRequest.md)|  | 
 
 ### Return type
@@ -517,7 +517,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_dataset_part**
-> bytearray download_dataset_part(organization_id, workspace_id, dataset_id, dataset_part_id)
+> bytes download_dataset_part(organization_id, workspace_id, dataset_id, dataset_part_id)
 
 Download data from a dataset part
 
@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 
@@ -1086,7 +1086,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_data**
-> bytearray query_data(organization_id, workspace_id, dataset_id, dataset_part_id, selects=selects, sums=sums, avgs=avgs, counts=counts, mins=mins, maxs=maxs, offset=offset, limit=limit, group_bys=group_bys, order_bys=order_bys)
+> bytes query_data(organization_id, workspace_id, dataset_id, dataset_part_id, selects=selects, sums=sums, avgs=avgs, counts=counts, mins=mins, maxs=maxs, offset=offset, limit=limit, group_bys=group_bys, order_bys=order_bys)
 
 Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
 
@@ -1166,7 +1166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 
@@ -1226,7 +1226,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     dataset_id = 'dataset_id_example' # str | the Dataset identifier
     dataset_part_id = 'dataset_part_id_example' # str | the Dataset part identifier
-    file = None # bytearray | Data file to upload
+    file = None # bytes | Data file to upload
     dataset_part_update_request = cosmotech_api.DatasetPartUpdateRequest() # DatasetPartUpdateRequest |  (optional)
 
     try:
@@ -1249,7 +1249,7 @@ Name | Type | Description  | Notes
  **workspace_id** | **str**| the Workspace identifier | 
  **dataset_id** | **str**| the Dataset identifier | 
  **dataset_part_id** | **str**| the Dataset part identifier | 
- **file** | **bytearray**| Data file to upload | 
+ **file** | **bytes**| Data file to upload | 
  **dataset_part_update_request** | [**DatasetPartUpdateRequest**](DatasetPartUpdateRequest.md)|  | [optional] 
 
 ### Return type
@@ -1484,7 +1484,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     workspace_id = 'workspace_id_example' # str | the Workspace identifier
     dataset_id = 'dataset_id_example' # str | the Dataset identifier
     dataset_update_request = cosmotech_api.DatasetUpdateRequest() # DatasetUpdateRequest | 
-    files = None # List[bytearray] | Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  (optional)
+    files = None # List[bytes] | Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  (optional)
 
     try:
         # Update a Dataset
@@ -1506,7 +1506,7 @@ Name | Type | Description  | Notes
  **workspace_id** | **str**| the Workspace identifier | 
  **dataset_id** | **str**| the Dataset identifier | 
  **dataset_update_request** | [**DatasetUpdateRequest**](DatasetUpdateRequest.md)|  | 
- **files** | **List[bytearray]**| Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  | [optional] 
+ **files** | **List[bytes]**| Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on  | [optional] 
 
 ### Return type
 

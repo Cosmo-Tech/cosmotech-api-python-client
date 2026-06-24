@@ -26,6 +26,7 @@ from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTe
 from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class RunnerUpdateRequest(BaseModel):
     """
@@ -45,7 +46,8 @@ class RunnerUpdateRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["name", "description", "tags", "runTemplateId", "datasetList", "runSizing", "parametersValues", "additionalData", "solutionName", "runTemplateName", "validationStatus"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,8 +59,7 @@ class RunnerUpdateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

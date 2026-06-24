@@ -26,26 +26,28 @@ from cosmotech_api.models.run_template_parameter_create_request import RunTempla
 from cosmotech_api.models.run_template_parameter_group_create_request import RunTemplateParameterGroupCreateRequest
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SolutionUpdateRequest(BaseModel):
     """
     Request object for updating a solution
     """ # noqa: E501
-    key: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="Technical key for resource name convention and version grouping. Must be unique")
-    name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution name")
-    description: Optional[StrictStr] = Field(default=None, description="The Solution description")
-    repository: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The registry repository containing the image")
+    key: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="Technical key for resource name convention and version grouping. Must be unique", json_schema_extra={"examples": ["brewery-solution"]})
+    name: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution name", json_schema_extra={"examples": ["Brewery Solution"]})
+    description: Optional[StrictStr] = Field(default=None, description="The Solution description", json_schema_extra={"examples": ["A solution for brewery management and optimization"]})
+    repository: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The registry repository containing the image", json_schema_extra={"examples": ["cosmotech/brewery_solution"]})
     always_pull: Optional[StrictBool] = Field(default=None, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
-    url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
-    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
+    version: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag", json_schema_extra={"examples": ["1.0.0"]})
+    url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page", json_schema_extra={"examples": ["https://github.com/Cosmo-Tech/brewery-solution"]})
+    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags", json_schema_extra={"examples": [["brewery", "optimization"]]})
     parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
     parameter_groups: Optional[List[RunTemplateParameterGroupCreateRequest]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: Optional[List[RunTemplateCreateRequest]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
     __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "alwaysPull", "version", "url", "tags", "parameters", "parameterGroups", "runTemplates"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,8 +59,7 @@ class SolutionUpdateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

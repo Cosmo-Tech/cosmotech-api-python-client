@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Cosmo Tech Platform API
 
@@ -11,6 +9,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -679,7 +678,7 @@ class WorkspaceApi:
         :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
         :param file: The file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param overwrite: Whether to overwrite an existing file
         :type overwrite: bool
         :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
@@ -763,7 +762,7 @@ class WorkspaceApi:
         :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
         :param file: The file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param overwrite: Whether to overwrite an existing file
         :type overwrite: bool
         :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
@@ -847,7 +846,7 @@ class WorkspaceApi:
         :param workspace_id: The Workspace identifier (required)
         :type workspace_id: str
         :param file: The file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param overwrite: Whether to overwrite an existing file
         :type overwrite: bool
         :param destination: Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location. 
@@ -2694,7 +2693,7 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
+    ) -> bytes:
         """Download the Workspace File specified
 
         Download a specific file from workspace storage. Returns file as binary stream.
@@ -2738,7 +2737,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -2770,7 +2769,7 @@ class WorkspaceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
+    ) -> ApiResponse[bytes]:
         """Download the Workspace File specified
 
         Download a specific file from workspace storage. Returns file as binary stream.
@@ -2814,7 +2813,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -2890,7 +2889,7 @@ class WorkspaceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '404': None,
         }
         response_data = self.api_client.call_api(

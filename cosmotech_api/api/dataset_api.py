@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Cosmo Tech Platform API
 
@@ -11,6 +9,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -79,7 +78,7 @@ class DatasetApi:
         :param dataset_create_request: (required)
         :type dataset_create_request: DatasetCreateRequest
         :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
-        :type files: List[bytearray]
+        :type files: List[bytes]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +160,7 @@ class DatasetApi:
         :param dataset_create_request: (required)
         :type dataset_create_request: DatasetCreateRequest
         :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
-        :type files: List[bytearray]
+        :type files: List[bytes]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,7 +242,7 @@ class DatasetApi:
         :param dataset_create_request: (required)
         :type dataset_create_request: DatasetCreateRequest
         :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
-        :type files: List[bytearray]
+        :type files: List[bytes]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -731,7 +730,7 @@ class DatasetApi:
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param file: Data file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param dataset_part_create_request: (required)
         :type dataset_part_create_request: DatasetPartCreateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -817,7 +816,7 @@ class DatasetApi:
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param file: Data file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param dataset_part_create_request: (required)
         :type dataset_part_create_request: DatasetPartCreateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -903,7 +902,7 @@ class DatasetApi:
         :param dataset_id: the Dataset identifier (required)
         :type dataset_id: str
         :param file: Data file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param dataset_part_create_request: (required)
         :type dataset_part_create_request: DatasetPartCreateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1959,7 +1958,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
+    ) -> bytes:
         """Download data from a dataset part
 
         Download the file content from a dataset part. Returns the file as an application/octet-stream.
@@ -2006,7 +2005,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '403': None,
             '404': None,
         }
@@ -2040,7 +2039,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
+    ) -> ApiResponse[bytes]:
         """Download data from a dataset part
 
         Download the file content from a dataset part. Returns the file as an application/octet-stream.
@@ -2087,7 +2086,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '403': None,
             '404': None,
         }
@@ -2168,7 +2167,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '403': None,
             '404': None,
         }
@@ -4137,7 +4136,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
+    ) -> bytes:
         """Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
 
         Execute a query against a dataset part. Results are returned as plain-text CSV. Only available for parts with type=DB.
@@ -4214,7 +4213,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '400': None,
             '403': None,
             '404': None,
@@ -4260,7 +4259,7 @@ class DatasetApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
+    ) -> ApiResponse[bytes]:
         """Query data of a Dataset part. This endpoint is only available for dataset parts that support queries (type == DB). 
 
         Execute a query against a dataset part. Results are returned as plain-text CSV. Only available for parts with type=DB.
@@ -4337,7 +4336,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '400': None,
             '403': None,
             '404': None,
@@ -4460,7 +4459,7 @@ class DatasetApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': "bytes",
             '400': None,
             '403': None,
             '404': None,
@@ -4638,7 +4637,7 @@ class DatasetApi:
         :param dataset_part_id: the Dataset part identifier (required)
         :type dataset_part_id: str
         :param file: Data file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param dataset_part_update_request:
         :type dataset_part_update_request: DatasetPartUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4727,7 +4726,7 @@ class DatasetApi:
         :param dataset_part_id: the Dataset part identifier (required)
         :type dataset_part_id: str
         :param file: Data file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param dataset_part_update_request:
         :type dataset_part_update_request: DatasetPartUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4816,7 +4815,7 @@ class DatasetApi:
         :param dataset_part_id: the Dataset part identifier (required)
         :type dataset_part_id: str
         :param file: Data file to upload (required)
-        :type file: bytearray
+        :type file: bytes
         :param dataset_part_update_request:
         :type dataset_part_update_request: DatasetPartUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5700,7 +5699,7 @@ class DatasetApi:
         :param dataset_update_request: (required)
         :type dataset_update_request: DatasetUpdateRequest
         :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
-        :type files: List[bytearray]
+        :type files: List[bytes]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5786,7 +5785,7 @@ class DatasetApi:
         :param dataset_update_request: (required)
         :type dataset_update_request: DatasetUpdateRequest
         :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
-        :type files: List[bytearray]
+        :type files: List[bytes]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5872,7 +5871,7 @@ class DatasetApi:
         :param dataset_update_request: (required)
         :type dataset_update_request: DatasetUpdateRequest
         :param files: Notes:   - Each parts defined in dataset should have a file defined in this list   - Please ensure that upload files order match with data parts list defined     - First file uploaded will match with first dataset parts and so on 
-        :type files: List[bytearray]
+        :type files: List[bytes]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

@@ -27,27 +27,29 @@ from cosmotech_api.models.run_template_parameter_group_create_request import Run
 from cosmotech_api.models.solution_security import SolutionSecurity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SolutionCreateRequest(BaseModel):
     """
     Request object for creating a new solution
     """ # noqa: E501
-    key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Technical key for resource name convention and version grouping. Must be unique")
-    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Solution name. This name is displayed in the sample webApp")
-    description: Optional[StrictStr] = Field(default=None, description="The Solution description")
-    repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
-    version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH")
+    key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Technical key for resource name convention and version grouping. Must be unique", json_schema_extra={"examples": ["brewery-solution"]})
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Solution name. This name is displayed in the sample webApp", json_schema_extra={"examples": ["Brewery Solution"]})
+    description: Optional[StrictStr] = Field(default=None, description="The Solution description", json_schema_extra={"examples": ["A solution for brewery management and optimization"]})
+    repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image", json_schema_extra={"examples": ["cosmotech/brewery_solution"]})
+    version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH", json_schema_extra={"examples": ["1.0.0"]})
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags", json_schema_extra={"examples": [["brewery", "optimization"]]})
     parameters: Optional[List[RunTemplateParameterCreateRequest]] = Field(default=None, description="The list of Run Template Parameters")
     parameter_groups: Optional[List[RunTemplateParameterGroupCreateRequest]] = Field(default=None, description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: Optional[List[RunTemplateCreateRequest]] = Field(default=None, description="List of Run Templates", alias="runTemplates")
-    url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
+    url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page", json_schema_extra={"examples": ["https://github.com/Cosmo-Tech/brewery-solution"]})
     security: Optional[SolutionSecurity] = None
     __properties: ClassVar[List[str]] = ["key", "name", "description", "repository", "version", "alwaysPull", "tags", "parameters", "parameterGroups", "runTemplates", "url", "security"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,8 +61,7 @@ class SolutionCreateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

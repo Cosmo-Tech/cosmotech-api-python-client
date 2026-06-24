@@ -26,6 +26,7 @@ from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTe
 from cosmotech_api.models.runner_security import RunnerSecurity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class RunnerCreateRequest(BaseModel):
     """
@@ -34,8 +35,8 @@ class RunnerCreateRequest(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the Runner name")
     description: Optional[StrictStr] = Field(default=None, description="the Runner description")
     tags: Optional[List[StrictStr]] = Field(default=None, description="the list of tags")
-    solution_id: Annotated[str, Field(strict=True)] = Field(description="the Solution Id associated with this Runner", alias="solutionId")
-    parent_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="the Runner parent id", alias="parentId")
+    solution_id: Annotated[str, Field(strict=True)] = Field(description="the Solution Id associated with this Runner", alias="solutionId", json_schema_extra={"examples": ["sol-123456aBcDeF"]})
+    parent_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="the Runner parent id", alias="parentId", json_schema_extra={"examples": ["r-123456aBcDeF"]})
     run_template_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="the Solution Run Template Id associated with this Runner", alias="runTemplateId")
     dataset_list: Optional[List[StrictStr]] = Field(default=None, description="the list of Dataset Id associated to this Runner Run Template", alias="datasetList")
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, description="definition of resources needed for the runner run", alias="runSizing")
@@ -49,6 +50,9 @@ class RunnerCreateRequest(BaseModel):
     @field_validator('solution_id')
     def solution_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^sol-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
         return value
@@ -59,12 +63,16 @@ class RunnerCreateRequest(BaseModel):
         if value is None:
             return value
 
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^r-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^r-\w{10,20}/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -76,8 +84,7 @@ class RunnerCreateRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

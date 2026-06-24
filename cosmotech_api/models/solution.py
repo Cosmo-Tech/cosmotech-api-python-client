@@ -28,24 +28,25 @@ from cosmotech_api.models.solution_edit_info import SolutionEditInfo
 from cosmotech_api.models.solution_security import SolutionSecurity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Solution(BaseModel):
     """
     A version of a Solution
     """ # noqa: E501
-    id: Annotated[str, Field(strict=True)] = Field(description="The Solution version unique identifier")
-    organization_id: Annotated[str, Field(strict=True)] = Field(description="The Organization unique identifier", alias="organizationId")
-    key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution key which groups Solution versions")
-    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution name")
-    description: Optional[StrictStr] = Field(default=None, description="The Solution description")
-    repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image")
+    id: Annotated[str, Field(strict=True)] = Field(description="The Solution version unique identifier", json_schema_extra={"examples": ["sol-123456aBcDeF"]})
+    organization_id: Annotated[str, Field(strict=True)] = Field(description="The Organization unique identifier", alias="organizationId", json_schema_extra={"examples": ["o-123456aBcDeF"]})
+    key: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution key which groups Solution versions", json_schema_extra={"examples": ["brewery-solution"]})
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution name", json_schema_extra={"examples": ["Brewery Solution"]})
+    description: Optional[StrictStr] = Field(default=None, description="The Solution description", json_schema_extra={"examples": ["A solution for brewery management and optimization"]})
+    repository: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The registry repository containing the image", json_schema_extra={"examples": ["cosmotech/brewery_solution"]})
     always_pull: Optional[StrictBool] = Field(default=False, description="Set to true if the runtemplate wants to always pull the image", alias="alwaysPull")
-    version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag")
+    version: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The Solution version MAJOR.MINOR.PATCH. Must be aligned with an existing repository tag", json_schema_extra={"examples": ["1.0.0"]})
     create_info: SolutionEditInfo = Field(description="The details of the Solution creation", alias="createInfo")
     update_info: SolutionEditInfo = Field(description="The details of the Solution last update", alias="updateInfo")
-    sdk_version: Optional[StrictStr] = Field(default=None, description="The full SDK version used to build this solution, if available", alias="sdkVersion")
-    url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page")
-    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags")
+    sdk_version: Optional[StrictStr] = Field(default=None, description="The full SDK version used to build this solution, if available", alias="sdkVersion", json_schema_extra={"examples": ["12.0.0-40296.1c163396"]})
+    url: Optional[StrictStr] = Field(default=None, description="An optional URL link to solution page", json_schema_extra={"examples": ["https://github.com/Cosmo-Tech/brewery-solution"]})
+    tags: Optional[List[StrictStr]] = Field(default=None, description="The list of tags", json_schema_extra={"examples": [["brewery", "optimization"]]})
     parameters: List[RunTemplateParameter] = Field(description="The list of Run Template Parameters")
     parameter_groups: List[RunTemplateParameterGroup] = Field(description="The list of parameters groups for the Run Templates", alias="parameterGroups")
     run_templates: List[RunTemplate] = Field(description="List of Run Templates", alias="runTemplates")
@@ -55,6 +56,9 @@ class Solution(BaseModel):
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^sol-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
         return value
@@ -62,12 +66,16 @@ class Solution(BaseModel):
     @field_validator('organization_id')
     def organization_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^o-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^o-\w{10,20}/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -79,8 +87,7 @@ class Solution(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

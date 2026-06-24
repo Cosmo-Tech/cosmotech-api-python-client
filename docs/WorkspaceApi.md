@@ -219,7 +219,7 @@ with cosmotech_api.ApiClient(configuration) as api_client:
     api_instance = cosmotech_api.WorkspaceApi(api_client)
     organization_id = 'organization_id_example' # str | The Organization identifier
     workspace_id = 'workspace_id_example' # str | The Workspace identifier
-    file = None # bytearray | The file to upload
+    file = None # bytes | The file to upload
     overwrite = False # bool | Whether to overwrite an existing file (optional) (default to False)
     destination = 'destination_example' # str | Destination path. Must end with a '/' if specifying a folder. Note that paths may or may not start with a '/', but they are always treated as relative to the Workspace root location.  (optional)
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **str**| The Organization identifier | 
  **workspace_id** | **str**| The Workspace identifier | 
- **file** | **bytearray**| The file to upload | 
+ **file** | **bytes**| The file to upload | 
  **overwrite** | **bool**| Whether to overwrite an existing file | [optional] [default to False]
  **destination** | **str**| Destination path. Must end with a &#39;/&#39; if specifying a folder. Note that paths may or may not start with a &#39;/&#39;, but they are always treated as relative to the Workspace root location.  | [optional] 
 
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspace_file**
-> bytearray get_workspace_file(organization_id, workspace_id, file_name)
+> bytes get_workspace_file(organization_id, workspace_id, file_name)
 
 Download the Workspace File specified
 
@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 

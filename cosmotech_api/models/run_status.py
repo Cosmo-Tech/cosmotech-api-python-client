@@ -25,6 +25,7 @@ from cosmotech_api.models.run_state import RunState
 from cosmotech_api.models.run_status_node import RunStatusNode
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class RunStatus(BaseModel):
     """
@@ -48,7 +49,8 @@ class RunStatus(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "organizationId", "workspaceId", "runnerId", "workflowId", "workflowName", "createInfo", "startTime", "endTime", "phase", "progress", "message", "estimatedDuration", "nodes", "state"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,8 +62,7 @@ class RunStatus(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
