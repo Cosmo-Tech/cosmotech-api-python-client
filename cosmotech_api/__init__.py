@@ -88,6 +88,7 @@ __all__ = [
     "RunnerRole",
     "RunnerRunTemplateParameterValue",
     "RunnerSecurity",
+    "RunnerStatus",
     "RunnerUpdateRequest",
     "RunnerValidationStatus",
     "Solution",
@@ -182,6 +183,7 @@ from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing as 
 from cosmotech_api.models.runner_role import RunnerRole as RunnerRole
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue as RunnerRunTemplateParameterValue
 from cosmotech_api.models.runner_security import RunnerSecurity as RunnerSecurity
+from cosmotech_api.models.runner_status import RunnerStatus as RunnerStatus
 from cosmotech_api.models.runner_update_request import RunnerUpdateRequest as RunnerUpdateRequest
 from cosmotech_api.models.runner_validation_status import RunnerValidationStatus as RunnerValidationStatus
 from cosmotech_api.models.solution import Solution as Solution

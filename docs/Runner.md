@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **run_sizing** | [**RunnerResourceSizing**](RunnerResourceSizing.md) | definition of resources needed for the runner run | [optional] 
 **parameters_values** | [**List[RunnerRunTemplateParameterValue]**](RunnerRunTemplateParameterValue.md) | the list of Solution Run Template parameters values | 
 **last_run_info** | [**LastRunInfo**](LastRunInfo.md) | last run info from current runner | 
+**status** | [**RunnerStatus**](RunnerStatus.md) |  | 
 **validation_status** | [**RunnerValidationStatus**](RunnerValidationStatus.md) |  | 
 **security** | [**RunnerSecurity**](RunnerSecurity.md) |  | 
 

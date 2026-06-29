@@ -71,6 +71,7 @@ cosmotech_api/models/runner_resource_sizing.py
 cosmotech_api/models/runner_role.py
 cosmotech_api/models/runner_run_template_parameter_value.py
 cosmotech_api/models/runner_security.py
+cosmotech_api/models/runner_status.py
 cosmotech_api/models/runner_update_request.py
 cosmotech_api/models/runner_validation_status.py
 cosmotech_api/models/solution.py
@@ -149,6 +150,7 @@ docs/RunnerResourceSizing.md
 docs/RunnerRole.md
 docs/RunnerRunTemplateParameterValue.md
 docs/RunnerSecurity.md
+docs/RunnerStatus.md
 docs/RunnerUpdateRequest.md
 docs/RunnerValidationStatus.md
 docs/Solution.md
@@ -234,6 +236,7 @@ test/test_runner_resource_sizing.py
 test/test_runner_role.py
 test/test_runner_run_template_parameter_value.py
 test/test_runner_security.py
+test/test_runner_status.py
 test/test_runner_update_request.py
 test/test_runner_validation_status.py
 test/test_solution.py

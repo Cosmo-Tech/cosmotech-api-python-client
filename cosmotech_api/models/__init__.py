@@ -67,6 +67,7 @@ from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_role import RunnerRole
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
 from cosmotech_api.models.runner_security import RunnerSecurity
+from cosmotech_api.models.runner_status import RunnerStatus
 from cosmotech_api.models.runner_update_request import RunnerUpdateRequest
 from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
 from cosmotech_api.models.solution import Solution

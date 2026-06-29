@@ -253,6 +253,7 @@ Class | Method | HTTP request | Description
  - [RunnerRole](docs/RunnerRole.md)
  - [RunnerRunTemplateParameterValue](docs/RunnerRunTemplateParameterValue.md)
  - [RunnerSecurity](docs/RunnerSecurity.md)
+ - [RunnerStatus](docs/RunnerStatus.md)
  - [RunnerUpdateRequest](docs/RunnerUpdateRequest.md)
  - [RunnerValidationStatus](docs/RunnerValidationStatus.md)
  - [Solution](docs/Solution.md)

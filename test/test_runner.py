@@ -82,6 +82,7 @@ class TestRunner(unittest.TestCase):
                 last_run_info = cosmotech_api.models.last_run_info.LastRunInfo(
                     last_run_id = '', 
                     last_run_status = 'NotStarted', ),
+                status = 'Ok',
                 validation_status = 'Draft',
                 security = cosmotech_api.models.runner_security.RunnerSecurity(
                     default = '', 
@@ -123,6 +124,7 @@ class TestRunner(unittest.TestCase):
                 last_run_info = cosmotech_api.models.last_run_info.LastRunInfo(
                     last_run_id = '', 
                     last_run_status = 'NotStarted', ),
+                status = 'Ok',
                 validation_status = 'Draft',
                 security = cosmotech_api.models.runner_security.RunnerSecurity(
                     default = '', 

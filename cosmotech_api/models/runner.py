@@ -26,6 +26,7 @@ from cosmotech_api.models.runner_edit_info import RunnerEditInfo
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
 from cosmotech_api.models.runner_security import RunnerSecurity
+from cosmotech_api.models.runner_status import RunnerStatus
 from cosmotech_api.models.runner_validation_status import RunnerValidationStatus
 from typing import Optional, Set
 from typing_extensions import Self
@@ -54,9 +55,10 @@ class Runner(BaseModel):
     run_sizing: Optional[RunnerResourceSizing] = Field(default=None, description="definition of resources needed for the runner run", alias="runSizing")
     parameters_values: List[RunnerRunTemplateParameterValue] = Field(description="the list of Solution Run Template parameters values", alias="parametersValues")
     last_run_info: LastRunInfo = Field(description="last run info from current runner", alias="lastRunInfo")
+    status: RunnerStatus
     validation_status: RunnerValidationStatus = Field(alias="validationStatus")
     security: RunnerSecurity
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "solutionName", "runTemplateName", "additionalData", "datasets", "runSizing", "parametersValues", "lastRunInfo", "validationStatus", "security"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "tags", "parentId", "createInfo", "updateInfo", "rootId", "solutionId", "runTemplateId", "organizationId", "workspaceId", "solutionName", "runTemplateName", "additionalData", "datasets", "runSizing", "parametersValues", "lastRunInfo", "status", "validationStatus", "security"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -167,6 +169,7 @@ class Runner(BaseModel):
             "runSizing": RunnerResourceSizing.from_dict(obj["runSizing"]) if obj.get("runSizing") is not None else None,
             "parametersValues": [RunnerRunTemplateParameterValue.from_dict(_item) for _item in obj["parametersValues"]] if obj.get("parametersValues") is not None else None,
             "lastRunInfo": LastRunInfo.from_dict(obj["lastRunInfo"]) if obj.get("lastRunInfo") is not None else None,
+            "status": obj.get("status"),
             "validationStatus": obj.get("validationStatus"),
             "security": RunnerSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None
         })
