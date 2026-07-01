@@ -1,13 +1,13 @@
 # ResourceSizeInfo
 
-define cpus and memory needs
+Define CPUs and memory needs. Values must follow the Kubernetes resource requirements/limits syntax:  See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | **str** | define cpu needs | 
-**memory** | **str** | define memory needs | 
+**cpu** | **str** | Define cpu needs | 
+**memory** | **str** | Define memory needs | 
 
 ## Example
 
