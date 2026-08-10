@@ -34,26 +34,20 @@ class WorkspaceSolution(BaseModel):
     default_parameter_values: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map of parameterId/value to set default values for Solution parameters with simple varType (int, string, ...)", alias="defaultParameterValues")
     __properties: ClassVar[List[str]] = ["solutionId", "datasetId", "defaultParameterValues"]
 
-    @field_validator('solution_id')
+    @field_validator('solution_id', mode="before")
     def solution_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^sol-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^sol-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
         return value
 
-    @field_validator('dataset_id')
+    @field_validator('dataset_id', mode="before")
     def dataset_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^d-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^d-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^d-\w{10,20}/")
         return value
 

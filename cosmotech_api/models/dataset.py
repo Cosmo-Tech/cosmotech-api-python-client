@@ -45,13 +45,10 @@ class Dataset(BaseModel):
     security: DatasetSecurity
     __properties: ClassVar[List[str]] = ["id", "name", "description", "organizationId", "workspaceId", "tags", "additionalData", "parts", "createInfo", "updateInfo", "security"]
 
-    @field_validator('id')
+    @field_validator('id', mode="before")
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^d-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^d-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^d-\w{10,20}/")
         return value
 

@@ -47,26 +47,20 @@ class RunnerCreateRequest(BaseModel):
     security: Optional[RunnerSecurity] = None
     __properties: ClassVar[List[str]] = ["name", "description", "tags", "solutionId", "parentId", "runTemplateId", "datasetList", "runSizing", "parametersValues", "additionalData", "solutionName", "runTemplateName", "security"]
 
-    @field_validator('solution_id')
+    @field_validator('solution_id', mode="before")
     def solution_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^sol-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^sol-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
         return value
 
-    @field_validator('parent_id')
+    @field_validator('parent_id', mode="before")
     def parent_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^r-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^r-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^r-\w{10,20}/")
         return value
 

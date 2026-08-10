@@ -45,13 +45,10 @@ class DatasetPart(BaseModel):
     update_info: DatasetEditInfo = Field(description="The details of the Dataset last update", alias="updateInfo")
     __properties: ClassVar[List[str]] = ["id", "name", "sourceName", "description", "tags", "additionalData", "type", "organizationId", "workspaceId", "datasetId", "createInfo", "updateInfo"]
 
-    @field_validator('id')
+    @field_validator('id', mode="before")
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^dp-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^dp-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^dp-\w{10,20}/")
         return value
 

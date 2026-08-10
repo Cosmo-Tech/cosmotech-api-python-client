@@ -53,23 +53,17 @@ class Solution(BaseModel):
     security: SolutionSecurity
     __properties: ClassVar[List[str]] = ["id", "organizationId", "key", "name", "description", "repository", "alwaysPull", "version", "createInfo", "updateInfo", "sdkVersion", "url", "tags", "parameters", "parameterGroups", "runTemplates", "security"]
 
-    @field_validator('id')
+    @field_validator('id', mode="before")
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^sol-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^sol-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^sol-\w{10,20}/")
         return value
 
-    @field_validator('organization_id')
+    @field_validator('organization_id', mode="before")
     def organization_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^o-\w{10,20}", value):
+        if isinstance(value, str) and not re.match(r"^o-\w{10,20}", value):
             raise ValueError(r"must validate the regular expression /^o-\w{10,20}/")
         return value
 
