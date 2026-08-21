@@ -24,6 +24,9 @@ from cosmotech_api.models.dataset import Dataset
 from cosmotech_api.models.dataset_access_control import DatasetAccessControl
 from cosmotech_api.models.dataset_create_request import DatasetCreateRequest
 from cosmotech_api.models.dataset_edit_info import DatasetEditInfo
+from cosmotech_api.models.dataset_member_group import DatasetMemberGroup
+from cosmotech_api.models.dataset_member_user import DatasetMemberUser
+from cosmotech_api.models.dataset_members import DatasetMembers
 from cosmotech_api.models.dataset_part import DatasetPart
 from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest
 from cosmotech_api.models.dataset_part_type_enum import DatasetPartTypeEnum
@@ -32,10 +35,16 @@ from cosmotech_api.models.dataset_role import DatasetRole
 from cosmotech_api.models.dataset_security import DatasetSecurity
 from cosmotech_api.models.dataset_update_request import DatasetUpdateRequest
 from cosmotech_api.models.last_run_info import LastRunInfo
+from cosmotech_api.models.member_group import MemberGroup
+from cosmotech_api.models.member_user import MemberUser
+from cosmotech_api.models.members import Members
 from cosmotech_api.models.organization import Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl
 from cosmotech_api.models.organization_create_request import OrganizationCreateRequest
 from cosmotech_api.models.organization_edit_info import OrganizationEditInfo
+from cosmotech_api.models.organization_member_group import OrganizationMemberGroup
+from cosmotech_api.models.organization_member_user import OrganizationMemberUser
+from cosmotech_api.models.organization_members import OrganizationMembers
 from cosmotech_api.models.organization_role import OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity
 from cosmotech_api.models.organization_update_request import OrganizationUpdateRequest
@@ -63,6 +72,9 @@ from cosmotech_api.models.runner_access_control import RunnerAccessControl
 from cosmotech_api.models.runner_create_request import RunnerCreateRequest
 from cosmotech_api.models.runner_datasets import RunnerDatasets
 from cosmotech_api.models.runner_edit_info import RunnerEditInfo
+from cosmotech_api.models.runner_member_group import RunnerMemberGroup
+from cosmotech_api.models.runner_member_user import RunnerMemberUser
+from cosmotech_api.models.runner_members import RunnerMembers
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing
 from cosmotech_api.models.runner_role import RunnerRole
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue
@@ -74,6 +86,9 @@ from cosmotech_api.models.solution import Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl
 from cosmotech_api.models.solution_create_request import SolutionCreateRequest
 from cosmotech_api.models.solution_edit_info import SolutionEditInfo
+from cosmotech_api.models.solution_member_group import SolutionMemberGroup
+from cosmotech_api.models.solution_member_user import SolutionMemberUser
+from cosmotech_api.models.solution_members import SolutionMembers
 from cosmotech_api.models.solution_role import SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest
@@ -82,6 +97,9 @@ from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest
 from cosmotech_api.models.workspace_edit_info import WorkspaceEditInfo
 from cosmotech_api.models.workspace_file import WorkspaceFile
+from cosmotech_api.models.workspace_member_group import WorkspaceMemberGroup
+from cosmotech_api.models.workspace_member_user import WorkspaceMemberUser
+from cosmotech_api.models.workspace_members import WorkspaceMembers
 from cosmotech_api.models.workspace_role import WorkspaceRole
 from cosmotech_api.models.workspace_security import WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution

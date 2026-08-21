@@ -97,6 +97,13 @@ class TestWorkspaceApi(unittest.TestCase):
         """
         pass
 
+    def test_get_workspace_members(self) -> None:
+        """Test case for get_workspace_members
+
+        Get the members of a Workspace
+        """
+        pass
+
     def test_get_workspace_security(self) -> None:
         """Test case for get_workspace_security
 

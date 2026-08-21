@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**download_dataset_part**](DatasetApi.md#download_dataset_part) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id}/download | Download data from a dataset part
 [**get_dataset**](DatasetApi.md#get_dataset) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id} | Retrieve a Dataset
 [**get_dataset_access_control**](DatasetApi.md#get_dataset_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/access/{identity_id} | Get a control access for the Dataset
+[**get_dataset_members**](DatasetApi.md#get_dataset_members) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/members | Get the members of a Dataset
 [**get_dataset_part**](DatasetApi.md#get_dataset_part) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts/{dataset_part_id} | Retrieve a data part of a Dataset
 [**list_dataset_parts**](DatasetApi.md#list_dataset_parts) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/parts | Retrieve all dataset parts of a Dataset
 [**list_dataset_security_users**](DatasetApi.md#list_dataset_security_users) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/datasets/{dataset_id}/security/users | Get the Dataset security users list
@@ -756,6 +757,86 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The Dataset access |  -  |
 **404** | The Dataset or user specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_dataset_members**
+> DatasetMembers get_dataset_members(organization_id, workspace_id, dataset_id)
+
+Get the members of a Dataset
+
+Retrieve detailed information about members of a dataset.
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.dataset_members import DatasetMembers
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost:8080"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.DatasetApi(api_client)
+    organization_id = 'organization_id_example' # str | the Organization identifier
+    workspace_id = 'workspace_id_example' # str | the Workspace identifier
+    dataset_id = 'dataset_id_example' # str | the Dataset identifier
+
+    try:
+        # Get the members of a Dataset
+        api_response = api_instance.get_dataset_members(organization_id, workspace_id, dataset_id)
+        print("The response of DatasetApi->get_dataset_members:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DatasetApi->get_dataset_members: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| the Organization identifier | 
+ **workspace_id** | **str**| the Workspace identifier | 
+ **dataset_id** | **str**| the Dataset identifier | 
+
+### Return type
+
+[**DatasetMembers**](DatasetMembers.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/yaml
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Dataset members |  -  |
+**404** | The Dataset specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

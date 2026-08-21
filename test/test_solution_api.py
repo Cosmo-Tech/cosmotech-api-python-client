@@ -118,6 +118,13 @@ class TestSolutionApi(unittest.TestCase):
         """
         pass
 
+    def test_get_solution_members(self) -> None:
+        """Test case for get_solution_members
+
+        Get the members of a Solution
+        """
+        pass
+
     def test_get_solution_parameter(self) -> None:
         """Test case for get_solution_parameter
 

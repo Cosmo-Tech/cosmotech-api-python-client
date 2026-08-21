@@ -69,6 +69,13 @@ class TestRunnerApi(unittest.TestCase):
         """
         pass
 
+    def test_get_runner_members(self) -> None:
+        """Test case for get_runner_members
+
+        Get the members of a Runner
+        """
+        pass
+
     def test_get_runner_security(self) -> None:
         """Test case for get_runner_security
 

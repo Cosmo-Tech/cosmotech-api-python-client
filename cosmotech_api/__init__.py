@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 
 # Define package exports
 __all__ = [
+    "IAMInfoApi",
     "DatasetApi",
     "MetaApi",
     "OrganizationApi",
@@ -45,6 +46,9 @@ __all__ = [
     "DatasetAccessControl",
     "DatasetCreateRequest",
     "DatasetEditInfo",
+    "DatasetMemberGroup",
+    "DatasetMemberUser",
+    "DatasetMembers",
     "DatasetPart",
     "DatasetPartCreateRequest",
     "DatasetPartTypeEnum",
@@ -53,10 +57,16 @@ __all__ = [
     "DatasetSecurity",
     "DatasetUpdateRequest",
     "LastRunInfo",
+    "MemberGroup",
+    "MemberUser",
+    "Members",
     "Organization",
     "OrganizationAccessControl",
     "OrganizationCreateRequest",
     "OrganizationEditInfo",
+    "OrganizationMemberGroup",
+    "OrganizationMemberUser",
+    "OrganizationMembers",
     "OrganizationRole",
     "OrganizationSecurity",
     "OrganizationUpdateRequest",
@@ -84,6 +94,9 @@ __all__ = [
     "RunnerCreateRequest",
     "RunnerDatasets",
     "RunnerEditInfo",
+    "RunnerMemberGroup",
+    "RunnerMemberUser",
+    "RunnerMembers",
     "RunnerResourceSizing",
     "RunnerRole",
     "RunnerRunTemplateParameterValue",
@@ -95,6 +108,9 @@ __all__ = [
     "SolutionAccessControl",
     "SolutionCreateRequest",
     "SolutionEditInfo",
+    "SolutionMemberGroup",
+    "SolutionMemberUser",
+    "SolutionMembers",
     "SolutionRole",
     "SolutionSecurity",
     "SolutionUpdateRequest",
@@ -103,6 +119,9 @@ __all__ = [
     "WorkspaceCreateRequest",
     "WorkspaceEditInfo",
     "WorkspaceFile",
+    "WorkspaceMemberGroup",
+    "WorkspaceMemberUser",
+    "WorkspaceMembers",
     "WorkspaceRole",
     "WorkspaceSecurity",
     "WorkspaceSolution",
@@ -110,6 +129,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
+from cosmotech_api.api.iam_info_api import IAMInfoApi as IAMInfoApi
 from cosmotech_api.api.dataset_api import DatasetApi as DatasetApi
 from cosmotech_api.api.meta_api import MetaApi as MetaApi
 from cosmotech_api.api.organization_api import OrganizationApi as OrganizationApi
@@ -140,6 +160,9 @@ from cosmotech_api.models.dataset import Dataset as Dataset
 from cosmotech_api.models.dataset_access_control import DatasetAccessControl as DatasetAccessControl
 from cosmotech_api.models.dataset_create_request import DatasetCreateRequest as DatasetCreateRequest
 from cosmotech_api.models.dataset_edit_info import DatasetEditInfo as DatasetEditInfo
+from cosmotech_api.models.dataset_member_group import DatasetMemberGroup as DatasetMemberGroup
+from cosmotech_api.models.dataset_member_user import DatasetMemberUser as DatasetMemberUser
+from cosmotech_api.models.dataset_members import DatasetMembers as DatasetMembers
 from cosmotech_api.models.dataset_part import DatasetPart as DatasetPart
 from cosmotech_api.models.dataset_part_create_request import DatasetPartCreateRequest as DatasetPartCreateRequest
 from cosmotech_api.models.dataset_part_type_enum import DatasetPartTypeEnum as DatasetPartTypeEnum
@@ -148,10 +171,16 @@ from cosmotech_api.models.dataset_role import DatasetRole as DatasetRole
 from cosmotech_api.models.dataset_security import DatasetSecurity as DatasetSecurity
 from cosmotech_api.models.dataset_update_request import DatasetUpdateRequest as DatasetUpdateRequest
 from cosmotech_api.models.last_run_info import LastRunInfo as LastRunInfo
+from cosmotech_api.models.member_group import MemberGroup as MemberGroup
+from cosmotech_api.models.member_user import MemberUser as MemberUser
+from cosmotech_api.models.members import Members as Members
 from cosmotech_api.models.organization import Organization as Organization
 from cosmotech_api.models.organization_access_control import OrganizationAccessControl as OrganizationAccessControl
 from cosmotech_api.models.organization_create_request import OrganizationCreateRequest as OrganizationCreateRequest
 from cosmotech_api.models.organization_edit_info import OrganizationEditInfo as OrganizationEditInfo
+from cosmotech_api.models.organization_member_group import OrganizationMemberGroup as OrganizationMemberGroup
+from cosmotech_api.models.organization_member_user import OrganizationMemberUser as OrganizationMemberUser
+from cosmotech_api.models.organization_members import OrganizationMembers as OrganizationMembers
 from cosmotech_api.models.organization_role import OrganizationRole as OrganizationRole
 from cosmotech_api.models.organization_security import OrganizationSecurity as OrganizationSecurity
 from cosmotech_api.models.organization_update_request import OrganizationUpdateRequest as OrganizationUpdateRequest
@@ -179,6 +208,9 @@ from cosmotech_api.models.runner_access_control import RunnerAccessControl as Ru
 from cosmotech_api.models.runner_create_request import RunnerCreateRequest as RunnerCreateRequest
 from cosmotech_api.models.runner_datasets import RunnerDatasets as RunnerDatasets
 from cosmotech_api.models.runner_edit_info import RunnerEditInfo as RunnerEditInfo
+from cosmotech_api.models.runner_member_group import RunnerMemberGroup as RunnerMemberGroup
+from cosmotech_api.models.runner_member_user import RunnerMemberUser as RunnerMemberUser
+from cosmotech_api.models.runner_members import RunnerMembers as RunnerMembers
 from cosmotech_api.models.runner_resource_sizing import RunnerResourceSizing as RunnerResourceSizing
 from cosmotech_api.models.runner_role import RunnerRole as RunnerRole
 from cosmotech_api.models.runner_run_template_parameter_value import RunnerRunTemplateParameterValue as RunnerRunTemplateParameterValue
@@ -190,6 +222,9 @@ from cosmotech_api.models.solution import Solution as Solution
 from cosmotech_api.models.solution_access_control import SolutionAccessControl as SolutionAccessControl
 from cosmotech_api.models.solution_create_request import SolutionCreateRequest as SolutionCreateRequest
 from cosmotech_api.models.solution_edit_info import SolutionEditInfo as SolutionEditInfo
+from cosmotech_api.models.solution_member_group import SolutionMemberGroup as SolutionMemberGroup
+from cosmotech_api.models.solution_member_user import SolutionMemberUser as SolutionMemberUser
+from cosmotech_api.models.solution_members import SolutionMembers as SolutionMembers
 from cosmotech_api.models.solution_role import SolutionRole as SolutionRole
 from cosmotech_api.models.solution_security import SolutionSecurity as SolutionSecurity
 from cosmotech_api.models.solution_update_request import SolutionUpdateRequest as SolutionUpdateRequest
@@ -198,6 +233,9 @@ from cosmotech_api.models.workspace_access_control import WorkspaceAccessControl
 from cosmotech_api.models.workspace_create_request import WorkspaceCreateRequest as WorkspaceCreateRequest
 from cosmotech_api.models.workspace_edit_info import WorkspaceEditInfo as WorkspaceEditInfo
 from cosmotech_api.models.workspace_file import WorkspaceFile as WorkspaceFile
+from cosmotech_api.models.workspace_member_group import WorkspaceMemberGroup as WorkspaceMemberGroup
+from cosmotech_api.models.workspace_member_user import WorkspaceMemberUser as WorkspaceMemberUser
+from cosmotech_api.models.workspace_members import WorkspaceMembers as WorkspaceMembers
 from cosmotech_api.models.workspace_role import WorkspaceRole as WorkspaceRole
 from cosmotech_api.models.workspace_security import WorkspaceSecurity as WorkspaceSecurity
 from cosmotech_api.models.workspace_solution import WorkspaceSolution as WorkspaceSolution

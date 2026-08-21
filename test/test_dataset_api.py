@@ -90,6 +90,13 @@ class TestDatasetApi(unittest.TestCase):
         """
         pass
 
+    def test_get_dataset_members(self) -> None:
+        """Test case for get_dataset_members
+
+        Get the members of a Dataset
+        """
+        pass
+
     def test_get_dataset_part(self) -> None:
         """Test case for get_dataset_part
 

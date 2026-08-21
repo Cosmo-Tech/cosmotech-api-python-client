@@ -69,6 +69,13 @@ class TestOrganizationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_organization_members(self) -> None:
+        """Test case for get_organization_members
+
+        Get the members of an Organization
+        """
+        pass
+
     def test_get_organization_permissions(self) -> None:
         """Test case for get_organization_permissions
 

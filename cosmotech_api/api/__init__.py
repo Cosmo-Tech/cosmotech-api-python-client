@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from cosmotech_api.api.iam_info_api import IAMInfoApi
 from cosmotech_api.api.dataset_api import DatasetApi
 from cosmotech_api.api.meta_api import MetaApi
 from cosmotech_api.api.organization_api import OrganizationApi

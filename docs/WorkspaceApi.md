@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_workspace**](WorkspaceApi.md#get_workspace) | **GET** /organizations/{organization_id}/workspaces/{workspace_id} | Get the details of a workspace
 [**get_workspace_access_control**](WorkspaceApi.md#get_workspace_access_control) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security/access/{identity_id} | Get a control access for the Workspace
 [**get_workspace_file**](WorkspaceApi.md#get_workspace_file) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files/download | Download the Workspace File specified
+[**get_workspace_members**](WorkspaceApi.md#get_workspace_members) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/members | Get the members of a Workspace
 [**get_workspace_security**](WorkspaceApi.md#get_workspace_security) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/security | Get the Workspace security information
 [**list_workspace_files**](WorkspaceApi.md#list_workspace_files) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/files | List all Workspace files
 [**list_workspace_role_permissions**](WorkspaceApi.md#list_workspace_role_permissions) | **GET** /organizations/{organization_id}/workspaces/{workspace_id}/permissions/{role} | Get the Workspace permission by given role
@@ -800,6 +801,84 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The workspace file as a resource |  -  |
 **404** | The Workspace file specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_workspace_members**
+> WorkspaceMembers get_workspace_members(organization_id, workspace_id)
+
+Get the members of a Workspace
+
+Retrieve detailed information about members of a workspace.
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.workspace_members import WorkspaceMembers
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost:8080"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.WorkspaceApi(api_client)
+    organization_id = 'organization_id_example' # str | The Organization identifier
+    workspace_id = 'workspace_id_example' # str | The Workspace identifier
+
+    try:
+        # Get the members of a Workspace
+        api_response = api_instance.get_workspace_members(organization_id, workspace_id)
+        print("The response of WorkspaceApi->get_workspace_members:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WorkspaceApi->get_workspace_members: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| The Organization identifier | 
+ **workspace_id** | **str**| The Workspace identifier | 
+
+### Return type
+
+[**WorkspaceMembers**](WorkspaceMembers.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/yaml
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Workspace members |  -  |
+**404** | The Workspace specified is unknown or you don&#39;t have access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

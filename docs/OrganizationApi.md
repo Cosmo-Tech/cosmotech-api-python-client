@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**delete_organization_access_control**](OrganizationApi.md#delete_organization_access_control) | **DELETE** /organizations/{organization_id}/security/access/{identity_id} | Remove the specified access from the given Organization
 [**get_organization**](OrganizationApi.md#get_organization) | **GET** /organizations/{organization_id} | Get the details of an Organization
 [**get_organization_access_control**](OrganizationApi.md#get_organization_access_control) | **GET** /organizations/{organization_id}/security/access/{identity_id} | Get a control access for the Organization
+[**get_organization_members**](OrganizationApi.md#get_organization_members) | **GET** /organizations/{organization_id}/members | Get the members of an Organization
 [**get_organization_permissions**](OrganizationApi.md#get_organization_permissions) | **GET** /organizations/{organization_id}/permissions/{role} | Get the Organization permissions by given role
 [**get_organization_security**](OrganizationApi.md#get_organization_security) | **GET** /organizations/{organization_id}/security | Get the Organization security information
 [**list_organization_security_users**](OrganizationApi.md#list_organization_security_users) | **GET** /organizations/{organization_id}/security/users | Get the Organization security users list
@@ -470,6 +471,81 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The Organization access |  -  |
 **404** | The Organization or user specified is unknown or you don&#39;t have access to it |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_organization_members**
+> OrganizationMembers get_organization_members(organization_id)
+
+Get the members of an Organization
+
+Retrieve detailed information about members of an organization.
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+
+```python
+import cosmotech_api
+from cosmotech_api.models.organization_members import OrganizationMembers
+from cosmotech_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cosmotech_api.Configuration(
+    host = "http://localhost:8080"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with cosmotech_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cosmotech_api.OrganizationApi(api_client)
+    organization_id = 'organization_id_example' # str | The Organization identifier
+
+    try:
+        # Get the members of an Organization
+        api_response = api_instance.get_organization_members(organization_id)
+        print("The response of OrganizationApi->get_organization_members:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrganizationApi->get_organization_members: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **str**| The Organization identifier | 
+
+### Return type
+
+[**OrganizationMembers**](OrganizationMembers.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/yaml
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Organization details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
