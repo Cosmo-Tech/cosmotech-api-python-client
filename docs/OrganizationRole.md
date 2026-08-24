@@ -1,12 +1,12 @@
 # OrganizationRole
 
-The Organization Role
+the Organization Role
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role** | **str** | The Organization Role | 
+**role** | **str** | the Organization Role | 
 
 ## Example
 
