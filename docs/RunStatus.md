@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **runner_id** | **str** | the Runner id | [optional] 
 **workflow_id** | **str** | the Cosmo Tech compute cluster Argo Workflow Id to search | [optional] 
 **workflow_name** | **str** | the Cosmo Tech compute cluster Argo Workflow Name | [optional] 
-**create_info** | [**RunEditInfo**](RunEditInfo.md) | The timestamp of the Run creation in milliseconds | [optional] 
 **start_time** | **str** | the Run start Date Time | [optional] 
 **end_time** | **str** | the Run end Date Time | [optional] 
 **phase** | **str** | high-level summary of where the workflow is in its lifecycle | [optional] 

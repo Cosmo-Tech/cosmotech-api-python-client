@@ -1,6 +1,6 @@
 # CreatedRun
 
-Newly created Run info
+Newle created Run info
 
 ## Properties
 
