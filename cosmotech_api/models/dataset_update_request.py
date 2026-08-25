@@ -80,8 +80,7 @@ class DatasetUpdateRequest(BaseModel):
         _items = []
         if self.parts:
             for _item_parts in self.parts:
-                if _item_parts:
-                    _items.append(_item_parts.to_dict())
+                _items.append(_item_parts.to_dict() if _item_parts is not None else None)
             _dict['parts'] = _items
         return _dict
 

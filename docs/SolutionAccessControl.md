@@ -1,13 +1,13 @@
 # SolutionAccessControl
 
-a Solution access control item
+A Solution access control item
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | the identity id | 
-**role** | **str** | a role | 
+**id** | **str** | The identity id | 
+**role** | **str** | The assigned role | 
 
 ## Example
 

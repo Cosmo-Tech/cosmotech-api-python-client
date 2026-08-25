@@ -91,8 +91,7 @@ class RunnerUpdateRequest(BaseModel):
         _items = []
         if self.parameters_values:
             for _item_parameters_values in self.parameters_values:
-                if _item_parameters_values:
-                    _items.append(_item_parameters_values.to_dict())
+                _items.append(_item_parameters_values.to_dict() if _item_parameters_values is not None else None)
             _dict['parametersValues'] = _items
         return _dict
 

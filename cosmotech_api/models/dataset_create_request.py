@@ -82,8 +82,7 @@ class DatasetCreateRequest(BaseModel):
         _items = []
         if self.parts:
             for _item_parts in self.parts:
-                if _item_parts:
-                    _items.append(_item_parts.to_dict())
+                _items.append(_item_parts.to_dict() if _item_parts is not None else None)
             _dict['parts'] = _items
         # override the default output from pydantic by calling `to_dict()` of security
         if self.security:

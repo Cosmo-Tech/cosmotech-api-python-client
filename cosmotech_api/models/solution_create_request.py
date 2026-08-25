@@ -90,22 +90,19 @@ class SolutionCreateRequest(BaseModel):
         _items = []
         if self.parameters:
             for _item_parameters in self.parameters:
-                if _item_parameters:
-                    _items.append(_item_parameters.to_dict())
+                _items.append(_item_parameters.to_dict() if _item_parameters is not None else None)
             _dict['parameters'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in parameter_groups (list)
         _items = []
         if self.parameter_groups:
             for _item_parameter_groups in self.parameter_groups:
-                if _item_parameter_groups:
-                    _items.append(_item_parameter_groups.to_dict())
+                _items.append(_item_parameter_groups.to_dict() if _item_parameter_groups is not None else None)
             _dict['parameterGroups'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in run_templates (list)
         _items = []
         if self.run_templates:
             for _item_run_templates in self.run_templates:
-                if _item_run_templates:
-                    _items.append(_item_run_templates.to_dict())
+                _items.append(_item_run_templates.to_dict() if _item_run_templates is not None else None)
             _dict['runTemplates'] = _items
         # override the default output from pydantic by calling `to_dict()` of security
         if self.security:

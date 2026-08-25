@@ -77,15 +77,13 @@ class Members(BaseModel):
         _items = []
         if self.users:
             for _item_users in self.users:
-                if _item_users:
-                    _items.append(_item_users.to_dict())
+                _items.append(_item_users.to_dict() if _item_users is not None else None)
             _dict['users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in groups (list)
         _items = []
         if self.groups:
             for _item_groups in self.groups:
-                if _item_groups:
-                    _items.append(_item_groups.to_dict())
+                _items.append(_item_groups.to_dict() if _item_groups is not None else None)
             _dict['groups'] = _items
         return _dict
 
