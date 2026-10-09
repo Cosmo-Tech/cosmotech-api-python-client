@@ -104,6 +104,13 @@ class TestDatasetApi(unittest.TestCase):
         """
         pass
 
+    def test_get_dataset_security(self) -> None:
+        """Test case for get_dataset_security
+
+        Get the security information for a Dataset
+        """
+        pass
+
     def test_list_dataset_parts(self) -> None:
         """Test case for list_dataset_parts
 
