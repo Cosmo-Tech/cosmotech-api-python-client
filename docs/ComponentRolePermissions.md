@@ -1,13 +1,13 @@
 # ComponentRolePermissions
 
-A RBAC by component
+a RBAC by component
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**component** | **str** |  | 
-**roles** | **Dict[str, List[str]]** |  | 
+**component** | **str** |  | [optional] 
+**roles** | **Dict[str, List[str]]** |  | [optional] 
 
 ## Example
 
