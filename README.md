@@ -11,7 +11,7 @@ For more information, please visit [https://github.com/Cosmo-Tech/cosmotech-api]
 
 ## Requirements.
 
-Python 3.10+
+Python 3.11+
 
 Packaging uses standard `[project]` metadata and `[dependency-groups]` (PEP 621/735).
 Install the package with `python -m pip install .`; install development dependencies

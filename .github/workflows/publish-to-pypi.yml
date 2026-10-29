@@ -23,10 +23,10 @@ jobs:
         sed -i 's/version = ".*"/version = "${{ steps.get_version.outputs.VERSION }}"/g' pyproject.toml
         sed -i 's#docs/#https://github.com/Cosmo-Tech/cosmotech-api-python-client/tree/${{ steps.get_version.outputs.VERSION }}/docs/#g' README.md
         sed -i '/All URIs are relative/d' README.md
-    - name: Set up Python 3.10
+    - name: Set up Python 3.15
       uses: actions/setup-python@v1
       with:
-        python-version: '3.10'
+        python-version: '3.15'
     - name: Install pypa/build
       run: >-
         python -m
