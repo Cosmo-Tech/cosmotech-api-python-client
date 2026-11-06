@@ -41,7 +41,7 @@ class TestRunnerDatasets(unittest.TestCase):
                     ],
                 parameter = '',
                 parameters = [
-                    None
+                    { }
                     ]
             )
         else:

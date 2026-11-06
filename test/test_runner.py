@@ -63,7 +63,7 @@ class TestRunner(unittest.TestCase):
                         ], 
                     parameter = '', 
                     parameters = [
-                        None
+                        { }
                         ], ),
                 run_sizing = cosmotech_api.models.runner_resource_sizing.RunnerResourceSizing(
                     requests = cosmotech_api.models.resource_size_info.ResourceSizeInfo(
@@ -112,7 +112,7 @@ class TestRunner(unittest.TestCase):
                         ], 
                     parameter = '', 
                     parameters = [
-                        None
+                        { }
                         ], ),
                 parameters_values = [
                     cosmotech_api.models.runner_run_template_parameter_value.RunnerRunTemplateParameterValue(
